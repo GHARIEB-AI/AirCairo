@@ -1390,19 +1390,40 @@
         let realFlights = [];  // Will be populated from API
         let recentShown = [];
 
+        // Format LST-SOLD from "2025-12-18 00:00:00" to "18DEC25"
+        function formatLstSold(lstSold) {
+            if (!lstSold || lstSold === 'NIL' || lstSold === 'N/A') return lstSold;
+
+            // Check if already in DDMMMYY format (e.g., "18DEC25")
+            if (/^\d{1,2}[A-Z]{3}\d{2}$/i.test(lstSold)) return lstSold.toUpperCase();
+
+            // Try parsing datetime format "2025-12-18 00:00:00" or "2025-12-18"
+            const match = lstSold.match(/^(\d{4})-(\d{2})-(\d{2})/);
+            if (match) {
+                const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+                const day = parseInt(match[3], 10);
+                const monthIdx = parseInt(match[2], 10) - 1;
+                const year = match[1].slice(-2);
+                return day + months[monthIdx] + year;
+            }
+
+            // Return as-is if can't parse
+            return lstSold;
+        }
+
         // Format real flight data in different patterns
         function formatRealData(flight) {
             if (!flight || typeof flight !== 'object') return null;
 
             const formats = [
-                // Format 1: "SM455/20DEC 1200SAR"
-                () => (flight.flight && flight.date ? (flight.flight + '/' + flight.date + (flight.lst_sold ? (' LST:' + flight.lst_sold) : '')) : null),
+                // Format 1: "SM455/20DEC LST:18DEC25"
+                () => (flight.flight && flight.date ? (flight.flight + '/' + flight.date + (flight.lst_sold ? (' LST:' + formatLstSold(flight.lst_sold)) : '')) : null),
 
                 // Format 2: "SM455 | JED-CAI | 23DEC"
                 () => (flight.flight && flight.route && flight.date ? `${flight.flight} | ${flight.route} | ${flight.date}` : null),
 
-                // Format 3: "JED→CAI LST:18 TD:5"
-                () => (flight.route ? `${flight.route} LST:${flight.lst_sold || '-'} TD:${typeof flight.to_day === 'number' ? flight.to_day : '-'}` : null),
+                // Format 3: "JED→CAI LST:18DEC25 TD:5"
+                () => (flight.route ? `${flight.route} LST:${formatLstSold(flight.lst_sold) || '-'} TD:${typeof flight.to_day === 'number' ? flight.to_day : '-'}` : null),
 
                 // Format 4: "SM455 WEEKLY:88"
                 () => (flight.flight && typeof flight.weekly === 'number' ? `${flight.flight} WEEKLY:${flight.weekly}` : null),
@@ -1410,8 +1431,8 @@
                 // Format 5: Route with availability
                 () => (flight.route && (flight.lowest_avail || flight.avail) ? `${flight.route} AVAIL:${flight.lowest_avail || flight.avail}` : null),
 
-                // Format 6: Compact "SM455/JED 18sold"
-                () => (flight.flight && flight.route ? (flight.flight + '/' + flight.route.split('-')[0] + (flight.lst_sold ? (' LST:' + flight.lst_sold) : '')) : null),
+                // Format 6: Compact "SM455/JED LST:18DEC25"
+                () => (flight.flight && flight.route ? (flight.flight + '/' + flight.route.split('-')[0] + (flight.lst_sold ? (' LST:' + formatLstSold(flight.lst_sold)) : '')) : null),
 
                 // Format 7: Date focus "20DEC JED-CAI"
                 () => (flight.date && flight.route ? `${flight.date} ${flight.route}` : null),
@@ -1934,7 +1955,7 @@
                     flight: f.flight || 'N/A',
                     route: f.route || 'N/A',
                     date: f.date || 'N/A',
-                    lstSold: f.lst_sold || 'NIL',
+                    lstSold: formatLstSold(f.lst_sold) || 'NIL',
                     toDay: f.to_day || 0,
                     yDay: f.y_day || 0,
                     weekly: f.weekly || 0,
