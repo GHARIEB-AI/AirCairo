@@ -6,60 +6,82 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Air Cairo - Market Insights Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* Air Cairo Brand Colors */
-        :root {
-            --aircairo-purple: #462B73;
-            --aircairo-purple-light: #6B4E92;
-            --aircairo-purple-dark: #2E1B4E;
-            --aircairo-orange: #F7941D;
-            --aircairo-orange-light: #FFB54D;
-            --aircairo-white: #FFFFFF;
-            --aircairo-gray: #F5F5F5;
-        }
-
         body {
             font-family: 'Segoe UI', 'Consolas', monospace;
-            background: linear-gradient(135deg, var(--aircairo-purple-dark) 0%, var(--aircairo-purple) 50%, var(--aircairo-purple-light) 100%);
+            background: linear-gradient(135deg, #462B73 0%, #2d1a4a 100%);
             color: #fff;
             min-height: 100vh;
             padding: 15px;
         }
         .header {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
             padding: 20px 25px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(70, 43, 115, 0.6);
             border-radius: 15px;
             border: 1px solid rgba(247, 148, 29, 0.3);
             margin-bottom: 20px;
-            backdrop-filter: blur(10px);
+            position: relative;
         }
-        .header-logo {
+        .header h1 {
+            font-size: 24px;
+            color: #F7941D;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+        .logo-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            margin-bottom: 15px;
         }
-        .header-logo img {
-            height: 45px;
-            width: auto;
+        .header-info {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: right;
         }
-        .header h1 { font-size: 24px; color: var(--aircairo-orange); }
-        .header-info { text-align: center; }
+        .logo-text {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+        .logo-text .orange {
+            color: #F7941D;
+        }
+        .subtitle {
+            text-align: center;
+            margin-top: 5px;
+        }
+        .subtitle h2 {
+            color: #F7941D;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .subtitle p {
+            color: #aaa;
+            font-size: 12px;
+        }
         .live-indicator {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: var(--aircairo-purple-dark);
+            background: rgba(74, 222, 128, 0.2);
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 12px;
-            border: 1px solid var(--aircairo-orange);
+            border: 1px solid rgba(74, 222, 128, 0.3);
         }
         .status-badge {
             display: inline-block;
@@ -69,17 +91,19 @@
             font-size: 14px;
             margin-left: 15px;
         }
-        .status-badge.running { background: rgba(247, 148, 29, 0.2); color: var(--aircairo-orange); border: 1px solid var(--aircairo-orange); }
-        .status-badge.idle { background: rgba(255, 255, 255, 0.1); color: #fff; }
-        .status-badge.completing { background: var(--aircairo-purple-light); color: #fff; }
+        .status-badge.running { background: rgba(74, 222, 128, 0.2); color: #4ade80; border: 1px solid #4ade80; }
+        .status-badge.idle { background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 1px solid #fbbf24; }
+        .status-badge.completed { background: rgba(96, 165, 250, 0.2); color: #60a5fa; border: 1px solid #60a5fa; }
+        .status-badge.no_data { background: rgba(156, 163, 175, 0.2); color: #9ca3af; border: 1px solid #9ca3af; }
         .live-dot {
             width: 10px; height: 10px;
-            background: var(--aircairo-orange);
+            background: #4ade80;
             border-radius: 50%;
             animation: blink 1s infinite;
         }
         @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-        .timestamp { color: #888; font-size: 12px; margin-top: 5px; }
+        .timestamp { color: #aaa; font-size: 12px; margin-top: 5px; }
+        .run-info { color: #F7941D; font-size: 11px; margin-top: 3px; }
 
         /* Progress Section */
         .progress-section {
@@ -89,17 +113,16 @@
             margin-bottom: 20px;
         }
         .progress-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(70, 43, 115, 0.5);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
             border: 1px solid rgba(247, 148, 29, 0.2);
-            backdrop-filter: blur(5px);
         }
         .progress-card h3 {
             font-size: 12px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.7);
+            color: #aaa;
             margin-bottom: 10px;
         }
         .progress-value {
@@ -108,12 +131,12 @@
             margin-bottom: 10px;
         }
         .progress-value.lf { color: #4ade80; }
-        .progress-value.oal { color: var(--aircairo-orange-light); }
-        .progress-value.excel { color: var(--aircairo-orange); }
-        .progress-value.overall { color: #fff; }
+        .progress-value.oal { color: #60a5fa; }
+        .progress-value.excel { color: #F7941D; }
+        .progress-value.overall { color: #a78bfa; }
         .progress-bar {
             height: 8px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
             border-radius: 4px;
             overflow: hidden;
         }
@@ -123,9 +146,9 @@
             transition: width 0.5s ease;
         }
         .progress-fill.lf { background: linear-gradient(90deg, #22c55e, #4ade80); }
-        .progress-fill.oal { background: linear-gradient(90deg, var(--aircairo-orange), var(--aircairo-orange-light)); }
-        .progress-fill.excel { background: linear-gradient(90deg, #d97706, var(--aircairo-orange)); }
-        .progress-fill.overall { background: linear-gradient(90deg, var(--aircairo-purple-light), #fff); }
+        .progress-fill.oal { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .progress-fill.excel { background: linear-gradient(90deg, #d97706, #F7941D); }
+        .progress-fill.overall { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
 
         /* Stats Row */
         .stats-row {
@@ -135,16 +158,16 @@
             margin-bottom: 20px;
         }
         .stat-card {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(70, 43, 115, 0.4);
             border-radius: 10px;
             padding: 15px;
             text-align: center;
-            border: 1px solid rgba(247, 148, 29, 0.15);
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        .stat-label { font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+        .stat-label { font-size: 11px; color: #888; text-transform: uppercase; }
         .stat-value { font-size: 24px; font-weight: bold; margin-top: 5px; }
         .stat-value.success { color: #4ade80; }
-        .stat-value.warning { color: var(--aircairo-orange); }
+        .stat-value.warning { color: #F7941D; }
         .stat-value.error { color: #f87171; }
 
         /* Main Grid */
@@ -154,16 +177,15 @@
             gap: 20px;
         }
         .card {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(70, 43, 115, 0.5);
             border-radius: 12px;
             padding: 20px;
-            border: 1px solid rgba(247, 148, 29, 0.15);
-            backdrop-filter: blur(5px);
+            border: 1px solid rgba(247, 148, 29, 0.2);
         }
         .card h2 {
             font-size: 14px;
             text-transform: uppercase;
-            color: var(--aircairo-orange);
+            color: #F7941D;
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(247, 148, 29, 0.2);
@@ -176,7 +198,7 @@
             gap: 10px;
         }
         .worker-card {
-            background: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.3);
             border-radius: 8px;
             padding: 12px;
             text-align: center;
@@ -184,15 +206,15 @@
             transition: all 0.3s;
         }
         .worker-card.working {
-            border-color: var(--aircairo-orange);
+            border-color: #F7941D;
             background: rgba(247, 148, 29, 0.15);
         }
         .worker-card.idle {
-            border-color: rgba(255,255,255,0.3);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: #fbbf24;
+            background: rgba(251, 191, 36, 0.1);
         }
         .worker-card.inactive {
-            border-color: rgba(255,255,255,0.1);
+            border-color: #666;
             opacity: 0.5;
         }
         .worker-port {
@@ -202,7 +224,7 @@
         }
         .worker-route {
             font-size: 11px;
-            color: var(--aircairo-orange);
+            color: #F7941D;
             margin-top: 5px;
             font-weight: bold;
         }
@@ -227,24 +249,16 @@
             border-radius: 6px;
             margin-bottom: 6px;
         }
-        .route-name { font-weight: bold; color: var(--aircairo-orange-light); }
+        .route-name { font-weight: bold; color: #60a5fa; }
         .route-stats { font-size: 12px; color: #888; }
         .route-stats span { margin-left: 10px; }
-
-        /* OAL Section */
-        .oal-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+        .route-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
         }
-        .oal-stat {
-            text-align: center;
-            padding: 15px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 8px;
-        }
-        .oal-stat-value { font-size: 28px; font-weight: bold; }
-        .oal-stat-label { font-size: 11px; color: #888; margin-top: 5px; }
+        .route-badge.done { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
+        .route-badge.pending { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
 
         /* Config Section */
         .config-grid {
@@ -270,362 +284,874 @@
         }
         .excel-item {
             padding: 5px 8px;
-            background: rgba(245, 158, 11, 0.1);
+            background: rgba(247, 148, 29, 0.1);
             border-radius: 4px;
             margin-bottom: 4px;
-            color: #f59e0b;
+            color: #F7941D;
         }
 
-        /* Queue Section */
-        .queue-section {
+        /* Running Tasks */
+        .running-tasks {
             margin-top: 20px;
         }
-        .queue-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .queue-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .queue-route {
-            padding: 4px 10px;
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: 15px;
-            font-size: 11px;
-            color: #fca5a5;
-        }
-        .queue-route.completed {
-            background: rgba(74, 222, 128, 0.2);
-            border-color: rgba(74, 222, 128, 0.3);
-            color: #4ade80;
-        }
-        .date-chunks {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-        }
-        .date-chunk {
-            padding: 8px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 6px;
-            text-align: center;
-            font-size: 10px;
-        }
-        .date-chunk-id {
-            font-weight: bold;
-            color: var(--aircairo-orange);
-            font-size: 14px;
-        }
-        .date-chunk-range { color: #888; margin-top: 3px; }
-        .queue-header {
+        .running-task {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            padding: 10px 15px;
+            background: rgba(247, 148, 29, 0.1);
+            border: 1px solid rgba(247, 148, 29, 0.3);
+            border-radius: 8px;
+            margin-bottom: 8px;
         }
-        .queue-count {
-            background: rgba(239, 68, 68, 0.2);
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-size: 12px;
-            color: #fca5a5;
+        .running-task-route {
+            font-weight: bold;
+            color: #F7941D;
+            font-size: 16px;
+        }
+        .running-task-info {
+            font-size: 11px;
+            color: #aaa;
+        }
+        .running-task-worker {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 11px;
         }
 
-        /* Pending Route-Dates Section */
-        .pending-routes-dates {
+        /* Pending Routes Section */
+        .pending-section {
             margin-top: 20px;
         }
-        .route-dates-grid {
+        .pending-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
             max-height: 400px;
             overflow-y: auto;
         }
-        .route-dates-card {
+        .pending-card {
             background: rgba(0,0,0,0.3);
             border-radius: 8px;
             padding: 12px;
             border-left: 3px solid #f87171;
         }
-        .route-dates-card.completed {
+        .pending-card.completed {
             border-left-color: #4ade80;
-            opacity: 0.6;
+            opacity: 0.7;
         }
-        .route-dates-header {
-            font-weight: bold;
-            color: var(--aircairo-orange-light);
-            font-size: 14px;
-            margin-bottom: 8px;
+        .pending-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
         }
-        .route-dates-count {
-            font-size: 11px;
-            color: #f87171;
-            background: rgba(239, 68, 68, 0.2);
+        .pending-route {
+            font-weight: bold;
+            color: #60a5fa;
+            font-size: 14px;
+        }
+        .pending-count {
+            font-size: 10px;
             padding: 2px 8px;
             border-radius: 10px;
+            background: rgba(248, 113, 113, 0.2);
+            color: #fca5a5;
         }
-        .route-dates-list {
-            font-size: 11px;
-            color: #ccc;
-            max-height: 150px;
+        .pending-count.done {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+        }
+        .pending-dates {
+            font-size: 10px;
+            color: #888;
+            max-height: 100px;
             overflow-y: auto;
-            line-height: 1.6;
         }
-        .route-dates-list .date-item {
-            padding: 2px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+        .pending-progress {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .pending-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4ade80, #22c55e);
+            transition: width 0.5s;
+        }
+
+        /* ===== NEW LIVE SECTIONS ===== */
+
+        /* Live Log Stream */
+        .log-stream {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 10px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 11px;
+            max-height: 250px;
+            overflow-y: auto;
+            line-height: 1.5;
+        }
+        .log-line {
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .log-line.error { background: rgba(248, 113, 113, 0.2); color: #fca5a5; }
+        .log-line.warning { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+        .log-line.success { background: rgba(74, 222, 128, 0.15); color: #86efac; }
+        .log-line.info { color: #94a3b8; }
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .log-file-badge {
+            font-size: 10px;
+            background: rgba(96, 165, 250, 0.2);
+            color: #93c5fd;
+            padding: 3px 8px;
+            border-radius: 10px;
+        }
+
+        /* OAL Details Card */
+        .oal-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .oal-detail-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        .oal-detail-label {
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .oal-detail-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #60a5fa;
+        }
+        .oal-detail-value.pass { color: #a78bfa; }
+        .oal-detail-value.eta { color: #4ade80; }
+        .oal-pass-progress {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .pass-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .pass-dot.completed { background: #4ade80; border-color: #4ade80; }
+        .pass-dot.current { background: #60a5fa; border-color: #60a5fa; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.2);} }
+
+        /* Speed & Metrics Card */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .metric-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .metric-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .metric-value.speed { color: #4ade80; }
+        .metric-value.errors { color: #f87171; }
+        .metric-value.eta { color: #60a5fa; }
+        .metric-label {
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        .metric-sub {
+            font-size: 11px;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        /* ETA Section in Progress Cards */
+        .eta-badge {
+            font-size: 10px;
+            background: rgba(74, 222, 128, 0.15);
+            color: #86efac;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 10px;
+        }
+
+        /* ===== FUTURISTIC AI CHART VISUALIZATION ===== */
+
+        /* Main AI Scene Container */
+        #ai-scene {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0a1628 0%, #162a4a 50%, #0d1f3c 100%);
+        }
+
+        /* Left Video - 60% width, fade on right edge */
+        #bg-video-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+            opacity: 0.95;
+            mask-image: linear-gradient(to right, black 0%, black 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, black 0%, black 70%, transparent 100%);
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        /* Right Video - 60% width, fade on left edge */
+        #bg-video-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+            opacity: 0.95;
+            mask-image: linear-gradient(to left, black 0%, black 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, black 0%, black 70%, transparent 100%);
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        /* Center Blend - very subtle */
+        #video-blend {
+            position: absolute;
+            top: 0;
+            left: 40%;
+            width: 20%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(10, 22, 40, 0.1) 50%,
+                transparent 100%
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Blur box over AIR CAIRO text - TOP RIGHT where it actually appears */
+        #aircairo-cover {
+            position: absolute;
+            top: -2px;
+            right: 24%;
+            width: 165px;
+            height: 50px;
+            z-index: 8;
+            pointer-events: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: linear-gradient(135deg,
+                rgba(20, 45, 75, 0.4) 0%,
+                rgba(15, 35, 60, 0.35) 50%,
+                rgba(25, 50, 80, 0.4) 100%
+            );
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(15, 35, 60, 0.3);
+        }
+
+        /* MARKET INSIGHTS - small, NO background, NO border - on top of AIR CAIRO */
+        #title-overlay {
+            position: absolute;
+            top: 10px;
+            right: 25%;
+            z-index: 9;
+            display: flex;
+            gap: 2px;
+            pointer-events: none;
+            background: none !important;
+            border: none !important;
+        }
+
+        .title-letter {
+            font-size: 9px;
+            font-weight: 500;
+            color: rgba(180, 200, 220, 0.7);
+            display: inline-block;
+            animation: letterSpin 3s ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        .title-space {
+            width: 4px;
+        }
+
+        @keyframes letterSpin {
+            0%, 100% {
+                transform: rotateY(0deg) translateY(0) scale(1);
+                font-weight: 500;
+                opacity: 0.7;
+            }
+            25% {
+                transform: rotateY(90deg) translateY(-1px) scale(1.05);
+                font-weight: 600;
+                opacity: 0.85;
+            }
+            50% {
+                transform: rotateY(180deg) translateY(-2px) scale(1.1);
+                font-weight: 700;
+                opacity: 1;
+            }
+            75% {
+                transform: rotateY(270deg) translateY(-1px) scale(1.05);
+                font-weight: 600;
+                opacity: 0.85;
+            }
+        }
+
+        /* Floating Data Stream - LEFT → RIGHT */
+        #data-stream {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Floating Data - Multiple Random Styles */
+        #data-stream .data-item {
+            position: absolute;
+            font-family: 'Consolas', 'Courier New', monospace;
+            white-space: nowrap;
+            left: -350px;
+        }
+
+        /* Style 1: Cyan Compact */
+        .data-item.s1 {
+            font-size: 11px;
+            color: rgba(100, 220, 255, 0.95);
+            text-shadow: 0 0 10px rgba(100, 220, 255, 0.6);
+            animation: drift1 linear forwards;
+        }
+
+        /* Style 2: Green Price */
+        .data-item.s2 {
+            font-size: 13px;
+            color: #4ade80;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(74, 222, 128, 0.7);
+            animation: drift2 linear forwards;
+        }
+
+        /* Style 3: Orange Airline */
+        .data-item.s3 {
+            font-size: 12px;
+            color: #f7941d;
+            font-weight: bold;
+            text-shadow: 0 0 12px rgba(247, 148, 29, 0.6);
+            animation: drift3 linear forwards;
+        }
+
+        /* Style 4: Cyan Light (was White - too prominent) */
+        .data-item.s4 {
+            font-size: 10px;
+            color: rgba(100, 200, 230, 0.65);
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(100, 200, 230, 0.4);
+            animation: drift4 linear forwards;
+        }
+
+        /* Style 5: Purple Glow */
+        .data-item.s5 {
+            font-size: 11px;
+            color: rgba(180, 130, 255, 0.9);
+            text-shadow: 0 0 12px rgba(180, 130, 255, 0.5);
+            animation: drift5 linear forwards;
+        }
+
+        /* Animation 1: Smooth */
+        @keyframes drift1 {
+            0% { left: -350px; opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { left: 105%; opacity: 0; }
+        }
+
+        /* Animation 2: Wave */
+        @keyframes drift2 {
+            0% { left: -350px; opacity: 0; transform: translateY(0); }
+            5% { opacity: 1; }
+            30% { transform: translateY(-12px); }
+            60% { transform: translateY(12px); }
+            95% { opacity: 1; }
+            100% { left: 105%; opacity: 0; transform: translateY(-5px); }
+        }
+
+        /* Animation 3: Bounce Start */
+        @keyframes drift3 {
+            0% { left: -350px; opacity: 0; transform: scale(0.8); }
+            5% { opacity: 1; transform: scale(1.15); }
+            10% { transform: scale(1); }
+            95% { opacity: 1; }
+            100% { left: 105%; opacity: 0; }
+        }
+
+        /* Animation 4: Drift Up/Down */
+        @keyframes drift4 {
+            0% { left: -350px; opacity: 0; transform: translateY(20px); }
+            10% { opacity: 0.8; transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            90% { opacity: 0.8; }
+            100% { left: 105%; opacity: 0; transform: translateY(10px); }
+        }
+
+        /* Animation 5: Pulse */
+        @keyframes drift5 {
+            0% { left: -350px; opacity: 0; }
+            5% { opacity: 1; }
+            25% { opacity: 0.6; }
+            50% { opacity: 1; }
+            75% { opacity: 0.6; }
+            95% { opacity: 1; }
+            100% { left: 105%; opacity: 0; }
+        }
+
+        /* Chart Canvas Container */
+        #chart-container {
+            position: absolute;
+            top: 60px;
+            left: 50px;
+            right: 20px;
+            bottom: 50px;
+            z-index: 10;
+        }
+
+        /* Y-Axis Label */
+        #y-axis-label {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: 11px;
+            color: rgba(100, 220, 255, 0.7);
+            letter-spacing: 2px;
+            white-space: nowrap;
+            z-index: 15;
+        }
+
+        /* X-Axis Label */
+        #x-axis-label {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: rgba(100, 220, 255, 0.7);
+            letter-spacing: 2px;
+            z-index: 15;
+        }
+
+        /* Data Info Boxes Container */
+        #data-boxes-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 25;
+            pointer-events: none;
+        }
+
+        /* Individual Data Box - SMALLER & MORE TRANSPARENT */
+        .chart-data-box {
+            position: absolute;
+            background: rgba(0, 15, 40, 0.75);
+            border: 1px solid rgba(100, 220, 255, 0.4);
+            border-radius: 6px;
+            padding: 8px 10px;
+            min-width: 140px;
+            max-width: 160px;
+            font-size: 10px;
+            box-shadow: 0 0 12px rgba(100, 220, 255, 0.15);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: auto;
+            animation: slideInFromLeft 8s linear forwards;
+        }
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-50px); opacity: 0; }
+            10% { transform: translateX(0); opacity: 0.9; }
+            80% { transform: translateX(0); opacity: 0.9; }
+            100% { transform: translateX(50px); opacity: 0; }
+        }
+        .chart-data-box.visible {
+            opacity: 0.9;
+            transform: translateX(0);
+        }
+        .chart-data-box .box-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(100, 220, 255, 0.3);
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+        .chart-data-box .box-flight {
+            color: #6df3ff;
+            font-weight: 700;
+            font-size: 11px;
+            text-shadow: 0 0 6px rgba(100, 220, 255, 0.4);
+        }
+        .chart-data-box .box-route {
+            color: rgba(100, 220, 255, 0.8);
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .chart-data-box .box-date {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 9px;
+            margin-bottom: 5px;
+        }
+        .chart-data-box .box-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px;
+        }
+        .chart-data-box .metric-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1px 0;
+        }
+        .chart-data-box .metric-label {
+            color: rgba(157, 233, 255, 0.8);
+            font-size: 9px;
+            font-weight: 500;
+        }
+        .chart-data-box .metric-value {
+            color: #fff;
+            font-weight: 600;
+            font-family: 'Consolas', monospace;
+            font-size: 10px;
+        }
+        .chart-data-box .metric-value.cyan {
+            color: #6df3ff;
+            text-shadow: 0 0 4px rgba(100, 220, 255, 0.3);
+        }
+        .chart-data-box .metric-value.green {
+            color: #4ade80;
+            text-shadow: 0 0 4px rgba(74, 222, 128, 0.3);
+        }
+        .chart-data-box .metric-value.yellow {
+            color: #fbbf24;
+            text-shadow: 0 0 4px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Connection Line from box to chart point */
+        .box-connector {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(100, 220, 255, 0.6), rgba(100, 220, 255, 0.1));
+            z-index: 24;
+        }
+
+        /* Glowing scan line */
+        #scan-line {
+            position: absolute;
+            top: 60px;
+            bottom: 50px;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, rgba(100, 220, 255, 0.8), transparent);
+            box-shadow: 0 0 10px rgba(100, 220, 255, 0.5);
+            z-index: 30;
+            opacity: 0;
+        }
+        #scan-line.animating {
+            animation: scanMove 9s linear forwards;
+            opacity: 1;
+        }
+        @keyframes scanMove {
+            from { left: 50px; }
+            to { left: calc(100% - 20px); }
         }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb { background: var(--aircairo-orange); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #F7941D; border-radius: 3px; }
 
-        /* =====================================================
-           RESPONSIVE STYLES - Mobile & Tablet
-           ===================================================== */
-
-        /* Large tablets and small desktops */
-        @media (max-width: 1200px) {
-            .progress-section {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .stats-row {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .route-dates-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            }
-        }
-
-        /* Tablets */
+        /* Responsive */
         @media (max-width: 992px) {
+            .progress-section { grid-template-columns: repeat(2, 1fr); }
+            .stats-row { grid-template-columns: repeat(3, 1fr); }
+            .main-grid { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+            .oal-details-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
             body { padding: 10px; }
             .header {
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
-            }
-            .header h1 { font-size: 20px; }
-            .header-info { text-align: center; }
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-            .queue-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-row {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .config-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Mobile phones */
-        @media (max-width: 768px) {
-            body { padding: 8px; }
-            .header {
-                padding: 12px 15px;
-                border-radius: 10px;
-            }
-            .header h1 { font-size: 16px; }
-            .header-logo > div:first-child {
-                font-size: 32px !important;
-            }
-            .header-logo > div:first-child span:last-child {
-                font-size: 36px !important;
-            }
-            .progress-section {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .progress-card {
-                padding: 12px;
-            }
-            .progress-value {
-                font-size: 28px;
-            }
-            .stats-row {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-            .stat-card {
-                padding: 10px;
-            }
-            .stat-value {
-                font-size: 20px;
-            }
-            .card {
                 padding: 15px;
-                border-radius: 10px;
             }
-            .card h2 {
-                font-size: 12px;
+            .header-info {
+                position: static;
+                transform: none;
+                text-align: center;
+                width: 100%;
             }
-            .workers-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
-            }
-            .worker-card {
-                padding: 8px;
-            }
-            .worker-port {
-                font-size: 14px;
-            }
-            .worker-route {
-                font-size: 9px;
-            }
-            .oal-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
-            }
-            .oal-stat {
-                padding: 10px;
-            }
-            .oal-stat-value {
-                font-size: 22px;
-            }
-            .date-chunks {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .route-dates-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .route-dates-card {
-                padding: 10px;
-            }
-            .route-list {
-                max-height: 200px;
-            }
-        }
-
-        /* Small mobile phones */
-        @media (max-width: 480px) {
-            body { padding: 5px; }
-            .header h1 { font-size: 14px; }
-            .header-logo > div:first-child {
-                font-size: 26px !important;
-            }
-            .header-logo > div:first-child span:last-child {
-                font-size: 30px !important;
-            }
-            .live-indicator {
-                padding: 4px 10px;
-                font-size: 10px;
-            }
-            #refresh-btn {
-                padding: 6px 12px !important;
-                font-size: 12px !important;
-            }
-            .progress-section {
-                grid-template-columns: 1fr;
-            }
-            .progress-card {
-                padding: 10px;
-            }
-            .progress-value {
-                font-size: 24px;
-            }
+            .logo-img { height: 40px; }
+            .logo-text { font-size: 28px; }
+            .subtitle h2 { font-size: 14px; }
+            .subtitle p { font-size: 10px; }
+            .progress-section { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .progress-card { padding: 12px; }
+            .progress-card h3 { font-size: 10px; margin-bottom: 5px; }
+            .progress-value { font-size: 24px; margin-bottom: 8px; }
             .stats-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .stat-value {
-                font-size: 18px;
-            }
-            .stat-label {
-                font-size: 9px;
-            }
-            .workers-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 4px;
+                gap: 8px;
             }
-            .worker-card {
-                padding: 6px;
-            }
-            .worker-port {
-                font-size: 12px;
-            }
-            .worker-route {
-                font-size: 8px;
-            }
-            .worker-status {
-                font-size: 8px;
-            }
-            .oal-stat-value {
-                font-size: 18px;
-            }
-            .oal-stat-label {
-                font-size: 9px;
-            }
-            .route-dates-grid {
-                grid-template-columns: 1fr;
-            }
-            .route-item {
-                flex-direction: column;
-                align-items: flex-start;
+            .stat-card { padding: 10px; }
+            .stat-label { font-size: 9px; }
+            .stat-value { font-size: 18px; }
+            .card { padding: 15px; }
+            .card h2 { font-size: 12px; margin-bottom: 10px; }
+            .workers-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+            .worker-card { padding: 8px; }
+            .worker-port { font-size: 12px; }
+            .worker-route { font-size: 9px; }
+            .worker-status { font-size: 8px; }
+            .config-grid { grid-template-columns: 1fr; gap: 6px; }
+            .config-item { padding: 6px 8px; font-size: 11px; }
+            .running-task { padding: 8px 10px; flex-direction: column; gap: 8px; align-items: flex-start; }
+            .running-task-route { font-size: 14px; }
+            .running-task-info { font-size: 10px; }
+            .pending-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .pending-card { padding: 10px; }
+            .pending-route { font-size: 12px; }
+            .pending-count { font-size: 9px; padding: 2px 6px; }
+            .pending-dates { font-size: 9px; }
+            .status-badge { font-size: 11px; padding: 4px 10px; margin-left: 0; margin-bottom: 5px; }
+            .live-indicator { font-size: 10px; padding: 4px 10px; }
+            .timestamp { font-size: 10px; }
+            .run-info { font-size: 9px; }
+            /* NEW sections mobile */
+            .metrics-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .metric-item { padding: 10px 5px; }
+            .metric-value { font-size: 18px; }
+            .metric-label { font-size: 8px; }
+            .metric-sub { font-size: 9px; }
+            .oal-details-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .oal-detail-item { padding: 10px; }
+            .oal-detail-value { font-size: 16px; }
+            .oal-detail-label { font-size: 9px; }
+            .log-stream { max-height: 180px; font-size: 10px; }
+            .log-line { padding: 2px 4px; }
+            .log-header { font-size: 10px; }
+            .log-file-badge { font-size: 9px; padding: 2px 6px; }
+            .pass-dot { width: 10px; height: 10px; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 8px; }
+            .header { padding: 12px; margin-bottom: 12px; }
+            .logo-img { height: 35px; }
+            .logo-text { font-size: 22px; }
+            .subtitle h2 { font-size: 12px; }
+            .progress-section { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .progress-card { padding: 10px; border-radius: 8px; }
+            .progress-card h3 { font-size: 9px; }
+            .progress-value { font-size: 20px; }
+            .progress-bar { height: 6px; }
+            .stats-row {
+                grid-template-columns: repeat(5, 1fr);
                 gap: 5px;
             }
-            .route-stats {
-                font-size: 10px;
-            }
-            .route-stats span {
-                margin-left: 5px;
-            }
-            .date-chunks {
-                grid-template-columns: 1fr;
-            }
-            .queue-list {
-                max-height: 150px;
-            }
+            .stat-card { padding: 8px 4px; border-radius: 6px; }
+            .stat-label { font-size: 7px; }
+            .stat-value { font-size: 14px; }
+            .workers-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+            .worker-card { padding: 6px; border-radius: 6px; border-width: 1px; }
+            .worker-port { font-size: 11px; }
+            .worker-route { font-size: 8px; margin-top: 3px; }
+            .worker-status { font-size: 7px; margin-top: 2px; }
+            .card { padding: 12px; margin-bottom: 10px; }
+            .card h2 { font-size: 11px; margin-bottom: 8px; padding-bottom: 8px; }
+            .running-tasks, .pending-section { margin-top: 10px; }
+            .running-task { border-radius: 6px; margin-bottom: 6px; }
+            .pending-grid { grid-template-columns: 1fr 1fr; gap: 8px; max-height: 300px; }
+            .pending-card { padding: 8px; border-radius: 6px; }
+            .pending-route { font-size: 11px; }
+            .pending-header { margin-bottom: 5px; }
+            .pending-progress { height: 3px; margin-top: 6px; }
+            .main-grid { gap: 10px; }
+            .excel-list { max-height: 100px; }
+            .excel-item { padding: 4px 6px; font-size: 10px; }
+            .route-list { max-height: 200px; }
+            /* NEW sections - small phones */
+            .metrics-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+            .metric-item { padding: 8px 4px; border-radius: 6px; }
+            .metric-value { font-size: 16px; }
+            .metric-label { font-size: 7px; }
+            .metric-sub { font-size: 8px; }
+            .oal-details-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+            .oal-detail-item { padding: 8px; border-radius: 6px; }
+            .oal-detail-value { font-size: 14px; }
+            .oal-detail-label { font-size: 8px; }
+            .log-stream { max-height: 150px; font-size: 9px; padding: 8px; }
+            .log-line { font-size: 9px; }
+            .log-header { margin-bottom: 6px; }
+            .pass-dot { width: 8px; height: 8px; }
+            .oal-pass-progress { gap: 5px; margin-top: 8px; }
+        }
+        @media (max-width: 360px) {
+            .progress-section { grid-template-columns: 1fr; gap: 6px; }
+            .progress-card { padding: 8px; }
+            .progress-value { font-size: 18px; }
+            .stats-row { grid-template-columns: repeat(3, 1fr); }
+            .stat-card { padding: 6px 3px; }
+            .stat-value { font-size: 12px; }
+            .workers-grid { grid-template-columns: repeat(3, 1fr); gap: 3px; }
+            .pending-grid { grid-template-columns: 1fr; }
+            /* NEW sections - very small phones */
+            .metrics-grid { grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+            .metric-item { padding: 6px 3px; }
+            .metric-value { font-size: 14px; }
+            .metric-label { font-size: 6px; }
+            .metric-sub { font-size: 7px; }
+            .oal-details-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
+            .oal-detail-item { padding: 6px; }
+            .oal-detail-value { font-size: 12px; }
+            .oal-detail-label { font-size: 7px; }
+            .log-stream { max-height: 120px; font-size: 8px; }
+            .pass-dot { width: 6px; height: 6px; }
         }
 
-        /* Touch-friendly improvements */
-        @media (hover: none) and (pointer: coarse) {
-            #refresh-btn {
-                padding: 12px 24px !important;
-                font-size: 14px !important;
+        /* ===== AI SCENE MOBILE STYLES ===== */
+        @media (max-width: 768px) {
+            #ai-scene { height: 300px; }
+            #bg-video-left, #bg-video-right { width: 65%; }
+            #aircairo-cover {
+                top: 0;
+                right: 18%;
+                width: 120px;
+                height: 35px;
             }
-            .worker-card {
-                padding: 12px;
+            #title-overlay {
+                top: 8px;
+                right: 19%;
             }
-            ::-webkit-scrollbar {
-                width: 10px;
+            .title-letter { font-size: 7px; }
+            #chart-container { bottom: 30px; height: 120px; }
+            .data-box {
+                padding: 6px 8px !important;
+                font-size: 9px !important;
             }
+            .data-box strong { font-size: 11px !important; }
+            .data-item { font-size: 9px !important; }
+        }
+
+        @media (max-width: 480px) {
+            #ai-scene { height: 250px; }
+            #bg-video-left { width: 55%; }
+            #bg-video-right { width: 55%; }
+            #aircairo-cover {
+                top: 0;
+                right: 15%;
+                width: 100px;
+                height: 30px;
+                backdrop-filter: blur(8px);
+            }
+            #title-overlay {
+                top: 6px;
+                right: 16%;
+            }
+            .title-letter { font-size: 6px; }
+            .title-space { width: 2px; }
+            #chart-container {
+                bottom: 20px;
+                height: 100px;
+                left: 5%;
+                right: 5%;
+            }
+            .data-box {
+                padding: 4px 6px !important;
+                font-size: 8px !important;
+                border-radius: 4px !important;
+            }
+            .data-box strong { font-size: 10px !important; }
+            #data-stream { display: none; }
+        }
+
+        @media (max-width: 360px) {
+            #ai-scene { height: 200px; }
+            #bg-video-left { width: 50%; }
+            #bg-video-right { width: 55%; }
+            #aircairo-cover {
+                right: 12%;
+                width: 80px;
+                height: 25px;
+            }
+            #title-overlay {
+                top: 5px;
+                right: 13%;
+            }
+            .title-letter { font-size: 5px; }
+            #chart-container {
+                bottom: 15px;
+                height: 80px;
+            }
+            #data-boxes-layer { display: none; }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="header-logo">
-            <div style="display:flex;align-items:center;gap:3px;font-family:'Arial Black',Arial,sans-serif;font-weight:900;font-size:42px;letter-spacing:-1px;text-shadow:0 4px 8px rgba(0,0,0,0.3)">
-                <span style="color:#FFFFFF">AIR</span><span style="color:#FFFFFF">CAIR</span><span style="color:#F7941D;font-size:48px">O</span>
-            </div>
-            <div style="text-align:center">
-                <h1 style="font-size:20px;margin-top:5px">Market Insights Dashboard</h1>
-                <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:3px">Real-time Flight Data Analysis</div>
+        <div class="logo-container">
+            <img src="logo_white.svg" alt="Air Cairo" class="logo-img">
+            <div class="subtitle">
+                <h2>MARKET INSIGHTS</h2>
+                <p>Real-time monitoring dashboard</p>
             </div>
         </div>
         <div class="header-info">
-            <button id="refresh-btn" onclick="fetchStatus()" style="background:var(--aircairo-orange);color:#fff;border:none;padding:8px 20px;border-radius:20px;cursor:pointer;font-weight:bold;margin-right:15px;transition:all 0.3s">
-                REFRESH
-            </button>
+            <span class="status-badge" id="status-badge">LOADING</span>
             <div class="live-indicator">
                 <div class="live-dot"></div>
-                <span>Auto-update: 10s</span>
+                <span>LIVE</span>
             </div>
-            <div id="connection-status" style="margin-top:5px;font-size:11px;color:#4ade80">● Connecting...</div>
             <div class="timestamp" id="timestamp">Loading...</div>
+            <div class="run-info" id="run-info"></div>
         </div>
     </div>
 
@@ -656,24 +1182,24 @@
     <!-- Stats Row -->
     <div class="stats-row">
         <div class="stat-card">
-            <div class="stat-label">Routes Done</div>
+            <div class="stat-label">Tasks Done</div>
             <div class="stat-value success" id="tasks-done">0</div>
         </div>
         <div class="stat-card">
-            <div class="stat-label">Total Routes</div>
-            <div class="stat-value" id="tasks-total">46</div>
+            <div class="stat-label">Total Tasks</div>
+            <div class="stat-value" id="tasks-total">0</div>
         </div>
         <div class="stat-card">
-            <div class="stat-label">Flights Analyzed</div>
-            <div class="stat-value success" id="flights">0</div>
+            <div class="stat-label">Running</div>
+            <div class="stat-value warning" id="tasks-running">0</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">Excel Files</div>
             <div class="stat-value warning" id="excel-count">0</div>
         </div>
         <div class="stat-card">
-            <div class="stat-label">Errors</div>
-            <div class="stat-value" id="errors">0</div>
+            <div class="stat-label">Failed</div>
+            <div class="stat-value" id="tasks-failed">0</div>
         </div>
     </div>
 
@@ -687,263 +1213,352 @@
             </div>
         </div>
 
-        <!-- OAL Progress -->
+        <!-- Live Log Stream (Terminal) for Load Factor -->
         <div class="card">
-            <h2>OAL Progress</h2>
-            <div class="oal-stats">
-                <div class="oal-stat">
-                    <div class="oal-stat-value" id="oal-requests" style="color:#60a5fa">0</div>
-                    <div class="oal-stat-label">Requests</div>
+            <h2>Live Log Stream - Load Factor</h2>
+            <div class="log-header">
+                <span>Real-time extraction logs</span>
+                <span class="log-file-badge" id="log-file-name">No logs</span>
+            </div>
+            <div class="log-stream" id="log-stream">
+                <div class="log-line info">Waiting for log data...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Excel Files Row -->
+    <div class="card" style="margin-top: 20px;">
+        <h2>Excel Files Generated</h2>
+        <div class="excel-list" id="excel-list" style="max-height: 120px;">
+            <!-- Filled by JS -->
+        </div>
+    </div>
+
+    <!-- NEW: Speed & Metrics + OAL Details Row -->
+    <div class="main-grid" style="margin-top: 20px;">
+        <!-- Speed & Performance Metrics -->
+        <div class="card">
+            <h2>Speed & Performance Metrics</h2>
+            <div class="metrics-grid" id="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-value speed" id="speed-per-min">0</div>
+                    <div class="metric-label">Tasks/Min</div>
+                    <div class="metric-sub" id="speed-per-hour">0/hour</div>
                 </div>
-                <div class="oal-stat">
-                    <div class="oal-stat-value" id="oal-success" style="color:#4ade80">0</div>
-                    <div class="oal-stat-label">Success</div>
+                <div class="metric-item">
+                    <div class="metric-value errors" id="recent-errors">0</div>
+                    <div class="metric-label">Recent Errors</div>
+                    <div class="metric-sub">Last 5 min</div>
                 </div>
-                <div class="oal-stat">
-                    <div class="oal-stat-value" id="oal-errors" style="color:#f87171">0</div>
-                    <div class="oal-stat-label">Errors</div>
+                <div class="metric-item">
+                    <div class="metric-value eta" id="total-eta">--</div>
+                    <div class="metric-label">ETA Total</div>
+                    <div class="metric-sub" id="lf-eta">LF: --</div>
                 </div>
             </div>
         </div>
 
-        <!-- Route Performance -->
+        <!-- OAL Pass Details -->
         <div class="card">
-            <h2>Route Performance (LF)</h2>
-            <div class="route-list" id="route-list">
-                <!-- Filled by JS -->
+            <h2>OAL Pass Details</h2>
+            <div class="oal-details-grid" id="oal-details-grid">
+                <div class="oal-detail-item">
+                    <div class="oal-detail-label">Current Pass</div>
+                    <div class="oal-detail-value pass" id="oal-current-pass">-</div>
+                </div>
+                <div class="oal-detail-item">
+                    <div class="oal-detail-label">Routes in Pass</div>
+                    <div class="oal-detail-value" id="oal-routes-in-pass">-/-</div>
+                </div>
+                <div class="oal-detail-item">
+                    <div class="oal-detail-label">Status</div>
+                    <div class="oal-detail-value" id="oal-status-detail">-</div>
+                </div>
+                <div class="oal-detail-item">
+                    <div class="oal-detail-label">OAL ETA</div>
+                    <div class="oal-detail-value eta" id="oal-eta">-</div>
+                </div>
+            </div>
+            <div class="oal-pass-progress" id="oal-pass-dots">
+                <!-- Pass dots filled by JS -->
             </div>
         </div>
+    </div>
 
-        <!-- Configuration -->
-        <div class="card">
-            <h2>Configuration</h2>
-            <div class="config-grid" id="config-grid">
-                <!-- Filled by JS -->
+    <!-- Futuristic AI Chart - OAL Data Visualization -->
+    <div class="oal-chart-section" style="margin-top: 20px;">
+        <div class="card" style="padding: 0; overflow: hidden;">
+            <div id="ai-scene">
+                <!-- Left Video - Data/Charts Background -->
+                <video id="bg-video-left" autoplay muted loop playsinline preload="auto" disablePictureInPicture>
+                    <source src="ezgif-7a86da334b6a2422-png-split/Video Project.mp4" type="video/mp4">
+                </video>
+
+                <!-- Right Video - Robot -->
+                <video id="bg-video-right" autoplay muted loop playsinline preload="auto" disablePictureInPicture>
+                    <source src="ezgif-7a86da334b6a2422-png-split/AI.mp4" type="video/mp4">
+                </video>
+
+                <!-- Center Blend Overlay -->
+                <div id="video-blend"></div>
+
+                <!-- Blur cover over AIR CAIRO -->
+                <div id="aircairo-cover"></div>
+
+                <!-- MARKET INSIGHTS - NO background, NO border -->
+                <div id="title-overlay">
+                    <span class="title-letter" style="--delay: 0s;">M</span>
+                    <span class="title-letter" style="--delay: 0.15s;">A</span>
+                    <span class="title-letter" style="--delay: 0.3s;">R</span>
+                    <span class="title-letter" style="--delay: 0.45s;">K</span>
+                    <span class="title-letter" style="--delay: 0.6s;">E</span>
+                    <span class="title-letter" style="--delay: 0.75s;">T</span>
+                    <span class="title-space"></span>
+                    <span class="title-letter" style="--delay: 0.9s;">I</span>
+                    <span class="title-letter" style="--delay: 1.05s;">N</span>
+                    <span class="title-letter" style="--delay: 1.2s;">S</span>
+                    <span class="title-letter" style="--delay: 1.35s;">I</span>
+                    <span class="title-letter" style="--delay: 1.5s;">G</span>
+                    <span class="title-letter" style="--delay: 1.65s;">H</span>
+                    <span class="title-letter" style="--delay: 1.8s;">T</span>
+                    <span class="title-letter" style="--delay: 1.95s;">S</span>
+                </div>
+
+                <!-- Floating Data Stream -->
+                <div id="data-stream"></div>
+
+                <!-- Chart -->
+                <div id="chart-container">
+                    <canvas id="bookingChart"></canvas>
+                </div>
+
+                <!-- Data Boxes -->
+                <div id="data-boxes-layer"></div>
             </div>
-            <h2 style="margin-top:20px">Excel Files Generated</h2>
-            <div class="excel-list" id="excel-list">
+        </div>
+    </div>
+
+    <!-- Running Tasks -->
+    <div class="running-tasks">
+        <div class="card">
+            <h2>Currently Running Tasks</h2>
+            <div id="running-tasks-list">
                 <!-- Filled by JS -->
             </div>
         </div>
     </div>
 
-    <!-- Queue Section -->
-    <div class="queue-section">
-        <div class="queue-grid">
-            <div class="card">
-                <div class="queue-header">
-                    <h2 style="margin:0;border:0;padding:0">Pending Routes (Waiting)</h2>
-                    <span class="queue-count" id="pending-count">0 pending</span>
-                </div>
-                <div style="margin-bottom:10px;font-size:11px;color:#888">KSA → EGY</div>
-                <div class="queue-list" id="queue-ksa-egy"></div>
-                <div style="margin:10px 0;font-size:11px;color:#888">EGY → KSA</div>
-                <div class="queue-list" id="queue-egy-ksa"></div>
-            </div>
-            <div class="card">
-                <h2>Date Chunks (12 Total)</h2>
-                <div class="date-chunks" id="date-chunks"></div>
-                <h2 style="margin-top:15px">All Routes Status</h2>
-                <div class="queue-list" id="all-routes-status" style="max-height:150px"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Smart Queue Section -->
-    <div class="pending-routes-dates">
-        <!-- Summary Bar -->
-        <div class="card" style="margin-top:20px;background:linear-gradient(135deg,rgba(70,43,115,0.4),rgba(247,148,29,0.2))">
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px">
-                <div>
-                    <h2 style="margin:0;border:0;padding:0;font-size:18px">Queue Status</h2>
-                    <div id="total-pending-dates" style="color:#888;font-size:12px;margin-top:5px">Loading...</div>
-                </div>
-                <div style="display:flex;gap:20px">
-                    <div style="text-align:center">
-                        <div id="active-routes-count" style="font-size:24px;font-weight:bold;color:var(--aircairo-orange)">0</div>
-                        <div style="font-size:10px;color:#888">ACTIVE</div>
-                    </div>
-                    <div style="text-align:center">
-                        <div id="pending-routes-count" style="font-size:24px;font-weight:bold;color:#fff">0</div>
-                        <div style="font-size:10px;color:#888">PENDING</div>
-                    </div>
-                    <div style="text-align:center">
-                        <div id="completed-routes-count" style="font-size:24px;font-weight:bold;color:#4ade80">0</div>
-                        <div style="font-size:10px;color:#888">DONE</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tabbed View -->
-        <div class="card" style="margin-top:10px">
-            <div style="display:flex;gap:10px;margin-bottom:15px">
-                <button class="tab-btn active" onclick="showTab('pending')" id="tab-pending">Pending Routes</button>
-                <button class="tab-btn" onclick="showTab('completed')" id="tab-completed">Completed Routes</button>
-                <button class="tab-btn" onclick="showTab('all')" id="tab-all">All Routes</button>
-            </div>
-            <div class="route-dates-grid" id="route-dates-grid">
+    <!-- Pending Routes Section -->
+    <div class="pending-section">
+        <div class="card">
+            <h2>Routes Progress</h2>
+            <div class="pending-grid" id="pending-grid">
                 <!-- Filled by JS -->
             </div>
         </div>
     </div>
-
-    <style>
-        .tab-btn {
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: #888;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s;
-        }
-        .tab-btn:hover { background: rgba(247, 148, 29, 0.3); }
-        .tab-btn.active { background: var(--aircairo-orange); color: #fff; }
-    </style>
 
     <script>
-        const WORKER_PORTS = [9222, 9223, 9224, 9225, 9226, 9227, 9232, 9233, 9234];
-        let currentTab = 'pending';
         let lastData = null;
 
-        function showTab(tab) {
-            currentTab = tab;
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('tab-' + tab).classList.add('active');
-            if (lastData) renderQueue(lastData);
+        // Base URL for API calls:
+        // - Local server: falls back to window.location.origin
+        // - GitHub Pages: injected at runtime into the template placeholder
+        const API_BASE_OVERRIDE = 'https://refertilizable-nonevasively-lavelle.ngrok-free.dev';
+        const API_BASE = (() => {
+            try {
+                if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
+                    return API_BASE_OVERRIDE.replace(/\/$/, '');
+                }
+
+                const params = new URLSearchParams(window.location.search);
+                const override = params.get('api');
+                if (override) return override.replace(/\/$/, '');
+            } catch (e) {
+                // Ignore parsing errors and fall back to location-based base URL.
+            }
+
+            const loc = window.location;
+            if (loc.protocol === 'file:' || !loc.origin || loc.origin === 'null') {
+                return 'http://localhost:8081';
+            }
+            return loc.origin;
+        })();
+
+        // ========== LIVE DATA STREAM - REAL DATA ==========
+
+        let realFlights = [];  // Will be populated from API
+        let recentShown = [];
+
+        // Format real flight data in different patterns
+        function formatRealData(flight) {
+            if (!flight || typeof flight !== 'object') return null;
+
+            const formats = [
+                // Format 1: "SM455/20DEC 1200SAR"
+                () => (flight.flight && flight.date ? (flight.flight + '/' + flight.date + (flight.lst_sold ? (' LST:' + flight.lst_sold) : '')) : null),
+
+                // Format 2: "SM455 | JED-CAI | 23DEC"
+                () => (flight.flight && flight.route && flight.date ? `${flight.flight} | ${flight.route} | ${flight.date}` : null),
+
+                // Format 3: "JED→CAI LST:18 TD:5"
+                () => (flight.route ? `${flight.route} LST:${flight.lst_sold || '-'} TD:${typeof flight.to_day === 'number' ? flight.to_day : '-'}` : null),
+
+                // Format 4: "SM455 WEEKLY:88"
+                () => (flight.flight && typeof flight.weekly === 'number' ? `${flight.flight} WEEKLY:${flight.weekly}` : null),
+
+                // Format 5: Route with availability
+                () => (flight.route && (flight.lowest_avail || flight.avail) ? `${flight.route} AVAIL:${flight.lowest_avail || flight.avail}` : null),
+
+                // Format 6: Compact "SM455/JED 18sold"
+                () => (flight.flight && flight.route ? (flight.flight + '/' + flight.route.split('-')[0] + (flight.lst_sold ? (' LST:' + flight.lst_sold) : '')) : null),
+
+                // Format 7: Date focus "20DEC JED-CAI"
+                () => (flight.date && flight.route ? `${flight.date} ${flight.route}` : null),
+
+                // Format 8: Y-Day comparison
+                () => (flight.flight ? `${flight.flight} YDAY:${typeof flight.y_day === 'number' ? flight.y_day : '-'} TD:${typeof flight.to_day === 'number' ? flight.to_day : '-'}` : null)
+            ];
+
+            return formats[Math.floor(Math.random() * formats.length)]();
         }
 
-        function renderQueue(data) {
-            const queue = data.queue || {};
-            const pendingRouteDates = queue.pending_route_dates || {};
-            const allRoutes = queue.all_routes || [];
-            const totalDates = queue.total_dates || 105;
-            const workers = data.workers || {};
+        // Generate operational metrics
+        function generateMetric() {
+            if (!lastData) return null;
 
-            // Get active routes from workers
-            const activeRoutes = new Set();
-            Object.values(workers).forEach(w => {
-                if (w.status === 'working' && w.active_route) {
-                    activeRoutes.add(w.active_route);
-                }
-            });
+            const tasks = lastData.tasks || {};
+            const progress = lastData.progress || {};
 
-            // Categorize routes
-            const pendingRoutes = [];
-            const completedRoutes = [];
-            let totalPendingDates = 0;
-            let totalCompletedDates = 0;
+            const metrics = [
+                () => `LF: ${(progress.lf || 0).toFixed(0)}%`,
+                () => `OAL: ${(progress.oal || 0).toFixed(0)}%`,
+                () => `TASKS: ${tasks.done || 0}/${tasks.total || 0}`,
+                () => `RUNNING: ${tasks.running || 0}`,
+                () => `EXCEL: ${(progress.excel || 0).toFixed(0)}%`,
+                () => progress.lf >= 100 ? 'LF COMPLETE ✓' : `LF PROGRESS ${(progress.lf || 0).toFixed(0)}%`,
+                () => `WORKERS: ${lastData.active_workers || 0}`,
+            ];
 
-            allRoutes.forEach(route => {
-                const dates = pendingRouteDates[route] || [];
-                const pendingCount = dates.length;
-                const completedCount = totalDates - pendingCount;
-                totalPendingDates += pendingCount;
-                totalCompletedDates += completedCount;
+            return metrics[Math.floor(Math.random() * metrics.length)]();
+        }
 
-                const routeData = { route, dates, pendingCount, completedCount, isActive: activeRoutes.has(route) };
-                if (pendingCount === 0) {
-                    completedRoutes.push(routeData);
-                } else {
-                    pendingRoutes.push(routeData);
-                }
-            });
+        function createRealDataItem() {
+            const stream = document.getElementById('data-stream');
+            if (!stream) return;
 
-            // Update counts
-            document.getElementById('active-routes-count').textContent = activeRoutes.size;
-            document.getElementById('pending-routes-count').textContent = pendingRoutes.length;
-            document.getElementById('completed-routes-count').textContent = completedRoutes.length;
-            document.getElementById('total-pending-dates').textContent =
-                `${totalPendingDates.toLocaleString()} dates pending | ${totalCompletedDates.toLocaleString()} done | Total: ${(totalDates * allRoutes.length).toLocaleString()}`;
+            let text = null;
 
-            // Filter based on current tab
-            let routesToShow = [];
-            if (currentTab === 'pending') {
-                routesToShow = pendingRoutes;
-            } else if (currentTab === 'completed') {
-                routesToShow = completedRoutes;
+            // 70% real flight data, 30% metrics
+            if (realFlights.length > 0 && Math.random() < 0.7) {
+                const flight = realFlights[Math.floor(Math.random() * realFlights.length)];
+                text = formatRealData(flight);
             } else {
-                routesToShow = [...pendingRoutes, ...completedRoutes];
+                text = generateMetric();
             }
 
-            // Sort: active first, then by pending count
-            routesToShow.sort((a, b) => {
-                if (a.isActive && !b.isActive) return -1;
-                if (!a.isActive && b.isActive) return 1;
-                return b.pendingCount - a.pendingCount;
-            });
-
-            // Render
-            let html = '';
-            routesToShow.forEach(({ route, dates, pendingCount, completedCount, isActive }) => {
-                const isCompleted = pendingCount === 0;
-                const progressPct = ((completedCount / totalDates) * 100).toFixed(0);
-                const displayDates = dates.slice(0, 20);
-                const hasMore = dates.length > 20;
-
-                html += `
-                    <div class="route-dates-card ${isCompleted ? 'completed' : ''}" style="${isActive ? 'border-left-color:#4ade80;background:rgba(74,222,128,0.1)' : ''}">
-                        <div class="route-dates-header">
-                            <span>${route} ${isActive ? '<span style="color:#4ade80;font-size:10px">● ACTIVE</span>' : ''}</span>
-                            <span class="route-dates-count" style="${isCompleted ? 'background:rgba(74,222,128,0.2);color:#4ade80' : ''}">${isCompleted ? 'DONE' : pendingCount + ' left'}</span>
-                        </div>
-                        <div style="font-size:10px;color:#888;margin-bottom:5px">
-                            <span style="color:${progressPct > 50 ? '#4ade80' : '#fbbf24'}">${completedCount}/${totalDates}</span> (${progressPct}%)
-                        </div>
-                        ${!isCompleted ? `
-                            <div class="route-dates-list">
-                                ${displayDates.map(d => `<div class="date-item">${d}</div>`).join('')}
-                                ${hasMore ? `<div class="date-item" style="color:#667eea;font-style:italic">+${dates.length - 20} more dates</div>` : ''}
-                            </div>
-                        ` : ''}
-                    </div>
-                `;
-            });
-
-            if (routesToShow.length === 0) {
-                html = `<div style="text-align:center;padding:30px;color:#888">
-                    ${currentTab === 'pending' ? 'All routes completed!' : currentTab === 'completed' ? 'No completed routes yet' : 'No routes'}
-                </div>`;
+            // Fallback if no real data
+            if (!text) {
+                const fallbacks = ['SCANNING...', 'LOADING DATA...', 'AWAITING FLIGHTS...', 'CONNECTING...'];
+                text = fallbacks[Math.floor(Math.random() * fallbacks.length)];
             }
 
-            document.getElementById('route-dates-grid').innerHTML = html;
+            // Avoid immediate repeat
+            if (recentShown.includes(text)) {
+                return; // Skip this one
+            }
+            recentShown.push(text);
+            if (recentShown.length > 20) recentShown.shift();
+
+            // Create element
+            const el = document.createElement('div');
+            const styleNum = Math.floor(Math.random() * 5) + 1;
+            el.className = `data-item s${styleNum}`;
+            el.textContent = text;
+
+            // Random position (10% - 90%)
+            el.style.top = `${10 + Math.random() * 80}%`;
+
+            // Random duration (10-18s)
+            const duration = 10 + Math.random() * 8;
+            el.style.animationDuration = `${duration}s`;
+
+            stream.appendChild(el);
+            setTimeout(() => el.remove(), duration * 1000 + 500);
         }
+
+        // Update real flights from dashboard data
+        function updateRealFlights() {
+            if (lastData && lastData.flight_booking_data && lastData.flight_booking_data.flights) {
+                realFlights = lastData.flight_booking_data.flights;
+            }
+        }
+
+        // Start live stream
+        function startLiveStream() {
+            // Initial burst
+            for (let i = 0; i < 6; i++) {
+                setTimeout(createRealDataItem, i * 500);
+            }
+            // Continuous - every 700ms
+            setInterval(createRealDataItem, 700);
+            // Update real flights periodically
+            setInterval(updateRealFlights, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', startLiveStream);
+        // ================================================
 
         function updateDashboard(data) {
             lastData = data;
+
+            // Status badge
+            const statusBadge = document.getElementById('status-badge');
+            statusBadge.textContent = data.status || 'UNKNOWN';
+            statusBadge.className = 'status-badge ' + (data.status || 'no_data').toLowerCase();
+
             // Timestamp
             document.getElementById('timestamp').textContent =
                 'Last Update: ' + new Date(data.timestamp).toLocaleTimeString();
 
+            // Run info
+            const config = data.config || {};
+            document.getElementById('run-info').textContent =
+                `Run: ${config.run_id || 'N/A'} | ${config.routes_count || 0} routes | ${config.dates_count || 0} dates`;
+
             // Progress bars
-            document.getElementById('lf-pct').textContent = data.progress.lf.toFixed(1) + '%';
-            document.getElementById('lf-bar').style.width = data.progress.lf + '%';
+            const progress = data.progress || {};
+            document.getElementById('lf-pct').textContent = (progress.lf || 0).toFixed(1) + '%';
+            document.getElementById('lf-bar').style.width = (progress.lf || 0) + '%';
 
-            document.getElementById('oal-pct').textContent = data.progress.oal.toFixed(1) + '%';
-            document.getElementById('oal-bar').style.width = data.progress.oal + '%';
+            document.getElementById('oal-pct').textContent = (progress.oal || 0).toFixed(1) + '%';
+            document.getElementById('oal-bar').style.width = (progress.oal || 0) + '%';
 
-            document.getElementById('excel-pct').textContent = data.progress.excel.toFixed(1) + '%';
-            document.getElementById('excel-bar').style.width = data.progress.excel + '%';
+            document.getElementById('excel-pct').textContent = (progress.excel || 0).toFixed(1) + '%';
+            document.getElementById('excel-bar').style.width = (progress.excel || 0) + '%';
 
-            document.getElementById('overall-pct').textContent = data.progress.overall.toFixed(1) + '%';
-            document.getElementById('overall-bar').style.width = data.progress.overall + '%';
+            document.getElementById('overall-pct').textContent = (progress.overall || 0).toFixed(1) + '%';
+            document.getElementById('overall-bar').style.width = (progress.overall || 0) + '%';
 
             // Stats
-            document.getElementById('tasks-done').textContent = data.routes_completed || 0;
-            document.getElementById('tasks-total').textContent = data.total_routes || 46;
-            document.getElementById('flights').textContent = data.flights_analyzed;
-            document.getElementById('excel-count').textContent = data.excel_count;
+            const tasks = data.tasks || {};
+            document.getElementById('tasks-done').textContent = tasks.done || 0;
+            document.getElementById('tasks-total').textContent = tasks.total || 0;
+            document.getElementById('tasks-running').textContent = tasks.running || 0;
+            document.getElementById('excel-count').textContent = data.excel_count || 0;
 
-            const errorsEl = document.getElementById('errors');
-            errorsEl.textContent = data.errors;
-            errorsEl.className = 'stat-value ' + (data.errors > 0 ? 'error' : 'success');
+            const failedEl = document.getElementById('tasks-failed');
+            failedEl.textContent = tasks.failed || 0;
+            // Failed: red if > 0, neutral/white if 0 (not green - that would be confusing)
+            failedEl.className = 'stat-value ' + ((tasks.failed || 0) > 0 ? 'error' : '');
 
             // Workers
+            const workers = data.workers || {};
+            const ports = config.ports || [];
             let workersHtml = '';
-            WORKER_PORTS.forEach(port => {
-                const worker = data.workers[port] || {status: 'inactive', active_route: null};
+
+            ports.forEach(port => {
+                const worker = workers[port] || workers[String(port)] || {status: 'inactive', active_route: null};
                 workersHtml += `
                     <div class="worker-card ${worker.status}">
                         <div class="worker-port">${port}</div>
@@ -952,39 +1567,9 @@
                     </div>
                 `;
             });
-            document.getElementById('workers-grid').innerHTML = workersHtml;
+            document.getElementById('workers-grid').innerHTML = workersHtml || '<div style="color:#888">No workers configured</div>';
 
-            // OAL Stats
-            document.getElementById('oal-requests').textContent = data.oal.requests;
-            document.getElementById('oal-success').textContent = data.oal.success;
-            document.getElementById('oal-errors').textContent = data.oal.errors;
-
-            // Route Performance
-            let routeHtml = '';
-            for (const [route, perf] of Object.entries(data.route_performance || {})) {
-                routeHtml += `
-                    <div class="route-item">
-                        <span class="route-name">${route}</span>
-                        <span class="route-stats">
-                            <span>${perf.count} req</span>
-                            <span>${perf.avg}s avg</span>
-                            <span>P95: ${perf.p95}s</span>
-                        </span>
-                    </div>
-                `;
-            }
-            document.getElementById('route-list').innerHTML = routeHtml || '<div style="color:#666">Loading routes...</div>';
-
-            // Config
-            const config = data.config || {};
-            document.getElementById('config-grid').innerHTML = `
-                <div class="config-item"><span class="config-label">Mode</span><span class="config-value">${config.mode} (${config.ports} ports)</span></div>
-                <div class="config-item"><span class="config-label">Routes</span><span class="config-value">${config.routes}</span></div>
-                <div class="config-item"><span class="config-label">Chunks</span><span class="config-value">${config.chunks}</span></div>
-                <div class="config-item"><span class="config-label">Date Range</span><span class="config-value">${config.date_range}</span></div>
-                <div class="config-item"><span class="config-label">OAL Workers</span><span class="config-value">${config.oal_workers}</span></div>
-                <div class="config-item"><span class="config-label">OAL Passes</span><span class="config-value">${config.oal_passes}</span></div>
-            `;
+            // Config (moved to AI Chart visualization)
 
             // Excel Files
             let excelHtml = '';
@@ -993,73 +1578,506 @@
             });
             document.getElementById('excel-list').innerHTML = excelHtml || '<div style="color:#666">No files yet</div>';
 
-            // Queue - Pending Routes
-            const queue = data.queue || {};
-            const completedRoutes = new Set(Object.keys(data.route_performance || {}));
+            // Running Tasks
+            const runningTasks = data.running_tasks || [];
+            let runningHtml = '';
+            if (runningTasks.length === 0) {
+                runningHtml = '<div style="color:#888;text-align:center;padding:20px">No tasks currently running</div>';
+            } else {
+                runningTasks.forEach(task => {
+                    runningHtml += `
+                        <div class="running-task">
+                            <div>
+                                <div class="running-task-route">${task.route} (Chunk ${task.chunk})</div>
+                                <div class="running-task-info">${task.dates_count} dates | Started: ${new Date(task.started_at).toLocaleTimeString()}</div>
+                            </div>
+                            <div class="running-task-worker">${task.worker}</div>
+                        </div>
+                    `;
+                });
+            }
+            document.getElementById('running-tasks-list').innerHTML = runningHtml;
 
-            // Pending count
-            document.getElementById('pending-count').textContent = (queue.pending_count || 0) + ' pending';
+            // Pending Routes
+            const pendingRoutes = data.pending_routes || {};
+            let pendingHtml = '';
 
-            // KSA to EGY pending
-            let ksaHtml = '';
-            (queue.ksa_to_egy_pending || []).forEach(r => {
-                ksaHtml += `<span class="queue-route">${r}</span>`;
-            });
-            document.getElementById('queue-ksa-egy').innerHTML = ksaHtml || '<span style="color:#4ade80;font-size:11px">All completed!</span>';
+            Object.entries(pendingRoutes).forEach(([route, info]) => {
+                const totalTasks = info.total_tasks || 0;
+                const doneTasks = info.done_tasks || 0;
+                const progressPct = totalTasks > 0 ? (doneTasks / totalTasks * 100) : 0;
+                const isCompleted = doneTasks === totalTasks;
+                const pendingDates = info.pending_dates || [];
 
-            // EGY to KSA pending
-            let egyHtml = '';
-            (queue.egy_to_ksa_pending || []).forEach(r => {
-                egyHtml += `<span class="queue-route">${r}</span>`;
-            });
-            document.getElementById('queue-egy-ksa').innerHTML = egyHtml || '<span style="color:#4ade80;font-size:11px">All completed!</span>';
-
-            // Date chunks
-            let chunksHtml = '';
-            (queue.date_chunks || []).forEach(chunk => {
-                chunksHtml += `
-                    <div class="date-chunk">
-                        <div class="date-chunk-id">#${chunk.id}</div>
-                        <div class="date-chunk-range">${chunk.dates}</div>
+                pendingHtml += `
+                    <div class="pending-card ${isCompleted ? 'completed' : ''}">
+                        <div class="pending-header">
+                            <span class="pending-route">${route}</span>
+                            <span class="pending-count ${isCompleted ? 'done' : ''}">${isCompleted ? 'DONE' : `${totalTasks - doneTasks} left`}</span>
+                        </div>
+                        <div style="font-size:11px;color:#aaa;margin-bottom:5px">${doneTasks}/${totalTasks} chunks (${progressPct.toFixed(0)}%)</div>
+                        ${!isCompleted && pendingDates.length > 0 ? `
+                            <div class="pending-dates">
+                                ${pendingDates.slice(0, 10).join(', ')}
+                                ${pendingDates.length > 10 ? `<br>+${pendingDates.length - 10} more` : ''}
+                            </div>
+                        ` : ''}
+                        <div class="pending-progress">
+                            <div class="pending-progress-fill" style="width: ${progressPct}%"></div>
+                        </div>
                     </div>
                 `;
             });
-            document.getElementById('date-chunks').innerHTML = chunksHtml;
 
-            // All routes status (completed vs pending)
-            let allRoutesHtml = '';
-            (queue.all_routes || []).forEach(r => {
-                const isCompleted = completedRoutes.has(r);
-                allRoutesHtml += `<span class="queue-route ${isCompleted ? 'completed' : ''}">${r}</span>`;
-            });
-            document.getElementById('all-routes-status').innerHTML = allRoutesHtml;
+            if (Object.keys(pendingRoutes).length === 0) {
+                pendingHtml = '<div style="color:#888;text-align:center;padding:30px">No route data available</div>';
+            }
 
-            // Render queue with smart tabs
-            renderQueue(data);
+            document.getElementById('pending-grid').innerHTML = pendingHtml;
+
+            // ===== Update AI Chart with Real Data =====
+            updateChartWithRealData(data);
+
+            // ===== NEW: Update Speed & Metrics =====
+            const speedMetrics = data.speed_metrics || {};
+            document.getElementById('speed-per-min').textContent = speedMetrics.speed_per_minute || 0;
+            document.getElementById('speed-per-hour').textContent = `${speedMetrics.speed_per_hour || 0}/hour`;
+            document.getElementById('recent-errors').textContent = speedMetrics.recent_errors || 0;
+
+            // Update errors color based on count
+            const errorsEl = document.getElementById('recent-errors');
+            errorsEl.className = 'metric-value ' + ((speedMetrics.recent_errors || 0) > 0 ? 'errors' : 'speed');
+
+            // ===== NEW: Update ETA =====
+            const eta = data.eta || {};
+            document.getElementById('total-eta').textContent = eta.total_eta_formatted || '--';
+            document.getElementById('lf-eta').textContent = `LF: ${eta.lf_eta_formatted || '--'}`;
+            document.getElementById('oal-eta').textContent = eta.oal_eta_formatted || '--';
+
+            // ===== NEW: Update OAL Details =====
+            const oalDetails = data.oal_details || {};
+            const oalCurrentPass = oalDetails.current_pass || 0;
+            const oalTotalPasses = oalDetails.total_passes || 2;
+            const oalRoutesCompleted = oalDetails.routes_completed_in_pass || 0;
+            const oalRoutesTotal = oalDetails.routes_total_per_pass || 0;
+            const oalStatus = oalDetails.status || 'unknown';
+
+            document.getElementById('oal-current-pass').textContent =
+                oalStatus === 'disabled' ? 'N/A' : `${oalCurrentPass}/${oalTotalPasses}`;
+            document.getElementById('oal-routes-in-pass').textContent =
+                oalStatus === 'disabled' ? 'N/A' : `${oalRoutesCompleted}/${oalRoutesTotal}`;
+
+            // Format OAL status nicely
+            let statusDisplay = oalStatus.toUpperCase();
+            if (oalStatus === 'running') statusDisplay = 'RUNNING';
+            else if (oalStatus === 'completed') statusDisplay = 'DONE';
+            else if (oalStatus === 'disabled') statusDisplay = 'DISABLED';
+            document.getElementById('oal-status-detail').textContent = statusDisplay;
+
+            // Update pass dots
+            let dotsHtml = '';
+            if (oalStatus !== 'disabled' && oalTotalPasses > 0) {
+                for (let i = 1; i <= oalTotalPasses; i++) {
+                    let dotClass = '';
+                    if (i < oalCurrentPass) dotClass = 'completed';
+                    else if (i === oalCurrentPass) dotClass = 'current';
+                    dotsHtml += `<div class="pass-dot ${dotClass}" title="Pass ${i}"></div>`;
+                }
+            }
+            document.getElementById('oal-pass-dots').innerHTML = dotsHtml;
+
+            // ===== NEW: Update Live Log Stream =====
+            const liveLogs = data.live_logs || {};
+            const logLines = liveLogs.lines || [];
+            const logFile = liveLogs.file || 'No logs';
+
+            document.getElementById('log-file-name').textContent = logFile;
+
+            if (logLines.length > 0) {
+                let logHtml = '';
+                logLines.forEach(line => {
+                    // Determine line type for coloring
+                    let lineClass = 'info';
+                    const lineLower = line.toLowerCase();
+                    if (lineLower.includes('error') || lineLower.includes('exception') || lineLower.includes('failed')) {
+                        lineClass = 'error';
+                    } else if (lineLower.includes('warning') || lineLower.includes('warn')) {
+                        lineClass = 'warning';
+                    } else if (lineLower.includes('completed') || lineLower.includes('success') || lineLower.includes('done')) {
+                        lineClass = 'success';
+                    }
+                    logHtml += `<div class="log-line ${lineClass}">${escapeHtml(line)}</div>`;
+                });
+                document.getElementById('log-stream').innerHTML = logHtml;
+
+                // Auto-scroll to bottom
+                const logStream = document.getElementById('log-stream');
+                logStream.scrollTop = logStream.scrollHeight;
+            }
         }
 
-        // API URL - change this to your localtunnel URL
-        const API_BASE = 'https://refertilizable-nonevasively-lavelle.ngrok-free.dev';
+        // Helper function to escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ===== FUTURISTIC AI CHART VISUALIZATION =====
+
+        // NOTE: Old floating word animation removed - using real data stream instead
+
+        // Chart.js instance
+        let bookingChart = null;
+        let chartDataPoints = [];
+        let currentAnimationProgress = 0;
+        let chartAnimationInterval = null;
+
+        // Initialize the Chart
+        function initBookingChart() {
+            const ctx = document.getElementById('bookingChart');
+            if (!ctx) return;
+
+            // Start empty; real data arrives via /status during the run.
+            chartDataPoints = [];
+
+            const labels = chartDataPoints.map(d => `${d.flight}`);
+            const salesData = chartDataPoints.map(d => d.lstSold);
+
+            bookingChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Sales',
+                        data: salesData,
+                        borderColor: 'rgba(100, 220, 255, 1)',
+                        backgroundColor: 'rgba(100, 220, 255, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 6,
+                        pointBackgroundColor: 'rgba(100, 220, 255, 1)',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointHoverRadius: 10,
+                        pointHoverBackgroundColor: '#6df3ff',
+                        pointHoverBorderColor: '#fff',
+                        pointHoverBorderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 9000,
+                        easing: 'linear',
+                        onProgress: function(animation) {
+                            currentAnimationProgress = animation.currentStep / animation.numSteps;
+                            updateDataBoxesOnProgress(currentAnimationProgress);
+                        },
+                        onComplete: function() {
+                            showAllDataBoxes();
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { enabled: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(100, 220, 255, 0.1)',
+                                lineWidth: 1
+                            },
+                            ticks: {
+                                color: 'rgba(100, 220, 255, 0.6)',
+                                font: { size: 10 }
+                            }
+                        },
+                        y: {
+                            min: 0,
+                            max: 120,
+                            grid: {
+                                color: 'rgba(100, 220, 255, 0.1)',
+                                lineWidth: 1
+                            },
+                            ticks: {
+                                color: 'rgba(100, 220, 255, 0.6)',
+                                font: { size: 10 },
+                                stepSize: 20
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    }
+                }
+            });
+
+            // Start scan line animation
+            const scanLine = document.getElementById('scan-line');
+            if (scanLine) {
+                scanLine.classList.add('animating');
+            }
+        }
+
+        // Update data boxes based on animation progress
+        function updateDataBoxesOnProgress(progress) {
+            const boxesContainer = document.getElementById('data-boxes-layer');
+            if (!boxesContainer || !bookingChart) return;
+
+            const totalPoints = chartDataPoints.length;
+            const visiblePoints = Math.floor(progress * totalPoints);
+
+            // Show boxes for visible points
+            for (let i = 0; i < totalPoints; i++) {
+                const boxId = `data-box-${i}`;
+                let box = document.getElementById(boxId);
+
+                if (i < visiblePoints) {
+                    if (!box) {
+                        // Create new box
+                        box = createDataBox(i);
+                        boxesContainer.appendChild(box);
+                    }
+                    // Position the box
+                    positionDataBox(box, i);
+                    setTimeout(() => box.classList.add('visible'), 50);
+                }
+            }
+        }
+
+        // Create a data box element
+        function createDataBox(index) {
+            const data = chartDataPoints[index];
+            const box = document.createElement('div');
+            box.id = `data-box-${index}`;
+            box.className = 'chart-data-box';
+
+            box.innerHTML = `
+                <div class="box-header">
+                    <span class="box-flight">${data.flight}</span>
+                    <span class="box-route">${data.route}</span>
+                </div>
+                <div class="box-date">${data.date}</div>
+                <div class="box-metrics">
+                    <div class="metric-item">
+                        <span class="metric-label">LST-SOLD</span>
+                        <span class="metric-value cyan">${data.lstSold}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">TO-DAY</span>
+                        <span class="metric-value ${data.toDay > 8 ? 'green' : ''}">${data.toDay}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Y-DAY</span>
+                        <span class="metric-value">${data.yDay}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">WEEKLY</span>
+                        <span class="metric-value ${data.weekly > 60 ? 'cyan' : 'yellow'}">${data.weekly}</span>
+                    </div>
+                    <div class="metric-item" style="grid-column: span 2;">
+                        <span class="metric-label">LOWEST AVAIL</span>
+                        <span class="metric-value ${data.lowestAvail < 20 ? 'yellow' : 'green'}">${data.lowestAvail}</span>
+                    </div>
+                </div>
+            `;
+
+            return box;
+        }
+
+        // Position data box near chart point
+        function positionDataBox(box, index) {
+            if (!bookingChart) return;
+
+            const chartArea = bookingChart.chartArea;
+            const meta = bookingChart.getDatasetMeta(0);
+            const point = meta.data[index];
+
+            if (!point) return;
+
+            const x = point.x;
+            const y = point.y;
+
+            // Alternate above and below the line
+            const isAbove = index % 2 === 0;
+            const offsetY = isAbove ? -130 : 30;
+
+            // Adjust x to keep within container
+            let adjustedX = x - 70; // Half of min-width
+            if (adjustedX < 60) adjustedX = 60;
+            if (adjustedX > chartArea.right - 150) adjustedX = chartArea.right - 150;
+
+            box.style.left = adjustedX + 'px';
+            box.style.top = (y + offsetY + 60) + 'px'; // +60 for chart container offset
+        }
+
+        // Show all data boxes
+        function showAllDataBoxes() {
+            const boxes = document.querySelectorAll('.chart-data-box');
+            boxes.forEach(box => box.classList.add('visible'));
+        }
+
+        // Update chart with REAL flight booking data from dashboard
+        function updateChartWithRealData(data) {
+            // Get real flight booking data from checkpoint
+            const flightBookingData = data.flight_booking_data || {};
+            const flights = flightBookingData.flights || [];
+
+            // If we have real extracted flight data, use it
+            if (flights.length > 0) {
+                // Convert real flight data to chart format (take last 7 flights)
+                let newDataPoints = flights.slice(0, 7).map(f => ({
+                    flight: f.flight || 'N/A',
+                    route: f.route || 'N/A',
+                    date: f.date || 'N/A',
+                    lstSold: f.lst_sold || 'NIL',
+                    toDay: f.to_day || 0,
+                    yDay: f.y_day || 0,
+                    weekly: f.weekly || 0,
+                    lowestAvail: f.lowest_avail || 'N/A',
+                    lfPercent: f.lf_percent || 0,
+                    capacity: f.capacity || 0,
+                    booked: f.booked || 0
+                }));
+
+                if (newDataPoints.length > 0) {
+                    chartDataPoints = newDataPoints;
+                    // Update chart labels and data
+                    if (bookingChart) {
+                        bookingChart.data.labels = chartDataPoints.map(d => d.flight);
+                        // Use booked count for Y-axis (more meaningful than lstSold which is a date)
+                        bookingChart.data.datasets[0].data = chartDataPoints.map(d => d.booked || d.weekly || 0);
+                        // Don't re-animate, just update
+                        bookingChart.update('none');
+                    }
+
+                    // Update data boxes with real data
+                    updateDataBoxesWithRealData();
+                }
+            }
+        }
+
+        // Update data boxes to show real extracted data
+        function updateDataBoxesWithRealData() {
+            const boxesContainer = document.getElementById('data-boxes-layer');
+            if (!boxesContainer || chartDataPoints.length === 0) return;
+
+            // Clear and rebuild boxes with real data
+            boxesContainer.innerHTML = '';
+
+            chartDataPoints.forEach((data, index) => {
+                if (index >= 7) return; // Max 7 boxes
+
+                const box = document.createElement('div');
+                box.id = `data-box-${index}`;
+                box.className = 'chart-data-box visible';
+
+                box.innerHTML = `
+                    <div class="box-header">
+                        <span class="box-flight">${data.flight}</span>
+                        <span class="box-route">${data.route}</span>
+                    </div>
+                    <div class="box-date">${data.date}</div>
+                    <div class="box-metrics">
+                        <div class="metric-item">
+                            <span class="metric-label">LST-SOLD</span>
+                            <span class="metric-value cyan">${data.lstSold}</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">TO-DAY</span>
+                            <span class="metric-value ${data.toDay > 5 ? 'green' : ''}">${data.toDay}</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Y-DAY</span>
+                            <span class="metric-value">${data.yDay}</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">WEEKLY</span>
+                            <span class="metric-value ${data.weekly > 30 ? 'cyan' : 'yellow'}">${data.weekly}</span>
+                        </div>
+                        <div class="metric-item" style="grid-column: span 2;">
+                            <span class="metric-label">LOWEST AVAIL</span>
+                            <span class="metric-value ${data.lowestAvail === 'CLOSED' ? 'yellow' : 'green'}">${data.lowestAvail}</span>
+                        </div>
+                    </div>
+                `;
+
+                // Position the box
+                if (bookingChart) {
+                    const chartArea = bookingChart.chartArea;
+                    const meta = bookingChart.getDatasetMeta(0);
+                    const point = meta.data[index];
+
+                    if (point && chartArea) {
+                        const x = point.x;
+                        const y = point.y;
+                        const isAbove = index % 2 === 0;
+                        const offsetY = isAbove ? -130 : 30;
+
+                        let adjustedX = x - 70;
+                        if (adjustedX < 60) adjustedX = 60;
+                        if (adjustedX > chartArea.right - 150) adjustedX = chartArea.right - 150;
+
+                        box.style.left = adjustedX + 'px';
+                        box.style.top = (y + offsetY + 60) + 'px';
+                    }
+                }
+
+                boxesContainer.appendChild(box);
+            });
+        }
+
+        // Restart chart animation
+        function restartChartAnimation() {
+            // Clear existing boxes
+            const boxesContainer = document.getElementById('data-boxes-layer');
+            if (boxesContainer) boxesContainer.innerHTML = '';
+
+            // Reset scan line
+            const scanLine = document.getElementById('scan-line');
+            if (scanLine) {
+                scanLine.classList.remove('animating');
+                void scanLine.offsetWidth; // Trigger reflow
+                scanLine.classList.add('animating');
+            }
+
+            // Reinitialize chart
+            if (bookingChart) {
+                bookingChart.destroy();
+                bookingChart = null;
+            }
+            initBookingChart();
+        }
+
+        // Initialize chart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initBookingChart, 500);
+            // Restart animation every 30 seconds
+            setInterval(restartChartAnimation, 30000);
+        });
 
         async function fetchStatus() {
             try {
-                const response = await fetch(API_BASE + '/status', {
+                const response = await fetch(API_BASE + '/status?t=' + Date.now(), {
+                    cache: 'no-store',
                     headers: { 'ngrok-skip-browser-warning': 'true' }
                 });
                 const data = await response.json();
                 updateDashboard(data);
-                document.getElementById('connection-status').textContent = '● Connected';
-                document.getElementById('connection-status').style.color = '#4ade80';
             } catch (e) {
                 console.error('Fetch error:', e);
-                document.getElementById('connection-status').textContent = '● Disconnected';
-                document.getElementById('connection-status').style.color = '#f87171';
+                document.getElementById('status-badge').textContent = 'OFFLINE';
+                document.getElementById('status-badge').className = 'status-badge no_data';
             }
         }
 
-        // Initial fetch and interval (10 seconds)
+        // Initial fetch and interval
         fetchStatus();
-        setInterval(fetchStatus, 10000);
+        setInterval(fetchStatus, 3000);  // Update every 3 seconds
     </script>
 </body>
 </html>
