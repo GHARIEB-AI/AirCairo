@@ -1364,7 +1364,7 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = 'https://refertilizable-nonevasively-lavelle.ngrok-free.dev';
+        const API_BASE_OVERRIDE = 'https://camera-lake-old-jaguar.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -2084,8 +2084,7 @@
         async function fetchStatus() {
             try {
                 const response = await fetch(API_BASE + '/status?t=' + Date.now(), {
-                    cache: 'no-store',
-                    headers: { 'ngrok-skip-browser-warning': 'true' }
+                    cache: 'no-store'
                 });
                 const data = await response.json();
                 updateDashboard(data);
