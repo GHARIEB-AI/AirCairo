@@ -96,17 +96,17 @@
         .status-badge.completed { background: rgba(96, 165, 250, 0.2); color: #60a5fa; border: 1px solid #60a5fa; }
         .status-badge.no_data { background: rgba(156, 163, 175, 0.2); color: #9ca3af; border: 1px solid #9ca3af; }
         .view-report-btn {
-            display: inline-block !important;  /* ALWAYS visible */
-            padding: 10px 25px;
+            display: none;
+            padding: 8px 20px;
             background: linear-gradient(135deg, #F7941D 0%, #ff6b00 100%);
-            color: #fff !important;
+            color: #fff;
             border: none;
             border-radius: 25px;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 14px;
             cursor: pointer;
             text-decoration: none;
-            margin-left: 20px;
+            margin-top: 10px;
             animation: pulse-glow 2s infinite;
             box-shadow: 0 4px 15px rgba(247, 148, 29, 0.4);
             transition: transform 0.2s, box-shadow 0.2s;
@@ -115,6 +115,7 @@
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(247, 148, 29, 0.6);
         }
+        .view-report-btn.show { display: inline-block; }
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 4px 15px rgba(247, 148, 29, 0.4); }
             50% { box-shadow: 0 4px 25px rgba(247, 148, 29, 0.8); }
@@ -1160,100 +1161,6 @@
             }
             #data-boxes-layer { display: none; }
         }
-
-        /* ===== VALIDATION WARNINGS SECTION ===== */
-        .warnings-section {
-            display: none;
-            margin-bottom: 20px;
-        }
-        .warnings-section.has-warnings {
-            display: block;
-        }
-        .warnings-card {
-            background: rgba(248, 113, 113, 0.15);
-            border: 2px solid #f87171;
-            border-radius: 12px;
-            padding: 20px;
-            animation: warningPulse 2s infinite;
-        }
-        @keyframes warningPulse {
-            0%, 100% { border-color: #f87171; box-shadow: 0 0 10px rgba(248, 113, 113, 0.3); }
-            50% { border-color: #fca5a5; box-shadow: 0 0 20px rgba(248, 113, 113, 0.5); }
-        }
-        .warnings-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-        .warnings-icon {
-            font-size: 28px;
-            animation: shake 0.5s infinite;
-        }
-        @keyframes shake {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
-        }
-        .warnings-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #fca5a5;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .warnings-subtitle {
-            font-size: 12px;
-            color: #fbbf24;
-            margin-top: 3px;
-        }
-        .warnings-list {
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .warning-item {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 8px;
-            border-left: 4px solid #f87171;
-        }
-        .warning-route {
-            font-size: 16px;
-            font-weight: bold;
-            color: #60a5fa;
-        }
-        .warning-details {
-            font-size: 12px;
-            color: #aaa;
-            margin-top: 5px;
-        }
-        .warning-details span {
-            margin-right: 15px;
-        }
-        .warning-missing {
-            font-size: 11px;
-            color: #f87171;
-            margin-top: 8px;
-            padding: 8px;
-            background: rgba(248, 113, 113, 0.1);
-            border-radius: 5px;
-        }
-        .warning-missing-label {
-            color: #fca5a5;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .warnings-action {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(248, 113, 113, 0.3);
-            font-size: 13px;
-            color: #fbbf24;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
     </style>
 </head>
 <body>
@@ -1276,26 +1183,6 @@
             <a href="https://gharieb-ai.github.io/AirCairo-Report/" target="_blank" class="view-report-btn show" id="view-report-btn">
                 📊 View Report
             </a>
-        </div>
-    </div>
-
-    <!-- Validation Warnings Section (hidden by default) -->
-    <div class="warnings-section" id="warnings-section">
-        <div class="warnings-card">
-            <div class="warnings-header">
-                <span class="warnings-icon">&#9888;</span>
-                <div>
-                    <div class="warnings-title">Critical: Load Factor Data Missing</div>
-                    <div class="warnings-subtitle">Some dates could not be extracted</div>
-                </div>
-            </div>
-            <div class="warnings-list" id="warnings-list">
-                <!-- Filled by JS -->
-            </div>
-            <div class="warnings-action">
-                <span>&#9888;</span>
-                <span>ACTION REQUIRED: Re-run extraction to get missing dates</span>
-            </div>
         </div>
     </div>
 
@@ -1510,7 +1397,7 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = 'https://lincoln-somewhere-relay-joseph.trycloudflare.com';
+        const API_BASE_OVERRIDE = 'https://guests-perth-empire-matrix.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -1783,7 +1670,16 @@
             statusBadge.textContent = data.status || 'UNKNOWN';
             statusBadge.className = 'status-badge ' + (data.status || 'no_data').toLowerCase();
 
-            // View Report button is ALWAYS visible via CSS (no toggling needed)
+            // Show "View Report" button - ALWAYS show unless actively running
+            const viewReportBtn = document.getElementById('view-report-btn');
+            const progress = data.progress || {};
+            const overallProgress = progress.overall || 0;
+            const statusLower = (data.status || '').toLowerCase();
+            const runCompleted = progress.run_completed === true;
+            const isRunning = statusLower === 'running' && overallProgress < 100;
+            // Hide ONLY when actively running, otherwise always show
+            const shouldShow = !isRunning || runCompleted || overallProgress >= 100;
+            viewReportBtn.classList.toggle('show', shouldShow);
 
             // Timestamp
             document.getElementById('timestamp').textContent =
@@ -1981,44 +1877,6 @@
                 // Auto-scroll to bottom
                 const logStream = document.getElementById('log-stream');
                 logStream.scrollTop = logStream.scrollHeight;
-            }
-
-            // ===== NEW: Update Validation Warnings =====
-            const validation = data.validation || {};
-            const warningsSection = document.getElementById('warnings-section');
-            const warningsList = document.getElementById('warnings-list');
-
-            if (validation.warnings && validation.warnings.length > 0) {
-                // Show warnings section
-                warningsSection.classList.add('has-warnings');
-
-                let warningsHtml = '';
-                validation.warnings.forEach(warning => {
-                    const missingDates = warning.missing_dates || [];
-                    const displayDates = missingDates.slice(0, 5);
-                    const moreDates = missingDates.length > 5 ? missingDates.length - 5 : 0;
-
-                    warningsHtml += `
-                        <div class="warning-item">
-                            <div class="warning-route">${escapeHtml(warning.route || 'Unknown Route')}</div>
-                            <div class="warning-details">
-                                <span>Extracted: ${warning.extracted || 0}/${warning.expected || 0} dates</span>
-                                <span>Missing: ${missingDates.length} dates</span>
-                            </div>
-                            <div class="warning-missing">
-                                <div class="warning-missing-label">Missing Dates:</div>
-                                ${displayDates.join(', ')}
-                                ${moreDates > 0 ? `<br>... and ${moreDates} more` : ''}
-                            </div>
-                        </div>
-                    `;
-                });
-
-                warningsList.innerHTML = warningsHtml;
-            } else {
-                // Hide warnings section
-                warningsSection.classList.remove('has-warnings');
-                warningsList.innerHTML = '';
             }
         }
 
