@@ -1180,8 +1180,8 @@
             </div>
             <div class="timestamp" id="timestamp">Loading...</div>
             <div class="run-info" id="run-info"></div>
-            <a href="https://gharieb-ai.github.io/AirCairo-Report/" target="_blank" class="view-report-btn" id="view-report-btn">
-                View Report
+            <a href="https://gharieb-ai.github.io/AirCairo-Report/" target="_blank" class="view-report-btn show" id="view-report-btn">
+                📊 View Report
             </a>
         </div>
     </div>
@@ -1397,7 +1397,7 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = 'https://ministers-executed-julia-station.trycloudflare.com';
+        const API_BASE_OVERRIDE = 'https://guests-perth-empire-matrix.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -1670,11 +1670,16 @@
             statusBadge.textContent = data.status || 'UNKNOWN';
             statusBadge.className = 'status-badge ' + (data.status || 'no_data').toLowerCase();
 
-            // Show "View Report" button ONLY when run is fully completed
+            // Show "View Report" button - ALWAYS show unless actively running
             const viewReportBtn = document.getElementById('view-report-btn');
-            const overallProgress = (data.progress || {}).overall || 0;
-            const isCompleted = data.status === 'completed' && overallProgress >= 100;
-            viewReportBtn.classList.toggle('show', isCompleted);
+            const progress = data.progress || {};
+            const overallProgress = progress.overall || 0;
+            const statusLower = (data.status || '').toLowerCase();
+            const runCompleted = progress.run_completed === true;
+            const isRunning = statusLower === 'running' && overallProgress < 100;
+            // Hide ONLY when actively running, otherwise always show
+            const shouldShow = !isRunning || runCompleted || overallProgress >= 100;
+            viewReportBtn.classList.toggle('show', shouldShow);
 
             // Timestamp
             document.getElementById('timestamp').textContent =
