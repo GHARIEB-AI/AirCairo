@@ -671,7 +671,7 @@
             inset: 0;
             overflow: hidden;
             pointer-events: none;
-            z-index: 5;
+            z-index: 15;
         }
 
         /* Floating Data - Multiple Random Styles */
@@ -679,7 +679,10 @@
             position: absolute;
             font-family: 'Consolas', 'Courier New', monospace;
             white-space: nowrap;
-            left: -350px;
+            left: -400px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         /* Style 1: Cyan Compact */
@@ -727,7 +730,7 @@
 
         /* Animation 1: Smooth */
         @keyframes drift1 {
-            0% { left: -350px; opacity: 0; }
+            0% { left: -400px; opacity: 0; }
             5% { opacity: 1; }
             95% { opacity: 1; }
             100% { left: 105%; opacity: 0; }
@@ -1478,18 +1481,28 @@
 
             const tasks = lastData.tasks || {};
             const progress = lastData.progress || {};
+            const status = lastData.status || 'IDLE';
 
             const metrics = [
-                () => `LF: ${(progress.lf || 0).toFixed(0)}%`,
-                () => `OAL: ${(progress.oal || 0).toFixed(0)}%`,
-                () => `TASKS: ${tasks.done || 0}/${tasks.total || 0}`,
-                () => `RUNNING: ${tasks.running || 0}`,
-                () => `EXCEL: ${(progress.excel || 0).toFixed(0)}%`,
-                () => progress.lf >= 100 ? 'LF COMPLETE ✓' : `LF PROGRESS ${(progress.lf || 0).toFixed(0)}%`,
-                () => `WORKERS: ${lastData.active_workers || 0}`,
+                () => `📊 LF: ${(progress.lf || 0).toFixed(0)}%`,
+                () => `📊 OAL: ${(progress.oal || 0).toFixed(0)}%`,
+                () => `📋 TASKS: ${tasks.done || 0}/${tasks.total || 0}`,
+                () => `🔄 RUNNING: ${tasks.running || 0}`,
+                () => `📑 EXCEL: ${(progress.excel || 0).toFixed(0)}%`,
+                () => progress.lf >= 100 ? '✅ LF COMPLETE' : `⏳ LF PROGRESS ${(progress.lf || 0).toFixed(0)}%`,
+                () => `👥 WORKERS: ${lastData.active_workers || 0}`,
+                () => `📡 STATUS: ${status.toUpperCase()}`,
+                () => `🎯 OVERALL: ${(progress.overall || 0).toFixed(0)}%`,
+                () => lastData.run_id ? `🏷️ RUN: ${lastData.run_id.slice(-8)}` : null,
+                () => tasks.pending ? `⏳ PENDING: ${tasks.pending}` : null,
+                () => `⚡ MARKET INSIGHTS LIVE`,
+                () => `🛫 AIR CAIRO MONITORING`,
+                () => progress.oal >= 100 ? '✅ OAL COMPLETE' : null,
+                () => progress.excel >= 100 ? '✅ EXCEL COMPLETE' : null,
             ];
 
-            return metrics[Math.floor(Math.random() * metrics.length)]();
+            const validMetrics = metrics.map(m => m()).filter(m => m);
+            return validMetrics[Math.floor(Math.random() * validMetrics.length)];
         }
 
         function createRealDataItem() {
@@ -1506,9 +1519,18 @@
                 text = generateMetric();
             }
 
-            // Fallback if no real data
+            // Fallback if no real data - show useful system info
             if (!text) {
-                const fallbacks = ['SCANNING...', 'LOADING DATA...', 'AWAITING FLIGHTS...', 'CONNECTING...'];
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
+                const fallbacks = [
+                    `🕐 ${timeStr}`,
+                    '📡 AWAITING DATA...',
+                    '🔄 CONNECTING TO SERVER...',
+                    '⏳ LOADING FLIGHT DATA...',
+                    '🛫 AIR CAIRO SYSTEM',
+                    '📊 MARKET INSIGHTS v2.0',
+                ];
                 text = fallbacks[Math.floor(Math.random() * fallbacks.length)];
             }
 
@@ -1545,14 +1567,14 @@
 
         // Start live stream
         function startLiveStream() {
-            // Initial burst
-            for (let i = 0; i < 6; i++) {
-                setTimeout(createRealDataItem, i * 500);
+            // Initial burst - more items
+            for (let i = 0; i < 10; i++) {
+                setTimeout(createRealDataItem, i * 300);
             }
-            // Continuous - every 700ms
-            setInterval(createRealDataItem, 700);
+            // Continuous - faster (every 500ms for more data flow)
+            setInterval(createRealDataItem, 500);
             // Update real flights periodically
-            setInterval(updateRealFlights, 3000);
+            setInterval(updateRealFlights, 2000);
         }
 
         document.addEventListener('DOMContentLoaded', startLiveStream);
