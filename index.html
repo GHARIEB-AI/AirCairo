@@ -1391,11 +1391,13 @@
 
     <script>
         let lastData = null;
+        let lastRunData = null;  // Cached data from last run (for offline mode)
+        let isOnline = false;    // Track if API is available
 
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = '__API_BASE__';
+        const API_BASE_OVERRIDE = 'https://prospect-willing-issn-resolved.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -1469,7 +1471,32 @@
                 () => (flight.date && flight.route ? `${flight.date} ${flight.route}` : null),
 
                 // Format 8: Y-Day comparison
-                () => (flight.flight ? `${flight.flight} YDAY:${typeof flight.y_day === 'number' ? flight.y_day : '-'} TD:${typeof flight.to_day === 'number' ? flight.to_day : '-'}` : null)
+                () => (flight.flight ? `${flight.flight} YDAY:${typeof flight.y_day === 'number' ? flight.y_day : '-'} TD:${typeof flight.to_day === 'number' ? flight.to_day : '-'}` : null),
+
+                // Format 9: LF Percent "SM455 LF:97.2%"
+                () => (flight.flight && typeof flight.lf_percent === 'number' ? `${flight.flight} LF:${flight.lf_percent.toFixed(1)}%` : null),
+
+                // Format 10: Capacity "SM455 CAP:178 BKD:173"
+                () => (flight.flight && flight.capacity ? `${flight.flight} CAP:${flight.capacity} BKD:${flight.booked || 0}` : null),
+
+                // Format 11: Route + LF "JED-CAI LF:97.2%"
+                () => (flight.route && typeof flight.lf_percent === 'number' ? `${flight.route} LF:${flight.lf_percent.toFixed(1)}%` : null),
+
+                // Format 12: Full info "SM455 JED-CAI BKD:173/178"
+                () => (flight.flight && flight.route && flight.capacity ? `${flight.flight} ${flight.route} BKD:${flight.booked || 0}/${flight.capacity}` : null),
+
+                // Format 13: Availability status
+                () => (flight.flight && flight.lowest_avail ? `${flight.flight} ${flight.lowest_avail === 'CLOSED' ? '🔴 CLOSED' : '🟢 ' + flight.lowest_avail}` : null),
+
+                // Format 14: Short date format
+                () => {
+                    if (!flight.date) return null;
+                    const shortDate = flight.date.replace(/^[A-Za-z]+, /, '').replace(/,?\s*\d{4}$/, '');
+                    return flight.flight ? `${flight.flight} ${shortDate}` : null;
+                },
+
+                // Format 15: Route arrow format
+                () => (flight.route ? `✈️ ${flight.route.replace('-', '→')} ${flight.lowest_avail || ''}` : null),
             ];
 
             return formats[Math.floor(Math.random() * formats.length)]();
@@ -1482,6 +1509,9 @@
             const tasks = lastData.tasks || {};
             const progress = lastData.progress || {};
             const status = lastData.status || 'IDLE';
+            const config = lastData.config || {};
+            const oalDetails = lastData.oal_details || {};
+            const speedMetrics = lastData.speed_metrics || {};
 
             const metrics = [
                 () => `📊 LF: ${(progress.lf || 0).toFixed(0)}%`,
@@ -1493,12 +1523,26 @@
                 () => `👥 WORKERS: ${lastData.active_workers || 0}`,
                 () => `📡 STATUS: ${status.toUpperCase()}`,
                 () => `🎯 OVERALL: ${(progress.overall || 0).toFixed(0)}%`,
-                () => lastData.run_id ? `🏷️ RUN: ${lastData.run_id.slice(-8)}` : null,
+                () => config.run_id ? `🏷️ RUN: ${config.run_id.slice(-8)}` : null,
                 () => tasks.pending ? `⏳ PENDING: ${tasks.pending}` : null,
                 () => `⚡ MARKET INSIGHTS LIVE`,
                 () => `🛫 AIR CAIRO MONITORING`,
                 () => progress.oal >= 100 ? '✅ OAL COMPLETE' : null,
                 () => progress.excel >= 100 ? '✅ EXCEL COMPLETE' : null,
+                // Additional metrics
+                () => config.routes_count ? `🛫 ROUTES: ${config.routes_count}` : null,
+                () => config.dates_count ? `📅 DATES: ${config.dates_count}` : null,
+                () => config.chunks_count ? `📦 CHUNKS: ${config.chunks_count}` : null,
+                () => config.ports_count ? `🔌 PORTS: ${config.ports_count}` : null,
+                () => oalDetails.current_pass ? `🔄 OAL PASS: ${oalDetails.current_pass}/${oalDetails.total_passes || 2}` : null,
+                () => oalDetails.routes_completed_in_pass ? `📊 OAL ROUTES: ${oalDetails.routes_completed_in_pass}/${oalDetails.routes_total_per_pass || 0}` : null,
+                () => speedMetrics.speed_per_minute ? `⚡ SPEED: ${speedMetrics.speed_per_minute}/min` : null,
+                () => lastData.excel_count ? `📑 EXCEL FILES: ${lastData.excel_count}` : null,
+                () => config.date_range ? `📅 ${config.date_range}` : null,
+                () => tasks.failed > 0 ? `❌ FAILED: ${tasks.failed}` : null,
+                () => config.mode ? `🔧 MODE: ${config.mode}` : null,
+                // Route-specific metrics from config
+                () => config.routes && config.routes.length > 0 ? `✈️ ${config.routes[Math.floor(Math.random() * config.routes.length)]}` : null,
             ];
 
             const validMetrics = metrics.map(m => m()).filter(m => m);
@@ -1519,19 +1563,41 @@
                 text = generateMetric();
             }
 
-            // Fallback if no real data - show useful system info
+            // Fallback if no real data - show info based on last run data
             if (!text) {
                 const now = new Date();
                 const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
-                const fallbacks = [
-                    `🕐 ${timeStr}`,
-                    '📡 AWAITING DATA...',
-                    '🔄 CONNECTING TO SERVER...',
-                    '⏳ LOADING FLIGHT DATA...',
-                    '🛫 AIR CAIRO SYSTEM',
-                    '📊 MARKET INSIGHTS v2.0',
-                ];
-                text = fallbacks[Math.floor(Math.random() * fallbacks.length)];
+
+                // If we have last run data, show meaningful info from it
+                if (lastData) {
+                    const config = lastData.config || {};
+                    const tasks = lastData.tasks || {};
+                    const progress = lastData.progress || {};
+
+                    const fallbacks = [
+                        `🕐 ${timeStr}`,
+                        `📊 LAST RUN: ${config.run_id || 'N/A'}`,
+                        `🛫 ROUTES: ${config.routes_count || 0}`,
+                        `📅 DATES: ${config.dates_count || 0}`,
+                        `📋 TASKS: ${tasks.done || 0}/${tasks.total || 0}`,
+                        `🎯 LF: ${(progress.lf || 0).toFixed(0)}%`,
+                        `📊 OAL: ${(progress.oal || 0).toFixed(0)}%`,
+                        config.date_range ? `📅 ${config.date_range}` : '📊 MARKET INSIGHTS',
+                        `⚡ AIR CAIRO MONITORING`,
+                        `📡 ${isOnline ? 'LIVE' : 'LAST RUN DATA'}`,
+                    ];
+                    text = fallbacks[Math.floor(Math.random() * fallbacks.length)];
+                } else {
+                    const fallbacks = [
+                        `🕐 ${timeStr}`,
+                        '📡 AWAITING DATA...',
+                        '🔄 CONNECTING TO SERVER...',
+                        '⏳ LOADING FLIGHT DATA...',
+                        '🛫 AIR CAIRO SYSTEM',
+                        '📊 MARKET INSIGHTS v2.0',
+                    ];
+                    text = fallbacks[Math.floor(Math.random() * fallbacks.length)];
+                }
             }
 
             // Avoid immediate repeat
@@ -1566,13 +1632,29 @@
         }
 
         // Start live stream
-        function startLiveStream() {
-            // Initial burst - more items
-            for (let i = 0; i < 10; i++) {
-                setTimeout(createRealDataItem, i * 300);
+        async function startLiveStream() {
+            // First try to load cached data so we have something to show immediately
+            try {
+                const response = await fetch('dashboard_status.json?t=' + Date.now(), {
+                    cache: 'no-store'
+                });
+                if (response.ok) {
+                    const cachedData = await response.json();
+                    lastRunData = cachedData;
+                    lastData = cachedData;
+                    updateRealFlights();
+                    console.log('[DataStream] Loaded cached data for streaming');
+                }
+            } catch (e) {
+                console.log('[DataStream] No cached data for initial stream');
             }
-            // Continuous - faster (every 500ms for more data flow)
-            setInterval(createRealDataItem, 500);
+
+            // Initial burst - more items
+            for (let i = 0; i < 12; i++) {
+                setTimeout(createRealDataItem, i * 250);
+            }
+            // Continuous - faster (every 400ms for more data flow)
+            setInterval(createRealDataItem, 400);
             // Update real flights periodically
             setInterval(updateRealFlights, 2000);
         }
@@ -2137,22 +2219,70 @@
             setInterval(restartChartAnimation, 30000);
         });
 
+        // Load cached data from last run (dashboard_status.json)
+        async function loadCachedData() {
+            try {
+                // Try to load from dashboard_status.json (same directory)
+                const response = await fetch('dashboard_status.json?t=' + Date.now(), {
+                    cache: 'no-store'
+                });
+                if (response.ok) {
+                    lastRunData = await response.json();
+                    console.log('[Dashboard] Loaded cached data from last run');
+
+                    // If we're offline and have cached data, use it
+                    if (!isOnline && lastRunData) {
+                        lastData = lastRunData;
+                        updateDashboard(lastRunData);
+                        updateRealFlights();
+
+                        // Update status badge to show it's from cached data
+                        const statusBadge = document.getElementById('status-badge');
+                        if (statusBadge) {
+                            statusBadge.textContent = 'LAST RUN';
+                            statusBadge.className = 'status-badge completed';
+                        }
+                    }
+                }
+            } catch (e) {
+                console.log('[Dashboard] No cached data available');
+            }
+        }
+
         async function fetchStatus() {
             try {
                 const response = await fetch(API_BASE + '/status?t=' + Date.now(), {
                     cache: 'no-store'
                 });
                 const data = await response.json();
+                isOnline = true;
+                lastData = data;
                 updateDashboard(data);
+                updateRealFlights();  // Update data stream with live data
             } catch (e) {
                 console.error('Fetch error:', e);
-                document.getElementById('status-badge').textContent = 'OFFLINE';
-                document.getElementById('status-badge').className = 'status-badge no_data';
+                isOnline = false;
+
+                // If we have cached data from last run, use it
+                if (lastRunData) {
+                    lastData = lastRunData;
+                    updateDashboard(lastRunData);
+                    updateRealFlights();
+
+                    // Show it's from cached/last run data
+                    document.getElementById('status-badge').textContent = 'LAST RUN';
+                    document.getElementById('status-badge').className = 'status-badge completed';
+                } else {
+                    document.getElementById('status-badge').textContent = 'OFFLINE';
+                    document.getElementById('status-badge').className = 'status-badge no_data';
+                }
             }
         }
 
-        // Initial fetch and interval
-        fetchStatus();
+        // Initial load: First load cached data, then try live API
+        loadCachedData().then(() => {
+            fetchStatus();
+        });
         setInterval(fetchStatus, 3000);  // Update every 3 seconds
     </script>
 </body>
