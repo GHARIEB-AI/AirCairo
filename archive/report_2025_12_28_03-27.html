@@ -30712,16 +30712,18 @@
         function filterByThreatLevel(level) {
             const statCards = document.querySelectorAll('.stat-card');
             const allRows = document.querySelectorAll('tr[data-threat-level]');
+            const allFlightBlocks = document.querySelectorAll('.flight-block');
+            const allDateSections = document.querySelectorAll('.date-section');
 
             // If clicking same filter, toggle off
             if (currentThreatFilter === level) {
                 currentThreatFilter = null;
                 // Remove active class from all cards
                 statCards.forEach(card => card.classList.remove('active-filter'));
-                // Show all rows
-                allRows.forEach(row => {
-                    row.style.display = '';
-                });
+                // Show all rows, flight blocks, and date sections
+                allRows.forEach(row => row.style.display = '');
+                allFlightBlocks.forEach(block => block.style.display = '');
+                allDateSections.forEach(section => section.style.display = '');
                 return;
             }
 
@@ -30745,6 +30747,18 @@
                     row.style.display = 'none';
                 }
             });
+
+            // Hide flight blocks with no visible rows
+            allFlightBlocks.forEach(block => {
+                const hasVisibleRows = Array.from(block.querySelectorAll('tr[data-threat-level]')).some(row => row.style.display !== 'none');
+                block.style.display = hasVisibleRows ? '' : 'none';
+            });
+
+            // Hide date sections with no visible flight blocks
+            allDateSections.forEach(section => {
+                const hasVisibleBlocks = Array.from(section.querySelectorAll('.flight-block')).some(block => block.style.display !== 'none');
+                section.style.display = hasVisibleBlocks ? '' : 'none';
+            });
         }
 
         // Clear threat filter when route/date changes
@@ -30753,9 +30767,11 @@
             const statCards = document.querySelectorAll('.stat-card');
             statCards.forEach(card => card.classList.remove('active-filter'));
             const allRows = document.querySelectorAll('tr[data-threat-level]');
-            allRows.forEach(row => {
-                row.style.display = '';
-            });
+            allRows.forEach(row => row.style.display = '');
+            const allFlightBlocks = document.querySelectorAll('.flight-block');
+            allFlightBlocks.forEach(block => block.style.display = '');
+            const allDateSections = document.querySelectorAll('.date-section');
+            allDateSections.forEach(section => section.style.display = '');
         }
 
         // Update showRoute and showDate to clear threat filter
