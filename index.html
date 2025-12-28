@@ -96,17 +96,17 @@
         .status-badge.completed { background: rgba(96, 165, 250, 0.2); color: #60a5fa; border: 1px solid #60a5fa; }
         .status-badge.no_data { background: rgba(156, 163, 175, 0.2); color: #9ca3af; border: 1px solid #9ca3af; }
         .view-report-btn {
-            display: none;
-            padding: 8px 20px;
+            display: inline-block !important;  /* ALWAYS visible */
+            padding: 10px 25px;
             background: linear-gradient(135deg, #F7941D 0%, #ff6b00 100%);
-            color: #fff;
+            color: #fff !important;
             border: none;
             border-radius: 25px;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             text-decoration: none;
-            margin-top: 10px;
+            margin-left: 20px;
             animation: pulse-glow 2s infinite;
             box-shadow: 0 4px 15px rgba(247, 148, 29, 0.4);
             transition: transform 0.2s, box-shadow 0.2s;
@@ -115,7 +115,6 @@
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(247, 148, 29, 0.6);
         }
-        .view-report-btn.show { display: inline-block; }
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 4px 15px rgba(247, 148, 29, 0.4); }
             50% { box-shadow: 0 4px 25px rgba(247, 148, 29, 0.8); }
@@ -1397,7 +1396,7 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = 'https://guests-perth-empire-matrix.trycloudflare.com';
+        const API_BASE_OVERRIDE = 'https://gain-desired-find-subject.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -1670,16 +1669,7 @@
             statusBadge.textContent = data.status || 'UNKNOWN';
             statusBadge.className = 'status-badge ' + (data.status || 'no_data').toLowerCase();
 
-            // Show "View Report" button - ALWAYS show unless actively running
-            const viewReportBtn = document.getElementById('view-report-btn');
-            const progress = data.progress || {};
-            const overallProgress = progress.overall || 0;
-            const statusLower = (data.status || '').toLowerCase();
-            const runCompleted = progress.run_completed === true;
-            const isRunning = statusLower === 'running' && overallProgress < 100;
-            // Hide ONLY when actively running, otherwise always show
-            const shouldShow = !isRunning || runCompleted || overallProgress >= 100;
-            viewReportBtn.classList.toggle('show', shouldShow);
+            // View Report button is ALWAYS visible via CSS (no toggling needed)
 
             // Timestamp
             document.getElementById('timestamp').textContent =
