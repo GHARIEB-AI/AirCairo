@@ -563,19 +563,19 @@
             transform: translateZ(0);
         }
 
-        /* Right Video - 60% width, fade on left edge */
+        /* Right Video - 65% width, fade on left edge only (keep right edge solid) */
         #bg-video-right {
             position: absolute;
             top: 0;
             right: 0;
-            width: 60%;
+            width: 65%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
+            object-position: center right;
             z-index: 0;
             opacity: 0.95;
-            mask-image: linear-gradient(to left, black 0%, black 70%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to left, black 0%, black 70%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 35%, black 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 35%, black 100%);
             will-change: transform;
             transform: translateZ(0);
         }
@@ -1397,7 +1397,7 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = 'https://blah-sic-alternatives-talk.trycloudflare.com';
+        const API_BASE_OVERRIDE = 'https://ministers-executed-julia-station.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
