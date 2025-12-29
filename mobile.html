@@ -25893,15 +25893,13 @@
         function filterByLevel(level) {
             const navItems = document.querySelectorAll('.nav-item');
             const statItems = document.querySelectorAll('.stat-item');
-            const threatCards = document.querySelectorAll('.threat-card');
-            const flightCards = document.querySelectorAll('.flight-card');
 
             // Toggle if same level clicked
             if (activeLevel === level) {
                 activeLevel = null;
-                // Show all
-                threatCards.forEach(card => card.classList.remove('hidden'));
-                flightCards.forEach(card => card.classList.remove('hidden'));
+                // Show all threats and flights
+                document.querySelectorAll('.threat-card').forEach(card => card.classList.remove('hidden'));
+                document.querySelectorAll('.flight-card').forEach(card => card.classList.remove('hidden'));
                 navItems.forEach(item => item.classList.remove('active'));
                 navItems[0].classList.add('active');
                 statItems.forEach(item => item.classList.remove('active'));
@@ -25921,19 +25919,8 @@
                 item.classList.toggle('active', item.dataset.level === level);
             });
 
-            // Filter threat cards
-            threatCards.forEach(card => {
-                card.classList.toggle('hidden', !card.classList.contains(level));
-            });
-
-            // Hide flight cards that have no visible threats
-            flightCards.forEach(flightCard => {
-                const visibleThreats = flightCard.querySelectorAll('.threat-card:not(.hidden)');
-                flightCard.classList.toggle('hidden', visibleThreats.length === 0);
-            });
-
-            // Update parent visibility (date sections, route sections)
-            updateParentVisibility();
+            // Apply level filter
+            applyLevelFilter(level);
         }
 
         // Update visibility of parent sections based on visible children
@@ -26002,6 +25989,31 @@
                     }
                 });
             }
+
+            // Re-apply level filter if active
+            if (activeLevel) {
+                applyLevelFilter(activeLevel);
+            }
+        }
+
+        // Apply level filter without toggling
+        function applyLevelFilter(level) {
+            const threatCards = document.querySelectorAll('.threat-card');
+            const flightCards = document.querySelectorAll('.flight-card');
+
+            // Filter threat cards by level
+            threatCards.forEach(card => {
+                card.classList.toggle('hidden', !card.classList.contains(level));
+            });
+
+            // Hide flight cards that have no visible threats
+            flightCards.forEach(flightCard => {
+                const visibleThreats = flightCard.querySelectorAll('.threat-card:not(.hidden)');
+                flightCard.classList.toggle('hidden', visibleThreats.length === 0);
+            });
+
+            // Update parent visibility
+            updateParentVisibility();
         }
 
         // Hide loading screen
