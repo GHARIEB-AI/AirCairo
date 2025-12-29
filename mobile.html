@@ -643,27 +643,28 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 3px 10px rgba(70, 43, 115, 0.4);
-            transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+            box-shadow: 0 3px 10px rgba(70, 43, 115, 0.2);
+            transition: transform 0.15s, box-shadow 0.15s, background 0.15s, opacity 0.15s;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
+            opacity: 0.3;
         }
 
-        .scroll-btn:active {
-            transform: scale(0.92);
-            box-shadow: 0 2px 5px rgba(70, 43, 115, 0.3);
-        }
-
+        .scroll-btn:active,
         .scroll-btn.pressed {
-            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
+            opacity: 1;
+            transform: scale(0.92);
             box-shadow: 0 4px 15px rgba(247, 148, 29, 0.5);
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
         }
 
         .scroll-btn.end {
             background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
         }
 
-        .scroll-btn.end:active {
+        .scroll-btn.end:active,
+        .scroll-btn.end.pressed {
+            opacity: 1;
             background: linear-gradient(135deg, #e8850a 0%, #d4750a 100%);
         }
 
