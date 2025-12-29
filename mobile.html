@@ -25944,10 +25944,16 @@
                 }
             });
 
-            // Hide route sections with no visible date sections
-            document.querySelectorAll('[data-route]').forEach(routeSection => {
+            // Hide route CONTENT only when no visible dates - keep route header visible
+            // Target only outer containers (direct children of .content)
+            document.querySelectorAll('.content > [data-route]').forEach(routeSection => {
                 const visibleDates = routeSection.querySelectorAll('[data-date]:not(.hidden)');
-                routeSection.classList.toggle('hidden', visibleDates.length === 0);
+                const routeHeader = routeSection.querySelector('.route-header');
+                if (visibleDates.length === 0) {
+                    // Hide date sections but keep route header visible
+                    routeSection.querySelectorAll('[data-date]').forEach(d => d.classList.add('hidden'));
+                    if (routeHeader) routeHeader.classList.remove('hidden');
+                }
             });
         }
 
@@ -25957,7 +25963,8 @@
             document.querySelectorAll('.threat-card').forEach(card => card.classList.remove('hidden'));
             document.querySelectorAll('.flight-card').forEach(card => card.classList.remove('hidden'));
             document.querySelectorAll('[data-date]').forEach(section => section.classList.remove('hidden'));
-            document.querySelectorAll('[data-route]').forEach(section => section.classList.remove('hidden'));
+            document.querySelectorAll('.content > [data-route]').forEach(section => section.classList.remove('hidden'));
+            document.querySelectorAll('.route-header').forEach(header => header.classList.remove('hidden'));
             document.querySelectorAll('.nav-item').forEach((item, i) => {
                 item.classList.toggle('active', i === 0);
             });
@@ -25971,19 +25978,29 @@
             const routeFilter = document.getElementById('routeFilter').value;
             const dateFilter = document.getElementById('dateFilter').value;
 
-            // Filter route sections
-            document.querySelectorAll('[data-route]').forEach(section => {
+            // Filter route sections (only outer containers, not headers)
+            document.querySelectorAll('.content > [data-route]').forEach(section => {
                 const route = section.dataset.route;
                 const showRoute = routeFilter === 'all' || route === routeFilter;
                 section.classList.toggle('hidden', !showRoute);
             });
 
-            // Filter date sections
+            // Filter date sections (keep route headers visible)
             document.querySelectorAll('[data-date]').forEach(section => {
                 const date = section.dataset.date;
                 const showDate = dateFilter === 'all' || date === dateFilter;
                 section.classList.toggle('hidden', !showDate);
             });
+
+            // Ensure route headers remain visible when date filter is active
+            if (dateFilter !== 'all') {
+                document.querySelectorAll('.route-header').forEach(header => {
+                    const parent = header.closest('.content > [data-route]');
+                    if (parent && !parent.classList.contains('hidden')) {
+                        header.classList.remove('hidden');
+                    }
+                });
+            }
         }
 
         // Hide loading screen
