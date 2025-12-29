@@ -619,6 +619,61 @@
             cursor: not-allowed;
         }
 
+        /* Scroll Navigation Buttons */
+        .scroll-nav {
+            position: fixed;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 90;
+        }
+
+        .scroll-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(70, 43, 115, 0.4);
+            transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .scroll-btn:active {
+            transform: scale(0.92);
+            box-shadow: 0 2px 5px rgba(70, 43, 115, 0.3);
+        }
+
+        .scroll-btn.pressed {
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
+            box-shadow: 0 4px 15px rgba(247, 148, 29, 0.5);
+        }
+
+        .scroll-btn.end {
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
+        }
+
+        .scroll-btn.end:active {
+            background: linear-gradient(135deg, #e8850a 0%, #d4750a 100%);
+        }
+
+        /* Scroll nav separator */
+        .scroll-nav-separator {
+            height: 1px;
+            background: rgba(255,255,255,0.3);
+            margin: 4px 8px;
+        }
+
         /* Loading Screen */
         .loading-overlay {
             position: fixed;
@@ -25805,6 +25860,15 @@
     </div></div>
     </div>
 
+    <!-- Scroll Navigation -->
+    <div class="scroll-nav">
+        <button class="scroll-btn end" id="scrollTop" title="Go to top">⬆</button>
+        <button class="scroll-btn" id="scrollUp" title="Scroll up">▲</button>
+        <div class="scroll-nav-separator"></div>
+        <button class="scroll-btn" id="scrollDown" title="Scroll down">▼</button>
+        <button class="scroll-btn end" id="scrollBottom" title="Go to bottom">⬇</button>
+    </div>
+
     <!-- Desktop Link -->
     <a href="report.html" class="desktop-link">
         <span class="ar-text">عرض نسخة سطح المكتب</span>
@@ -26113,6 +26177,146 @@
                     : 'Excel file not available for this route');
             }
         }
+
+        // ========== Scroll Navigation ==========
+        (function() {
+            const SCROLL_STEP = 150;  // Single tap scroll amount (like mouse wheel)
+            const CONTINUOUS_SPEED = 8;  // Continuous scroll speed (px per frame)
+            const LONG_PRESS_DELAY = 300;  // ms before continuous scroll starts
+
+            let scrollInterval = null;
+            let longPressTimer = null;
+            let isLongPress = false;
+
+            // Utility functions
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function scrollToBottom() {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }
+
+            function scrollStepUp() {
+                window.scrollBy({ top: -SCROLL_STEP, behavior: 'smooth' });
+            }
+
+            function scrollStepDown() {
+                window.scrollBy({ top: SCROLL_STEP, behavior: 'smooth' });
+            }
+
+            function startContinuousScroll(direction) {
+                const speed = direction === 'up' ? -CONTINUOUS_SPEED : CONTINUOUS_SPEED;
+                scrollInterval = setInterval(() => {
+                    window.scrollBy(0, speed);
+                }, 16);  // ~60fps
+            }
+
+            function stopContinuousScroll() {
+                if (scrollInterval) {
+                    clearInterval(scrollInterval);
+                    scrollInterval = null;
+                }
+                if (longPressTimer) {
+                    clearTimeout(longPressTimer);
+                    longPressTimer = null;
+                }
+            }
+
+            // Button handlers for single tap vs long press
+            function setupScrollButton(btnId, singleTapFn, direction) {
+                const btn = document.getElementById(btnId);
+                if (!btn) return;
+
+                // Handle touch events
+                btn.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    isLongPress = false;
+                    btn.classList.add('pressed');
+
+                    // Start timer for long press
+                    longPressTimer = setTimeout(() => {
+                        isLongPress = true;
+                        startContinuousScroll(direction);
+                    }, LONG_PRESS_DELAY);
+                }, { passive: false });
+
+                btn.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    btn.classList.remove('pressed');
+                    stopContinuousScroll();
+
+                    // If it was a short tap, do single step scroll
+                    if (!isLongPress) {
+                        singleTapFn();
+                    }
+                    isLongPress = false;
+                });
+
+                btn.addEventListener('touchcancel', () => {
+                    btn.classList.remove('pressed');
+                    stopContinuousScroll();
+                    isLongPress = false;
+                });
+
+                // Handle mouse events (for testing on desktop)
+                btn.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    isLongPress = false;
+                    btn.classList.add('pressed');
+
+                    longPressTimer = setTimeout(() => {
+                        isLongPress = true;
+                        startContinuousScroll(direction);
+                    }, LONG_PRESS_DELAY);
+                });
+
+                btn.addEventListener('mouseup', () => {
+                    btn.classList.remove('pressed');
+                    stopContinuousScroll();
+
+                    if (!isLongPress) {
+                        singleTapFn();
+                    }
+                    isLongPress = false;
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    btn.classList.remove('pressed');
+                    stopContinuousScroll();
+                    isLongPress = false;
+                });
+            }
+
+            // Initialize when DOM ready
+            document.addEventListener('DOMContentLoaded', () => {
+                // Top button - instant to top
+                const topBtn = document.getElementById('scrollTop');
+                if (topBtn) {
+                    topBtn.addEventListener('click', scrollToTop);
+                    topBtn.addEventListener('touchend', (e) => {
+                        e.preventDefault();
+                        scrollToTop();
+                    });
+                }
+
+                // Bottom button - instant to bottom
+                const bottomBtn = document.getElementById('scrollBottom');
+                if (bottomBtn) {
+                    bottomBtn.addEventListener('click', scrollToBottom);
+                    bottomBtn.addEventListener('touchend', (e) => {
+                        e.preventDefault();
+                        scrollToBottom();
+                    });
+                }
+
+                // Scroll up - single tap or long press
+                setupScrollButton('scrollUp', scrollStepUp, 'up');
+
+                // Scroll down - single tap or long press
+                setupScrollButton('scrollDown', scrollStepDown, 'down');
+            });
+        })();
     </script>
 </body>
 </html>
