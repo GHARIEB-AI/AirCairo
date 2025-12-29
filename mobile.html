@@ -25897,13 +25897,15 @@
             // Toggle if same level clicked
             if (activeLevel === level) {
                 activeLevel = null;
-                // Show all threats and flights
+                // Show all threats and flights (reset level filter)
                 document.querySelectorAll('.threat-card').forEach(card => card.classList.remove('hidden'));
                 document.querySelectorAll('.flight-card').forEach(card => card.classList.remove('hidden'));
+                document.querySelectorAll('[data-date]').forEach(section => section.classList.remove('hidden'));
                 navItems.forEach(item => item.classList.remove('active'));
                 navItems[0].classList.add('active');
                 statItems.forEach(item => item.classList.remove('active'));
-                updateParentVisibility();
+                // Re-apply route/date filters
+                filterContent();
                 return;
             }
 
@@ -25928,19 +25930,18 @@
             // Hide date sections (containers with data-date) with no visible flight cards
             document.querySelectorAll('[data-date]').forEach(dateSection => {
                 const visibleFlights = dateSection.querySelectorAll('.flight-card:not(.hidden)');
-                // Hide entire date section including header when no visible flights
-                dateSection.classList.toggle('hidden', visibleFlights.length === 0);
+                if (visibleFlights.length === 0) {
+                    dateSection.classList.add('hidden');
+                }
             });
 
-            // Hide route CONTENT only when no visible dates - keep route header visible
-            // Target only outer containers (direct children of .content)
+            // Keep route headers visible even when all dates are hidden
             document.querySelectorAll('.content > [data-route]').forEach(routeSection => {
-                const visibleDates = routeSection.querySelectorAll('[data-date]:not(.hidden)');
-                const routeHeader = routeSection.querySelector('.route-header');
-                if (visibleDates.length === 0) {
-                    // Hide date sections but keep route header visible
-                    routeSection.querySelectorAll('[data-date]').forEach(d => d.classList.add('hidden'));
-                    if (routeHeader) routeHeader.classList.remove('hidden');
+                if (!routeSection.classList.contains('hidden')) {
+                    const routeHeader = routeSection.querySelector('.route-header');
+                    if (routeHeader) {
+                        routeHeader.classList.remove('hidden');
+                    }
                 }
             });
         }
@@ -25998,22 +25999,59 @@
 
         // Apply level filter without toggling
         function applyLevelFilter(level) {
-            const threatCards = document.querySelectorAll('.threat-card');
-            const flightCards = document.querySelectorAll('.flight-card');
-
-            // Filter threat cards by level
-            threatCards.forEach(card => {
-                card.classList.toggle('hidden', !card.classList.contains(level));
+            // Step 1: Reset all threat cards and flight cards (show them)
+            document.querySelectorAll('.threat-card').forEach(card => {
+                card.classList.remove('hidden');
+            });
+            document.querySelectorAll('.flight-card').forEach(card => {
+                card.classList.remove('hidden');
+            });
+            document.querySelectorAll('[data-date]').forEach(section => {
+                section.classList.remove('hidden');
             });
 
-            // Hide flight cards that have no visible threats
-            flightCards.forEach(flightCard => {
+            // Step 2: Hide threat cards that don't match level
+            document.querySelectorAll('.threat-card').forEach(card => {
+                if (!card.classList.contains(level)) {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Step 3: Hide flight cards with no visible threats
+            document.querySelectorAll('.flight-card').forEach(flightCard => {
                 const visibleThreats = flightCard.querySelectorAll('.threat-card:not(.hidden)');
-                flightCard.classList.toggle('hidden', visibleThreats.length === 0);
+                if (visibleThreats.length === 0) {
+                    flightCard.classList.add('hidden');
+                }
             });
 
-            // Update parent visibility
-            updateParentVisibility();
+            // Step 4: Hide date sections with no visible flight cards
+            document.querySelectorAll('[data-date]').forEach(dateSection => {
+                const visibleFlights = dateSection.querySelectorAll('.flight-card:not(.hidden)');
+                if (visibleFlights.length === 0) {
+                    dateSection.classList.add('hidden');
+                }
+            });
+
+            // Step 5: Re-apply route filter if active (to keep filtered routes hidden)
+            const routeFilter = document.getElementById('routeFilter').value;
+            if (routeFilter !== 'all') {
+                document.querySelectorAll('.content > [data-route]').forEach(section => {
+                    if (section.dataset.route !== routeFilter) {
+                        section.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Step 6: Re-apply date filter if active
+            const dateFilter = document.getElementById('dateFilter').value;
+            if (dateFilter !== 'all') {
+                document.querySelectorAll('[data-date]').forEach(section => {
+                    if (section.dataset.date !== dateFilter) {
+                        section.classList.add('hidden');
+                    }
+                });
+            }
         }
 
         // Hide loading screen
