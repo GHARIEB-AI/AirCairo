@@ -1562,13 +1562,11 @@
                 <div class="controls">
                     <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">العربية</button>
                     <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
-                    <select class="route-select" id="route-select" onchange="showRoute(this.value)">
-                        <option value="all">All Routes</option>
-                        <option value="ATZ-RUH">ATZ-RUH</option>
-<option value="CAI-RUH">CAI-RUH</option>
-<option value="JED-ATZ">JED-ATZ</option>
-<option value="JED-CAI">JED-CAI</option>
-                    </select>
+                    <button class="route-select date-filter-btn" id="route-filter-btn" onclick="openRouteFilterModal()">
+                        <span class="ar-text">جميع الخطوط</span>
+                        <span class="en-text">All Routes</span>
+                        <span class="filter-arrow">▼</span>
+                    </button>
                     <button class="route-select date-filter-btn" id="date-filter-btn" onclick="openDateFilterModal()">
                         <span class="ar-text">جميع التواريخ</span>
                         <span class="en-text">All Dates</span>
@@ -1673,7 +1671,42 @@
                     </div>
                 </div>
                 <div class="filter-modal-apply">
-                    <button class="filter-apply-btn" onclick="applyDateFilter()">
+                    <button class="filter-apply-btn" onclick="applyDateFilter(); closeDateFilterModal();">
+                        <span class="ar-text">تطبيق</span>
+                        <span class="en-text">Apply Filter</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Route Filter Modal -->
+        <div class="filter-modal-overlay" id="routeFilterOverlay" onclick="closeRouteFilterModal()">
+            <div class="filter-modal" onclick="event.stopPropagation()">
+                <div class="filter-modal-header">
+                    <h3>
+                        <span class="ar-text">اختر خطوط السير</span>
+                        <span class="en-text">Select Routes</span>
+                    </h3>
+                    <button class="filter-modal-close" onclick="closeRouteFilterModal()">✕</button>
+                </div>
+                <div class="filter-modal-actions">
+                    <button class="filter-action-btn" onclick="selectAllRoutes()">
+                        <span class="ar-text">اختر الكل</span>
+                        <span class="en-text">Select All</span>
+                    </button>
+                    <button class="filter-action-btn" onclick="clearAllRoutes()">
+                        <span class="ar-text">إلغاء الكل</span>
+                        <span class="en-text">Clear All</span>
+                    </button>
+                </div>
+                <div class="filter-modal-list" id="routeFilterList">
+                    <div class="filter-item selected" data-value="ATZ-RUH" onclick="toggleRouteItem(this)"><div class="filter-checkbox"></div><span>ATZ-RUH</span></div>
+                    <div class="filter-item selected" data-value="CAI-RUH" onclick="toggleRouteItem(this)"><div class="filter-checkbox"></div><span>CAI-RUH</span></div>
+                    <div class="filter-item selected" data-value="JED-ATZ" onclick="toggleRouteItem(this)"><div class="filter-checkbox"></div><span>JED-ATZ</span></div>
+                    <div class="filter-item selected" data-value="JED-CAI" onclick="toggleRouteItem(this)"><div class="filter-checkbox"></div><span>JED-CAI</span></div>
+                </div>
+                <div class="filter-modal-apply">
+                    <button class="filter-apply-btn" onclick="applyRouteFilter(); closeRouteFilterModal();">
                         <span class="ar-text">تطبيق</span>
                         <span class="en-text">Apply Filter</span>
                     </button>
@@ -16819,12 +16852,8 @@
         }
 
         function updateRouteSelectText(lang) {
-            const routeSelect = document.getElementById('route-select');
-            if (lang === 'ar') {
-                routeSelect.options[0].text = 'جميع خطوط السير';
-            } else {
-                routeSelect.options[0].text = 'All Routes';
-            }
+            // Route filter now uses a button, update button text
+            updateRouteButtonText();
             // Date button text is handled by updateDateButtonText()
         }
 
@@ -16878,35 +16907,8 @@
 
         // Calculate and update stats based on current route AND date selection
         function updateStatsForSelection() {
-            const routeId = document.getElementById('route-select').value;
-            const dateId = document.getElementById('date-select').value;
-
-            let stats = { high: 0, medium: 0, low: 0 };
-
-            if (routeId === 'all' && dateId === 'all') {
-                // All routes, all dates - use precomputed total
-                stats = routeStats['_total'];
-            } else if (routeId !== 'all' && dateId === 'all') {
-                // Specific route, all dates
-                stats = routeStats[routeId] || { high: 0, medium: 0, low: 0 };
-            } else if (routeId === 'all' && dateId !== 'all') {
-                // All routes, specific date - sum across routes for this date
-                for (const route in detailedStats) {
-                    if (detailedStats[route][dateId]) {
-                        stats.high += detailedStats[route][dateId].high || 0;
-                        stats.medium += detailedStats[route][dateId].medium || 0;
-                        stats.low += detailedStats[route][dateId].low || 0;
-                    }
-                }
-            } else {
-                // Specific route, specific date
-                if (detailedStats[routeId] && detailedStats[routeId][dateId]) {
-                    stats = detailedStats[routeId][dateId];
-                }
-            }
-
-            // Update all stat displays
-            updateAllStats(stats);
+            // Use multi-select logic
+            updateStatsForMultiDateSelection();
         }
 
         // Update all stat displays (cards, summary, ticker)
@@ -16972,18 +16974,19 @@
         const routeExcelFiles = {"CAI-RUH": "excel_routes/route_CAI_RUH_threats.xlsx", "ATZ-RUH": "excel_routes/route_ATZ_RUH_threats.xlsx", "JED-CAI": "excel_routes/route_JED_CAI_threats.xlsx", "JED-ATZ": "excel_routes/route_JED_ATZ_threats.xlsx", "ALL ROUTES (EGY→KSA)": "excel_routes/ALL_EGY_TO_KSA.xlsx", "ALL ROUTES (KSA→EGY)": "excel_routes/ALL_KSA_TO_EGY.xlsx", "LOAD FACTOR SUMMARY": "excel_routes/LOAD_FACTOR_SUMMARY.xlsx"};
 
         function updateDownloadButton() {
-            const routeSelect = document.getElementById('route-select');
             const downloadBtn = document.getElementById('download-btn');
-            const selectedRoute = routeSelect.value;
+            const allRouteItems = document.querySelectorAll('#routeFilterList .filter-item');
+            const totalRoutes = allRouteItems.length;
 
-            if (selectedRoute === 'all') {
-                downloadBtn.disabled = true;
-                downloadBtn.title = document.body.className === 'ar'
-                    ? 'اختر خط سير محدد للتنزيل'
-                    : 'Select a specific route to download';
-            } else {
+            // Download is enabled only if exactly 1 route is selected
+            if (selectedRoutes.size === 1) {
                 downloadBtn.disabled = false;
                 downloadBtn.title = '';
+            } else {
+                downloadBtn.disabled = true;
+                downloadBtn.title = document.body.className === 'ar'
+                    ? 'اختر خط سير واحد فقط للتنزيل'
+                    : 'Select exactly one route to download';
             }
         }
 
@@ -16995,16 +16998,15 @@
         };
 
         function downloadRouteExcel() {
-            const routeSelect = document.getElementById('route-select');
-            const selectedRoute = routeSelect.value;
-
-            if (selectedRoute === 'all') {
+            if (selectedRoutes.size !== 1) {
                 const msg = document.body.className === 'ar'
-                    ? 'الرجاء اختيار خط سير محدد للتنزيل'
-                    : 'Please select a specific route to download';
+                    ? 'الرجاء اختيار خط سير واحد فقط للتنزيل'
+                    : 'Please select exactly one route to download';
                 alert(msg);
                 return;
             }
+
+            const selectedRoute = Array.from(selectedRoutes)[0];
 
             // Check if Excel file exists for this route
             const excelFile = routeExcelFiles[selectedRoute];
@@ -17043,16 +17045,27 @@
         // Date Filter Modal Functions
         // ============================================
 
-        // Selected dates tracking
+        // Selected dates and routes tracking
         let selectedDates = new Set();
+        let selectedRoutes = new Set();
 
-        // Initialize selected dates (all selected by default)
+        // Initialize filters (all selected by default)
         function initializeDateFilter() {
             const items = document.querySelectorAll('#dateFilterList .filter-item');
             items.forEach(item => {
                 const dateValue = item.dataset.value;
                 if (dateValue) {
                     selectedDates.add(dateValue);
+                }
+            });
+        }
+
+        function initializeRouteFilter() {
+            const items = document.querySelectorAll('#routeFilterList .filter-item');
+            items.forEach(item => {
+                const routeValue = item.dataset.value;
+                if (routeValue) {
+                    selectedRoutes.add(routeValue);
                 }
             });
         }
@@ -17071,7 +17084,99 @@
             if (overlay) {
                 overlay.classList.remove('active');
             }
-            applyDateFilter();
+        }
+
+        // Open route filter modal
+        function openRouteFilterModal() {
+            const overlay = document.getElementById('routeFilterOverlay');
+            if (overlay) {
+                overlay.classList.add('active');
+            }
+        }
+
+        // Close route filter modal
+        function closeRouteFilterModal() {
+            const overlay = document.getElementById('routeFilterOverlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+        }
+
+        // Toggle route item
+        function toggleRouteItem(el) {
+            const routeValue = el.dataset.value;
+            if (el.classList.contains('selected')) {
+                el.classList.remove('selected');
+                selectedRoutes.delete(routeValue);
+            } else {
+                el.classList.add('selected');
+                selectedRoutes.add(routeValue);
+            }
+            updateRouteButtonText();
+        }
+
+        // Select all routes
+        function selectAllRoutes() {
+            const items = document.querySelectorAll('#routeFilterList .filter-item');
+            items.forEach(item => {
+                item.classList.add('selected');
+                selectedRoutes.add(item.dataset.value);
+            });
+            updateRouteButtonText();
+        }
+
+        // Clear all routes
+        function clearAllRoutes() {
+            const items = document.querySelectorAll('#routeFilterList .filter-item');
+            items.forEach(item => {
+                item.classList.remove('selected');
+            });
+            selectedRoutes.clear();
+            updateRouteButtonText();
+        }
+
+        // Update route button text
+        function updateRouteButtonText() {
+            const btn = document.getElementById('route-filter-btn');
+            const allItems = document.querySelectorAll('#routeFilterList .filter-item');
+            const totalRoutes = allItems.length;
+            const selectedCount = selectedRoutes.size;
+
+            let text = selectedCount === 0 || selectedCount === totalRoutes
+                ? (currentLang === 'ar' ? 'جميع الخطوط' : 'All Routes')
+                : `${selectedCount} ${currentLang === 'ar' ? 'خطوط' : 'Routes'}`;
+
+            btn.querySelector('.ar-text').textContent = selectedCount === 0 || selectedCount === totalRoutes
+                ? 'جميع الخطوط' : `${selectedCount} خطوط`;
+            btn.querySelector('.en-text').textContent = selectedCount === 0 || selectedCount === totalRoutes
+                ? 'All Routes' : `${selectedCount} Routes`;
+        }
+
+        // Apply route filter
+        function applyRouteFilter() {
+            const allRouteSections = document.querySelectorAll('.route-section');
+            const allItems = document.querySelectorAll('#routeFilterList .filter-item');
+            const totalRoutes = allItems.length;
+
+            if (selectedRoutes.size === 0 || selectedRoutes.size === totalRoutes) {
+                // Show all
+                allRouteSections.forEach(section => {
+                    section.style.display = 'block';
+                });
+            } else {
+                // Show only selected routes
+                allRouteSections.forEach(section => {
+                    const routeValue = section.dataset.route;
+                    if (selectedRoutes.has(routeValue)) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            }
+
+            updateStatsForSelection();
+            updateDownloadButton();
         }
 
         // Toggle individual date item
@@ -17271,36 +17376,43 @@
             updateStatsForMultiDateSelection();
         }
 
-        // Update stats for multi-date selection
+        // Update stats for multi-date/route selection
         function updateStatsForMultiDateSelection() {
-            const routeId = document.getElementById('route-select').value;
-            const allItems = document.querySelectorAll('#dateFilterList .filter-item');
-            const totalDates = allItems.length;
+            const allRouteItems = document.querySelectorAll('#routeFilterList .filter-item');
+            const totalRoutes = allRouteItems.length;
+            const allDateItems = document.querySelectorAll('#dateFilterList .filter-item');
+            const totalDates = allDateItems.length;
+
+            const allRoutesSelected = selectedRoutes.size === 0 || selectedRoutes.size === totalRoutes;
+            const allDatesSelected = selectedDates.size === 0 || selectedDates.size === totalDates;
 
             let stats = { high: 0, medium: 0, low: 0 };
 
-            if (selectedDates.size === 0 || selectedDates.size === totalDates) {
-                // All dates selected - use precomputed
-                if (routeId === 'all') {
-                    stats = routeStats['_total'];
-                } else {
-                    stats = routeStats[routeId] || { high: 0, medium: 0, low: 0 };
+            if (allDatesSelected && allRoutesSelected) {
+                // All dates and routes selected - use total
+                stats = routeStats['_total'] || { high: 0, medium: 0, low: 0 };
+            } else if (allDatesSelected && !allRoutesSelected) {
+                // All dates, specific routes
+                for (const routeId of selectedRoutes) {
+                    const rs = routeStats[routeId] || { high: 0, medium: 0, low: 0 };
+                    stats.high += rs.high;
+                    stats.medium += rs.medium;
+                    stats.low += rs.low;
                 }
-            } else {
-                // Specific dates selected
-                if (routeId === 'all') {
-                    // Sum across all routes for selected dates
-                    for (const route in detailedStats) {
-                        for (const dateId of selectedDates) {
-                            if (detailedStats[route][dateId]) {
-                                stats.high += detailedStats[route][dateId].high || 0;
-                                stats.medium += detailedStats[route][dateId].medium || 0;
-                                stats.low += detailedStats[route][dateId].low || 0;
-                            }
+            } else if (!allDatesSelected && allRoutesSelected) {
+                // Specific dates, all routes
+                for (const route in detailedStats) {
+                    for (const dateId of selectedDates) {
+                        if (detailedStats[route][dateId]) {
+                            stats.high += detailedStats[route][dateId].high || 0;
+                            stats.medium += detailedStats[route][dateId].medium || 0;
+                            stats.low += detailedStats[route][dateId].low || 0;
                         }
                     }
-                } else {
-                    // Sum for specific route and selected dates
+                }
+            } else {
+                // Specific dates and specific routes
+                for (const routeId of selectedRoutes) {
                     for (const dateId of selectedDates) {
                         if (detailedStats[routeId] && detailedStats[routeId][dateId]) {
                             stats.high += detailedStats[routeId][dateId].high || 0;
@@ -17314,9 +17426,10 @@
             updateAllStats(stats);
         }
 
-        // Initialize date filter on load
+        // Initialize filters on load
         document.addEventListener('DOMContentLoaded', function() {
             initializeDateFilter();
+            initializeRouteFilter();
         });
 
         // Current threat level filter (null = show all)
