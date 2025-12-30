@@ -2377,22 +2377,21 @@
                     lastRunData = await response.json();
                     console.log('[Dashboard] Loaded cached data from last run');
 
-                    // If we're offline and have cached data, use it
-                    if (!isOnline && lastRunData) {
-                        lastData = lastRunData;
-                        updateDashboard(lastRunData);
-                        updateRealFlights();
+                    // ALWAYS update dashboard with cached data on initial load
+                    // This ensures the dashboard shows data immediately while waiting for API
+                    lastData = lastRunData;
+                    updateDashboard(lastRunData);
+                    updateRealFlights();
 
-                        // Update status badge to show it's from cached data
-                        const statusBadge = document.getElementById('status-badge');
-                        if (statusBadge) {
-                            statusBadge.textContent = 'LAST RUN';
-                            statusBadge.className = 'status-badge completed';
-                        }
+                    // Update status badge to show it's from cached data
+                    const statusBadge = document.getElementById('status-badge');
+                    if (statusBadge) {
+                        statusBadge.textContent = 'LAST RUN';
+                        statusBadge.className = 'status-badge completed';
                     }
                 }
             } catch (e) {
-                console.log('[Dashboard] No cached data available');
+                console.log('[Dashboard] No cached data available:', e);
             }
         }
 
@@ -2426,11 +2425,13 @@
             }
         }
 
-        // Initial load: First load cached data, then try live API
+        // Initial load: First load cached data, then start live updates
         loadCachedData().then(() => {
+            // Try to fetch live data after cached data is loaded
             fetchStatus();
+            // Start periodic updates only after initial data is loaded
+            setInterval(fetchStatus, 3000);  // Update every 3 seconds
         });
-        setInterval(fetchStatus, 3000);  // Update every 3 seconds
     </script>
 </body>
 </html>
