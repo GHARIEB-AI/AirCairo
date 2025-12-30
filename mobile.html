@@ -143,21 +143,186 @@
             margin-bottom: 10px;
         }
 
-        .filter-select {
+        .filter-btn {
             flex: 1;
             padding: 12px 15px;
             border-radius: 25px;
             border: 2px solid rgba(70, 43, 115, 0.3);
             background: white;
             color: #462B73;
-            font-size: 0.95em;
-            appearance: none;
+            font-size: 0.9em;
             text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .filter-select option {
+        .filter-btn.active {
+            background: rgba(70, 43, 115, 0.15);
+            border-color: #462B73;
+        }
+
+        .filter-btn .count {
+            background: #F7941D;
+            color: white;
+            font-size: 0.75em;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        /* Multi-Select Filter Modal */
+        .filter-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 200;
+        }
+
+        .filter-modal.show {
+            display: flex;
+        }
+
+        .filter-modal-content {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            width: 100%;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(70, 43, 115, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-modal-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #462B73;
+        }
+
+        .filter-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: #462B73;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .filter-modal-actions {
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid rgba(70, 43, 115, 0.1);
+        }
+
+        .filter-action-btn {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(70, 43, 115, 0.3);
             background: white;
             color: #462B73;
+            font-size: 0.85em;
+            cursor: pointer;
+        }
+
+        .filter-action-btn.primary {
+            background: #462B73;
+            color: white;
+            border-color: #462B73;
+        }
+
+        .filter-modal-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .filter-item:active {
+            background: rgba(70, 43, 115, 0.1);
+        }
+
+        .filter-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(70, 43, 115, 0.4);
+            border-radius: 4px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .filter-item.selected .filter-checkbox {
+            background: #462B73;
+            border-color: #462B73;
+        }
+
+        .filter-item.selected .filter-checkbox::after {
+            content: '✓';
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .filter-item-label {
+            flex: 1;
+            color: #462B73;
+            font-size: 0.95em;
+        }
+
+        .filter-item.select-all {
+            border-bottom: 1px solid rgba(70, 43, 115, 0.15);
+            font-weight: 600;
+        }
+
+        .filter-modal-apply {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(70, 43, 115, 0.2);
+        }
+
+        .filter-apply-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            color: white;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Date grouping in filter */
+        .filter-group-header {
+            padding: 10px 20px 5px;
+            color: rgba(70, 43, 115, 0.6);
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         /* Content Area */
@@ -794,44 +959,106 @@
     <!-- Filters -->
     <div class="filter-section">
         <div class="filter-row">
-            <select class="filter-select" id="routeFilter" onchange="filterContent()">
-                <option value="all">
-                    كل الخطوط / All Routes
-                </option>
-                <option value="ATZ-RUH">ATZ-RUH</option>
-<option value="CAI-RUH">CAI-RUH</option>
-<option value="JED-ATZ">JED-ATZ</option>
-<option value="JED-CAI">JED-CAI</option>
-            </select>
-            <select class="filter-select" id="dateFilter" onchange="filterContent()">
-                <option value="all">
-                    كل التواريخ / All Dates
-                </option>
-                <option value="2025-12-29">2025-12-29</option>
-<option value="2025-12-30">2025-12-30</option>
-<option value="2025-12-31">2025-12-31</option>
-<option value="2026-01-01">2026-01-01</option>
-<option value="2026-01-02">2026-01-02</option>
-<option value="2026-01-03">2026-01-03</option>
-<option value="2026-01-04">2026-01-04</option>
-<option value="2026-01-05">2026-01-05</option>
-<option value="2026-01-06">2026-01-06</option>
-<option value="2026-01-07">2026-01-07</option>
-<option value="2026-01-08">2026-01-08</option>
-<option value="2026-01-09">2026-01-09</option>
-<option value="2026-01-10">2026-01-10</option>
-<option value="2026-01-11">2026-01-11</option>
-<option value="2026-01-12">2026-01-12</option>
-<option value="2026-01-13">2026-01-13</option>
-<option value="2026-01-14">2026-01-14</option>
-<option value="2026-01-15">2026-01-15</option>
-<option value="2026-01-16">2026-01-16</option>
-<option value="2026-01-17">2026-01-17</option>
-<option value="2026-01-18">2026-01-18</option>
-<option value="2026-01-19">2026-01-19</option>
-<option value="2026-01-20">2026-01-20</option>
-<option value="2026-01-21">2026-01-21</option>
-            </select>
+            <button class="filter-btn" id="routeFilterBtn" onclick="openFilterModal('route')">
+                <span class="ar-text">الخطوط</span>
+                <span class="en-text">Routes</span>
+                <span class="count" id="routeFilterCount">All</span>
+            </button>
+            <button class="filter-btn" id="dateFilterBtn" onclick="openFilterModal('date')">
+                <span class="ar-text">التواريخ</span>
+                <span class="en-text">Dates</span>
+                <span class="count" id="dateFilterCount">All</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Route Filter Modal -->
+    <div class="filter-modal" id="routeFilterModal" onclick="closeFilterModal('route')">
+        <div class="filter-modal-content" onclick="event.stopPropagation()">
+            <div class="filter-modal-header">
+                <span class="filter-modal-title">
+                    <span class="ar-text">اختر الخطوط</span>
+                    <span class="en-text">Select Routes</span>
+                </span>
+                <button class="filter-modal-close" onclick="closeFilterModal('route')">×</button>
+            </div>
+            <div class="filter-modal-actions">
+                <button class="filter-action-btn" onclick="selectAllRoutes()">
+                    <span class="ar-text">تحديد الكل</span>
+                    <span class="en-text">Select All</span>
+                </button>
+                <button class="filter-action-btn" onclick="clearAllRoutes()">
+                    <span class="ar-text">إلغاء الكل</span>
+                    <span class="en-text">Clear All</span>
+                </button>
+            </div>
+            <div class="filter-modal-list" id="routeFilterList">
+                <div class="filter-item selected" data-value="ATZ-RUH" onclick="toggleFilterItem(this, 'route')"><div class="filter-checkbox"></div><span class="filter-item-label">ATZ-RUH</span></div>
+<div class="filter-item selected" data-value="CAI-RUH" onclick="toggleFilterItem(this, 'route')"><div class="filter-checkbox"></div><span class="filter-item-label">CAI-RUH</span></div>
+<div class="filter-item selected" data-value="JED-ATZ" onclick="toggleFilterItem(this, 'route')"><div class="filter-checkbox"></div><span class="filter-item-label">JED-ATZ</span></div>
+<div class="filter-item selected" data-value="JED-CAI" onclick="toggleFilterItem(this, 'route')"><div class="filter-checkbox"></div><span class="filter-item-label">JED-CAI</span></div>
+            </div>
+            <div class="filter-modal-apply">
+                <button class="filter-apply-btn" onclick="applyRouteFilter()">
+                    <span class="ar-text">تطبيق</span>
+                    <span class="en-text">Apply Filter</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Date Filter Modal -->
+    <div class="filter-modal" id="dateFilterModal" onclick="closeFilterModal('date')">
+        <div class="filter-modal-content" onclick="event.stopPropagation()">
+            <div class="filter-modal-header">
+                <span class="filter-modal-title">
+                    <span class="ar-text">اختر التواريخ</span>
+                    <span class="en-text">Select Dates</span>
+                </span>
+                <button class="filter-modal-close" onclick="closeFilterModal('date')">×</button>
+            </div>
+            <div class="filter-modal-actions">
+                <button class="filter-action-btn" onclick="selectAllDates()">
+                    <span class="ar-text">تحديد الكل</span>
+                    <span class="en-text">Select All</span>
+                </button>
+                <button class="filter-action-btn" onclick="clearAllDates()">
+                    <span class="ar-text">إلغاء الكل</span>
+                    <span class="en-text">Clear All</span>
+                </button>
+            </div>
+            <div class="filter-modal-list" id="dateFilterList">
+                <div class="filter-item selected" data-value="2025-12-29" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">29 Dec 2025</span></div>
+<div class="filter-item selected" data-value="2025-12-30" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">30 Dec 2025</span></div>
+<div class="filter-item selected" data-value="2025-12-31" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">31 Dec 2025</span></div>
+<div class="filter-item selected" data-value="2026-01-01" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">01 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-02" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">02 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-03" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">03 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-04" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">04 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-05" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">05 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-06" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">06 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-07" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">07 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-08" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">08 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-09" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">09 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-10" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">10 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-11" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">11 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-12" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">12 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-13" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">13 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-14" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">14 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-15" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">15 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-16" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">16 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-17" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">17 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-18" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">18 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-19" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">19 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-20" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">20 Jan 2026</span></div>
+<div class="filter-item selected" data-value="2026-01-21" onclick="toggleFilterItem(this, 'date')"><div class="filter-checkbox"></div><span class="filter-item-label">21 Jan 2026</span></div>
+            </div>
+            <div class="filter-modal-apply">
+                <button class="filter-apply-btn" onclick="applyDateFilter()">
+                    <span class="ar-text">تطبيق</span>
+                    <span class="en-text">Apply Filter</span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -26018,6 +26245,27 @@
             });
         }
 
+        // Multi-select filter state
+        let selectedRoutes = new Set();  // Empty = all selected
+        let selectedDates = new Set();   // Empty = all selected
+        let allRoutes = [];
+        let allDates = [];
+
+        // Initialize filter data from DOM
+        function initFilterData() {
+            allRoutes = [];
+            allDates = [];
+            document.querySelectorAll('#routeFilterList .filter-item[data-value]').forEach(item => {
+                allRoutes.push(item.dataset.value);
+            });
+            document.querySelectorAll('#dateFilterList .filter-item[data-value]').forEach(item => {
+                allDates.push(item.dataset.value);
+            });
+            // Start with all selected
+            selectedRoutes = new Set(allRoutes);
+            selectedDates = new Set(allDates);
+        }
+
         // Show all
         function showAll() {
             activeLevel = null;
@@ -26030,38 +26278,147 @@
                 item.classList.toggle('active', i === 0);
             });
             document.querySelectorAll('.stat-item').forEach(item => item.classList.remove('active'));
-            document.getElementById('routeFilter').value = 'all';
-            document.getElementById('dateFilter').value = 'all';
+            // Reset multi-select filters to all
+            selectedRoutes = new Set(allRoutes);
+            selectedDates = new Set(allDates);
+            updateFilterButtons();
+            updateFilterCheckboxes();
         }
 
-        // Filter by route/date
-        function filterContent() {
-            const routeFilter = document.getElementById('routeFilter').value;
-            const dateFilter = document.getElementById('dateFilter').value;
+        // Open filter modal
+        function openFilterModal(type) {
+            document.getElementById(type + 'FilterModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
 
-            // Filter route sections (only outer containers, not headers)
+        // Close filter modal
+        function closeFilterModal(type) {
+            document.getElementById(type + 'FilterModal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // Toggle filter item selection
+        function toggleFilterItem(element, type) {
+            const value = element.dataset.value;
+            const selectedSet = type === 'route' ? selectedRoutes : selectedDates;
+
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                selectedSet.delete(value);
+            } else {
+                element.classList.add('selected');
+                selectedSet.add(value);
+            }
+        }
+
+        // Select all routes
+        function selectAllRoutes() {
+            selectedRoutes = new Set(allRoutes);
+            document.querySelectorAll('#routeFilterList .filter-item').forEach(item => {
+                item.classList.add('selected');
+            });
+        }
+
+        // Clear all routes
+        function clearAllRoutes() {
+            selectedRoutes.clear();
+            document.querySelectorAll('#routeFilterList .filter-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+        }
+
+        // Select all dates
+        function selectAllDates() {
+            selectedDates = new Set(allDates);
+            document.querySelectorAll('#dateFilterList .filter-item').forEach(item => {
+                item.classList.add('selected');
+            });
+        }
+
+        // Clear all dates
+        function clearAllDates() {
+            selectedDates.clear();
+            document.querySelectorAll('#dateFilterList .filter-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+        }
+
+        // Apply route filter
+        function applyRouteFilter() {
+            closeFilterModal('route');
+            filterContent();
+            updateFilterButtons();
+        }
+
+        // Apply date filter
+        function applyDateFilter() {
+            closeFilterModal('date');
+            filterContent();
+            updateFilterButtons();
+        }
+
+        // Update filter button text
+        function updateFilterButtons() {
+            const routeCount = selectedRoutes.size;
+            const dateCount = selectedDates.size;
+            const routeBtn = document.getElementById('routeFilterCount');
+            const dateBtn = document.getElementById('dateFilterCount');
+
+            if (routeCount === 0 || routeCount === allRoutes.length) {
+                routeBtn.textContent = 'All';
+                document.getElementById('routeFilterBtn').classList.remove('active');
+            } else {
+                routeBtn.textContent = routeCount.toString();
+                document.getElementById('routeFilterBtn').classList.add('active');
+            }
+
+            if (dateCount === 0 || dateCount === allDates.length) {
+                dateBtn.textContent = 'All';
+                document.getElementById('dateFilterBtn').classList.remove('active');
+            } else {
+                dateBtn.textContent = dateCount.toString();
+                document.getElementById('dateFilterBtn').classList.add('active');
+            }
+        }
+
+        // Update filter checkboxes to match state
+        function updateFilterCheckboxes() {
+            document.querySelectorAll('#routeFilterList .filter-item').forEach(item => {
+                const value = item.dataset.value;
+                item.classList.toggle('selected', selectedRoutes.has(value));
+            });
+            document.querySelectorAll('#dateFilterList .filter-item').forEach(item => {
+                const value = item.dataset.value;
+                item.classList.toggle('selected', selectedDates.has(value));
+            });
+        }
+
+        // Filter by route/date (multi-select version)
+        function filterContent() {
+            const showAllRoutes = selectedRoutes.size === 0 || selectedRoutes.size === allRoutes.length;
+            const showAllDates = selectedDates.size === 0 || selectedDates.size === allDates.length;
+
+            // Filter route sections
             document.querySelectorAll('.content > [data-route]').forEach(section => {
                 const route = section.dataset.route;
-                const showRoute = routeFilter === 'all' || route === routeFilter;
+                const showRoute = showAllRoutes || selectedRoutes.has(route);
                 section.classList.toggle('hidden', !showRoute);
             });
 
-            // Filter date sections (keep route headers visible)
+            // Filter date sections
             document.querySelectorAll('[data-date]').forEach(section => {
                 const date = section.dataset.date;
-                const showDate = dateFilter === 'all' || date === dateFilter;
+                const showDate = showAllDates || selectedDates.has(date);
                 section.classList.toggle('hidden', !showDate);
             });
 
-            // Ensure route headers remain visible when date filter is active
-            if (dateFilter !== 'all') {
-                document.querySelectorAll('.route-header').forEach(header => {
-                    const parent = header.closest('.content > [data-route]');
-                    if (parent && !parent.classList.contains('hidden')) {
-                        header.classList.remove('hidden');
-                    }
-                });
-            }
+            // Ensure route headers remain visible
+            document.querySelectorAll('.route-header').forEach(header => {
+                const parent = header.closest('.content > [data-route]');
+                if (parent && !parent.classList.contains('hidden')) {
+                    header.classList.remove('hidden');
+                }
+            });
 
             // Re-apply level filter if active
             if (activeLevel) {
@@ -26105,21 +26462,21 @@
                 }
             });
 
-            // Step 5: Re-apply route filter if active (to keep filtered routes hidden)
-            const routeFilter = document.getElementById('routeFilter').value;
-            if (routeFilter !== 'all') {
+            // Step 5: Re-apply route filter if active (using multi-select state)
+            const showAllRoutes = selectedRoutes.size === 0 || selectedRoutes.size === allRoutes.length;
+            if (!showAllRoutes) {
                 document.querySelectorAll('.content > [data-route]').forEach(section => {
-                    if (section.dataset.route !== routeFilter) {
+                    if (!selectedRoutes.has(section.dataset.route)) {
                         section.classList.add('hidden');
                     }
                 });
             }
 
-            // Step 6: Re-apply date filter if active
-            const dateFilter = document.getElementById('dateFilter').value;
-            if (dateFilter !== 'all') {
+            // Step 6: Re-apply date filter if active (using multi-select state)
+            const showAllDates = selectedDates.size === 0 || selectedDates.size === allDates.length;
+            if (!showAllDates) {
                 document.querySelectorAll('[data-date]').forEach(section => {
-                    if (section.dataset.date !== dateFilter) {
+                    if (!selectedDates.has(section.dataset.date)) {
                         section.classList.add('hidden');
                     }
                 });
@@ -26139,6 +26496,7 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            initFilterData();
             showAll();
         });
 
