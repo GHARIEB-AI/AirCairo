@@ -390,6 +390,45 @@
             font-weight: 600;
         }
 
+        /* LAST UPDATED BANNER - VERY PROMINENT */
+        .last-updated-banner {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #F7941D;
+            text-align: center;
+            padding: 18px 25px;
+            font-size: 1.3em;
+            font-weight: 700;
+            border-bottom: 4px solid #F7941D;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            border-radius: 12px;
+        }
+
+        .last-updated-banner .update-icon {
+            font-size: 1.3em;
+            margin-right: 12px;
+        }
+
+        body.rtl .last-updated-banner .update-icon {
+            margin-right: 0;
+            margin-left: 12px;
+        }
+
+        .last-updated-banner .update-time {
+            color: white;
+            font-weight: 800;
+            font-size: 1.15em;
+            background: rgba(247, 148, 29, 0.2);
+            padding: 5px 15px;
+            border-radius: 8px;
+            margin-left: 5px;
+        }
+
+        body.rtl .last-updated-banner .update-time {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+
         .status-badge {
             padding: 8px 16px;
             border-radius: 20px;
@@ -1643,11 +1682,23 @@
         </div>
 
         <div class="content">
+            <!-- LAST UPDATED - PROMINENT BANNER -->
+            <div class="last-updated-banner">
+                <span class="ar-text">
+                    <span class="update-icon">🕐</span>
+                    آخر تحديث: <span class="update-time">2025-12-30 21:07</span>
+                </span>
+                <span class="en-text">
+                    <span class="update-icon">🕐</span>
+                    Last Updated: <span class="update-time">2025-12-30 21:07</span>
+                </span>
+            </div>
+
             <div class="quick-stats" id="stats-container">
                 <div class="stat-card high" onclick="filterByThreatLevel('high')" title="Click to filter HIGH threats">
                     <h3>
-                        <span class="ar-text">عالي - يتطلب اجراء</span>
-                        <span class="en-text">HIGH - NEED ACTION</span>
+                        <span class="ar-text">تهديد عالي - يحتاج إجراء</span>
+                        <span class="en-text">HIGH THREAT ALERT - NEED ACTION</span>
                     </h3>
                     <div class="number" id="stat-high">5</div>
                     <div style="font-size: 0.7em; opacity: 0.8; margin-top: 5px;">
@@ -1657,8 +1708,8 @@
                 </div>
                 <div class="stat-card medium" onclick="filterByThreatLevel('medium')" title="Click to filter MEDIUM threats">
                     <h3>
-                        <span class="ar-text">متوسط</span>
-                        <span class="en-text">MEDIUM</span>
+                        <span class="ar-text">تهديد متوسط - راقب</span>
+                        <span class="en-text">MEDIUM THREAT - MONITOR</span>
                     </h3>
                     <div class="number" id="stat-medium">63</div>
                     <div style="font-size: 0.7em; opacity: 0.8; margin-top: 5px;">
@@ -1668,8 +1719,8 @@
                 </div>
                 <div class="stat-card low" onclick="filterByThreatLevel('low')" title="Click to filter LOW threats">
                     <h3>
-                        <span class="ar-text">منخفض</span>
-                        <span class="en-text">LOW</span>
+                        <span class="ar-text">تهديد منخفض</span>
+                        <span class="en-text">LOW THREAT</span>
                     </h3>
                     <div class="number" id="stat-low">392</div>
                     <div style="font-size: 0.7em; opacity: 0.8; margin-top: 5px;">
