@@ -142,19 +142,19 @@
         .download-btn {
             padding: 10px 25px;
             border: none;
-            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
             color: white;
             border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
             font-size: 1em;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+            box-shadow: 0 4px 15px rgba(247, 148, 29, 0.3);
         }
 
         .download-btn:hover {
-            background: linear-gradient(135deg, #219a52 0%, #27ae60 100%);
-            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+            background: linear-gradient(135deg, #e8850a 0%, #d4750a 100%);
+            box-shadow: 0 6px 20px rgba(247, 148, 29, 0.4);
             transform: translateY(-2px);
         }
 
@@ -247,7 +247,7 @@
         }
 
         .stat-card.low {
-            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
         }
 
         .stat-card h3 {
@@ -484,9 +484,9 @@
         }
 
         .fare-positive {
-            color: #27ae60;
+            color: #5a3d8a;
             font-weight: 700;
-            background: #e8f5e9;
+            background: #f0ebff;
             padding: 2px 6px;
             border-radius: 3px;
         }
@@ -504,8 +504,8 @@
         }
 
         .baggage-positive {
-            color: #27ae60;
-            background: #e8f5e9;
+            color: #5a3d8a;
+            background: #f0ebff;
             padding: 2px 6px;
             border-radius: 3px;
         }
@@ -603,7 +603,7 @@
         }
 
         .summary-card.low {
-            border-color: #27ae60;
+            border-color: #6b5b7a;
         }
 
         .summary-value {
@@ -813,7 +813,7 @@
         }
 
         .lf-detail-item.highlight {
-            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
         }
 
         .lf-detail-item.highlight .lf-detail-label {
@@ -1133,6 +1133,70 @@
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
+        }
+    
+        /* Scroll Navigation Buttons */
+        .scroll-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 90;
+        }
+
+        .scroll-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+            transition: transform 0.15s, box-shadow 0.15s, background 0.15s, opacity 0.15s;
+            opacity: 0.4;
+        }
+
+        .scroll-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+        }
+
+        .scroll-btn:active,
+        .scroll-btn.pressed {
+            opacity: 1;
+            transform: scale(0.92);
+            box-shadow: 0 4px 15px rgba(247, 148, 29, 0.5);
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
+        }
+
+        .scroll-btn.end {
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
+        }
+
+        .scroll-btn.end:hover {
+            opacity: 1;
+            box-shadow: 0 4px 15px rgba(247, 148, 29, 0.5);
+        }
+
+        .scroll-nav-separator {
+            height: 1px;
+            background: rgba(102, 126, 234, 0.3);
+            margin: 4px 8px;
+        }
+
+        @media print {
+            .scroll-nav {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -16700,6 +16764,101 @@
             clearThreatFilter();
             originalShowDate(dateId);
         };
+    </script>
+
+    <!-- Scroll Navigation -->
+    <div class="scroll-nav">
+        <button class="scroll-btn end" id="scrollTop" title="Go to top">⬆</button>
+        <button class="scroll-btn" id="scrollUp" title="Scroll up">▲</button>
+        <div class="scroll-nav-separator"></div>
+        <button class="scroll-btn" id="scrollDown" title="Scroll down">▼</button>
+        <button class="scroll-btn end" id="scrollBottom" title="Go to bottom">⬇</button>
+    </div>
+
+    <script>
+        // Scroll Navigation
+        (function() {
+            const SCROLL_STEP = 200;
+            const CONTINUOUS_SPEED = 10;
+            const LONG_PRESS_DELAY = 300;
+
+            let scrollInterval = null;
+            let longPressTimer = null;
+            let isLongPress = false;
+
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function scrollToBottom() {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }
+
+            function scrollStepUp() {
+                window.scrollBy({ top: -SCROLL_STEP, behavior: 'smooth' });
+            }
+
+            function scrollStepDown() {
+                window.scrollBy({ top: SCROLL_STEP, behavior: 'smooth' });
+            }
+
+            function startContinuousScroll(direction) {
+                const speed = direction === 'up' ? -CONTINUOUS_SPEED : CONTINUOUS_SPEED;
+                scrollInterval = setInterval(() => {
+                    window.scrollBy(0, speed);
+                }, 16);
+            }
+
+            function stopContinuousScroll() {
+                if (scrollInterval) {
+                    clearInterval(scrollInterval);
+                    scrollInterval = null;
+                }
+                if (longPressTimer) {
+                    clearTimeout(longPressTimer);
+                    longPressTimer = null;
+                }
+            }
+
+            function setupScrollButton(btnId, singleTapFn, direction) {
+                const btn = document.getElementById(btnId);
+                if (!btn) return;
+
+                btn.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    isLongPress = false;
+                    btn.classList.add('pressed');
+
+                    longPressTimer = setTimeout(() => {
+                        isLongPress = true;
+                        startContinuousScroll(direction);
+                    }, LONG_PRESS_DELAY);
+                });
+
+                btn.addEventListener('mouseup', () => {
+                    btn.classList.remove('pressed');
+                    stopContinuousScroll();
+
+                    if (!isLongPress) {
+                        singleTapFn();
+                    }
+                    isLongPress = false;
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    btn.classList.remove('pressed');
+                    stopContinuousScroll();
+                    isLongPress = false;
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('scrollTop')?.addEventListener('click', scrollToTop);
+                document.getElementById('scrollBottom')?.addEventListener('click', scrollToBottom);
+                setupScrollButton('scrollUp', scrollStepUp, 'up');
+                setupScrollButton('scrollDown', scrollStepDown, 'down');
+            });
+        })();
     </script>
 </body>
 </html>
