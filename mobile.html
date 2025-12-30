@@ -42409,34 +42409,102 @@
             }
         }
 
-        // ========== Scroll Navigation (Top/Bottom only) ==========
+        // ========== Scroll Navigation ==========
+        // Single tap: Jump to top/bottom
+        // Long press (hold): Fast continuous scroll
         (function() {
-            function scrollToTop() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            const LONG_PRESS_DELAY = 300; // ms to detect long press
+            const SCROLL_SPEED = 80; // pixels per frame
+            const SCROLL_INTERVAL = 16; // ~60fps
+
+            let scrollInterval = null;
+            let longPressTimer = null;
+            let isLongPress = false;
+
+            function jumpToTop() {
+                window.scrollTo({ top: 0, behavior: 'instant' });
             }
 
-            function scrollToBottom() {
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            function jumpToBottom() {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' });
+            }
+
+            function startFastScroll(direction) {
+                stopFastScroll();
+                isLongPress = true;
+                scrollInterval = setInterval(() => {
+                    window.scrollBy({ top: direction * SCROLL_SPEED, behavior: 'instant' });
+                }, SCROLL_INTERVAL);
+            }
+
+            function stopFastScroll() {
+                if (scrollInterval) {
+                    clearInterval(scrollInterval);
+                    scrollInterval = null;
+                }
+                if (longPressTimer) {
+                    clearTimeout(longPressTimer);
+                    longPressTimer = null;
+                }
+            }
+
+            function setupButton(btn, direction, jumpFn) {
+                if (!btn) return;
+
+                // Touch events (mobile)
+                btn.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    isLongPress = false;
+                    btn.classList.add('pressed');
+                    longPressTimer = setTimeout(() => {
+                        startFastScroll(direction);
+                    }, LONG_PRESS_DELAY);
+                }, { passive: false });
+
+                btn.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    if (!isLongPress) {
+                        jumpFn(); // Single tap = jump
+                    }
+                    isLongPress = false;
+                });
+
+                btn.addEventListener('touchcancel', () => {
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    isLongPress = false;
+                });
+
+                // Mouse events (desktop fallback)
+                btn.addEventListener('mousedown', (e) => {
+                    isLongPress = false;
+                    btn.classList.add('pressed');
+                    longPressTimer = setTimeout(() => {
+                        startFastScroll(direction);
+                    }, LONG_PRESS_DELAY);
+                });
+
+                btn.addEventListener('mouseup', () => {
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    if (!isLongPress) {
+                        jumpFn();
+                    }
+                    isLongPress = false;
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    isLongPress = false;
+                });
             }
 
             document.addEventListener('DOMContentLoaded', () => {
-                const topBtn = document.getElementById('scrollTop');
-                if (topBtn) {
-                    topBtn.addEventListener('click', scrollToTop);
-                    topBtn.addEventListener('touchend', (e) => {
-                        e.preventDefault();
-                        scrollToTop();
-                    });
-                }
-
-                const bottomBtn = document.getElementById('scrollBottom');
-                if (bottomBtn) {
-                    bottomBtn.addEventListener('click', scrollToBottom);
-                    bottomBtn.addEventListener('touchend', (e) => {
-                        e.preventDefault();
-                        scrollToBottom();
-                    });
-                }
+                setupButton(document.getElementById('scrollTop'), -1, jumpToTop);
+                setupButton(document.getElementById('scrollBottom'), 1, jumpToBottom);
             });
         })();
     </script>
