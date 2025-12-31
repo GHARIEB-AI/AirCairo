@@ -1161,6 +1161,53 @@
             #data-boxes-layer { display: none; }
         }
 
+        /* ===== PAGES NAVIGATION BAR ===== */
+        .pages-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 12px 20px;
+            background: rgba(70, 43, 115, 0.4);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .pages-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .pages-nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        .pages-nav a.active {
+            background: linear-gradient(135deg, #F7941D 0%, #ff6b00 100%);
+            border-color: transparent;
+        }
+        .pages-nav .nav-icon {
+            font-size: 16px;
+        }
+        @media (max-width: 768px) {
+            .pages-nav {
+                flex-wrap: wrap;
+                gap: 8px;
+                padding: 10px;
+            }
+            .pages-nav a {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+        }
+
         /* ===== VALIDATION WARNINGS SECTION ===== */
         .warnings-section {
             display: none;
@@ -1277,6 +1324,26 @@
                 📊 <span class="btn-text-en">View Report</span><span class="btn-text-ar" style="display:none;">عرض التقرير</span>
             </a>
         </div>
+    </div>
+
+    <!-- Pages Navigation -->
+    <div class="pages-nav">
+        <a href="index.html" class="active">
+            <span class="nav-icon">🌐</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="report.html">
+            <span class="nav-icon">📊</span>
+            <span>Report</span>
+        </a>
+        <a href="archive/">
+            <span class="nav-icon">📁</span>
+            <span>Archive</span>
+        </a>
+        <a href="dashboard_mobile.html">
+            <span class="nav-icon">📱</span>
+            <span>Mobile</span>
+        </a>
     </div>
 
     <!-- Validation Warnings Section (hidden by default) -->
