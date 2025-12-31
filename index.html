@@ -1510,7 +1510,7 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = 'https://museum-ink-share-tool.trycloudflare.com';
+        const API_BASE_OVERRIDE = '__API_BASE__';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -2398,9 +2398,16 @@
 
         async function fetchStatus() {
             try {
+                // Use AbortController for 5-second timeout to fail fast when tunnel is dead
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+
                 const response = await fetch(API_BASE + '/status?t=' + Date.now(), {
-                    cache: 'no-store'
+                    cache: 'no-store',
+                    signal: controller.signal
                 });
+                clearTimeout(timeoutId);
+
                 const data = await response.json();
                 isOnline = true;
                 lastData = data;
