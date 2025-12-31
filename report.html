@@ -1389,6 +1389,32 @@
             padding: 10px 0;
         }
 
+        
+        .filter-modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(70, 43, 115, 0.15);
+            background: #fafafa;
+        }
+
+        .filter-apply-btn {
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #462B73 0%, #6b4d8a 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-apply-btn:hover {
+            background: linear-gradient(135deg, #5a3d8a 0%, #7d5fa0 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(70, 43, 115, 0.3);
+        }
+
         .filter-group {
             border-bottom: 1px solid rgba(70, 43, 115, 0.1);
         }
@@ -1706,6 +1732,13 @@
 <div class="filter-item selected" data-value="TUU-CAI" onclick="toggleRouteItem(this)"><div class="filter-checkbox"></div><span class="filter-item-label">TUU-CAI</span></div>
 <div class="filter-item selected" data-value="YNB-CAI" onclick="toggleRouteItem(this)"><div class="filter-checkbox"></div><span class="filter-item-label">YNB-CAI</span></div>
                 </div>
+                <div class="filter-modal-footer">
+                    <button class="filter-apply-btn" onclick="applyRouteFilterAndClose()">
+                        <span class="ar-text">تطبيق</span>
+                        <span class="en-text">Apply</span>
+                    </button>
+                </div>
+
             </div>
         </div>
 
@@ -70970,6 +71003,15 @@
             updateStatsForSelection();
             updateDownloadButton();
         }
+
+
+        // Apply route filter and close modal
+        function applyRouteFilterAndClose() {
+            applyRouteFilter();
+            closeRouteFilterModal();
+        }
+
+
 
         // ============================================
         // Date Filter Modal Functions
