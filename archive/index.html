@@ -203,6 +203,53 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
+
+        /* Pages Navigation Bar */
+        .pages-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: rgba(70, 43, 115, 0.5);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .pages-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .pages-nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        .pages-nav a.active {
+            background: linear-gradient(135deg, #F7941D 0%, #ff6b00 100%);
+            border-color: transparent;
+        }
+        .pages-nav .nav-icon {
+            font-size: 16px;
+        }
+        @media (max-width: 600px) {
+            .pages-nav {
+                gap: 8px;
+                padding: 10px;
+            }
+            .pages-nav a {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -224,18 +271,46 @@
     </script>
 
     <div class="container">
-        <div class="btn-container">
-            <a href="../" class="back-btn">← Back to Latest Report</a>
+        <!-- Pages Navigation -->
+        <div class="pages-nav">
+            <a href="../index.html">
+                <span class="nav-icon">🌐</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="../report.html">
+                <span class="nav-icon">📊</span>
+                <span>Report</span>
+            </a>
+            <a href="./" class="active">
+                <span class="nav-icon">📁</span>
+                <span>Archive</span>
+            </a>
+            <a href="../mobile.html">
+                <span class="nav-icon">📱</span>
+                <span>Mobile</span>
+            </a>
         </div>
 
         <div class="header">
             <div class="logo"><span class="white">AIR</span><span class="orange">CAIRO</span></div>
             <h1>📁 Report Archive</h1>
             <p>All historical price monitoring reports</p>
-            <div class="count-badge">📊 17 reports</div>
+            <div class="count-badge">📊 18 reports</div>
         </div>
 
         <div class="report-list">
+        <a href="report_2025_12_31_20-48.html" class="report-item">
+            <div class="report-row">
+                <span class="row-icon">🕐</span>
+                <span class="row-label">Run Date</span>
+                <span class="run-date-value">31-DEC-25 20:48</span>
+            </div>
+            <div class="report-row">
+                <span class="row-icon">📅</span>
+                <span class="row-label">Range</span>
+                <span class="range-value">01JAN26 - 31JAN26</span>
+            </div>
+        </a>
         <a href="report_2025_12_30_21-07.html" class="report-item">
             <div class="report-row">
                 <span class="row-icon">🕐</span>
