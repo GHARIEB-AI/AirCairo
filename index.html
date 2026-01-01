@@ -1320,7 +1320,7 @@
             </div>
             <div class="timestamp" id="timestamp">Loading...</div>
             <div class="run-info" id="run-info"></div>
-            <a href="online_pc_report.html" target="_blank" class="view-report-btn show" id="view-report-btn">
+            <a href="report.html" target="_blank" class="view-report-btn show" id="view-report-btn">
                 📊 <span class="btn-text-en">View Report</span><span class="btn-text-ar" style="display:none;">عرض التقرير</span>
             </a>
         </div>
@@ -1332,7 +1332,7 @@
             <span class="nav-icon">🌐</span>
             <span>Dashboard</span>
         </a>
-        <a href="online_pc_report.html">
+        <a href="report.html">
             <span class="nav-icon">📊</span>
             <span>Report</span>
         </a>
@@ -1340,7 +1340,7 @@
             <span class="nav-icon">📁</span>
             <span>Archive</span>
         </a>
-        <a href="online_mobile_dashboard.html">
+        <a href="dashboard_mobile.html">
             <span class="nav-icon">📱</span>
             <span>Mobile</span>
         </a>
@@ -1577,7 +1577,7 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = '__API_BASE__';
+        const API_BASE_OVERRIDE = 'https://round-opera-arms-nebraska.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
