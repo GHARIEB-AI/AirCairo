@@ -1214,10 +1214,167 @@
             transition: height 0.1s, top 0.1s;
             position: absolute;
         }
+    
+        /* HOME Button */
+        .home-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9em;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+            z-index: 101;
+        }
+        body.en .home-btn {
+            right: auto;
+            left: 10px;
+        }
+
+        /* Language Toggle Button */
+        .lang-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.85em;
+            cursor: pointer;
+            z-index: 101;
+        }
+        body.en .lang-btn {
+            left: auto;
+            right: 10px;
+        }
+
+        /* Date Filter Button */
+        .date-filter-btn {
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.8em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Date Filter Modal */
+        .date-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 300;
+        }
+        .date-modal.show { display: flex; }
+        .date-modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 350px;
+            padding: 20px;
+        }
+        .date-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(70, 43, 115, 0.2);
+        }
+        .date-modal-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #462B73;
+        }
+        .date-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: #462B73;
+            cursor: pointer;
+        }
+        .date-quick-btns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .date-quick-btn {
+            padding: 10px;
+            border: 2px solid rgba(70, 43, 115, 0.3);
+            background: white;
+            color: #462B73;
+            border-radius: 10px;
+            font-size: 0.85em;
+            cursor: pointer;
+            text-align: center;
+        }
+        .date-quick-btn.active {
+            background: #462B73;
+            color: white;
+            border-color: #462B73;
+        }
+        .date-range-inputs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .date-range-inputs input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid rgba(70, 43, 115, 0.3);
+            border-radius: 10px;
+            font-size: 0.9em;
+        }
+        .date-apply-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .date-clear-btn {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            color: #462B73;
+            border: 2px solid rgba(70, 43, 115, 0.3);
+            border-radius: 25px;
+            font-size: 0.9em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
     <div class="sticky-header">
+        <a href="https://gharieb-ai.github.io/AirCairo/mobile.html" class="home-btn">HOME</a>
+        <button class="lang-btn" onclick="toggleLang()">
+            <span class="ar-text">EN</span>
+            <span class="en-text">عربي</span>
+        </button>
+
         <div class="header-main">
             <div class="route-title">MED-CAI</div>
             <div class="header-stats">
@@ -14323,40 +14480,40 @@
     </div>
 
     <script>
-        // Dual-function scroll buttons
-        // Tap = Fast scroll, Hold = Jump to top/bottom
-
+        // Scroll buttons: tap = jump, hold = slow scroll
         let holdTimer = null;
-        let isHolding = false;
         let scrollInterval = null;
 
         function setupScrollButton(btn, direction) {
-            const scrollAmount = direction === 'up' ? -800 : 800;
             const jumpTo = direction === 'up' ? 0 : document.documentElement.scrollHeight;
+            const scrollAmount = direction === 'up' ? -200 : 200;
 
-            // Start - detect hold vs tap
             const startHandler = (e) => {
                 e.preventDefault();
-                isHolding = false;
 
-                // Start fast scrolling immediately (tap behavior)
-                scrollInterval = setInterval(() => {
-                    window.scrollBy({ top: scrollAmount, behavior: 'auto' });
-                }, 50);
-
-                // If held for 500ms, jump to top/bottom
+                // Start slow scroll after 200ms (hold behavior)
                 holdTimer = setTimeout(() => {
-                    isHolding = true;
-                    clearInterval(scrollInterval);
-                    window.scrollTo({ top: jumpTo, behavior: 'smooth' });
-                }, 500);
+                    scrollInterval = setInterval(() => {
+                        window.scrollBy({ top: scrollAmount, behavior: 'auto' });
+                    }, 100);
+                }, 200);
             };
 
-            // End - stop scrolling
             const endHandler = (e) => {
                 e.preventDefault();
-                clearTimeout(holdTimer);
-                clearInterval(scrollInterval);
+
+                // If released before 200ms, it's a tap - jump to top/bottom
+                if (holdTimer) {
+                    clearTimeout(holdTimer);
+                    if (!scrollInterval) {
+                        window.scrollTo({ top: jumpTo, behavior: 'smooth' });
+                    }
+                }
+                if (scrollInterval) {
+                    clearInterval(scrollInterval);
+                    scrollInterval = null;
+                }
+                holdTimer = null;
             };
 
             btn.addEventListener('touchstart', startHandler, { passive: false });
@@ -14395,6 +14552,84 @@
         function toggleLang() {
             document.body.classList.toggle('en');
         }
+    
+        // Date Filter Functions
+        function openDateModal() {
+            document.getElementById('dateModal').classList.add('show');
+        }
+        function closeDateModal() {
+            document.getElementById('dateModal').classList.remove('show');
+        }
+
+        function filterDays(days) {
+            const today = new Date();
+            const cards = document.querySelectorAll('[data-date]');
+            cards.forEach(card => {
+                const dateStr = card.dataset.date;
+                const cardDate = new Date(dateStr);
+                const diffDays = Math.ceil((cardDate - today) / (1000 * 60 * 60 * 24));
+                card.classList.toggle('hidden', diffDays < 0 || diffDays > days);
+            });
+            closeDateModal();
+            updateVisibleCount();
+        }
+
+        function filterMonth(month) {
+            const monthMap = {'JAN': '01', 'FEB': '02', 'MAR': '03'};
+            const monthNum = monthMap[month];
+            const cards = document.querySelectorAll('[data-date]');
+            cards.forEach(card => {
+                const dateStr = card.dataset.date;
+                const cardMonth = dateStr.split('-')[1];
+                card.classList.toggle('hidden', cardMonth !== monthNum);
+            });
+            closeDateModal();
+            updateVisibleCount();
+        }
+
+        function applyDateRange() {
+            const from = document.getElementById('dateFrom').value;
+            const to = document.getElementById('dateTo').value;
+            if (!from || !to) return;
+
+            const fromDate = new Date(from);
+            const toDate = new Date(to);
+            const cards = document.querySelectorAll('[data-date]');
+            cards.forEach(card => {
+                const cardDate = new Date(card.dataset.date);
+                card.classList.toggle('hidden', cardDate < fromDate || cardDate > toDate);
+            });
+            closeDateModal();
+            updateVisibleCount();
+        }
+
+        function clearDateFilter() {
+            document.querySelectorAll('[data-date]').forEach(card => {
+                card.classList.remove('hidden');
+            });
+            document.getElementById('dateFrom').value = '';
+            document.getElementById('dateTo').value = '';
+            closeDateModal();
+            updateVisibleCount();
+        }
+
+        function updateVisibleCount() {
+            const visible = document.querySelectorAll('.threat-card:not(.hidden)').length;
+            const total = document.querySelectorAll('.threat-card').length;
+            // Update stats if needed
+        }
+
+        // Language toggle
+        function toggleLang() {
+            document.body.classList.toggle('en');
+            localStorage.setItem('lang', document.body.classList.contains('en') ? 'en' : 'ar');
+        }
+
+        // Load saved language
+        if (localStorage.getItem('lang') === 'en') {
+            document.body.classList.add('en');
+        }
+
     </script>
 </body>
 </html>

@@ -130,6 +130,16 @@
             padding: 8px;
         }
         .search-box::before { content: "🔍"; }
+        .search-clear {
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            color: #999;
+            cursor: pointer;
+            padding: 5px 10px;
+            display: none;
+        }
+        .search-clear.show { display: block; }
 
         .direction-filter {
             display: flex;
@@ -181,7 +191,8 @@
     </div>
 
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search route (e.g. CAI-JED)..." oninput="filterRoutes()">
+        <input type="text" id="searchInput" placeholder="Search route (e.g. CAI-JED)..." oninput="handleSearch()">
+        <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
     </div>
 
     <div class="direction-filter">
@@ -545,6 +556,21 @@
             if (ksaCities.includes(from) && egyCities.includes(to)) return 'ksa-egy';
             if (egyCities.includes(from) && ksaCities.includes(to)) return 'egy-ksa';
             return 'other';
+        }
+
+        function handleSearch() {
+            const input = document.getElementById('searchInput');
+            const clearBtn = document.getElementById('searchClear');
+            clearBtn.classList.toggle('show', input.value.length > 0);
+            filterRoutes();
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('searchInput');
+            input.value = '';
+            document.getElementById('searchClear').classList.remove('show');
+            filterRoutes();
+            input.focus();
         }
 
         function filterRoutes() {
