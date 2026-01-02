@@ -601,21 +601,21 @@
         }
 
         // Main filter function
+        let currentDirectionFilter = 'all';
+
         function filterRoutes() {
             const searchInput = document.getElementById('searchInput');
             const search = searchInput ? searchInput.value.toUpperCase() : '';
             const cards = document.querySelectorAll('.route-card');
-            const activeBtn = document.querySelector('.direction-btn.active');
-            const currentDir = activeBtn ? activeBtn.dataset.dir || activeBtn.textContent : 'all';
 
             cards.forEach(card => {
                 const route = card.dataset.route.toUpperCase();
                 const matchSearch = !search || route.includes(search);
 
                 let matchDir = true;
-                if (currentDir.includes('ksa-egy') || currentDir.includes('KSA')) {
+                if (currentDirectionFilter === 'ksa-egy') {
                     matchDir = getDirection(card.dataset.route) === 'ksa-egy';
-                } else if (currentDir.includes('egy-ksa') || currentDir.includes('EGY')) {
+                } else if (currentDirectionFilter === 'egy-ksa') {
                     matchDir = getDirection(card.dataset.route) === 'egy-ksa';
                 }
 
@@ -625,6 +625,7 @@
 
         // Direction filter buttons
         function filterDirection(dir, btn) {
+            currentDirectionFilter = dir;
             document.querySelectorAll('.direction-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             filterRoutes();
