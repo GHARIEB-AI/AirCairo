@@ -2560,63 +2560,80 @@
     <script>
         // ==================== SCROLL BUTTONS ====================
         // Tap = jump to top/bottom, Hold = slow scroll
-        let holdTimer = null;
-        let scrollInterval = null;
-        let isScrolling = false;
+        (function() {
+            let holdTimer = null;
+            let scrollInterval = null;
+            let isHolding = false;
 
-        function setupScrollButton(btn, direction) {
-            if (!btn) return;
+            function setupScrollButton(btnId, direction) {
+                const btn = document.getElementById(btnId);
+                if (!btn) return;
 
-            const jumpTo = direction === 'up' ? 0 : document.documentElement.scrollHeight;
-            const scrollAmount = direction === 'up' ? -150 : 150;
+                const jumpTo = direction === 'up' ? 0 : document.documentElement.scrollHeight;
+                const scrollAmount = direction === 'up' ? -150 : 150;
 
-            const startHandler = (e) => {
-                e.preventDefault();
-                isScrolling = false;
+                function startPress(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    isHolding = false;
 
-                // After 300ms of holding, start slow scroll
-                holdTimer = setTimeout(() => {
-                    isScrolling = true;
-                    scrollInterval = setInterval(() => {
-                        window.scrollBy({ top: scrollAmount, behavior: 'auto' });
-                    }, 80);
-                }, 300);
-            };
-
-            const endHandler = (e) => {
-                e.preventDefault();
-                clearTimeout(holdTimer);
-
-                // If NOT scrolling (released before 300ms), it's a TAP - jump
-                if (!isScrolling) {
-                    window.scrollTo({ top: jumpTo, behavior: 'smooth' });
+                    holdTimer = setTimeout(function() {
+                        isHolding = true;
+                        scrollInterval = setInterval(function() {
+                            window.scrollBy(0, scrollAmount);
+                        }, 80);
+                    }, 300);
                 }
 
-                if (scrollInterval) {
-                    clearInterval(scrollInterval);
+                function endPress(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    if (holdTimer) {
+                        clearTimeout(holdTimer);
+                        holdTimer = null;
+                    }
+
+                    if (scrollInterval) {
+                        clearInterval(scrollInterval);
+                        scrollInterval = null;
+                    }
+
+                    // If NOT holding (quick tap), jump to top/bottom
+                    if (!isHolding) {
+                        window.scrollTo({ top: jumpTo, behavior: 'smooth' });
+                    }
+                    isHolding = false;
+                }
+
+                // Touch events
+                btn.addEventListener('touchstart', startPress, { passive: false });
+                btn.addEventListener('touchend', endPress, { passive: false });
+                btn.addEventListener('touchcancel', endPress, { passive: false });
+
+                // Mouse events (for desktop testing)
+                btn.addEventListener('mousedown', startPress);
+                btn.addEventListener('mouseup', endPress);
+                btn.addEventListener('mouseleave', function() {
+                    if (holdTimer) clearTimeout(holdTimer);
+                    if (scrollInterval) clearInterval(scrollInterval);
+                    holdTimer = null;
                     scrollInterval = null;
-                }
-                isScrolling = false;
-                holdTimer = null;
-            };
+                    isHolding = false;
+                });
+            }
 
-            // Remove old listeners first
-            btn.replaceWith(btn.cloneNode(true));
-            btn = document.getElementById(btn.id);
-
-            btn.addEventListener('touchstart', startHandler, { passive: false });
-            btn.addEventListener('touchend', endHandler);
-            btn.addEventListener('touchcancel', endHandler);
-            btn.addEventListener('mousedown', startHandler);
-            btn.addEventListener('mouseup', endHandler);
-            btn.addEventListener('mouseleave', endHandler);
-        }
-
-        // Initialize scroll buttons
-        const scrollUpBtn = document.getElementById('scrollUp');
-        const scrollDownBtn = document.getElementById('scrollDown');
-        if (scrollUpBtn) setupScrollButton(scrollUpBtn, 'up');
-        if (scrollDownBtn) setupScrollButton(scrollDownBtn, 'down');
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    setupScrollButton('scrollUp', 'up');
+                    setupScrollButton('scrollDown', 'down');
+                });
+            } else {
+                setupScrollButton('scrollUp', 'up');
+                setupScrollButton('scrollDown', 'down');
+            }
+        })();
 
         // ==================== POSITION INDICATOR ====================
         let ticking = false;
