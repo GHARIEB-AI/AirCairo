@@ -1375,9 +1375,9 @@
         <div class="header-main">
             <div class="route-title">ELQ-CAI</div>
             <div class="header-stats">
-                <span class="header-stat high">🔴 6 High</span>
-                <span class="header-stat medium">🟡 15 Medium</span>
-                <span class="header-stat low">🟢 46 Low</span>
+                <span class="header-stat high" onclick="filterFromHeader('high', this)">🔴 6 High</span>
+                <span class="header-stat medium" onclick="filterFromHeader('medium', this)">🟡 15 Medium</span>
+                <span class="header-stat low" onclick="filterFromHeader('low', this)">🟢 46 Low</span>
             </div>
         </div>
         <div class="nav-row">
@@ -8057,6 +8057,24 @@
                     btn.classList.add('active');
                 }
             });
+        }
+
+        // ==================== HEADER STAT FILTERS ====================
+        function filterFromHeader(level, el) {
+            // Toggle: if already active, show all
+            const isActive = el.classList.contains('active');
+
+            // Remove active from all header stats
+            document.querySelectorAll('.header-stat').forEach(s => s.classList.remove('active'));
+
+            if (isActive) {
+                // Was active, now show all
+                filterByColor('all');
+            } else {
+                // Activate this one
+                el.classList.add('active');
+                filterByColor(level);
+            }
         }
 
         // ==================== COLOR/THREAT LEVEL FILTER ====================

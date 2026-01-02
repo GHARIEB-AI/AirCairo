@@ -1375,9 +1375,9 @@
         <div class="header-main">
             <div class="route-title">YNB-CAI</div>
             <div class="header-stats">
-                <span class="header-stat high">🔴 4 High</span>
-                <span class="header-stat medium">🟡 2 Medium</span>
-                <span class="header-stat low">🟢 24 Low</span>
+                <span class="header-stat high" onclick="filterFromHeader('high', this)">🔴 4 High</span>
+                <span class="header-stat medium" onclick="filterFromHeader('medium', this)">🟡 2 Medium</span>
+                <span class="header-stat low" onclick="filterFromHeader('low', this)">🟢 24 Low</span>
             </div>
         </div>
         <div class="nav-row">
@@ -4586,6 +4586,24 @@
                     btn.classList.add('active');
                 }
             });
+        }
+
+        // ==================== HEADER STAT FILTERS ====================
+        function filterFromHeader(level, el) {
+            // Toggle: if already active, show all
+            const isActive = el.classList.contains('active');
+
+            // Remove active from all header stats
+            document.querySelectorAll('.header-stat').forEach(s => s.classList.remove('active'));
+
+            if (isActive) {
+                // Was active, now show all
+                filterByColor('all');
+            } else {
+                // Activate this one
+                el.classList.add('active');
+                filterByColor(level);
+            }
         }
 
         // ==================== COLOR/THREAT LEVEL FILTER ====================
