@@ -1256,16 +1256,22 @@
 
         /* Date Filter Button */
         .date-filter-btn {
-            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            position: absolute;
+            top: 10px;
+            left: 80px;
+            background: linear-gradient(135deg, #F7941D 0%, #ff6b00 100%);
             color: white;
-            padding: 8px 15px;
+            padding: 8px 12px;
             border: none;
             border-radius: 20px;
-            font-size: 0.8em;
+            font-size: 1em;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            z-index: 101;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        body.en .date-filter-btn {
+            left: auto;
+            right: 80px;
         }
 
         /* Date Filter Modal */
