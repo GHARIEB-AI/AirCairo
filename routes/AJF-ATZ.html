@@ -104,7 +104,7 @@
 
         .stat-item.high { border-bottom: 3px solid #e74c3c; }
         .stat-item.medium { border-bottom: 3px solid #F7941D; }
-        .stat-item.low { border-bottom: 3px solid #6b5b7a; }  /* Purple-gray, not green */
+        .stat-item.low { border-bottom: 3px solid #8b7ba0; }  /* Purple-gray, not green */
 
         /* LAST UPDATED BANNER - VERY PROMINENT */
         .last-updated-banner {
@@ -1137,7 +1137,7 @@
         }
         .header-stat.high { color: #fca5a5; }
         .header-stat.medium { color: #fcd34d; }
-        .header-stat.low { color: #6ee7b7; }
+        .header-stat.low { color: #a78bfa; }
         .nav-row {
             display: flex;
             justify-content: space-between;
@@ -1377,7 +1377,7 @@
             <div class="header-stats">
                 <span class="header-stat high" onclick="filterFromHeader('high', this)">🔴 0 High</span>
                 <span class="header-stat medium" onclick="filterFromHeader('medium', this)">🟡 0 Medium</span>
-                <span class="header-stat low" onclick="filterFromHeader('low', this)">🟢 2 Low</span>
+                <span class="header-stat low" onclick="filterFromHeader('low', this)">🟣 2 Low</span>
             </div>
         </div>
         <div class="nav-row">
@@ -1990,7 +1990,7 @@
                 'all': 'linear-gradient(135deg, #f5f3f9 0%, #ebe7f3 100%)',
                 'high': 'linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%)',
                 'medium': 'linear-gradient(135deg, #fffbf0 0%, #fff3e0 100%)',
-                'low': 'linear-gradient(135deg, #f0fff4 0%, #e8f5e9 100%)'
+                'low': 'linear-gradient(135deg, #f5f0ff 0%, #ede8f5 100%)'
             };
             document.body.style.background = bgColors[level] || bgColors['all'];
 
@@ -2030,7 +2030,7 @@
 
                 if (highStat) highStat.innerHTML = '🔴 ' + highCount + ' High';
                 if (mediumStat) mediumStat.innerHTML = '🟡 ' + mediumCount + ' Medium';
-                if (lowStat) lowStat.innerHTML = '🟢 ' + lowCount + ' Low';
+                if (lowStat) lowStat.innerHTML = '🟣 ' + lowCount + ' Low';
             }
         }
 
