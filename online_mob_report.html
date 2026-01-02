@@ -67,7 +67,86 @@
         .stat-box .label { font-size: 0.75em; color: #666; }
         .stat-box.high .value { color: #dc2626; }
         .stat-box.medium .value { color: #f59e0b; }
-        .stat-box.low .value { color: #10b981; }
+        .stat-box.low .value { color: #8b5cf6; }
+
+        /* Clickable stats */
+        .stat-box { cursor: pointer; transition: transform 0.2s, background 0.2s; border-radius: 8px; }
+        .stat-box:hover { background: rgba(70, 43, 115, 0.05); }
+        .stat-box:active { transform: scale(0.95); }
+        .stat-box.active { background: rgba(70, 43, 115, 0.15); }
+        .stat-box .checkmark { display: none; font-size: 0.6em; margin-left: 3px; }
+        .stat-box.active .checkmark { display: inline; }
+
+        /* Date filter button */
+        .date-filter-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #F7941D 0%, #ff6b00 100%);
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            z-index: 102;
+            box-shadow: 0 3px 10px rgba(247, 148, 29, 0.5);
+        }
+
+        /* Date modal */
+        .date-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .date-modal.show { display: flex; }
+        .date-modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+        }
+        .date-modal h3 { color: #462B73; margin-bottom: 15px; }
+        .quick-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 15px; }
+        .quick-btn {
+            padding: 8px 15px;
+            border: 2px solid #462B73;
+            background: white;
+            color: #462B73;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+        }
+        .quick-btn.active { background: #462B73; color: white; }
+        .month-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 15px; }
+        .month-btn {
+            padding: 8px 12px;
+            border: 2px solid #F7941D;
+            background: white;
+            color: #F7941D;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+        }
+        .month-btn.active { background: #F7941D; color: white; }
+        .date-inputs { margin: 15px 0; }
+        .date-inputs input { padding: 8px; border: 1px solid #ccc; border-radius: 8px; margin: 5px; }
+        .modal-btns { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
+        .modal-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .modal-btn.apply { background: #462B73; color: white; }
+        .modal-btn.cancel { background: #ccc; color: #333; }
 
         .routes-grid {
             display: grid;
@@ -105,7 +184,7 @@
         }
         .route-stats .high { color: #dc2626; }
         .route-stats .medium { color: #f59e0b; }
-        .route-stats .low { color: #10b981; }
+        .route-stats .low { color: #8b5cf6; }
 
         .route-flights {
             font-size: 0.75em;
@@ -184,6 +263,7 @@
 </head>
 <body>
     <div class="header">
+        <button class="date-filter-btn" onclick="openDateModal()">📅</button>
         <button class="lang-btn" onclick="toggleLang()">
             <span class="ar-text">EN</span>
             <span class="en-text">عربي</span>
@@ -200,16 +280,16 @@
     </div>
 
     <div class="stats-summary">
-        <div class="stat-box high">
-            <div class="value">2342</div>
+        <div class="stat-box high" onclick="filterFromHeader('high', this)">
+            <div class="value">🔴 2342<span class="checkmark">✓</span></div>
             <div class="label">HIGH</div>
         </div>
-        <div class="stat-box medium">
-            <div class="value">1807</div>
+        <div class="stat-box medium" onclick="filterFromHeader('medium', this)">
+            <div class="value">🟡 1807<span class="checkmark">✓</span></div>
             <div class="label">MEDIUM</div>
         </div>
-        <div class="stat-box low">
-            <div class="value">4462</div>
+        <div class="stat-box low" onclick="filterFromHeader('low', this)">
+            <div class="value">🟣 4462<span class="checkmark">✓</span></div>
             <div class="label">LOW</div>
         </div>
     </div>
@@ -232,7 +312,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 2</span>
-                <span class="low">🟢 4</span>
+                <span class="low">🟣 4</span>
             </div>
             <div class="route-flights">6 threats</div>
         </a>
@@ -241,7 +321,7 @@
             <div class="route-stats">
                 <span class="high">🔴 3</span>
                 <span class="medium">🟡 7</span>
-                <span class="low">🟢 23</span>
+                <span class="low">🟣 23</span>
             </div>
             <div class="route-flights">33 threats</div>
         </a>
@@ -250,7 +330,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 0</span>
-                <span class="low">🟢 2</span>
+                <span class="low">🟣 2</span>
             </div>
             <div class="route-flights">2 threats</div>
         </a>
@@ -259,7 +339,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 2</span>
-                <span class="low">🟢 2</span>
+                <span class="low">🟣 2</span>
             </div>
             <div class="route-flights">4 threats</div>
         </a>
@@ -268,7 +348,7 @@
             <div class="route-stats">
                 <span class="high">🔴 7</span>
                 <span class="medium">🟡 0</span>
-                <span class="low">🟢 1</span>
+                <span class="low">🟣 1</span>
             </div>
             <div class="route-flights">8 threats</div>
         </a>
@@ -277,7 +357,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 0</span>
-                <span class="low">🟢 2</span>
+                <span class="low">🟣 2</span>
             </div>
             <div class="route-flights">2 threats</div>
         </a>
@@ -286,7 +366,7 @@
             <div class="route-stats">
                 <span class="high">🔴 183</span>
                 <span class="medium">🟡 49</span>
-                <span class="low">🟢 150</span>
+                <span class="low">🟣 150</span>
             </div>
             <div class="route-flights">382 threats</div>
         </a>
@@ -295,7 +375,7 @@
             <div class="route-stats">
                 <span class="high">🔴 42</span>
                 <span class="medium">🟡 25</span>
-                <span class="low">🟢 88</span>
+                <span class="low">🟣 88</span>
             </div>
             <div class="route-flights">155 threats</div>
         </a>
@@ -304,7 +384,7 @@
             <div class="route-stats">
                 <span class="high">🔴 2</span>
                 <span class="medium">🟡 22</span>
-                <span class="low">🟢 68</span>
+                <span class="low">🟣 68</span>
             </div>
             <div class="route-flights">92 threats</div>
         </a>
@@ -313,7 +393,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 1</span>
-                <span class="low">🟢 9</span>
+                <span class="low">🟣 9</span>
             </div>
             <div class="route-flights">10 threats</div>
         </a>
@@ -322,7 +402,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 1</span>
-                <span class="low">🟢 10</span>
+                <span class="low">🟣 10</span>
             </div>
             <div class="route-flights">11 threats</div>
         </a>
@@ -331,7 +411,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 1</span>
-                <span class="low">🟢 5</span>
+                <span class="low">🟣 5</span>
             </div>
             <div class="route-flights">6 threats</div>
         </a>
@@ -340,7 +420,7 @@
             <div class="route-stats">
                 <span class="high">🔴 18</span>
                 <span class="medium">🟡 51</span>
-                <span class="low">🟢 106</span>
+                <span class="low">🟣 106</span>
             </div>
             <div class="route-flights">175 threats</div>
         </a>
@@ -349,7 +429,7 @@
             <div class="route-stats">
                 <span class="high">🔴 1</span>
                 <span class="medium">🟡 1</span>
-                <span class="low">🟢 20</span>
+                <span class="low">🟣 20</span>
             </div>
             <div class="route-flights">22 threats</div>
         </a>
@@ -358,7 +438,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 3</span>
-                <span class="low">🟢 18</span>
+                <span class="low">🟣 18</span>
             </div>
             <div class="route-flights">21 threats</div>
         </a>
@@ -367,7 +447,7 @@
             <div class="route-stats">
                 <span class="high">🔴 731</span>
                 <span class="medium">🟡 501</span>
-                <span class="low">🟢 610</span>
+                <span class="low">🟣 610</span>
             </div>
             <div class="route-flights">1842 threats</div>
         </a>
@@ -376,7 +456,7 @@
             <div class="route-stats">
                 <span class="high">🔴 43</span>
                 <span class="medium">🟡 7</span>
-                <span class="low">🟢 122</span>
+                <span class="low">🟣 122</span>
             </div>
             <div class="route-flights">172 threats</div>
         </a>
@@ -385,7 +465,7 @@
             <div class="route-stats">
                 <span class="high">🔴 62</span>
                 <span class="medium">🟡 192</span>
-                <span class="low">🟢 433</span>
+                <span class="low">🟣 433</span>
             </div>
             <div class="route-flights">687 threats</div>
         </a>
@@ -394,7 +474,7 @@
             <div class="route-stats">
                 <span class="high">🔴 3</span>
                 <span class="medium">🟡 10</span>
-                <span class="low">🟢 36</span>
+                <span class="low">🟣 36</span>
             </div>
             <div class="route-flights">49 threats</div>
         </a>
@@ -403,7 +483,7 @@
             <div class="route-stats">
                 <span class="high">🔴 4</span>
                 <span class="medium">🟡 2</span>
-                <span class="low">🟢 12</span>
+                <span class="low">🟣 12</span>
             </div>
             <div class="route-flights">18 threats</div>
         </a>
@@ -412,7 +492,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 5</span>
-                <span class="low">🟢 27</span>
+                <span class="low">🟣 27</span>
             </div>
             <div class="route-flights">32 threats</div>
         </a>
@@ -421,7 +501,7 @@
             <div class="route-stats">
                 <span class="high">🔴 55</span>
                 <span class="medium">🟡 65</span>
-                <span class="low">🟢 116</span>
+                <span class="low">🟣 116</span>
             </div>
             <div class="route-flights">236 threats</div>
         </a>
@@ -430,7 +510,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 0</span>
-                <span class="low">🟢 18</span>
+                <span class="low">🟣 18</span>
             </div>
             <div class="route-flights">18 threats</div>
         </a>
@@ -439,7 +519,7 @@
             <div class="route-stats">
                 <span class="high">🔴 6</span>
                 <span class="medium">🟡 15</span>
-                <span class="low">🟢 46</span>
+                <span class="low">🟣 46</span>
             </div>
             <div class="route-flights">67 threats</div>
         </a>
@@ -448,7 +528,7 @@
             <div class="route-stats">
                 <span class="high">🔴 2</span>
                 <span class="medium">🟡 3</span>
-                <span class="low">🟢 5</span>
+                <span class="low">🟣 5</span>
             </div>
             <div class="route-flights">10 threats</div>
         </a>
@@ -457,7 +537,7 @@
             <div class="route-stats">
                 <span class="high">🔴 250</span>
                 <span class="medium">🟡 71</span>
-                <span class="low">🟢 371</span>
+                <span class="low">🟣 371</span>
             </div>
             <div class="route-flights">692 threats</div>
         </a>
@@ -466,7 +546,7 @@
             <div class="route-stats">
                 <span class="high">🔴 24</span>
                 <span class="medium">🟡 36</span>
-                <span class="low">🟢 73</span>
+                <span class="low">🟣 73</span>
             </div>
             <div class="route-flights">133 threats</div>
         </a>
@@ -475,7 +555,7 @@
             <div class="route-stats">
                 <span class="high">🔴 106</span>
                 <span class="medium">🟡 26</span>
-                <span class="low">🟢 70</span>
+                <span class="low">🟣 70</span>
             </div>
             <div class="route-flights">202 threats</div>
         </a>
@@ -484,7 +564,7 @@
             <div class="route-stats">
                 <span class="high">🔴 190</span>
                 <span class="medium">🟡 177</span>
-                <span class="low">🟢 916</span>
+                <span class="low">🟣 916</span>
             </div>
             <div class="route-flights">1283 threats</div>
         </a>
@@ -493,7 +573,7 @@
             <div class="route-stats">
                 <span class="high">🔴 22</span>
                 <span class="medium">🟡 66</span>
-                <span class="low">🟢 123</span>
+                <span class="low">🟣 123</span>
             </div>
             <div class="route-flights">211 threats</div>
         </a>
@@ -502,7 +582,7 @@
             <div class="route-stats">
                 <span class="high">🔴 23</span>
                 <span class="medium">🟡 1</span>
-                <span class="low">🟢 26</span>
+                <span class="low">🟣 26</span>
             </div>
             <div class="route-flights">50 threats</div>
         </a>
@@ -511,7 +591,7 @@
             <div class="route-stats">
                 <span class="high">🔴 31</span>
                 <span class="medium">🟡 52</span>
-                <span class="low">🟢 62</span>
+                <span class="low">🟣 62</span>
             </div>
             <div class="route-flights">145 threats</div>
         </a>
@@ -520,7 +600,7 @@
             <div class="route-stats">
                 <span class="high">🔴 0</span>
                 <span class="medium">🟡 9</span>
-                <span class="low">🟢 24</span>
+                <span class="low">🟣 24</span>
             </div>
             <div class="route-flights">33 threats</div>
         </a>
@@ -529,7 +609,7 @@
             <div class="route-stats">
                 <span class="high">🔴 68</span>
                 <span class="medium">🟡 203</span>
-                <span class="low">🟢 233</span>
+                <span class="low">🟣 233</span>
             </div>
             <div class="route-flights">504 threats</div>
         </a>
@@ -538,7 +618,7 @@
             <div class="route-stats">
                 <span class="high">🔴 445</span>
                 <span class="medium">🟡 183</span>
-                <span class="low">🟢 572</span>
+                <span class="low">🟣 572</span>
             </div>
             <div class="route-flights">1200 threats</div>
         </a>
@@ -547,7 +627,7 @@
             <div class="route-stats">
                 <span class="high">🔴 2</span>
                 <span class="medium">🟡 2</span>
-                <span class="low">🟢 7</span>
+                <span class="low">🟣 7</span>
             </div>
             <div class="route-flights">11 threats</div>
         </a>
@@ -556,7 +636,7 @@
             <div class="route-stats">
                 <span class="high">🔴 15</span>
                 <span class="medium">🟡 14</span>
-                <span class="low">🟢 28</span>
+                <span class="low">🟣 28</span>
             </div>
             <div class="route-flights">57 threats</div>
         </a>
@@ -565,10 +645,37 @@
             <div class="route-stats">
                 <span class="high">🔴 4</span>
                 <span class="medium">🟡 2</span>
-                <span class="low">🟢 24</span>
+                <span class="low">🟣 24</span>
             </div>
             <div class="route-flights">30 threats</div>
         </a>
+    </div>
+
+    <!-- Date Filter Modal -->
+    <div class="date-modal" id="dateModal" onclick="if(event.target===this) closeDateModal()">
+        <div class="date-modal-content">
+            <h3>📅 Date Filter</h3>
+            <div class="quick-btns">
+                <button class="quick-btn" onclick="setQuickFilter(7)">7 Days</button>
+                <button class="quick-btn" onclick="setQuickFilter(14)">14 Days</button>
+                <button class="quick-btn" onclick="setQuickFilter(30)">30 Days</button>
+                <button class="quick-btn active" onclick="setQuickFilter(0)">All</button>
+            </div>
+            <div class="month-btns">
+                <button class="month-btn" onclick="setMonthFilter('DEC')">DEC</button>
+                <button class="month-btn" onclick="setMonthFilter('JAN')">JAN</button>
+                <button class="month-btn" onclick="setMonthFilter('FEB')">FEB</button>
+                <button class="month-btn" onclick="setMonthFilter('MAR')">MAR</button>
+            </div>
+            <div class="date-inputs">
+                <input type="date" id="dateFrom" placeholder="From">
+                <input type="date" id="dateTo" placeholder="To">
+            </div>
+            <div class="modal-btns">
+                <button class="modal-btn cancel" onclick="closeDateModal()">Cancel</button>
+                <button class="modal-btn apply" onclick="applyDateFilter()">Apply</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -619,7 +726,20 @@
                     matchDir = getDirection(card.dataset.route) === 'egy-ksa';
                 }
 
-                card.style.display = (matchSearch && matchDir) ? 'block' : 'none';
+                // Color filter
+                let matchColor = true;
+                if (typeof currentColorFilter !== 'undefined' && currentColorFilter !== 'all') {
+                    const statsEl = card.querySelector('.route-stats');
+                    if (statsEl) {
+                        const colorSpan = statsEl.querySelector('.' + currentColorFilter);
+                        if (colorSpan) {
+                            const count = parseInt(colorSpan.textContent.match(/\d+/)?.[0] || '0');
+                            matchColor = count > 0;
+                        }
+                    }
+                }
+
+                card.style.display = (matchSearch && matchDir && matchColor) ? 'block' : 'none';
             });
         }
 
@@ -640,6 +760,50 @@
         // Load saved language
         if (localStorage.getItem('airCairoLang') === 'en') {
             document.body.classList.add('en');
+        }
+
+        // Header stat filter
+        let currentColorFilter = 'all';
+        function filterFromHeader(level, el) {
+            const isActive = el.classList.contains('active');
+            document.querySelectorAll('.stat-box').forEach(s => s.classList.remove('active'));
+            if (isActive) {
+                currentColorFilter = 'all';
+            } else {
+                el.classList.add('active');
+                currentColorFilter = level;
+            }
+            filterRoutes();
+        }
+
+        // Date modal functions
+        function openDateModal() {
+            document.getElementById('dateModal').classList.add('show');
+        }
+
+        function closeDateModal() {
+            document.getElementById('dateModal').classList.remove('show');
+        }
+
+        function setQuickFilter(days) {
+            document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+            // Store the filter for use
+            localStorage.setItem('dateFilter', days ? days + 'd' : 'all');
+        }
+
+        function setMonthFilter(month) {
+            document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
+            localStorage.setItem('dateFilter', month);
+        }
+
+        function applyDateFilter() {
+            closeDateModal();
+            // Note: This is a route list page, date filtering happens inside route pages
+            alert('Date filter saved. It will apply when you open a route page.');
         }
     </script>
 </body>
