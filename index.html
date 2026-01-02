@@ -1662,7 +1662,7 @@
                 () => (flight.flight && flight.route && flight.capacity ? `${flight.flight} ${flight.route} BKD:${flight.booked || 0}/${flight.capacity}` : null),
 
                 // Format 13: Availability status
-                () => (flight.flight && flight.lowest_avail ? `${flight.flight} ${flight.lowest_avail === 'CLOSED' ? '🔴 CLOSED' : '🟢 ' + flight.lowest_avail}` : null),
+                () => (flight.flight && flight.lowest_avail ? `${flight.flight} ${flight.lowest_avail === 'CLOSED' ? '🔴 CLOSED' : '🟣 ' + flight.lowest_avail}` : null),
 
                 // Format 14: Short date format
                 () => {
