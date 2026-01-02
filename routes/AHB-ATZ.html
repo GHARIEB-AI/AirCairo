@@ -2068,7 +2068,50 @@
     </div></div>
     </div>
 
-    <!-- Scroll Controls -->
+    
+    <!-- Date Filter Modal -->
+    <div class="date-modal" id="dateModal">
+        <div class="date-modal-content">
+            <div class="date-modal-header">
+                <span class="date-modal-title">
+                    <span class="ar-text">📅 فلتر التاريخ</span>
+                    <span class="en-text">📅 Date Filter</span>
+                </span>
+                <button class="date-modal-close" onclick="closeDateModal()">×</button>
+            </div>
+            <div class="date-quick-btns">
+                <button class="date-quick-btn" onclick="filterDays(7)">
+                    <span class="ar-text">7 أيام</span>
+                    <span class="en-text">7 Days</span>
+                </button>
+                <button class="date-quick-btn" onclick="filterDays(14)">
+                    <span class="ar-text">14 يوم</span>
+                    <span class="en-text">14 Days</span>
+                </button>
+                <button class="date-quick-btn" onclick="filterDays(30)">
+                    <span class="ar-text">30 يوم</span>
+                    <span class="en-text">30 Days</span>
+                </button>
+                <button class="date-quick-btn" onclick="filterMonth('JAN')">JAN</button>
+                <button class="date-quick-btn" onclick="filterMonth('FEB')">FEB</button>
+                <button class="date-quick-btn" onclick="filterMonth('MAR')">MAR</button>
+            </div>
+            <div class="date-range-inputs">
+                <input type="date" id="dateFrom" placeholder="From">
+                <input type="date" id="dateTo" placeholder="To">
+            </div>
+            <button class="date-apply-btn" onclick="applyDateRange()">
+                <span class="ar-text">تطبيق</span>
+                <span class="en-text">Apply</span>
+            </button>
+            <button class="date-clear-btn" onclick="clearDateFilter()">
+                <span class="ar-text">مسح الفلتر</span>
+                <span class="en-text">Clear Filter</span>
+            </button>
+        </div>
+    </div>
+
+<!-- Scroll Controls -->
     <div class="scroll-controls">
         <button class="scroll-btn" id="scrollUp">⬆</button>
         <button class="scroll-btn" id="scrollDown">⬇</button>
@@ -2080,53 +2123,67 @@
     </div>
 
     <script>
-        // Scroll buttons: tap = jump, hold = slow scroll
+        // ==================== SCROLL BUTTONS ====================
+        // Tap = jump to top/bottom, Hold = slow scroll
         let holdTimer = null;
         let scrollInterval = null;
+        let isScrolling = false;
 
         function setupScrollButton(btn, direction) {
+            if (!btn) return;
+
             const jumpTo = direction === 'up' ? 0 : document.documentElement.scrollHeight;
-            const scrollAmount = direction === 'up' ? -200 : 200;
+            const scrollAmount = direction === 'up' ? -150 : 150;
 
             const startHandler = (e) => {
                 e.preventDefault();
+                isScrolling = false;
 
-                // Start slow scroll after 200ms (hold behavior)
+                // After 300ms of holding, start slow scroll
                 holdTimer = setTimeout(() => {
+                    isScrolling = true;
                     scrollInterval = setInterval(() => {
                         window.scrollBy({ top: scrollAmount, behavior: 'auto' });
-                    }, 100);
-                }, 200);
+                    }, 80);
+                }, 300);
             };
 
             const endHandler = (e) => {
                 e.preventDefault();
+                clearTimeout(holdTimer);
 
-                // If released before 200ms, it's a tap - jump to top/bottom
-                if (holdTimer) {
-                    clearTimeout(holdTimer);
-                    if (!scrollInterval) {
-                        window.scrollTo({ top: jumpTo, behavior: 'smooth' });
-                    }
+                // If NOT scrolling (released before 300ms), it's a TAP - jump
+                if (!isScrolling) {
+                    window.scrollTo({ top: jumpTo, behavior: 'smooth' });
                 }
+
                 if (scrollInterval) {
                     clearInterval(scrollInterval);
                     scrollInterval = null;
                 }
+                isScrolling = false;
                 holdTimer = null;
             };
 
+            // Remove old listeners first
+            btn.replaceWith(btn.cloneNode(true));
+            btn = document.getElementById(btn.id);
+
             btn.addEventListener('touchstart', startHandler, { passive: false });
             btn.addEventListener('touchend', endHandler);
+            btn.addEventListener('touchcancel', endHandler);
             btn.addEventListener('mousedown', startHandler);
             btn.addEventListener('mouseup', endHandler);
             btn.addEventListener('mouseleave', endHandler);
         }
 
-        setupScrollButton(document.getElementById('scrollUp'), 'up');
-        setupScrollButton(document.getElementById('scrollDown'), 'down');
+        // Initialize scroll buttons
+        const scrollUpBtn = document.getElementById('scrollUp');
+        const scrollDownBtn = document.getElementById('scrollDown');
+        if (scrollUpBtn) setupScrollButton(scrollUpBtn, 'up');
+        if (scrollDownBtn) setupScrollButton(scrollDownBtn, 'down');
 
-        // Position indicator
+        // ==================== POSITION INDICATOR ====================
         let ticking = false;
         function updatePositionIndicator() {
             if (!ticking) {
@@ -2135,101 +2192,243 @@
                     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
                     const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) : 0;
                     const bar = document.getElementById('positionBar');
-                    const barHeight = 20;
-                    const maxTop = 100 - barHeight;
-                    bar.style.height = barHeight + 'px';
-                    bar.style.top = (scrollPercent * maxTop) + 'px';
+                    if (bar) {
+                        const barHeight = 20;
+                        const maxTop = 100 - barHeight;
+                        bar.style.height = barHeight + 'px';
+                        bar.style.top = (scrollPercent * maxTop) + 'px';
+                    }
                     ticking = false;
                 });
                 ticking = true;
             }
         }
-
         window.addEventListener('scroll', updatePositionIndicator, { passive: true });
         updatePositionIndicator();
 
-        // Language toggle
+        // ==================== LANGUAGE TOGGLE ====================
         function toggleLang() {
             document.body.classList.toggle('en');
+            localStorage.setItem('airCairoLang', document.body.classList.contains('en') ? 'en' : 'ar');
         }
-    
-        // Date Filter Functions
+
+        // Load saved language on page load
+        if (localStorage.getItem('airCairoLang') === 'en') {
+            document.body.classList.add('en');
+        }
+
+        // ==================== DATE FILTER ====================
         function openDateModal() {
-            document.getElementById('dateModal').classList.add('show');
+            const modal = document.getElementById('dateModal');
+            if (modal) modal.classList.add('show');
         }
+
         function closeDateModal() {
-            document.getElementById('dateModal').classList.remove('show');
+            const modal = document.getElementById('dateModal');
+            if (modal) modal.classList.remove('show');
         }
 
         function filterDays(days) {
             const today = new Date();
-            const cards = document.querySelectorAll('[data-date]');
-            cards.forEach(card => {
-                const dateStr = card.dataset.date;
-                const cardDate = new Date(dateStr);
-                const diffDays = Math.ceil((cardDate - today) / (1000 * 60 * 60 * 24));
-                card.classList.toggle('hidden', diffDays < 0 || diffDays > days);
+            today.setHours(0, 0, 0, 0);
+
+            // Get all date sections (divs with data-date)
+            const dateSections = document.querySelectorAll('[data-date]');
+
+            dateSections.forEach(section => {
+                const dateStr = section.dataset.date;
+                const sectionDate = new Date(dateStr);
+                sectionDate.setHours(0, 0, 0, 0);
+
+                const diffDays = Math.ceil((sectionDate - today) / (1000 * 60 * 60 * 24));
+                const shouldHide = diffDays < 0 || diffDays > days;
+
+                section.classList.toggle('hidden', shouldHide);
             });
+
             closeDateModal();
-            updateVisibleCount();
+            updateFilteredStats();
+            highlightActiveDateBtn(days + ' days');
         }
 
         function filterMonth(month) {
-            const monthMap = {'JAN': '01', 'FEB': '02', 'MAR': '03'};
+            const monthMap = {
+                'JAN': '01', 'FEB': '02', 'MAR': '03', 'APR': '04',
+                'MAY': '05', 'JUN': '06', 'JUL': '07', 'AUG': '08',
+                'SEP': '09', 'OCT': '10', 'NOV': '11', 'DEC': '12'
+            };
             const monthNum = monthMap[month];
-            const cards = document.querySelectorAll('[data-date]');
-            cards.forEach(card => {
-                const dateStr = card.dataset.date;
-                const cardMonth = dateStr.split('-')[1];
-                card.classList.toggle('hidden', cardMonth !== monthNum);
+
+            const dateSections = document.querySelectorAll('[data-date]');
+
+            dateSections.forEach(section => {
+                const dateStr = section.dataset.date;
+                // dateStr format: "2026-01-02"
+                const parts = dateStr.split('-');
+                const sectionMonth = parts[1];
+
+                section.classList.toggle('hidden', sectionMonth !== monthNum);
             });
+
             closeDateModal();
-            updateVisibleCount();
+            updateFilteredStats();
+            highlightActiveDateBtn(month);
         }
 
         function applyDateRange() {
-            const from = document.getElementById('dateFrom').value;
-            const to = document.getElementById('dateTo').value;
-            if (!from || !to) return;
+            const fromInput = document.getElementById('dateFrom');
+            const toInput = document.getElementById('dateTo');
+            if (!fromInput || !toInput) return;
+
+            const from = fromInput.value;
+            const to = toInput.value;
+            if (!from || !to) {
+                alert('Please select both From and To dates');
+                return;
+            }
 
             const fromDate = new Date(from);
             const toDate = new Date(to);
-            const cards = document.querySelectorAll('[data-date]');
-            cards.forEach(card => {
-                const cardDate = new Date(card.dataset.date);
-                card.classList.toggle('hidden', cardDate < fromDate || cardDate > toDate);
+            fromDate.setHours(0, 0, 0, 0);
+            toDate.setHours(23, 59, 59, 999);
+
+            const dateSections = document.querySelectorAll('[data-date]');
+
+            dateSections.forEach(section => {
+                const sectionDate = new Date(section.dataset.date);
+                const shouldHide = sectionDate < fromDate || sectionDate > toDate;
+                section.classList.toggle('hidden', shouldHide);
             });
+
             closeDateModal();
-            updateVisibleCount();
+            updateFilteredStats();
+            highlightActiveDateBtn('custom');
         }
 
         function clearDateFilter() {
-            document.querySelectorAll('[data-date]').forEach(card => {
-                card.classList.remove('hidden');
+            document.querySelectorAll('[data-date]').forEach(section => {
+                section.classList.remove('hidden');
             });
-            document.getElementById('dateFrom').value = '';
-            document.getElementById('dateTo').value = '';
+
+            const fromInput = document.getElementById('dateFrom');
+            const toInput = document.getElementById('dateTo');
+            if (fromInput) fromInput.value = '';
+            if (toInput) toInput.value = '';
+
             closeDateModal();
-            updateVisibleCount();
+            updateFilteredStats();
+
+            // Clear all active states
+            document.querySelectorAll('.date-quick-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
         }
 
-        function updateVisibleCount() {
-            const visible = document.querySelectorAll('.threat-card:not(.hidden)').length;
-            const total = document.querySelectorAll('.threat-card').length;
-            // Update stats if needed
+        function highlightActiveDateBtn(filter) {
+            document.querySelectorAll('.date-quick-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(filter.toLowerCase())) {
+                    btn.classList.add('active');
+                }
+            });
         }
 
-        // Language toggle
-        function toggleLang() {
-            document.body.classList.toggle('en');
-            localStorage.setItem('lang', document.body.classList.contains('en') ? 'en' : 'ar');
+        // ==================== COLOR/THREAT LEVEL FILTER ====================
+        let activeColorFilter = 'all';
+
+        function filterByColor(level) {
+            activeColorFilter = level;
+            const dateSections = document.querySelectorAll('[data-date]');
+
+            dateSections.forEach(section => {
+                const cards = section.querySelectorAll('.threat-card');
+                let hasVisibleCard = false;
+
+                cards.forEach(card => {
+                    if (level === 'all') {
+                        card.classList.remove('hidden');
+                        hasVisibleCard = true;
+                    } else {
+                        const isMatch = card.classList.contains(level);
+                        card.classList.toggle('hidden', !isMatch);
+                        if (isMatch) hasVisibleCard = true;
+                    }
+                });
+
+                // Hide entire date section if no visible cards
+                if (level !== 'all') {
+                    section.classList.toggle('hidden', !hasVisibleCard);
+                }
+            });
+
+            updateFilteredStats();
+            highlightActiveColorBtn(level);
         }
 
-        // Load saved language
-        if (localStorage.getItem('lang') === 'en') {
-            document.body.classList.add('en');
+        function highlightActiveColorBtn(level) {
+            document.querySelectorAll('.stat-item').forEach(item => {
+                item.classList.remove('active');
+                if (level === 'all') return;
+                if (item.classList.contains(level)) {
+                    item.classList.add('active');
+                }
+            });
         }
 
+        // ==================== STATS UPDATE ====================
+        function updateFilteredStats() {
+            const visibleCards = document.querySelectorAll('.threat-card:not(.hidden)');
+            const visibleSections = document.querySelectorAll('[data-date]:not(.hidden)');
+
+            let highCount = 0, mediumCount = 0, lowCount = 0;
+
+            visibleCards.forEach(card => {
+                if (card.classList.contains('high')) highCount++;
+                else if (card.classList.contains('medium')) mediumCount++;
+                else if (card.classList.contains('low')) lowCount++;
+            });
+
+            // Update header stats if they exist
+            const headerStats = document.querySelector('.header-stats');
+            if (headerStats) {
+                const highStat = headerStats.querySelector('.high');
+                const mediumStat = headerStats.querySelector('.medium');
+                const lowStat = headerStats.querySelector('.low');
+
+                if (highStat) highStat.innerHTML = '🔴 ' + highCount + ' High';
+                if (mediumStat) mediumStat.innerHTML = '🟡 ' + mediumCount + ' Medium';
+                if (lowStat) lowStat.innerHTML = '🟢 ' + lowCount + ' Low';
+            }
+        }
+
+        // ==================== STATS BAR CLICK FILTERS ====================
+        document.querySelectorAll('.stat-item').forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('click', function() {
+                if (this.classList.contains('high')) {
+                    filterByColor(activeColorFilter === 'high' ? 'all' : 'high');
+                } else if (this.classList.contains('medium')) {
+                    filterByColor(activeColorFilter === 'medium' ? 'all' : 'medium');
+                } else if (this.classList.contains('low')) {
+                    filterByColor(activeColorFilter === 'low' ? 'all' : 'low');
+                }
+            });
+        });
+
+        // ==================== CLOSE MODAL ON OUTSIDE CLICK ====================
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('dateModal');
+            if (modal && e.target === modal) {
+                closeDateModal();
+            }
+        });
+
+        // ==================== KEYBOARD SHORTCUTS ====================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeDateModal();
+            }
+        });
     </script>
 </body>
 </html>

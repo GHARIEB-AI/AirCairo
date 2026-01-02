@@ -16,6 +16,7 @@
         }
 
         .header {
+            position: relative;
             background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
             padding: 20px 15px;
             text-align: center;
@@ -160,10 +161,33 @@
             background: #462B73;
             color: white;
         }
+    
+        .lang-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.85em;
+            cursor: pointer;
+        }
+        body.en { direction: ltr; }
+        .ar-text { display: inline; }
+        .en-text { display: none; }
+        body.en .ar-text { display: none; }
+        body.en .en-text { display: inline; }
+
     </style>
 </head>
 <body>
     <div class="header">
+        <button class="lang-btn" onclick="toggleLang()">
+            <span class="ar-text">EN</span>
+            <span class="en-text">عربي</span>
+        </button>
         <h1>🛫 Threat Alert Report</h1>
         <div class="subtitle">17 DEC 2025 - 31 MAR 2026</div>
         <div class="subtitle" style="margin-top:5px; font-size:0.8em;">Generated: 2026-01-02 06:04</div>
@@ -548,6 +572,7 @@
     </div>
 
     <script>
+        // City lists for direction filtering
         const ksaCities = ['JED', 'RUH', 'DMM', 'MED', 'AHB', 'TUU', 'GIZ', 'AJF', 'ELQ', 'YNB'];
         const egyCities = ['CAI', 'HBE', 'ATZ', 'LXR', 'ASW', 'SSH'];
 
@@ -558,39 +583,62 @@
             return 'other';
         }
 
+        // Search handling
         function handleSearch() {
             const input = document.getElementById('searchInput');
             const clearBtn = document.getElementById('searchClear');
-            clearBtn.classList.toggle('show', input.value.length > 0);
+            if (clearBtn) clearBtn.classList.toggle('show', input.value.length > 0);
             filterRoutes();
         }
 
         function clearSearch() {
             const input = document.getElementById('searchInput');
             input.value = '';
-            document.getElementById('searchClear').classList.remove('show');
+            const clearBtn = document.getElementById('searchClear');
+            if (clearBtn) clearBtn.classList.remove('show');
             filterRoutes();
             input.focus();
         }
 
+        // Main filter function
         function filterRoutes() {
-            const search = document.getElementById('searchInput').value.toUpperCase();
+            const searchInput = document.getElementById('searchInput');
+            const search = searchInput ? searchInput.value.toUpperCase() : '';
             const cards = document.querySelectorAll('.route-card');
+            const activeBtn = document.querySelector('.direction-btn.active');
+            const currentDir = activeBtn ? activeBtn.dataset.dir || activeBtn.textContent : 'all';
+
             cards.forEach(card => {
                 const route = card.dataset.route.toUpperCase();
-                const matchSearch = route.includes(search);
-                const currentDir = document.querySelector('.direction-btn.active').textContent;
+                const matchSearch = !search || route.includes(search);
+
                 let matchDir = true;
-                if (currentDir.includes('KSA')) matchDir = getDirection(card.dataset.route) === 'ksa-egy';
-                else if (currentDir.includes('EGY')) matchDir = getDirection(card.dataset.route) === 'egy-ksa';
+                if (currentDir.includes('ksa-egy') || currentDir.includes('KSA')) {
+                    matchDir = getDirection(card.dataset.route) === 'ksa-egy';
+                } else if (currentDir.includes('egy-ksa') || currentDir.includes('EGY')) {
+                    matchDir = getDirection(card.dataset.route) === 'egy-ksa';
+                }
+
                 card.style.display = (matchSearch && matchDir) ? 'block' : 'none';
             });
         }
 
+        // Direction filter buttons
         function filterDirection(dir, btn) {
             document.querySelectorAll('.direction-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             filterRoutes();
+        }
+
+        // Language toggle
+        function toggleLang() {
+            document.body.classList.toggle('en');
+            localStorage.setItem('airCairoLang', document.body.classList.contains('en') ? 'en' : 'ar');
+        }
+
+        // Load saved language
+        if (localStorage.getItem('airCairoLang') === 'en') {
+            document.body.classList.add('en');
         }
     </script>
 </body>
