@@ -11,9 +11,10 @@
     (function() {
         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
                        || window.innerWidth <= 768;
-        if (!isMobile && window.location.pathname.indexOf('mobile') !== -1) {
+        if (!isMobile && window.location.pathname.indexOf('_mobile') !== -1) {
             var currentUrl = window.location.href;
-            var desktopUrl = currentUrl.replace('mobile.html', 'report.html').replace('_mobile.html', '.html');
+            // Redirect from _mobile.html to .html version
+            var desktopUrl = currentUrl.replace('_mobile.html', '.html');
             window.location.replace(desktopUrl);
         }
     })();
@@ -74099,15 +74100,15 @@
 
     <!-- Pages Navigation -->
     <div class="pages-nav">
-        <a href="dashboard_mobile.html">
+        <a href="../online_mobile_dashboard.html">
             <span class="nav-icon">🌐</span>
             <span>Dashboard</span>
         </a>
-        <a href="mobile.html" class="active">
-            <span class="nav-icon">📊</span>
-            <span>Report</span>
+        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" style="background: #0078D4;">
+            <span class="nav-icon">☁️</span>
+            <span>OneDrive</span>
         </a>
-        <a href="archive/">
+        <a href="./">
             <span class="nav-icon">📁</span>
             <span>Archive</span>
         </a>

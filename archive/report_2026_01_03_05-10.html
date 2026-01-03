@@ -9,14 +9,10 @@
     (function() {
         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
                        || window.innerWidth <= 768;
-        if (isMobile && window.location.pathname.indexOf('mobile') === -1) {
+        if (isMobile && window.location.pathname.indexOf('_mobile') === -1) {
             var currentUrl = window.location.href;
-            var mobileUrl = currentUrl.replace('index.html', 'mobile.html').replace(/\/$/, '') + '/mobile.html';
-            if (currentUrl.indexOf('.html') === -1) {
-                mobileUrl = currentUrl.replace(/\/?$/, '/mobile.html');
-            } else {
-                mobileUrl = currentUrl.replace(/[^/]+\.html$/, 'mobile.html');
-            }
+            // Redirect to _mobile.html version for archive reports
+            var mobileUrl = currentUrl.replace('.html', '_mobile.html');
             window.location.replace(mobileUrl);
         }
     })();
