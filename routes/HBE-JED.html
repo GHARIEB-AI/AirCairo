@@ -65,7 +65,7 @@
         }
 
         .header .subtitle {
-            color: #ffffff;
+            color: rgba(255,255,255,0.8);
             font-size: 0.85em;
         }
 
@@ -83,7 +83,7 @@
             display: flex;
             justify-content: space-around;
             padding: 15px 10px;
-            background: rgba(70, 43, 115, 0.2);
+            background: rgba(70, 43, 115, 0.1);
         }
 
         .stat-item {
@@ -99,7 +99,7 @@
         .stat-item.active { background: rgba(70, 43, 115, 0.15); }
         .stat-item.high { border-bottom: 3px solid #e74c3c; }
         .stat-item.medium { border-bottom: 3px solid #F7941D; }
-        .stat-item.low { border-bottom: 3px solid #6b5b7a; }
+        .stat-item.low { border-bottom: 3px solid #0000E6; }
 
         .stat-count {
             font-size: 1.8em;
@@ -165,7 +165,7 @@
         .lf-details {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            gap: 8px;
             padding: 10px 15px;
             background: rgba(70, 43, 115, 0.03);
             border-bottom: 1px solid rgba(70, 43, 115, 0.1);
@@ -196,7 +196,7 @@
             border-radius: 10px;
             padding: 12px;
             margin-bottom: 10px;
-            border-left: 4px solid #6b5b7a;
+            border-left: 4px solid #0000E6;
         }
 
         .threat-card.high { border-left-color: #e74c3c; background: linear-gradient(135deg, #fff5f5 0%, #fff 100%); }
@@ -318,14 +318,14 @@
         }
 
         .alert-banner.low {
-            background: linear-gradient(135deg, #6b5b7a 0%, #5a4a69 100%);
+            background: linear-gradient(135deg, #0000E6 0%, #3333FF 100%);
             color: white;
         }
 
         .scroll-nav {
             position: fixed;
             right: 15px;
-            bottom: 140px;
+            bottom: 100px;
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -333,26 +333,21 @@
         }
 
         .scroll-btn {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             border: 2px solid rgba(247, 148, 29, 0.15);
             background: rgba(70, 43, 115, 0.15);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: rgba(255, 255, 255, 0.5);
             font-size: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: all 0.2s ease;
-        }
-
-        .scroll-btn svg {
-            width: 22px;
-            height: 22px;
         }
 
         .scroll-btn:active, .scroll-btn.pressed {
@@ -362,9 +357,10 @@
             transform: scale(0.95);
         }
 
-        
-            width: 22px;
-            height: 22px;
+        .scroll-btn svg {
+            width: 24px;
+            height: 24px;
+        }
 
         .pages-nav {
             position: fixed;
@@ -374,9 +370,9 @@
             background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
             display: flex;
             justify-content: space-around;
-            padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+            padding: 10px 0 max(10px, env(safe-area-inset-bottom));
             z-index: 100;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
 
         .pages-nav a {
@@ -385,32 +381,22 @@
             align-items: center;
             text-decoration: none;
             color: #ffffff;
-            font-size: 11px;
-            font-weight: 500;
-            padding: 8px 20px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            transition: all 0.2s;
-        }
-
-        .pages-nav a:hover, .pages-nav a:active {
-            background: rgba(247, 148, 29, 0.8);
-            color: #F7941D;
+            font-size: 10px;
+            padding: 5px 15px;
         }
 
         .pages-nav a.active {
-            background: #F7941D;
-            color: #fff;
+            color: #F7941D;
         }
 
         .nav-icon {
-            font-size: 22px;
-            margin-bottom: 4px;
+            font-size: 20px;
+            margin-bottom: 3px;
         }
 
         .bottom-nav {
             position: fixed;
-            bottom: 0;
+            bottom: 60px;
             left: 0;
             right: 0;
             background: white;
@@ -442,7 +428,7 @@
             transform: translateY(-50%);
             width: 4px;
             height: 100px;
-            background: rgba(70, 43, 115, 0.2);
+            background: rgba(70, 43, 115, 0.1);
             border-radius: 2px;
             z-index: 98;
         }
@@ -482,36 +468,9 @@
             height: 1px;
             margin-top: -1px;
         }
-    
-        /* Threat Level Color Overlay */
-        .threat-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .threat-overlay.active {
-            opacity: 1;
-        }
-        .threat-overlay.high {
-            background: radial-gradient(ellipse at center, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.05) 70%, transparent 100%);
-        }
-        .threat-overlay.medium {
-            background: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 70%, transparent 100%);
-        }
-        .threat-overlay.low {
-            background: radial-gradient(ellipse at center, rgba(40, 167, 69, 0.15) 0%, rgba(40, 167, 69, 0.05) 70%, transparent 100%);
-        }
-
     </style>
 </head>
 <body class="en">
-    <div id="threatOverlay" class="threat-overlay"></div>
     <header class="header">
         <button class="back-btn" onclick="history.back()">←</button>
         <div class="header-content">
@@ -546,23 +505,17 @@
     </div>
 
     <div class="content" id="content">
-        <div data-date="2026-01-05">
-    <div class="date-header">
-        05 JANUARY 2026 MONDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-451</span>
-            <span class="lf-badge lf-high">LF: 93%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">164</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">177</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">8</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">1</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">11:00</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">T1</div></div></div>
-        <div class="threats-container">
+        
+            <div class="date-section" data-date="2026-01-05">
+                <div class="date-header">
+                    <span class="ar-text">05 يناير 2026 الاثنين</span>
+                    <span class="en-text">05 JANUARY 2026 MONDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">05JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">05JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">05 يناير 2026 الاثنين &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">05 JANUARY 2026 MONDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -575,7 +528,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7390 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7390 جنيه مصري</span>
+                            <span class="en-text">7390 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -600,17 +556,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">E5-361 (بديل) CAI-JED</span>
-                    <span class="en-text">E5-361 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">E5-361 (بديل)</span>
+                    <span class="en-text">E5-361 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">00:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">4814 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">4814 جنيه مصري</span>
+                            <span class="en-text">4814 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -629,11 +588,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
                 <span class="en-text">Air leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 2576 EGP بنفس الوزن</span>
+                <span class="ar-text">العربية للطيران أرخص بـ 2576 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Air cheaper by 2576 EGP, same baggage</span>
             </div>
         </div>
@@ -645,26 +604,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-06">
-    <div class="date-header">
-        06 JANUARY 2026 TUESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-451</span>
-            <span class="lf-badge lf-high">LF: 92%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">165</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">13</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">3</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">12:30</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">W8</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-06">
+                <div class="date-header">
+                    <span class="ar-text">06 يناير 2026 الثلاثاء</span>
+                    <span class="en-text">06 JANUARY 2026 TUESDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">06JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">06JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">06 يناير 2026 الثلاثاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">06 JANUARY 2026 TUESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -677,7 +627,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8090 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8090 جنيه مصري</span>
+                            <span class="en-text">8090 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -702,17 +655,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">NE-170 (بديل) CAI-JED</span>
-                    <span class="en-text">NE-170 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">NE-170 (بديل)</span>
+                    <span class="en-text">NE-170 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">02:25</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">4973 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">4973 جنيه مصري</span>
+                            <span class="en-text">4973 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -731,11 +687,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 3117 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 3117 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 3117 EGP, same baggage</span>
             </div>
         </div>
@@ -750,8 +706,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">06JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">06JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">06 يناير 2026 الثلاثاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">06 JANUARY 2026 TUESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -764,7 +720,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8090 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8090 جنيه مصري</span>
+                            <span class="en-text">8090 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -789,17 +748,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">NE-172 (بديل) CAI-JED</span>
-                    <span class="en-text">NE-172 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">NE-172 (بديل)</span>
+                    <span class="en-text">NE-172 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">06:30</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">4973 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">4973 جنيه مصري</span>
+                            <span class="en-text">4973 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -818,11 +780,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 3117 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 3117 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 3117 EGP, same baggage</span>
             </div>
         </div>
@@ -834,26 +796,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-07">
-    <div class="date-header">
-        07 JANUARY 2026 WEDNESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-451</span>
-            <span class="lf-badge lf-high">LF: 89%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">161</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">180</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">5</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">29Dec</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">03:30</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">S7</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-07">
+                <div class="date-header">
+                    <span class="ar-text">07 يناير 2026 الأربعاء</span>
+                    <span class="en-text">07 JANUARY 2026 WEDNESDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -866,7 +819,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8853 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8853 جنيه مصري</span>
+                            <span class="en-text">8853 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -891,17 +847,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">E5-327 (بديل) CAI-JED</span>
-                    <span class="en-text">E5-327 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">E5-327 (بديل)</span>
+                    <span class="en-text">E5-327 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">05:25</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">5432 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">5432 جنيه مصري</span>
+                            <span class="en-text">5432 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -920,11 +879,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
                 <span class="en-text">Air leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 3421 EGP بنفس الوزن</span>
+                <span class="ar-text">العربية للطيران أرخص بـ 3421 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Air cheaper by 3421 EGP, same baggage</span>
             </div>
         </div>
@@ -939,8 +898,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -953,7 +912,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8853 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8853 جنيه مصري</span>
+                            <span class="en-text">8853 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -978,17 +940,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">NP-127 (بديل) CAI-JED</span>
-                    <span class="en-text">NP-127 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">NP-127 (بديل)</span>
+                    <span class="en-text">NP-127 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">11:50</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">5838 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">5838 جنيه مصري</span>
+                            <span class="en-text">5838 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1007,11 +972,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
                 <span class="en-text">Nile leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 3015 EGP بنفس الوزن</span>
+                <span class="ar-text">طيران النيل أرخص بـ 3015 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nile cheaper by 3015 EGP, same baggage</span>
             </div>
         </div>
@@ -1026,8 +991,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1040,7 +1005,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8853 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8853 جنيه مصري</span>
+                            <span class="en-text">8853 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1065,17 +1033,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">NE-174 (بديل) CAI-JED</span>
-                    <span class="en-text">NE-174 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">NE-174 (بديل)</span>
+                    <span class="en-text">NE-174 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">19:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6093 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6093 جنيه مصري</span>
+                            <span class="en-text">6093 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1094,11 +1065,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 2760 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 2760 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 2760 EGP, same baggage</span>
             </div>
         </div>
@@ -1113,8 +1084,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1127,7 +1098,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8853 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8853 جنيه مصري</span>
+                            <span class="en-text">8853 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1152,17 +1126,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">NE-172 (بديل) CAI-JED</span>
-                    <span class="en-text">NE-172 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">NE-172 (بديل)</span>
+                    <span class="en-text">NE-172 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">16:30</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6093 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6093 جنيه مصري</span>
+                            <span class="en-text">6093 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1181,11 +1158,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 2760 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 2760 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 2760 EGP, same baggage</span>
             </div>
         </div>
@@ -1200,8 +1177,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1214,7 +1191,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8853 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8853 جنيه مصري</span>
+                            <span class="en-text">8853 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1239,17 +1219,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-663 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-663 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-663 (بديل)</span>
+                    <span class="en-text">MS-663 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">23:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6729 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6729 جنيه مصري</span>
+                            <span class="en-text">6729 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1272,7 +1255,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 2124 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 2124 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 2124 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -1287,8 +1270,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1301,7 +1284,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8853 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8853 جنيه مصري</span>
+                            <span class="en-text">8853 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1326,17 +1312,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-673 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-673 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-673 (بديل)</span>
+                    <span class="en-text">MS-673 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">01:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7428 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7428 جنيه مصري</span>
+                            <span class="en-text">7428 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1359,7 +1348,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 1425 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 1425 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 1425 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -1374,8 +1363,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1388,7 +1377,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8853 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8853 جنيه مصري</span>
+                            <span class="en-text">8853 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1413,17 +1405,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-665 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-665 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-665 (بديل)</span>
+                    <span class="en-text">MS-665 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">02:30</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7428 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7428 جنيه مصري</span>
+                            <span class="en-text">7428 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1446,7 +1441,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 1425 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 1425 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 1425 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -1461,8 +1456,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1475,7 +1470,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8853 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8853 جنيه مصري</span>
+                            <span class="en-text">8853 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1500,17 +1498,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-669 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-669 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-669 (بديل)</span>
+                    <span class="en-text">MS-669 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">18:50</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7428 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7428 جنيه مصري</span>
+                            <span class="en-text">7428 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1533,7 +1534,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 1425 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 1425 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 1425 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -1548,8 +1549,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1562,7 +1563,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8853 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8853 جنيه مصري</span>
+                            <span class="en-text">8853 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1587,17 +1591,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-643 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-643 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-643 (بديل)</span>
+                    <span class="en-text">MS-643 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">20:05</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7530 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7530 جنيه مصري</span>
+                            <span class="en-text">7530 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1620,7 +1627,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 1323 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 1323 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 1323 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -1632,26 +1639,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-09">
-    <div class="date-header">
-        09 JANUARY 2026 FRIDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-451</span>
-            <span class="lf-badge lf-low">LF: 43%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">76</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">176</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">19</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">3</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">05:30</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">T9</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-09">
+                <div class="date-header">
+                    <span class="ar-text">09 يناير 2026 الجمعة</span>
+                    <span class="en-text">09 JANUARY 2026 FRIDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">09 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">09 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1664,7 +1662,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7390 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7390 جنيه مصري</span>
+                            <span class="en-text">7390 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1689,17 +1690,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-673 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-673 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-673 (بديل)</span>
+                    <span class="en-text">MS-673 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">01:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6729 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6729 جنيه مصري</span>
+                            <span class="en-text">6729 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1722,7 +1726,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 661 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 661 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 661 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -1737,8 +1741,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">09 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">09 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1751,7 +1755,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7390 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7390 جنيه مصري</span>
+                            <span class="en-text">7390 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1776,17 +1783,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-665 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-665 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-665 (بديل)</span>
+                    <span class="en-text">MS-665 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">02:30</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6729 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6729 جنيه مصري</span>
+                            <span class="en-text">6729 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1809,7 +1819,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 661 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 661 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 661 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -1824,8 +1834,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">09 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">09 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1838,7 +1848,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7390 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7390 جنيه مصري</span>
+                            <span class="en-text">7390 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1863,17 +1876,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-663 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-663 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-663 (بديل)</span>
+                    <span class="en-text">MS-663 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">23:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6729 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6729 جنيه مصري</span>
+                            <span class="en-text">6729 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1896,7 +1912,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 661 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 661 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 661 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -1911,8 +1927,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">09 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">09 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1925,7 +1941,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7390 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7390 جنيه مصري</span>
+                            <span class="en-text">7390 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1950,17 +1969,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-669 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-669 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-669 (بديل)</span>
+                    <span class="en-text">MS-669 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">19:15</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6729 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6729 جنيه مصري</span>
+                            <span class="en-text">6729 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1983,7 +2005,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 661 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 661 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 661 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -1998,8 +2020,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">09JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">09 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">09 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2012,7 +2034,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7390 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7390 جنيه مصري</span>
+                            <span class="en-text">7390 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2037,17 +2062,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-643 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-643 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-643 (بديل)</span>
+                    <span class="en-text">MS-643 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">20:05</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6830 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6830 جنيه مصري</span>
+                            <span class="en-text">6830 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2070,7 +2098,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 560 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 560 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 560 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -2082,635 +2110,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-10">
-    <div class="date-header">
-        10 JANUARY 2026 SATURDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-451</span>
-            <span class="lf-badge lf-high">LF: 88%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">154</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">176</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">1</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">28Dec</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">14:30</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">G2</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-10">
+                <div class="date-header">
+                    <span class="ar-text">10 يناير 2026 السبت</span>
+                    <span class="en-text">10 JANUARY 2026 SATURDAY</span>
+                </div>
             
-    <div class="threat-card low alternative">
-        <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block">
-                <div class="flight-block-title">SM-451</div>
-                <div class="flight-dep-time">14:30</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">9629 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="vs-between">
-                <div class="vs-pill">
-                    <span class="ar-text">ضد</span>
-                    <span class="en-text">VS</span>
-                </div>
-            </div>
-
-            <div class="flight-block">
-                <div class="flight-block-title">
-                    <span class="ar-text">E5-361 (بديل) CAI-JED</span>
-                    <span class="en-text">E5-361 (ALTERNATIVE) CAI-JED</span>
-                </div>
-                <div class="flight-dep-time">01:20</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">5123 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comparison-summary threat">
-            <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
-                <span class="en-text">Air leads overall</span>
-            </div>
-            <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 4506 EGP بنفس الوزن</span>
-                <span class="en-text">Air cheaper by 4506 EGP, same baggage</span>
-            </div>
-        </div>
-
-        <div class="alert-banner low">
-            <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
-                <span class="en-text">LOW THREAT</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card low alternative">
-        <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block">
-                <div class="flight-block-title">SM-451</div>
-                <div class="flight-dep-time">14:30</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">9629 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="vs-between">
-                <div class="vs-pill">
-                    <span class="ar-text">ضد</span>
-                    <span class="en-text">VS</span>
-                </div>
-            </div>
-
-            <div class="flight-block">
-                <div class="flight-block-title">
-                    <span class="ar-text">E5-327 (بديل) CAI-JED</span>
-                    <span class="en-text">E5-327 (ALTERNATIVE) CAI-JED</span>
-                </div>
-                <div class="flight-dep-time">04:05</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">5456 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comparison-summary threat">
-            <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
-                <span class="en-text">Air leads overall</span>
-            </div>
-            <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 4173 EGP بنفس الوزن</span>
-                <span class="en-text">Air cheaper by 4173 EGP, same baggage</span>
-            </div>
-        </div>
-
-        <div class="alert-banner low">
-            <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
-                <span class="en-text">LOW THREAT</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card low alternative">
-        <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block">
-                <div class="flight-block-title">SM-451</div>
-                <div class="flight-dep-time">14:30</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">9629 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="vs-between">
-                <div class="vs-pill">
-                    <span class="ar-text">ضد</span>
-                    <span class="en-text">VS</span>
-                </div>
-            </div>
-
-            <div class="flight-block">
-                <div class="flight-block-title">
-                    <span class="ar-text">NP-127 (بديل) CAI-JED</span>
-                    <span class="en-text">NP-127 (ALTERNATIVE) CAI-JED</span>
-                </div>
-                <div class="flight-dep-time">11:50</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">5838 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comparison-summary threat">
-            <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
-                <span class="en-text">Nile leads overall</span>
-            </div>
-            <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 3791 EGP بنفس الوزن</span>
-                <span class="en-text">Nile cheaper by 3791 EGP, same baggage</span>
-            </div>
-        </div>
-
-        <div class="alert-banner low">
-            <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
-                <span class="en-text">LOW THREAT</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card medium alternative">
-        <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block">
-                <div class="flight-block-title">SM-451</div>
-                <div class="flight-dep-time">14:30</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">9629 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="vs-between">
-                <div class="vs-pill">
-                    <span class="ar-text">ضد</span>
-                    <span class="en-text">VS</span>
-                </div>
-            </div>
-
-            <div class="flight-block">
-                <div class="flight-block-title">
-                    <span class="ar-text">MS-673 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-673 (ALTERNATIVE) CAI-JED</span>
-                </div>
-                <div class="flight-dep-time">01:10</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">6729 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
-                            <span class="en-text">46K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comparison-summary threat">
-            <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
-                <span class="en-text">EgyptAir leads overall</span>
-            </div>
-            <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 2900 EGP ووزنه أعلى بـ 16 كجم</span>
-                <span class="en-text">EgyptAir cheaper by 2900 EGP with 16K more baggage</span>
-            </div>
-        </div>
-
-        <div class="alert-banner medium">
-            <div class="alert-text">
-                <span class="ar-text">تهديد متوسط - راقب</span>
-                <span class="en-text">MEDIUM THREAT - MONITOR</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card medium alternative">
-        <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block">
-                <div class="flight-block-title">SM-451</div>
-                <div class="flight-dep-time">14:30</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">9629 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="vs-between">
-                <div class="vs-pill">
-                    <span class="ar-text">ضد</span>
-                    <span class="en-text">VS</span>
-                </div>
-            </div>
-
-            <div class="flight-block">
-                <div class="flight-block-title">
-                    <span class="ar-text">MS-643 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-643 (ALTERNATIVE) CAI-JED</span>
-                </div>
-                <div class="flight-dep-time">20:05</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">6729 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
-                            <span class="en-text">46K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comparison-summary threat">
-            <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
-                <span class="en-text">EgyptAir leads overall</span>
-            </div>
-            <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 2900 EGP ووزنه أعلى بـ 16 كجم</span>
-                <span class="en-text">EgyptAir cheaper by 2900 EGP with 16K more baggage</span>
-            </div>
-        </div>
-
-        <div class="alert-banner medium">
-            <div class="alert-text">
-                <span class="ar-text">تهديد متوسط - راقب</span>
-                <span class="en-text">MEDIUM THREAT - MONITOR</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card medium alternative">
-        <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block">
-                <div class="flight-block-title">SM-451</div>
-                <div class="flight-dep-time">14:30</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">9629 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="vs-between">
-                <div class="vs-pill">
-                    <span class="ar-text">ضد</span>
-                    <span class="en-text">VS</span>
-                </div>
-            </div>
-
-            <div class="flight-block">
-                <div class="flight-block-title">
-                    <span class="ar-text">MS-665 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-665 (ALTERNATIVE) CAI-JED</span>
-                </div>
-                <div class="flight-dep-time">02:30</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">6729 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
-                            <span class="en-text">46K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comparison-summary threat">
-            <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
-                <span class="en-text">EgyptAir leads overall</span>
-            </div>
-            <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 2900 EGP ووزنه أعلى بـ 16 كجم</span>
-                <span class="en-text">EgyptAir cheaper by 2900 EGP with 16K more baggage</span>
-            </div>
-        </div>
-
-        <div class="alert-banner medium">
-            <div class="alert-text">
-                <span class="ar-text">تهديد متوسط - راقب</span>
-                <span class="en-text">MEDIUM THREAT - MONITOR</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card medium alternative">
-        <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block">
-                <div class="flight-block-title">SM-451</div>
-                <div class="flight-dep-time">14:30</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">9629 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="vs-between">
-                <div class="vs-pill">
-                    <span class="ar-text">ضد</span>
-                    <span class="en-text">VS</span>
-                </div>
-            </div>
-
-            <div class="flight-block">
-                <div class="flight-block-title">
-                    <span class="ar-text">MS-663 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-663 (ALTERNATIVE) CAI-JED</span>
-                </div>
-                <div class="flight-dep-time">23:20</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">6729 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
-                            <span class="en-text">46K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comparison-summary threat">
-            <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
-                <span class="en-text">EgyptAir leads overall</span>
-            </div>
-            <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 2900 EGP ووزنه أعلى بـ 16 كجم</span>
-                <span class="en-text">EgyptAir cheaper by 2900 EGP with 16K more baggage</span>
-            </div>
-        </div>
-
-        <div class="alert-banner medium">
-            <div class="alert-text">
-                <span class="ar-text">تهديد متوسط - راقب</span>
-                <span class="en-text">MEDIUM THREAT - MONITOR</span>
-            </div>
-        </div>
-    </div>
-    
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2723,7 +2133,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">9629 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2751,14 +2164,17 @@
                     <span class="ar-text">F3-774</span>
                     <span class="en-text">F3-774</span>
                 </div>
-                <div class="flight-dep-time">09:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7148 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7148 جنيه مصري</span>
+                            <span class="en-text">7148 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2777,11 +2193,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح فلاي أديل</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران أديل</span>
                 <span class="en-text">flyadeal leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">فلاي أديل أرخص بـ 2481 EGP رغم أن وزنه أقل بـ 10 كجم</span>
+                <span class="ar-text">طيران أديل أرخص بـ 2481 جنيه مصري رغم أن وزنه أقل بـ 10 كجم</span>
                 <span class="en-text">flyadeal cheaper by 2481 EGP despite 10K less baggage</span>
             </div>
         </div>
@@ -2796,8 +2212,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2810,7 +2226,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">9629 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2835,17 +2254,299 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-669 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-669 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">E5-361 (بديل)</span>
+                    <span class="en-text">E5-361 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">18:50</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7428 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">5123 جنيه مصري</span>
+                            <span class="en-text">5123 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-summary threat">
+            <div class="advantage-text">
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
+                <span class="en-text">Air leads overall</span>
+            </div>
+            <div class="summary-details">
+                <span class="ar-text">العربية للطيران أرخص بـ 4506 جنيه مصري بنفس الوزن</span>
+                <span class="en-text">Air cheaper by 4506 EGP, same baggage</span>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative">
+        <div class="card-date-header">
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block">
+                <div class="flight-block-title">SM-451</div>
+                <div class="flight-dep-time">14:30</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-between">
+                <div class="vs-pill">
+                    <span class="ar-text">ضد</span>
+                    <span class="en-text">VS</span>
+                </div>
+            </div>
+
+            <div class="flight-block">
+                <div class="flight-block-title">
+                    <span class="ar-text">E5-327 (بديل)</span>
+                    <span class="en-text">E5-327 (ALTERNATIVE)</span>
+                </div>
+                <div class="flight-dep-time">-</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">5456 جنيه مصري</span>
+                            <span class="en-text">5456 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-summary threat">
+            <div class="advantage-text">
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
+                <span class="en-text">Air leads overall</span>
+            </div>
+            <div class="summary-details">
+                <span class="ar-text">العربية للطيران أرخص بـ 4173 جنيه مصري بنفس الوزن</span>
+                <span class="en-text">Air cheaper by 4173 EGP, same baggage</span>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative">
+        <div class="card-date-header">
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block">
+                <div class="flight-block-title">SM-451</div>
+                <div class="flight-dep-time">14:30</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-between">
+                <div class="vs-pill">
+                    <span class="ar-text">ضد</span>
+                    <span class="en-text">VS</span>
+                </div>
+            </div>
+
+            <div class="flight-block">
+                <div class="flight-block-title">
+                    <span class="ar-text">NP-127 (بديل)</span>
+                    <span class="en-text">NP-127 (ALTERNATIVE)</span>
+                </div>
+                <div class="flight-dep-time">-</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">5838 جنيه مصري</span>
+                            <span class="en-text">5838 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-summary threat">
+            <div class="advantage-text">
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
+                <span class="en-text">Nile leads overall</span>
+            </div>
+            <div class="summary-details">
+                <span class="ar-text">طيران النيل أرخص بـ 3791 جنيه مصري بنفس الوزن</span>
+                <span class="en-text">Nile cheaper by 3791 EGP, same baggage</span>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card medium alternative">
+        <div class="card-date-header">
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block">
+                <div class="flight-block-title">SM-451</div>
+                <div class="flight-dep-time">14:30</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-between">
+                <div class="vs-pill">
+                    <span class="ar-text">ضد</span>
+                    <span class="en-text">VS</span>
+                </div>
+            </div>
+
+            <div class="flight-block">
+                <div class="flight-block-title">
+                    <span class="ar-text">MS-673 (بديل)</span>
+                    <span class="en-text">MS-673 (ALTERNATIVE)</span>
+                </div>
+                <div class="flight-dep-time">-</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6729 جنيه مصري</span>
+                            <span class="en-text">6729 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2868,7 +2569,379 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 2201 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 2900 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
+                <span class="en-text">EgyptAir cheaper by 2900 EGP with 16K more baggage</span>
+            </div>
+        </div>
+
+        <div class="alert-banner medium">
+            <div class="alert-text">
+                <span class="ar-text">تهديد متوسط - راقب</span>
+                <span class="en-text">MEDIUM THREAT - MONITOR</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card medium alternative">
+        <div class="card-date-header">
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block">
+                <div class="flight-block-title">SM-451</div>
+                <div class="flight-dep-time">14:30</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-between">
+                <div class="vs-pill">
+                    <span class="ar-text">ضد</span>
+                    <span class="en-text">VS</span>
+                </div>
+            </div>
+
+            <div class="flight-block">
+                <div class="flight-block-title">
+                    <span class="ar-text">MS-643 (بديل)</span>
+                    <span class="en-text">MS-643 (ALTERNATIVE)</span>
+                </div>
+                <div class="flight-dep-time">-</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6729 جنيه مصري</span>
+                            <span class="en-text">6729 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-summary threat">
+            <div class="advantage-text">
+                <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
+                <span class="en-text">EgyptAir leads overall</span>
+            </div>
+            <div class="summary-details">
+                <span class="ar-text">مصر للطيران أرخص بـ 2900 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
+                <span class="en-text">EgyptAir cheaper by 2900 EGP with 16K more baggage</span>
+            </div>
+        </div>
+
+        <div class="alert-banner medium">
+            <div class="alert-text">
+                <span class="ar-text">تهديد متوسط - راقب</span>
+                <span class="en-text">MEDIUM THREAT - MONITOR</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card medium alternative">
+        <div class="card-date-header">
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block">
+                <div class="flight-block-title">SM-451</div>
+                <div class="flight-dep-time">14:30</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-between">
+                <div class="vs-pill">
+                    <span class="ar-text">ضد</span>
+                    <span class="en-text">VS</span>
+                </div>
+            </div>
+
+            <div class="flight-block">
+                <div class="flight-block-title">
+                    <span class="ar-text">MS-665 (بديل)</span>
+                    <span class="en-text">MS-665 (ALTERNATIVE)</span>
+                </div>
+                <div class="flight-dep-time">-</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6729 جنيه مصري</span>
+                            <span class="en-text">6729 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-summary threat">
+            <div class="advantage-text">
+                <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
+                <span class="en-text">EgyptAir leads overall</span>
+            </div>
+            <div class="summary-details">
+                <span class="ar-text">مصر للطيران أرخص بـ 2900 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
+                <span class="en-text">EgyptAir cheaper by 2900 EGP with 16K more baggage</span>
+            </div>
+        </div>
+
+        <div class="alert-banner medium">
+            <div class="alert-text">
+                <span class="ar-text">تهديد متوسط - راقب</span>
+                <span class="en-text">MEDIUM THREAT - MONITOR</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card medium alternative">
+        <div class="card-date-header">
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block">
+                <div class="flight-block-title">SM-451</div>
+                <div class="flight-dep-time">14:30</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-between">
+                <div class="vs-pill">
+                    <span class="ar-text">ضد</span>
+                    <span class="en-text">VS</span>
+                </div>
+            </div>
+
+            <div class="flight-block">
+                <div class="flight-block-title">
+                    <span class="ar-text">MS-663 (بديل)</span>
+                    <span class="en-text">MS-663 (ALTERNATIVE)</span>
+                </div>
+                <div class="flight-dep-time">-</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6729 جنيه مصري</span>
+                            <span class="en-text">6729 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-summary threat">
+            <div class="advantage-text">
+                <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
+                <span class="en-text">EgyptAir leads overall</span>
+            </div>
+            <div class="summary-details">
+                <span class="ar-text">مصر للطيران أرخص بـ 2900 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
+                <span class="en-text">EgyptAir cheaper by 2900 EGP with 16K more baggage</span>
+            </div>
+        </div>
+
+        <div class="alert-banner medium">
+            <div class="alert-text">
+                <span class="ar-text">تهديد متوسط - راقب</span>
+                <span class="en-text">MEDIUM THREAT - MONITOR</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative">
+        <div class="card-date-header">
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block">
+                <div class="flight-block-title">SM-451</div>
+                <div class="flight-dep-time">14:30</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-between">
+                <div class="vs-pill">
+                    <span class="ar-text">ضد</span>
+                    <span class="en-text">VS</span>
+                </div>
+            </div>
+
+            <div class="flight-block">
+                <div class="flight-block-title">
+                    <span class="ar-text">MS-669 (بديل)</span>
+                    <span class="en-text">MS-669 (ALTERNATIVE)</span>
+                </div>
+                <div class="flight-dep-time">-</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7428 جنيه مصري</span>
+                            <span class="en-text">7428 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-summary threat">
+            <div class="advantage-text">
+                <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
+                <span class="en-text">EgyptAir leads overall</span>
+            </div>
+            <div class="summary-details">
+                <span class="ar-text">مصر للطيران أرخص بـ 2201 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 2201 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -2883,8 +2956,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2897,7 +2970,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">9629 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2922,17 +2998,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-671 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-671 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-671 (بديل)</span>
+                    <span class="en-text">MS-671 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">14:25</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8141 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8141 جنيه مصري</span>
+                            <span class="en-text">8141 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2955,7 +3034,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 1488 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 1488 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 1488 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -2970,8 +3049,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2984,7 +3063,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">9629 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3009,17 +3091,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-667 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-667 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-667 (بديل)</span>
+                    <span class="en-text">MS-667 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">08:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8141 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8141 جنيه مصري</span>
+                            <span class="en-text">8141 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3042,7 +3127,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 1488 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 1488 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 1488 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -3054,26 +3139,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-12">
-    <div class="date-header">
-        12 JANUARY 2026 MONDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-451</span>
-            <span class="lf-badge lf-high">LF: 84%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">148</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">176</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">10</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">01Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">11:00</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">W1</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-12">
+                <div class="date-header">
+                    <span class="ar-text">12 يناير 2026 الاثنين</span>
+                    <span class="en-text">12 JANUARY 2026 MONDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">12JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">12JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">12 يناير 2026 الاثنين &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">12 JANUARY 2026 MONDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -3086,7 +3162,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8090 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8090 جنيه مصري</span>
+                            <span class="en-text">8090 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3111,17 +3190,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">NP-127 (بديل) CAI-JED</span>
-                    <span class="en-text">NP-127 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">NP-127 (بديل)</span>
+                    <span class="en-text">NP-127 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">11:50</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">4884 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">4884 جنيه مصري</span>
+                            <span class="en-text">4884 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3140,11 +3222,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
                 <span class="en-text">Nile leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 3206 EGP بنفس الوزن</span>
+                <span class="ar-text">طيران النيل أرخص بـ 3206 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nile cheaper by 3206 EGP, same baggage</span>
             </div>
         </div>
@@ -3156,26 +3238,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-14">
-    <div class="date-header">
-        14 JANUARY 2026 WEDNESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-457</span>
-            <span class="lf-badge lf-high">LF: 93%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">166</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">17</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">01Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">12:45</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">V9</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-14">
+                <div class="date-header">
+                    <span class="ar-text">14 يناير 2026 الأربعاء</span>
+                    <span class="en-text">14 JANUARY 2026 WEDNESDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">14JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">14JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">14 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">14 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -3188,7 +3261,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">11168 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">11168 جنيه مصري</span>
+                            <span class="en-text">11168 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3213,17 +3289,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">NP-127 (بديل) CAI-JED</span>
-                    <span class="en-text">NP-127 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">NP-127 (بديل)</span>
+                    <span class="en-text">NP-127 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">11:50</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7314 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7314 جنيه مصري</span>
+                            <span class="en-text">7314 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3242,11 +3321,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
                 <span class="en-text">Nile leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 3854 EGP بنفس الوزن</span>
+                <span class="ar-text">طيران النيل أرخص بـ 3854 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nile cheaper by 3854 EGP, same baggage</span>
             </div>
         </div>
@@ -3261,8 +3340,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">14JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">14JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">14 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">14 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -3275,7 +3354,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">11168 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">11168 جنيه مصري</span>
+                            <span class="en-text">11168 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3300,17 +3382,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">E5-327 (بديل) CAI-JED</span>
-                    <span class="en-text">E5-327 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">NE-174 (بديل)</span>
+                    <span class="en-text">NE-174 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">05:25</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7428 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8420 جنيه مصري</span>
+                            <span class="en-text">8420 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3329,98 +3414,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
-                <span class="en-text">Air leads overall</span>
-            </div>
-            <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 3740 EGP بنفس الوزن</span>
-                <span class="en-text">Air cheaper by 3740 EGP, same baggage</span>
-            </div>
-        </div>
-
-        <div class="alert-banner low">
-            <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
-                <span class="en-text">LOW THREAT</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card low alternative">
-        <div class="card-date-header">
-            <span class="ar-text">14JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">14JAN &nbsp;•&nbsp; HBE-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block">
-                <div class="flight-block-title">SM-457</div>
-                <div class="flight-dep-time">12:45</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">11168 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="vs-between">
-                <div class="vs-pill">
-                    <span class="ar-text">ضد</span>
-                    <span class="en-text">VS</span>
-                </div>
-            </div>
-
-            <div class="flight-block">
-                <div class="flight-block-title">
-                    <span class="ar-text">NE-174 (بديل) CAI-JED</span>
-                    <span class="en-text">NE-174 (ALTERNATIVE) CAI-JED</span>
-                </div>
-                <div class="flight-dep-time">19:20</div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">8420 EGP</div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comparison-summary threat">
-            <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 2748 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 2748 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 2748 EGP, same baggage</span>
             </div>
         </div>
@@ -3433,38 +3431,26 @@
         </div>
     </div>
     
-        </div>
-    </div>
-    </div><div data-date="2026-01-16">
-    <div class="date-header">
-        16 JANUARY 2026 FRIDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-451</span>
-            <span class="lf-badge lf-medium">LF: 59%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">103</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">176</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">32</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">1</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">05:30</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">K9</div></div></div>
-        <div class="threats-container">
-            
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">14 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">14 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
             <div class="flight-block">
-                <div class="flight-block-title">SM-451</div>
-                <div class="flight-dep-time">05:30</div>
+                <div class="flight-block-title">SM-457</div>
+                <div class="flight-dep-time">12:45</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">12008 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">11168 جنيه مصري</span>
+                            <span class="en-text">11168 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3489,17 +3475,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">E5-327 (بديل) CAI-JED</span>
-                    <span class="en-text">E5-327 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">E5-327 (بديل)</span>
+                    <span class="en-text">E5-327 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">05:25</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8783 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7428 جنيه مصري</span>
+                            <span class="en-text">7428 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3518,12 +3507,12 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
                 <span class="en-text">Air leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 3225 EGP بنفس الوزن</span>
-                <span class="en-text">Air cheaper by 3225 EGP, same baggage</span>
+                <span class="ar-text">العربية للطيران أرخص بـ 3740 جنيه مصري بنفس الوزن</span>
+                <span class="en-text">Air cheaper by 3740 EGP, same baggage</span>
             </div>
         </div>
 
@@ -3534,11 +3523,17 @@
             </div>
         </div>
     </div>
-    
+    </div>
+            <div class="date-section" data-date="2026-01-16">
+                <div class="date-header">
+                    <span class="ar-text">16 يناير 2026 الجمعة</span>
+                    <span class="en-text">16 JANUARY 2026 FRIDAY</span>
+                </div>
+            
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">16 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">16 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -3551,7 +3546,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">12008 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12008 جنيه مصري</span>
+                            <span class="en-text">12008 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3576,17 +3574,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-643 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-643 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-643 (بديل)</span>
+                    <span class="en-text">MS-643 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">20:05</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">10532 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">10532 جنيه مصري</span>
+                            <span class="en-text">10532 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3609,7 +3610,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 1476 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 1476 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 1476 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -3624,8 +3625,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">16 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">16 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -3638,7 +3639,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">12008 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12008 جنيه مصري</span>
+                            <span class="en-text">12008 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3663,17 +3667,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-665 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-665 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-665 (بديل)</span>
+                    <span class="en-text">MS-665 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">02:35</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">10532 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">10532 جنيه مصري</span>
+                            <span class="en-text">10532 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3696,7 +3703,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 1476 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 1476 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 1476 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -3711,8 +3718,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">16 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">16 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -3725,7 +3732,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">12008 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12008 جنيه مصري</span>
+                            <span class="en-text">12008 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3750,17 +3760,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-669 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-669 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-669 (بديل)</span>
+                    <span class="en-text">MS-669 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">18:50</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">10532 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">10532 جنيه مصري</span>
+                            <span class="en-text">10532 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3783,7 +3796,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 1476 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 1476 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 1476 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -3798,8 +3811,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">16 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">16 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -3812,7 +3825,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">12008 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12008 جنيه مصري</span>
+                            <span class="en-text">12008 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3837,17 +3853,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-671 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-671 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-671 (بديل)</span>
+                    <span class="en-text">MS-671 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">14:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">11244 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">11244 جنيه مصري</span>
+                            <span class="en-text">11244 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3870,7 +3889,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 764 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 764 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 764 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -3885,8 +3904,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">16 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">16 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -3899,7 +3918,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">12008 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12008 جنيه مصري</span>
+                            <span class="en-text">12008 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3924,17 +3946,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-661 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-661 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-661 (بديل)</span>
+                    <span class="en-text">MS-661 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">07:30</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">11244 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">11244 جنيه مصري</span>
+                            <span class="en-text">11244 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -3957,7 +3982,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 764 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 764 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 764 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -3972,8 +3997,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">16JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">16 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">16 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -3986,7 +4011,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">12008 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12008 جنيه مصري</span>
+                            <span class="en-text">12008 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -4011,17 +4039,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-673 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-673 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-673 (بديل)</span>
+                    <span class="en-text">MS-673 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">01:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">11728 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">11728 جنيه مصري</span>
+                            <span class="en-text">11728 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -4044,7 +4075,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 280 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 280 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 280 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -4057,38 +4088,26 @@
         </div>
     </div>
     
-        </div>
-    </div>
-    </div><div data-date="2026-01-21">
-    <div class="date-header">
-        21 JANUARY 2026 WEDNESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-451</span>
-            <span class="lf-badge lf-high">LF: 88%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">155</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">176</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">12</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">4</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">03:30</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">G1</div></div></div>
-        <div class="threats-container">
-            
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">21JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">21JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">16 يناير 2026 الجمعة &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">16 JANUARY 2026 FRIDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
             <div class="flight-block">
                 <div class="flight-block-title">SM-451</div>
-                <div class="flight-dep-time">03:30</div>
+                <div class="flight-dep-time">05:30</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">9629 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12008 جنيه مصري</span>
+                            <span class="en-text">12008 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -4113,17 +4132,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">NE-174 (بديل) CAI-JED</span>
-                    <span class="en-text">NE-174 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">E5-327 (بديل)</span>
+                    <span class="en-text">E5-327 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">19:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7059 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8783 جنيه مصري</span>
+                            <span class="en-text">8783 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -4142,11 +4164,110 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
+                <span class="en-text">Air leads overall</span>
+            </div>
+            <div class="summary-details">
+                <span class="ar-text">العربية للطيران أرخص بـ 3225 جنيه مصري بنفس الوزن</span>
+                <span class="en-text">Air cheaper by 3225 EGP, same baggage</span>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    </div>
+            <div class="date-section" data-date="2026-01-21">
+                <div class="date-header">
+                    <span class="ar-text">21 يناير 2026 الأربعاء</span>
+                    <span class="en-text">21 JANUARY 2026 WEDNESDAY</span>
+                </div>
+            
+    <div class="threat-card low alternative">
+        <div class="card-date-header">
+            <span class="ar-text">21 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">21 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block">
+                <div class="flight-block-title">SM-451</div>
+                <div class="flight-dep-time">03:30</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-between">
+                <div class="vs-pill">
+                    <span class="ar-text">ضد</span>
+                    <span class="en-text">VS</span>
+                </div>
+            </div>
+
+            <div class="flight-block">
+                <div class="flight-block-title">
+                    <span class="ar-text">NE-174 (بديل)</span>
+                    <span class="en-text">NE-174 (ALTERNATIVE)</span>
+                </div>
+                <div class="flight-dep-time">-</div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7059 جنيه مصري</span>
+                            <span class="en-text">7059 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-summary threat">
+            <div class="advantage-text">
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 2570 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 2570 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 2570 EGP, same baggage</span>
             </div>
         </div>
@@ -4161,8 +4282,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">21JAN &nbsp;•&nbsp; HBE-JED</span>
-            <span class="en-text">21JAN &nbsp;•&nbsp; HBE-JED</span>
+            <span class="ar-text">21 يناير 2026 الأربعاء &nbsp;•&nbsp; HBE-JED</span>
+            <span class="en-text">21 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; HBE-JED</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -4175,7 +4296,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">9629 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9629 جنيه مصري</span>
+                            <span class="en-text">9629 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -4200,17 +4324,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-663 (بديل) CAI-JED</span>
-                    <span class="en-text">MS-663 (ALTERNATIVE) CAI-JED</span>
+                    <span class="ar-text">MS-663 (بديل)</span>
+                    <span class="en-text">MS-663 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">23:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">9336 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9336 جنيه مصري</span>
+                            <span class="en-text">9336 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -4233,7 +4360,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 293 EGP ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 293 جنيه مصري ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 293 EGP with 16K more baggage</span>
             </div>
         </div>
@@ -4245,17 +4372,14 @@
             </div>
         </div>
     </div>
-    
-        </div>
-    </div>
     </div>
     </div>
 
     <div class="lazy-trigger" id="lazyTrigger"></div>
 
     <div class="scroll-nav">
-        <button class="scroll-btn" id="scrollTop"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(0 12 12)"/></svg></button>
-        <button class="scroll-btn" id="scrollBottom"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(180 12 12)"/></svg></button>
+        <button class="scroll-btn" id="scrollTop"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(0 12 12)"/></svg></button>
+        <button class="scroll-btn" id="scrollBottom"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(180 12 12)"/></svg></button>
     </div>
 
     <div class="position-indicator">
@@ -4292,7 +4416,7 @@
             <span class="nav-icon">🌐</span>
             <span>Dashboard</span>
         </a>
-        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank">
+        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" style="background: #0078D4;">
             <span class="nav-icon">📥</span>
             <span>Download</span>
         </a>
@@ -4303,22 +4427,6 @@
     </div>
 
     <script>
-    // Threat Level Color Overlay
-    function setThreatOverlay(level) {
-        let overlay = document.getElementById('threatOverlay');
-        if (!overlay) {
-            overlay = document.createElement('div');
-            overlay.id = 'threatOverlay';
-            overlay.className = 'threat-overlay';
-            document.body.insertBefore(overlay, document.body.firstChild);
-        }
-        overlay.className = 'threat-overlay';
-        if (level && level !== 'all') {
-            overlay.classList.add(level.toLowerCase());
-            overlay.classList.add('active');
-        }
-    }
-
         // Language Toggle
         function toggleLanguage() {
             const body = document.body;
@@ -4337,7 +4445,6 @@
         // Filter by threat level
         let activeLevel = null;
         function filterByLevel(level) {
-        setThreatOverlay(level);
             const navItems = document.querySelectorAll('.nav-item');
             const statItems = document.querySelectorAll('.stat-item');
 

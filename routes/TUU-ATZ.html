@@ -65,7 +65,7 @@
         }
 
         .header .subtitle {
-            color: #ffffff;
+            color: rgba(255,255,255,0.8);
             font-size: 0.85em;
         }
 
@@ -83,7 +83,7 @@
             display: flex;
             justify-content: space-around;
             padding: 15px 10px;
-            background: rgba(70, 43, 115, 0.2);
+            background: rgba(70, 43, 115, 0.1);
         }
 
         .stat-item {
@@ -99,7 +99,7 @@
         .stat-item.active { background: rgba(70, 43, 115, 0.15); }
         .stat-item.high { border-bottom: 3px solid #e74c3c; }
         .stat-item.medium { border-bottom: 3px solid #F7941D; }
-        .stat-item.low { border-bottom: 3px solid #6b5b7a; }
+        .stat-item.low { border-bottom: 3px solid #0000E6; }
 
         .stat-count {
             font-size: 1.8em;
@@ -165,7 +165,7 @@
         .lf-details {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            gap: 8px;
             padding: 10px 15px;
             background: rgba(70, 43, 115, 0.03);
             border-bottom: 1px solid rgba(70, 43, 115, 0.1);
@@ -196,7 +196,7 @@
             border-radius: 10px;
             padding: 12px;
             margin-bottom: 10px;
-            border-left: 4px solid #6b5b7a;
+            border-left: 4px solid #0000E6;
         }
 
         .threat-card.high { border-left-color: #e74c3c; background: linear-gradient(135deg, #fff5f5 0%, #fff 100%); }
@@ -318,14 +318,14 @@
         }
 
         .alert-banner.low {
-            background: linear-gradient(135deg, #6b5b7a 0%, #5a4a69 100%);
+            background: linear-gradient(135deg, #0000E6 0%, #3333FF 100%);
             color: white;
         }
 
         .scroll-nav {
             position: fixed;
             right: 15px;
-            bottom: 140px;
+            bottom: 100px;
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -333,26 +333,21 @@
         }
 
         .scroll-btn {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             border: 2px solid rgba(247, 148, 29, 0.15);
             background: rgba(70, 43, 115, 0.15);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: rgba(255, 255, 255, 0.5);
             font-size: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: all 0.2s ease;
-        }
-
-        .scroll-btn svg {
-            width: 22px;
-            height: 22px;
         }
 
         .scroll-btn:active, .scroll-btn.pressed {
@@ -362,9 +357,10 @@
             transform: scale(0.95);
         }
 
-        
-            width: 22px;
-            height: 22px;
+        .scroll-btn svg {
+            width: 24px;
+            height: 24px;
+        }
 
         .pages-nav {
             position: fixed;
@@ -374,9 +370,9 @@
             background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
             display: flex;
             justify-content: space-around;
-            padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+            padding: 10px 0 max(10px, env(safe-area-inset-bottom));
             z-index: 100;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
 
         .pages-nav a {
@@ -385,32 +381,22 @@
             align-items: center;
             text-decoration: none;
             color: #ffffff;
-            font-size: 11px;
-            font-weight: 500;
-            padding: 8px 20px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            transition: all 0.2s;
-        }
-
-        .pages-nav a:hover, .pages-nav a:active {
-            background: rgba(247, 148, 29, 0.8);
-            color: #F7941D;
+            font-size: 10px;
+            padding: 5px 15px;
         }
 
         .pages-nav a.active {
-            background: #F7941D;
-            color: #fff;
+            color: #F7941D;
         }
 
         .nav-icon {
-            font-size: 22px;
-            margin-bottom: 4px;
+            font-size: 20px;
+            margin-bottom: 3px;
         }
 
         .bottom-nav {
             position: fixed;
-            bottom: 0;
+            bottom: 60px;
             left: 0;
             right: 0;
             background: white;
@@ -442,7 +428,7 @@
             transform: translateY(-50%);
             width: 4px;
             height: 100px;
-            background: rgba(70, 43, 115, 0.2);
+            background: rgba(70, 43, 115, 0.1);
             border-radius: 2px;
             z-index: 98;
         }
@@ -482,36 +468,9 @@
             height: 1px;
             margin-top: -1px;
         }
-    
-        /* Threat Level Color Overlay */
-        .threat-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .threat-overlay.active {
-            opacity: 1;
-        }
-        .threat-overlay.high {
-            background: radial-gradient(ellipse at center, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.05) 70%, transparent 100%);
-        }
-        .threat-overlay.medium {
-            background: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 70%, transparent 100%);
-        }
-        .threat-overlay.low {
-            background: radial-gradient(ellipse at center, rgba(40, 167, 69, 0.15) 0%, rgba(40, 167, 69, 0.05) 70%, transparent 100%);
-        }
-
     </style>
 </head>
 <body class="en">
-    <div id="threatOverlay" class="threat-overlay"></div>
     <header class="header">
         <button class="back-btn" onclick="history.back()">←</button>
         <div class="header-content">
@@ -546,23 +505,17 @@
     </div>
 
     <div class="content" id="content">
-        <div data-date="2026-01-16">
-    <div class="date-header">
-        16 JANUARY 2026 FRIDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-328</span>
-            <span class="lf-badge lf-low">LF: 26%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">46</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">175</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">26</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">8</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">12:25</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">U9</div></div></div>
-        <div class="threats-container">
+        
+            <div class="date-section" data-date="2026-01-16">
+                <div class="date-header">
+                    <span class="ar-text">16 يناير 2026 الجمعة</span>
+                    <span class="en-text">16 JANUARY 2026 FRIDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">16JAN &nbsp;•&nbsp; TUU-ATZ</span>
-            <span class="en-text">16JAN &nbsp;•&nbsp; TUU-ATZ</span>
+            <span class="ar-text">16 يناير 2026 الجمعة &nbsp;•&nbsp; TUU-ATZ</span>
+            <span class="en-text">16 JANUARY 2026 FRIDAY &nbsp;•&nbsp; TUU-ATZ</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -575,7 +528,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">462 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">462 ريال سعودي</span>
+                            <span class="en-text">462 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -600,17 +556,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-812 (بديل) TUU-CAI</span>
-                    <span class="en-text">MS-812 (ALTERNATIVE) TUU-CAI</span>
+                    <span class="ar-text">MS-812 (بديل)</span>
+                    <span class="en-text">MS-812 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">03:05</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">451 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">451 ريال سعودي</span>
+                            <span class="en-text">451 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -633,7 +592,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 11 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 11 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 11 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -645,26 +604,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-30">
-    <div class="date-header">
-        30 JANUARY 2026 FRIDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-328</span>
-            <span class="lf-badge lf-low">LF: 25%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">44</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">175</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">10</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">01Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">12:25</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">X6</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-30">
+                <div class="date-header">
+                    <span class="ar-text">30 يناير 2026 الجمعة</span>
+                    <span class="en-text">30 JANUARY 2026 FRIDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">30JAN &nbsp;•&nbsp; TUU-ATZ</span>
-            <span class="en-text">30JAN &nbsp;•&nbsp; TUU-ATZ</span>
+            <span class="ar-text">30 يناير 2026 الجمعة &nbsp;•&nbsp; TUU-ATZ</span>
+            <span class="en-text">30 JANUARY 2026 FRIDAY &nbsp;•&nbsp; TUU-ATZ</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -677,7 +627,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">536 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">536 ريال سعودي</span>
+                            <span class="en-text">536 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -702,17 +655,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">E5-590 (بديل) TUU-CAI</span>
-                    <span class="en-text">E5-590 (ALTERNATIVE) TUU-CAI</span>
+                    <span class="ar-text">E5-590 (بديل)</span>
+                    <span class="en-text">E5-590 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">15:15</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">329 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">329 ريال سعودي</span>
+                            <span class="en-text">329 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -731,11 +687,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
                 <span class="en-text">Air leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 207 SAR بنفس الوزن</span>
+                <span class="ar-text">العربية للطيران أرخص بـ 207 ريال سعودي بنفس الوزن</span>
                 <span class="en-text">Air cheaper by 207 SAR, same baggage</span>
             </div>
         </div>
@@ -747,17 +703,14 @@
             </div>
         </div>
     </div>
-    
-        </div>
-    </div>
     </div>
     </div>
 
     <div class="lazy-trigger" id="lazyTrigger"></div>
 
     <div class="scroll-nav">
-        <button class="scroll-btn" id="scrollTop"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(0 12 12)"/></svg></button>
-        <button class="scroll-btn" id="scrollBottom"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(180 12 12)"/></svg></button>
+        <button class="scroll-btn" id="scrollTop"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(0 12 12)"/></svg></button>
+        <button class="scroll-btn" id="scrollBottom"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(180 12 12)"/></svg></button>
     </div>
 
     <div class="position-indicator">
@@ -794,7 +747,7 @@
             <span class="nav-icon">🌐</span>
             <span>Dashboard</span>
         </a>
-        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank">
+        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" style="background: #0078D4;">
             <span class="nav-icon">📥</span>
             <span>Download</span>
         </a>
@@ -805,22 +758,6 @@
     </div>
 
     <script>
-    // Threat Level Color Overlay
-    function setThreatOverlay(level) {
-        let overlay = document.getElementById('threatOverlay');
-        if (!overlay) {
-            overlay = document.createElement('div');
-            overlay.id = 'threatOverlay';
-            overlay.className = 'threat-overlay';
-            document.body.insertBefore(overlay, document.body.firstChild);
-        }
-        overlay.className = 'threat-overlay';
-        if (level && level !== 'all') {
-            overlay.classList.add(level.toLowerCase());
-            overlay.classList.add('active');
-        }
-    }
-
         // Language Toggle
         function toggleLanguage() {
             const body = document.body;
@@ -839,7 +776,6 @@
         // Filter by threat level
         let activeLevel = null;
         function filterByLevel(level) {
-        setThreatOverlay(level);
             const navItems = document.querySelectorAll('.nav-item');
             const statItems = document.querySelectorAll('.stat-item');
 

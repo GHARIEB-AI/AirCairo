@@ -65,7 +65,7 @@
         }
 
         .header .subtitle {
-            color: #ffffff;
+            color: rgba(255,255,255,0.8);
             font-size: 0.85em;
         }
 
@@ -83,7 +83,7 @@
             display: flex;
             justify-content: space-around;
             padding: 15px 10px;
-            background: rgba(70, 43, 115, 0.2);
+            background: rgba(70, 43, 115, 0.1);
         }
 
         .stat-item {
@@ -99,7 +99,7 @@
         .stat-item.active { background: rgba(70, 43, 115, 0.15); }
         .stat-item.high { border-bottom: 3px solid #e74c3c; }
         .stat-item.medium { border-bottom: 3px solid #F7941D; }
-        .stat-item.low { border-bottom: 3px solid #6b5b7a; }
+        .stat-item.low { border-bottom: 3px solid #0000E6; }
 
         .stat-count {
             font-size: 1.8em;
@@ -165,7 +165,7 @@
         .lf-details {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            gap: 8px;
             padding: 10px 15px;
             background: rgba(70, 43, 115, 0.03);
             border-bottom: 1px solid rgba(70, 43, 115, 0.1);
@@ -196,7 +196,7 @@
             border-radius: 10px;
             padding: 12px;
             margin-bottom: 10px;
-            border-left: 4px solid #6b5b7a;
+            border-left: 4px solid #0000E6;
         }
 
         .threat-card.high { border-left-color: #e74c3c; background: linear-gradient(135deg, #fff5f5 0%, #fff 100%); }
@@ -318,14 +318,14 @@
         }
 
         .alert-banner.low {
-            background: linear-gradient(135deg, #6b5b7a 0%, #5a4a69 100%);
+            background: linear-gradient(135deg, #0000E6 0%, #3333FF 100%);
             color: white;
         }
 
         .scroll-nav {
             position: fixed;
             right: 15px;
-            bottom: 140px;
+            bottom: 100px;
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -333,26 +333,21 @@
         }
 
         .scroll-btn {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             border: 2px solid rgba(247, 148, 29, 0.15);
             background: rgba(70, 43, 115, 0.15);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: rgba(255, 255, 255, 0.5);
             font-size: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: all 0.2s ease;
-        }
-
-        .scroll-btn svg {
-            width: 22px;
-            height: 22px;
         }
 
         .scroll-btn:active, .scroll-btn.pressed {
@@ -362,9 +357,10 @@
             transform: scale(0.95);
         }
 
-        
-            width: 22px;
-            height: 22px;
+        .scroll-btn svg {
+            width: 24px;
+            height: 24px;
+        }
 
         .pages-nav {
             position: fixed;
@@ -374,9 +370,9 @@
             background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
             display: flex;
             justify-content: space-around;
-            padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+            padding: 10px 0 max(10px, env(safe-area-inset-bottom));
             z-index: 100;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
 
         .pages-nav a {
@@ -385,32 +381,22 @@
             align-items: center;
             text-decoration: none;
             color: #ffffff;
-            font-size: 11px;
-            font-weight: 500;
-            padding: 8px 20px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            transition: all 0.2s;
-        }
-
-        .pages-nav a:hover, .pages-nav a:active {
-            background: rgba(247, 148, 29, 0.8);
-            color: #F7941D;
+            font-size: 10px;
+            padding: 5px 15px;
         }
 
         .pages-nav a.active {
-            background: #F7941D;
-            color: #fff;
+            color: #F7941D;
         }
 
         .nav-icon {
-            font-size: 22px;
-            margin-bottom: 4px;
+            font-size: 20px;
+            margin-bottom: 3px;
         }
 
         .bottom-nav {
             position: fixed;
-            bottom: 0;
+            bottom: 60px;
             left: 0;
             right: 0;
             background: white;
@@ -442,7 +428,7 @@
             transform: translateY(-50%);
             width: 4px;
             height: 100px;
-            background: rgba(70, 43, 115, 0.2);
+            background: rgba(70, 43, 115, 0.1);
             border-radius: 2px;
             z-index: 98;
         }
@@ -482,36 +468,9 @@
             height: 1px;
             margin-top: -1px;
         }
-    
-        /* Threat Level Color Overlay */
-        .threat-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .threat-overlay.active {
-            opacity: 1;
-        }
-        .threat-overlay.high {
-            background: radial-gradient(ellipse at center, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.05) 70%, transparent 100%);
-        }
-        .threat-overlay.medium {
-            background: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 70%, transparent 100%);
-        }
-        .threat-overlay.low {
-            background: radial-gradient(ellipse at center, rgba(40, 167, 69, 0.15) 0%, rgba(40, 167, 69, 0.05) 70%, transparent 100%);
-        }
-
     </style>
 </head>
 <body class="en">
-    <div id="threatOverlay" class="threat-overlay"></div>
     <header class="header">
         <button class="back-btn" onclick="history.back()">←</button>
         <div class="header-content">
@@ -546,23 +505,17 @@
     </div>
 
     <div class="content" id="content">
-        <div data-date="2026-01-13">
-    <div class="date-header">
-        13 JANUARY 2026 TUESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-486</span>
-            <span class="lf-badge lf-high">LF: 94%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">161</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">172</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">25Dec</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">07:50</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">M9</div></div></div>
-        <div class="threats-container">
+        
+            <div class="date-section" data-date="2026-01-13">
+                <div class="date-header">
+                    <span class="ar-text">13 يناير 2026 الثلاثاء</span>
+                    <span class="en-text">13 JANUARY 2026 TUESDAY</span>
+                </div>
             
     <div class="threat-card medium alternative">
         <div class="card-date-header">
-            <span class="ar-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">13 يناير 2026 الثلاثاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">13 JANUARY 2026 TUESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -575,7 +528,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">1298 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1298 ريال سعودي</span>
+                            <span class="en-text">1298 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -600,17 +556,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">F3-771 (بديل) MED-CAI</span>
-                    <span class="en-text">F3-771 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">F3-771 (بديل)</span>
+                    <span class="en-text">F3-771 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">07:00</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">489 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">489 ريال سعودي</span>
+                            <span class="en-text">489 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -629,11 +588,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح فلاي أديل</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران أديل</span>
                 <span class="en-text">flyadeal leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">فلاي أديل أرخص بـ 809 SAR رغم أن وزنه أقل بـ 15 كجم</span>
+                <span class="ar-text">طيران أديل أرخص بـ 809 ريال سعودي رغم أن وزنه أقل بـ 15 كجم</span>
                 <span class="en-text">flyadeal cheaper by 809 SAR despite 15K less baggage</span>
             </div>
         </div>
@@ -648,8 +607,8 @@
     
     <div class="threat-card high alternative">
         <div class="card-date-header">
-            <span class="ar-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">13 يناير 2026 الثلاثاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">13 JANUARY 2026 TUESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -662,7 +621,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">1298 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1298 ريال سعودي</span>
+                            <span class="en-text">1298 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -687,17 +649,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-676 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-676 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-676 (بديل)</span>
+                    <span class="en-text">MS-676 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">02:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">576 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">576 ريال سعودي</span>
+                            <span class="en-text">576 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -720,7 +685,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 722 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 722 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 722 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -735,8 +700,8 @@
     
     <div class="threat-card high alternative">
         <div class="card-date-header">
-            <span class="ar-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">13 يناير 2026 الثلاثاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">13 JANUARY 2026 TUESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -749,7 +714,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">1298 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1298 ريال سعودي</span>
+                            <span class="en-text">1298 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -774,17 +742,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-694 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-694 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-694 (بديل)</span>
+                    <span class="en-text">MS-694 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">05:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">576 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">576 ريال سعودي</span>
+                            <span class="en-text">576 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -807,7 +778,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 722 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 722 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 722 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -822,8 +793,8 @@
     
     <div class="threat-card high alternative">
         <div class="card-date-header">
-            <span class="ar-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">13 يناير 2026 الثلاثاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">13 JANUARY 2026 TUESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -836,7 +807,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">1298 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1298 ريال سعودي</span>
+                            <span class="en-text">1298 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -861,17 +835,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-696 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-696 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-696 (بديل)</span>
+                    <span class="en-text">MS-696 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">10:40</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">576 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">576 ريال سعودي</span>
+                            <span class="en-text">576 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -894,7 +871,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 722 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 722 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 722 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -909,8 +886,8 @@
     
     <div class="threat-card high alternative">
         <div class="card-date-header">
-            <span class="ar-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">13 يناير 2026 الثلاثاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">13 JANUARY 2026 TUESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -923,7 +900,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">1298 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1298 ريال سعودي</span>
+                            <span class="en-text">1298 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -948,17 +928,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-640 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-640 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-640 (بديل)</span>
+                    <span class="en-text">MS-640 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">11:50</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">576 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">576 ريال سعودي</span>
+                            <span class="en-text">576 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -981,7 +964,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 722 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 722 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 722 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -996,8 +979,8 @@
     
     <div class="threat-card medium alternative">
         <div class="card-date-header">
-            <span class="ar-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">13 يناير 2026 الثلاثاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">13 JANUARY 2026 TUESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1010,7 +993,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">1298 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1298 ريال سعودي</span>
+                            <span class="en-text">1298 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1035,17 +1021,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">XY-576 (بديل) MED-CAI</span>
-                    <span class="en-text">XY-576 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">XY-576 (بديل)</span>
+                    <span class="en-text">XY-576 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">18:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">589 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">589 ريال سعودي</span>
+                            <span class="en-text">589 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1064,11 +1053,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح فلاي ناس</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران ناس</span>
                 <span class="en-text">flynas leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">فلاي ناس أرخص بـ 709 SAR رغم أن وزنه أقل بـ 10 كجم</span>
+                <span class="ar-text">طيران ناس أرخص بـ 709 ريال سعودي رغم أن وزنه أقل بـ 10 كجم</span>
                 <span class="en-text">flynas cheaper by 709 SAR despite 10K less baggage</span>
             </div>
         </div>
@@ -1083,8 +1072,8 @@
     
     <div class="threat-card medium alternative">
         <div class="card-date-header">
-            <span class="ar-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">13 يناير 2026 الثلاثاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">13 JANUARY 2026 TUESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1097,7 +1086,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">1298 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1298 ريال سعودي</span>
+                            <span class="en-text">1298 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1122,17 +1114,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">SV-319 (بديل) MED-CAI</span>
-                    <span class="en-text">SV-319 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">SV-319 (بديل)</span>
+                    <span class="en-text">SV-319 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">14:30</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">769 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">769 ريال سعودي</span>
+                            <span class="en-text">769 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1151,11 +1146,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح السعودية</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح الخطوط السعودية</span>
                 <span class="en-text">Saudia leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">السعودية أرخص بـ 529 SAR رغم أن وزنه أقل بـ 7 كجم</span>
+                <span class="ar-text">الخطوط السعودية أرخص بـ 529 ريال سعودي رغم أن وزنه أقل بـ 7 كجم</span>
                 <span class="en-text">Saudia cheaper by 529 SAR despite 7K less baggage</span>
             </div>
         </div>
@@ -1170,8 +1165,8 @@
     
     <div class="threat-card medium alternative">
         <div class="card-date-header">
-            <span class="ar-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">13JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">13 يناير 2026 الثلاثاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">13 JANUARY 2026 TUESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1184,7 +1179,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">1298 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1298 ريال سعودي</span>
+                            <span class="en-text">1298 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1209,17 +1207,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">SV-391 (بديل) MED-CAI</span>
-                    <span class="en-text">SV-391 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">SV-391 (بديل)</span>
+                    <span class="en-text">SV-391 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">02:15</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">769 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">769 ريال سعودي</span>
+                            <span class="en-text">769 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1238,11 +1239,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح السعودية</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح الخطوط السعودية</span>
                 <span class="en-text">Saudia leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">السعودية أرخص بـ 529 SAR رغم أن وزنه أقل بـ 7 كجم</span>
+                <span class="ar-text">الخطوط السعودية أرخص بـ 529 ريال سعودي رغم أن وزنه أقل بـ 7 كجم</span>
                 <span class="en-text">Saudia cheaper by 529 SAR despite 7K less baggage</span>
             </div>
         </div>
@@ -1254,26 +1255,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-14">
-    <div class="date-header">
-        14 JANUARY 2026 WEDNESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-486</span>
-            <span class="lf-badge lf-high">LF: 88%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">151</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">172</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">1</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">28Dec</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">22:40</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">W4</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-14">
+                <div class="date-header">
+                    <span class="ar-text">14 يناير 2026 الأربعاء</span>
+                    <span class="en-text">14 JANUARY 2026 WEDNESDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">14JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">14JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">14 يناير 2026 الأربعاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">14 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1286,7 +1278,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">620 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">620 ريال سعودي</span>
+                            <span class="en-text">620 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1311,17 +1306,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-694 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-694 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-694 (بديل)</span>
+                    <span class="en-text">MS-694 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">05:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">496 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">496 ريال سعودي</span>
+                            <span class="en-text">496 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1344,7 +1342,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 124 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 124 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 124 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -1359,8 +1357,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">14JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">14JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">14 يناير 2026 الأربعاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">14 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1373,7 +1371,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">620 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">620 ريال سعودي</span>
+                            <span class="en-text">620 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1398,17 +1399,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-696 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-696 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-696 (بديل)</span>
+                    <span class="en-text">MS-696 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">10:40</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">496 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">496 ريال سعودي</span>
+                            <span class="en-text">496 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1431,7 +1435,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 124 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 124 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 124 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -1446,8 +1450,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">14JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">14JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">14 يناير 2026 الأربعاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">14 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1460,7 +1464,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">620 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">620 ريال سعودي</span>
+                            <span class="en-text">620 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1485,17 +1492,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-640 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-640 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-640 (بديل)</span>
+                    <span class="en-text">MS-640 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">11:50</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">576 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">576 ريال سعودي</span>
+                            <span class="en-text">576 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1518,7 +1528,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 44 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 44 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 44 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -1533,8 +1543,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">14JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">14JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">14 يناير 2026 الأربعاء &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">14 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1547,7 +1557,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">620 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">620 ريال سعودي</span>
+                            <span class="en-text">620 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1572,17 +1585,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-678 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-678 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-678 (بديل)</span>
+                    <span class="en-text">MS-678 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">20:30</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">633 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">633 ريال سعودي</span>
+                            <span class="en-text">633 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1605,7 +1621,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">سعر إير كايرو أقل بـ 13 SAR لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
+                <span class="ar-text">سعر إير كايرو أقل بـ 13 ريال سعودي لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
                 <span class="en-text">SM price lower by 13 SAR but EgyptAir offers 16K more baggage</span>
             </div>
         </div>
@@ -1617,26 +1633,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-15">
-    <div class="date-header">
-        15 JANUARY 2026 THURSDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-486</span>
-            <span class="lf-badge lf-medium">LF: 69%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">119</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">172</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">4</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">1</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">15:30</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">W3</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-15">
+                <div class="date-header">
+                    <span class="ar-text">15 يناير 2026 الخميس</span>
+                    <span class="en-text">15 JANUARY 2026 THURSDAY</span>
+                </div>
             
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">15JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">15JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">15 يناير 2026 الخميس &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">15 JANUARY 2026 THURSDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1649,7 +1656,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">620 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">620 ريال سعودي</span>
+                            <span class="en-text">620 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1674,17 +1684,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-676 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-676 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-676 (بديل)</span>
+                    <span class="en-text">MS-676 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">02:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">496 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">496 ريال سعودي</span>
+                            <span class="en-text">496 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1707,7 +1720,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 124 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 124 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 124 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -1722,8 +1735,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">15JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">15JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">15 يناير 2026 الخميس &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">15 JANUARY 2026 THURSDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1736,7 +1749,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">620 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">620 ريال سعودي</span>
+                            <span class="en-text">620 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1761,17 +1777,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-694 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-694 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-694 (بديل)</span>
+                    <span class="en-text">MS-694 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">05:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">496 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">496 ريال سعودي</span>
+                            <span class="en-text">496 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1794,7 +1813,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 124 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 124 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 124 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -1809,8 +1828,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">15JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">15JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">15 يناير 2026 الخميس &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">15 JANUARY 2026 THURSDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1823,7 +1842,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">620 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">620 ريال سعودي</span>
+                            <span class="en-text">620 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1848,17 +1870,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-696 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-696 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-696 (بديل)</span>
+                    <span class="en-text">MS-696 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">10:40</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">576 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">576 ريال سعودي</span>
+                            <span class="en-text">576 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1881,7 +1906,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 44 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 44 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 44 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -1896,8 +1921,8 @@
     
     <div class="threat-card low alternative">
         <div class="card-date-header">
-            <span class="ar-text">15JAN &nbsp;•&nbsp; MED-HBE</span>
-            <span class="en-text">15JAN &nbsp;•&nbsp; MED-HBE</span>
+            <span class="ar-text">15 يناير 2026 الخميس &nbsp;•&nbsp; MED-HBE</span>
+            <span class="en-text">15 JANUARY 2026 THURSDAY &nbsp;•&nbsp; MED-HBE</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1910,7 +1935,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">620 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">620 ريال سعودي</span>
+                            <span class="en-text">620 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1935,17 +1963,20 @@
 
             <div class="flight-block">
                 <div class="flight-block-title">
-                    <span class="ar-text">MS-640 (بديل) MED-CAI</span>
-                    <span class="en-text">MS-640 (ALTERNATIVE) MED-CAI</span>
+                    <span class="ar-text">MS-640 (بديل)</span>
+                    <span class="en-text">MS-640 (ALTERNATIVE)</span>
                 </div>
-                <div class="flight-dep-time">11:50</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">576 SAR</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">576 ريال سعودي</span>
+                            <span class="en-text">576 SAR</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1968,7 +1999,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">مصر للطيران أرخص بـ 44 SAR ووزنه أعلى بـ 16 كجم</span>
+                <span class="ar-text">مصر للطيران أرخص بـ 44 ريال سعودي ووزنه أعلى بـ 16 كجم</span>
                 <span class="en-text">EgyptAir cheaper by 44 SAR with 16K more baggage</span>
             </div>
         </div>
@@ -1978,9 +2009,6 @@
                 <span class="ar-text">تهديد منخفض</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
-        </div>
-    </div>
-    
         </div>
     </div>
     </div>
@@ -1989,8 +2017,8 @@
     <div class="lazy-trigger" id="lazyTrigger"></div>
 
     <div class="scroll-nav">
-        <button class="scroll-btn" id="scrollTop"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(0 12 12)"/></svg></button>
-        <button class="scroll-btn" id="scrollBottom"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(180 12 12)"/></svg></button>
+        <button class="scroll-btn" id="scrollTop"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(0 12 12)"/></svg></button>
+        <button class="scroll-btn" id="scrollBottom"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(180 12 12)"/></svg></button>
     </div>
 
     <div class="position-indicator">
@@ -2027,7 +2055,7 @@
             <span class="nav-icon">🌐</span>
             <span>Dashboard</span>
         </a>
-        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank">
+        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" style="background: #0078D4;">
             <span class="nav-icon">📥</span>
             <span>Download</span>
         </a>
@@ -2038,22 +2066,6 @@
     </div>
 
     <script>
-    // Threat Level Color Overlay
-    function setThreatOverlay(level) {
-        let overlay = document.getElementById('threatOverlay');
-        if (!overlay) {
-            overlay = document.createElement('div');
-            overlay.id = 'threatOverlay';
-            overlay.className = 'threat-overlay';
-            document.body.insertBefore(overlay, document.body.firstChild);
-        }
-        overlay.className = 'threat-overlay';
-        if (level && level !== 'all') {
-            overlay.classList.add(level.toLowerCase());
-            overlay.classList.add('active');
-        }
-    }
-
         // Language Toggle
         function toggleLanguage() {
             const body = document.body;
@@ -2072,7 +2084,6 @@
         // Filter by threat level
         let activeLevel = null;
         function filterByLevel(level) {
-        setThreatOverlay(level);
             const navItems = document.querySelectorAll('.nav-item');
             const statItems = document.querySelectorAll('.stat-item');
 

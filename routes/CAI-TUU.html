@@ -65,7 +65,7 @@
         }
 
         .header .subtitle {
-            color: #ffffff;
+            color: rgba(255,255,255,0.8);
             font-size: 0.85em;
         }
 
@@ -83,7 +83,7 @@
             display: flex;
             justify-content: space-around;
             padding: 15px 10px;
-            background: rgba(70, 43, 115, 0.2);
+            background: rgba(70, 43, 115, 0.1);
         }
 
         .stat-item {
@@ -99,7 +99,7 @@
         .stat-item.active { background: rgba(70, 43, 115, 0.15); }
         .stat-item.high { border-bottom: 3px solid #e74c3c; }
         .stat-item.medium { border-bottom: 3px solid #F7941D; }
-        .stat-item.low { border-bottom: 3px solid #6b5b7a; }
+        .stat-item.low { border-bottom: 3px solid #0000E6; }
 
         .stat-count {
             font-size: 1.8em;
@@ -165,7 +165,7 @@
         .lf-details {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            gap: 8px;
             padding: 10px 15px;
             background: rgba(70, 43, 115, 0.03);
             border-bottom: 1px solid rgba(70, 43, 115, 0.1);
@@ -196,7 +196,7 @@
             border-radius: 10px;
             padding: 12px;
             margin-bottom: 10px;
-            border-left: 4px solid #6b5b7a;
+            border-left: 4px solid #0000E6;
         }
 
         .threat-card.high { border-left-color: #e74c3c; background: linear-gradient(135deg, #fff5f5 0%, #fff 100%); }
@@ -318,14 +318,14 @@
         }
 
         .alert-banner.low {
-            background: linear-gradient(135deg, #6b5b7a 0%, #5a4a69 100%);
+            background: linear-gradient(135deg, #0000E6 0%, #3333FF 100%);
             color: white;
         }
 
         .scroll-nav {
             position: fixed;
             right: 15px;
-            bottom: 140px;
+            bottom: 100px;
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -333,26 +333,21 @@
         }
 
         .scroll-btn {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             border: 2px solid rgba(247, 148, 29, 0.15);
             background: rgba(70, 43, 115, 0.15);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: rgba(255, 255, 255, 0.5);
             font-size: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: all 0.2s ease;
-        }
-
-        .scroll-btn svg {
-            width: 22px;
-            height: 22px;
         }
 
         .scroll-btn:active, .scroll-btn.pressed {
@@ -362,9 +357,10 @@
             transform: scale(0.95);
         }
 
-        
-            width: 22px;
-            height: 22px;
+        .scroll-btn svg {
+            width: 24px;
+            height: 24px;
+        }
 
         .pages-nav {
             position: fixed;
@@ -374,9 +370,9 @@
             background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
             display: flex;
             justify-content: space-around;
-            padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+            padding: 10px 0 max(10px, env(safe-area-inset-bottom));
             z-index: 100;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
 
         .pages-nav a {
@@ -385,32 +381,22 @@
             align-items: center;
             text-decoration: none;
             color: #ffffff;
-            font-size: 11px;
-            font-weight: 500;
-            padding: 8px 20px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            transition: all 0.2s;
-        }
-
-        .pages-nav a:hover, .pages-nav a:active {
-            background: rgba(247, 148, 29, 0.8);
-            color: #F7941D;
+            font-size: 10px;
+            padding: 5px 15px;
         }
 
         .pages-nav a.active {
-            background: #F7941D;
-            color: #fff;
+            color: #F7941D;
         }
 
         .nav-icon {
-            font-size: 22px;
-            margin-bottom: 4px;
+            font-size: 20px;
+            margin-bottom: 3px;
         }
 
         .bottom-nav {
             position: fixed;
-            bottom: 0;
+            bottom: 60px;
             left: 0;
             right: 0;
             background: white;
@@ -442,7 +428,7 @@
             transform: translateY(-50%);
             width: 4px;
             height: 100px;
-            background: rgba(70, 43, 115, 0.2);
+            background: rgba(70, 43, 115, 0.1);
             border-radius: 2px;
             z-index: 98;
         }
@@ -482,36 +468,9 @@
             height: 1px;
             margin-top: -1px;
         }
-    
-        /* Threat Level Color Overlay */
-        .threat-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .threat-overlay.active {
-            opacity: 1;
-        }
-        .threat-overlay.high {
-            background: radial-gradient(ellipse at center, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.05) 70%, transparent 100%);
-        }
-        .threat-overlay.medium {
-            background: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 70%, transparent 100%);
-        }
-        .threat-overlay.low {
-            background: radial-gradient(ellipse at center, rgba(40, 167, 69, 0.15) 0%, rgba(40, 167, 69, 0.05) 70%, transparent 100%);
-        }
-
     </style>
 </head>
 <body class="en">
-    <div id="threatOverlay" class="threat-overlay"></div>
     <header class="header">
         <button class="back-btn" onclick="history.back()">←</button>
         <div class="header-content">
@@ -546,23 +505,17 @@
     </div>
 
     <div class="content" id="content">
-        <div data-date="2026-01-07">
-    <div class="date-header">
-        07 JANUARY 2026 WEDNESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 35%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">62</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">47</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">10</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:05</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">O1</div></div></div>
-        <div class="threats-container">
+        
+            <div class="date-section" data-date="2026-01-07">
+                <div class="date-header">
+                    <span class="ar-text">07 يناير 2026 الأربعاء</span>
+                    <span class="en-text">07 JANUARY 2026 WEDNESDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -575,7 +528,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7021 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7021 جنيه مصري</span>
+                            <span class="en-text">7021 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -603,14 +559,17 @@
                     <span class="ar-text">E5-599</span>
                     <span class="en-text">E5-599</span>
                 </div>
-                <div class="flight-dep-time">11:55</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6531 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6531 جنيه مصري</span>
+                            <span class="en-text">6531 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -629,11 +588,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
                 <span class="en-text">Air leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 490 EGP بنفس الوزن</span>
+                <span class="ar-text">العربية للطيران أرخص بـ 490 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Air cheaper by 490 EGP, same baggage</span>
             </div>
         </div>
@@ -648,8 +607,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -662,7 +621,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7021 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7021 جنيه مصري</span>
+                            <span class="en-text">7021 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -690,14 +652,17 @@
                     <span class="ar-text">NP-117</span>
                     <span class="en-text">NP-117</span>
                 </div>
-                <div class="flight-dep-time">18:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6563 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6563 جنيه مصري</span>
+                            <span class="en-text">6563 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -716,11 +681,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
                 <span class="en-text">Nile leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 458 EGP بنفس الوزن</span>
+                <span class="ar-text">طيران النيل أرخص بـ 458 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nile cheaper by 458 EGP, same baggage</span>
             </div>
         </div>
@@ -735,8 +700,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">07JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">07JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">07 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">07 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -749,7 +714,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7021 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7021 جنيه مصري</span>
+                            <span class="en-text">7021 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -777,14 +745,17 @@
                     <span class="ar-text">MS-811</span>
                     <span class="en-text">MS-811</span>
                 </div>
-                <div class="flight-dep-time">23:35</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7326 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7326 جنيه مصري</span>
+                            <span class="en-text">7326 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -807,7 +778,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">سعر إير كايرو أقل بـ 305 EGP لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
+                <span class="ar-text">سعر إير كايرو أقل بـ 305 جنيه مصري لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
                 <span class="en-text">SM price lower by 305 EGP but EgyptAir offers 16K more baggage</span>
             </div>
         </div>
@@ -819,26 +790,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-08">
-    <div class="date-header">
-        08 JANUARY 2026 THURSDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 25%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">45</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">27</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">03Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">2</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">1</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:05</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">I2</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-08">
+                <div class="date-header">
+                    <span class="ar-text">08 يناير 2026 الخميس</span>
+                    <span class="en-text">08 JANUARY 2026 THURSDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">08JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">08JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">08 يناير 2026 الخميس &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">08 JANUARY 2026 THURSDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -851,7 +813,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -879,14 +844,17 @@
                     <span class="ar-text">NE-120</span>
                     <span class="en-text">NE-120</span>
                 </div>
-                <div class="flight-dep-time">19:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6550 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6550 جنيه مصري</span>
+                            <span class="en-text">6550 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -905,11 +873,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 26 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 26 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 26 EGP, same baggage</span>
             </div>
         </div>
@@ -924,8 +892,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">08JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">08JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">08 يناير 2026 الخميس &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">08 JANUARY 2026 THURSDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -938,7 +906,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -966,14 +937,17 @@
                     <span class="ar-text">NP-107</span>
                     <span class="en-text">NP-107</span>
                 </div>
-                <div class="flight-dep-time">18:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6563 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6563 جنيه مصري</span>
+                            <span class="en-text">6563 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -992,11 +966,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
                 <span class="en-text">Nile leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 13 EGP بنفس الوزن</span>
+                <span class="ar-text">طيران النيل أرخص بـ 13 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nile cheaper by 13 EGP, same baggage</span>
             </div>
         </div>
@@ -1008,26 +982,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-10">
-    <div class="date-header">
-        10 JANUARY 2026 SATURDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 32%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">57</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">22</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">3</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:00</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">O9</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-10">
+                <div class="date-header">
+                    <span class="ar-text">10 يناير 2026 السبت</span>
+                    <span class="en-text">10 JANUARY 2026 SATURDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">10JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">10JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">10 يناير 2026 السبت &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">10 JANUARY 2026 SATURDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1040,7 +1005,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7021 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7021 جنيه مصري</span>
+                            <span class="en-text">7021 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1068,14 +1036,17 @@
                     <span class="ar-text">NP-107</span>
                     <span class="en-text">NP-107</span>
                 </div>
-                <div class="flight-dep-time">18:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6563 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6563 جنيه مصري</span>
+                            <span class="en-text">6563 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1094,11 +1065,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
                 <span class="en-text">Nile leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 458 EGP بنفس الوزن</span>
+                <span class="ar-text">طيران النيل أرخص بـ 458 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nile cheaper by 458 EGP, same baggage</span>
             </div>
         </div>
@@ -1110,26 +1081,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-14">
-    <div class="date-header">
-        14 JANUARY 2026 WEDNESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 26%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">47</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">33</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">03Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">1</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">12</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:05</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">O3</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-14">
+                <div class="date-header">
+                    <span class="ar-text">14 يناير 2026 الأربعاء</span>
+                    <span class="en-text">14 JANUARY 2026 WEDNESDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">14JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">14JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">14 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">14 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1142,7 +1104,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7021 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7021 جنيه مصري</span>
+                            <span class="en-text">7021 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1170,14 +1135,17 @@
                     <span class="ar-text">E5-599</span>
                     <span class="en-text">E5-599</span>
                 </div>
-                <div class="flight-dep-time">11:55</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6266 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6266 جنيه مصري</span>
+                            <span class="en-text">6266 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1196,11 +1164,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
                 <span class="en-text">Air leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 755 EGP بنفس الوزن</span>
+                <span class="ar-text">العربية للطيران أرخص بـ 755 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Air cheaper by 755 EGP, same baggage</span>
             </div>
         </div>
@@ -1215,8 +1183,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">14JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">14JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">14 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">14 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1229,7 +1197,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7021 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7021 جنيه مصري</span>
+                            <span class="en-text">7021 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1257,14 +1228,17 @@
                     <span class="ar-text">MS-811</span>
                     <span class="en-text">MS-811</span>
                 </div>
-                <div class="flight-dep-time">23:35</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7326 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7326 جنيه مصري</span>
+                            <span class="en-text">7326 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1287,7 +1261,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">سعر إير كايرو أقل بـ 305 EGP لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
+                <span class="ar-text">سعر إير كايرو أقل بـ 305 جنيه مصري لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
                 <span class="en-text">SM price lower by 305 EGP but EgyptAir offers 16K more baggage</span>
             </div>
         </div>
@@ -1299,26 +1273,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-15">
-    <div class="date-header">
-        15 JANUARY 2026 THURSDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 30%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">53</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">28</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">4</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:05</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">X7</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-15">
+                <div class="date-header">
+                    <span class="ar-text">15 يناير 2026 الخميس</span>
+                    <span class="en-text">15 JANUARY 2026 THURSDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">15JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">15JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">15 يناير 2026 الخميس &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">15 JANUARY 2026 THURSDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1331,7 +1296,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8052 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8052 جنيه مصري</span>
+                            <span class="en-text">8052 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1359,14 +1327,17 @@
                     <span class="ar-text">NE-120</span>
                     <span class="en-text">NE-120</span>
                 </div>
-                <div class="flight-dep-time">19:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6550 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6550 جنيه مصري</span>
+                            <span class="en-text">6550 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1385,11 +1356,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 1502 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 1502 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 1502 EGP, same baggage</span>
             </div>
         </div>
@@ -1404,8 +1375,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">15JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">15JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">15 يناير 2026 الخميس &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">15 JANUARY 2026 THURSDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1418,7 +1389,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8052 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8052 جنيه مصري</span>
+                            <span class="en-text">8052 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1446,14 +1420,17 @@
                     <span class="ar-text">NP-107</span>
                     <span class="en-text">NP-107</span>
                 </div>
-                <div class="flight-dep-time">18:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">7619 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7619 جنيه مصري</span>
+                            <span class="en-text">7619 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1472,11 +1449,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
                 <span class="en-text">Nile leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 433 EGP بنفس الوزن</span>
+                <span class="ar-text">طيران النيل أرخص بـ 433 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nile cheaper by 433 EGP, same baggage</span>
             </div>
         </div>
@@ -1491,8 +1468,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">15JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">15JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">15 يناير 2026 الخميس &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">15 JANUARY 2026 THURSDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1505,7 +1482,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8052 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8052 جنيه مصري</span>
+                            <span class="en-text">8052 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1533,14 +1513,17 @@
                     <span class="ar-text">MS-811</span>
                     <span class="en-text">MS-811</span>
                 </div>
-                <div class="flight-dep-time">23:35</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8993 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8993 جنيه مصري</span>
+                            <span class="en-text">8993 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1563,7 +1546,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">سعر إير كايرو أقل بـ 941 EGP لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
+                <span class="ar-text">سعر إير كايرو أقل بـ 941 جنيه مصري لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
                 <span class="en-text">SM price lower by 941 EGP but EgyptAir offers 16K more baggage</span>
             </div>
         </div>
@@ -1575,26 +1558,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-21">
-    <div class="date-header">
-        21 JANUARY 2026 WEDNESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 12%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">22</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">5</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">1</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:05</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">I6</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-21">
+                <div class="date-header">
+                    <span class="ar-text">21 يناير 2026 الأربعاء</span>
+                    <span class="en-text">21 JANUARY 2026 WEDNESDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">21JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">21JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">21 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">21 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1607,7 +1581,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1635,14 +1612,17 @@
                     <span class="ar-text">E5-599</span>
                     <span class="en-text">E5-599</span>
                 </div>
-                <div class="flight-dep-time">11:55</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6266 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6266 جنيه مصري</span>
+                            <span class="en-text">6266 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1661,11 +1641,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
                 <span class="en-text">Air leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 310 EGP بنفس الوزن</span>
+                <span class="ar-text">العربية للطيران أرخص بـ 310 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Air cheaper by 310 EGP, same baggage</span>
             </div>
         </div>
@@ -1680,8 +1660,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">21JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">21JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">21 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">21 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1694,7 +1674,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1722,14 +1705,17 @@
                     <span class="ar-text">NE-120</span>
                     <span class="en-text">NE-120</span>
                 </div>
-                <div class="flight-dep-time">19:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6550 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6550 جنيه مصري</span>
+                            <span class="en-text">6550 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1748,11 +1734,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 26 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 26 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 26 EGP, same baggage</span>
             </div>
         </div>
@@ -1767,8 +1753,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">21JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">21JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">21 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">21 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1781,7 +1767,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1809,14 +1798,17 @@
                     <span class="ar-text">MS-811</span>
                     <span class="en-text">MS-811</span>
                 </div>
-                <div class="flight-dep-time">23:35</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8052 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8052 جنيه مصري</span>
+                            <span class="en-text">8052 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1839,7 +1831,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">سعر إير كايرو أقل بـ 1476 EGP لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
+                <span class="ar-text">سعر إير كايرو أقل بـ 1476 جنيه مصري لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
                 <span class="en-text">SM price lower by 1476 EGP but EgyptAir offers 16K more baggage</span>
             </div>
         </div>
@@ -1851,26 +1843,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-22">
-    <div class="date-header">
-        22 JANUARY 2026 THURSDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 6%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">10</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">2</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">2</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:05</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">I9</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-22">
+                <div class="date-header">
+                    <span class="ar-text">22 يناير 2026 الخميس</span>
+                    <span class="en-text">22 JANUARY 2026 THURSDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">22JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">22JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">22 يناير 2026 الخميس &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">22 JANUARY 2026 THURSDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1883,7 +1866,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1911,14 +1897,17 @@
                     <span class="ar-text">NE-120</span>
                     <span class="en-text">NE-120</span>
                 </div>
-                <div class="flight-dep-time">19:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6550 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6550 جنيه مصري</span>
+                            <span class="en-text">6550 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1937,11 +1926,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 26 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 26 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 26 EGP, same baggage</span>
             </div>
         </div>
@@ -1956,8 +1945,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">22JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">22JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">22 يناير 2026 الخميس &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">22 JANUARY 2026 THURSDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -1970,7 +1959,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -1998,14 +1990,17 @@
                     <span class="ar-text">MS-811</span>
                     <span class="en-text">MS-811</span>
                 </div>
-                <div class="flight-dep-time">23:35</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">8052 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8052 جنيه مصري</span>
+                            <span class="en-text">8052 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2028,7 +2023,7 @@
                 <span class="en-text">EgyptAir leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">سعر إير كايرو أقل بـ 1476 EGP لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
+                <span class="ar-text">سعر إير كايرو أقل بـ 1476 جنيه مصري لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
                 <span class="en-text">SM price lower by 1476 EGP but EgyptAir offers 16K more baggage</span>
             </div>
         </div>
@@ -2040,26 +2035,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-24">
-    <div class="date-header">
-        24 JANUARY 2026 SATURDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 12%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">21</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">3</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">01Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:00</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">I9</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-24">
+                <div class="date-header">
+                    <span class="ar-text">24 يناير 2026 السبت</span>
+                    <span class="en-text">24 JANUARY 2026 SATURDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">24JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">24JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">24 يناير 2026 السبت &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">24 JANUARY 2026 SATURDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2072,7 +2058,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2100,14 +2089,17 @@
                     <span class="ar-text">NE-122</span>
                     <span class="en-text">NE-122</span>
                 </div>
-                <div class="flight-dep-time">16:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6550 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6550 جنيه مصري</span>
+                            <span class="en-text">6550 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2126,11 +2118,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 26 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 26 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 26 EGP, same baggage</span>
             </div>
         </div>
@@ -2145,8 +2137,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">24JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">24JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">24 يناير 2026 السبت &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">24 JANUARY 2026 SATURDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2159,7 +2151,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2187,14 +2182,17 @@
                     <span class="ar-text">NP-107</span>
                     <span class="en-text">NP-107</span>
                 </div>
-                <div class="flight-dep-time">18:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6563 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6563 جنيه مصري</span>
+                            <span class="en-text">6563 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2213,11 +2211,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
                 <span class="en-text">Nile leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 13 EGP بنفس الوزن</span>
+                <span class="ar-text">طيران النيل أرخص بـ 13 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nile cheaper by 13 EGP, same baggage</span>
             </div>
         </div>
@@ -2229,26 +2227,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-28">
-    <div class="date-header">
-        28 JANUARY 2026 WEDNESDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 4%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">7</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">5</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">01Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:05</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">I9</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-28">
+                <div class="date-header">
+                    <span class="ar-text">28 يناير 2026 الأربعاء</span>
+                    <span class="en-text">28 JANUARY 2026 WEDNESDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">28JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">28JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">28 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">28 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2261,7 +2250,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2289,14 +2281,17 @@
                     <span class="ar-text">E5-599</span>
                     <span class="en-text">E5-599</span>
                 </div>
-                <div class="flight-dep-time">11:55</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6266 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6266 جنيه مصري</span>
+                            <span class="en-text">6266 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2315,11 +2310,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Air</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح العربية للطيران</span>
                 <span class="en-text">Air leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Air أرخص بـ 310 EGP بنفس الوزن</span>
+                <span class="ar-text">العربية للطيران أرخص بـ 310 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Air cheaper by 310 EGP, same baggage</span>
             </div>
         </div>
@@ -2334,8 +2329,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">28JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">28JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">28 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">28 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2348,7 +2343,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2376,14 +2374,17 @@
                     <span class="ar-text">NE-120</span>
                     <span class="en-text">NE-120</span>
                 </div>
-                <div class="flight-dep-time">19:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6550 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6550 جنيه مصري</span>
+                            <span class="en-text">6550 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2402,11 +2403,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 26 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 26 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 26 EGP, same baggage</span>
             </div>
         </div>
@@ -2421,8 +2422,8 @@
     
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">28JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">28JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">28 يناير 2026 الأربعاء &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">28 JANUARY 2026 WEDNESDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2435,7 +2436,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2463,14 +2467,17 @@
                     <span class="ar-text">NP-117</span>
                     <span class="en-text">NP-117</span>
                 </div>
-                <div class="flight-dep-time">18:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6563 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6563 جنيه مصري</span>
+                            <span class="en-text">6563 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2489,11 +2496,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nile</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح طيران النيل</span>
                 <span class="en-text">Nile leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nile أرخص بـ 13 EGP بنفس الوزن</span>
+                <span class="ar-text">طيران النيل أرخص بـ 13 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nile cheaper by 13 EGP, same baggage</span>
             </div>
         </div>
@@ -2505,26 +2512,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-29">
-    <div class="date-header">
-        29 JANUARY 2026 THURSDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 7%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">13</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">23Dec</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:05</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">I9</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-29">
+                <div class="date-header">
+                    <span class="ar-text">29 يناير 2026 الخميس</span>
+                    <span class="en-text">29 JANUARY 2026 THURSDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">29JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">29JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">29 يناير 2026 الخميس &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">29 JANUARY 2026 THURSDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2537,7 +2535,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2565,14 +2566,17 @@
                     <span class="ar-text">NE-120</span>
                     <span class="en-text">NE-120</span>
                 </div>
-                <div class="flight-dep-time">19:20</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6550 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6550 جنيه مصري</span>
+                            <span class="en-text">6550 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2591,11 +2595,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 26 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 26 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 26 EGP, same baggage</span>
             </div>
         </div>
@@ -2607,26 +2611,17 @@
             </div>
         </div>
     </div>
-    
-        </div>
     </div>
-    </div><div data-date="2026-01-31">
-    <div class="date-header">
-        31 JANUARY 2026 SATURDAY
-    </div>
-    
-    <div class="flight-card">
-        <div class="flight-header">
-            <span class="flight-name">SM-325</span>
-            <span class="lf-badge lf-low">LF: 13%</span>
-        </div>
-        <div class="lf-details"><div class="lf-item"><div class="lf-item-label">SOLD</div><div class="lf-item-value">23</div></div><div class="lf-item"><div class="lf-item-label">CAP</div><div class="lf-item-value">179</div></div><div class="lf-item"><div class="lf-item-label">WKLY</div><div class="lf-item-value">8</div></div><div class="lf-item"><div class="lf-item-label">LST</div><div class="lf-item-value">02Jan</div></div><div class="lf-item"><div class="lf-item-label">TODAY</div><div class="lf-item-value">0</div></div><div class="lf-item"><div class="lf-item-label">YDAY</div><div class="lf-item-value">2</div></div><div class="lf-item"><div class="lf-item-label">DEP</div><div class="lf-item-value">17:00</div></div><div class="lf-item"><div class="lf-item-label">AVAIL</div><div class="lf-item-value">I4</div></div></div>
-        <div class="threats-container">
+            <div class="date-section" data-date="2026-01-31">
+                <div class="date-header">
+                    <span class="ar-text">31 يناير 2026 السبت</span>
+                    <span class="en-text">31 JANUARY 2026 SATURDAY</span>
+                </div>
             
     <div class="threat-card low">
         <div class="card-date-header">
-            <span class="ar-text">31JAN &nbsp;•&nbsp; CAI-TUU</span>
-            <span class="en-text">31JAN &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="ar-text">31 يناير 2026 السبت &nbsp;•&nbsp; CAI-TUU</span>
+            <span class="en-text">31 JANUARY 2026 SATURDAY &nbsp;•&nbsp; CAI-TUU</span>
         </div>
 
         <div class="blocks-wrapper">
@@ -2639,7 +2634,10 @@
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6576 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6576 جنيه مصري</span>
+                            <span class="en-text">6576 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2667,14 +2665,17 @@
                     <span class="ar-text">NE-122</span>
                     <span class="en-text">NE-122</span>
                 </div>
-                <div class="flight-dep-time">16:10</div>
+                <div class="flight-dep-time">-</div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
                             <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
-                        <div class="flight-detail-value">6550 EGP</div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6550 جنيه مصري</span>
+                            <span class="en-text">6550 EGP</span>
+                        </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
@@ -2693,11 +2694,11 @@
 
         <div class="comparison-summary threat">
             <div class="advantage-text">
-                <span class="ar-text">الأفضلية الإجمالية لصالح Nesma</span>
+                <span class="ar-text">الأفضلية الإجمالية لصالح نسما</span>
                 <span class="en-text">Nesma leads overall</span>
             </div>
             <div class="summary-details">
-                <span class="ar-text">Nesma أرخص بـ 26 EGP بنفس الوزن</span>
+                <span class="ar-text">نسما أرخص بـ 26 جنيه مصري بنفس الوزن</span>
                 <span class="en-text">Nesma cheaper by 26 EGP, same baggage</span>
             </div>
         </div>
@@ -2709,17 +2710,14 @@
             </div>
         </div>
     </div>
-    
-        </div>
-    </div>
     </div>
     </div>
 
     <div class="lazy-trigger" id="lazyTrigger"></div>
 
     <div class="scroll-nav">
-        <button class="scroll-btn" id="scrollTop"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(0 12 12)"/></svg></button>
-        <button class="scroll-btn" id="scrollBottom"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(180 12 12)"/></svg></button>
+        <button class="scroll-btn" id="scrollTop"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(0 12 12)"/></svg></button>
+        <button class="scroll-btn" id="scrollBottom"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(180 12 12)"/></svg></button>
     </div>
 
     <div class="position-indicator">
@@ -2756,7 +2754,7 @@
             <span class="nav-icon">🌐</span>
             <span>Dashboard</span>
         </a>
-        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank">
+        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" style="background: #0078D4;">
             <span class="nav-icon">📥</span>
             <span>Download</span>
         </a>
@@ -2767,22 +2765,6 @@
     </div>
 
     <script>
-    // Threat Level Color Overlay
-    function setThreatOverlay(level) {
-        let overlay = document.getElementById('threatOverlay');
-        if (!overlay) {
-            overlay = document.createElement('div');
-            overlay.id = 'threatOverlay';
-            overlay.className = 'threat-overlay';
-            document.body.insertBefore(overlay, document.body.firstChild);
-        }
-        overlay.className = 'threat-overlay';
-        if (level && level !== 'all') {
-            overlay.classList.add(level.toLowerCase());
-            overlay.classList.add('active');
-        }
-    }
-
         // Language Toggle
         function toggleLanguage() {
             const body = document.body;
@@ -2801,7 +2783,6 @@
         // Filter by threat level
         let activeLevel = null;
         function filterByLevel(level) {
-        setThreatOverlay(level);
             const navItems = document.querySelectorAll('.nav-item');
             const statItems = document.querySelectorAll('.stat-item');
 
