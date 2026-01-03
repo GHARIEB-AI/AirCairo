@@ -25647,6 +25647,7 @@
 
         function showAll() {
             activeLevel = null;
+            setThreatOverlay(null);
             document.querySelectorAll('.threat-card').forEach(card => card.classList.remove('hidden'));
             document.querySelectorAll('.flight-card').forEach(card => card.classList.remove('hidden'));
             document.querySelectorAll('[data-date]').forEach(section => section.classList.remove('hidden'));

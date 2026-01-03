@@ -22876,6 +22876,7 @@
         // Show all
         function showAll() {
             activeLevel = null;
+            setThreatOverlay(null);
             document.querySelectorAll('.threat-card').forEach(card => card.classList.remove('hidden'));
             document.querySelectorAll('.nav-item').forEach((item, i) => {
                 item.classList.toggle('active', i === 0);

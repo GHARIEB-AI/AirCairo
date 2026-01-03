@@ -1320,40 +1320,43 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            border: none;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(247, 148, 29, 0.3);
+            background: rgba(70, 43, 115, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: rgba(70, 43, 115, 0.7);
             font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.15s, box-shadow 0.15s, background 0.15s, opacity 0.15s;
-            opacity: 0.4;
         }
 
         .scroll-btn:hover {
-            opacity: 1;
+            background: rgba(70, 43, 115, 0.2);
+            border-color: rgba(247, 148, 29, 0.6);
             transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 4px 15px rgba(70, 43, 115, 0.2);
         }
 
         .scroll-btn:active,
         .scroll-btn.pressed {
-            opacity: 1;
             transform: scale(0.92);
-            box-shadow: 0 4px 15px rgba(247, 148, 29, 0.5);
-            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
+            background: rgba(247, 148, 29, 0.3);
+            border-color: rgba(247, 148, 29, 0.8);
         }
 
         .scroll-btn.end {
-            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
+            background: rgba(70, 43, 115, 0.1);
+            border: 2px solid rgba(247, 148, 29, 0.3);
         }
 
         .scroll-btn.end:hover {
-            opacity: 1;
-            box-shadow: 0 4px 15px rgba(247, 148, 29, 0.5);
+            background: rgba(70, 43, 115, 0.2);
+            border-color: rgba(247, 148, 29, 0.6);
+            box-shadow: 0 4px 15px rgba(70, 43, 115, 0.2);
         }
 
 
@@ -34490,6 +34493,12 @@
 
         // Filter by threat level (clicking on stat cards)
         function filterByThreatLevel(level) {
+            // Update visual overlay
+            if (currentThreatFilter === level) {
+                setThreatOverlay(null);
+            } else {
+                setThreatOverlay(level);
+            }
             const statCards = document.querySelectorAll('.stat-card');
             const allRows = document.querySelectorAll('tr[data-threat-level]');
             const allFlightBlocks = document.querySelectorAll('.flight-block');

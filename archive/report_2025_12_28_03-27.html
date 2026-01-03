@@ -30753,6 +30753,12 @@
 
         // Filter by threat level (clicking on stat cards)
         function filterByThreatLevel(level) {
+            // Update visual overlay
+            if (currentThreatFilter === level) {
+                setThreatOverlay(null);
+            } else {
+                setThreatOverlay(level);
+            }
             const statCards = document.querySelectorAll('.stat-card');
             const allRows = document.querySelectorAll('tr[data-threat-level]');
             const allFlightBlocks = document.querySelectorAll('.flight-block');
