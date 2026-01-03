@@ -1787,6 +1787,35 @@
             font-weight: bold;
         }
 
+        /* Threat Overlay - Visual effect when filtering by threat level */
+        .threat-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .threat-overlay.active {
+            opacity: 1;
+        }
+
+        .threat-overlay.high {
+            background: radial-gradient(ellipse at center, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.05) 70%, transparent 100%);
+        }
+
+        .threat-overlay.medium {
+            background: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 70%, transparent 100%);
+        }
+
+        .threat-overlay.low {
+            background: radial-gradient(ellipse at center, rgba(40, 167, 69, 0.15) 0%, rgba(40, 167, 69, 0.05) 70%, transparent 100%);
+        }
+
         @media print {
             .scroll-nav {
                 display: none !important;
@@ -1798,6 +1827,9 @@
     </style>
 </head>
 <body class="en">
+    <!-- Threat Overlay (visual effect for threat level filtering) -->
+    <div id="threatOverlay" class="threat-overlay"></div>
+
     <!-- Loading Screen -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-plane">✈️</div>
@@ -1819,7 +1851,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 03JAN26 23:03</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 03JAN26 23:19</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">الفترة: 03JAN26 - 31JAN26</span><span class="en-text">Range: 03JAN26 - 31JAN26</span>
                 <span class="ticker-separator">|</span>
@@ -1834,7 +1866,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 03JAN26 23:03</span>
+                <span class="ticker-generated">🕐 Generated: 03JAN26 23:19</span>
                 <span class="ticker-separator">|</span>
                 📅 Range: <span class="ar-text">الفترة: 03JAN26 - 31JAN26</span><span class="en-text">Range: 03JAN26 - 31JAN26</span>
                 <span class="ticker-separator">|</span>
@@ -1864,8 +1896,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 03JAN26 11:03 PM</span>
-                        <span class="en-text">Created: 03JAN26 11:03 PM</span>
+                        <span class="ar-text">تم الإنشاء: 03JAN26 11:19 PM</span>
+                        <span class="en-text">Created: 03JAN26 11:19 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -2061,11 +2093,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-01-03 23:03</span>
+                    آخر تحديث: <span class="update-time">2026-01-03 23:19</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-01-03 23:03</span>
+                    Last Updated: <span class="update-time">2026-01-03 23:19</span>
                 </span>
             </div>
 
@@ -34672,6 +34704,7 @@
         // Clear threat filter when route/date changes
         function clearThreatFilter() {
             currentThreatFilter = null;
+            setThreatOverlay(null);
             const statCards = document.querySelectorAll('.stat-card');
             statCards.forEach(card => card.classList.remove('active-filter'));
             const allRows = document.querySelectorAll('tr[data-threat-level]');
@@ -34680,6 +34713,22 @@
             allFlightBlocks.forEach(block => block.style.display = '');
             const allDateSections = document.querySelectorAll('.date-section');
             allDateSections.forEach(section => section.style.display = '');
+        }
+
+        // Set threat overlay visual effect
+        function setThreatOverlay(level) {
+            let overlay = document.getElementById('threatOverlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'threatOverlay';
+                overlay.className = 'threat-overlay';
+                document.body.insertBefore(overlay, document.body.firstChild);
+            }
+            overlay.className = 'threat-overlay';
+            if (level && level !== 'all') {
+                overlay.classList.add(level.toLowerCase());
+                overlay.classList.add('active');
+            }
         }
 
         // Update showRoute and showDate to clear threat filter
