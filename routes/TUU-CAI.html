@@ -1942,14 +1942,16 @@
         function toggleLanguage() {
             const body = document.body;
             const btn = document.querySelector('.lang-toggle');
-            if (body.classList.contains('ar')) {
-                body.classList.remove('ar');
-                body.classList.add('en');
-                btn.textContent = 'AR';
-            } else {
+            if (body.classList.contains('en')) {
                 body.classList.remove('en');
                 body.classList.add('ar');
+                body.dir = 'rtl';
                 btn.textContent = 'EN';
+            } else {
+                body.classList.remove('ar');
+                body.classList.add('en');
+                body.dir = 'ltr';
+                btn.textContent = 'عربي';
             }
         }
 

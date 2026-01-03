@@ -473,7 +473,7 @@
             <div class="subtitle"><span class="ar-text">الفترة: 03JAN26 - 31JAN26</span><span class="en-text">Range: 03JAN26 - 31JAN26</span></div>
             <div class="generated">Generated: 2026-01-03 05:40</div>
         </div>
-        <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+        <button class="lang-toggle" onclick="toggleLanguage()">عربي</button>
     </header>
 
     <div class="action-buttons">
@@ -822,14 +822,16 @@
         function toggleLanguage() {
             const body = document.body;
             const btn = document.querySelector('.lang-toggle');
-            if (body.classList.contains('ar')) {
-                body.classList.remove('ar');
-                body.classList.add('en');
-                btn.textContent = 'AR';
-            } else {
+            if (body.classList.contains('en')) {
                 body.classList.remove('en');
                 body.classList.add('ar');
+                body.dir = 'rtl';
                 btn.textContent = 'EN';
+            } else {
+                body.classList.remove('ar');
+                body.classList.add('en');
+                body.dir = 'ltr';
+                btn.textContent = 'عربي';
             }
         }
 
