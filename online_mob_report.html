@@ -16,7 +16,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f3f9 0%, #ebe7f3 100%);
+            background: linear-gradient(180deg, #462B73 0%, #462B73 180px, #f0f0f5 180px, #f0f0f5 100%);
             color: #462B73;
             min-height: 100vh;
             padding-bottom: 80px;
@@ -28,32 +28,65 @@
         body.en .ar-text { display: none; }
         body.en .en-text { display: inline; }
 
+        /* Header with calendar icon */
         .header {
-            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
-            padding: 20px 15px;
+            background: transparent;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .calendar-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .calendar-icon .month {
+            font-size: 8px;
+            background: rgba(0,0,0,0.2);
+            width: 100%;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            padding: 2px 0;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .calendar-icon .day {
+            font-size: 18px;
+        }
+
+        .header-text {
+            flex: 1;
         }
 
         .header h1 {
-            font-size: 1.3em;
-            margin-bottom: 5px;
+            font-size: 1.2em;
             color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .header .subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.85em;
-            opacity: 0.8;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.75em;
+        }
+
+        .header .generated {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.7em;
         }
 
         .lang-toggle {
-            position: absolute;
-            top: 15px;
-            left: 15px;
             background: rgba(255,255,255,0.2);
             border: none;
             color: white;
@@ -63,139 +96,325 @@
             cursor: pointer;
         }
 
-        body.en .lang-toggle {
-            left: auto;
-            right: 15px;
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 15px;
+            flex-wrap: wrap;
         }
 
-        .last-updated-banner {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #F7941D;
-            text-align: center;
-            padding: 12px 15px;
-            font-size: 1.1em;
-            font-weight: 700;
-            border-bottom: 3px solid #F7941D;
+        .action-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: transform 0.2s;
         }
 
-        .last-updated-banner .update-time {
+        .action-btn:active {
+            transform: scale(0.95);
+        }
+
+        .action-btn.archive {
+            background: rgba(255,255,255,0.25);
             color: white;
+        }
+
+        .action-btn.dashboard {
+            background: rgba(255,255,255,0.25);
+            color: white;
+        }
+
+        .action-btn.download {
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(247, 148, 29, 0.4);
+        }
+
+        /* 3D Sphere Stats */
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 25px 15px;
+            background: white;
+            margin: 0 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-top: -20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-sphere {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .sphere {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .sphere::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 12px;
+            width: 20px;
+            height: 12px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            transform: rotate(-30deg);
+        }
+
+        .sphere.low {
+            background: linear-gradient(135deg, #9b59b6 0%, #6c3483 100%);
+        }
+
+        .sphere.medium {
+            background: linear-gradient(135deg, #f1c40f 0%, #d4ac0d 100%);
+        }
+
+        .sphere.high {
+            background: linear-gradient(135deg, #e74c3c 0%, #922b21 100%);
+        }
+
+        .stat-sphere .count {
+            font-size: 1.6em;
             font-weight: 800;
         }
 
-        .stats-bar {
+        .stat-sphere.low .count { color: #9b59b6; }
+        .stat-sphere.medium .count { color: #d4ac0d; }
+        .stat-sphere.high .count { color: #e74c3c; }
+
+        .stat-sphere .label {
+            font-size: 0.7em;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .stat-sphere.active-filter {
+            transform: scale(1.1);
+        }
+
+        .stat-sphere.active-filter .sphere {
+            box-shadow: 0 0 0 4px rgba(70, 43, 115, 0.3), 0 8px 25px rgba(0,0,0,0.35);
+        }
+
+        /* Search Bar */
+        .search-section {
+            padding: 15px;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 15px;
+            padding: 12px 20px;
             display: flex;
-            justify-content: space-around;
-            padding: 15px 10px;
-            background: rgba(70, 43, 115, 0.1);
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(70, 43, 115, 0.1);
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 10px;
-            border-radius: 10px;
-            min-width: 80px;
-        }
-
-        .stat-item.high { border-bottom: 3px solid #e74c3c; }
-        .stat-item.medium { border-bottom: 3px solid #F7941D; }
-        .stat-item.low { border-bottom: 3px solid #6b5b7a; }
-
-        .stat-count {
-            font-size: 1.8em;
-            font-weight: 700;
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 0.95em;
             color: #462B73;
+            text-align: right;
         }
 
-        .stat-label {
-            font-size: 0.65em;
-            opacity: 0.9;
-            margin-top: 3px;
+        body.en .search-box input {
+            text-align: left;
+        }
+
+        .search-box input::placeholder {
+            color: #999;
+        }
+
+        .search-icon {
+            color: #999;
+            font-size: 1.2em;
+        }
+
+        /* Filter Buttons */
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 15px 15px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid rgba(70, 43, 115, 0.2);
+            background: white;
             color: #462B73;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
+        .filter-btn.active {
+            background: #462B73;
+            color: white;
+            border-color: #462B73;
+        }
+
+        /* Routes Grid */
         .routes-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            padding: 15px;
+            padding: 0 15px 15px;
         }
 
+        /* Route Card - New Design */
         .route-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             text-decoration: none;
             color: inherit;
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .route-card:active {
             transform: scale(0.98);
         }
 
+        .route-card-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
         .route-card-name {
             font-size: 1.1em;
-            font-weight: 700;
+            font-weight: 800;
             color: #462B73;
         }
 
-        .route-card-stats {
+        .plane-icon {
+            color: #3498db;
+            font-size: 1em;
+        }
+
+        /* Mini Spheres for route stats */
+        .route-stats-row {
             display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
         }
 
-        .route-stat {
+        .mini-stat {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .mini-sphere {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65em;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+
+        .mini-sphere::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            width: 8px;
+            height: 5px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            transform: rotate(-30deg);
+        }
+
+        .mini-sphere.low {
+            background: linear-gradient(135deg, #9b59b6 0%, #6c3483 100%);
+        }
+
+        .mini-sphere.medium {
+            background: linear-gradient(135deg, #f1c40f 0%, #d4ac0d 100%);
+        }
+
+        .mini-sphere.high {
+            background: linear-gradient(135deg, #e74c3c 0%, #922b21 100%);
+        }
+
+        .mini-stat-value {
+            font-size: 0.85em;
+            font-weight: 700;
+        }
+
+        .mini-stat.low .mini-stat-value { color: #9b59b6; }
+        .mini-stat.medium .mini-stat-value { color: #d4ac0d; }
+        .mini-stat.high .mini-stat-value { color: #e74c3c; }
+
+        .route-total {
+            text-align: center;
             font-size: 0.75em;
-            padding: 3px 8px;
-            border-radius: 10px;
-            font-weight: 600;
+            color: #666;
+            padding-top: 8px;
+            border-top: 1px dashed rgba(0,0,0,0.1);
         }
 
-        .route-stat.high {
-            background: #fde2e2;
-            color: #e74c3c;
+        .route-total strong {
+            color: #462B73;
         }
 
-        .route-stat.medium {
-            background: #fef3e2;
-            color: #d68910;
-        }
-
-        .route-stat.low {
-            background: #f0ebf5;
-            color: #6b5b7a;
-        }
-
-        .route-card-flights {
-            font-size: 0.7em;
-            color: #888;
-        }
-
-        .route-card.has-high {
-            border-left: 4px solid #e74c3c;
-        }
-
-        .route-card.has-medium:not(.has-high) {
-            border-left: 4px solid #F7941D;
-        }
-
+        /* Bottom Navigation */
         .pages-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            background: white;
             display: flex;
             justify-content: space-around;
             padding: 10px 0 max(10px, env(safe-area-inset-bottom));
             z-index: 100;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
         .pages-nav a {
@@ -203,133 +422,365 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: rgba(255,255,255,0.6);
+            color: #666;
             font-size: 10px;
             padding: 5px 15px;
+            transition: color 0.2s;
         }
 
         .pages-nav a.active {
-            color: #F7941D;
+            color: #462B73;
+        }
+
+        .pages-nav a.download-nav {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 8px 20px;
+            margin-top: -15px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
         }
 
         .nav-icon {
             font-size: 20px;
             margin-bottom: 3px;
         }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body class="en">
     <header class="header">
-        <button class="lang-toggle" onclick="toggleLanguage()">AR</button>
-        <h1>
-            <span class="ar-text">رصد حركة الاسعار</span>
-            <span class="en-text">Threat Alert Report</span>
-        </h1>
-        <div class="subtitle"><span class="ar-text">الفترة: 03JAN26 - 31JAN26</span><span class="en-text">Range: 03JAN26 - 31JAN26</span></div>
+        <div class="calendar-icon">
+            <div class="month">JAN</div>
+            <div class="day">17</div>
+        </div>
+        <div class="header-text">
+            <h1>Threat Alert Report ✈️</h1>
+            <div class="subtitle">03JAN26 - 31JAN26</div>
+            <div class="generated">Generated: 2026-01-04 00:39</div>
+        </div>
+        <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     </header>
 
-    <div class="last-updated-banner">
-        <span class="ar-text">آخر تحديث: </span>
-        <span class="en-text">Last Updated: </span>
-        <span class="update-time">2026-01-03 05:40</span>
+    <div class="action-buttons">
+        <a href="archive/" class="action-btn archive">📁 Archive</a>
+        <a href="online_mobile_dashboard.html" class="action-btn dashboard">🌐 Dashboard</a>
+    </div>
+    <div class="action-buttons">
+        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" class="action-btn download">📥 Download Excel</a>
     </div>
 
-    <div class="stats-bar">
-        <div class="stat-item high">
-            <div class="stat-count">63</div>
-            <div class="stat-label">
-                <span class="ar-text">عالي</span>
-                <span class="en-text">HIGH</span>
-            </div>
+    <div class="stats-section">
+        <div class="stat-sphere low" onclick="filterByThreat('LOW')">
+            <div class="sphere low"></div>
+            <div class="count">647</div>
+            <div class="label">LOW</div>
         </div>
-        <div class="stat-item medium">
-            <div class="stat-count">100</div>
-            <div class="stat-label">
-                <span class="ar-text">متوسط</span>
-                <span class="en-text">MEDIUM</span>
-            </div>
+        <div class="stat-sphere medium" onclick="filterByThreat('MEDIUM')">
+            <div class="sphere medium"></div>
+            <div class="count">100</div>
+            <div class="label">MEDIUM</div>
         </div>
-        <div class="stat-item low">
-            <div class="stat-count">647</div>
-            <div class="stat-label">
-                <span class="ar-text">منخفض</span>
-                <span class="en-text">LOW</span>
-            </div>
+        <div class="stat-sphere high" onclick="filterByThreat('HIGH')">
+            <div class="sphere high"></div>
+            <div class="count">63</div>
+            <div class="label">HIGH</div>
         </div>
     </div>
 
-    <div class="routes-grid">
+    <div class="search-section">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search routes..." oninput="filterRoutes()">
+        </div>
+    </div>
+
+    <div class="filter-section">
+        <button class="filter-btn active" onclick="setDirectionFilter('all')">All</button>
+        <button class="filter-btn" onclick="setDirectionFilter('egy')">EGY→KSA</button>
+        <button class="filter-btn" onclick="setDirectionFilter('ksa')">KSA→EGY</button>
+    </div>
+
+    <div class="routes-grid" id="routesGrid">
         
-    <a href="routes/ATZ-JED.html" class="route-card has-medium">
-        <div class="route-card-name">ATZ-JED</div>
-        <div class="route-card-stats"><span class="route-stat medium">7 Med</span><span class="route-stat low">22 Low</span></div>
-        <div class="route-card-flights">SM-453 | SM-455 | SM-491</div>
+    <a href="routes/ATZ-JED.html" class="route-card" data-route="ATZ-JED" data-threat="MEDIUM" data-direction="EGY_KSA">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">ATZ-JED</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">22</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">7</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">0</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>29</strong>
+        </div>
     </a>
     
-    <a href="routes/CAI-JED.html" class="route-card has-high">
-        <div class="route-card-name">CAI-JED</div>
-        <div class="route-card-stats"><span class="route-stat high">38 High</span><span class="route-stat medium">34 Med</span><span class="route-stat low">219 Low</span></div>
-        <div class="route-card-flights">SM-423 | SM-449 | SM-459 | SM-471 | SM-475 | SM-477 | SM-479 | SM-951</div>
+    <a href="routes/CAI-JED.html" class="route-card" data-route="CAI-JED" data-threat="HIGH" data-direction="EGY_KSA">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">CAI-JED</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">219</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">34</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">38</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>291</strong>
+        </div>
     </a>
     
-    <a href="routes/CAI-MED.html" class="route-card ">
-        <div class="route-card-name">CAI-MED</div>
-        <div class="route-card-stats"><span class="route-stat low">19 Low</span></div>
-        <div class="route-card-flights">SM-493 | SM-495</div>
+    <a href="routes/CAI-MED.html" class="route-card" data-route="CAI-MED" data-threat="LOW" data-direction="EGY_KSA">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">CAI-MED</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">19</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">0</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">0</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>19</strong>
+        </div>
     </a>
     
-    <a href="routes/CAI-TUU.html" class="route-card ">
-        <div class="route-card-name">CAI-TUU</div>
-        <div class="route-card-stats"><span class="route-stat low">23 Low</span></div>
-        <div class="route-card-flights">SM-325</div>
+    <a href="routes/CAI-TUU.html" class="route-card" data-route="CAI-TUU" data-threat="LOW" data-direction="EGY_KSA">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">CAI-TUU</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">23</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">0</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">0</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>23</strong>
+        </div>
     </a>
     
-    <a href="routes/HBE-JED.html" class="route-card has-medium">
-        <div class="route-card-name">HBE-JED</div>
-        <div class="route-card-stats"><span class="route-stat medium">4 Med</span><span class="route-stat low">37 Low</span></div>
-        <div class="route-card-flights">SM-451 | SM-457</div>
+    <a href="routes/HBE-JED.html" class="route-card" data-route="HBE-JED" data-threat="MEDIUM" data-direction="EGY_KSA">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">HBE-JED</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">37</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">4</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">0</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>41</strong>
+        </div>
     </a>
     
-    <a href="routes/JED-ATZ.html" class="route-card has-medium">
-        <div class="route-card-name">JED-ATZ</div>
-        <div class="route-card-stats"><span class="route-stat medium">10 Med</span><span class="route-stat low">26 Low</span></div>
-        <div class="route-card-flights">SM-422 | SM-454 | SM-456 | SM-492</div>
+    <a href="routes/JED-ATZ.html" class="route-card" data-route="JED-ATZ" data-threat="MEDIUM" data-direction="KSA_EGY">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">JED-ATZ</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">26</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">10</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">0</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>36</strong>
+        </div>
     </a>
     
-    <a href="routes/JED-CAI.html" class="route-card has-high">
-        <div class="route-card-name">JED-CAI</div>
-        <div class="route-card-stats"><span class="route-stat high">15 High</span><span class="route-stat medium">23 Med</span><span class="route-stat low">243 Low</span></div>
-        <div class="route-card-flights">SM-424 | SM-432 | SM-450 | SM-460 | SM-472 | SM-476 | SM-478 | SM-480 | SM-962</div>
+    <a href="routes/JED-CAI.html" class="route-card" data-route="JED-CAI" data-threat="HIGH" data-direction="KSA_EGY">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">JED-CAI</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">243</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">23</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">15</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>281</strong>
+        </div>
     </a>
     
-    <a href="routes/JED-HBE.html" class="route-card has-medium">
-        <div class="route-card-name">JED-HBE</div>
-        <div class="route-card-stats"><span class="route-stat medium">1 Med</span><span class="route-stat low">19 Low</span></div>
-        <div class="route-card-flights">SM-452 | SM-458</div>
+    <a href="routes/JED-HBE.html" class="route-card" data-route="JED-HBE" data-threat="MEDIUM" data-direction="KSA_EGY">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">JED-HBE</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">19</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">1</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">0</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>20</strong>
+        </div>
     </a>
     
-    <a href="routes/MED-CAI.html" class="route-card has-high">
-        <div class="route-card-name">MED-CAI</div>
-        <div class="route-card-stats"><span class="route-stat high">6 High</span><span class="route-stat medium">17 Med</span><span class="route-stat low">15 Low</span></div>
-        <div class="route-card-flights">SM-494 | SM-496</div>
+    <a href="routes/MED-CAI.html" class="route-card" data-route="MED-CAI" data-threat="HIGH" data-direction="KSA_EGY">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">MED-CAI</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">15</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">17</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">6</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>38</strong>
+        </div>
     </a>
     
-    <a href="routes/MED-HBE.html" class="route-card has-high">
-        <div class="route-card-name">MED-HBE</div>
-        <div class="route-card-stats"><span class="route-stat high">4 High</span><span class="route-stat medium">4 Med</span><span class="route-stat low">8 Low</span></div>
-        <div class="route-card-flights">SM-486</div>
+    <a href="routes/MED-HBE.html" class="route-card" data-route="MED-HBE" data-threat="HIGH" data-direction="KSA_EGY">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">MED-HBE</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">8</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">4</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">4</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>16</strong>
+        </div>
     </a>
     
-    <a href="routes/TUU-ATZ.html" class="route-card ">
-        <div class="route-card-name">TUU-ATZ</div>
-        <div class="route-card-stats"><span class="route-stat low">2 Low</span></div>
-        <div class="route-card-flights">SM-328</div>
+    <a href="routes/TUU-ATZ.html" class="route-card" data-route="TUU-ATZ" data-threat="LOW" data-direction="KSA_EGY">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">TUU-ATZ</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">2</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">0</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">0</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>2</strong>
+        </div>
     </a>
     
-    <a href="routes/TUU-CAI.html" class="route-card ">
-        <div class="route-card-name">TUU-CAI</div>
-        <div class="route-card-stats"><span class="route-stat low">14 Low</span></div>
-        <div class="route-card-flights">SM-326</div>
+    <a href="routes/TUU-CAI.html" class="route-card" data-route="TUU-CAI" data-threat="LOW" data-direction="KSA_EGY">
+        <div class="route-card-header">
+            <span class="plane-icon">✈️</span>
+            <span class="route-card-name">TUU-CAI</span>
+        </div>
+        <div class="route-stats-row">
+            <div class="mini-stat low">
+                <div class="mini-sphere low">14</div>
+            </div>
+            <div class="mini-stat medium">
+                <div class="mini-sphere medium">0</div>
+            </div>
+            <div class="mini-stat high">
+                <div class="mini-sphere high">0</div>
+            </div>
+        </div>
+        <div class="route-total">
+            <span class="ar-text">اجمالي التهديدات: </span>
+            <span class="en-text">threats </span>
+            <strong>14</strong>
+        </div>
     </a>
     
     </div>
@@ -340,8 +791,8 @@
             <span>Dashboard</span>
         </a>
         <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" style="background: #0078D4;">
-            <span class="nav-icon">☁️</span>
-            <span>OneDrive</span>
+            <span class="nav-icon">📥</span>
+            <span>Download</span>
         </a>
         <a href="archive/">
             <span class="nav-icon">📁</span>
@@ -350,6 +801,9 @@
     </div>
 
     <script>
+        let currentThreatFilter = null;
+        let currentDirectionFilter = 'all';
+
         function toggleLanguage() {
             const body = document.body;
             const btn = document.querySelector('.lang-toggle');
@@ -362,6 +816,62 @@
                 body.classList.add('ar');
                 btn.textContent = 'EN';
             }
+        }
+
+        function filterByThreat(level) {
+            const spheres = document.querySelectorAll('.stat-sphere');
+            spheres.forEach(s => s.classList.remove('active-filter'));
+
+            if (currentThreatFilter === level) {
+                currentThreatFilter = null;
+            } else {
+                currentThreatFilter = level;
+                const sphere = document.querySelector(`.stat-sphere.${level.toLowerCase()}`);
+                if (sphere) sphere.classList.add('active-filter');
+            }
+            applyFilters();
+        }
+
+        function setDirectionFilter(dir) {
+            currentDirectionFilter = dir;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            applyFilters();
+        }
+
+        function filterRoutes() {
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.route-card');
+
+            cards.forEach(card => {
+                const route = card.dataset.route || card.querySelector('.route-card-name').textContent;
+                const threatLevel = card.dataset.threat || '';
+                const direction = card.dataset.direction || '';
+
+                let show = true;
+
+                // Search filter
+                if (searchTerm && !route.toLowerCase().includes(searchTerm)) {
+                    show = false;
+                }
+
+                // Threat filter
+                if (currentThreatFilter && threatLevel !== currentThreatFilter) {
+                    show = false;
+                }
+
+                // Direction filter
+                if (currentDirectionFilter !== 'all') {
+                    if (currentDirectionFilter === 'egy' && direction !== 'EGY_KSA') show = false;
+                    if (currentDirectionFilter === 'ksa' && direction !== 'KSA_EGY') show = false;
+                }
+
+                card.style.display = show ? '' : 'none';
+            });
         }
     </script>
 </body>
