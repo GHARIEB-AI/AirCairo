@@ -263,17 +263,18 @@
         .filter-section {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            padding: 0 15px 15px;
+            align-items: center;
+            gap: 5px;
+            padding: 0 15px 10px;
         }
 
         .filter-btn {
-            padding: 10px 20px;
-            border-radius: 25px;
-            border: 2px solid rgba(70, 43, 115, 0.2);
+            padding: 4px 8px;
+            border-radius: 10px;
+            border: 1px solid rgba(70, 43, 115, 0.15);
             background: white;
             color: #462B73;
-            font-size: 0.85em;
+            font-size: 0.65em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
@@ -283,6 +284,17 @@
             background: #462B73;
             color: white;
             border-color: #462B73;
+        }
+
+        .filter-btn.direction {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .filter-btn .arrow {
+            transition: transform 0.3s ease;
+            display: inline-block;
         }
 
         /* Routes Grid */
@@ -500,9 +512,13 @@
     </div>
 
     <div class="filter-section">
-        <button class="filter-btn active" onclick="setDirectionFilter('all')">All</button>
-        <button class="filter-btn" onclick="setDirectionFilter('egy')">EGY→KSA</button>
-        <button class="filter-btn" onclick="setDirectionFilter('ksa')">KSA→EGY</button>
+        <button class="filter-btn active" id="filterAll" onclick="setDirectionFilter('all')">All</button>
+        <button class="filter-btn direction" id="filterEgy" onclick="toggleDirection('egy')">
+            <span id="egyOrigin">EGY</span><span class="arrow">→</span><span id="egyDest">KSA</span>
+        </button>
+        <button class="filter-btn direction" id="filterKsa" onclick="toggleDirection('ksa')">
+            <span id="ksaOrigin">KSA</span><span class="arrow">→</span><span id="ksaDest">EGY</span>
+        </button>
     </div>
 
     <div class="routes-grid" id="routesGrid">
@@ -803,6 +819,8 @@
     <script>
         let currentThreatFilter = null;
         let currentDirectionFilter = 'all';
+        let egyReversed = false;
+        let ksaReversed = false;
 
         function toggleLanguage() {
             const body = document.body;
@@ -835,7 +853,44 @@
         function setDirectionFilter(dir) {
             currentDirectionFilter = dir;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            document.getElementById('filterAll').classList.add('active');
+            applyFilters();
+        }
+
+        function toggleDirection(type) {
+            const btn = document.getElementById(type === 'egy' ? 'filterEgy' : 'filterKsa');
+            const allBtn = document.getElementById('filterAll');
+
+            // If clicking the already active button, toggle its direction
+            if (btn.classList.contains('active')) {
+                if (type === 'egy') {
+                    egyReversed = !egyReversed;
+                    btn.classList.toggle('reversed', egyReversed);
+                    // Swap text
+                    const origin = document.getElementById('egyOrigin');
+                    const dest = document.getElementById('egyDest');
+                    [origin.textContent, dest.textContent] = [dest.textContent, origin.textContent];
+                } else {
+                    ksaReversed = !ksaReversed;
+                    btn.classList.toggle('reversed', ksaReversed);
+                    // Swap text
+                    const origin = document.getElementById('ksaOrigin');
+                    const dest = document.getElementById('ksaDest');
+                    [origin.textContent, dest.textContent] = [dest.textContent, origin.textContent];
+                }
+            } else {
+                // First click - activate the button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+
+            // Update filter based on current state
+            if (type === 'egy') {
+                currentDirectionFilter = egyReversed ? 'ksa' : 'egy';
+            } else {
+                currentDirectionFilter = ksaReversed ? 'egy' : 'ksa';
+            }
+
             applyFilters();
         }
 
