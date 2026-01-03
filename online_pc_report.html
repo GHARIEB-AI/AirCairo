@@ -207,6 +207,28 @@
             transform: translateY(-2px);
         }
 
+        .dashboard-btn {
+            padding: 10px 25px;
+            border: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .dashboard-btn:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+            color: white;
+        }
+
         .archive-btn {
             padding: 10px 25px;
             border: none;
@@ -1075,7 +1097,7 @@
                 gap: 10px;
             }
 
-            .lang-btn, .route-select, .download-btn, .pdf-btn, .onedrive-btn {
+            .lang-btn, .route-select, .download-btn, .pdf-btn, .onedrive-btn, .dashboard-btn, .archive-btn {
                 width: 100%;
                 text-align: center;
                 justify-content: center;
@@ -1856,24 +1878,16 @@
                         <span class="ar-text">☁️ OneDrive</span>
                         <span class="en-text">☁️ OneDrive</span>
                     </a>
+                    <a href="./" class="dashboard-btn">
+                        <span class="ar-text">🌐 Dashboard</span>
+                        <span class="en-text">🌐 Dashboard</span>
+                    </a>
                     <a href="archive/" class="archive-btn">
                         <span class="ar-text">التقارير السابقة</span>
                         <span class="en-text">Archive</span>
                     </a>
                 </div>
             </div>
-        </div>
-
-        <!-- Pages Navigation -->
-        <div class="pages-nav">
-            <a href="./">
-                <span class="nav-icon">🌐</span>
-                <span>Dashboard</span>
-            </a>
-            <a href="archive/">
-                <span class="nav-icon">📁</span>
-                <span>Archive</span>
-            </a>
         </div>
 
         <!-- Route Filter Modal -->
