@@ -1037,9 +1037,36 @@
                 font-size: 0.8em;
             }
         }
+    
+        /* Threat Level Color Overlay */
+        .threat-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .threat-overlay.active {
+            opacity: 1;
+        }
+        .threat-overlay.high {
+            background: radial-gradient(ellipse at center, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.05) 70%, transparent 100%);
+        }
+        .threat-overlay.medium {
+            background: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 70%, transparent 100%);
+        }
+        .threat-overlay.low {
+            background: radial-gradient(ellipse at center, rgba(40, 167, 69, 0.15) 0%, rgba(40, 167, 69, 0.05) 70%, transparent 100%);
+        }
+
     </style>
 </head>
 <body class="ar">
+    <div id="threatOverlay" class="threat-overlay"></div>
     <button class="print-btn" onclick="window.print()">
         <span class="ar-text">طباعة</span>
         <span class="en-text">Print</span>
@@ -43688,6 +43715,22 @@
     </div>
 
     <script>
+    // Threat Level Color Overlay
+    function setThreatOverlay(level) {
+        let overlay = document.getElementById('threatOverlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'threatOverlay';
+            overlay.className = 'threat-overlay';
+            document.body.insertBefore(overlay, document.body.firstChild);
+        }
+        overlay.className = 'threat-overlay';
+        if (level && level !== 'all') {
+            overlay.classList.add(level.toLowerCase());
+            overlay.classList.add('active');
+        }
+    }
+
         // Route statistics data (precomputed for route-only filtering)
         const routeStats = {"JED-CAI": {"high": 12, "medium": 86, "low": 242}, "JED-ATZ": {"high": 0, "medium": 13, "low": 75}, "JED-HBE": {"high": 35, "medium": 26, "low": 76}, "CAI-MED": {"high": 4, "medium": 3, "low": 2}, "HBE-MED": {"high": 0, "medium": 0, "low": 1}, "ATZ-MED": {"high": 0, "medium": 0, "low": 0}, "_total": {"high": 51, "medium": 128, "low": 396}};
 

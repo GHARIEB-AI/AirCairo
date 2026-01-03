@@ -336,8 +336,8 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            border: 2px solid rgba(247, 148, 29, 0.4);
-            background: rgba(70, 43, 115, 0.2);
+            border: 2px solid rgba(247, 148, 29, 0.3);
+            background: rgba(70, 43, 115, 0.1);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             color: rgba(255, 255, 255, 0.8);
@@ -430,7 +430,7 @@
             transform: translateY(-50%);
             width: 4px;
             height: 100px;
-            background: rgba(70, 43, 115, 0.2);
+            background: rgba(70, 43, 115, 0.1);
             border-radius: 2px;
             z-index: 98;
         }
@@ -470,9 +470,36 @@
             height: 1px;
             margin-top: -1px;
         }
+    
+        /* Threat Level Color Overlay */
+        .threat-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .threat-overlay.active {
+            opacity: 1;
+        }
+        .threat-overlay.high {
+            background: radial-gradient(ellipse at center, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.05) 70%, transparent 100%);
+        }
+        .threat-overlay.medium {
+            background: radial-gradient(ellipse at center, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 70%, transparent 100%);
+        }
+        .threat-overlay.low {
+            background: radial-gradient(ellipse at center, rgba(40, 167, 69, 0.15) 0%, rgba(40, 167, 69, 0.05) 70%, transparent 100%);
+        }
+
     </style>
 </head>
 <body class="en">
+    <div id="threatOverlay" class="threat-overlay"></div>
     <header class="header">
         <button class="back-btn" onclick="history.back()">←</button>
         <div class="header-content">
@@ -1999,6 +2026,22 @@
     </div>
 
     <script>
+    // Threat Level Color Overlay
+    function setThreatOverlay(level) {
+        let overlay = document.getElementById('threatOverlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'threatOverlay';
+            overlay.className = 'threat-overlay';
+            document.body.insertBefore(overlay, document.body.firstChild);
+        }
+        overlay.className = 'threat-overlay';
+        if (level && level !== 'all') {
+            overlay.classList.add(level.toLowerCase());
+            overlay.classList.add('active');
+        }
+    }
+
         // Language Toggle
         function toggleLanguage() {
             const body = document.body;
@@ -2017,6 +2060,7 @@
         // Filter by threat level
         let activeLevel = null;
         function filterByLevel(level) {
+        setThreatOverlay(level);
             const navItems = document.querySelectorAll('.nav-item');
             const statItems = document.querySelectorAll('.stat-item');
 
