@@ -1320,23 +1320,27 @@
             </div>
             <div class="timestamp" id="timestamp">Loading...</div>
             <div class="run-info" id="run-info"></div>
-            <a href="online_pc_report.html" target="_blank" class="view-report-btn show" id="view-report-btn">
-                📊 <span class="btn-text-en">View Report</span><span class="btn-text-ar" style="display:none;">عرض التقرير</span>
-            </a>
+            <div class="range-info" id="range-info" style="font-size: 12px; color: #aaa; margin-top: 5px;">
+                Range: Loading...
+            </div>
         </div>
     </div>
 
     <!-- Pages Navigation -->
     <div class="pages-nav">
-        <a href="online_pc_report.html">
+        <a href="https://gharieb-ai.github.io/AirCairo/" target="_blank">
+            <span class="nav-icon">🌐</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="https://gharieb-ai.github.io/AirCairo/online_pc_report.html" target="_blank">
             <span class="nav-icon">📊</span>
             <span>Report</span>
         </a>
-        <a href="archive/">
+        <a href="https://gharieb-ai.github.io/AirCairo/archive/" target="_blank">
             <span class="nav-icon">📁</span>
             <span>Archive</span>
         </a>
-        <a href="online_mobile_dashboard.html">
+        <a href="https://gharieb-ai.github.io/AirCairo/online_mobile_dashboard.html" target="_blank">
             <span class="nav-icon">📱</span>
             <span>Mobile</span>
         </a>
@@ -1573,7 +1577,7 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = 'https://round-opera-arms-nebraska.trycloudflare.com';
+        const API_BASE_OVERRIDE = 'https://situations-cornell-styles-fruit.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -1662,7 +1666,7 @@
                 () => (flight.flight && flight.route && flight.capacity ? `${flight.flight} ${flight.route} BKD:${flight.booked || 0}/${flight.capacity}` : null),
 
                 // Format 13: Availability status
-                () => (flight.flight && flight.lowest_avail ? `${flight.flight} ${flight.lowest_avail === 'CLOSED' ? '🔴 CLOSED' : '🟣 ' + flight.lowest_avail}` : null),
+                () => (flight.flight && flight.lowest_avail ? `${flight.flight} ${flight.lowest_avail === 'CLOSED' ? '🔴 CLOSED' : '🟢 ' + flight.lowest_avail}` : null),
 
                 // Format 14: Short date format
                 () => {
@@ -1856,6 +1860,14 @@
             const config = data.config || {};
             document.getElementById('run-info').textContent =
                 `Run: ${config.run_id || 'N/A'} | ${config.routes_count || 0} routes | ${config.dates_count || 0} dates`;
+
+            // Range info
+            const rangeEl = document.getElementById('range-info');
+            if (rangeEl && config.date_range) {
+                rangeEl.textContent = `Range: ${config.date_range}`;
+            } else if (rangeEl && config.start_date && config.end_date) {
+                rangeEl.textContent = `Range: ${config.start_date} → ${config.end_date}`;
+            }
 
             // Progress bars
             const progress = data.progress || {};
