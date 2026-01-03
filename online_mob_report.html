@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="report-generated" content="2026-01-03T05:40:19.439836">
+    <meta name="report-version" content="20260103054019">
     <title>Threat Alert Report - Routes</title>
     <style>
         * {
@@ -139,17 +141,17 @@
             box-shadow: 0 4px 15px rgba(247, 148, 29, 0.4);
         }
 
-        /* 3D Sphere Stats - Very Small */
+        /* 3D Sphere Stats - Medium Size */
         .stats-section {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            padding: 8px 8px;
+            gap: 15px;
+            padding: 12px 15px;
             background: white;
             margin: 0 20px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            margin-top: -12px;
+            margin-top: 15px;
             position: relative;
             z-index: 10;
         }
@@ -162,24 +164,24 @@
         }
 
         .sphere {
-            width: 28px;
-            height: 28px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
             position: relative;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .sphere::before {
             content: '';
             position: absolute;
-            top: 4px;
-            left: 6px;
-            width: 8px;
-            height: 5px;
+            top: 8px;
+            left: 10px;
+            width: 14px;
+            height: 8px;
             background: rgba(255,255,255,0.4);
             border-radius: 50%;
             transform: rotate(-30deg);
@@ -469,19 +471,19 @@
             <div class="day">17</div>
         </div>
         <div class="header-text">
-            <h1>Threat Alert Report ✈️</h1>
+            <h1><span class="ar-text">تقرير تنبيه التهديدات ✈️</span><span class="en-text">Threat Alert Report ✈️</span></h1>
             <div class="subtitle"><span class="ar-text">الفترة: 03JAN26 - 31JAN26</span><span class="en-text">Range: 03JAN26 - 31JAN26</span></div>
-            <div class="generated">Generated: 2026-01-03 05:40</div>
+            <div class="generated"><span class="ar-text">تاريخ الإنشاء:</span><span class="en-text">Generated:</span> 2026-01-03 05:40</div>
         </div>
         <button class="lang-toggle" onclick="toggleLanguage()">عربي</button>
     </header>
 
     <div class="action-buttons">
-        <a href="archive/" class="action-btn archive">📁 Archive</a>
-        <a href="online_mobile_dashboard.html" class="action-btn dashboard">🌐 Dashboard</a>
+        <a href="archive/" class="action-btn archive">📁 <span class="ar-text">الأرشيف</span><span class="en-text">Archive</span></a>
+        <a href="online_mobile_dashboard.html" class="action-btn dashboard">🌐 <span class="ar-text">لوحة التحكم</span><span class="en-text">Dashboard</span></a>
     </div>
     <div class="action-buttons">
-        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" class="action-btn download">📥 Download Excel</a>
+        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" class="action-btn download">📥 <span class="ar-text">تحميل Excel</span><span class="en-text">Download Excel</span></a>
     </div>
 
     <div class="stats-section" id="statsSection"
@@ -491,32 +493,32 @@
         <div class="stat-sphere low" onclick="filterByThreat('LOW')">
             <div class="sphere low"></div>
             <div class="count" id="lowCount">647</div>
-            <div class="label">LOW</div>
+            <div class="label"><span class="ar-text">منخفض</span><span class="en-text">LOW</span></div>
         </div>
         <div class="stat-sphere medium" onclick="filterByThreat('MEDIUM')">
             <div class="sphere medium"></div>
             <div class="count" id="mediumCount">100</div>
-            <div class="label">MEDIUM</div>
+            <div class="label"><span class="ar-text">متوسط</span><span class="en-text">MEDIUM</span></div>
         </div>
         <div class="stat-sphere high" onclick="filterByThreat('HIGH')">
             <div class="sphere high"></div>
             <div class="count" id="highCount">63</div>
-            <div class="label">HIGH</div>
+            <div class="label"><span class="ar-text">عالي</span><span class="en-text">HIGH</span></div>
         </div>
     </div>
 
     <div class="filter-section">
         <div class="filter-group">
-            <button class="filter-btn active" id="filterAll" onclick="setFilter('all')">All</button>
-            <button class="filter-btn" id="filterEgy" onclick="setFilter('egy')">EGY→KSA</button>
-            <button class="filter-btn" id="filterKsa" onclick="setFilter('ksa')">KSA→EGY</button>
+            <button class="filter-btn active" id="filterAll" onclick="setFilter('all')"><span class="ar-text">الكل</span><span class="en-text">All</span></button>
+            <button class="filter-btn" id="filterEgy" onclick="setFilter('egy')"><span class="ar-text">مصر→السعودية</span><span class="en-text">EGY→KSA</span></button>
+            <button class="filter-btn" id="filterKsa" onclick="setFilter('ksa')"><span class="ar-text">السعودية→مصر</span><span class="en-text">KSA→EGY</span></button>
         </div>
     </div>
 
     <div class="search-section">
         <div class="search-box">
             <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" placeholder="Search routes..." oninput="filterRoutes()">
+            <input type="text" id="searchInput" placeholder="Search routes..." data-ar-placeholder="بحث عن الخطوط..." oninput="filterRoutes()">
         </div>
     </div>
 
@@ -803,15 +805,15 @@
     <div class="pages-nav">
         <a href="online_mobile_dashboard.html">
             <span class="nav-icon">🌐</span>
-            <span>Dashboard</span>
+            <span><span class="ar-text">لوحة التحكم</span><span class="en-text">Dashboard</span></span>
         </a>
         <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" style="background: #0078D4;">
             <span class="nav-icon">📥</span>
-            <span>Download</span>
+            <span><span class="ar-text">تحميل</span><span class="en-text">Download</span></span>
         </a>
         <a href="archive/">
             <span class="nav-icon">📁</span>
-            <span>Archive</span>
+            <span><span class="ar-text">الأرشيف</span><span class="en-text">Archive</span></span>
         </a>
     </div>
 
@@ -922,6 +924,26 @@
                 card.style.display = show ? '' : 'none';
             });
         }
+    </script>
+
+    <!-- Freshness Check - Warns if report is older than 24 hours -->
+    <div id="freshnessWarning" style="display:none; position:fixed; top:0; left:0; right:0; background:linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color:white; padding:10px 15px; text-align:center; z-index:9999; font-weight:600; font-size:0.85em; box-shadow:0 2px 10px rgba(0,0,0,0.3);">
+        <span class="ar-text">⚠️ تقرير قديم (أكثر من 24 ساعة) - <a href="javascript:location.reload(true)" style="color:#fff;text-decoration:underline;">تحديث</a></span>
+        <span class="en-text">⚠️ Stale report (older than 24h) - <a href="javascript:location.reload(true)" style="color:#fff;text-decoration:underline;">Refresh</a></span>
+        <button onclick="this.parentElement.style.display='none'" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:white;font-size:1.2em;cursor:pointer;">×</button>
+    </div>
+    <script>
+    (function() {
+        var meta = document.querySelector('meta[name="report-generated"]');
+        if (meta) {
+            var generated = new Date(meta.content);
+            var now = new Date();
+            var hoursDiff = (now - generated) / (1000 * 60 * 60);
+            if (hoursDiff > 24) {
+                document.getElementById('freshnessWarning').style.display = 'block';
+            }
+        }
+    })();
     </script>
 </body>
 </html>
