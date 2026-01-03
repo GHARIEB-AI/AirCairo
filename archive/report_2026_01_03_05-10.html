@@ -11,11 +11,11 @@
                        || window.innerWidth <= 768;
         if (isMobile && window.location.pathname.indexOf('mobile') === -1) {
             var currentUrl = window.location.href;
-            var mobileUrl = currentUrl.replace('index.html', 'mobile.html').replace(/\/$/, '') + '/mobile.html';
+            var mobileUrl = currentUrl.replace('index.html', 'online_mob_report.html').replace(/\/$/, '') + '/online_mob_report.html';
             if (currentUrl.indexOf('.html') === -1) {
-                mobileUrl = currentUrl.replace(/\/?$/, '/mobile.html');
+                mobileUrl = currentUrl.replace(/\/?$/, '/online_mob_report.html');
             } else {
-                mobileUrl = currentUrl.replace(/[^/]+\.html$/, 'mobile.html');
+                mobileUrl = currentUrl.replace(/[^/]+\.html$/, 'online_mob_report.html');
             }
             window.location.replace(mobileUrl);
         }
@@ -1845,7 +1845,7 @@
                 <span class="nav-icon">🌐</span>
                 <span>Dashboard</span>
             </a>
-            <a href="report.html" class="active">
+            <a href="online_pc_report.html" class="active">
                 <span class="nav-icon">📊</span>
                 <span>Report</span>
             </a>
