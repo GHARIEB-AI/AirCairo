@@ -34574,6 +34574,9 @@
 
         function updateDownloadButton() {
             const downloadBtn = document.getElementById('download-btn');
+            // Guard: exit if button doesn't exist (removed from current design)
+            if (!downloadBtn) return;
+
             const allRouteItems = document.querySelectorAll('#routeFilterList .filter-item');
             const totalRoutes = allRouteItems.length;
 
