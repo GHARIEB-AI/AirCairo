@@ -139,17 +139,17 @@
             box-shadow: 0 4px 15px rgba(247, 148, 29, 0.4);
         }
 
-        /* 3D Sphere Stats */
+        /* 3D Sphere Stats - Smaller */
         .stats-section {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            padding: 25px 15px;
+            gap: 15px;
+            padding: 12px 10px;
             background: white;
             margin: 0 15px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            margin-top: -20px;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            margin-top: -15px;
             position: relative;
             z-index: 10;
         }
@@ -162,24 +162,24 @@
         }
 
         .sphere {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             position: relative;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .sphere::before {
             content: '';
             position: absolute;
-            top: 8px;
-            left: 12px;
-            width: 20px;
-            height: 12px;
+            top: 5px;
+            left: 8px;
+            width: 12px;
+            height: 8px;
             background: rgba(255,255,255,0.4);
             border-radius: 50%;
             transform: rotate(-30deg);
@@ -198,7 +198,7 @@
         }
 
         .stat-sphere .count {
-            font-size: 1.6em;
+            font-size: 1.1em;
             font-weight: 800;
         }
 
@@ -207,7 +207,7 @@
         .stat-sphere.high .count { color: #e74c3c; }
 
         .stat-sphere .label {
-            font-size: 0.7em;
+            font-size: 0.55em;
             font-weight: 600;
             text-transform: uppercase;
             color: #666;
@@ -218,7 +218,7 @@
         }
 
         .stat-sphere.active-filter .sphere {
-            box-shadow: 0 0 0 4px rgba(70, 43, 115, 0.3), 0 8px 25px rgba(0,0,0,0.35);
+            box-shadow: 0 0 0 3px rgba(70, 43, 115, 0.3), 0 4px 12px rgba(0,0,0,0.3);
         }
 
         /* Search Bar */
@@ -475,22 +475,31 @@
         <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" class="action-btn download">📥 Download Excel</a>
     </div>
 
-    <div class="stats-section">
+    <div class="stats-section" id="statsSection"
+         data-all-low="647" data-all-medium="100" data-all-high="63"
+         data-egy-low="320" data-egy-medium="45" data-egy-high="38"
+         data-ksa-low="327" data-ksa-medium="55" data-ksa-high="25">
         <div class="stat-sphere low" onclick="filterByThreat('LOW')">
             <div class="sphere low"></div>
-            <div class="count">647</div>
+            <div class="count" id="lowCount">647</div>
             <div class="label">LOW</div>
         </div>
         <div class="stat-sphere medium" onclick="filterByThreat('MEDIUM')">
             <div class="sphere medium"></div>
-            <div class="count">100</div>
+            <div class="count" id="mediumCount">100</div>
             <div class="label">MEDIUM</div>
         </div>
         <div class="stat-sphere high" onclick="filterByThreat('HIGH')">
             <div class="sphere high"></div>
-            <div class="count">63</div>
+            <div class="count" id="highCount">63</div>
             <div class="label">HIGH</div>
         </div>
+    </div>
+
+    <div class="filter-section">
+        <button class="filter-btn active" id="filterAll" onclick="setFilter('all')">All</button>
+        <button class="filter-btn" id="filterEgy" onclick="setFilter('egy')">EGY→KSA</button>
+        <button class="filter-btn" id="filterKsa" onclick="setFilter('ksa')">KSA→EGY</button>
     </div>
 
     <div class="search-section">
@@ -498,12 +507,6 @@
             <span class="search-icon">🔍</span>
             <input type="text" id="searchInput" placeholder="Search routes..." oninput="filterRoutes()">
         </div>
-    </div>
-
-    <div class="filter-section">
-        <button class="filter-btn active" id="filterAll" onclick="setFilter('all')">All</button>
-        <button class="filter-btn" id="filterDir1" onclick="toggleFilter(1)">EGY→KSA</button>
-        <button class="filter-btn" id="filterDir2" onclick="toggleFilter(2)">KSA→EGY</button>
     </div>
 
     <div class="routes-grid" id="routesGrid">
@@ -804,8 +807,6 @@
     <script>
         let currentThreatFilter = null;
         let currentDirectionFilter = 'all';
-        let dir1State = 'egy';  // EGY→KSA
-        let dir2State = 'ksa';  // KSA→EGY
 
         function toggleLanguage() {
             const body = document.body;
@@ -838,31 +839,40 @@
         function setFilter(dir) {
             currentDirectionFilter = dir;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('filterAll').classList.add('active');
+
+            if (dir === 'all') {
+                document.getElementById('filterAll').classList.add('active');
+            } else if (dir === 'egy') {
+                document.getElementById('filterEgy').classList.add('active');
+            } else {
+                document.getElementById('filterKsa').classList.add('active');
+            }
+
+            updateSphereCounts(dir);
             applyFilters();
         }
 
-        function toggleFilter(btnNum) {
-            const btn = document.getElementById('filterDir' + btnNum);
+        function updateSphereCounts(dir) {
+            const stats = document.getElementById('statsSection');
+            let low, medium, high;
 
-            // If already active, swap direction
-            if (btn.classList.contains('active')) {
-                if (btnNum === 1) {
-                    dir1State = dir1State === 'egy' ? 'ksa' : 'egy';
-                    btn.textContent = dir1State === 'egy' ? 'EGY→KSA' : 'KSA→EGY';
-                    currentDirectionFilter = dir1State;
-                } else {
-                    dir2State = dir2State === 'ksa' ? 'egy' : 'ksa';
-                    btn.textContent = dir2State === 'ksa' ? 'KSA→EGY' : 'EGY→KSA';
-                    currentDirectionFilter = dir2State;
-                }
+            if (dir === 'egy') {
+                low = stats.dataset.egyLow;
+                medium = stats.dataset.egyMedium;
+                high = stats.dataset.egyHigh;
+            } else if (dir === 'ksa') {
+                low = stats.dataset.ksaLow;
+                medium = stats.dataset.ksaMedium;
+                high = stats.dataset.ksaHigh;
             } else {
-                // First click - activate
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentDirectionFilter = btnNum === 1 ? dir1State : dir2State;
+                low = stats.dataset.allLow;
+                medium = stats.dataset.allMedium;
+                high = stats.dataset.allHigh;
             }
-            applyFilters();
+
+            document.getElementById('lowCount').textContent = low;
+            document.getElementById('mediumCount').textContent = medium;
+            document.getElementById('highCount').textContent = high;
         }
 
         function filterRoutes() {
