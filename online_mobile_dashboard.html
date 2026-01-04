@@ -635,7 +635,9 @@
     </div>
 
     <script>
-        const API_BASE = '__API_BASE__';
+        // API_BASE not used on GitHub Pages - dashboard is static/offline only
+        // Data comes from dashboard_status.json which is updated during each run
+        const API_BASE = '';
         let lastData = null;
         let lastRunData = null;
         let isOnline = false;
@@ -784,23 +786,30 @@
         }
 
         async function fetchStatus() {
+            // On GitHub Pages: no live API, use dashboard_status.json only
             try {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-                const response = await fetch(API_BASE + '/status?t=' + Date.now(), {
+                const response = await fetch('dashboard_status.json?t=' + Date.now(), {
                     cache: 'no-store',
                     signal: controller.signal
                 });
                 clearTimeout(timeoutId);
 
-                const data = await response.json();
-                isOnline = true;
-                lastData = data;
-                updateDashboard(data);
+                if (response.ok) {
+                    const data = await response.json();
+                    lastData = data;
+                    lastRunData = data;
+                    updateDashboard(data);
+                    // Show as "LAST RUN" since this is static data
+                    document.getElementById('status-badge').textContent = 'LAST RUN';
+                    document.getElementById('status-badge').className = 'status-badge completed';
+                } else {
+                    throw new Error('JSON not found');
+                }
             } catch (e) {
-                console.error('Fetch error:', e);
-                isOnline = false;
+                console.log('Dashboard status fetch:', e.message);
 
                 if (lastRunData) {
                     lastData = lastRunData;
@@ -808,7 +817,7 @@
                     document.getElementById('status-badge').textContent = 'LAST RUN';
                     document.getElementById('status-badge').className = 'status-badge completed';
                 } else {
-                    document.getElementById('status-badge').textContent = 'OFFLINE';
+                    document.getElementById('status-badge').textContent = 'NO DATA';
                     document.getElementById('status-badge').className = 'status-badge no_data';
                 }
             }
