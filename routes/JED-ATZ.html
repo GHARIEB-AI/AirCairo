@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="report-generated" content="2026-01-07T16:44:00">
-    <meta name="report-version" content="20260107164400">
+    <meta name="report-generated" content="2026-01-07T16:44:57.877893">
+    <meta name="report-version" content="20260107164457">
     <title>JED-ATZ - Threat Report</title>
     <style>
         * {
@@ -141,6 +141,47 @@
             text-transform: uppercase;
             margin-top: 2px;
             color: #666;
+        }
+
+        /* Dramatic fire/lamp glowing animation for active filter */
+        @keyframes fire-pulse-high {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(231, 76, 60, 0.8), 0 0 40px rgba(231, 76, 60, 0.6), 0 0 60px rgba(231, 76, 60, 0.4), inset 0 0 20px rgba(255, 200, 100, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(231, 76, 60, 1), 0 0 60px rgba(231, 76, 60, 0.8), 0 0 90px rgba(231, 76, 60, 0.5), inset 0 0 30px rgba(255, 255, 150, 0.7);
+            }
+        }
+        @keyframes fire-pulse-medium {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(241, 196, 15, 0.8), 0 0 40px rgba(241, 196, 15, 0.6), 0 0 60px rgba(241, 196, 15, 0.4), inset 0 0 20px rgba(255, 255, 200, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(241, 196, 15, 1), 0 0 60px rgba(241, 196, 15, 0.8), 0 0 90px rgba(241, 196, 15, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.7);
+            }
+        }
+        @keyframes fire-pulse-low {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(65, 105, 225, 0.8), 0 0 40px rgba(65, 105, 225, 0.6), 0 0 60px rgba(65, 105, 225, 0.4), inset 0 0 20px rgba(150, 200, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(65, 105, 225, 1), 0 0 60px rgba(65, 105, 225, 0.8), 0 0 90px rgba(65, 105, 225, 0.5), inset 0 0 30px rgba(200, 230, 255, 0.7);
+            }
+        }
+        .stat-item.high.filtering .stat-sphere {
+            animation: fire-pulse-high 0.8s ease-in-out infinite;
+        }
+        .stat-item.medium.filtering .stat-sphere {
+            animation: fire-pulse-medium 0.8s ease-in-out infinite;
+        }
+        .stat-item.low.filtering .stat-sphere {
+            animation: fire-pulse-low 0.8s ease-in-out infinite;
         }
 
         /* Filter Section - part of freeze panes container */
@@ -1061,143 +1102,13 @@
     </div>
 
     <div class="content" id="content">
-        <div data-date="2026-01-10">
-    <div class="date-header">
-        10 JANUARY 2026 SATURDAY
-    </div>
-    
-    <div class="flight-lf-header">
-        <div class="flight-lf-title">
-            <span class="flight-lf-number">SM-454</span>
-            <span class="flight-lf-time">11:05</span>
-        </div>
-        <div class="lf-boxes-row">
-            <div class="lf-box lf-main">
-                <span class="lf-box-value">94%</span>
-                <span class="lf-box-label">LF</span>
-            </div>
-            <div class="lf-box">
-                <span class="lf-box-value">167</span>
-                <span class="lf-box-label">SOLD</span>
-            </div>
-            <div class="lf-box">
-                <span class="lf-box-value">178</span>
-                <span class="lf-box-label">CAP</span>
-            </div>
-            <div class="lf-box">
-                <span class="lf-box-value">11</span>
-                <span class="lf-box-label">WKLY</span>
-            </div>
-            <div class="lf-box">
-                <span class="lf-box-value">0</span>
-                <span class="lf-box-label">TDY</span>
-            </div>
-            <div class="lf-box">
-                <span class="lf-box-value">0</span>
-                <span class="lf-box-label">YDY</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card low">
-        <div class="card-date-header">
-            <span class="date-route">10JAN26 &nbsp;-&nbsp; JED-ATZ</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block our-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">SM-454</span>
-                    <span class="flight-time">11:05</span>
+        
+            <div class="date-section" data-date="2026-01-10">
+                <div class="date-header">
+                    <span class="ar-text">10 يناير 2026 السبت</span>
+                    <span class="en-text">10 JANUARY 2026 SATURDAY</span>
                 </div>
-                <div class="lf-row">
-                    <div class="lf-item">
-                        <span class="lf-label">LF</span>
-                        <span class="lf-value">94%</span>
-                    </div>
-                    <div class="lf-item">
-                        <span class="lf-label">WKLY</span>
-                        <span class="lf-value">11</span>
-                    </div>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">706 ريال سعودي</span>
-                            <span class="en-text">706 SAR</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recommendation-section">
-                <div class="recommendation-title">
-                    <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
-                    <span class="en-text">EgyptAir leads overall</span>
-                </div>
-                <div class="recommendation-details">
-                    <span class="ar-text">سعر إير كايرو أقل بـ 41 ريال سعودي لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
-                    <span class="en-text">SM price lower by 41 SAR but EgyptAir offers 16K more baggage</span>
-                </div>
-            </div>
-
-            <div class="flight-block comp-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">
-                        <span class="ar-text">MS-8224</span>
-                        <span class="en-text">MS-8224</span>
-                    </span>
-                    <span class="flight-time">11:05</span>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">747 ريال سعودي</span>
-                            <span class="en-text">747 SAR</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
-                            <span class="en-text">46K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="alert-banner low">
-            <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
-                <span class="en-text">LOW THREAT</span>
-            </div>
-        </div>
-    </div>
-    
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-456</span>
@@ -1294,7 +1205,7 @@
                         <span class="ar-text">MS-8224</span>
                         <span class="en-text">MS-8224</span>
                     </span>
-                    <span class="flight-time">11:05</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1426,7 +1337,7 @@
                         <span class="ar-text">MS-8224</span>
                         <span class="en-text">MS-8224</span>
                     </span>
-                    <span class="flight-time">11:05</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1461,11 +1372,145 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-16">
-    <div class="date-header">
-        16 JANUARY 2026 FRIDAY
+    
+    <div class="flight-lf-header">
+        <div class="flight-lf-title">
+            <span class="flight-lf-number">SM-454</span>
+            <span class="flight-lf-time">11:05</span>
+        </div>
+        <div class="lf-boxes-row">
+            <div class="lf-box lf-main">
+                <span class="lf-box-value">94%</span>
+                <span class="lf-box-label">LF</span>
+            </div>
+            <div class="lf-box">
+                <span class="lf-box-value">167</span>
+                <span class="lf-box-label">SOLD</span>
+            </div>
+            <div class="lf-box">
+                <span class="lf-box-value">178</span>
+                <span class="lf-box-label">CAP</span>
+            </div>
+            <div class="lf-box">
+                <span class="lf-box-value">11</span>
+                <span class="lf-box-label">WKLY</span>
+            </div>
+            <div class="lf-box">
+                <span class="lf-box-value">0</span>
+                <span class="lf-box-label">TDY</span>
+            </div>
+            <div class="lf-box">
+                <span class="lf-box-value">0</span>
+                <span class="lf-box-label">YDY</span>
+            </div>
+        </div>
     </div>
     
+    <div class="threat-card low">
+        <div class="card-date-header">
+            <span class="date-route">10JAN26 &nbsp;-&nbsp; JED-ATZ</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-454</span>
+                    <span class="flight-time">11:05</span>
+                </div>
+                <div class="lf-row">
+                    <div class="lf-item">
+                        <span class="lf-label">LF</span>
+                        <span class="lf-value">94%</span>
+                    </div>
+                    <div class="lf-item">
+                        <span class="lf-label">WKLY</span>
+                        <span class="lf-value">11</span>
+                    </div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">706 ريال سعودي</span>
+                            <span class="en-text">706 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">الأفضلية الإجمالية لصالح مصر للطيران</span>
+                    <span class="en-text">EgyptAir leads overall</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">سعر إير كايرو أقل بـ 41 ريال سعودي لكن مصر للطيران يقدم وزنًا أعلى بـ 16 كجم</span>
+                    <span class="en-text">SM price lower by 41 SAR but EgyptAir offers 16K more baggage</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">MS-8224</span>
+                        <span class="en-text">MS-8224</span>
+                    </span>
+                    <span class="flight-time">-</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">747 ريال سعودي</span>
+                            <span class="en-text">747 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    </div>
+            <div class="date-section" data-date="2026-01-16">
+                <div class="date-header">
+                    <span class="ar-text">16 يناير 2026 الجمعة</span>
+                    <span class="en-text">16 JANUARY 2026 FRIDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-492</span>
@@ -1559,10 +1604,10 @@
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">SV-335 (بديل) JED-CAI</span>
-                        <span class="en-text">SV-335 (ALTERNATIVE) JED-CAI</span>
+                        <span class="ar-text">SV-335 (بديل)</span>
+                        <span class="en-text">SV-335 (ALTERNATIVE)</span>
                     </span>
-                    <span class="flight-time">05:45</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1597,11 +1642,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-26">
-    <div class="date-header">
-        26 JANUARY 2026 MONDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-26">
+                <div class="date-header">
+                    <span class="ar-text">26 يناير 2026 الاثنين</span>
+                    <span class="en-text">26 JANUARY 2026 MONDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-492</span>
@@ -1695,10 +1742,10 @@
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">MS-668 (بديل) JED-CAI</span>
-                        <span class="en-text">MS-668 (ALTERNATIVE) JED-CAI</span>
+                        <span class="ar-text">MS-668 (بديل)</span>
+                        <span class="en-text">MS-668 (ALTERNATIVE)</span>
                     </span>
-                    <span class="flight-time">13:20</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1733,11 +1780,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-29">
-    <div class="date-header">
-        29 JANUARY 2026 THURSDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-29">
+                <div class="date-header">
+                    <span class="ar-text">29 يناير 2026 الخميس</span>
+                    <span class="en-text">29 JANUARY 2026 THURSDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-456</span>
@@ -1831,10 +1880,10 @@
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">MS-666 (بديل) JED-CAI</span>
-                        <span class="en-text">MS-666 (ALTERNATIVE) JED-CAI</span>
+                        <span class="ar-text">MS-666 (بديل)</span>
+                        <span class="en-text">MS-666 (ALTERNATIVE)</span>
                     </span>
-                    <span class="flight-time">06:40</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1930,10 +1979,10 @@
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">MS-662 (بديل) JED-CAI</span>
-                        <span class="en-text">MS-662 (ALTERNATIVE) JED-CAI</span>
+                        <span class="ar-text">MS-662 (بديل)</span>
+                        <span class="en-text">MS-662 (ALTERNATIVE)</span>
                     </span>
-                    <span class="flight-time">11:40</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">

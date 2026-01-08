@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="report-generated" content="2026-01-07T16:44:00">
-    <meta name="report-version" content="20260107164400">
+    <meta name="report-generated" content="2026-01-07T16:44:57.877893">
+    <meta name="report-version" content="20260107164457">
     <title>Threat Alert Report - Routes</title>
     <style>
         * {
@@ -178,6 +178,47 @@
 
         .stat-sphere.active-filter .sphere {
             box-shadow: 0 0 0 2px rgba(70, 43, 115, 0.3), 0 3px 8px rgba(0,0,0,0.25);
+        }
+
+        /* Dramatic fire/lamp glowing animation for index page spheres */
+        @keyframes index-fire-high {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(231, 76, 60, 0.8), 0 0 40px rgba(231, 76, 60, 0.6), 0 0 60px rgba(231, 76, 60, 0.4), inset 0 0 15px rgba(255, 200, 100, 0.5);
+            }
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 35px rgba(231, 76, 60, 1), 0 0 70px rgba(231, 76, 60, 0.8), 0 0 100px rgba(231, 76, 60, 0.5), inset 0 0 25px rgba(255, 255, 150, 0.8);
+            }
+        }
+        @keyframes index-fire-medium {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(241, 196, 15, 0.8), 0 0 40px rgba(241, 196, 15, 0.6), 0 0 60px rgba(241, 196, 15, 0.4), inset 0 0 15px rgba(255, 255, 200, 0.5);
+            }
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 35px rgba(241, 196, 15, 1), 0 0 70px rgba(241, 196, 15, 0.8), 0 0 100px rgba(241, 196, 15, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.8);
+            }
+        }
+        @keyframes index-fire-low {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(65, 105, 225, 0.8), 0 0 40px rgba(65, 105, 225, 0.6), 0 0 60px rgba(65, 105, 225, 0.4), inset 0 0 15px rgba(150, 200, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 35px rgba(65, 105, 225, 1), 0 0 70px rgba(65, 105, 225, 0.8), 0 0 100px rgba(65, 105, 225, 0.5), inset 0 0 25px rgba(200, 230, 255, 0.8);
+            }
+        }
+        .stat-sphere.high.active-filter .sphere {
+            animation: index-fire-high 0.8s ease-in-out infinite;
+        }
+        .stat-sphere.medium.active-filter .sphere {
+            animation: index-fire-medium 0.8s ease-in-out infinite;
+        }
+        .stat-sphere.low.active-filter .sphere {
+            animation: index-fire-low 0.8s ease-in-out infinite;
         }
 
         /* Search Bar */
@@ -367,48 +408,63 @@
             color: #462B73;
         }
 
-        /* Bottom Navigation */
+        /* Bottom Navigation - Modern Floating Style */
         .pages-nav {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: flex;
-            justify-content: space-around;
-            padding: 10px 0 max(10px, env(safe-area-inset-bottom));
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
             z-index: 100;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-            border-top: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.8);
         }
 
         .pages-nav a {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            gap: 6px;
             text-decoration: none;
-            color: #666;
-            font-size: 10px;
-            padding: 5px 15px;
-            transition: color 0.2s;
+            color: #555;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: transparent;
         }
 
-        .pages-nav a.active {
+        .pages-nav a:hover {
+            background: rgba(70, 43, 115, 0.1);
             color: #462B73;
         }
 
-        .pages-nav a.download-nav {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        .pages-nav a.nav-download {
+            background: linear-gradient(135deg, #462B73 0%, #6B4A9E 100%);
             color: white;
-            border-radius: 15px;
-            padding: 8px 20px;
-            margin-top: -15px;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+            padding: 12px 20px;
+            box-shadow: 0 4px 15px rgba(70, 43, 115, 0.4);
         }
 
-        .nav-icon {
-            font-size: 20px;
-            margin-bottom: 3px;
+        .pages-nav a.nav-download:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(70, 43, 115, 0.5);
+        }
+
+        .pages-nav .nav-icon {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .pages-nav .nav-text {
+            white-space: nowrap;
         }
 
         /* Hidden class */
@@ -440,17 +496,17 @@
         <div class="stat-sphere low" onclick="filterByThreat('LOW')">
             <div class="sphere low"></div>
             <div class="count" id="lowCount">216</div>
-            <div class="label"><span class="ar-text">منخفض</span><span class="en-text">LOW</span></div>
+            <div class="label"><span class="ar-text">تهديد منخفض</span><span class="en-text">LOW THREAT</span></div>
         </div>
         <div class="stat-sphere medium" onclick="filterByThreat('MEDIUM')">
             <div class="sphere medium"></div>
             <div class="count" id="mediumCount">10</div>
-            <div class="label"><span class="ar-text">متوسط</span><span class="en-text">MEDIUM</span></div>
+            <div class="label"><span class="ar-text">تهديد متوسط</span><span class="en-text">MEDIUM THREAT</span></div>
         </div>
         <div class="stat-sphere high" onclick="filterByThreat('HIGH')">
             <div class="sphere high"></div>
             <div class="count" id="highCount">15</div>
-            <div class="label"><span class="ar-text">عالي</span><span class="en-text">HIGH</span></div>
+            <div class="label"><span class="ar-text">تهديد عالي</span><span class="en-text">HIGH THREAT</span></div>
         </div>
     </div>
 
@@ -655,20 +711,20 @@
     
     </div>
 
-    <div class="pages-nav">
+    <nav class="pages-nav">
         <a href="online_mobile_dashboard.html">
-            <span class="nav-icon">🌐</span>
-            <span><span class="ar-text">لوحة التحكم</span><span class="en-text">Dashboard</span></span>
+            <span class="nav-icon">📊</span>
+            <span class="nav-text"><span class="ar-text">لوحة التحكم</span><span class="en-text">Dashboard</span></span>
         </a>
-        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" style="background: #0078D4;">
-            <span class="nav-icon">📥</span>
-            <span><span class="ar-text">تحميل</span><span class="en-text">Download</span></span>
+        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" class="nav-download">
+            <span class="nav-icon">⬇️</span>
+            <span class="nav-text"><span class="ar-text">تحميل</span><span class="en-text">Download</span></span>
         </a>
         <a href="archive/">
-            <span class="nav-icon">📁</span>
-            <span><span class="ar-text">الأرشيف</span><span class="en-text">Archive</span></span>
+            <span class="nav-icon">📂</span>
+            <span class="nav-text"><span class="ar-text">الأرشيف</span><span class="en-text">Archive</span></span>
         </a>
-    </div>
+    </nav>
 
     <script>
         let currentThreatFilter = null;

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="report-generated" content="2026-01-07T16:44:00">
-    <meta name="report-version" content="20260107164400">
+    <meta name="report-generated" content="2026-01-07T16:44:57.877893">
+    <meta name="report-version" content="20260107164457">
     <title>CAI-TUU - Threat Report</title>
     <style>
         * {
@@ -141,6 +141,47 @@
             text-transform: uppercase;
             margin-top: 2px;
             color: #666;
+        }
+
+        /* Dramatic fire/lamp glowing animation for active filter */
+        @keyframes fire-pulse-high {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(231, 76, 60, 0.8), 0 0 40px rgba(231, 76, 60, 0.6), 0 0 60px rgba(231, 76, 60, 0.4), inset 0 0 20px rgba(255, 200, 100, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(231, 76, 60, 1), 0 0 60px rgba(231, 76, 60, 0.8), 0 0 90px rgba(231, 76, 60, 0.5), inset 0 0 30px rgba(255, 255, 150, 0.7);
+            }
+        }
+        @keyframes fire-pulse-medium {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(241, 196, 15, 0.8), 0 0 40px rgba(241, 196, 15, 0.6), 0 0 60px rgba(241, 196, 15, 0.4), inset 0 0 20px rgba(255, 255, 200, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(241, 196, 15, 1), 0 0 60px rgba(241, 196, 15, 0.8), 0 0 90px rgba(241, 196, 15, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.7);
+            }
+        }
+        @keyframes fire-pulse-low {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(65, 105, 225, 0.8), 0 0 40px rgba(65, 105, 225, 0.6), 0 0 60px rgba(65, 105, 225, 0.4), inset 0 0 20px rgba(150, 200, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(65, 105, 225, 1), 0 0 60px rgba(65, 105, 225, 0.8), 0 0 90px rgba(65, 105, 225, 0.5), inset 0 0 30px rgba(200, 230, 255, 0.7);
+            }
+        }
+        .stat-item.high.filtering .stat-sphere {
+            animation: fire-pulse-high 0.8s ease-in-out infinite;
+        }
+        .stat-item.medium.filtering .stat-sphere {
+            animation: fire-pulse-medium 0.8s ease-in-out infinite;
+        }
+        .stat-item.low.filtering .stat-sphere {
+            animation: fire-pulse-low 0.8s ease-in-out infinite;
         }
 
         /* Filter Section - part of freeze panes container */
@@ -1066,11 +1107,13 @@
     </div>
 
     <div class="content" id="content">
-        <div data-date="2026-01-07">
-    <div class="date-header">
-        07 JANUARY 2026 WEDNESDAY
-    </div>
-    
+        
+            <div class="date-section" data-date="2026-01-07">
+                <div class="date-header">
+                    <span class="ar-text">07 يناير 2026 الأربعاء</span>
+                    <span class="en-text">07 JANUARY 2026 WEDNESDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-325</span>
@@ -1167,7 +1210,7 @@
                         <span class="ar-text">NP-117</span>
                         <span class="en-text">NP-117</span>
                     </span>
-                    <span class="flight-time">18:10</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1266,7 +1309,7 @@
                         <span class="ar-text">MS-811</span>
                         <span class="en-text">MS-811</span>
                     </span>
-                    <span class="flight-time">23:35</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1301,11 +1344,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-08">
-    <div class="date-header">
-        08 JANUARY 2026 THURSDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-08">
+                <div class="date-header">
+                    <span class="ar-text">08 يناير 2026 الخميس</span>
+                    <span class="en-text">08 JANUARY 2026 THURSDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-325</span>
@@ -1402,7 +1447,7 @@
                         <span class="ar-text">NP-107</span>
                         <span class="en-text">NP-107</span>
                     </span>
-                    <span class="flight-time">18:10</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1501,7 +1546,7 @@
                         <span class="ar-text">MS-811</span>
                         <span class="en-text">MS-811</span>
                     </span>
-                    <span class="flight-time">23:35</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1536,11 +1581,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-14">
-    <div class="date-header">
-        14 JANUARY 2026 WEDNESDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-14">
+                <div class="date-header">
+                    <span class="ar-text">14 يناير 2026 الأربعاء</span>
+                    <span class="en-text">14 JANUARY 2026 WEDNESDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-325</span>
@@ -1637,7 +1684,7 @@
                         <span class="ar-text">E5-599</span>
                         <span class="en-text">E5-599</span>
                     </span>
-                    <span class="flight-time">11:55</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1736,7 +1783,7 @@
                         <span class="ar-text">MS-811</span>
                         <span class="en-text">MS-811</span>
                     </span>
-                    <span class="flight-time">23:35</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1771,11 +1818,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-15">
-    <div class="date-header">
-        15 JANUARY 2026 THURSDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-15">
+                <div class="date-header">
+                    <span class="ar-text">15 يناير 2026 الخميس</span>
+                    <span class="en-text">15 JANUARY 2026 THURSDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-325</span>
@@ -1872,7 +1921,7 @@
                         <span class="ar-text">NE-120</span>
                         <span class="en-text">NE-120</span>
                     </span>
-                    <span class="flight-time">19:20</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1907,11 +1956,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-21">
-    <div class="date-header">
-        21 JANUARY 2026 WEDNESDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-21">
+                <div class="date-header">
+                    <span class="ar-text">21 يناير 2026 الأربعاء</span>
+                    <span class="en-text">21 JANUARY 2026 WEDNESDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-325</span>
@@ -2008,7 +2059,7 @@
                         <span class="ar-text">E5-599</span>
                         <span class="en-text">E5-599</span>
                     </span>
-                    <span class="flight-time">11:55</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -2107,7 +2158,7 @@
                         <span class="ar-text">MS-811</span>
                         <span class="en-text">MS-811</span>
                     </span>
-                    <span class="flight-time">23:35</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -2142,11 +2193,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-22">
-    <div class="date-header">
-        22 JANUARY 2026 THURSDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-22">
+                <div class="date-header">
+                    <span class="ar-text">22 يناير 2026 الخميس</span>
+                    <span class="en-text">22 JANUARY 2026 THURSDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-325</span>
@@ -2243,7 +2296,7 @@
                         <span class="ar-text">NP-107</span>
                         <span class="en-text">NP-107</span>
                     </span>
-                    <span class="flight-time">19:20</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -2342,7 +2395,7 @@
                         <span class="ar-text">MS-811</span>
                         <span class="en-text">MS-811</span>
                     </span>
-                    <span class="flight-time">23:35</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -2377,11 +2430,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-24">
-    <div class="date-header">
-        24 JANUARY 2026 SATURDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-24">
+                <div class="date-header">
+                    <span class="ar-text">24 يناير 2026 السبت</span>
+                    <span class="en-text">24 JANUARY 2026 SATURDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-325</span>
@@ -2478,7 +2533,7 @@
                         <span class="ar-text">NP-107</span>
                         <span class="en-text">NP-107</span>
                     </span>
-                    <span class="flight-time">18:10</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -2513,11 +2568,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-28">
-    <div class="date-header">
-        28 JANUARY 2026 WEDNESDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-28">
+                <div class="date-header">
+                    <span class="ar-text">28 يناير 2026 الأربعاء</span>
+                    <span class="en-text">28 JANUARY 2026 WEDNESDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-325</span>
@@ -2614,7 +2671,7 @@
                         <span class="ar-text">E5-599</span>
                         <span class="en-text">E5-599</span>
                     </span>
-                    <span class="flight-time">11:55</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -2713,7 +2770,7 @@
                         <span class="ar-text">NP-117</span>
                         <span class="en-text">NP-117</span>
                     </span>
-                    <span class="flight-time">18:10</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -2748,11 +2805,13 @@
             </div>
         </div>
     </div>
-    </div><div data-date="2026-01-29">
-    <div class="date-header">
-        29 JANUARY 2026 THURSDAY
     </div>
-    
+            <div class="date-section" data-date="2026-01-29">
+                <div class="date-header">
+                    <span class="ar-text">29 يناير 2026 الخميس</span>
+                    <span class="en-text">29 JANUARY 2026 THURSDAY</span>
+                </div>
+            
     <div class="flight-lf-header">
         <div class="flight-lf-title">
             <span class="flight-lf-number">SM-325</span>
@@ -2849,7 +2908,7 @@
                         <span class="ar-text">NP-107</span>
                         <span class="en-text">NP-107</span>
                     </span>
-                    <span class="flight-time">19:20</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -2948,7 +3007,7 @@
                         <span class="ar-text">MS-811</span>
                         <span class="en-text">MS-811</span>
                     </span>
-                    <span class="flight-time">23:35</span>
+                    <span class="flight-time">-</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
