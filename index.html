@@ -82,6 +82,23 @@
         .link.archive:hover {
             background: #e8850a;
         }
+        .link.dashboard {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        .link.dashboard:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(16,185,129,0.4);
+        }
+        .section-title {
+            color: #888;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0 10px 0;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
     </style>
 </head>
 <body>
@@ -90,6 +107,10 @@
         <h1>Market Insights</h1>
         <p class="subtitle">Threat Alert Reports</p>
         <div class="links">
+            <p class="section-title" style="border-top: none; margin-top: 0;">Live Dashboard</p>
+            <a href="online_pc_dashboard.html" class="link dashboard">PC Dashboard</a>
+            <a href="online_mobile_dashboard.html" class="link dashboard">Mobile Dashboard</a>
+            <p class="section-title">Reports</p>
             <a href="online_mob_report.html" class="link primary">Mobile Report</a>
             <a href="online_pc_report.html" class="link secondary">Desktop Report</a>
             <a href="archive/" class="link archive">Archive</a>
