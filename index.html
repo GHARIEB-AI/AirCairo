@@ -1584,14 +1584,8 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = '';  // No live server - use cached dashboard_status.json
-        const IS_GITHUB_PAGES = window.location.hostname.includes('github.io');
+        const API_BASE_OVERRIDE = 'https://slow-university-principles-heading.trycloudflare.com';
         const API_BASE = (() => {
-            // On GitHub Pages, there's no live API - use cached data only
-            if (IS_GITHUB_PAGES) {
-                return null;  // Will force cached data mode
-            }
-
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
                     return API_BASE_OVERRIDE.replace(/\/$/, '');
@@ -2469,25 +2463,15 @@
                 });
                 if (response.ok) {
                     lastRunData = await response.json();
-                    console.log('[Dashboard] Loaded cached data:', lastRunData.status);
+                    console.log('[Dashboard] Loaded cached data from last run');
 
-                    // On GitHub Pages, always use cached data immediately
-                    if (IS_GITHUB_PAGES && lastRunData) {
+                    // If we're offline and have cached data, use it
+                    if (!isOnline && lastRunData) {
                         lastData = lastRunData;
                         updateDashboard(lastRunData);
                         updateRealFlights();
-                        const statusBadge = document.getElementById('status-badge');
-                        if (statusBadge) {
-                            statusBadge.textContent = 'LAST RUN';
-                            statusBadge.className = 'status-badge completed';
-                        }
-                        console.log('[Dashboard] GitHub Pages mode - showing cached data');
-                    }
-                    // For local/server mode, wait for fetchStatus to determine online/offline
-                    else if (!isOnline && lastRunData) {
-                        lastData = lastRunData;
-                        updateDashboard(lastRunData);
-                        updateRealFlights();
+
+                        // Update status badge to show it's from cached data
                         const statusBadge = document.getElementById('status-badge');
                         if (statusBadge) {
                             statusBadge.textContent = 'LAST RUN';
@@ -2496,24 +2480,11 @@
                     }
                 }
             } catch (e) {
-                console.log('[Dashboard] No cached data available:', e);
+                console.log('[Dashboard] No cached data available');
             }
         }
 
         async function fetchStatus() {
-            // On GitHub Pages (API_BASE is null), skip live fetch and use cached data
-            if (!API_BASE) {
-                isOnline = false;
-                if (lastRunData) {
-                    lastData = lastRunData;
-                    updateDashboard(lastRunData);
-                    updateRealFlights();
-                    document.getElementById('status-badge').textContent = 'LAST RUN';
-                    document.getElementById('status-badge').className = 'status-badge completed';
-                }
-                return;
-            }
-
             try {
                 // Use AbortController for 5-second timeout to fail fast when tunnel is dead
                 const controller = new AbortController();
