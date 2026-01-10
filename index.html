@@ -1585,7 +1585,13 @@
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
         const API_BASE_OVERRIDE = '';  // No live server - use cached dashboard_status.json
+        const IS_GITHUB_PAGES = window.location.hostname.includes('github.io');
         const API_BASE = (() => {
+            // On GitHub Pages, there's no live API - use cached data only
+            if (IS_GITHUB_PAGES) {
+                return null;  // Will force cached data mode
+            }
+
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
                     return API_BASE_OVERRIDE.replace(/\/$/, '');
@@ -2485,6 +2491,19 @@
         }
 
         async function fetchStatus() {
+            // On GitHub Pages (API_BASE is null), skip live fetch and use cached data
+            if (!API_BASE) {
+                isOnline = false;
+                if (lastRunData) {
+                    lastData = lastRunData;
+                    updateDashboard(lastRunData);
+                    updateRealFlights();
+                    document.getElementById('status-badge').textContent = 'LAST RUN';
+                    document.getElementById('status-badge').className = 'status-badge completed';
+                }
+                return;
+            }
+
             try {
                 // Use AbortController for 5-second timeout to fail fast when tunnel is dead
                 const controller = new AbortController();
