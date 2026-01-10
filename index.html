@@ -3,163 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Cairo - Market Insights GATE</title>
+    <title>Air Cairo - GATE</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-            background: #ffffff;
+            background: #f5f5f5;
             min-height: 100vh;
-            padding: 30px;
+            padding: 15px;
         }
         .container {
-            max-width: 900px;
+            max-width: 600px;
             margin: 0 auto;
         }
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #F7941D;
+            background: #462B73;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
         }
         .header h1 {
-            color: #462B73;
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-bottom: 5px;
         }
         .header p {
-            color: #666;
-        }
-        .links-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .links-table th {
-            background: #462B73;
-            color: #fff;
-            padding: 12px 15px;
-            text-align: right;
-            font-size: 1rem;
-        }
-        .links-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #ddd;
-            vertical-align: middle;
-        }
-        .links-table tr:hover {
-            background: #f5f5f5;
-        }
-        .links-table a {
-            color: #0066cc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .links-table a:hover {
-            text-decoration: underline;
             color: #F7941D;
+            font-size: 0.9rem;
         }
-        .badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
+        .links-list {
+            background: #fff;
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
         }
-        .badge-pc { background: #e8e0f0; color: #462B73; }
-        .badge-mobile { background: #e0f0e8; color: #006633; }
-        .badge-both { background: #fff3e0; color: #cc6600; }
-        .section-title {
-            background: #f8f8f8;
+        .section-header {
+            background: #f0f0f0;
             padding: 10px 15px;
             font-weight: bold;
             color: #462B73;
             border-right: 4px solid #F7941D;
-            margin-top: 25px;
+            font-size: 0.9rem;
+        }
+        .link-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.2s;
+        }
+        .link-item:hover {
+            background: #f9f9f9;
+        }
+        .link-item:active {
+            background: #f0f0f0;
+        }
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            background: #462B73;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-size: 1.2rem;
+        }
+        .link-icon.mobile { background: #2e7d32; }
+        .link-icon.archive { background: #F7941D; }
+        .link-info {
+            flex: 1;
+        }
+        .link-info h3 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+            color: #333;
+        }
+        .link-info p {
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .link-arrow {
+            color: #ccc;
+            font-size: 1.2rem;
         }
         .footer {
             text-align: center;
             color: #999;
-            font-size: 0.8rem;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
+            font-size: 0.75rem;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Air Cairo - Market Insights</h1>
-            <p>GATE - بوابة الروابط</p>
+            <h1>Air Cairo</h1>
+            <p>Market Insights - GATE</p>
         </div>
 
-        <table class="links-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>الاسم</th>
-                    <th>الرابط</th>
-                    <th>النوع</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="section-title">
-                    <td colspan="4">التقارير | Reports</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>PC Report</td>
-                    <td><a href="online_pc_report.html">online_pc_report.html</a></td>
-                    <td><span class="badge badge-pc">Desktop</span></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Mobile Report</td>
-                    <td><a href="online_mob_report.html">online_mob_report.html</a></td>
-                    <td><span class="badge badge-mobile">Mobile</span></td>
-                </tr>
+        <div class="links-list">
+            <div class="section-header">التقارير | Reports</div>
 
-                <tr class="section-title">
-                    <td colspan="4">لوحات المتابعة | Dashboards</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>PC Dashboard</td>
-                    <td><a href="online_pc_dashboard.html">online_pc_dashboard.html</a></td>
-                    <td><span class="badge badge-pc">Desktop</span></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Mobile Dashboard</td>
-                    <td><a href="online_mobile_dashboard.html">online_mobile_dashboard.html</a></td>
-                    <td><span class="badge badge-mobile">Mobile</span></td>
-                </tr>
+            <a href="online_pc_report.html" class="link-item">
+                <div class="link-icon">📊</div>
+                <div class="link-info">
+                    <h3>PC Report</h3>
+                    <p>تقرير الكمبيوتر</p>
+                </div>
+                <div class="link-arrow">←</div>
+            </a>
 
-                <tr class="section-title">
-                    <td colspan="4">الأرشيف | Archive</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Reports Archive</td>
-                    <td><a href="archive/">archive/</a></td>
-                    <td><span class="badge badge-both">All</span></td>
-                </tr>
+            <a href="online_mob_report.html" class="link-item">
+                <div class="link-icon mobile">📱</div>
+                <div class="link-info">
+                    <h3>Mobile Report</h3>
+                    <p>تقرير الموبايل</p>
+                </div>
+                <div class="link-arrow">←</div>
+            </a>
 
-                <tr class="section-title">
-                    <td colspan="4">البيانات | Data</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Dashboard Status</td>
-                    <td><a href="dashboard_status.json">dashboard_status.json</a></td>
-                    <td><span class="badge badge-both">JSON</span></td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="section-header">لوحات المتابعة | Dashboards</div>
+
+            <a href="online_pc_dashboard.html" class="link-item">
+                <div class="link-icon">🖥️</div>
+                <div class="link-info">
+                    <h3>PC Dashboard</h3>
+                    <p>داشبورد الكمبيوتر</p>
+                </div>
+                <div class="link-arrow">←</div>
+            </a>
+
+            <a href="online_mobile_dashboard.html" class="link-item">
+                <div class="link-icon mobile">📲</div>
+                <div class="link-info">
+                    <h3>Mobile Dashboard</h3>
+                    <p>داشبورد الموبايل</p>
+                </div>
+                <div class="link-arrow">←</div>
+            </a>
+
+            <div class="section-header">الأرشيف | Archive</div>
+
+            <a href="archive/" class="link-item">
+                <div class="link-icon archive">📁</div>
+                <div class="link-info">
+                    <h3>Reports Archive</h3>
+                    <p>أرشيف التقارير السابقة</p>
+                </div>
+                <div class="link-arrow">←</div>
+            </a>
+        </div>
 
         <div class="footer">
-            <p>Air Cairo Market Insights - GATE Portal</p>
+            Air Cairo Market Insights
         </div>
     </div>
 </body>
