@@ -5161,23 +5161,14 @@
 
         // Toggle tree node expand/collapse
         function toggleTreeNode(element) {
-            var toggle = element.querySelector('.filter-tree-toggle');
-            var children = element.nextElementSibling;
+            var header = element;
+            var node = header.closest('.filter-tree-node');
+            var toggle = header.querySelector('.filter-tree-toggle');
+            var children = node.querySelector(':scope > .filter-tree-children');
 
-            // Verify children is the right element
-            if (toggle && children && children.className.indexOf('filter-tree-children') !== -1) {
-                // Check if currently collapsed (looking at children element)
-                var isCurrentlyCollapsed = children.className.indexOf('collapsed') !== -1;
-
-                if (isCurrentlyCollapsed) {
-                    // Currently collapsed -> Expand (remove collapsed class)
-                    toggle.classList.remove('collapsed');
-                    children.classList.remove('collapsed');
-                } else {
-                    // Currently expanded -> Collapse (add collapsed class)
-                    toggle.classList.add('collapsed');
-                    children.classList.add('collapsed');
-                }
+            if (toggle && children) {
+                var isCollapsed = children.classList.toggle('collapsed');
+                toggle.classList.toggle('collapsed', isCollapsed);
             }
         }
 
