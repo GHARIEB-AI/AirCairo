@@ -1575,19 +1575,22 @@
 
         // Toggle tree node expand/collapse
         function toggleTreeNode(element) {
-            // element is the header div - children div is its next sibling
             var toggle = element.querySelector('.filter-tree-toggle');
             var children = element.nextElementSibling;
 
-            if (toggle && children) {
-                // Use className manipulation for maximum compatibility
-                var hasCollapsed = toggle.className.indexOf('collapsed') !== -1;
-                if (hasCollapsed) {
-                    toggle.className = toggle.className.replace(' collapsed', '').replace('collapsed ', '').replace('collapsed', '');
-                    children.className = children.className.replace(' collapsed', '').replace('collapsed ', '').replace('collapsed', '');
+            // Verify children is the right element
+            if (toggle && children && children.className.indexOf('filter-tree-children') !== -1) {
+                // Check if currently collapsed (looking at children element)
+                var isCurrentlyCollapsed = children.className.indexOf('collapsed') !== -1;
+
+                if (isCurrentlyCollapsed) {
+                    // Currently collapsed -> Expand (remove collapsed class)
+                    toggle.classList.remove('collapsed');
+                    children.classList.remove('collapsed');
                 } else {
-                    toggle.className = toggle.className + ' collapsed';
-                    children.className = children.className + ' collapsed';
+                    // Currently expanded -> Collapse (add collapsed class)
+                    toggle.classList.add('collapsed');
+                    children.classList.add('collapsed');
                 }
             }
         }
