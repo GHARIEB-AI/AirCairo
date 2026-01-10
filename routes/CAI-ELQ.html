@@ -5582,6 +5582,44 @@
 
     <!-- LOADER SCRIPT -->
     <script>
+        // Show loader on page load (already visible by default)
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loader = document.getElementById('page-loader');
+                if (loader) loader.classList.add('loaded');
+            }, 300);
+        });
+        // Fallback: hide loader after 4s max
+        setTimeout(function() {
+            var loader = document.getElementById('page-loader');
+            if (loader) loader.classList.add('loaded');
+        }, 4000);
+        
+        // SHOW LOADER IMMEDIATELY on any navigation
+        function showLoader() {
+            var loader = document.getElementById('page-loader');
+            if (loader) loader.classList.remove('loaded');
+        }
+        
+        // Show loader when leaving page (back/forward/link click)
+        window.addEventListener('beforeunload', showLoader);
+        window.addEventListener('pagehide', showLoader);
+        
+        // Show loader on ALL link clicks
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#')) {
+                showLoader();
+            }
+        });
+        
+        // Show loader on route selector change
+        var routeSelector = document.getElementById('routeSelector');
+        if (routeSelector) {
+            routeSelector.addEventListener('change', showLoader);
+        }
+    </script>
+    <script>
         window.addEventListener('load', function() {
             setTimeout(function() {
                 var loader = document.getElementById('page-loader');
