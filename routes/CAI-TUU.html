@@ -5087,68 +5087,136 @@
             }
         }
 
-        // Scroll controls
-        var scrollTop = document.getElementById('scrollTop');
-        var scrollBottom = document.getElementById('scrollBottom');
-        var holdTimer, scrollInterval;
+        // Scroll Navigation with dual functionality
+        // One click = jump to top/bottom
+        // Long press = fast scroll
+        (function() {
+            var LONG_PRESS_DELAY = 300;
+            var SCROLL_SPEED = 80;
+            var SCROLL_INTERVAL = 16;
 
-        function setupScrollButton(btn, direction) {
-            if (!btn) return;
-            var scrollAmount = direction === 'up' ? -150 : 150;
-            var jumpTo = direction === 'up' ? 0 : document.documentElement.scrollHeight;
+            var scrollInterval = null;
+            var longPressTimer = null;
+            var isLongPress = false;
 
-            btn.addEventListener('mousedown', function(e) {
-                e.preventDefault();
-                btn.classList.add('pressed');
+            function jumpToTop() {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+
+            function jumpToBottom() {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' });
+            }
+
+            function startFastScroll(direction) {
+                stopFastScroll();
+                isLongPress = true;
                 scrollInterval = setInterval(function() {
-                    window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
-                }, 100);
-                holdTimer = setTimeout(function() {
+                    window.scrollBy({ top: direction * SCROLL_SPEED, behavior: 'instant' });
+                }, SCROLL_INTERVAL);
+            }
+
+            function stopFastScroll() {
+                if (scrollInterval) {
                     clearInterval(scrollInterval);
-                    window.scrollTo({ top: jumpTo, behavior: 'smooth' });
-                }, 800);
-            });
+                    scrollInterval = null;
+                }
+                if (longPressTimer) {
+                    clearTimeout(longPressTimer);
+                    longPressTimer = null;
+                }
+            }
 
-            btn.addEventListener('mouseup', function() {
-                btn.classList.remove('pressed');
-                clearTimeout(holdTimer);
-                clearInterval(scrollInterval);
-            });
+            function setupButton(btn, direction, jumpFn) {
+                if (!btn) return;
 
-            btn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                btn.classList.add('pressed');
-                scrollInterval = setInterval(function() {
-                    window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
-                }, 100);
-                holdTimer = setTimeout(function() {
-                    clearInterval(scrollInterval);
-                    window.scrollTo({ top: jumpTo, behavior: 'smooth' });
-                }, 800);
-            }, { passive: false });
+                btn.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    isLongPress = false;
+                    btn.classList.add('pressed');
+                    longPressTimer = setTimeout(function() {
+                        startFastScroll(direction);
+                    }, LONG_PRESS_DELAY);
+                }, { passive: false });
 
-            btn.addEventListener('touchend', function() {
-                btn.classList.remove('pressed');
-                clearTimeout(holdTimer);
-                clearInterval(scrollInterval);
-            });
-        }
+                btn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    if (!isLongPress) {
+                        jumpFn();
+                    }
+                    isLongPress = false;
+                });
 
-        setupScrollButton(scrollTop, 'up');
-        setupScrollButton(scrollBottom, 'down');
+                btn.addEventListener('touchcancel', function() {
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    isLongPress = false;
+                });
 
-        // Position indicator
-        function updatePositionIndicator() {
-            var scrollTop = window.scrollY;
-            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            var scrollPercent = docHeight > 0 ? (scrollTop / docHeight) : 0;
-            var bar = document.getElementById('positionBar');
-            bar.style.height = '20px';
-            bar.style.top = (scrollPercent * 80) + 'px';
-        }
+                btn.addEventListener('mousedown', function(e) {
+                    isLongPress = false;
+                    btn.classList.add('pressed');
+                    longPressTimer = setTimeout(function() {
+                        startFastScroll(direction);
+                    }, LONG_PRESS_DELAY);
+                });
 
-        window.addEventListener('scroll', updatePositionIndicator, { passive: true });
-        updatePositionIndicator();
+                btn.addEventListener('mouseup', function() {
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    if (!isLongPress) {
+                        jumpFn();
+                    }
+                    isLongPress = false;
+                });
+
+                btn.addEventListener('mouseleave', function() {
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    isLongPress = false;
+                });
+            }
+
+            var scrollTopBtn = document.getElementById('scrollTop');
+            var scrollBottomBtn = document.getElementById('scrollBottom');
+            setupButton(scrollTopBtn, -1, jumpToTop);
+            setupButton(scrollBottomBtn, 1, jumpToBottom);
+        })();
+
+        // Position indicator with requestAnimationFrame
+        (function() {
+            var hidePercentTimeout = null;
+            var rafId = null;
+
+            function updatePositionIndicator() {
+                if (rafId) return; // Already scheduled
+
+                rafId = requestAnimationFrame(function() {
+                    var scrollTop = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    var percent = Math.round((scrollTop / docHeight) * 100) || 0;
+
+                    var marker = document.getElementById('positionMarker');
+                    var markerTop = (percent / 100) * 80;
+                    marker.style.top = markerTop + 'px';
+
+                    var percentEl = document.getElementById('positionPercent');
+                    percentEl.textContent = percent + '%';
+                    percentEl.classList.add('visible');
+
+                    clearTimeout(hidePercentTimeout);
+                    hidePercentTimeout = setTimeout(function() {
+                        percentEl.classList.remove('visible');
+                    }, 1500);
+
+                    rafId = null;
+                });
+            }
+
+            window.addEventListener('scroll', updatePositionIndicator, { passive: true });
+            updatePositionIndicator();
+        })();
 
         // Freshness check
         (function() {
