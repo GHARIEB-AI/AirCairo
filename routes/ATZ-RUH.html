@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="report-generated" content="2026-01-11T01:17:28.902650">
-    <meta name="report-version" content="20260111075443">
+    <meta name="report-version" content="20260111011728">
     <title>ATZ-RUH - Threat Report</title>
     <style>
         * {
@@ -90,7 +90,7 @@
 
         .lang-toggle {
             background: rgba(255,255,255,0.2);
-            border: 2px solid rgba(247, 148, 29, 0.6);
+            border: none;
             color: white;
             padding: 8px 15px;
             border-radius: 20px;
@@ -116,7 +116,33 @@
         }
 
         .stat-item:active { transform: scale(0.95); }
-        .stat-item.active .stat-sphere { box-shadow: 0 0 0 3px rgba(70, 43, 115, 0.3), 0 4px 12px rgba(0,0,0,0.25); }
+
+        /* Active filter state - dramatic glow effect */
+        .stat-item.active {
+            transform: scale(1.15);
+        }
+        .stat-item.active .stat-sphere {
+            animation: filter-glow 0.8s ease-in-out infinite;
+        }
+        .stat-item.high.active .stat-sphere {
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.8), 0 0 40px rgba(231, 76, 60, 0.5), 0 0 60px rgba(231, 76, 60, 0.3);
+        }
+        .stat-item.medium.active .stat-sphere {
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.8), 0 0 40px rgba(241, 196, 15, 0.5), 0 0 60px rgba(241, 196, 15, 0.3);
+        }
+        .stat-item.low.active .stat-sphere {
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.8), 0 0 40px rgba(65, 105, 225, 0.5), 0 0 60px rgba(65, 105, 225, 0.3);
+        }
+        @keyframes filter-glow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Bottom nav active state */
+        .bottom-nav .nav-item.active {
+            background: rgba(70, 43, 115, 0.2);
+            border-radius: 10px;
+        }
 
         .stat-sphere {
             width: 60px;
@@ -377,6 +403,7 @@
             border-radius: 50%;
             border: 2px solid rgba(247, 148, 29, 0.6);
             background: url('../assets/img/scroll_button.png') center/contain no-repeat;
+            background-color: rgba(255, 255, 255, 0.1);
             color: transparent;
             font-size: 20px;
             display: flex;
@@ -384,7 +411,7 @@
             justify-content: center;
             cursor: pointer;
             opacity: 0.4;
-            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)) contrast(1.3);
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3)) contrast(1.2);
             transition: all 0.2s ease;
         }
 
@@ -397,13 +424,15 @@
         }
 
         .scroll-btn:hover {
-            opacity: 0.9;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6)) contrast(1.4);
+            opacity: 0.6;
+            border-color: rgba(247, 148, 29, 0.9);
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4)) contrast(1.3);
         }
 
         .scroll-btn:active, .scroll-btn.pressed {
-            opacity: 1;
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+            opacity: 0.8;
+            border-color: rgba(247, 148, 29, 1);
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
             transform: perspective(500px) rotateX(10deg) scale(0.95);
         }
 
@@ -588,7 +617,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        /* ===== PAGE LOADER ===== */
+        /* ===== UNIFIED PAGE LOADER ===== */
         #page-loader {
             position: fixed;
             top: 0;
@@ -600,12 +629,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-        }
-        #page-loader.loaded {
+            z-index: 99999;
             opacity: 0;
             visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #page-loader.show {
+            opacity: 1;
+            visibility: visible;
         }
         #page-loader .loader-gif {
             width: 200px;
@@ -762,7 +793,7 @@
 
         .filter-modal-close {
             background: none;
-            border: 2px solid rgba(247, 148, 29, 0.6);
+            border: none;
             font-size: 1.5em;
             color: #888;
             cursor: pointer;
@@ -860,33 +891,7 @@
         <div class="filter-section">
             <div class="filter-row">
                 <select class="route-selector" id="routeSelector" onchange="navigateToRoute(this.value)">
-                    <option value="AHB-CAI">AHB-CAI</option>
-<option value="AJF-CAI">AJF-CAI</option>
-<option value="ATZ-JED">ATZ-JED</option>
-<option value="ATZ-RUH" selected>ATZ-RUH</option>
-<option value="CAI-AHB">CAI-AHB</option>
-<option value="CAI-AJF">CAI-AJF</option>
-<option value="CAI-DMM">CAI-DMM</option>
-<option value="CAI-ELQ">CAI-ELQ</option>
-<option value="CAI-GIZ">CAI-GIZ</option>
-<option value="CAI-JED">CAI-JED</option>
-<option value="CAI-MED">CAI-MED</option>
-<option value="CAI-RUH">CAI-RUH</option>
-<option value="CAI-TUU">CAI-TUU</option>
-<option value="CAI-YNB">CAI-YNB</option>
-<option value="DMM-CAI">DMM-CAI</option>
-<option value="ELQ-CAI">ELQ-CAI</option>
-<option value="GIZ-CAI">GIZ-CAI</option>
-<option value="HBE-JED">HBE-JED</option>
-<option value="JED-ATZ">JED-ATZ</option>
-<option value="JED-CAI">JED-CAI</option>
-<option value="JED-HBE">JED-HBE</option>
-<option value="MED-CAI">MED-CAI</option>
-<option value="MED-HBE">MED-HBE</option>
-<option value="RUH-ATZ">RUH-ATZ</option>
-<option value="RUH-CAI">RUH-CAI</option>
-<option value="TUU-CAI">TUU-CAI</option>
-<option value="YNB-CAI">YNB-CAI</option>
+                    
                 </select>
                 <button class="filter-btn" id="dateFilterBtn" onclick="openFilterModal('date')">
                     <span class="ar-text">📅 التواريخ</span>
@@ -940,7 +945,7 @@
         <div class="blocks-wrapper">
             <div class="flight-block our-flight">
                 <div class="flight-block-header">
-                    <span class="flight-number">SM---</span>
+                    <span class="flight-number">SM-463</span>
                     <span class="flight-time"><span class="time-label">DEP</span> 10:20</span>
                 </div>
 
@@ -953,23 +958,23 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">7132 جنيه مصري</span>
+                            <span class="ar-text">7132 EGP</span>
                             <span class="en-text">7132 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">0 كجم</span>
-                            <span class="en-text">0K</span>
+                            <span class="ar-text">30K</span>
+                            <span class="en-text">30K</span>
                         </div>
                     </div>
                 </div>
@@ -978,43 +983,43 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر إير كايرو أقل بـ 567 جنيه مصري لكن  يقدم وزنًا أعلى بـ 10 كجم</span>
-                    <span class="en-text">SM price lower by 567 EGP but  offers 10K more baggage</span>
+                    <span class="ar-text">SM price lower by 567 EGP but flynas offers 10K more baggage</span>
+                    <span class="en-text">SM price lower by 567 EGP but flynas offers 10K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضلية لصالح إير كايرو 💡</span>
-                    <span class="en-text">Market Leader: Air Cairo 💡</span>
+                    <span class="ar-text">Market Leader: Air Cairo</span>
+                    <span class="en-text">Market Leader: Air Cairo</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text"></span>
-                        <span class="en-text"></span>
+                        <span class="ar-text">flynas-XY-284</span>
+                        <span class="en-text">flynas-XY-284</span>
                     </span>
                     <span class="flight-time"><span class="time-label">DEP</span> --:--</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">6565 جنيه مصري</span>
+                            <span class="ar-text">6565 EGP</span>
                             <span class="en-text">6565 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">0 كجم</span>
-                            <span class="en-text">0K</span>
+                            <span class="ar-text">40K</span>
+                            <span class="en-text">40K</span>
                         </div>
                     </div>
                 </div>
@@ -1023,7 +1028,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
+                <span class="ar-text">LOW THREAT</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1037,7 +1042,7 @@
         <div class="blocks-wrapper">
             <div class="flight-block our-flight">
                 <div class="flight-block-header">
-                    <span class="flight-number">SM---</span>
+                    <span class="flight-number">SM-463</span>
                     <span class="flight-time"><span class="time-label">DEP</span> 10:20</span>
                 </div>
 
@@ -1050,23 +1055,23 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">6527 جنيه مصري</span>
+                            <span class="ar-text">6527 EGP</span>
                             <span class="en-text">6527 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">0 كجم</span>
-                            <span class="en-text">0K</span>
+                            <span class="ar-text">30K</span>
+                            <span class="en-text">30K</span>
                         </div>
                     </div>
                 </div>
@@ -1075,43 +1080,43 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر المنافس أقل بـ 668 جنيه مصري لكن  يقدم وزنًا أعلى بـ 10 كجم</span>
-                    <span class="en-text">Competitor price lower by 668 EGP but  offers 10K more baggage</span>
+                    <span class="ar-text">Competitor price lower by 668 EGP but flynas offers 10K more baggage</span>
+                    <span class="en-text">Competitor price lower by 668 EGP but flynas offers 10K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضلية لصالح إير كايرو 💡</span>
-                    <span class="en-text">Market Leader: Air Cairo 💡</span>
+                    <span class="ar-text">Market Leader: Air Cairo</span>
+                    <span class="en-text">Market Leader: Air Cairo</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text"></span>
-                        <span class="en-text"></span>
+                        <span class="ar-text">flynas-XY-284</span>
+                        <span class="en-text">flynas-XY-284</span>
                     </span>
                     <span class="flight-time"><span class="time-label">DEP</span> --:--</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">7195 جنيه مصري</span>
+                            <span class="ar-text">7195 EGP</span>
                             <span class="en-text">7195 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">0 كجم</span>
-                            <span class="en-text">0K</span>
+                            <span class="ar-text">40K</span>
+                            <span class="en-text">40K</span>
                         </div>
                     </div>
                 </div>
@@ -1120,7 +1125,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
+                <span class="ar-text">LOW THREAT</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1134,7 +1139,7 @@
         <div class="blocks-wrapper">
             <div class="flight-block our-flight">
                 <div class="flight-block-header">
-                    <span class="flight-number">SM---</span>
+                    <span class="flight-number">SM-463</span>
                     <span class="flight-time"><span class="time-label">DEP</span> 10:20</span>
                 </div>
 
@@ -1147,23 +1152,23 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">7132 جنيه مصري</span>
+                            <span class="ar-text">7132 EGP</span>
                             <span class="en-text">7132 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">0 كجم</span>
-                            <span class="en-text">0K</span>
+                            <span class="ar-text">30K</span>
+                            <span class="en-text">30K</span>
                         </div>
                     </div>
                 </div>
@@ -1172,43 +1177,43 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر المنافس أقل بـ 1323 جنيه مصري لكن  يقدم وزنًا أعلى بـ 10 كجم</span>
-                    <span class="en-text">Competitor price lower by 1323 EGP but  offers 10K more baggage</span>
+                    <span class="ar-text">Competitor price lower by 1323 EGP but flynas offers 10K more baggage</span>
+                    <span class="en-text">Competitor price lower by 1323 EGP but flynas offers 10K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضلية لصالح إير كايرو 💡</span>
-                    <span class="en-text">Market Leader: Air Cairo 💡</span>
+                    <span class="ar-text">Market Leader: Air Cairo</span>
+                    <span class="en-text">Market Leader: Air Cairo</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text"></span>
-                        <span class="en-text"></span>
+                        <span class="ar-text">flynas-XY-284</span>
+                        <span class="en-text">flynas-XY-284</span>
                     </span>
                     <span class="flight-time"><span class="time-label">DEP</span> --:--</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">8455 جنيه مصري</span>
+                            <span class="ar-text">8455 EGP</span>
                             <span class="en-text">8455 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">0 كجم</span>
-                            <span class="en-text">0K</span>
+                            <span class="ar-text">40K</span>
+                            <span class="en-text">40K</span>
                         </div>
                     </div>
                 </div>
@@ -1217,7 +1222,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
+                <span class="ar-text">LOW THREAT</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1257,18 +1262,6 @@
             </div>
             <div class="filter-modal-body" id="dateFilterBody">
                 
-                <div class="date-item">
-                    <input type="checkbox" id="date_2026-01-27" data-date="2026-01-27" checked>
-                    <label for="date_2026-01-27">27JAN26</label>
-                </div>
-                <div class="date-item">
-                    <input type="checkbox" id="date_2026-02-03" data-date="2026-02-03" checked>
-                    <label for="date_2026-02-03">03FEB26</label>
-                </div>
-                <div class="date-item">
-                    <input type="checkbox" id="date_2026-02-24" data-date="2026-02-24" checked>
-                    <label for="date_2026-02-24">24FEB26</label>
-                </div>
             </div>
         </div>
     </div>
@@ -1309,24 +1302,32 @@
             var cards = document.querySelectorAll('.threat-card');
 
             if (currentFilter === level) {
+                // Toggle off - show all
                 currentFilter = null;
                 items.forEach(i => i.classList.remove('active'));
                 navItems.forEach(n => n.classList.remove('active'));
                 cards.forEach(c => c.style.display = 'block');
             } else {
+                // Apply filter
                 currentFilter = level;
+
+                // Update stat items (top spheres)
                 items.forEach(i => i.classList.remove('active'));
                 var targetStat = document.querySelector('.stat-item.' + level);
                 if (targetStat) targetStat.classList.add('active');
+
+                // Update bottom nav items
                 navItems.forEach(n => n.classList.remove('active'));
                 navItems.forEach(n => {
-                    var icon = n.querySelector('.nav-icon');
-                    if (icon && ((level === 'high' && icon.textContent.includes('🔴')) ||
-                        (level === 'medium' && icon.textContent.includes('🟡')) ||
-                        (level === 'low' && icon.textContent.includes('🔵')))) {
+                    if (n.textContent.toLowerCase().includes(level) ||
+                        (level === 'high' && n.querySelector('.nav-icon').textContent.includes('🔴')) ||
+                        (level === 'medium' && n.querySelector('.nav-icon').textContent.includes('🟡')) ||
+                        (level === 'low' && n.querySelector('.nav-icon').textContent.includes('🔵'))) {
                         n.classList.add('active');
                     }
                 });
+
+                // Filter cards
                 cards.forEach(c => {
                     c.style.display = c.classList.contains(level) ? 'block' : 'none';
                 });
@@ -1561,28 +1562,35 @@
         }
     </script>
 
-    <!-- LOADER SCRIPT -->
+    <!-- UNIFIED PAGE LOADER SCRIPT -->
     <script>
-        // Show loader on page load (already visible by default)
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var loader = document.getElementById('page-loader');
-                if (loader) loader.classList.add('loaded');
-            }, 300);
-        });
-        // Fallback: hide loader after 4s max
-        setTimeout(function() {
-            var loader = document.getElementById('page-loader');
-            if (loader) loader.classList.add('loaded');
-        }, 4000);
+    (function() {
+        var loader = document.getElementById('page-loader');
+        var showTimeout = null;
+        var DELAY_MS = 250; // Show loader only if navigation takes > 250ms
 
-        // SHOW LOADER IMMEDIATELY on any navigation
         function showLoader() {
-            var loader = document.getElementById('page-loader');
-            if (loader) loader.classList.remove('loaded');
+            if (loader) {
+                showTimeout = setTimeout(function() {
+                    loader.classList.add('show');
+                }, DELAY_MS);
+            }
         }
 
-        // Show loader when leaving page (back/forward/link click)
+        function hideLoader() {
+            if (showTimeout) {
+                clearTimeout(showTimeout);
+                showTimeout = null;
+            }
+            if (loader) {
+                loader.classList.remove('show');
+            }
+        }
+
+        // Hide loader when page fully loaded
+        window.addEventListener('load', hideLoader);
+
+        // Show loader on navigation (only if > 250ms)
         window.addEventListener('beforeunload', showLoader);
         window.addEventListener('pagehide', showLoader);
 
@@ -1599,6 +1607,12 @@
         if (routeSelector) {
             routeSelector.addEventListener('change', showLoader);
         }
+
+        // Show loader on filter changes that navigate
+        document.querySelectorAll('.filter-item a, .route-link, .home-btn-fixed').forEach(function(el) {
+            el.addEventListener('click', showLoader);
+        });
+    })();
     </script>
 </body>
 </html>
