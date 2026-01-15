@@ -538,7 +538,7 @@
     <!-- Header -->
     <div class="header">
         <div class="logo-section">
-            <img src="logo_white.svg" alt="Air Cairo" class="logo-img">
+            <img src="logo_white.png" alt="Air Cairo" class="logo-img">
             <div class="logo-text">
                 <span class="orange">MARKET</span> INSIGHTS
             </div>
@@ -687,7 +687,7 @@
     </div>
 
     <script>
-        const API_BASE = '__API_BASE__';
+        const API_BASE = '';
         let lastData = null;
         let lastRunData = null;
         let isOnline = false;
@@ -836,32 +836,6 @@
         }
 
         async function fetchStatus() {
-            // On GitHub Pages: Always use dashboard_status.json (no live API)
-            const isGitHubPages = window.location.hostname.includes('github.io');
-            
-            if (isGitHubPages) {
-                try {
-                    const response = await fetch('dashboard_status.json?t=' + Date.now(), {
-                        cache: 'no-store'
-                    });
-                    if (response.ok) {
-                        const data = await response.json();
-                        lastData = data;
-                        updateDashboard(data);
-                        
-                        const statusBadge = document.getElementById('status-badge');
-                        statusBadge.textContent = 'LAST RUN';
-                        statusBadge.className = 'status-badge completed';
-                    }
-                } catch (e) {
-                    console.error('Failed to load dashboard_status.json:', e);
-                    document.getElementById('status-badge').textContent = 'OFFLINE';
-                    document.getElementById('status-badge').className = 'status-badge no_data';
-                }
-                return;
-            }
-            
-            // Local mode: Try live API
             try {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 5000);
@@ -902,25 +876,23 @@
 
         // Initial load
         if (window.location.hostname.includes('github.io')) {
-            // GitHub Pages: Direct load from JSON
-            fetch('dashboard_status.json?t=' + Date.now())
-                .then(r => r.json())
-                .then(data => {
-                    console.log('[Mobile GitHub Pages] Data loaded');
-                    lastData = data;
-                    lastRunData = data;
-                    updateDashboard(data);
-                    document.getElementById('status-badge').textContent = 'LAST RUN';
-                    document.getElementById('status-badge').className = 'status-badge completed';
-                })
-                .catch(e => {
-                    console.error('[Mobile] Failed:', e);
-                    document.getElementById('status-badge').textContent = 'OFFLINE';
-                });
+            function loadData() {
+                fetch('dashboard_status.json?t=' + Date.now())
+                    .then(r => r.json())
+                    .then(data => {
+                        lastData = data;
+                        updateDashboard(data);
+                        document.getElementById('status-badge').textContent = 'LAST RUN';
+                        document.getElementById('status-badge').className = 'status-badge completed';
+                    })
+                    .catch(e => {
+                        document.getElementById('status-badge').textContent = 'OFFLINE';
+                    });
+            }
+            loadData();
+            setInterval(loadData, 5000);
         } else {
-            loadCachedData().then(() => {
-                fetchStatus();
-            });
+            loadCachedData().then(() => { fetchStatus(); });
         }
 
         // Auto refresh every 5 seconds (slightly longer for mobile battery)
