@@ -96,6 +96,35 @@
             left: 15px;
         }
 
+        /* GATE Button - Top Right */
+        .gate-btn {
+            position: absolute;
+            top: 55px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+            z-index: 100;
+        }
+
+        .gate-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gate-btn:hover {
+            transform: scale(1.1);
+        }
+
+        body.en .gate-btn {
+            right: auto;
+            left: 15px;
+        }
+
         /* Stats Title */
         .stats-title {
             text-align: center;
@@ -573,6 +602,9 @@
 
     <header class="header">
         <button class="lang-toggle" onclick="toggleLanguage()">عربي</button>
+        <a href="index.html" class="gate-btn" title="GATE">
+            <img src="web_purple.png" alt="GATE">
+        </a>
         <div class="header-text">
             <h1><span class="ar-text">رصد حركة الاسعار ✈️</span><span class="en-text">Threat Alert Report ✈️</span></h1>
             <div class="header-meta">
@@ -1512,28 +1544,21 @@
     <script>
     (function() {
         var loader = document.getElementById('page-loader');
-        var showTimeout = null;
-        var DELAY_MS = 250;
 
         function showLoader() {
             if (loader) {
-                showTimeout = setTimeout(function() {
-                    loader.classList.add('show');
-                }, DELAY_MS);
+                loader.classList.add('show');
             }
         }
 
         function hideLoader() {
-            if (showTimeout) {
-                clearTimeout(showTimeout);
-                showTimeout = null;
-            }
             if (loader) {
                 loader.classList.remove('show');
             }
         }
 
         window.addEventListener('load', hideLoader);
+        window.addEventListener('pageshow', hideLoader);
         window.addEventListener('beforeunload', showLoader);
         window.addEventListener('pagehide', showLoader);
 
