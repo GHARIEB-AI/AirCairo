@@ -882,8 +882,11 @@
                     .then(data => {
                         lastData = data;
                         updateDashboard(data);
-                        document.getElementById('status-badge').textContent = 'LAST RUN';
-                        document.getElementById('status-badge').className = 'status-badge completed';
+                        // Show actual status from data
+                        const statusBadge = document.getElementById('status-badge');
+                        const status = data.status || 'UNKNOWN';
+                        statusBadge.textContent = status;
+                        statusBadge.className = 'status-badge ' + status.toLowerCase();
                     })
                     .catch(e => {
                         document.getElementById('status-badge').textContent = 'OFFLINE';
