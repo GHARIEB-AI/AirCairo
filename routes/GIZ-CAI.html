@@ -891,7 +891,32 @@
         <div class="filter-section">
             <div class="filter-row">
                 <select class="route-selector" id="routeSelector" onchange="navigateToRoute(this.value)">
-                    
+                    <option value="AHB-CAI.html">AHB-CAI</option>
+<option value="AJF-CAI.html">AJF-CAI</option>
+<option value="ATZ-JED.html">ATZ-JED</option>
+<option value="ATZ-RUH.html">ATZ-RUH</option>
+<option value="CAI-AHB.html">CAI-AHB</option>
+<option value="CAI-AJF.html">CAI-AJF</option>
+<option value="CAI-DMM.html">CAI-DMM</option>
+<option value="CAI-ELQ.html">CAI-ELQ</option>
+<option value="CAI-GIZ.html">CAI-GIZ</option>
+<option value="CAI-JED.html">CAI-JED</option>
+<option value="CAI-MED.html">CAI-MED</option>
+<option value="CAI-RUH.html">CAI-RUH</option>
+<option value="CAI-TUU.html">CAI-TUU</option>
+<option value="CAI-YNB.html">CAI-YNB</option>
+<option value="DMM-CAI.html">DMM-CAI</option>
+<option value="ELQ-CAI.html">ELQ-CAI</option>
+<option value="GIZ-CAI.html" selected>GIZ-CAI</option>
+<option value="HBE-JED.html">HBE-JED</option>
+<option value="JED-ATZ.html">JED-ATZ</option>
+<option value="JED-CAI.html">JED-CAI</option>
+<option value="JED-HBE.html">JED-HBE</option>
+<option value="MED-CAI.html">MED-CAI</option>
+<option value="MED-HBE.html">MED-HBE</option>
+<option value="RUH-CAI.html">RUH-CAI</option>
+<option value="TUU-CAI.html">TUU-CAI</option>
+<option value="YNB-CAI.html">YNB-CAI</option>
                 </select>
                 <button class="filter-btn" id="dateFilterBtn" onclick="openFilterModal('date')">
                     <span class="ar-text">📅 التواريخ</span>
@@ -1164,7 +1189,16 @@
                 </button>
             </div>
             <div class="filter-modal-body" id="dateFilterBody">
-                
+                <div class="filter-tree">
+<div class="filter-tree-node" data-level="year"><div class="filter-tree-header" onclick="toggleTreeNode(this)"><span class="filter-tree-toggle">▼</span><div class="filter-tree-checkbox checked" onclick="event.stopPropagation(); toggleYearMonth(this, 'year')">✓</div><span class="filter-tree-label">2026</span></div><div class="filter-tree-children">
+<div class="filter-tree-node" data-level="month"><div class="filter-tree-header" onclick="toggleTreeNode(this)"><span class="filter-tree-toggle">▼</span><div class="filter-tree-checkbox checked" onclick="event.stopPropagation(); toggleYearMonth(this, 'month')">✓</div><span class="filter-tree-label">January</span></div><div class="filter-tree-children">
+<div class="filter-tree-day" data-date="2026-01-16" onclick="toggleDay(this)"><div class="filter-tree-checkbox checked">✓</div><span class="filter-tree-label">16</span></div>
+</div></div>
+<div class="filter-tree-node" data-level="month"><div class="filter-tree-header" onclick="toggleTreeNode(this)"><span class="filter-tree-toggle">▼</span><div class="filter-tree-checkbox checked" onclick="event.stopPropagation(); toggleYearMonth(this, 'month')">✓</div><span class="filter-tree-label">February</span></div><div class="filter-tree-children">
+<div class="filter-tree-day" data-date="2026-02-20" onclick="toggleDay(this)"><div class="filter-tree-checkbox checked">✓</div><span class="filter-tree-label">20</span></div>
+</div></div>
+</div></div>
+</div>
             </div>
         </div>
     </div>
