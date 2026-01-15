@@ -76,33 +76,35 @@
             color: #F7941D;
             font-size: 0.85em;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
 
         .lang-toggle {
-            position: absolute;
-            top: 15px;
-            right: 15px;
             background: rgba(255,255,255,0.2);
             border: none;
             color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.85em;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
             cursor: pointer;
+            margin-right: 10px;
         }
 
         body.en .lang-toggle {
-            right: auto;
-            left: 15px;
+            margin-right: 0;
+            margin-left: 10px;
         }
 
-        /* GATE Button - Top Right */
+        /* GATE Button - Fixed Top Corner */
         .gate-btn {
-            position: absolute;
-            top: 10px;
-            right: 70px;
-            width: 36px;
-            height: 36px;
+            position: fixed;
+            top: 8px;
+            right: 10px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             overflow: hidden;
             background: transparent;
@@ -110,7 +112,7 @@
             padding: 0;
             display: block;
             transition: transform 0.2s;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .gate-btn img {
@@ -126,7 +128,7 @@
 
         body.en .gate-btn {
             right: auto;
-            left: 70px;
+            left: 10px;
         }
 
         /* Stats Title */
@@ -604,16 +606,20 @@
         <div class="loader-dots"><span></span><span></span><span></span></div>
     </div>
 
+    <!-- GATE Button - Fixed Top Corner -->
+    <a href="index.html" class="gate-btn" title="GATE">
+        <img src="web_purple.png" alt="GATE">
+    </a>
+
     <header class="header">
-        <button class="lang-toggle" onclick="toggleLanguage()">عربي</button>
-        <a href="index.html" class="gate-btn" title="GATE">
-            <img src="web_purple.png" alt="GATE">
-        </a>
         <div class="header-text">
             <h1><span class="ar-text">رصد حركة الاسعار ✈️</span><span class="en-text">Threat Alert Report ✈️</span></h1>
             <div class="header-meta">
                 <div class="subtitle"><span class="ar-text">الفترة: 15JAN26 - 28FEB26</span><span class="en-text">Range: 15JAN26 - 28FEB26</span></div>
-                <div class="generated"><span class="ar-text">تم الإنشاء:</span><span class="en-text">Generated:</span> 2026-01-15 10:02</div>
+                <div class="generated">
+                    <button class="lang-toggle" onclick="toggleLanguage()">عربي</button>
+                    <span class="ar-text">تم الإنشاء:</span><span class="en-text">Generated:</span> 2026-01-15 10:02
+                </div>
             </div>
         </div>
     </header>
