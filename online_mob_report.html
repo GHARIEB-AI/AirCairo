@@ -106,24 +106,41 @@
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            overflow: hidden;
-            background: none !important;
+            overflow: visible;
+            background: transparent !important;
             background-color: transparent !important;
+            background-image: none !important;
             border: none !important;
-            padding: 0;
-            margin: 0;
+            padding: 0 !important;
+            margin: 0 !important;
             display: block;
             box-shadow: none !important;
             outline: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            -webkit-tap-highlight-color: transparent !important;
             z-index: 9999;
         }
 
+        .gate-btn:hover,
+        .gate-btn:active,
+        .gate-btn:focus,
+        .gate-btn:visited {
+            background: transparent !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
         .gate-btn img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
             display: block;
-            border-radius: 50%;
+            border: none !important;
+            background: transparent !important;
+            border-radius: 0;
         }
 
         body.en .gate-btn {
