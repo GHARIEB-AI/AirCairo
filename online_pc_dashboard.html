@@ -59,7 +59,7 @@
             gap: 15px;
         }
         .logo-img {
-            height: 50px;
+            height: 200px;
             width: auto;
         }
         .logo-container {
@@ -78,7 +78,7 @@
         .logo-text {
             font-size: 56px;
             font-weight: 900;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: #fff;
         }
         .logo-text .orange {
@@ -708,6 +708,13 @@
             background: rgba(0, 0, 0, 0.3);
         }
 
+        #data-stream .aircraft-icon {
+            width: 14px;
+            height: 14px;
+            vertical-align: middle;
+            margin-right: 3px;
+        }
+
         /* Style 1: Cyan Compact */
         .data-item.s1 {
             font-size: 11px;
@@ -992,7 +999,7 @@
             .gate-btn:hover {
                 transform: scale(1.1);
             }
-            .logo-img { height: 40px; }
+            .logo-img { height: 160px; }
             .logo-text { font-size: 38px; }
             .subtitle h2 { font-size: 14px; }
             .subtitle p { font-size: 10px; }
@@ -1048,7 +1055,7 @@
             body { padding: 8px; }
             .header { padding: 12px; margin-bottom: 12px; }
             .gate-btn { width: 50px; height: 50px; }
-            .logo-img { height: 35px; }
+            .logo-img { height: 140px; }
             .logo-text { font-size: 32px; }
             .subtitle h2 { font-size: 12px; }
             .progress-section { grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -1756,7 +1763,7 @@
                 },
 
                 // Format 15: Route arrow format
-                () => (flight.route ? `✈️ ${flight.route.replace('-', '→')} ${flight.lowest_avail || ''}` : null),
+                () => (flight.route ? `<img src="aircairo_aircraft.png" class="aircraft-icon" alt=""> ${flight.route.replace('-', '→')} ${flight.lowest_avail || ''}` : null),
             ];
 
             return formats[Math.floor(Math.random() * formats.length)]();
@@ -1802,7 +1809,7 @@
                 () => tasks.failed > 0 ? `❌ FAILED: ${tasks.failed}` : null,
                 () => config.mode ? `🔧 MODE: ${config.mode}` : null,
                 // Route-specific metrics from config
-                () => config.routes && config.routes.length > 0 ? `✈️ ${config.routes[Math.floor(Math.random() * config.routes.length)]}` : null,
+                () => config.routes && config.routes.length > 0 ? `<img src="aircairo_aircraft.png" class="aircraft-icon" alt=""> ${config.routes[Math.floor(Math.random() * config.routes.length)]}` : null,
             ];
 
             const validMetrics = metrics.map(m => m()).filter(m => m);
@@ -1871,7 +1878,7 @@
             const el = document.createElement('div');
             const styleNum = Math.floor(Math.random() * 5) + 1;
             el.className = `data-item s${styleNum}`;
-            el.textContent = text;
+            el.innerHTML = text;
 
             // Random position (10% - 90%)
             el.style.top = `${10 + Math.random() * 80}%`;
