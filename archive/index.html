@@ -24,13 +24,12 @@
             border: 1px solid rgba(247, 148, 29, 0.3);
         }
         .logo {
-            font-size: 36px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
-        .logo .white { color: #fff; }
-        .logo .orange { color: #F7941D; }
+        .logo img {
+            height: 120px;
+            width: auto;
+        }
         .header h1 {
             color: #F7941D;
             font-size: 28px;
@@ -150,14 +149,21 @@
             font-size: 18px;
         }
         .count-badge {
-            background: rgba(247, 148, 29, 0.2);
+            background: linear-gradient(135deg, rgba(247, 148, 29, 0.3) 0%, rgba(255, 107, 0, 0.3) 100%);
             color: #F7941D;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 14px;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
             margin-top: 15px;
-            display: inline-block;
-            box-shadow: 0 0 15px rgba(247, 148, 29, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 20px rgba(247, 148, 29, 0.4);
+            border: 1px solid rgba(247, 148, 29, 0.5);
+        }
+        .count-badge .badge-icon {
+            font-size: 20px;
         }
 
         /* ===== UNIFIED PAGE LOADER ===== */
@@ -276,10 +282,10 @@
 
     <div class="container">
         <div class="header">
-            <div class="logo"><span class="white">AIR</span><span class="orange">CAIRO</span></div>
+            <div class="logo"><img src="../logo_white.png" alt="Air Cairo"></div>
             <h1>📁 Report Archive</h1>
             <p>All historical price monitoring reports</p>
-            <div class="count-badge">📊 44 reports</div>
+            <div class="count-badge"><span class="badge-icon">📊</span> reports <strong>44</strong></div>
         </div>
 
         <div class="report-list">
