@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="report-generated" content="2026-01-15T10:02:46.252250">
-    <meta name="report-version" content="20260115100246">
+    <meta name="report-generated" content="2026-01-17T10:13:00">
+    <meta name="report-version" content="20260117101300">
     <title>ELQ-CAI - Threat Report</title>
     <style>
         * {
@@ -951,32 +951,41 @@
         <div class="filter-section">
             <div class="filter-row">
                 <select class="route-selector" id="routeSelector" onchange="navigateToRoute(this.value)">
-                    <option value="AHB-CAI">AHB-CAI</option>
-<option value="AJF-CAI">AJF-CAI</option>
-<option value="ATZ-JED">ATZ-JED</option>
-<option value="ATZ-RUH">ATZ-RUH</option>
-<option value="CAI-AHB">CAI-AHB</option>
-<option value="CAI-AJF">CAI-AJF</option>
-<option value="CAI-DMM">CAI-DMM</option>
-<option value="CAI-ELQ">CAI-ELQ</option>
-<option value="CAI-GIZ">CAI-GIZ</option>
-<option value="CAI-JED">CAI-JED</option>
-<option value="CAI-MED">CAI-MED</option>
-<option value="CAI-RUH">CAI-RUH</option>
-<option value="CAI-TUU">CAI-TUU</option>
-<option value="CAI-YNB">CAI-YNB</option>
-<option value="DMM-CAI">DMM-CAI</option>
-<option value="ELQ-CAI" selected>ELQ-CAI</option>
-<option value="GIZ-CAI">GIZ-CAI</option>
-<option value="HBE-JED">HBE-JED</option>
-<option value="JED-ATZ">JED-ATZ</option>
-<option value="JED-CAI">JED-CAI</option>
-<option value="JED-HBE">JED-HBE</option>
-<option value="MED-CAI">MED-CAI</option>
-<option value="MED-HBE">MED-HBE</option>
-<option value="RUH-CAI">RUH-CAI</option>
-<option value="TUU-CAI">TUU-CAI</option>
-<option value="YNB-CAI">YNB-CAI</option>
+                    <option value="routes/AHB-ATZ.html">AHB-ATZ</option>
+<option value="routes/AHB-CAI.html">AHB-CAI</option>
+<option value="routes/ATZ-DMM.html">ATZ-DMM</option>
+<option value="routes/ATZ-JED.html">ATZ-JED</option>
+<option value="routes/ATZ-MED.html">ATZ-MED</option>
+<option value="routes/ATZ-RUH.html">ATZ-RUH</option>
+<option value="routes/CAI-AHB.html">CAI-AHB</option>
+<option value="routes/CAI-AJF.html">CAI-AJF</option>
+<option value="routes/CAI-DMM.html">CAI-DMM</option>
+<option value="routes/CAI-ELQ.html">CAI-ELQ</option>
+<option value="routes/CAI-GIZ.html">CAI-GIZ</option>
+<option value="routes/CAI-JED.html">CAI-JED</option>
+<option value="routes/CAI-MED.html">CAI-MED</option>
+<option value="routes/CAI-RUH.html">CAI-RUH</option>
+<option value="routes/CAI-TUU.html">CAI-TUU</option>
+<option value="routes/CAI-YNB.html">CAI-YNB</option>
+<option value="routes/DMM-ATZ.html">DMM-ATZ</option>
+<option value="routes/DMM-CAI.html">DMM-CAI</option>
+<option value="routes/ELQ-ATZ.html">ELQ-ATZ</option>
+<option value="routes/ELQ-CAI.html"selected>ELQ-CAI</option>
+<option value="routes/GIZ-CAI.html">GIZ-CAI</option>
+<option value="routes/HBE-JED.html">HBE-JED</option>
+<option value="routes/HBE-MED.html">HBE-MED</option>
+<option value="routes/JED-ATZ.html">JED-ATZ</option>
+<option value="routes/JED-CAI.html">JED-CAI</option>
+<option value="routes/JED-HBE.html">JED-HBE</option>
+<option value="routes/JED-LXR.html">JED-LXR</option>
+<option value="routes/MED-ATZ.html">MED-ATZ</option>
+<option value="routes/MED-CAI.html">MED-CAI</option>
+<option value="routes/MED-HBE.html">MED-HBE</option>
+<option value="routes/RUH-ATZ.html">RUH-ATZ</option>
+<option value="routes/RUH-CAI.html">RUH-CAI</option>
+<option value="routes/TUU-ATZ.html">TUU-ATZ</option>
+<option value="routes/TUU-CAI.html">TUU-CAI</option>
+<option value="routes/YNB-CAI.html">YNB-CAI</option>
                 </select>
                 <button class="filter-btn" id="dateFilterBtn" onclick="openFilterModal('date')">
                     <span class="ar-text">📅 التواريخ</span>
@@ -990,7 +999,7 @@
     <div class="stats-bar">
         <div class="stat-item high" data-level="high" onclick="filterByLevel('high')">
             <div class="stat-sphere"><img src="../web_red.png" alt="High"></div>
-            <div class="stat-count">0</div>
+            <div class="stat-count">12</div>
             <div class="stat-label">
                 <span class="ar-text">تهديد عالي</span>
                 <span class="en-text">HIGH THREAT</span>
@@ -998,7 +1007,7 @@
         </div>
         <div class="stat-item medium" data-level="medium" onclick="filterByLevel('medium')">
             <div class="stat-sphere"><img src="../web_yello.png" alt="Medium"></div>
-            <div class="stat-count">0</div>
+            <div class="stat-count">1</div>
             <div class="stat-label">
                 <span class="ar-text">تهديد متوسط</span>
                 <span class="en-text">MEDIUM THREAT</span>
@@ -1006,7 +1015,7 @@
         </div>
         <div class="stat-item low" data-level="low" onclick="filterByLevel('low')">
             <div class="stat-sphere"><img src="../web_blue.png" alt="Low"></div>
-            <div class="stat-count">5</div>
+            <div class="stat-count">14</div>
             <div class="stat-label">
                 <span class="ar-text">تهديد منخفض</span>
                 <span class="en-text">LOW THREAT</span>
@@ -1022,6 +1031,1558 @@
 
     <div class="content">
         
+    <div class="threat-card high" data-level="high" data-date="2026-04-03">
+        <div class="card-date-header">
+            <span class="date-route">03APR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 06:20</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 12Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 6</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">2233 ريال</span>
+                            <span class="en-text">2233 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران النيل أقل بـ 1583 ريال</span>
+                    <span class="en-text">Nile Air price lower by 1583 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nile Air-NP-106</span>
+                        <span class="en-text">Nile Air-NP-106</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 16:25</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">650 ريال</span>
+                            <span class="en-text">650 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-04-03">
+        <div class="card-date-header">
+            <span class="date-route">03APR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 06:20</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 12Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 6</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">2233 ريال</span>
+                            <span class="en-text">2233 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران النيل أقل بـ 1488 ريال</span>
+                    <span class="en-text">Nile Air price lower by 1488 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nile Air-NP-116</span>
+                        <span class="en-text">Nile Air-NP-116</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 08:10</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">745 ريال</span>
+                            <span class="en-text">745 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-04-03">
+        <div class="card-date-header">
+            <span class="date-route">03APR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 06:20</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 12Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 6</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">2233 ريال</span>
+                            <span class="en-text">2233 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 986 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 986 SAR | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-634</span>
+                        <span class="en-text">EgyptAir-MS-634</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 21:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1247 ريال</span>
+                            <span class="en-text">1247 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-04-01">
+        <div class="card-date-header">
+            <span class="date-route">01APR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 06:20</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 09Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">2233 ريال</span>
+                            <span class="en-text">2233 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر العربية للطيران أقل بـ 1708 ريال</span>
+                    <span class="en-text">Air Arabia Egypt price lower by 1708 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: العربية للطيران 💡</span>
+                    <span class="en-text">Market Leader: Air Arabia Egypt 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Air Arabia Egypt-E5-592</span>
+                        <span class="en-text">Air Arabia Egypt-E5-592</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 22:40</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">525 ريال</span>
+                            <span class="en-text">525 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-04-01">
+        <div class="card-date-header">
+            <span class="date-route">01APR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 06:20</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 09Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">2233 ريال</span>
+                            <span class="en-text">2233 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر نسما للطيران أقل بـ 1488 ريال</span>
+                    <span class="en-text">Nesma Airlines price lower by 1488 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: نسما للطيران 💡</span>
+                    <span class="en-text">Market Leader: Nesma Airlines 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nesma Airlines-NE-141</span>
+                        <span class="en-text">Nesma Airlines-NE-141</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 14:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">745 ريال</span>
+                            <span class="en-text">745 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-04-01">
+        <div class="card-date-header">
+            <span class="date-route">01APR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 06:20</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 09Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">2233 ريال</span>
+                            <span class="en-text">2233 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 1411 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 1411 SAR | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-634</span>
+                        <span class="en-text">EgyptAir-MS-634</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 21:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">822 ريال</span>
+                            <span class="en-text">822 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-04-01">
+        <div class="card-date-header">
+            <span class="date-route">01APR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 06:20</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 09Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">2233 ريال</span>
+                            <span class="en-text">2233 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران النيل أقل بـ 1388 ريال</span>
+                    <span class="en-text">Nile Air price lower by 1388 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nile Air-NP-106</span>
+                        <span class="en-text">Nile Air-NP-106</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 16:25</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">845 ريال</span>
+                            <span class="en-text">845 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-03-28">
+        <div class="card-date-header">
+            <span class="date-route">28MAR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:01</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 09Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1537 ريال</span>
+                            <span class="en-text">1537 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر العربية للطيران أقل بـ 932 ريال</span>
+                    <span class="en-text">Air Arabia Egypt price lower by 932 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: العربية للطيران 💡</span>
+                    <span class="en-text">Market Leader: Air Arabia Egypt 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Air Arabia Egypt-E5-592</span>
+                        <span class="en-text">Air Arabia Egypt-E5-592</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 22:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">605 ريال</span>
+                            <span class="en-text">605 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-03-28">
+        <div class="card-date-header">
+            <span class="date-route">28MAR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:01</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 09Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1537 ريال</span>
+                            <span class="en-text">1537 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر نسما للطيران أقل بـ 792 ريال</span>
+                    <span class="en-text">Nesma Airlines price lower by 792 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: نسما للطيران 💡</span>
+                    <span class="en-text">Market Leader: Nesma Airlines 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nesma Airlines-NE-141</span>
+                        <span class="en-text">Nesma Airlines-NE-141</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 14:35</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">745 ريال</span>
+                            <span class="en-text">745 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low" data-level="low" data-date="2026-03-28">
+        <div class="card-date-header">
+            <span class="date-route">28MAR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:01</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 09Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1537 ريال</span>
+                            <span class="en-text">1537 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران النيل أقل بـ 87 ريال</span>
+                    <span class="en-text">Nile Air price lower by 87 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nile Air-NP-116</span>
+                        <span class="en-text">Nile Air-NP-116</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 23:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1450 ريال</span>
+                            <span class="en-text">1450 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-03-26">
+        <div class="card-date-header">
+            <span class="date-route">26MAR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 14Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 5</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1357 ريال</span>
+                            <span class="en-text">1357 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر العربية للطيران أقل بـ 545 ريال</span>
+                    <span class="en-text">Air Arabia Egypt price lower by 545 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: العربية للطيران 💡</span>
+                    <span class="en-text">Market Leader: Air Arabia Egypt 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Air Arabia Egypt-E5-592</span>
+                        <span class="en-text">Air Arabia Egypt-E5-592</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 22:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">812 ريال</span>
+                            <span class="en-text">812 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-03-26">
+        <div class="card-date-header">
+            <span class="date-route">26MAR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 14Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 5</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1357 ريال</span>
+                            <span class="en-text">1357 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر نسما للطيران أقل بـ 407 ريال</span>
+                    <span class="en-text">Nesma Airlines price lower by 407 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: نسما للطيران 💡</span>
+                    <span class="en-text">Market Leader: Nesma Airlines 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nesma Airlines-NE-141</span>
+                        <span class="en-text">Nesma Airlines-NE-141</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 15:00</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">950 ريال</span>
+                            <span class="en-text">950 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high" data-level="high" data-date="2026-03-26">
+        <div class="card-date-header">
+            <span class="date-route">26MAR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 14Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 5</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1357 ريال</span>
+                            <span class="en-text">1357 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران النيل أقل بـ 407 ريال</span>
+                    <span class="en-text">Nile Air price lower by 407 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nile Air-NP-106</span>
+                        <span class="en-text">Nile Air-NP-106</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 15:45</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">950 ريال</span>
+                            <span class="en-text">950 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low" data-level="low" data-date="2026-03-01">
+        <div class="card-date-header">
+            <span class="date-route">01MAR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 11Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 1</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">787 ريال</span>
+                            <span class="en-text">787 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر نسما للطيران أقل بـ 42 ريال</span>
+                    <span class="en-text">Nesma Airlines price lower by 42 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: نسما للطيران 💡</span>
+                    <span class="en-text">Market Leader: Nesma Airlines 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nesma Airlines-NE-141</span>
+                        <span class="en-text">Nesma Airlines-NE-141</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 14:35</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">745 ريال</span>
+                            <span class="en-text">745 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low" data-level="low" data-date="2026-03-01">
+        <div class="card-date-header">
+            <span class="date-route">01MAR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 11Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 1</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">787 ريال</span>
+                            <span class="en-text">787 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران النيل أقل بـ 42 ريال</span>
+                    <span class="en-text">Nile Air price lower by 42 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nile Air-NP-106</span>
+                        <span class="en-text">Nile Air-NP-106</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 15:45</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">745 ريال</span>
+                            <span class="en-text">745 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low" data-level="low" data-date="2026-03-01">
+        <div class="card-date-header">
+            <span class="date-route">01MAR26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 11Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 1</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">787 ريال</span>
+                            <span class="en-text">787 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر إير كايرو أقل بـ 235 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">SM price lower by 235 SAR | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-634</span>
+                        <span class="en-text">EgyptAir-MS-634</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:45</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">1022 ريال</span>
+                            <span class="en-text">1022 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
     <div class="threat-card low" data-level="low" data-date="2026-02-28">
         <div class="card-date-header">
             <span class="date-route">28FEB26 &nbsp;-&nbsp; ELQ-CAI</span>
@@ -1036,29 +2597,29 @@
 
                 <div class="lf-badges-row">
                     <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 13Jan</span>
-                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 14</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 8</span>
                     <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
                     <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">457 SAR</span>
+                            <span class="ar-text">457 ريال</span>
                             <span class="en-text">457 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30K</span>
+                            <span class="ar-text">30 كجم</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1068,12 +2629,12 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">SM price lower by 49 SAR | EgyptAir offers 16K more baggage</span>
-                    <span class="en-text">SM price lower by 49 SAR | EgyptAir offers 16K more baggage</span>
+                    <span class="ar-text">سعر إير كايرو أقل بـ 137 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">SM price lower by 137 SAR | EgyptAir offers 16K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">Market Leader: EgyptAir</span>
-                    <span class="en-text">Market Leader: EgyptAir</span>
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
                 </div>
             </div>
 
@@ -1083,27 +2644,27 @@
                         <span class="ar-text">EgyptAir-MS-634</span>
                         <span class="en-text">EgyptAir-MS-634</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> --:--</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:45</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">506 SAR</span>
-                            <span class="en-text">506 SAR</span>
+                            <span class="ar-text">594 ريال</span>
+                            <span class="en-text">594 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">46K</span>
+                            <span class="ar-text">46 كجم</span>
                             <span class="en-text">46K</span>
                         </div>
                     </div>
@@ -1113,7 +2674,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">LOW THREAT</span>
+                <span class="ar-text">تهديد منخفض</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1132,7 +2693,7 @@
                 </div>
 
                 <div class="lf-badges-row">
-                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 12Jan</span>
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 15Jan</span>
                     <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 4</span>
                     <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
                     <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
@@ -1140,22 +2701,22 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">457 SAR</span>
+                            <span class="ar-text">457 ريال</span>
                             <span class="en-text">457 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30K</span>
+                            <span class="ar-text">30 كجم</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1165,42 +2726,42 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">Nesma price lower by 57 SAR</span>
-                    <span class="en-text">Nesma price lower by 57 SAR</span>
+                    <span class="ar-text">سعر نسما للطيران أقل بـ 57 ريال</span>
+                    <span class="en-text">Nesma Airlines price lower by 57 SAR</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">Market Leader: Nesma</span>
-                    <span class="en-text">Market Leader: Nesma</span>
+                    <span class="ar-text">الأفضل تنافسياً: نسما للطيران 💡</span>
+                    <span class="en-text">Market Leader: Nesma Airlines 💡</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">Nesma-Airlines NE-141</span>
-                        <span class="en-text">Nesma-Airlines NE-141</span>
+                        <span class="ar-text">Nesma Airlines-NE-141</span>
+                        <span class="en-text">Nesma Airlines-NE-141</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> --:--</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 15:00</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">400 SAR</span>
+                            <span class="ar-text">400 ريال</span>
                             <span class="en-text">400 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30K</span>
+                            <span class="ar-text">30 كجم</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1210,7 +2771,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">LOW THREAT</span>
+                <span class="ar-text">تهديد منخفض</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1229,7 +2790,7 @@
                 </div>
 
                 <div class="lf-badges-row">
-                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 12Jan</span>
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 15Jan</span>
                     <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 4</span>
                     <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
                     <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
@@ -1237,22 +2798,22 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">457 SAR</span>
+                            <span class="ar-text">457 ريال</span>
                             <span class="en-text">457 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30K</span>
+                            <span class="ar-text">30 كجم</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1262,42 +2823,42 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">Nile price lower by 56 SAR</span>
-                    <span class="en-text">Nile price lower by 56 SAR</span>
+                    <span class="ar-text">سعر طيران النيل أقل بـ 56 ريال</span>
+                    <span class="en-text">Nile Air price lower by 56 SAR</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">Market Leader: Nile</span>
-                    <span class="en-text">Market Leader: Nile</span>
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">Nile-Air NP-106</span>
-                        <span class="en-text">Nile-Air NP-106</span>
+                        <span class="ar-text">Nile Air-NP-106</span>
+                        <span class="en-text">Nile Air-NP-106</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> --:--</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 15:45</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">401 SAR</span>
+                            <span class="ar-text">401 ريال</span>
                             <span class="en-text">401 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30K</span>
+                            <span class="ar-text">30 كجم</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1307,7 +2868,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">LOW THREAT</span>
+                <span class="ar-text">تهديد منخفض</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1327,29 +2888,29 @@
 
                 <div class="lf-badges-row">
                     <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 13Jan</span>
-                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 23</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 11</span>
                     <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
                     <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">422 SAR</span>
+                            <span class="ar-text">422 ريال</span>
                             <span class="en-text">422 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30K</span>
+                            <span class="ar-text">30 كجم</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1359,42 +2920,42 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">Nesma price lower by 22 SAR</span>
-                    <span class="en-text">Nesma price lower by 22 SAR</span>
+                    <span class="ar-text">سعر نسما للطيران أقل بـ 22 ريال</span>
+                    <span class="en-text">Nesma Airlines price lower by 22 SAR</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">Market Leader: Nesma</span>
-                    <span class="en-text">Market Leader: Nesma</span>
+                    <span class="ar-text">الأفضل تنافسياً: نسما للطيران 💡</span>
+                    <span class="en-text">Market Leader: Nesma Airlines 💡</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">Nesma-Airlines NE-141</span>
-                        <span class="en-text">Nesma-Airlines NE-141</span>
+                        <span class="ar-text">Nesma Airlines-NE-141</span>
+                        <span class="en-text">Nesma Airlines-NE-141</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> --:--</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 14:35</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">400 SAR</span>
+                            <span class="ar-text">400 ريال</span>
                             <span class="en-text">400 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30K</span>
+                            <span class="ar-text">30 كجم</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1404,7 +2965,104 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">LOW THREAT</span>
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low" data-level="low" data-date="2026-02-15">
+        <div class="card-date-header">
+            <span class="date-route">15FEB26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 13Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 11</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">422 ريال</span>
+                            <span class="en-text">422 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر إير كايرو أقل بـ 84 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">SM price lower by 84 SAR | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-634</span>
+                        <span class="en-text">EgyptAir-MS-634</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:45</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">506 ريال</span>
+                            <span class="en-text">506 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1423,30 +3081,30 @@
                 </div>
 
                 <div class="lf-badges-row">
-                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 14Jan</span>
-                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 10</span>
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 16Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 7</span>
                     <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
                     <span class="lf-badge"><span class="lf-badge-label">YDY</span> 1</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">422 SAR</span>
+                            <span class="ar-text">422 ريال</span>
                             <span class="en-text">422 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30K</span>
+                            <span class="ar-text">30 كجم</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1456,42 +3114,42 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">Nile price lower by 21 SAR</span>
-                    <span class="en-text">Nile price lower by 21 SAR</span>
+                    <span class="ar-text">سعر طيران النيل أقل بـ 21 ريال</span>
+                    <span class="en-text">Nile Air price lower by 21 SAR</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">Market Leader: Nile</span>
-                    <span class="en-text">Market Leader: Nile</span>
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">Nile-Air NP-116</span>
-                        <span class="en-text">Nile-Air NP-116</span>
+                        <span class="ar-text">Nile Air-NP-116</span>
+                        <span class="en-text">Nile Air-NP-116</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> --:--</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 23:30</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">FARE</span>
+                            <span class="ar-text">السعر</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">401 SAR</span>
+                            <span class="ar-text">401 ريال</span>
                             <span class="en-text">401 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">BAG</span>
+                            <span class="ar-text">الوزن</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30K</span>
+                            <span class="ar-text">30 كجم</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1501,7 +3159,492 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">LOW THREAT</span>
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card medium" data-level="medium" data-date="2026-02-14">
+        <div class="card-date-header">
+            <span class="date-route">14FEB26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:01</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 16Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 7</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 1</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">422 ريال</span>
+                            <span class="en-text">422 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر إير كايرو أقل بـ 12 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">SM price lower by 12 SAR | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-634</span>
+                        <span class="en-text">EgyptAir-MS-634</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:45</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">434 ريال</span>
+                            <span class="en-text">434 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner medium">
+            <div class="alert-text">
+                <span class="ar-text">تهديد متوسط</span>
+                <span class="en-text">MEDIUM THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low" data-level="low" data-date="2026-02-12">
+        <div class="card-date-header">
+            <span class="date-route">12FEB26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 16Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 35</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 1</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">422 ريال</span>
+                            <span class="en-text">422 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر نسما للطيران أقل بـ 22 ريال</span>
+                    <span class="en-text">Nesma Airlines price lower by 22 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: نسما للطيران 💡</span>
+                    <span class="en-text">Market Leader: Nesma Airlines 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nesma Airlines-NE-141</span>
+                        <span class="en-text">Nesma Airlines-NE-141</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 15:00</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">400 ريال</span>
+                            <span class="en-text">400 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low" data-level="low" data-date="2026-02-05">
+        <div class="card-date-header">
+            <span class="date-route">05FEB26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 16Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 26</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 1</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">371 ريال</span>
+                            <span class="en-text">371 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر نسما للطيران أقل بـ 21 ريال</span>
+                    <span class="en-text">Nesma Airlines price lower by 21 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: نسما للطيران 💡</span>
+                    <span class="en-text">Market Leader: Nesma Airlines 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nesma Airlines-NE-141</span>
+                        <span class="en-text">Nesma Airlines-NE-141</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 15:00</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">350 ريال</span>
+                            <span class="en-text">350 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low" data-level="low" data-date="2026-01-29">
+        <div class="card-date-header">
+            <span class="date-route">29JAN26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 16Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 5</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 1</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">331 ريال</span>
+                            <span class="en-text">331 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر العربية للطيران أقل بـ 2 ريال</span>
+                    <span class="en-text">Air Arabia Egypt price lower by 2 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: العربية للطيران 💡</span>
+                    <span class="en-text">Market Leader: Air Arabia Egypt 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Air Arabia Egypt-E5-592</span>
+                        <span class="en-text">Air Arabia Egypt-E5-592</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 22:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">329 ريال</span>
+                            <span class="en-text">329 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low" data-level="low" data-date="2026-01-22">
+        <div class="card-date-header">
+            <span class="date-route">22JAN26 &nbsp;-&nbsp; ELQ-CAI</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-428</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 19:10</span>
+                </div>
+
+                <div class="lf-badges-row">
+                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 16Jan</span>
+                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 19</span>
+                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
+                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 8</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">331 ريال</span>
+                            <span class="en-text">331 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر العربية للطيران أقل بـ 2 ريال</span>
+                    <span class="en-text">Air Arabia Egypt price lower by 2 SAR</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: العربية للطيران 💡</span>
+                    <span class="en-text">Market Leader: Air Arabia Egypt 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Air Arabia Egypt-E5-592</span>
+                        <span class="en-text">Air Arabia Egypt-E5-592</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 22:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">329 ريال</span>
+                            <span class="en-text">329 SAR</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1541,12 +3684,30 @@
             </div>
             <div class="filter-modal-body" id="dateFilterBody">
                 <div class="filter-year-header">2026</div>
+<label class="filter-month-header"><input type="checkbox" data-month="2026-01" checked><span>January</span></label>
+<div class="filter-dates-grid">
+<label class="filter-date-item"><input type="checkbox" data-date="2026-01-22" checked><span>22 Jan</span></label>
+<label class="filter-date-item"><input type="checkbox" data-date="2026-01-29" checked><span>29 Jan</span></label>
+</div>
 <label class="filter-month-header"><input type="checkbox" data-month="2026-02" checked><span>February</span></label>
 <div class="filter-dates-grid">
+<label class="filter-date-item"><input type="checkbox" data-date="2026-02-05" checked><span>05 Feb</span></label>
+<label class="filter-date-item"><input type="checkbox" data-date="2026-02-12" checked><span>12 Feb</span></label>
 <label class="filter-date-item"><input type="checkbox" data-date="2026-02-14" checked><span>14 Feb</span></label>
 <label class="filter-date-item"><input type="checkbox" data-date="2026-02-15" checked><span>15 Feb</span></label>
 <label class="filter-date-item"><input type="checkbox" data-date="2026-02-26" checked><span>26 Feb</span></label>
 <label class="filter-date-item"><input type="checkbox" data-date="2026-02-28" checked><span>28 Feb</span></label>
+</div>
+<label class="filter-month-header"><input type="checkbox" data-month="2026-03" checked><span>March</span></label>
+<div class="filter-dates-grid">
+<label class="filter-date-item"><input type="checkbox" data-date="2026-03-01" checked><span>01 Mar</span></label>
+<label class="filter-date-item"><input type="checkbox" data-date="2026-03-26" checked><span>26 Mar</span></label>
+<label class="filter-date-item"><input type="checkbox" data-date="2026-03-28" checked><span>28 Mar</span></label>
+</div>
+<label class="filter-month-header"><input type="checkbox" data-month="2026-04" checked><span>April</span></label>
+<div class="filter-dates-grid">
+<label class="filter-date-item"><input type="checkbox" data-date="2026-04-01" checked><span>01 Apr</span></label>
+<label class="filter-date-item"><input type="checkbox" data-date="2026-04-03" checked><span>03 Apr</span></label>
 </div>
             </div>
         </div>
