@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="report-generated" content="2026-01-18T01:00:00">
-    <meta name="report-version" content="20260118010000">
+    <meta name="report-generated" content="2026-01-18T01:00:37.161202">
+    <meta name="report-version" content="20260118010037">
     <title>TUU-ATZ - Threat Report</title>
     <style>
         * {
@@ -304,6 +304,135 @@
         .lf-badge-label {
             font-size: 0.75em;
             opacity: 0.8;
+        }
+
+        /* ===== UNIFIED LF SECTION (6 indicators) ===== */
+        .lf-unified-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 10px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #f8f6fc 0%, #f0eef5 100%);
+            border-radius: 10px;
+            justify-content: center;
+        }
+
+        .lf-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            background: linear-gradient(145deg, #ffffff, #f0eef5);
+            border-radius: 10px;
+            min-width: 58px;
+            box-shadow:
+                0 2px 4px rgba(70,43,115,0.15),
+                0 4px 8px rgba(70,43,115,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            border: 1px solid rgba(70,43,115,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .lf-indicator:active {
+            transform: scale(0.97);
+            box-shadow: 0 1px 2px rgba(70,43,115,0.2);
+        }
+
+        .lf-indicator.lf-wide {
+            flex: 1 1 100%;
+            flex-direction: row;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: linear-gradient(145deg, #f8f6fc, #ebe7f3);
+            border: 1px solid rgba(70,43,115,0.12);
+        }
+
+        .lf-label {
+            font-size: 0.55em;
+            font-weight: 800;
+            color: #7c6b9e;
+            text-transform: uppercase;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .lf-value {
+            font-size: 1em;
+            font-weight: 900;
+            color: #462B73;
+            margin-top: 3px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+        }
+
+        .lf-indicator.lf-wide .lf-value {
+            margin-top: 0;
+            font-size: 0.95em;
+        }
+
+        /* LF% colored badge - 3D effect */
+        .lf-indicator.lf-percent {
+            color: white;
+            box-shadow:
+                0 3px 6px rgba(0,0,0,0.2),
+                0 6px 12px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            border: none;
+        }
+        .lf-indicator.lf-percent .lf-label {
+            color: rgba(255,255,255,0.95);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+        }
+        .lf-indicator.lf-percent .lf-value {
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            font-size: 1.1em;
+        }
+        .lf-indicator.lf-percent.lf-high {
+            background: linear-gradient(145deg, #2ecc71, #27ae60);
+        }
+        .lf-indicator.lf-percent.lf-medium {
+            background: linear-gradient(145deg, #f39c12, #d68910);
+        }
+        .lf-indicator.lf-percent.lf-low {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+        }
+
+        /* Responsive - Small screens 360px */
+        @media (max-width: 360px) {
+            .lf-unified-section {
+                gap: 4px;
+                padding: 8px;
+            }
+            .lf-indicator {
+                padding: 4px 6px;
+                min-width: 48px;
+            }
+            .lf-label {
+                font-size: 0.55em;
+            }
+            .lf-value {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Responsive - Very small screens 320px */
+        @media (max-width: 320px) {
+            .lf-unified-section {
+                gap: 3px;
+                padding: 6px;
+            }
+            .lf-indicator {
+                padding: 3px 5px;
+                min-width: 42px;
+            }
+            .lf-label {
+                font-size: 0.5em;
+            }
+            .lf-value {
+                font-size: 0.75em;
+            }
         }
 
         .flight-block-details {
@@ -1043,31 +1172,34 @@
                     <span class="flight-time"><span class="time-label">DEP</span> 12:25</span>
                 </div>
 
-                <div class="lf-badges-row">
-                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 03Dec</span>
-                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 0</span>
-                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
-                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">03Dec</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">1%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">K5</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">826 ريال</span>
+                            <span class="ar-text">826 SAR</span>
                             <span class="en-text">826 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
+                            <span class="ar-text">30K</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1077,12 +1209,12 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر مصر للطيران أقل بـ 87 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="ar-text">EgyptAir price lower by 87 SAR | EgyptAir offers 16K more baggage</span>
                     <span class="en-text">EgyptAir price lower by 87 SAR | EgyptAir offers 16K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
-                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                    <span class="ar-text">Market Leader: EgyptAir</span>
+                    <span class="en-text">Market Leader: EgyptAir</span>
                 </div>
             </div>
 
@@ -1097,22 +1229,22 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">739 ريال</span>
+                            <span class="ar-text">739 SAR</span>
                             <span class="en-text">739 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
+                            <span class="ar-text">46K</span>
                             <span class="en-text">46K</span>
                         </div>
                     </div>
@@ -1122,7 +1254,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
+                <span class="ar-text">LOW THREAT</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1140,31 +1272,34 @@
                     <span class="flight-time"><span class="time-label">DEP</span> 12:25</span>
                 </div>
 
-                <div class="lf-badges-row">
-                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 15Jan</span>
-                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 4</span>
-                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
-                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">11</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">15Jan</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">4</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">7%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">K1</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">826 ريال</span>
+                            <span class="ar-text">826 SAR</span>
                             <span class="en-text">826 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
+                            <span class="ar-text">30K</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1174,12 +1309,12 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر مصر للطيران أقل بـ 87 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="ar-text">EgyptAir price lower by 87 SAR | EgyptAir offers 16K more baggage</span>
                     <span class="en-text">EgyptAir price lower by 87 SAR | EgyptAir offers 16K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
-                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                    <span class="ar-text">Market Leader: EgyptAir</span>
+                    <span class="en-text">Market Leader: EgyptAir</span>
                 </div>
             </div>
 
@@ -1194,22 +1329,22 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">739 ريال</span>
+                            <span class="ar-text">739 SAR</span>
                             <span class="en-text">739 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
+                            <span class="ar-text">46K</span>
                             <span class="en-text">46K</span>
                         </div>
                     </div>
@@ -1219,7 +1354,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
+                <span class="ar-text">LOW THREAT</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1237,31 +1372,34 @@
                     <span class="flight-time"><span class="time-label">DEP</span> 12:25</span>
                 </div>
 
-                <div class="lf-badges-row">
-                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 10Jan</span>
-                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 1</span>
-                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
-                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">4</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">10Jan</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">2%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">W9</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">602 ريال</span>
+                            <span class="ar-text">602 SAR</span>
                             <span class="en-text">602 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
+                            <span class="ar-text">30K</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1271,12 +1409,12 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر مصر للطيران أقل بـ 1 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="ar-text">EgyptAir price lower by 1 SAR | EgyptAir offers 16K more baggage</span>
                     <span class="en-text">EgyptAir price lower by 1 SAR | EgyptAir offers 16K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
-                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                    <span class="ar-text">Market Leader: EgyptAir</span>
+                    <span class="en-text">Market Leader: EgyptAir</span>
                 </div>
             </div>
 
@@ -1291,22 +1429,22 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">601 ريال</span>
+                            <span class="ar-text">601 SAR</span>
                             <span class="en-text">601 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
+                            <span class="ar-text">46K</span>
                             <span class="en-text">46K</span>
                         </div>
                     </div>
@@ -1316,7 +1454,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
+                <span class="ar-text">LOW THREAT</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1334,31 +1472,34 @@
                     <span class="flight-time"><span class="time-label">DEP</span> 12:25</span>
                 </div>
 
-                <div class="lf-badges-row">
-                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 10Jan</span>
-                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 1</span>
-                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
-                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 0</span>
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">4</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">10Jan</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">2%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">W9</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">602 ريال</span>
+                            <span class="ar-text">602 SAR</span>
                             <span class="en-text">602 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
+                            <span class="ar-text">30K</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1368,42 +1509,42 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر العربية للطيران أقل بـ 247 ريال</span>
-                    <span class="en-text">Air Arabia Egypt price lower by 247 SAR</span>
+                    <span class="ar-text">Air price lower by 247 SAR</span>
+                    <span class="en-text">Air price lower by 247 SAR</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: العربية للطيران 💡</span>
-                    <span class="en-text">Market Leader: Air Arabia Egypt 💡</span>
+                    <span class="ar-text">Market Leader: Air</span>
+                    <span class="en-text">Market Leader: Air</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">Air Arabia Egypt-E5-590</span>
-                        <span class="en-text">Air Arabia Egypt-E5-590</span>
+                        <span class="ar-text">Air-Arabia Egypt E5-590</span>
+                        <span class="en-text">Air-Arabia Egypt E5-590</span>
                     </span>
                     <span class="flight-time"><span class="time-label">DEP</span> 15:15</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">355 ريال</span>
+                            <span class="ar-text">355 SAR</span>
                             <span class="en-text">355 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
+                            <span class="ar-text">30K</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1413,7 +1554,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
+                <span class="ar-text">LOW THREAT</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1431,31 +1572,34 @@
                     <span class="flight-time"><span class="time-label">DEP</span> 12:25</span>
                 </div>
 
-                <div class="lf-badges-row">
-                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 17Jan</span>
-                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 30</span>
-                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
-                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 8</span>
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">33</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">17Jan</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">30</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">8</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">19%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">W4</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">546 ريال</span>
+                            <span class="ar-text">546 SAR</span>
                             <span class="en-text">546 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
+                            <span class="ar-text">30K</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1465,12 +1609,12 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر مصر للطيران أقل بـ 79 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="ar-text">EgyptAir price lower by 79 SAR | EgyptAir offers 16K more baggage</span>
                     <span class="en-text">EgyptAir price lower by 79 SAR | EgyptAir offers 16K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
-                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                    <span class="ar-text">Market Leader: EgyptAir</span>
+                    <span class="en-text">Market Leader: EgyptAir</span>
                 </div>
             </div>
 
@@ -1485,22 +1629,22 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">467 ريال</span>
+                            <span class="ar-text">467 SAR</span>
                             <span class="en-text">467 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
+                            <span class="ar-text">46K</span>
                             <span class="en-text">46K</span>
                         </div>
                     </div>
@@ -1510,7 +1654,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
+                <span class="ar-text">LOW THREAT</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
@@ -1528,31 +1672,34 @@
                     <span class="flight-time"><span class="time-label">DEP</span> 12:25</span>
                 </div>
 
-                <div class="lf-badges-row">
-                    <span class="lf-badge lf-main"><span class="lf-badge-label">LST-SLD</span> 17Jan</span>
-                    <span class="lf-badge"><span class="lf-badge-label">WKLY</span> 26</span>
-                    <span class="lf-badge"><span class="lf-badge-label">TDY</span> 0</span>
-                    <span class="lf-badge"><span class="lf-badge-label">YDY</span> 3</span>
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">30</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">17Jan</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">26</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">18%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">T3</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">517 ريال</span>
+                            <span class="ar-text">517 SAR</span>
                             <span class="en-text">517 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
+                            <span class="ar-text">30K</span>
                             <span class="en-text">30K</span>
                         </div>
                     </div>
@@ -1562,12 +1709,12 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر مصر للطيران أقل بـ 50 ريال | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="ar-text">EgyptAir price lower by 50 SAR | EgyptAir offers 16K more baggage</span>
                     <span class="en-text">EgyptAir price lower by 50 SAR | EgyptAir offers 16K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
-                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                    <span class="ar-text">Market Leader: EgyptAir</span>
+                    <span class="en-text">Market Leader: EgyptAir</span>
                 </div>
             </div>
 
@@ -1582,22 +1729,22 @@
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
+                            <span class="ar-text">FARE</span>
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">467 ريال</span>
+                            <span class="ar-text">467 SAR</span>
                             <span class="en-text">467 SAR</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
                     <div class="flight-detail-col">
                         <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
+                            <span class="ar-text">BAG</span>
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">46 كجم</span>
+                            <span class="ar-text">46K</span>
                             <span class="en-text">46K</span>
                         </div>
                     </div>
@@ -1607,7 +1754,7 @@
 
         <div class="alert-banner low">
             <div class="alert-text">
-                <span class="ar-text">تهديد منخفض</span>
+                <span class="ar-text">LOW THREAT</span>
                 <span class="en-text">LOW THREAT</span>
             </div>
         </div>
