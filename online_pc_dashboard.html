@@ -66,57 +66,90 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
         .header-info {
             position: absolute;
             right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 15px;
             text-align: right;
         }
-        .logo-text {
-            font-size: 56px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            color: #fff;
+        /* Last Run Info Block */
+        .last-run-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            margin-top: 10px;
         }
-        .logo-text .orange {
+        .last-run-label {
+            font-size: 12px;
+            font-weight: 600;
             color: #F7941D;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
+        .last-run-date {
+            font-size: 20px;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .last-run-time {
+            font-size: 16px;
+            color: #aaa;
+            font-family: 'Consolas', 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+        /* Run Status */
+        .run-status {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+        .run-status.active {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+            border: 1px solid #4ade80;
+        }
+        .run-status.inactive {
+            background: rgba(156, 163, 175, 0.15);
+            color: #9ca3af;
+            border: 1px solid rgba(156, 163, 175, 0.3);
+        }
+        /* Logo Text / Subtitle */
         .subtitle {
             text-align: center;
-            margin-top: 5px;
+            margin-top: 10px;
         }
         .subtitle h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 3px;
+        }
+        .subtitle h2 .first-letter {
             color: #F7941D;
-            font-size: 18px;
-            font-weight: 600;
         }
         .subtitle p {
             color: #aaa;
             font-size: 12px;
+            margin-top: 5px;
         }
         .live-indicator {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             background: rgba(74, 222, 128, 0.2);
-            padding: 5px 15px;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 13px;
+            font-weight: 600;
             border: 1px solid rgba(74, 222, 128, 0.3);
+            color: #4ade80;
         }
-        .status-badge {
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 14px;
-            margin-left: 15px;
-        }
-        .status-badge.running { background: rgba(74, 222, 128, 0.2); color: #4ade80; border: 1px solid #4ade80; }
-        .status-badge.idle { background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 1px solid #fbbf24; }
         .status-badge.completed { background: rgba(96, 165, 250, 0.2); color: #60a5fa; border: 1px solid #60a5fa; }
         .status-badge.no_data { background: rgba(156, 163, 175, 0.2); color: #9ca3af; border: 1px solid #9ca3af; }
         .view-report-btn {
@@ -1412,23 +1445,32 @@
         <a href="index.html" class="gate-btn">
             <img src="web_purple.png" alt="Gate">
         </a>
+
         <div class="logo-container">
             <img src="logo_white.png" alt="Air Cairo" class="logo-img">
+
+            <!-- Last Run Info -->
+            <div class="last-run-info">
+                <span class="last-run-label">LAST RUN</span>
+                <span class="last-run-date" id="last-run-date">--</span>
+                <span class="last-run-time" id="last-run-time">--:--:--</span>
+            </div>
+
+            <!-- Run Status -->
+            <span class="run-status inactive" id="run-status">No Active Run</span>
+
+            <!-- MARKET INSIGHTS -->
             <div class="subtitle">
-                <h2>MARKET INSIGHTS</h2>
+                <h2><span class="first-letter">M</span>ARKET <span class="first-letter">I</span>NSIGHTS</h2>
                 <p>Real-time monitoring dashboard</p>
             </div>
         </div>
+
+        <!-- LIVE indicator - top right -->
         <div class="header-info">
-            <span class="status-badge" id="status-badge">LOADING</span>
             <div class="live-indicator">
                 <div class="live-dot"></div>
                 <span>LIVE</span>
-            </div>
-            <div class="timestamp" id="timestamp">Loading...</div>
-            <div class="run-info" id="run-info"></div>
-            <div class="range-info" id="range-info" style="font-size: 12px; color: #aaa; margin-top: 5px;">
-                Range: Loading...
             </div>
         </div>
     </div>
@@ -1932,35 +1974,32 @@
         function updateDashboard(data) {
             lastData = data;
 
-            // Status badge - show "LAST RUN" when IDLE but we have run data
-            const statusBadge = document.getElementById('status-badge');
-            const hasRunData = data.config && data.config.run_id;
-            if (data.status === 'IDLE' && hasRunData) {
-                statusBadge.textContent = 'LAST RUN';
-                statusBadge.className = 'status-badge completed';
+            // Last Run Date & Time
+            const timestamp = data.timestamp ? new Date(data.timestamp) : new Date();
+            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const day = String(timestamp.getDate()).padStart(2, '0');
+            const month = months[timestamp.getMonth()];
+            const year = String(timestamp.getFullYear()).slice(-2);
+            const hours = String(timestamp.getHours()).padStart(2, '0');
+            const mins = String(timestamp.getMinutes()).padStart(2, '0');
+            const secs = String(timestamp.getSeconds()).padStart(2, '0');
+
+            document.getElementById('last-run-date').textContent = day + month + year;
+            document.getElementById('last-run-time').textContent = hours + ':' + mins + ':' + secs;
+
+            // Run Status
+            const runStatus = document.getElementById('run-status');
+            const status = (data.status || '').toLowerCase();
+            if (status === 'running' || status === 'active') {
+                runStatus.textContent = 'Run In Progress';
+                runStatus.className = 'run-status active';
             } else {
-                statusBadge.textContent = data.status || 'UNKNOWN';
-                statusBadge.className = 'status-badge ' + (data.status || 'no_data').toLowerCase();
+                runStatus.textContent = 'No Active Run';
+                runStatus.className = 'run-status inactive';
             }
 
             // View Report button is ALWAYS visible via CSS (no toggling needed)
-
-            // Timestamp
-            document.getElementById('timestamp').textContent =
-                'Last Update: ' + new Date(data.timestamp).toLocaleTimeString();
-
-            // Run info
             const config = data.config || {};
-            document.getElementById('run-info').textContent =
-                `Run: ${config.run_id || 'N/A'} | ${config.routes_count || 0} routes | ${config.dates_count || 0} dates`;
-
-            // Range info
-            const rangeEl = document.getElementById('range-info');
-            if (rangeEl && config.date_range) {
-                rangeEl.textContent = `Range: ${config.date_range}`;
-            } else if (rangeEl && config.start_date && config.end_date) {
-                rangeEl.textContent = `Range: ${config.start_date} → ${config.end_date}`;
-            }
 
             // Progress bars
             const progress = data.progress || {};
@@ -2551,12 +2590,7 @@
                         updateDashboard(lastRunData);
                         updateRealFlights();
 
-                        // Update status badge to show it's from cached data
-                        const statusBadge = document.getElementById('status-badge');
-                        if (statusBadge) {
-                            statusBadge.textContent = 'LAST RUN';
-                            statusBadge.className = 'status-badge completed';
-                        }
+                        // Status already updated by updateDashboard
                     }
                 }
             } catch (e) {
@@ -2590,13 +2624,10 @@
                     lastData = lastRunData;
                     updateDashboard(lastRunData);
                     updateRealFlights();
-
-                    // Show it's from cached/last run data
-                    document.getElementById('status-badge').textContent = 'LAST RUN';
-                    document.getElementById('status-badge').className = 'status-badge completed';
+                    // Status already updated by updateDashboard
                 } else {
-                    document.getElementById('status-badge').textContent = 'OFFLINE';
-                    document.getElementById('status-badge').className = 'status-badge no_data';
+                    document.getElementById('run-status').textContent = 'Offline';
+                    document.getElementById('run-status').className = 'run-status inactive';
                 }
             }
         }
