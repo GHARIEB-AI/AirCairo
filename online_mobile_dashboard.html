@@ -528,6 +528,7 @@
             height: 320px;
             object-fit: contain;
             filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4));
+            transform: rotate(45deg);
         }
         .bottom-airplane:hover {
             transform: scale(1.05);
@@ -539,10 +540,10 @@
             animation: bottomPlaneTakeoff 1.8s ease-in-out forwards;
         }
         @keyframes bottomPlaneTakeoff {
-            0% { transform: translate(0, 0) scale(1); opacity: 1; }
-            25% { transform: translate(50px, 0) scale(1.1); opacity: 1; }
-            50% { transform: translate(80px, -50px) scale(1.2) rotate(-15deg); opacity: 1; }
-            100% { transform: translate(300px, -400px) scale(0.5) rotate(-30deg); opacity: 0; }
+            0% { transform: rotate(45deg) translate(0, 0) scale(1); opacity: 1; }
+            25% { transform: rotate(45deg) translate(50px, -30px) scale(1.1); opacity: 1; }
+            50% { transform: rotate(40deg) translate(120px, -100px) scale(1.2); opacity: 1; }
+            100% { transform: rotate(35deg) translate(400px, -350px) scale(0.5); opacity: 0; }
         }
         /* ===== END BOTTOM AIRPLANE ===== */
 
