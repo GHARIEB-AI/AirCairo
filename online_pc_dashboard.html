@@ -1427,6 +1427,36 @@
             40% { transform: scale(1.2); opacity: 1; }
         }
         /* ===== END PAGE LOADER ===== */
+
+        /* ===== BOTTOM AIRPLANE ===== */
+        .bottom-airplane-section {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 30px;
+        }
+        .bottom-airplane {
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .bottom-airplane img {
+            width: 300px;
+            height: 350px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4));
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .bottom-airplane:hover {
+            transform: scale(1.08);
+        }
+        .bottom-airplane:hover img {
+            animation-play-state: paused;
+        }
+        /* ===== END BOTTOM AIRPLANE ===== */
     </style>
 </head>
 <body>
@@ -1438,11 +1468,6 @@
     </div>
 
     <div class="header">
-        <!-- THE GATE - Far Left -->
-        <a href="index.html" class="gate-btn">
-            <img src="web_purple.png" alt="Gate">
-        </a>
-
         <div class="logo-container">
             <img src="logo_white.png" alt="Air Cairo" class="logo-img">
 
@@ -1693,6 +1718,13 @@
                 <!-- Filled by JS -->
             </div>
         </div>
+    </div>
+
+    <!-- Bottom Airplane - GATE link -->
+    <div class="bottom-airplane-section">
+        <a href="./" class="bottom-airplane">
+            <img src="plane_transparent.png" alt="Air Cairo">
+        </a>
     </div>
 
     <script>
