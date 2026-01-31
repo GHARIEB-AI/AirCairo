@@ -528,22 +528,12 @@
             height: 320px;
             object-fit: contain;
             filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4));
-            transform: rotate(-90deg);
         }
         .bottom-airplane:hover {
             transform: scale(1.05);
         }
         .bottom-airplane:active {
             transform: scale(0.98);
-        }
-        .bottom-airplane.takeoff {
-            animation: bottomPlaneTakeoff 1.8s ease-in-out forwards;
-        }
-        @keyframes bottomPlaneTakeoff {
-            0% { transform: rotate(-90deg) translate(0, 0) scale(1); opacity: 1; }
-            25% { transform: rotate(-70deg) translate(80px, -20px) scale(1.1); opacity: 1; }
-            50% { transform: rotate(-50deg) translate(200px, -80px) scale(1.2); opacity: 1; }
-            100% { transform: rotate(-30deg) translate(500px, -300px) scale(0.5); opacity: 0; }
         }
         /* ===== END BOTTOM AIRPLANE ===== */
 
@@ -768,21 +758,12 @@
 
     <!-- Bottom Airplane - GATE link -->
     <div class="bottom-airplane-section">
-        <a href="./" class="bottom-airplane" onclick="airplaneTakeoff(event, this)">
+        <a href="./" class="bottom-airplane">
             <img src="plane_transparent.png" alt="Air Cairo">
         </a>
     </div>
 
     <script>
-        // Side Airplane Takeoff Animation
-        function airplaneTakeoff(event, link) {
-            event.preventDefault();
-            link.classList.add('takeoff');
-            setTimeout(() => {
-                window.location.href = link.href;
-            }, 1900);
-        }
-
         const API_BASE = 'https://dashboard.ghariebel3ageb.com';
         let lastData = null;
         let lastRunData = null;
