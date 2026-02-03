@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#462B73">
+    <title>Air Cairo - اختر نوع العروض</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 50%, #462B73 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+        .logo img {
+            height: 80px;
+            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.3));
+        }
+
+        .title {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .options-container {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .option-card {
+            background: #fff;
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            width: 320px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #F7941D, #ff6b00);
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+        }
+
+        .option-card.agents::before {
+            background: linear-gradient(90deg, #462B73, #5a3d8a);
+        }
+
+        .option-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .option-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #462B73;
+            margin-bottom: 10px;
+        }
+
+        .option-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #F7941D, #ff6b00);
+            transition: all 0.3s ease;
+        }
+
+        .option-card.agents .option-btn {
+            background: linear-gradient(135deg, #462B73, #5a3d8a);
+        }
+
+        .option-card:hover .option-btn {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            text-align: right;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .features li {
+            list-style: none;
+            padding: 5px 0;
+            font-size: 13px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .features li::before {
+            content: '✓';
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: #F7941D;
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+            .options-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .option-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            .title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo">
+        <img src="logo.png" alt="Air Cairo">
+    </div>
+
+    <h1 class="title">عروض Air Cairo الحصرية</h1>
+    <p class="subtitle">اختر نوع العروض المناسب لك</p>
+
+    <div class="options-container">
+
+        <!-- Customer Offers -->
+        <a href="index.html" class="option-card customers">
+            <span class="option-icon">🧳</span>
+            <h2 class="option-title">عروض العملاء</h2>
+            <p class="option-desc">عروض حصرية للمسافرين على رحلات Air Cairo</p>
+            <ul class="features">
+                <li>شنطة إضافية 23 كجم بـ 299 ريال</li>
+                <li>خصم 50% على الوزن الزائد</li>
+                <li>سهولة الحجز عبر التطبيق</li>
+            </ul>
+            <span class="option-btn">عرض العروض</span>
+        </a>
+
+        <!-- Travel Agents Offers -->
+        <a href="travel-agents.html" class="option-card agents">
+            <span class="option-icon">💼</span>
+            <h2 class="option-title">عروض الوكالات</h2>
+            <p class="option-desc">عروض خاصة لوكالات السفر والسياحة</p>
+            <ul class="features">
+                <li>عمولة 15% مقدمة</li>
+                <li>أكواد Amadeus جاهزة</li>
+                <li>دعم فني متخصص</li>
+            </ul>
+            <span class="option-btn">عرض العروض</span>
+        </a>
+
+    </div>
+
+    <div class="footer">
+        <p>© 2026 Air Cairo - جميع الحقوق محفوظة</p>
+        <a href="https://www.aircairo.com">www.aircairo.com</a>
+    </div>
+
+</body>
+</html>

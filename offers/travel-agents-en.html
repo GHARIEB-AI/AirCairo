@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#462B73">
+
+    <title>Air Cairo - Exclusive Offers for Travel Agents</title><!-- v2 Travel Agents EN -->
+    <meta name="description" content="Exclusive offers from Air Cairo for travel agents - Extra bag 23kg for 299 SAR + 50% discount on excess weight + 15% commission">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gharieb-ai.github.io/AirCairo-Offers/extra-bag-offer/">
+    <meta property="og:title" content="Air Cairo - Extra Bag 299 SAR Only!">
+    <meta property="og:description" content="Exclusive offers: 23kg bag for 299 SAR + 50% discount on excess weight. Travel from Saudi Arabia to Egypt">
+    <meta property="og:image" content="https://gharieb-ai.github.io/AirCairo-Offers/extra-bag-offer/offer-banner.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Air Cairo - Extra Bag 299 SAR Only!">
+    <meta name="twitter:description" content="Exclusive offers: 23kg bag for 299 SAR + 50% discount on excess weight">
+    <meta name="twitter:image" content="https://gharieb-ai.github.io/AirCairo-Offers/extra-bag-offer/offer-banner.jpg">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Limited Time Badge - Horizontal Layout */
+        .limited-badge {
+            position: fixed;
+            right: -250px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            padding: 10px 15px;
+            border-radius: 20px 0 0 20px;
+            box-shadow: 0 5px 25px rgba(220, 38, 38, 0.5);
+            cursor: pointer;
+            transition: right 0.4s ease, opacity 0.4s ease;
+            opacity: 0.5;
+        }
+        .limited-badge:hover {
+            right: 0;
+            opacity: 1;
+        }
+
+        /* Digital Clock Display */
+        .digital-clock {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            direction: ltr;
+            background: #1a1a1a;
+            padding: 8px 10px;
+            padding-bottom: 18px;
+            border-radius: 10px;
+            border: 2px solid #333;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .clock-value {
+            font-family: 'Courier New', 'Monaco', monospace;
+            font-size: 26px;
+            font-weight: 900;
+            color: #22c55e;
+            text-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e;
+            letter-spacing: 2px;
+        }
+        .clock-separator {
+            font-family: 'Courier New', monospace;
+            font-size: 26px;
+            font-weight: 900;
+            color: #22c55e;
+            text-shadow: 0 0 10px #22c55e;
+            margin: 0 3px;
+            margin-bottom: 12px;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .clock-label {
+            font-size: 8px;
+            color: #888;
+            margin-top: 2px;
+            text-align: center;
+        }
+        .clock-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .clock-timezone {
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            color: #22c55e;
+            text-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+        .clock-baggage-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 6px;
+            font-size: 26px;
+            text-decoration: none;
+            animation: suitcaseBounce 2s ease-in-out infinite;
+            transition: transform 0.2s ease;
+        }
+        .clock-baggage-btn:hover {
+            transform: scale(1.2);
+        }
+
+        /* Badge Text */
+        .limited-badge .badge-text {
+            color: #fff;
+            font-weight: 900;
+            font-size: 16px;
+            line-height: 1.4;
+            text-align: left;
+            white-space: nowrap;
+        }
+        .limited-badge .badge-text span {
+            display: block;
+        }
+
+        @media (max-width: 767px) {
+            .limited-badge {
+                right: -175px;
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            .limited-badge:hover {
+                right: 0;
+            }
+            .clock-value {
+                font-size: 18px;
+            }
+            .clock-separator {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+            .digital-clock {
+                padding: 6px 8px;
+                padding-bottom: 14px;
+            }
+            .limited-badge .badge-text {
+                font-size: 11px;
+            }
+            .clock-label {
+                font-size: 6px;
+            }
+            .clock-timezone {
+                font-size: 6px;
+                bottom: 2px;
+            }
+            .clock-baggage-btn {
+                font-size: 22px;
+                margin-left: 4px;
+            }
+        }
+        @media (max-width: 380px) {
+            .limited-badge {
+                right: -130px;
+                padding: 6px 10px;
+                gap: 6px;
+            }
+            .clock-value {
+                font-size: 14px;
+            }
+            .clock-separator {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+            .digital-clock {
+                padding: 5px 6px;
+                padding-bottom: 12px;
+            }
+            .limited-badge .badge-text {
+                font-size: 10px;
+            }
+            .clock-timezone {
+                font-size: 5px;
+                bottom: 2px;
+            }
+            .clock-baggage-btn {
+                font-size: 18px;
+            }
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            height: auto;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Language Toggle Button */
+        .lang-toggle {
+            position: absolute;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            padding: 5px 8px 5px 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .lang-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .lang-toggle img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+        .lang-toggle span {
+            font-size: 16px;
+            font-weight: 700;
+            color: #462B73;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img {
+            height: clamp(46px, 7.7vw, 86px);
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Main Title */
+        .main-title {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+        .main-title h1 {
+            font-size: 32px;
+            color: #462B73;
+            margin-bottom: 10px;
+        }
+        .main-title p {
+            font-size: 18px;
+            color: #F7941D;
+            font-weight: 600;
+        }
+
+        /* Offers Container */
+        .offers-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Offer Card */
+        .offer-card {
+            background: #fff;
+            border-radius: 25px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        .offer-card.primary { border-color: #F7941D; }
+        .offer-card.secondary { border-color: #462B73; }
+
+        /* Offer Badge */
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #F7941D, #ff6b00);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .offer-badge.purple {
+            background: linear-gradient(135deg, #462B73, #5a3d8a);
+        }
+
+        /* Offer Icon */
+        .offer-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: suitcaseBounce 2s ease-in-out infinite;
+            will-change: transform;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        /* Animated Broken Suitcase */
+        .broken-suitcase {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            animation: suitcaseBounce 2s ease-in-out infinite;
+            will-change: transform;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+        @keyframes suitcaseBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1) translateZ(0); }
+            15% { transform: translateY(-12px) rotate(-8deg) scale(1.05) translateZ(0); }
+            30% { transform: translateY(0) rotate(0deg) scale(1) translateZ(0); }
+            45% { transform: translateY(-8px) rotate(8deg) scale(1.03) translateZ(0); }
+            60% { transform: translateY(0) rotate(0deg) scale(1) translateZ(0); }
+            75% { transform: translateY(-5px) rotate(-3deg) scale(1.02) translateZ(0); }
+            90% { transform: translateY(0) rotate(3deg) scale(1) translateZ(0); }
+        }
+
+        /* Clickable Price Box */
+        .clickable-suitcase {
+            position: relative;
+            display: block;
+            cursor: pointer;
+        }
+        .tap-hand {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            animation: tapAnimation 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            z-index: 10;
+        }
+        @keyframes tapAnimation {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { transform: translateY(5px) scale(0.9); opacity: 0.7; }
+        }
+        /* Hand for clock suitcase */
+        .clock-baggage-btn {
+            position: relative;
+        }
+        .clock-tap-hand {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            font-size: 14px;
+            animation: tapAnimation 1.5s ease-in-out infinite;
+        }
+        /* Baggage with waving hands - horizontal layout */
+        .clock-baggage-btn {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 1px;
+            margin-left: 6px;
+        }
+        .clock-baggage-btn .suitcase {
+            font-size: 18px;
+        }
+        .hand-left, .hand-right {
+            font-size: 12px;
+        }
+        .hand-left {
+            animation: wave 1s ease-in-out infinite;
+        }
+        .hand-right {
+            animation: wave 1s ease-in-out infinite 0.5s;
+            transform: scaleX(-1);
+        }
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(20deg); }
+        }
+
+        /* Contact Airplane Animation */
+        .contact-plane {
+            animation: planePulse 1.5s ease-in-out infinite;
+            cursor: pointer;
+            transform: scaleX(-1);
+        }
+        .contact-plane.takeoff {
+            animation: planeFly 1.5s ease-in-out forwards !important;
+        }
+        @keyframes planePulse {
+            0%, 100% { transform: scaleX(-1) scale(1); }
+            50% { transform: scaleX(-1) scale(1.15); }
+        }
+        @keyframes planeFly {
+            0% { transform: scaleX(-1) translate(0, 0) scale(1); opacity: 1; }
+            30% { transform: scaleX(-1) translate(-50px, 0) scale(1.2); opacity: 1; }
+            100% { transform: scaleX(-1) translate(-150px, -100px) scale(2.5); opacity: 0; }
+        }
+
+        /* Contact Arrow (SVG) */
+        .contact-arrow {
+            display: inline-block;
+            vertical-align: middle;
+            height: 40px;
+            width: 120px;
+            margin-left: 5px;
+            margin-right: 5px;
+            animation: arrowFloat 2.5s ease-in-out infinite, arrowPulse 2s ease-in-out infinite;
+            cursor: default;
+            transition: transform 0.3s ease;
+        }
+        .contact-arrow:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+        @keyframes arrowFloat {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-5px) translateX(-3px); }
+        }
+        @keyframes arrowPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+
+        /* Responsive adjustments for contact arrow */
+        @media (max-width: 767px) {
+            .contact-arrow {
+                height: 35px;
+                width: 100px;
+                margin-left: 4px;
+                margin-right: 4px;
+            }
+        }
+        @media (max-width: 380px) {
+            .contact-arrow {
+                height: 30px;
+                width: 85px;
+                margin-left: 3px;
+                margin-right: 3px;
+            }
+        }
+
+        /* Offer Title */
+        .offer-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #462B73;
+            margin-bottom: 10px;
+        }
+        .offer-subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        /* Price Box */
+        .price-box {
+            background: linear-gradient(135deg, #462B73, #5a3d8a);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .price-box.orange {
+            background: linear-gradient(135deg, #F7941D, #ff6b00);
+        }
+        .price-value {
+            font-size: 48px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+        }
+        .price-currency {
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+        }
+        .price-note {
+            color: rgba(255,255,255,0.8);
+            font-size: 17px;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        /* Discount Badge */
+        .discount-value {
+            font-size: 64px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+        }
+        .discount-percent {
+            font-size: 28px;
+            color: #fff;
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+        }
+        .features-list li {
+            padding: 8px 0;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .features-list li::before {
+            content: '\2713';
+            color: #4ade80;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #F7941D 0%, #ff6b00 100%);
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: auto;
+            box-shadow: 0 8px 25px rgba(247, 148, 29, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(247, 148, 29, 0.5);
+        }
+        .cta-btn.purple {
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            box-shadow: 0 8px 25px rgba(70, 43, 115, 0.4);
+        }
+        .cta-btn.purple:hover {
+            box-shadow: 0 12px 35px rgba(70, 43, 115, 0.5);
+        }
+
+        /* Offer Routes inside card */
+        .offer-routes {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+            border: 2px dashed rgba(70, 43, 115, 0.2);
+        }
+        .route-from {
+            font-size: 14px;
+            font-weight: 700;
+            color: #462B73;
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .route-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .route-arrow .line {
+            height: 2px;
+            width: 40px;
+            background: linear-gradient(90deg, #462B73, #F7941D);
+            border-radius: 2px;
+        }
+        .route-arrow .plane {
+            width: 32px;
+            height: auto;
+            animation: flyPlane 2s ease-in-out infinite;
+            will-change: transform;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0) scaleX(-1);
+        }
+        @keyframes flyPlane {
+            0%, 100% { transform: translateX(0) translateZ(0) scaleX(-1); }
+            50% { transform: translateX(8px) translateZ(0) scaleX(-1); }
+        }
+        .route-to {
+            font-size: 16px;
+            font-weight: 700;
+            color: #462B73;
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .route-to .destination {
+            color: #F7941D;
+        }
+
+        /* Share Section */
+        .share-section {
+            background: #ffffff;
+            padding: 22px 16px;
+            text-align: center;
+            border-top: 4px solid #462B73;
+        }
+        .share-title {
+            color: #462B73;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+        .share-btn.whatsapp {
+            background: #25D366;
+        }
+        .share-btn.sms {
+            background: #34C759;
+        }
+        .share-btn.facebook {
+            background: #1877F2;
+        }
+        .share-btn.copy {
+            background: #F7941D;
+        }
+        .share-btn.telegram {
+            background: #0088cc;
+        }
+
+        /* QR Code Section */
+        .qr-section {
+            background: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .qr-title {
+            color: #462B73;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .qr-subtitle {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .qr-container {
+            display: inline-block;
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 3px solid #F7941D;
+        }
+        #qrcode {
+            display: inline-block;
+        }
+        #qrcode img {
+            border-radius: 10px;
+        }
+
+        /* Install PWA Button */
+        .install-section {
+            background: #f8f8f8;
+            padding: 25px 20px;
+            text-align: center;
+            display: none;
+        }
+        .install-section.show {
+            display: block;
+        }
+        .install-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #462B73, #5a3d8a);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(70, 43, 115, 0.3);
+        }
+
+        /* Terms */
+        .terms-section {
+            background: #fff;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        .terms-title {
+            color: #462B73;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .terms-list {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            color: #444;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+        .terms-list li {
+            padding: 8px 0;
+            list-style: none;
+            padding-left: 20px;
+            position: relative;
+        }
+        .terms-list li::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: #F7941D;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d1a4a;
+            color: #fff;
+            padding: 10px 15px 8px;
+            text-align: center;
+        }
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+        .footer a {
+            color: #F7941D;
+            text-decoration: none;
+        }
+        .footer p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 6px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #333;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 14px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Desktop - Large screens */
+        @media (min-width: 1200px) {
+            .header { padding: 18px 30px; }
+            .main-title { padding: 50px 40px 20px; }
+            .main-title h1 { font-size: 42px; }
+            .main-title p { font-size: 22px; }
+            .offers-container {
+                max-width: 1100px;
+                padding: 30px 40px;
+                gap: 40px;
+            }
+            .offer-card { padding: 40px 35px; border-radius: 30px; }
+            .offer-icon { font-size: 80px; }
+            .broken-suitcase { width: 100px; height: 100px; }
+            .offer-title { font-size: 28px; }
+            .price-value { font-size: 60px; }
+            .discount-value { font-size: 80px; }
+            .share-section { padding: 30px 40px; }
+            .share-title { font-size: 24px; }
+            .share-btn { padding: 15px 35px; font-size: 18px; }
+            .qr-section { padding: 60px 40px; }
+            .qr-title { font-size: 26px; }
+            #qrcode { transform: scale(1.2); }
+            .terms-section { padding: 40px; }
+            .terms-list { font-size: 15px; }
+            .footer { padding: 18px 20px; }
+            .footer-logo img { height: 56px; }
+        }
+
+        /* Tablet - Medium screens */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .offers-container {
+                max-width: 900px;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .main-title h1 { font-size: 36px; }
+            .offer-card { padding: 30px; }
+        }
+
+        /* Mobile - Small screens */
+        @media (max-width: 767px) {
+            .header { padding: 12px 15px; }
+            .main-title { padding: 25px 15px 10px; }
+            .main-title h1 { font-size: 24px; }
+            .main-title p { font-size: 16px; }
+            .offers-container {
+                padding: 15px;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .offer-card { padding: 25px 20px; border-radius: 20px; }
+            .offer-badge { top: 10px; left: 10px; padding: 4px 12px; font-size: 11px; }
+            .offer-icon { font-size: 50px; }
+            .broken-suitcase { width: 70px; height: 70px; }
+            .offer-title { font-size: 20px; }
+            .offer-subtitle { font-size: 13px; }
+            .price-box { padding: 15px; margin: 15px 0; }
+            .price-value { font-size: 38px; }
+            .price-currency { font-size: 18px; }
+            .discount-value { font-size: 50px; }
+            .discount-percent { font-size: 24px; }
+            .features-list li { font-size: 13px; padding: 6px 0; }
+            .offer-routes { padding: 12px; }
+            .offer-routes-title { font-size: 13px; }
+            .offer-routes-grid span { padding: 4px 10px; font-size: 10px; }
+            .cta-btn { padding: 12px 30px; font-size: 16px; }
+            .share-section { padding: 18px 15px; }
+            .share-title { font-size: 18px; margin-bottom: 12px; }
+            .share-buttons { gap: 8px; }
+            .share-btn { padding: 10px 18px; font-size: 14px; gap: 6px; }
+            .share-btn svg { width: 18px; height: 18px; }
+            .qr-section { padding: 30px 15px; }
+            .qr-title { font-size: 18px; }
+            .qr-subtitle { font-size: 13px; }
+            .qr-container { padding: 15px; }
+            #qrcode { transform: scale(0.9); }
+            .install-section { padding: 20px 15px; }
+            .install-btn { padding: 12px 25px; font-size: 14px; }
+            .terms-section { padding: 20px 15px; }
+            .terms-title { font-size: 15px; }
+            .terms-list { font-size: 12px; }
+            .footer { padding: 20px 15px; }
+            .footer-logo { font-size: 22px; }
+            .toast { font-size: 13px; padding: 12px 25px; }
+            .qr-section { display: none; }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 380px) {
+            .header { padding: 10px 12px; }
+            .main-title h1 { font-size: 20px; }
+            .price-value { font-size: 32px; }
+            .discount-value { font-size: 42px; }
+            .share-btn { padding: 8px 14px; font-size: 12px; }
+            .offer-routes-grid span { font-size: 9px; padding: 3px 8px; }
+            .broken-suitcase { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Limited Time Badge - Horizontal (slides from RIGHT) -->
+    <div class="limited-badge">
+        <!-- Badge Text (LEFT - visible when collapsed) -->
+        <div class="badge-text">
+            <span>Limited</span>
+            <span>Time</span>
+            <span>Offer</span>
+        </div>
+        <!-- Digital Clock Countdown (RIGHT - hidden when collapsed) -->
+        <div class="digital-clock">
+            <div class="clock-block">
+                <div class="clock-value" id="countdownHours">1184</div>
+                <div class="clock-label">Hours</div>
+            </div>
+            <div class="clock-separator">:</div>
+            <div class="clock-block">
+                <div class="clock-value" id="countdownMinutes">09</div>
+                <div class="clock-label">Minutes</div>
+            </div>
+            <div class="clock-timezone">REMAINING</div>
+            <div class="clock-baggage-btn"><span class="hand-left">👋</span><span class="suitcase">🧳</span><span class="hand-right">👋</span></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Air Cairo">
+        </div>
+        <a href="travel-agents.html" class="lang-toggle">
+            <span>AR</span>
+            <img src="lang-toggle.png" alt="Air Cairo">
+        </a>
+    </div>
+
+
+    <!-- Main Title -->
+    <div class="main-title">
+        <div style="display: inline-block; background: linear-gradient(135deg, #F7941D 0%, #ff6b00 100%); color: #fff; font-size: 22px; font-weight: 700; padding: 12px 30px; border-radius: 50px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(247, 148, 29, 0.4);">
+            ✨ Dear Travel Agencies, Partners in Success ✨
+        </div>
+        <h1>Extra Bags, Better Prices & Higher Commission</h1>
+        <p>Travel from Saudi Arabia to Egypt</p>
+    </div>
+
+    <!-- Offers -->
+    <div class="offers-container">
+
+        <!-- Offer 1: Extra Bag 299 SAR - Cairo Routes -->
+        <div class="offer-card primary">
+            <div class="offer-badge">Offer 1</div>
+            <div class="offer-icon" style="position: relative; display: inline-block; cursor: pointer;" onclick="openApp()">
+                🧳
+                <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 20px; font-weight: 900; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">23</span>
+            </div>
+            <h2 class="offer-title">Extra Bag 23 KG</h2>
+
+            <div class="price-box orange">
+                <div class="price-value">299</div>
+                <div class="price-currency">SAR Only</div>
+            </div>
+
+            <ul class="features-list">
+                <li>Bag weight up to 23 KG</li>
+                <li>Can be added during booking or after purchase</li>
+                <li>35% Discount</li>
+            </ul>
+
+            <div class="offer-routes">
+                <div class="route-from">From All Saudi Cities</div>
+                <div class="route-arrow">
+                    <div class="line"></div>
+                    <img src="aircairo_aircraft.png" alt="aircraft" class="plane">
+                    <div class="line"></div>
+                </div>
+                <div class="route-to">To <span class="destination">Borg El Arab</span> & <span class="destination">Assiut</span></div>
+            </div>
+        </div>
+
+        <!-- Offer 2: 50% Discount - Borg El Arab & Assiut Routes -->
+        <div class="offer-card secondary">
+            <div class="offer-badge purple">Offer 2</div>
+            <div class="broken-suitcase" style="cursor: pointer;" onclick="openApp()">
+                <svg viewBox="0 0 400 400" class="w-full h-full drop-shadow-lg">
+                    <defs>
+                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#462B73;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#5a3d8a;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#F7941D;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ea580c;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Left Handle -->
+                    <g transform="translate(0, 10)">
+                        <rect x="90" y="40" width="10" height="80" fill="#cbd5e1" />
+                        <rect x="140" y="40" width="10" height="80" fill="#cbd5e1" />
+                        <rect x="85" y="30" width="70" height="15" rx="5" fill="#334155" />
+                    </g>
+                    <!-- Right Handle -->
+                    <g transform="translate(0, 10)">
+                        <rect x="250" y="40" width="10" height="80" fill="#fed7aa" />
+                        <rect x="300" y="40" width="10" height="80" fill="#fed7aa" />
+                        <rect x="245" y="30" width="70" height="15" rx="5" fill="#c2410c" />
+                    </g>
+                    <!-- Left Suitcase Half (Purple) -->
+                    <path d="M 50 120 H 190 L 170 150 L 190 180 L 170 210 L 190 240 L 170 270 L 190 300 L 170 330 L 190 360 H 50 Q 20 360 20 330 V 150 Q 20 120 50 120 Z" fill="url(#blueGrad)" stroke="white" stroke-width="2" />
+                    <!-- Right Suitcase Half (Orange) -->
+                    <path d="M 350 120 H 210 L 190 150 L 210 180 L 190 210 L 210 240 L 190 270 L 210 300 L 190 330 L 210 360 H 350 Q 380 360 380 330 V 150 Q 380 120 350 120 Z" fill="url(#orangeGrad)" stroke="white" stroke-width="2" />
+                    <!-- Crack Highlight -->
+                    <path d="M 190 120 L 170 150 L 190 180 L 170 210 L 190 240 L 170 270 L 190 300 L 170 330 L 190 360" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="4" stroke-linecap="round" />
+                    <!-- Wheels -->
+                    <circle cx="60" cy="370" r="15" fill="#1f2937" />
+                    <circle cx="140" cy="370" r="15" fill="#1f2937" />
+                    <circle cx="260" cy="370" r="15" fill="#1f2937" />
+                    <circle cx="340" cy="370" r="15" fill="#1f2937" />
+                </svg>
+            </div>
+            <h2 class="offer-title">Extra Weight at Half Price</h2>
+
+            <div class="price-box">
+                <div class="discount-value">50%</div>
+                <div class="discount-value">OFF</div>
+            </div>
+
+            <ul class="features-list">
+                <li>50% discount on every extra kilogram</li>
+                <li>Available for all classes</li>
+            </ul>
+
+            <div class="offer-routes">
+                <div class="route-from">From All Saudi Cities</div>
+                <div class="route-arrow">
+                    <div class="line"></div>
+                    <img src="aircairo_aircraft.png" alt="aircraft" class="plane">
+                    <div class="line"></div>
+                </div>
+                <div class="route-to">To <span class="destination">Cairo</span></div>
+            </div>
+        </div>
+
+        <!-- Offer 3: Commission Policy - 15% -->
+        <div class="offer-card primary">
+            <div class="offer-badge">Offer 3</div>
+            <div class="offer-icon" style="position: relative; display: block; cursor: pointer; margin: 0 auto 5px auto; width: 80px;" onclick="openApp()">
+                <img src="Adobe Express - file (1).png" alt="Commission" style="width: 80px; height: 80px; object-fit: contain; display: block; margin: 0 auto;">
+            </div>
+            <h2 class="offer-title">New Upfront Commission Policy</h2>
+
+            <div class="price-box orange">
+                <div class="price-value">15%</div>
+                <div class="price-currency">Commission Rate</div>
+                <div class="price-note">Except (Jeddah - Madinah - Yanbu) Commission Rate 10%</div>
+            </div>
+
+            <ul class="features-list">
+                <li>Pricing Command: FXP/R,U after creating the booking</li>
+            </ul>
+
+            <div class="offer-routes">
+                <div class="route-from">From Saudi Arabia</div>
+                <div class="route-arrow">
+                    <div class="line"></div>
+                    <img src="aircairo_aircraft.png" alt="aircraft" class="plane">
+                    <div class="line"></div>
+                </div>
+                <div class="route-to">To <span class="destination">Egypt</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Share Section -->
+    <div class="share-section">
+        <h3 class="share-title">📤 Share this offer with your friends</h3>
+        <div class="share-buttons">
+            <a href="#" class="share-btn whatsapp" onclick="shareWhatsApp()">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+            </a>
+            <a href="#" class="share-btn telegram" onclick="shareTelegram()">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Telegram
+            </a>
+            <a href="#" class="share-btn sms" onclick="shareSMS()">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+                Message
+            </a>
+            <button class="share-btn copy" onclick="copyLink()">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                Copy Link
+            </button>
+        </div>
+    </div>
+
+    <!-- QR Code Section -->
+    <div class="qr-section">
+        <h3 class="qr-title">📱 Mobile Version</h3>
+                <div class="qr-container">
+            <div id="qrcode"></div>
+        </div>
+    </div>
+
+    <!-- Install PWA Section -->
+    <div class="install-section" id="installSection">
+        <button class="install-btn" id="installBtn" onclick="installPWA()">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Add to Home Screen
+        </button>
+    </div>
+
+    <!-- Terms Section -->
+    <div class="terms-section">
+        <h3 class="terms-title">Terms & Conditions - Information for Agencies</h3>
+        <ul class="terms-list">
+            <li><strong>📋 Commission Policy:</strong></li>
+            <li style="padding-left: 40px;">• Commission Code: <strong>SACOMMISSION</strong></li>
+            <li style="padding-left: 40px;">• Pricing Command: <strong>FXP/R,U</strong></li>
+            <li style="padding-left: 40px;">• Commission Rate: <strong>15%</strong> (Except Jeddah-Madinah-Yanbu: 10%)</li>
+            <li style="padding-left: 40px;">• Sale & Travel Period: <strong>January 15, 2026 to March 15, 2026</strong></li>
+
+            <li style="margin-top: 15px;"><strong>🧳 Offer 1 (299 SAR Bag):</strong></li>
+            <li style="padding-left: 40px;">• Routes: Borg El Arab (Alexandria) and Assiut</li>
+            <li style="padding-left: 40px;">• Weight: One extra bag 23 KG</li>
+            <li style="padding-left: 40px;">• Amadeus Command: <strong>SRPBAG</strong></li>
+
+            <li style="margin-top: 15px;"><strong>⚖️ Offer 2 (50% Discount):</strong></li>
+            <li style="padding-left: 40px;">• Routes: All flights to Cairo only</li>
+            <li style="padding-left: 40px;">• Discount: 50% on every extra kilogram</li>
+            <li style="padding-left: 40px;">• General Amadeus Command: <strong>SRXBAG-TTL[XX]KG1PC</strong></li>
+            <li style="padding-left: 40px;">• Example for 20 KG: <strong>SRXBAG-TTL20KG1PC</strong></li>
+            <li style="padding-left: 40px;">• Example for 10 KG: <strong>SRXBAG-TTL10KG1PC</strong></li>
+
+            <li style="margin-top: 15px;">All offers apply to flights (Saudi Arabia → Egypt) only.</li>
+            <li>Offers can be added during booking or after ticket issuance up to 8 hours before departure - subject to availability.</li>
+            <li>Air Cairo reserves the right to modify or cancel offers according to approved policies.</li>
+            <li style="display: flex; flex-wrap: wrap; align-items: flex-start; margin-top: 15px;">
+                <span style="flex: 1;">For more inquiries or technical support, please contact our offices:</span>
+                <span style="display: flex; align-items: center; gap: 5px; margin-right: 20px; align-self: flex-end;"><svg class="contact-arrow" viewBox="0 0 165 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#F7941D;stop-opacity:1" /><stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" /></linearGradient><filter id="arrowShadow"><feGaussianBlur in="SourceAlpha" stdDeviation="3"/><feOffset dx="0" dy="3" result="offsetblur"/><feComponentTransfer><feFuncA type="linear" slope="0.4"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polygon points="150,30 135,20 135,40" fill="url(#arrowGradient)" filter="url(#arrowShadow)" stroke="#D67A0F" stroke-width="1.5"/><rect x="15" y="15" width="120" height="30" rx="15" ry="15" fill="url(#arrowGradient)" filter="url(#arrowShadow)" stroke="#D67A0F" stroke-width="1.5"/><text x="75" y="35" font-family="Cairo, Arial, sans-serif" font-size="14" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="middle">Contact Us</text></svg><a href="https://aircairo.com/en-sa/office-contacts" target="_blank" style="display: inline-block; vertical-align: middle;" onclick="planeTakeoff(event, this)"><img src="contact-btn.png" alt="Contact Us" class="contact-plane" style="height: 30px; width: auto; margin-left: 5px;"></a></span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-logo">
+            <img src="logo_white.png" alt="Air Cairo">
+        </div>
+
+        <!-- Stay Connected -->
+        <p style="color: #fff; font-size: 14px; margin: 5px 0 5px; text-transform: uppercase; font-weight: 700;">Stay Connected</p>
+        <div class="social-links" style="display: flex; justify-content: center; gap: 12px; margin-bottom: 5px;">
+            <a href="https://www.facebook.com/aircairo" target="_blank" rel="nofollow noopener">
+                <img src="https://aircairo-e-motion-cdn.fra1.digitaloceanspaces.com/0_1-1-1_7a95de5b.png" alt="Facebook" style="width: 28px; height: 28px; filter: brightness(0) invert(1);">
+            </a>
+            <a href="https://instagram.com/aircairo.official" target="_blank" rel="nofollow noopener">
+                <img src="https://aircairo-e-motion-cdn.fra1.digitaloceanspaces.com/0_3-1-1_11333fa1.png" alt="Instagram" style="width: 28px; height: 28px; filter: brightness(0) invert(1);">
+            </a>
+            <a href="https://twitter.com/Aircairo" target="_blank" rel="nofollow noopener">
+                <img src="https://aircairo-e-motion-cdn.fra1.digitaloceanspaces.com/0_x_364af9c1.png" alt="Twitter" style="width: 28px; height: 28px; filter: brightness(0) invert(1);">
+            </a>
+            <a href="https://www.youtube.com/c/AirCairoAirline" target="_blank" rel="nofollow noopener">
+                <img src="https://aircairo-e-motion-cdn.fra1.digitaloceanspaces.com/0_4-1-1_93516adb.png" alt="YouTube" style="width: 28px; height: 28px; filter: brightness(0) invert(1);">
+            </a>
+            <a href="https://www.linkedin.com/company/air-cairo/" target="_blank" rel="nofollow noopener">
+                <img src="https://aircairo-e-motion-cdn.fra1.digitaloceanspaces.com/0_e-motion-air-cairo-social-icons-05-12-2022-hg-v01-02-02_0004cdbb.png" alt="LinkedIn" style="width: 28px; height: 28px; filter: brightness(0) invert(1);">
+            </a>
+        </div>
+
+        <a href="https://www.aircairo.com">www.aircairo.com</a>
+        <p>Copyright 2026 © Air Cairo All Rights Reserved</p>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Link copied!</div>
+
+    <script>
+        // Page URL (update this after deploying)
+        const PAGE_URL = window.location.href;
+        const SHARE_TEXT = 'Exclusive Air Cairo Offers for Travel Agents!\n🧳 Extra Bag 23 KG for 299 SAR\n⚖️ 50% Discount on Excess Weight\n💰 15% Upfront Commission (10% for Jeddah-Madinah-Yanbu)\n📋 Commission Code: SACOMMISSION\nTravel from Saudi Arabia to Egypt\n';
+
+        // Generate QR Code
+        document.addEventListener('DOMContentLoaded', function() {
+            new QRCode(document.getElementById("qrcode"), {
+                text: PAGE_URL,
+                width: 180,
+                height: 180,
+                colorDark: "#462B73",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        });
+
+        // Share Functions
+        function shareWhatsApp() {
+            const url = `https://wa.me/?text=${encodeURIComponent(SHARE_TEXT + PAGE_URL)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = `https://t.me/share/url?url=${encodeURIComponent(PAGE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareSMS() {
+            const url = `sms:?body=${encodeURIComponent(SHARE_TEXT + PAGE_URL)}`;
+            window.location.href = url;
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(PAGE_URL).then(() => {
+                showToast('Link copied!');
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // App Store Links
+        const APP_LINKS = {
+            android: 'https://play.google.com/store/apps/details?id=com.emotion.aircairo&pcampaignid=web_share',
+            ios: 'https://apps.apple.com/sa/app/air-cairo/id1586107553',
+            huawei: 'https://appgallery.huawei.com/app/C105643273'
+        };
+
+        // Open App directly if installed, otherwise go to Store
+        function openApp() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Detect device type
+            const isHuawei = /huawei|honor/i.test(userAgent);
+            const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+            const isAndroid = /android/i.test(userAgent);
+
+            if (isAndroid && !isHuawei) {
+                // Android: Use intent URL to open app directly, fallback to Play Store
+                const intentUrl = 'intent://aircairos.page.link/#Intent;scheme=https;package=com.emotion.aircairo;S.browser_fallback_url=' + encodeURIComponent(APP_LINKS.android) + ';end';
+                window.location.href = intentUrl;
+            } else if (isIOS) {
+                // iOS: Try Universal Link first, then App Store
+                window.location.href = 'https://aircairos.page.link/open';
+                setTimeout(() => {
+                    window.location.href = APP_LINKS.ios;
+                }, 1500);
+            } else if (isHuawei) {
+                window.location.href = APP_LINKS.huawei;
+            } else {
+                window.location.href = APP_LINKS.android;
+            }
+        }
+
+        // Countdown Timer - ends March 15, 2026 at 23:59:59
+        const countdownDeadline = new Date('2026-03-15T23:59:59').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const remaining = countdownDeadline - now;
+
+            if (remaining <= 0) {
+                document.getElementById('countdownHours').textContent = '0000';
+                document.getElementById('countdownMinutes').textContent = '00';
+                return;
+            }
+
+            const hours = Math.floor(remaining / (1000 * 60 * 60));
+            const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('countdownHours').textContent = hours.toString().padStart(4, '0');
+            document.getElementById('countdownMinutes').textContent = minutes.toString().padStart(2, '0');
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // Plane Takeoff Animation
+        function planeTakeoff(event, link) {
+            event.preventDefault();
+            const plane = link.querySelector('.contact-plane');
+            plane.classList.add('takeoff');
+            setTimeout(() => {
+                window.open(link.href, '_blank');
+                plane.classList.remove('takeoff');
+            }, 1300);
+        }
+
+        // PWA Install
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installSection').classList.add('show');
+        });
+
+        function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        showToast('App added successfully!');
+                    }
+                    deferredPrompt = null;
+                    document.getElementById('installSection').classList.remove('show');
+                });
+            }
+        }
+
+        // Auto Fullscreen on Mobile - Enhanced Version
+        function goFullscreen() {
+            const elem = document.documentElement;
+
+            // Try all fullscreen methods
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(err => console.log('Fullscreen error:', err));
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // Show iOS Install Banner
+        function showIOSInstallBanner() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches;
+
+            if (isIOS && !isInStandaloneMode) {
+                // Create banner
+                const banner = document.createElement('div');
+                banner.id = 'ios-install-banner';
+                banner.style.cssText = `
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: linear-gradient(135deg, #462B73 0%, #5a3691 100%);
+                    color: white;
+                    padding: 20px;
+                    text-align: center;
+                    z-index: 10000;
+                    box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+                    font-family: 'Cairo', sans-serif;
+                    animation: slideUp 0.5s ease;
+                `;
+
+                banner.innerHTML = `
+                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">
+                        🚀 Open as App - For a Better Experience
+                    </div>
+                    <div style="font-size: 14px; margin-bottom: 15px; opacity: 0.9;">
+                        Tap <span style="font-size: 24px; vertical-align: middle;">⬆️</span> then "Add to Home Screen"
+                    </div>
+                    <button onclick="document.getElementById('ios-install-banner').remove()"
+                            style="background: white; color: #462B73; border: none; padding: 10px 30px;
+                                   border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer;
+                                   font-family: 'Cairo', sans-serif;">
+                        Got it
+                    </button>
+                `;
+
+                document.body.appendChild(banner);
+
+                // Add animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes slideUp {
+                        from { transform: translateY(100%); }
+                        to { transform: translateY(0); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // Trigger fullscreen on Android
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches;
+
+        if (isMobile && !isInStandaloneMode) {
+            // Show iOS banner after 2 seconds
+            setTimeout(showIOSInstallBanner, 2000);
+
+            // Try fullscreen on Android only
+            if (isAndroid) {
+                let fullscreenTriggered = false;
+
+                const triggerFullscreen = () => {
+                    if (!fullscreenTriggered) {
+                        fullscreenTriggered = true;
+                        goFullscreen();
+                    }
+                };
+
+                // Immediate fullscreen on first touch/click
+                document.addEventListener('touchstart', triggerFullscreen, { once: true });
+                document.addEventListener('click', triggerFullscreen, { once: true });
+            }
+        }
+    </script>
+
+</body>
+</html>
