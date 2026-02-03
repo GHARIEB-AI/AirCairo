@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -51,6 +51,14 @@
         .logo-img {
             height: 50px;
             width: auto;
+        }
+        .logo-link {
+            display: inline-block;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .logo-link:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
         }
         /* Last Run Info Block */
         .last-run-info {
@@ -512,35 +520,36 @@
             50% { opacity: 1; text-shadow: 0 0 30px rgba(100, 220, 255, 0.9); }
         }
 
-        /* ===== BOTTOM AIRPLANE ===== */
-        .bottom-airplane-section {
-            text-align: center;
-            padding: 30px 20px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        .bottom-airplane {
-            display: inline-block;
+        /* ===== SIDE AIRPLANE ===== */
+        .side-airplane {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            width: 200px;
+            height: 220px;
             cursor: pointer;
+            transition: left 1.2s ease;
+            overflow: visible;
+            left: -100px;
         }
-        .bottom-airplane img {
-            width: 280px;
-            height: 320px;
+        .side-airplane:hover {
+            left: -30px;
+        }
+        .side-airplane img {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4));
-            transform: rotate(90deg);
         }
-        .bottom-airplane:hover img {
-            filter: drop-shadow(0 15px 40px rgba(247,148,29,0.5));
+        .side-airplane.takeoff {
+            animation: sideplaneTakeoff 1.5s ease-in-out forwards;
         }
-        .bottom-airplane.takeoff img {
-            animation: flyRight 1.5s ease-in forwards;
+        @keyframes sideplaneTakeoff {
+            0% { left: -100px; opacity: 1; }
+            30% { left: 50px; opacity: 1; }
+            100% { left: 120%; top: -50%; opacity: 0; }
         }
-        @keyframes flyRight {
-            0% { transform: rotate(90deg) translateY(0) scale(1); opacity: 1; }
-            100% { transform: rotate(90deg) translateY(-800px) scale(0.8); opacity: 0; }
-        }
-        /* ===== END BOTTOM AIRPLANE ===== */
+        /* ===== END SIDE AIRPLANE ===== */
 
         /* ===== UNIFIED PAGE LOADER ===== */
         #page-loader {
@@ -616,7 +625,9 @@
         </div>
 
         <div class="logo-section">
-            <img src="logo_white.png" alt="Air Cairo" class="logo-img">
+            <a href="index.html" class="logo-link">
+                <img src="logo_white.png" alt="Air Cairo" class="logo-img">
+            </a>
 
             <!-- Last Run Info -->
             <div class="last-run-info">
@@ -761,25 +772,29 @@
         </div>
     </div>
 
-    <!-- Bottom Airplane - GATE link -->
-    <div class="bottom-airplane-section">
-        <a href="./" class="bottom-airplane" id="airplane-link">
-            <img src="plane_transparent.png" alt="Air Cairo">
+    <!-- THE GATE - Flying Plane Button -->
+    <div class="gate-plane-section">
+        <div class="gate-label">GO TO GATE</div>
+        <a href="./" class="gate-plane-btn" onclick="planeTakeoff(event, this)">
+            <img src="contact-btn.png" alt="Air Cairo" class="flying-plane">
         </a>
+        <div class="gate-hint">Tap to fly</div>
     </div>
 
     <script>
-        // Airplane takeoff - straight line to the right
-        document.getElementById('airplane-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            var link = this;
-            link.classList.add('takeoff');
-            setTimeout(function() {
-                window.location.href = link.href;
-            }, 1600);
-        });
+        // Flying Plane Takeoff Animation
+        function planeTakeoff(event, link) {
+            event.preventDefault();
+            const plane = link.querySelector('.flying-plane');
+            plane.classList.add('takeoff');
 
-        const API_BASE = 'https://dashboard.ghariebel3ageb.com';
+            // Delay navigation to let user see the animation
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 1500);
+        }
+
+        const API_BASE = 'https://roland-assessing-moving-cod.trycloudflare.com';
         let lastData = null;
         let lastRunData = null;
         let isOnline = false;
