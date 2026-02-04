@@ -584,12 +584,13 @@
             transition: transform 0.5s ease;
         }
         .flying-plane.takeoff {
-            animation: planeFlyAway 1.5s ease-in-out forwards;
+            animation: planeFlyAway 2.5s ease-out forwards;
         }
         @keyframes planeFlyAway {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            50% { transform: translateY(-100px) rotate(-15deg); opacity: 1; }
-            100% { transform: translateY(-500px) rotate(-30deg) scale(0.3); opacity: 0; }
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            30% { transform: translateY(-50px) scale(1.2); opacity: 1; }
+            60% { transform: translateY(-200px) scale(1.1); opacity: 1; }
+            100% { transform: translateY(-600px) scale(0.5); opacity: 0; }
         }
         .gate-hint {
             font-size: 9px;
@@ -847,10 +848,10 @@
             const plane = link.querySelector('.flying-plane');
             plane.classList.add('takeoff');
 
-            // Delay navigation to let user see the animation
+            // Delay navigation to let user see the full animation
             setTimeout(() => {
                 window.location.href = link.href;
-            }, 1500);
+            }, 2500);
         }
 
         const API_BASE = '__API_BASE__';
