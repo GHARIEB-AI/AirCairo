@@ -553,6 +553,63 @@
         }
         /* ===== END SIDE AIRPLANE ===== */
 
+        /* ===== GATE PLANE SECTION ===== */
+        .gate-plane-section {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+        }
+        .gate-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #F7941D;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .gate-plane-btn {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .gate-plane-btn:hover {
+            transform: scale(1.1);
+        }
+        .flying-plane {
+            width: 80px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            transition: transform 0.5s ease;
+        }
+        .flying-plane.takeoff {
+            animation: planeFlyAway 1.5s ease-in-out forwards;
+        }
+        @keyframes planeFlyAway {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-100px) rotate(-15deg); opacity: 1; }
+            100% { transform: translateY(-500px) rotate(-30deg) scale(0.3); opacity: 0; }
+        }
+        .gate-hint {
+            font-size: 9px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 3px;
+        }
+        /* Mobile adjustments for gate plane */
+        @media (max-width: 480px) {
+            .gate-plane-section {
+                bottom: 15px;
+            }
+            .flying-plane {
+                width: 60px;
+            }
+            .gate-label {
+                font-size: 8px;
+            }
+        }
+        /* ===== END GATE PLANE SECTION ===== */
+
         /* ===== UNIFIED PAGE LOADER ===== */
         #page-loader {
             position: fixed;
