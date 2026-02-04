@@ -553,60 +553,6 @@
         }
         /* ===== END SIDE AIRPLANE ===== */
 
-        /* ===== GATE PLANE SECTION ===== */
-        .gate-plane-section {
-            text-align: center;
-            padding: 30px 15px;
-            margin-top: 20px;
-        }
-        .gate-label {
-            font-size: 14px;
-            font-weight: 700;
-            color: #F7941D;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        .gate-plane-btn {
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-        .gate-plane-btn:hover {
-            transform: scale(1.05);
-        }
-        .flying-plane {
-            width: 250px;
-            max-width: 80vw;
-            height: auto;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
-            transition: transform 0.3s ease;
-        }
-        .flying-plane.takeoff {
-            animation: planeFlyAway 2s ease-in-out forwards;
-        }
-        @keyframes planeFlyAway {
-            0% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(-500px); opacity: 0; }
-        }
-        .gate-hint {
-            font-size: 11px;
-            color: rgba(255,255,255,0.6);
-            margin-top: 10px;
-        }
-        /* Mobile adjustments for gate plane */
-        @media (max-width: 480px) {
-            .gate-plane-section {
-                padding: 20px 10px;
-            }
-            .flying-plane {
-                width: 200px;
-            }
-            .gate-label {
-                font-size: 12px;
-            }
-        }
-        /* ===== END GATE PLANE SECTION ===== */
-
         /* ===== UNIFIED PAGE LOADER ===== */
         #page-loader {
             position: fixed;
@@ -847,7 +793,7 @@
             // Delay navigation to let user see the animation
             setTimeout(() => {
                 window.location.href = link.href;
-            }, 2000);
+            }, 1500);
         }
 
         const API_BASE = '__API_BASE__';
