@@ -107,6 +107,11 @@
             color: #9ca3af;
             border: 1px solid rgba(156, 163, 175, 0.3);
         }
+        .run-status.cached {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+        }
         /* Logo Text - First letter colored */
         .logo-text {
             font-size: 18px;
@@ -989,6 +994,8 @@
                 isOnline = true;
                 lastData = data;
                 updateDashboard(data);
+                // Clear cached mode indicator when live API responds
+                document.getElementById('run-status').classList.remove('cached');
             } catch (e) {
                 console.error('Fetch error:', e);
                 isOnline = false;
@@ -996,7 +1003,10 @@
                 if (lastRunData) {
                     lastData = lastRunData;
                     updateDashboard(lastRunData);
-                    // Already shows "No Active Run" from updateDashboard
+                    // Show cached mode indicator on static hosting
+                    const rs = document.getElementById('run-status');
+                    rs.textContent = 'Cached Data';
+                    rs.className = 'run-status cached';
                 } else {
                     document.getElementById('run-status').textContent = 'Offline';
                     document.getElementById('run-status').className = 'run-status inactive';
