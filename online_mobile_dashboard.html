@@ -558,6 +558,48 @@
         }
         /* ===== END SIDE AIRPLANE ===== */
 
+        /* ===== GATE PLANE SECTION ===== */
+        .gate-plane-section {
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        .gate-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #F7941D;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+        .gate-plane-btn {
+            display: inline-block;
+        }
+        .flying-plane {
+            width: 250px;
+            max-width: 80vw;
+            height: auto;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
+        }
+        .flying-plane.takeoff {
+            animation: planeFlyAway 2s ease-in-out forwards;
+        }
+        @keyframes planeFlyAway {
+            0% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(-500px); opacity: 0; }
+        }
+        .gate-hint {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 10px;
+        }
+        @media (max-width: 480px) {
+            .flying-plane {
+                width: 200px;
+            }
+        }
+        /* ===== END GATE PLANE SECTION ===== */
+
         /* ===== UNIFIED PAGE LOADER ===== */
         #page-loader {
             position: fixed;
