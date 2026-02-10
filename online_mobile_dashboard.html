@@ -837,10 +837,10 @@
             const plane = link.querySelector('.flying-plane');
             plane.classList.add('takeoff');
 
-            // Delay navigation to let user see the animation
+            // Delay navigation to let user see the full animation (2s animation + 0.5s buffer)
             setTimeout(() => {
                 window.location.href = link.href;
-            }, 1500);
+            }, 2500);
         }
 
         const API_BASE_OVERRIDE = '__API_BASE__';
@@ -1110,7 +1110,7 @@
 
         document.addEventListener('click', function(e) {
             var link = e.target.closest('a');
-            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#')) {
+            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#') && !link.classList.contains('gate-plane-btn')) {
                 showLoader();
             }
         });
