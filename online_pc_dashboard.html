@@ -1437,31 +1437,6 @@
             40% { transform: scale(1.2); opacity: 1; }
         }
         /* ===== END PAGE LOADER ===== */
-
-        /* ===== GATE PLANE SECTION ===== */
-        .gate-plane-section {
-            text-align: center;
-            padding: 30px 15px;
-            margin-top: 20px;
-            overflow: hidden;
-        }
-        .gate-plane-btn {
-            display: inline-block;
-        }
-        .flying-plane {
-            width: 250px;
-            max-width: 80vw;
-            height: auto;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
-        }
-        .flying-plane.takeoff {
-            animation: planeFlyAway 2s ease-in-out forwards;
-        }
-        @keyframes planeFlyAway {
-            0% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(-500px); opacity: 0; }
-        }
-        /* ===== END GATE PLANE SECTION ===== */
     </style>
 </head>
 <body>
@@ -1727,24 +1702,7 @@
         </div>
     </div>
 
-    <!-- THE GATE - Flying Plane Button -->
-    <div class="gate-plane-section">
-        <a href="./" class="gate-plane-btn" onclick="planeTakeoff(event, this)">
-            <img src="contact-btn.png" alt="Air Cairo" class="flying-plane">
-        </a>
-    </div>
-
     <script>
-        // Flying Plane Takeoff Animation
-        function planeTakeoff(event, link) {
-            event.preventDefault();
-            const plane = link.querySelector('.flying-plane');
-            plane.classList.add('takeoff');
-            setTimeout(() => {
-                window.location.href = link.href;
-            }, 2000);
-        }
-
         let lastData = null;
         let lastRunData = null;  // Cached data from last run (for offline mode)
         let isOnline = false;    // Track if API is available
@@ -1752,7 +1710,7 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = '__API_BASE__';
+        const API_BASE_OVERRIDE = 'https://dow-currently-midnight-figures.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -2709,7 +2667,7 @@
 
         document.addEventListener('click', function(e) {
             var link = e.target.closest('a');
-            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#') && !link.classList.contains('gate-plane-btn')) {
+            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#')) {
                 showLoader();
             }
         });

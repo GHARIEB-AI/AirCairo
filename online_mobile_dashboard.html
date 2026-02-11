@@ -558,36 +558,6 @@
         }
         /* ===== END SIDE AIRPLANE ===== */
 
-        /* ===== GATE PLANE SECTION ===== */
-        .gate-plane-section {
-            text-align: center;
-            padding: 30px 15px;
-            margin-top: 20px;
-            overflow: hidden;
-        }
-        .gate-plane-btn {
-            display: inline-block;
-        }
-        .flying-plane {
-            width: 250px;
-            max-width: 80vw;
-            height: auto;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
-        }
-        .flying-plane.takeoff {
-            animation: planeFlyAway 2s ease-in-out forwards;
-        }
-        @keyframes planeFlyAway {
-            0% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(-500px); opacity: 0; }
-        }
-        @media (max-width: 480px) {
-            .flying-plane {
-                width: 200px;
-            }
-        }
-        /* ===== END GATE PLANE SECTION ===== */
-
         /* ===== UNIFIED PAGE LOADER ===== */
         #page-loader {
             position: fixed;
@@ -811,9 +781,11 @@
 
     <!-- THE GATE - Flying Plane Button -->
     <div class="gate-plane-section">
+        <div class="gate-label">GO TO GATE</div>
         <a href="./" class="gate-plane-btn" onclick="planeTakeoff(event, this)">
             <img src="contact-btn.png" alt="Air Cairo" class="flying-plane">
         </a>
+        <div class="gate-hint">Tap to fly</div>
     </div>
 
     <script>
@@ -823,13 +795,13 @@
             const plane = link.querySelector('.flying-plane');
             plane.classList.add('takeoff');
 
-            // Delay navigation to let user see the full animation (2s animation + 0.5s buffer)
+            // Delay navigation to let user see the animation
             setTimeout(() => {
                 window.location.href = link.href;
-            }, 2500);
+            }, 1500);
         }
 
-        const API_BASE_OVERRIDE = '__API_BASE__';
+        const API_BASE_OVERRIDE = 'https://dow-currently-midnight-figures.trycloudflare.com';
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -1096,7 +1068,7 @@
 
         document.addEventListener('click', function(e) {
             var link = e.target.closest('a');
-            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#') && !link.classList.contains('gate-plane-btn')) {
+            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#')) {
                 showLoader();
             }
         });
