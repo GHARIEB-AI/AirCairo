@@ -106,6 +106,18 @@
             color: #ccc;
             font-size: 1.2rem;
         }
+        /* Expandable Promotions */
+        .promo-toggle { cursor: pointer; }
+        .promo-arrow { transition: transform 0.3s ease; display: inline-block; }
+        .promo-toggle.open .promo-arrow { transform: rotate(180deg); }
+        .promo-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .promo-submenu.open { max-height: 200px; }
+        .sub-item { padding-right: 55px; background: #f9f6ff; }
+        .sub-item:hover { background: #f0ebfa; }
         .footer {
             text-align: center;
             color: #999;
@@ -237,14 +249,32 @@
 
             <div class="section-header">Promotions</div>
 
-            <a href="offers/offers.html" class="link-item">
+            <div class="link-item promo-toggle" onclick="togglePromos(this)">
                 <div class="link-icon promo">🎁</div>
                 <div class="link-info">
                     <h3>Our Promotions</h3>
                     <p>Customer & travel agent offers</p>
                 </div>
-                <div class="link-arrow">←</div>
-            </a>
+                <div class="link-arrow promo-arrow">▼</div>
+            </div>
+            <div class="promo-submenu">
+                <a href="offers/index.html" class="link-item sub-item">
+                    <div class="link-icon" style="background:#F7941D">🧳</div>
+                    <div class="link-info">
+                        <h3>عروض العملاء</h3>
+                        <p>Extra bag & discount offers</p>
+                    </div>
+                    <div class="link-arrow">←</div>
+                </a>
+                <a href="offers/travel-agents-en.html" class="link-item sub-item">
+                    <div class="link-icon" style="background:#462B73">💼</div>
+                    <div class="link-info">
+                        <h3>عروض الوكالات</h3>
+                        <p>Commission & agent offers</p>
+                    </div>
+                    <div class="link-arrow">←</div>
+                </a>
+            </div>
         </div>
 
         <div class="footer">
@@ -283,6 +313,12 @@
             }
         });
     })();
+    </script>
+    <script>
+    function togglePromos(el) {
+        el.classList.toggle('open');
+        el.nextElementSibling.classList.toggle('open');
+    }
     </script>
 </body>
 </html>
