@@ -423,22 +423,65 @@
             50% { transform: rotate(20deg); }
         }
 
-        /* Contact Airplane Animation */
+        /* ===== Runway Contact Button ===== */
+        .runway-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(180deg, #555 0%, #3a3a3a 25%, #2a2a2a 50%, #3a3a3a 75%, #555 100%);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-top: 2px solid rgba(247,148,29,0.5);
+            border-bottom: 2px solid rgba(247,148,29,0.5);
+        }
+        .runway-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 20px rgba(247,148,29,0.2);
+        }
+        .runway-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            width: 90%;
+            height: 2px;
+            background: repeating-linear-gradient(to right,
+                rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 10px,
+                transparent 10px, transparent 20px);
+            transform: translateY(-50%);
+        }
+        .runway-btn > * { position: relative; z-index: 1; }
+        .runway-btn .runway-text {
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            letter-spacing: 0.5px;
+        }
+
+        /* Contact Airplane Animation - Runway */
         .contact-plane {
-            animation: planePulse 1.5s ease-in-out infinite;
+            animation: planeIdle 2s ease-in-out infinite;
             cursor: pointer;
+            filter: drop-shadow(0 0 4px rgba(247,148,29,0.6));
         }
         .contact-plane.takeoff {
-            animation: planeFly 1.5s ease-in-out forwards !important;
+            animation: planeFly 1.5s ease-in forwards !important;
         }
-        @keyframes planePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+        @keyframes planeIdle {
+            0%, 100% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(-3px) scale(1.05); }
         }
         @keyframes planeFly {
             0% { transform: translate(0, 0) scale(1); opacity: 1; }
-            30% { transform: translate(-50px, 0) scale(1.2); opacity: 1; }
-            100% { transform: translate(-150px, -100px) scale(2.5); opacity: 0; }
+            40% { transform: translate(-60px, 0) scale(1.15); opacity: 1; }
+            65% { transform: translate(-110px, -20px) rotate(-10deg) scale(1.5); opacity: 1; }
+            100% { transform: translate(-200px, -100px) rotate(-18deg) scale(2.2); opacity: 0; }
         }
 
         /* Contact Arrow (SVG) */
@@ -1330,9 +1373,9 @@
 
             <div class="terms-contact">
                 <span style="font-size: 13px; color: #444;">لمزيد من الاستفسارات أو الدعم الفني:</span>
-                <a href="https://aircairo.com/en-sa/office-contacts" target="_blank" onclick="planeTakeoff(event, this)" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #F7941D, #ff6b00); color: #fff; padding: 8px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 12px rgba(247,148,29,0.3); transition: transform 0.2s;">
-                    <img src="contact-btn.png" alt="" class="contact-plane" style="height: 22px; width: auto;">
-                    تواصل مع فروعنا
+                <a href="https://aircairo.com/en-sa/office-contacts" target="_blank" onclick="planeTakeoff(event, this)" class="runway-btn">
+                    <img src="contact-btn.png" alt="" class="contact-plane" style="height: 24px; width: auto;">
+                    <span class="runway-text">تواصل مع فروعنا</span>
                 </a>
             </div>
         </div>
