@@ -765,7 +765,7 @@
             margin-bottom: 15px;
         }
         .terms-list {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
             text-align: left;
             color: #444;
@@ -784,6 +784,51 @@
             position: absolute;
             left: 0;
             color: #F7941D;
+        }
+        .terms-group-header {
+            font-weight: 700;
+            color: #462B73;
+            font-size: 14px;
+            margin: 18px 0 8px;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, #f8f6ff 0%, #f0ebfa 100%);
+            border-radius: 8px;
+            border-left: 3px solid #462B73;
+        }
+        .terms-group-header:first-child { margin-top: 0; }
+        .terms-sub {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0 15px;
+        }
+        .terms-sub li {
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+            font-size: 13px;
+        }
+        .terms-sub li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: #F7941D;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .terms-general {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .terms-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f6ff 0%, #f0ebfa 100%);
+            border-radius: 12px;
         }
 
         /* Footer */
@@ -1244,33 +1289,45 @@
     <!-- Terms Section -->
     <div class="terms-section">
         <h3 class="terms-title">Terms & Conditions - Information for Agencies</h3>
-        <ul class="terms-list">
-            <li><strong>📋 Commission Policy:</strong></li>
-            <li style="padding-left: 40px;">• Commission Code: <strong>SACOMMISSION</strong></li>
-            <li style="padding-left: 40px;">• Pricing Command: <strong>FXP/R,U</strong></li>
-            <li style="padding-left: 40px;">• Commission Rate: <strong>15%</strong> (Except Jeddah-Madinah-Yanbu: 10%)</li>
-            <li style="padding-left: 40px;">• Sale & Travel Period: <strong>January 15, 2026 to March 15, 2026</strong></li>
+        <div class="terms-list">
+            <div class="terms-group-header">📋 Commission Policy</div>
+            <ul class="terms-sub">
+                <li>Commission Code: <strong>SACOMMISSION</strong></li>
+                <li>Pricing Command: <strong>FXP/R,U</strong></li>
+                <li>Commission Rate: <strong>15%</strong> (Except Jeddah - Madinah - Yanbu: <strong>10%</strong>)</li>
+                <li>Sale & Travel Period: <strong>January 15, 2026</strong> to <strong>March 15, 2026</strong></li>
+            </ul>
 
-            <li style="margin-top: 15px;"><strong>🧳 Offer 1 (299 SAR Bag):</strong></li>
-            <li style="padding-left: 40px;">• Routes: Borg El Arab (Alexandria) and Assiut</li>
-            <li style="padding-left: 40px;">• Weight: One extra bag 23 KG</li>
-            <li style="padding-left: 40px;">• Amadeus Command: <strong>SRPBAG</strong></li>
+            <div class="terms-group-header">🧳 Offer 1 — Extra Bag (299 SAR)</div>
+            <ul class="terms-sub">
+                <li>Routes: Borg El Arab (Alexandria) and Assiut</li>
+                <li>Weight: One extra bag up to 23 KG</li>
+                <li>Amadeus Command: <strong>SRPBAG</strong></li>
+            </ul>
 
-            <li style="margin-top: 15px;"><strong>⚖️ Offer 2 (50% Discount):</strong></li>
-            <li style="padding-left: 40px;">• Routes: All flights to Cairo only</li>
-            <li style="padding-left: 40px;">• Discount: 50% on every extra kilogram</li>
-            <li style="padding-left: 40px;">• General Amadeus Command: <strong>SRXBAG-TTL[XX]KG1PC</strong></li>
-            <li style="padding-left: 40px;">• Example for 20 KG: <strong>SRXBAG-TTL20KG1PC</strong></li>
-            <li style="padding-left: 40px;">• Example for 10 KG: <strong>SRXBAG-TTL10KG1PC</strong></li>
+            <div class="terms-group-header">⚖️ Offer 2 — 50% Discount</div>
+            <ul class="terms-sub">
+                <li>Routes: All flights to Cairo only</li>
+                <li>Discount: 50% on every extra kilogram</li>
+                <li>General Amadeus Command: <strong>SRXBAG-TTL[XX]KG1PC</strong></li>
+                <li>Example for 20 KG: <strong>SRXBAG-TTL20KG1PC</strong></li>
+                <li>Example for 10 KG: <strong>SRXBAG-TTL10KG1PC</strong></li>
+            </ul>
 
-            <li style="margin-top: 15px;">All offers apply to flights (Saudi Arabia → Egypt) only.</li>
-            <li>Offers can be added during booking or after ticket issuance up to 8 hours before departure - subject to availability.</li>
-            <li>Air Cairo reserves the right to modify or cancel offers according to approved policies.</li>
-            <li style="display: flex; flex-wrap: wrap; align-items: flex-start; margin-top: 15px;">
-                <span style="flex: 1;">For more inquiries or technical support, please contact our offices:</span>
-                <span style="display: flex; align-items: center; gap: 5px; margin-right: 20px; align-self: flex-end;"><svg class="contact-arrow" viewBox="0 0 165 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#F7941D;stop-opacity:1" /><stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" /></linearGradient><filter id="arrowShadow"><feGaussianBlur in="SourceAlpha" stdDeviation="3"/><feOffset dx="0" dy="3" result="offsetblur"/><feComponentTransfer><feFuncA type="linear" slope="0.4"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polygon points="150,30 135,20 135,40" fill="url(#arrowGradient)" filter="url(#arrowShadow)" stroke="#D67A0F" stroke-width="1.5"/><rect x="15" y="15" width="120" height="30" rx="15" ry="15" fill="url(#arrowGradient)" filter="url(#arrowShadow)" stroke="#D67A0F" stroke-width="1.5"/><text x="75" y="35" font-family="Cairo, Arial, sans-serif" font-size="14" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="middle">Contact Us</text></svg><a href="https://aircairo.com/en-sa/office-contacts" target="_blank" style="display: inline-block; vertical-align: middle;" onclick="planeTakeoff(event, this)"><img src="contact-btn.png" alt="Contact Us" class="contact-plane" style="height: 30px; width: auto; margin-left: 5px;"></a></span>
-            </li>
-        </ul>
+            <ul class="terms-list terms-general">
+                <li>All offers apply to flights (Saudi Arabia → Egypt) only.</li>
+                <li>Offers can be added during booking or after ticket issuance up to 8 hours before departure — subject to availability.</li>
+                <li>Air Cairo reserves the right to modify or cancel offers according to approved policies.</li>
+            </ul>
+
+            <div class="terms-contact">
+                <span style="font-size: 13px; color: #444;">For inquiries or technical support:</span>
+                <a href="https://aircairo.com/en-sa/office-contacts" target="_blank" onclick="planeTakeoff(event, this)" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #F7941D, #ff6b00); color: #fff; padding: 8px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 12px rgba(247,148,29,0.3); transition: transform 0.2s;">
+                    <img src="contact-btn.png" alt="" class="contact-plane" style="height: 22px; width: auto;">
+                    Contact Our Offices
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
