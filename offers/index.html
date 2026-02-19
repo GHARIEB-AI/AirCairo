@@ -712,18 +712,26 @@
 
         /* Terms */
         .terms-section {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 30px 25px;
             background: #fff;
-            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+            border: 2px solid #f0ebfa;
             text-align: center;
         }
         .terms-title {
             color: #462B73;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #F7941D;
+            display: inline-block;
         }
         .terms-list {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
             text-align: right;
             color: #444;
@@ -742,6 +750,33 @@
             position: absolute;
             right: 0;
             color: #F7941D;
+        }
+        .terms-group-header {
+            font-weight: 700;
+            color: #462B73;
+            font-size: 14px;
+            margin: 18px 0 8px;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, #f8f6ff 0%, #f0ebfa 100%);
+            border-radius: 8px;
+            border-right: 3px solid #462B73;
+            text-align: right;
+        }
+        .terms-group-header:first-child { margin-top: 0; }
+        .terms-general {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .terms-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f6ff 0%, #f0ebfa 100%);
+            border-radius: 12px;
         }
 
         /* Footer */
@@ -813,8 +848,8 @@
             .qr-section { padding: 60px 40px; }
             .qr-title { font-size: 26px; }
             #qrcode { transform: scale(1.2); }
-            .terms-section { padding: 40px; }
-            .terms-list { font-size: 15px; }
+            .terms-section { padding: 40px 35px; }
+            .terms-list { font-size: 14px; }
             .footer { padding: 18px 20px; }
             .footer-logo img { height: 56px; }
         }
@@ -868,9 +903,11 @@
             #qrcode { transform: scale(0.9); }
             .install-section { padding: 20px 15px; }
             .install-btn { padding: 12px 25px; font-size: 14px; }
-            .terms-section { padding: 20px 15px; }
-            .terms-title { font-size: 15px; }
+            .terms-section { margin: 20px 10px; padding: 20px 15px; }
+            .terms-title { font-size: 16px; }
             .terms-list { font-size: 12px; }
+            .terms-group-header { font-size: 13px; }
+            .terms-contact { flex-direction: column; gap: 8px; }
             .footer { padding: 20px 15px; }
             .footer-logo { font-size: 22px; }
             .toast { font-size: 13px; padding: 12px 25px; }
@@ -1133,16 +1170,33 @@
     <!-- Terms Section -->
     <div class="terms-section">
         <h3 class="terms-title">الشروط والأحكام</h3>
-        <ul class="terms-list">
-            <li>العروض تطبق على الرحلات (السعودية ← مصر) فقط، ولا تطبق على الرحلات (مصر ← السعودية).</li>
-            <li><strong>العرض الأول (299 ريال):</strong> هذا العرض على رحلات برج العرب (الإسكندرية) و(أسيوط) حقيبة إضافية واحدة بوزن 23 كجم لكل مسافر بالغ أو طفل فقط.</li>
-            <li><strong>العرض الثاني (خصم 50%):</strong> يسري هذا العرض على جميع الرحلات من السعودية الي القاهرة فقط.</li>
-            <li>تحتفظ إير كايرو بحق تعديل أو إلغاء العروض وفقًا للسياسات المعتمدة ولا يؤثر ذلك على الطلبات المؤكدة والمدفوعة.</li>
-            <li style="display: flex; flex-wrap: wrap; align-items: flex-start; direction: rtl;">
-                <span style="flex: 1;">يمكن شراء العروض أثناء الحجز أو إضافتها بعد إصدار التذكرة حتى 8 ساعات قبل موعد الإقلاع - وذلك وفقًا للتوافر - عبر الموقع الرسمي أو أي فرع من فروع إير كايرو.</span>
-                <span style="display: flex; align-items: center; gap: 5px; margin-left: 20px; align-self: flex-end;"><svg class="contact-arrow" viewBox="0 0 165 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#F7941D;stop-opacity:1" /><stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" /></linearGradient><filter id="arrowShadow"><feGaussianBlur in="SourceAlpha" stdDeviation="3"/><feOffset dx="0" dy="3" result="offsetblur"/><feComponentTransfer><feFuncA type="linear" slope="0.4"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polygon points="15,30 30,20 30,40" fill="url(#arrowGradient)" filter="url(#arrowShadow)" stroke="#D67A0F" stroke-width="1.5"/><rect x="30" y="15" width="120" height="30" rx="15" ry="15" fill="url(#arrowGradient)" filter="url(#arrowShadow)" stroke="#D67A0F" stroke-width="1.5"/><text x="90" y="35" font-family="Cairo, Arial, sans-serif" font-size="14" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="middle">تواصل مع فروعنا</text></svg><a href="https://aircairo.com/en-sa/office-contacts" target="_blank" style="display: inline-block; vertical-align: middle;" onclick="planeTakeoff(event, this)"><img src="contact-btn.png" alt="تواصل معنا" class="contact-plane" style="height: 30px; width: auto; margin-right: 5px;"></a></span>
-            </li>
-        </ul>
+        <div class="terms-list">
+            <div class="terms-group-header">🧳 العرض الأول — شنطة إضافية (299 ريال)</div>
+            <ul class="terms-list" style="margin-bottom: 0;">
+                <li>هذا العرض على رحلات <strong>برج العرب</strong> (الإسكندرية) و<strong>أسيوط</strong> فقط.</li>
+                <li>حقيبة إضافية واحدة بوزن 23 كجم لكل مسافر بالغ أو طفل.</li>
+            </ul>
+
+            <div class="terms-group-header">⚖️ العرض الثاني — خصم 50% على الوزن الزائد</div>
+            <ul class="terms-list" style="margin-bottom: 0;">
+                <li>يسري على جميع الرحلات من السعودية إلى <strong>القاهرة</strong> فقط.</li>
+                <li>خصم 50% على كل كيلو وزن زائد.</li>
+            </ul>
+
+            <ul class="terms-list terms-general">
+                <li>العروض تطبق على الرحلات (السعودية ← مصر) فقط، ولا تطبق على الرحلات (مصر ← السعودية).</li>
+                <li>يمكن شراء العروض أثناء الحجز أو إضافتها بعد إصدار التذكرة حتى 8 ساعات قبل موعد الإقلاع — وذلك وفقًا للتوافر.</li>
+                <li>تحتفظ إير كايرو بحق تعديل أو إلغاء العروض وفقًا للسياسات المعتمدة ولا يؤثر ذلك على الطلبات المؤكدة والمدفوعة.</li>
+            </ul>
+
+            <div class="terms-contact">
+                <span style="font-size: 13px; color: #444;">للحجز أو الاستفسار:</span>
+                <a href="https://aircairo.com/en-sa/office-contacts" target="_blank" onclick="planeTakeoff(event, this)" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #F7941D, #ff6b00); color: #fff; padding: 8px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 12px rgba(247,148,29,0.3); transition: transform 0.2s;">
+                    <img src="contact-btn.png" alt="" class="contact-plane" style="height: 22px; width: auto;">
+                    تواصل مع فروعنا
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
