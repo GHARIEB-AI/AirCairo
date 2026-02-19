@@ -427,40 +427,58 @@
         .runway-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: linear-gradient(180deg, #555 0%, #3a3a3a 25%, #2a2a2a 50%, #3a3a3a 75%, #555 100%);
+            justify-content: center;
+            gap: 14px;
+            background:
+                /* Center dashed line */
+                repeating-linear-gradient(to right,
+                    rgba(255,255,255,0.45) 0px, rgba(255,255,255,0.45) 14px,
+                    transparent 14px, transparent 28px)
+                    center center / 92% 3px no-repeat,
+                /* Asphalt surface */
+                linear-gradient(180deg, #555 0%, #3d3d3d 20%, #2a2a2a 50%, #3d3d3d 80%, #555 100%);
             color: #fff;
-            padding: 14px 28px;
-            border-radius: 6px;
+            padding: 20px 40px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 14px;
             position: relative;
             overflow: visible;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-top: 3px solid rgba(255,255,255,0.75);
+            border-bottom: 3px solid rgba(255,255,255,0.75);
+            border-left: none;
+            border-right: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
             transition: transform 0.2s, box-shadow 0.2s;
-            border-top: 2px solid rgba(247,148,29,0.5);
-            border-bottom: 2px solid rgba(247,148,29,0.5);
         }
         .runway-btn:hover {
             transform: scale(1.04);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4), 0 0 20px rgba(247,148,29,0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 25px rgba(247,148,29,0.2);
         }
-        .runway-btn::before {
+        /* Green grass strips + orange edge lights */
+        .runway-btn::before,
+        .runway-btn::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 5%;
-            width: 90%;
-            height: 2px;
-            background: repeating-linear-gradient(to right,
-                rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 10px,
-                transparent 10px, transparent 20px);
-            transform: translateY(-50%);
+            top: -3px;
+            bottom: -3px;
+            width: 8px;
+            background: linear-gradient(180deg, #4a9e4a, #2d7a2d, #4a9e4a);
+        }
+        .runway-btn::before {
+            left: -8px;
+            border-radius: 3px 0 0 3px;
+            border-right: 2px dotted rgba(247,148,29,0.8);
+        }
+        .runway-btn::after {
+            right: -8px;
+            border-radius: 0 3px 3px 0;
+            border-left: 2px dotted rgba(247,148,29,0.8);
         }
         .runway-btn > * { position: relative; z-index: 1; }
         .runway-btn .runway-text {
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.7);
             letter-spacing: 0.5px;
         }
 
@@ -468,14 +486,13 @@
         .contact-plane {
             animation: planeIdle 2s ease-in-out infinite;
             cursor: pointer;
-            filter: drop-shadow(0 0 4px rgba(247,148,29,0.6));
         }
         .contact-plane.takeoff {
             animation: planeFly 1.5s ease-in forwards !important;
         }
         @keyframes planeIdle {
-            0%, 100% { transform: translateX(0) scale(1); }
-            50% { transform: translateX(-3px) scale(1.05); }
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(247,148,29,0.5)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(247,148,29,0.9)); }
         }
         @keyframes planeFly {
             0% { transform: translate(0, 0) scale(1); opacity: 1; }
@@ -1030,9 +1047,14 @@
                 text-align: center;
             }
             .runway-btn {
-                padding: 12px 22px;
+                padding: 16px 28px;
                 font-size: 12px;
+                gap: 10px;
             }
+            .runway-btn::before,
+            .runway-btn::after { width: 6px; }
+            .runway-btn::before { left: -6px; }
+            .runway-btn::after { right: -6px; }
             .footer { padding: 20px 15px; }
             .footer-logo { font-size: 22px; }
             .toast { font-size: 13px; padding: 12px 25px; }
@@ -1383,7 +1405,7 @@
             <div class="terms-contact">
                 <span style="font-size: 13px; color: #444;">لمزيد من الاستفسارات أو الدعم الفني:</span>
                 <a href="https://aircairo.com/en-sa/office-contacts" target="_blank" onclick="planeTakeoff(event, this)" class="runway-btn">
-                    <img src="contact-btn.png" alt="" class="contact-plane" style="height: 24px; width: auto;">
+                    <img src="contact-btn.png" alt="" class="contact-plane" style="height: 32px; width: auto;">
                     <span class="runway-text">تواصل مع فروعنا</span>
                 </a>
             </div>
