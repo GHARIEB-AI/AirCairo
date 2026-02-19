@@ -382,71 +382,108 @@
             50% { transform: rotate(20deg); }
         }
 
-        /* ===== Runway Contact Button ===== */
-        .runway-btn {
-            display: inline-flex;
+        /* ===== Runway Contact Section ===== */
+        .runway-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .runway-link:hover { transform: scale(1.03); }
+
+        .runway-strip {
+            position: relative;
+            width: 360px;
+            max-width: 85vw;
+            height: 76px;
+            background:
+                /* Edge line - top */
+                linear-gradient(to right, rgba(255,255,255,0.75), rgba(255,255,255,0.75))
+                    0 4px / 100% 2px no-repeat,
+                /* Edge line - bottom */
+                linear-gradient(to right, rgba(255,255,255,0.75), rgba(255,255,255,0.75))
+                    0 calc(100% - 4px) / 100% 2px no-repeat,
+                /* Center dashed line */
+                repeating-linear-gradient(to right,
+                    rgba(255,255,255,0.6) 0px, rgba(255,255,255,0.6) 22px,
+                    transparent 22px, transparent 40px)
+                    center center / 56% 3px no-repeat,
+                /* Aiming bars - left top */
+                linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4))
+                    72px 11px / 6px 20px no-repeat,
+                /* Aiming bars - left bottom */
+                linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4))
+                    72px calc(100% - 11px - 20px) / 6px 20px no-repeat,
+                /* Aiming bars - right top */
+                linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4))
+                    calc(100% - 78px) 11px / 6px 20px no-repeat,
+                /* Aiming bars - right bottom */
+                linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4))
+                    calc(100% - 78px) calc(100% - 11px - 20px) / 6px 20px no-repeat,
+                /* Asphalt surface */
+                linear-gradient(180deg, #555 0%, #444 35%, #3a3a3a 65%, #444 100%);
+            border-radius: 4px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.05);
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 16px;
-            background:
-                /* Left threshold bars */
-                repeating-linear-gradient(180deg,
-                    rgba(50,50,50,0.4) 0px, rgba(50,50,50,0.4) 5px,
-                    transparent 5px, transparent 10px)
-                    14px center / 14px 76% no-repeat,
-                /* Right threshold bars */
-                repeating-linear-gradient(180deg,
-                    rgba(50,50,50,0.4) 0px, rgba(50,50,50,0.4) 5px,
-                    transparent 5px, transparent 10px)
-                    calc(100% - 14px) center / 14px 76% no-repeat,
-                /* Center dashed line - amber/orange */
-                repeating-linear-gradient(to right,
-                    rgba(247,148,29,0.5) 0px, rgba(247,148,29,0.5) 18px,
-                    transparent 18px, transparent 34px)
-                    center center / 68% 4px no-repeat,
-                /* Runway surface */
-                linear-gradient(180deg, #e5e0ec 0%, #ddd8e5 50%, #e5e0ec 100%);
-            color: #333;
-            padding: 24px 62px;
-            border-radius: 2px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            position: relative;
-            overflow: visible;
-            border-top: 2.5px solid rgba(50,50,50,0.3);
-            border-bottom: 2.5px solid rgba(50,50,50,0.3);
-            border-left: none;
-            border-right: none;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .runway-btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 4px 18px rgba(0,0,0,0.12), 0 0 15px rgba(247,148,29,0.1);
-        }
-        /* Runway number */
-        .runway-btn::after {
-            content: '36';
-            position: absolute;
-            right: 34px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 16px;
-            font-weight: 900;
-            color: rgba(50,50,50,0.12);
-            letter-spacing: 2px;
-            font-family: 'Arial Black', Arial, sans-serif;
-            z-index: 0;
-        }
-        .runway-btn > * { position: relative; z-index: 1; }
-        .runway-btn .runway-text {
-            text-shadow: none;
-            letter-spacing: 0.5px;
+            overflow: hidden;
         }
 
-        /* Contact Airplane Animation - Runway */
+        /* Threshold bars (piano keys) - left */
+        .runway-strip::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 12%;
+            width: 20px;
+            height: 76%;
+            background: repeating-linear-gradient(180deg,
+                rgba(255,255,255,0.8) 0px, rgba(255,255,255,0.8) 5px,
+                transparent 5px, transparent 9px);
+        }
+        /* Threshold bars (piano keys) - right */
+        .runway-strip::after {
+            content: '';
+            position: absolute;
+            right: 16px;
+            top: 12%;
+            width: 20px;
+            height: 76%;
+            background: repeating-linear-gradient(180deg,
+                rgba(255,255,255,0.8) 0px, rgba(255,255,255,0.8) 5px,
+                transparent 5px, transparent 9px);
+        }
+
+        .runway-number {
+            position: absolute;
+            right: 48px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.22);
+            font-family: 'Arial Black', Arial, sans-serif;
+            letter-spacing: 3px;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .runway-cta {
+            color: #462B73;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            transition: color 0.2s;
+        }
+        .runway-link:hover .runway-cta { color: #F7941D; }
+
+        /* Contact Airplane Animation */
         .contact-plane {
+            position: relative;
+            z-index: 2;
             animation: planeIdle 2s ease-in-out infinite;
             cursor: pointer;
         }
@@ -454,14 +491,14 @@
             animation: planeFly 1.5s ease-in forwards !important;
         }
         @keyframes planeIdle {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(247,148,29,0.6)); }
-            50% { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(247,148,29,1)); }
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(247,148,29,0.7)); }
+            50% { transform: scale(1.12); filter: drop-shadow(0 0 14px rgba(247,148,29,1)); }
         }
         @keyframes planeFly {
             0% { transform: translate(0, 0) scale(1); opacity: 1; }
-            40% { transform: translate(-80px, 0) scale(1.2); opacity: 1; }
-            65% { transform: translate(-140px, -25px) rotate(-10deg) scale(1.6); opacity: 1; }
-            100% { transform: translate(-250px, -120px) rotate(-18deg) scale(2.5); opacity: 0; }
+            40% { transform: translate(80px, 0) scale(1.2); opacity: 1; }
+            65% { transform: translate(140px, -25px) rotate(10deg) scale(1.6); opacity: 1; }
+            100% { transform: translate(250px, -120px) rotate(18deg) scale(2.5); opacity: 0; }
         }
 
         /* Contact Arrow (SVG) */
@@ -834,11 +871,11 @@
         }
         .terms-contact {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
-            padding: 15px;
+            gap: 14px;
+            margin-top: 24px;
+            padding: 22px 15px;
             background: linear-gradient(135deg, #f8f6ff 0%, #f0ebfa 100%);
             border-radius: 12px;
         }
@@ -971,9 +1008,10 @@
             .terms-title { font-size: 16px; }
             .terms-list { font-size: 12px; }
             .terms-group-header { font-size: 13px; }
-            .terms-contact { flex-direction: column; gap: 10px; text-align: center; }
-            .runway-btn { padding: 20px 45px; font-size: 12px; gap: 12px; }
-            .runway-btn::after { right: 22px; font-size: 13px; }
+            .terms-contact { gap: 10px; padding: 16px 10px; }
+            .runway-strip { height: 64px; }
+            .runway-number { font-size: 18px; right: 42px; }
+            .runway-cta { font-size: 13px; }
             .footer { padding: 20px 15px; }
             .footer-logo { font-size: 22px; }
             .toast { font-size: 13px; padding: 12px 25px; }
@@ -1256,10 +1294,13 @@
             </ul>
 
             <div class="terms-contact">
-                <span style="font-size: 13px; color: #444;">للحجز أو الاستفسار:</span>
-                <a href="https://aircairo.com/en-sa/office-contacts" target="_blank" onclick="planeTakeoff(event, this)" class="runway-btn">
-                    <img src="contact-btn.png" alt="" class="contact-plane" style="height: 44px; width: auto;">
-                    <span class="runway-text">تواصل مع فروعنا</span>
+                <span style="font-size: 13px; color: #555;">للحجز أو الاستفسار:</span>
+                <a href="https://aircairo.com/en-sa/office-contacts" target="_blank" onclick="planeTakeoff(event, this)" class="runway-link">
+                    <div class="runway-strip">
+                        <span class="runway-number">36</span>
+                        <img src="contact-btn.png" alt="" class="contact-plane" style="height: 52px; width: auto;">
+                    </div>
+                    <span class="runway-cta">تواصل مع فروعنا</span>
                 </a>
             </div>
         </div>
