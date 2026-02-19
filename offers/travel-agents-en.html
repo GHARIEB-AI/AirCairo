@@ -429,23 +429,33 @@
             justify-content: center;
             gap: 16px;
             background:
-                /* Center dashed line - dark on light */
+                /* Left threshold bars */
+                repeating-linear-gradient(180deg,
+                    rgba(50,50,50,0.4) 0px, rgba(50,50,50,0.4) 5px,
+                    transparent 5px, transparent 10px)
+                    14px center / 14px 76% no-repeat,
+                /* Right threshold bars */
+                repeating-linear-gradient(180deg,
+                    rgba(50,50,50,0.4) 0px, rgba(50,50,50,0.4) 5px,
+                    transparent 5px, transparent 10px)
+                    calc(100% - 14px) center / 14px 76% no-repeat,
+                /* Center dashed line - amber/orange */
                 repeating-linear-gradient(to right,
-                    rgba(50,50,50,0.5) 0px, rgba(50,50,50,0.5) 18px,
+                    rgba(247,148,29,0.5) 0px, rgba(247,148,29,0.5) 18px,
                     transparent 18px, transparent 34px)
-                    center center / 75% 4px no-repeat,
-                /* Runway surface - light, close to page background */
+                    center center / 68% 4px no-repeat,
+                /* Runway surface */
                 linear-gradient(180deg, #e5e0ec 0%, #ddd8e5 50%, #e5e0ec 100%);
             color: #333;
-            padding: 24px 60px;
+            padding: 24px 62px;
             border-radius: 2px;
             text-decoration: none;
             font-weight: 700;
             font-size: 14px;
             position: relative;
             overflow: visible;
-            border-top: 2.5px solid rgba(50,50,50,0.35);
-            border-bottom: 2.5px solid rgba(50,50,50,0.35);
+            border-top: 2.5px solid rgba(50,50,50,0.3);
+            border-bottom: 2.5px solid rgba(50,50,50,0.3);
             border-left: none;
             border-right: none;
             box-shadow: 0 2px 12px rgba(0,0,0,0.08);
@@ -455,20 +465,20 @@
             transform: scale(1.04);
             box-shadow: 0 4px 18px rgba(0,0,0,0.12), 0 0 15px rgba(247,148,29,0.1);
         }
-        /* Threshold markings at runway ends - dark */
-        .runway-btn::before,
+        /* Runway number */
         .runway-btn::after {
-            content: '';
+            content: '36';
             position: absolute;
-            top: 12%;
-            bottom: 12%;
-            width: 12px;
-            background: repeating-linear-gradient(180deg,
-                rgba(50,50,50,0.45) 0px, rgba(50,50,50,0.45) 4px,
-                transparent 4px, transparent 8px);
+            right: 34px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            font-weight: 900;
+            color: rgba(50,50,50,0.12);
+            letter-spacing: 2px;
+            font-family: 'Arial Black', Arial, sans-serif;
+            z-index: 0;
         }
-        .runway-btn::before { left: 12px; }
-        .runway-btn::after { right: 12px; }
         .runway-btn > * { position: relative; z-index: 1; }
         .runway-btn .runway-text {
             text-shadow: none;
@@ -1045,8 +1055,7 @@
                 font-size: 12px;
                 gap: 12px;
             }
-            .runway-btn::before { left: 8px; width: 10px; }
-            .runway-btn::after { right: 8px; width: 10px; }
+            .runway-btn::after { right: 22px; font-size: 13px; }
             .footer { padding: 20px 15px; }
             .footer-logo { font-size: 22px; }
             .toast { font-size: 13px; padding: 12px 25px; }
