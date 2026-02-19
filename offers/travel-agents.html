@@ -432,53 +432,47 @@
             background:
                 /* Center dashed line */
                 repeating-linear-gradient(to right,
-                    rgba(255,255,255,0.45) 0px, rgba(255,255,255,0.45) 14px,
-                    transparent 14px, transparent 28px)
-                    center center / 92% 3px no-repeat,
+                    rgba(255,255,255,0.6) 0px, rgba(255,255,255,0.6) 16px,
+                    transparent 16px, transparent 32px)
+                    center center / 78% 3px no-repeat,
                 /* Asphalt surface */
-                linear-gradient(180deg, #555 0%, #3d3d3d 20%, #2a2a2a 50%, #3d3d3d 80%, #555 100%);
+                linear-gradient(180deg, #6a6a6a 0%, #5e5e5e 30%, #555 50%, #5e5e5e 70%, #6a6a6a 100%);
             color: #fff;
-            padding: 20px 40px;
-            border-radius: 4px;
+            padding: 22px 55px;
+            border-radius: 2px;
             text-decoration: none;
             font-weight: 700;
             font-size: 14px;
             position: relative;
             overflow: visible;
-            border-top: 3px solid rgba(255,255,255,0.75);
-            border-bottom: 3px solid rgba(255,255,255,0.75);
+            border-top: 2px solid rgba(255,255,255,0.65);
+            border-bottom: 2px solid rgba(255,255,255,0.65);
             border-left: none;
             border-right: none;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .runway-btn:hover {
             transform: scale(1.04);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 25px rgba(247,148,29,0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3), 0 0 20px rgba(247,148,29,0.15);
         }
-        /* Green grass strips + orange edge lights */
+        /* Threshold markings at runway ends */
         .runway-btn::before,
         .runway-btn::after {
             content: '';
             position: absolute;
-            top: -3px;
-            bottom: -3px;
-            width: 8px;
-            background: linear-gradient(180deg, #4a9e4a, #2d7a2d, #4a9e4a);
+            top: 15%;
+            bottom: 15%;
+            width: 10px;
+            background: repeating-linear-gradient(180deg,
+                rgba(255,255,255,0.65) 0px, rgba(255,255,255,0.65) 3px,
+                transparent 3px, transparent 7px);
         }
-        .runway-btn::before {
-            left: -8px;
-            border-radius: 3px 0 0 3px;
-            border-right: 2px dotted rgba(247,148,29,0.8);
-        }
-        .runway-btn::after {
-            right: -8px;
-            border-radius: 0 3px 3px 0;
-            border-left: 2px dotted rgba(247,148,29,0.8);
-        }
+        .runway-btn::before { left: 12px; }
+        .runway-btn::after { right: 12px; }
         .runway-btn > * { position: relative; z-index: 1; }
         .runway-btn .runway-text {
-            text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
             letter-spacing: 0.5px;
         }
 
@@ -1047,14 +1041,12 @@
                 text-align: center;
             }
             .runway-btn {
-                padding: 16px 28px;
+                padding: 18px 40px;
                 font-size: 12px;
                 gap: 10px;
             }
-            .runway-btn::before,
-            .runway-btn::after { width: 6px; }
-            .runway-btn::before { left: -6px; }
-            .runway-btn::after { right: -6px; }
+            .runway-btn::before { left: 8px; width: 8px; }
+            .runway-btn::after { right: 8px; width: 8px; }
             .footer { padding: 20px 15px; }
             .footer-logo { font-size: 22px; }
             .toast { font-size: 13px; padding: 12px 25px; }
