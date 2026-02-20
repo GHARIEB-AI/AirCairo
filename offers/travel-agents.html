@@ -522,25 +522,27 @@
         }
         .runway-link:hover .runway-cta { color: #F7941D; }
 
-        /* Contact Airplane Animation */
+        /* Contact Airplane Animation - flipped (nose points left) */
         .contact-plane {
             position: relative;
             z-index: 2;
             animation: planeIdle 2s ease-in-out infinite;
             cursor: pointer;
+            margin-left: auto;
+            margin-right: 12%;
         }
         .contact-plane.takeoff {
             animation: planeFly 1.5s ease-in forwards !important;
         }
         @keyframes planeIdle {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(247,148,29,0.7)); }
-            50% { transform: scale(1.12); filter: drop-shadow(0 0 14px rgba(247,148,29,1)); }
+            0%, 100% { transform: scaleX(-1) scale(1); filter: drop-shadow(0 0 8px rgba(247,148,29,0.7)); }
+            50% { transform: scaleX(-1) scale(1.12); filter: drop-shadow(0 0 14px rgba(247,148,29,1)); }
         }
         @keyframes planeFly {
-            0% { transform: translate(0, 0) scale(1); opacity: 1; }
-            40% { transform: translate(80px, 0) scale(1.2); opacity: 1; }
-            65% { transform: translate(140px, -25px) rotate(10deg) scale(1.6); opacity: 1; }
-            100% { transform: translate(250px, -120px) rotate(18deg) scale(2.5); opacity: 0; }
+            0% { transform: scaleX(-1) translate(0, 0) scale(1); opacity: 1; }
+            40% { transform: scaleX(-1) translate(-80px, 0) scale(1.2); opacity: 1; }
+            65% { transform: scaleX(-1) translate(-140px, -25px) rotate(-10deg) scale(1.6); opacity: 1; }
+            100% { transform: scaleX(-1) translate(-250px, -120px) rotate(-18deg) scale(2.5); opacity: 0; }
         }
 
         /* Contact Arrow (SVG) */

@@ -422,8 +422,8 @@
                 /* Aiming bars - right bottom */
                 linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4))
                     calc(100% - 78px) calc(100% - 11px - 20px) / 6px 20px no-repeat,
-                /* Asphalt surface */
-                linear-gradient(180deg, #555 0%, #444 35%, #3a3a3a 65%, #444 100%);
+                /* Runway surface - purple theme */
+                linear-gradient(180deg, #5a3d8a 0%, #462B73 35%, #3b2563 65%, #462B73 100%);
             border-radius: 4px;
             box-shadow: 0 4px 18px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.05);
             display: flex;
@@ -459,17 +459,18 @@
 
         .runway-number {
             position: absolute;
-            right: 48px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 22px;
             font-weight: 900;
-            color: rgba(255,255,255,0.22);
+            color: rgba(255,255,255,0.25);
             font-family: 'Arial Black', Arial, sans-serif;
             letter-spacing: 3px;
             pointer-events: none;
             user-select: none;
         }
+        .runway-number-left { left: 48px; }
+        .runway-number-right { right: 48px; }
 
         .runway-cta {
             color: #462B73;
@@ -480,25 +481,27 @@
         }
         .runway-link:hover .runway-cta { color: #F7941D; }
 
-        /* Contact Airplane Animation */
+        /* Contact Airplane Animation - flipped (nose points left) */
         .contact-plane {
             position: relative;
             z-index: 2;
             animation: planeIdle 2s ease-in-out infinite;
             cursor: pointer;
+            margin-left: auto;
+            margin-right: 12%;
         }
         .contact-plane.takeoff {
             animation: planeFly 1.5s ease-in forwards !important;
         }
         @keyframes planeIdle {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(247,148,29,0.7)); }
-            50% { transform: scale(1.12); filter: drop-shadow(0 0 14px rgba(247,148,29,1)); }
+            0%, 100% { transform: scaleX(-1) scale(1); filter: drop-shadow(0 0 8px rgba(247,148,29,0.7)); }
+            50% { transform: scaleX(-1) scale(1.12); filter: drop-shadow(0 0 14px rgba(247,148,29,1)); }
         }
         @keyframes planeFly {
-            0% { transform: translate(0, 0) scale(1); opacity: 1; }
-            40% { transform: translate(80px, 0) scale(1.2); opacity: 1; }
-            65% { transform: translate(140px, -25px) rotate(10deg) scale(1.6); opacity: 1; }
-            100% { transform: translate(250px, -120px) rotate(18deg) scale(2.5); opacity: 0; }
+            0% { transform: scaleX(-1) translate(0, 0) scale(1); opacity: 1; }
+            40% { transform: scaleX(-1) translate(-80px, 0) scale(1.2); opacity: 1; }
+            65% { transform: scaleX(-1) translate(-140px, -25px) rotate(-10deg) scale(1.6); opacity: 1; }
+            100% { transform: scaleX(-1) translate(-250px, -120px) rotate(-18deg) scale(2.5); opacity: 0; }
         }
 
         /* Contact Arrow (SVG) */
@@ -1010,7 +1013,9 @@
             .terms-group-header { font-size: 13px; }
             .terms-contact { gap: 10px; padding: 16px 10px; }
             .runway-strip { height: 64px; }
-            .runway-number { font-size: 18px; right: 42px; }
+            .runway-number { font-size: 18px; }
+            .runway-number-left { left: 42px; }
+            .runway-number-right { right: 42px; }
             .runway-cta { font-size: 13px; }
             .footer { padding: 20px 15px; }
             .footer-logo { font-size: 22px; }
@@ -1297,8 +1302,9 @@
                 <span style="font-size: 13px; color: #555;">للحجز أو الاستفسار:</span>
                 <a href="https://aircairo.com/en-sa/office-contacts" target="_blank" onclick="planeTakeoff(event, this)" class="runway-link">
                     <div class="runway-strip">
-                        <span class="runway-number">36</span>
+                        <span class="runway-number runway-number-left">36</span>
                         <img src="contact-btn.png" alt="" class="contact-plane" style="height: 52px; width: auto;">
+                        <span class="runway-number runway-number-right">18</span>
                     </div>
                     <span class="runway-cta">تواصل مع فروعنا</span>
                 </a>
