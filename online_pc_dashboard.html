@@ -128,6 +128,18 @@
             color: #9ca3af;
             border: 1px solid rgba(156, 163, 175, 0.3);
         }
+        .offline-banner {
+            display: none;
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 11px;
+            text-align: center;
+            margin: 8px 15px 0;
+        }
+        .offline-banner.show { display: block; }
         /* Logo Text / Subtitle */
         .subtitle {
             text-align: center;
@@ -1469,6 +1481,7 @@
                 <p>Real-time monitoring dashboard</p>
             </div>
         </div>
+        <div class="offline-banner" id="offline-banner">Showing cached data from last run. Live data requires the extraction system to be running.</div>
 
         <!-- LIVE indicator - top right -->
         <div class="header-info">
@@ -1710,7 +1723,11 @@
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
         // - GitHub Pages: injected at runtime into the template placeholder
-        const API_BASE_OVERRIDE = '__API_BASE__';
+        const API_BASE_OVERRIDE = 'https://miniature-interface-ozone-passion.trycloudflare.com';
+        const NAMED_TUNNEL_URL = 'https://dashboard.ghariebel3ageb.com';
+        let _apiFallbackActive = false;
+        let _apiFailCount = 0;
+
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -1730,6 +1747,10 @@
             }
             return loc.origin;
         })();
+
+        function getActiveApiBase() {
+            return _apiFallbackActive ? NAMED_TUNNEL_URL : API_BASE;
+        }
 
         // ========== LIVE DATA STREAM - REAL DATA ==========
 
@@ -2603,12 +2624,12 @@
         }
 
         async function fetchStatus() {
+            const banner = document.getElementById('offline-banner');
             try {
-                // Use AbortController for 5-second timeout to fail fast when tunnel is dead
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-                const response = await fetch(API_BASE + '/status?t=' + Date.now(), {
+                const response = await fetch(getActiveApiBase() + '/status?t=' + Date.now(), {
                     cache: 'no-store',
                     signal: controller.signal
                 });
@@ -2616,11 +2637,23 @@
 
                 const data = await response.json();
                 isOnline = true;
+                _apiFailCount = 0;
                 lastData = data;
                 updateDashboard(data);
-                updateRealFlights();  // Update data stream with live data
+                updateRealFlights();
+                if (banner) banner.classList.remove('show');
             } catch (e) {
                 console.error('Fetch error:', e);
+                _apiFailCount++;
+
+                // After 2 failures on primary API, try named tunnel as fallback
+                if (!_apiFallbackActive && _apiFailCount >= 2 && API_BASE !== NAMED_TUNNEL_URL) {
+                    _apiFallbackActive = true;
+                    _apiFailCount = 0;
+                    console.log('[Dashboard] Switching to named tunnel fallback: ' + NAMED_TUNNEL_URL);
+                    return fetchStatus();
+                }
+
                 isOnline = false;
 
                 // If we have cached data from last run, use it
@@ -2628,10 +2661,11 @@
                     lastData = lastRunData;
                     updateDashboard(lastRunData);
                     updateRealFlights();
-                    // Status already updated by updateDashboard
+                    if (banner) banner.classList.add('show');
                 } else {
                     document.getElementById('run-status').textContent = 'Offline';
                     document.getElementById('run-status').className = 'run-status inactive';
+                    if (banner) banner.classList.add('show');
                 }
             }
         }

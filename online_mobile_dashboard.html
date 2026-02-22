@@ -112,6 +112,18 @@
             color: #fbbf24;
             border: 1px solid rgba(251, 191, 36, 0.4);
         }
+        .offline-banner {
+            display: none;
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 10px;
+            text-align: center;
+            margin: 6px 10px 0;
+        }
+        .offline-banner.show { display: block; }
         /* Logo Text - First letter colored */
         .logo-text {
             font-size: 18px;
@@ -651,6 +663,7 @@
                 <span class="first-letter">M</span>ARKET <span class="first-letter">I</span>NSIGHTS
             </div>
         </div>
+        <div class="offline-banner" id="offline-banner">Showing cached data from last run</div>
     </div>
 
     <!-- Overall Progress - Main Focus -->
@@ -801,7 +814,10 @@
             }, 1500);
         }
 
-        const API_BASE_OVERRIDE = '__API_BASE__';
+        const API_BASE_OVERRIDE = 'https://miniature-interface-ozone-passion.trycloudflare.com';
+        const NAMED_TUNNEL_URL = 'https://dashboard.ghariebel3ageb.com';
+        let _apiFallbackActive = false;
+
         const API_BASE = (() => {
             try {
                 if (API_BASE_OVERRIDE && !API_BASE_OVERRIDE.startsWith('__')) {
@@ -817,6 +833,11 @@
             }
             return loc.origin;
         })();
+
+        function getActiveApiBase() {
+            return _apiFallbackActive ? NAMED_TUNNEL_URL : API_BASE;
+        }
+
         let lastData = null;
         let lastRunData = null;
         let isOnline = false;
@@ -982,11 +1003,12 @@
         }
 
         async function fetchStatus() {
+            const banner = document.getElementById('offline-banner');
             try {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-                const response = await fetch(API_BASE + '/status?t=' + Date.now(), {
+                const response = await fetch(getActiveApiBase() + '/status?t=' + Date.now(), {
                     cache: 'no-store',
                     signal: controller.signal
                 });
@@ -997,9 +1019,8 @@
                 failCount = 0;
                 lastData = data;
                 updateDashboard(data);
-                // Clear cached mode indicator when live API responds
                 document.getElementById('run-status').classList.remove('cached');
-                // Restart polling if it was stopped
+                if (banner) banner.classList.remove('show');
                 if (!pollInterval) {
                     pollInterval = setInterval(fetchStatus, 5000);
                 }
@@ -1007,19 +1028,27 @@
                 failCount++;
                 isOnline = false;
 
+                // After 2 failures on primary API, try named tunnel as fallback
+                if (!_apiFallbackActive && failCount >= 2 && API_BASE !== NAMED_TUNNEL_URL) {
+                    _apiFallbackActive = true;
+                    failCount = 0;
+                    console.log('[Dashboard] Switching to named tunnel fallback: ' + NAMED_TUNNEL_URL);
+                    return fetchStatus();
+                }
+
                 if (lastRunData) {
                     lastData = lastRunData;
                     updateDashboard(lastRunData);
-                    // Show cached mode indicator on static hosting
                     const rs = document.getElementById('run-status');
                     rs.textContent = 'Cached Data';
                     rs.className = 'run-status cached';
+                    if (banner) banner.classList.add('show');
                 } else {
                     document.getElementById('run-status').textContent = 'Offline';
                     document.getElementById('run-status').className = 'run-status inactive';
+                    if (banner) banner.classList.add('show');
                 }
                 // Stop auto-polling after 3 consecutive failures (static hosting)
-                // User can still manually refresh by tapping the header
                 if (failCount >= 3 && pollInterval) {
                     clearInterval(pollInterval);
                     pollInterval = null;
