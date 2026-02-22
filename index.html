@@ -308,7 +308,7 @@
 
         document.addEventListener('click', function(e) {
             var link = e.target.closest('a');
-            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#')) {
+            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#') && link.target !== '_blank') {
                 showLoader();
             }
         });
