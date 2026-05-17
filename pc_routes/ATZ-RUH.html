@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T11:33:00">
-    <meta name="report-version" content="20260517113300">
+    <meta name="report-generated" content="2026-05-17T13:11:00">
+    <meta name="report-version" content="20260517131100">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -1814,7 +1814,7 @@
                 display: none !important;
             }
         }
-
+    
         /* ===== Air Cairo brand overrides for per-route pages ===== */
         :root {
             --ac-orange: #F5A623;
@@ -2030,8 +2030,7 @@
            Hide hero controls that don't exist in the preview, and force the
            per-route Excel download button to always render in the branded
            orange (it was greying out via :disabled before any route was
-           loaded). Hide the LF details bar so the day card flows directly
-           from flight-header into the competitor table. */
+           loaded). LF details are rendered inline inside the flight header. */
         .onedrive-btn { display: none !important; }
         .download-btn,
         .download-btn:disabled,
@@ -2042,7 +2041,7 @@
             box-shadow: 0 4px 15px rgba(245, 166, 35, 0.35) !important;
             opacity: 1 !important;
         }
-        .lf-details-bar { display: none !important; }
+        .flight-block > .lf-details-bar { display: none !important; }
         /* Make the hero aircraft fill the right half like the preview */
         .header::after {
             background-size: auto 95% !important;
@@ -2227,24 +2226,6 @@
             transform: translateY(-1px);
             color: white;
         }
-        @media (max-width: 768px) {
-            .header::after {
-                opacity: 0.35;
-                background-size: 110% auto;
-            }
-            .header-content {
-                max-width: 100%;
-            }
-            .ac-top-bar {
-                padding: 10px 14px;
-            }
-            .ac-top-btn {
-                padding: 7px 16px;
-                font-size: 0.85em;
-            }
-        }
-
-
         /* Final pass: match the approved PREVIEW-JED-HBE metrics. */
         body {
             font-family: 'Segoe UI', 'Cairo', Arial, sans-serif !important;
@@ -2566,7 +2547,24 @@
         .footer {
             display: none !important;
         }
-</style>
+        @media (max-width: 768px) {
+            .header::after {
+                opacity: 0.35;
+                background-size: 110% auto;
+            }
+            .header-content {
+                max-width: 100%;
+            }
+            .ac-top-bar {
+                padding: 10px 14px;
+            }
+            .ac-top-btn {
+                padding: 7px 16px;
+                font-size: 0.85em;
+            }
+        }
+    
+    </style>
 </head>
 <body class="en">
     <!-- UNIFIED PAGE LOADER -->
@@ -2585,7 +2583,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 11:33 AM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:11 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: ATZ-RUH | الفترة: 27MAY26 - 09SEP26</span><span class="en-text">Route: ATZ-RUH | Range: 27MAY26 - 09SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2600,7 +2598,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 11:33 AM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 01:11 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: ATZ-RUH | الفترة: 27MAY26 - 09SEP26</span><span class="en-text">Route: ATZ-RUH | Range: 27MAY26 - 09SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2634,8 +2632,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 11:33 AM</span>
-                        <span class="en-text">Created: 17MAY26 11:33 AM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 01:11 PM</span>
+                        <span class="en-text">Created: 17MAY26 01:11 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -2659,7 +2657,7 @@
                         <span class="ar-text">📥 تحميل</span>
                         <span class="en-text">📥 Download</span>
                     </a>
-
+                    
                 </div>
             </div>
         </div>
@@ -2772,7 +2770,7 @@
                     </button>
                 </div>
                 <div class="download-modal-list" id="downloadFileList">
-
+                    
             <div class="download-file-group">
                 <div class="download-file-group-title">
                     <span class="ar-text">ملف خط السير</span>
@@ -2791,7 +2789,7 @@
                     </a>
                 </div>
             </div>
-
+        
                 </div>
             </div>
         </div>
@@ -2801,11 +2799,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 11:33</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 13:11</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 11:33</span>
+                    Last Updated: <span class="update-time">2026-05-17 13:11</span>
                 </span>
             </div>
 
@@ -2845,13 +2843,13 @@
                 </div>
             </div>
 
-
+            
         <div class="route-section" data-route="ATZ-RUH">
             <div class="route-header">
                 <span class="ar-text">خط السير: ATZ-RUH</span>
                 <span class="en-text">Route: ATZ-RUH</span>
             </div>
-
+            
         <div class="date-section" data-date="2026-05-27">
             <div class="date-header">
                 <div class="date-main">
@@ -2863,7 +2861,7 @@
                     <span class="en-text">Flights: SM-465</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-465">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2871,53 +2869,55 @@
                         <span class="ar-text">الرحلة: SM-465</span>
                         <span class="en-text">Flight: SM-465</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">88</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">23</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">4</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W5</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">ATZ-RUH</span>
                 <span class="date-tag">27MAY26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-465">49%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -2933,9 +2933,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-151 (بديل) ATZ-RUH</span><span class="en-text">Air NP Air NP-151 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-151 (بديل) CAI-RUH</span><span class="en-text">Air NP Air NP-151 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">05:05</td>
             <td class="fare-cell"><span class="ar-text">4593 جنيه مصري</span><span class="en-text">4593 EGP</span></td>
@@ -2951,10 +2951,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-251 (بديل) ATZ-RUH</span><span class="en-text">Air NP Air NP-251 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-251 (بديل) CAI-RUH</span><span class="en-text">Air NP Air NP-251 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">09:50</td>
             <td class="fare-cell"><span class="ar-text">4593 جنيه مصري</span><span class="en-text">4593 EGP</span></td>
@@ -2970,10 +2970,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-160 (بديل) ATZ-RUH</span><span class="en-text">Airlines NE Airlines NE-160 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-160 (بديل) CAI-RUH</span><span class="en-text">Airlines NE Airlines NE-160 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">03:05</td>
             <td class="fare-cell"><span class="ar-text">4663 جنيه مصري</span><span class="en-text">4663 EGP</span></td>
@@ -2989,13 +2989,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-10">
             <div class="date-header">
                 <div class="date-main">
@@ -3007,7 +3007,7 @@
                     <span class="en-text">Flights: SM-465</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-465">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3015,53 +3015,55 @@
                         <span class="ar-text">الرحلة: SM-465</span>
                         <span class="en-text">Flight: SM-465</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">93</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">21</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">6</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">V9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">ATZ-RUH</span>
                 <span class="date-tag">10JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-465">52%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3077,9 +3079,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-320 (بديل) ATZ-RUH</span><span class="en-text">Saudia SV-320 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-320 (بديل) CAI-RUH</span><span class="en-text">Saudia SV-320 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">00:35</td>
             <td class="fare-cell"><span class="ar-text">10216 جنيه مصري</span><span class="en-text">10216 EGP</span></td>
@@ -3095,13 +3097,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-21">
             <div class="date-header">
                 <div class="date-main">
@@ -3113,7 +3115,7 @@
                     <span class="en-text">Flights: SM-465</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-465">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3121,53 +3123,55 @@
                         <span class="ar-text">الرحلة: SM-465</span>
                         <span class="en-text">Flight: SM-465</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-12 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">K9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">ATZ-RUH</span>
                 <span class="date-tag">21JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-465">4%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3183,9 +3187,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-606 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-606 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-606 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-606 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">13:55</td>
             <td class="fare-cell"><span class="ar-text">5622 جنيه مصري</span><span class="en-text">5622 EGP</span></td>
@@ -3201,10 +3205,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-616 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-616 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-616 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-616 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">02:35</td>
             <td class="fare-cell"><span class="ar-text">5622 جنيه مصري</span><span class="en-text">5622 EGP</span></td>
@@ -3220,10 +3224,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-614 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-614 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-614 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-614 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">12:10</td>
             <td class="fare-cell"><span class="ar-text">5622 جنيه مصري</span><span class="en-text">5622 EGP</span></td>
@@ -3239,10 +3243,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-608 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-608 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-608 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-608 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">15:40</td>
             <td class="fare-cell"><span class="ar-text">6044 جنيه مصري</span><span class="en-text">6044 EGP</span></td>
@@ -3258,10 +3262,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-410 (بديل) ATZ-RUH</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-410 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-410 (بديل) CAI-RUH</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-410 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">11:40</td>
             <td class="fare-cell"><span class="ar-text">6980 جنيه مصري</span><span class="en-text">6980 EGP</span></td>
@@ -3277,10 +3281,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-268 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-268 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-268 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-268 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">15:45</td>
             <td class="fare-cell"><span class="ar-text">7171 جنيه مصري</span><span class="en-text">7171 EGP</span></td>
@@ -3296,10 +3300,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-272 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-272 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-272 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-272 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">20:10</td>
             <td class="fare-cell"><span class="ar-text">7171 جنيه مصري</span><span class="en-text">7171 EGP</span></td>
@@ -3315,10 +3319,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-264 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-264 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-264 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-264 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">10:50</td>
             <td class="fare-cell"><span class="ar-text">7171 جنيه مصري</span><span class="en-text">7171 EGP</span></td>
@@ -3334,10 +3338,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-274 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-274 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-274 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-274 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">12:55</td>
             <td class="fare-cell"><span class="ar-text">7171 جنيه مصري</span><span class="en-text">7171 EGP</span></td>
@@ -3353,10 +3357,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-270 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-270 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-270 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-270 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">22:05</td>
             <td class="fare-cell"><span class="ar-text">7171 جنيه مصري</span><span class="en-text">7171 EGP</span></td>
@@ -3372,10 +3376,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-266 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-266 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-266 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-266 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">23:25</td>
             <td class="fare-cell"><span class="ar-text">7876 جنيه مصري</span><span class="en-text">7876 EGP</span></td>
@@ -3391,10 +3395,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-651 (بديل) ATZ-RUH</span><span class="en-text">EgyptAir MS-651 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-651 (بديل) CAI-RUH</span><span class="en-text">EgyptAir MS-651 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">09:20</td>
             <td class="fare-cell"><span class="ar-text">10807 جنيه مصري</span><span class="en-text">10807 EGP</span></td>
@@ -3410,13 +3414,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-22">
             <div class="date-header">
                 <div class="date-main">
@@ -3428,7 +3432,7 @@
                     <span class="en-text">Flights: SM-465</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-465">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3436,53 +3440,55 @@
                         <span class="ar-text">الرحلة: SM-465</span>
                         <span class="en-text">Flight: SM-465</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">10</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-10 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">K5</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">ATZ-RUH</span>
                 <span class="date-tag">22JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-465">6%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3498,9 +3504,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-608 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-608 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-608 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-608 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">15:40</td>
             <td class="fare-cell"><span class="ar-text">5622 جنيه مصري</span><span class="en-text">5622 EGP</span></td>
@@ -3516,10 +3522,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-606 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-606 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-606 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-606 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">13:55</td>
             <td class="fare-cell"><span class="ar-text">5622 جنيه مصري</span><span class="en-text">5622 EGP</span></td>
@@ -3535,10 +3541,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-616 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-616 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-616 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-616 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">02:35</td>
             <td class="fare-cell"><span class="ar-text">5622 جنيه مصري</span><span class="en-text">5622 EGP</span></td>
@@ -3554,10 +3560,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-614 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-614 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-614 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-614 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">12:10</td>
             <td class="fare-cell"><span class="ar-text">5622 جنيه مصري</span><span class="en-text">5622 EGP</span></td>
@@ -3573,10 +3579,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-415 (بديل) ATZ-RUH</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-415 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-415 (بديل) CAI-RUH</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-415 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">01:15</td>
             <td class="fare-cell"><span class="ar-text">6980 جنيه مصري</span><span class="en-text">6980 EGP</span></td>
@@ -3592,10 +3598,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-410 (بديل) ATZ-RUH</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-410 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-410 (بديل) CAI-RUH</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-410 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">12:10</td>
             <td class="fare-cell"><span class="ar-text">6980 جنيه مصري</span><span class="en-text">6980 EGP</span></td>
@@ -3611,10 +3617,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-264 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-264 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-264 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-264 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">10:50</td>
             <td class="fare-cell"><span class="ar-text">7171 جنيه مصري</span><span class="en-text">7171 EGP</span></td>
@@ -3630,10 +3636,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-274 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-274 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-274 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-274 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">12:55</td>
             <td class="fare-cell"><span class="ar-text">7171 جنيه مصري</span><span class="en-text">7171 EGP</span></td>
@@ -3649,10 +3655,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-266 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-266 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-266 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-266 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">23:25</td>
             <td class="fare-cell"><span class="ar-text">7876 جنيه مصري</span><span class="en-text">7876 EGP</span></td>
@@ -3668,10 +3674,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-268 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-268 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-268 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-268 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">15:45</td>
             <td class="fare-cell"><span class="ar-text">7876 جنيه مصري</span><span class="en-text">7876 EGP</span></td>
@@ -3687,10 +3693,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-272 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-272 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-272 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-272 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">20:10</td>
             <td class="fare-cell"><span class="ar-text">7876 جنيه مصري</span><span class="en-text">7876 EGP</span></td>
@@ -3706,10 +3712,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-270 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-270 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-270 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-270 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">22:05</td>
             <td class="fare-cell"><span class="ar-text">7876 جنيه مصري</span><span class="en-text">7876 EGP</span></td>
@@ -3725,10 +3731,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-160 (بديل) ATZ-RUH</span><span class="en-text">Airlines NE Airlines NE-160 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-160 (بديل) CAI-RUH</span><span class="en-text">Airlines NE Airlines NE-160 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">03:05</td>
             <td class="fare-cell"><span class="ar-text">9060 جنيه مصري</span><span class="en-text">9060 EGP</span></td>
@@ -3744,10 +3750,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-689 (بديل) ATZ-RUH</span><span class="en-text">EgyptAir MS-689 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-689 (بديل) CAI-RUH</span><span class="en-text">EgyptAir MS-689 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">12:20</td>
             <td class="fare-cell"><span class="ar-text">10807 جنيه مصري</span><span class="en-text">10807 EGP</span></td>
@@ -3763,10 +3769,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-651 (بديل) ATZ-RUH</span><span class="en-text">EgyptAir MS-651 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-651 (بديل) CAI-RUH</span><span class="en-text">EgyptAir MS-651 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">09:20</td>
             <td class="fare-cell"><span class="ar-text">11455 جنيه مصري</span><span class="en-text">11455 EGP</span></td>
@@ -3782,13 +3788,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-28">
             <div class="date-header">
                 <div class="date-main">
@@ -3800,7 +3806,7 @@
                     <span class="en-text">Flights: SM-465</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-465">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3808,53 +3814,55 @@
                         <span class="ar-text">الرحلة: SM-465</span>
                         <span class="en-text">Flight: SM-465</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">22</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-15 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">7</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">K6</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">ATZ-RUH</span>
                 <span class="date-tag">28JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-465">12%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3870,9 +3878,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-608 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-608 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-608 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-608 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">15:40</td>
             <td class="fare-cell"><span class="ar-text">6890 جنيه مصري</span><span class="en-text">6890 EGP</span></td>
@@ -3888,10 +3896,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-606 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-606 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-606 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-606 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">13:55</td>
             <td class="fare-cell"><span class="ar-text">6890 جنيه مصري</span><span class="en-text">6890 EGP</span></td>
@@ -3907,10 +3915,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-616 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-616 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-616 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-616 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">02:35</td>
             <td class="fare-cell"><span class="ar-text">6890 جنيه مصري</span><span class="en-text">6890 EGP</span></td>
@@ -3926,10 +3934,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-614 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-614 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-614 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-614 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">12:10</td>
             <td class="fare-cell"><span class="ar-text">6890 جنيه مصري</span><span class="en-text">6890 EGP</span></td>
@@ -3945,10 +3953,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-268 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-268 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-268 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-268 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">15:45</td>
             <td class="fare-cell"><span class="ar-text">8721 جنيه مصري</span><span class="en-text">8721 EGP</span></td>
@@ -3964,10 +3972,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-264 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-264 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-264 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-264 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">10:50</td>
             <td class="fare-cell"><span class="ar-text">8721 جنيه مصري</span><span class="en-text">8721 EGP</span></td>
@@ -3983,10 +3991,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-274 (بديل) ATZ-RUH</span><span class="en-text">Flynas XY-274 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-274 (بديل) CAI-RUH</span><span class="en-text">Flynas XY-274 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">12:55</td>
             <td class="fare-cell"><span class="ar-text">8721 جنيه مصري</span><span class="en-text">8721 EGP</span></td>
@@ -4002,10 +4010,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-651 (بديل) ATZ-RUH</span><span class="en-text">EgyptAir MS-651 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-651 (بديل) CAI-RUH</span><span class="en-text">EgyptAir MS-651 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">10:50</td>
             <td class="dep-time-cell">09:20</td>
             <td class="fare-cell"><span class="ar-text">11455 جنيه مصري</span><span class="en-text">11455 EGP</span></td>
@@ -4021,13 +4029,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-09">
             <div class="date-header">
                 <div class="date-main">
@@ -4039,7 +4047,7 @@
                     <span class="en-text">Flights: SM-465</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-465">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4047,53 +4055,55 @@
                         <span class="ar-text">الرحلة: SM-465</span>
                         <span class="en-text">Flight: SM-465</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-14 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H7</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">ATZ-RUH</span>
                 <span class="date-tag">09SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-465">3%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4109,9 +4119,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-606 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-606 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-606 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-606 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">13:55</td>
             <td class="fare-cell"><span class="ar-text">9003 جنيه مصري</span><span class="en-text">9003 EGP</span></td>
@@ -4127,10 +4137,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-616 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-616 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-616 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-616 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">02:35</td>
             <td class="fare-cell"><span class="ar-text">9003 جنيه مصري</span><span class="en-text">9003 EGP</span></td>
@@ -4146,10 +4156,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-614 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-614 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-614 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-614 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">12:10</td>
             <td class="fare-cell"><span class="ar-text">9003 جنيه مصري</span><span class="en-text">9003 EGP</span></td>
@@ -4165,10 +4175,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-164 (بديل) ATZ-RUH</span><span class="en-text">Airlines NE Airlines NE-164 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-164 (بديل) CAI-RUH</span><span class="en-text">Airlines NE Airlines NE-164 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">19:35</td>
             <td class="fare-cell"><span class="ar-text">9665 جنيه مصري</span><span class="en-text">9665 EGP</span></td>
@@ -4184,10 +4194,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-151 (بديل) ATZ-RUH</span><span class="en-text">Air NP Air NP-151 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-151 (بديل) CAI-RUH</span><span class="en-text">Air NP Air NP-151 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">05:05</td>
             <td class="fare-cell"><span class="ar-text">10074 جنيه مصري</span><span class="en-text">10074 EGP</span></td>
@@ -4203,10 +4213,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-251 (بديل) ATZ-RUH</span><span class="en-text">Air NP Air NP-251 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-251 (بديل) CAI-RUH</span><span class="en-text">Air NP Air NP-251 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">09:50</td>
             <td class="fare-cell"><span class="ar-text">10074 جنيه مصري</span><span class="en-text">10074 EGP</span></td>
@@ -4222,10 +4232,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-160 (بديل) ATZ-RUH</span><span class="en-text">Airlines NE Airlines NE-160 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-160 (بديل) CAI-RUH</span><span class="en-text">Airlines NE Airlines NE-160 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">03:05</td>
             <td class="fare-cell"><span class="ar-text">10370 جنيه مصري</span><span class="en-text">10370 EGP</span></td>
@@ -4241,10 +4251,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-310 (بديل) ATZ-RUH</span><span class="en-text">Saudia SV-310 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-310 (بديل) CAI-RUH</span><span class="en-text">Saudia SV-310 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">11:40</td>
             <td class="fare-cell"><span class="ar-text">10469 جنيه مصري</span><span class="en-text">10469 EGP</span></td>
@@ -4260,10 +4270,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-418 (بديل) ATZ-RUH</span><span class="en-text">Saudia SV-418 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-418 (بديل) CAI-RUH</span><span class="en-text">Saudia SV-418 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">16:05</td>
             <td class="fare-cell"><span class="ar-text">10469 جنيه مصري</span><span class="en-text">10469 EGP</span></td>
@@ -4279,10 +4289,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-320 (بديل) ATZ-RUH</span><span class="en-text">Saudia SV-320 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-320 (بديل) CAI-RUH</span><span class="en-text">Saudia SV-320 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">00:35</td>
             <td class="fare-cell"><span class="ar-text">12809 جنيه مصري</span><span class="en-text">12809 EGP</span></td>
@@ -4298,10 +4308,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-312 (بديل) ATZ-RUH</span><span class="en-text">Saudia SV-312 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-312 (بديل) CAI-RUH</span><span class="en-text">Saudia SV-312 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">20:55</td>
             <td class="fare-cell"><span class="ar-text">12809 جنيه مصري</span><span class="en-text">12809 EGP</span></td>
@@ -4317,10 +4327,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-608 (بديل) ATZ-RUH</span><span class="en-text">Flyadeal F3-608 (ALTERNATIVE) ATZ-RUH</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-608 (بديل) CAI-RUH</span><span class="en-text">Flyadeal F3-608 (ALTERNATIVE) CAI-RUH</span></td>
             <td class="dep-time-cell">18:35</td>
             <td class="dep-time-cell">15:40</td>
             <td class="fare-cell"><span class="ar-text">13371 جنيه مصري</span><span class="en-text">13371 EGP</span></td>
@@ -4336,15 +4346,15 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         </div>
-
+        
 
         </div>
 

@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T11:33:00">
-    <meta name="report-version" content="20260517113300">
+    <meta name="report-generated" content="2026-05-17T13:11:00">
+    <meta name="report-version" content="20260517131100">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -1814,7 +1814,7 @@
                 display: none !important;
             }
         }
-
+    
         /* ===== Air Cairo brand overrides for per-route pages ===== */
         :root {
             --ac-orange: #F5A623;
@@ -2030,8 +2030,7 @@
            Hide hero controls that don't exist in the preview, and force the
            per-route Excel download button to always render in the branded
            orange (it was greying out via :disabled before any route was
-           loaded). Hide the LF details bar so the day card flows directly
-           from flight-header into the competitor table. */
+           loaded). LF details are rendered inline inside the flight header. */
         .onedrive-btn { display: none !important; }
         .download-btn,
         .download-btn:disabled,
@@ -2042,7 +2041,7 @@
             box-shadow: 0 4px 15px rgba(245, 166, 35, 0.35) !important;
             opacity: 1 !important;
         }
-        .lf-details-bar { display: none !important; }
+        .flight-block > .lf-details-bar { display: none !important; }
         /* Make the hero aircraft fill the right half like the preview */
         .header::after {
             background-size: auto 95% !important;
@@ -2227,24 +2226,6 @@
             transform: translateY(-1px);
             color: white;
         }
-        @media (max-width: 768px) {
-            .header::after {
-                opacity: 0.35;
-                background-size: 110% auto;
-            }
-            .header-content {
-                max-width: 100%;
-            }
-            .ac-top-bar {
-                padding: 10px 14px;
-            }
-            .ac-top-btn {
-                padding: 7px 16px;
-                font-size: 0.85em;
-            }
-        }
-
-
         /* Final pass: match the approved PREVIEW-JED-HBE metrics. */
         body {
             font-family: 'Segoe UI', 'Cairo', Arial, sans-serif !important;
@@ -2566,7 +2547,24 @@
         .footer {
             display: none !important;
         }
-</style>
+        @media (max-width: 768px) {
+            .header::after {
+                opacity: 0.35;
+                background-size: 110% auto;
+            }
+            .header-content {
+                max-width: 100%;
+            }
+            .ac-top-bar {
+                padding: 10px 14px;
+            }
+            .ac-top-btn {
+                padding: 7px 16px;
+                font-size: 0.85em;
+            }
+        }
+    
+    </style>
 </head>
 <body class="en">
     <!-- UNIFIED PAGE LOADER -->
@@ -2585,7 +2583,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 11:33 AM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:11 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: CAI-YNB | الفترة: 19MAY26 - 29SEP26</span><span class="en-text">Route: CAI-YNB | Range: 19MAY26 - 29SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2600,7 +2598,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 11:33 AM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 01:11 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: CAI-YNB | الفترة: 19MAY26 - 29SEP26</span><span class="en-text">Route: CAI-YNB | Range: 19MAY26 - 29SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2634,8 +2632,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 11:33 AM</span>
-                        <span class="en-text">Created: 17MAY26 11:33 AM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 01:11 PM</span>
+                        <span class="en-text">Created: 17MAY26 01:11 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -2659,7 +2657,7 @@
                         <span class="ar-text">📥 تحميل</span>
                         <span class="en-text">📥 Download</span>
                     </a>
-
+                    
                 </div>
             </div>
         </div>
@@ -2802,7 +2800,7 @@
                     </button>
                 </div>
                 <div class="download-modal-list" id="downloadFileList">
-
+                    
             <div class="download-file-group">
                 <div class="download-file-group-title">
                     <span class="ar-text">ملف خط السير</span>
@@ -2821,7 +2819,7 @@
                     </a>
                 </div>
             </div>
-
+        
                 </div>
             </div>
         </div>
@@ -2831,11 +2829,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 11:33</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 13:11</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 11:33</span>
+                    Last Updated: <span class="update-time">2026-05-17 13:11</span>
                 </span>
             </div>
 
@@ -2875,13 +2873,13 @@
                 </div>
             </div>
 
-
+            
         <div class="route-section" data-route="CAI-YNB">
             <div class="route-header">
                 <span class="ar-text">خط السير: CAI-YNB</span>
                 <span class="en-text">Route: CAI-YNB</span>
             </div>
-
+            
         <div class="date-section" data-date="2026-05-19">
             <div class="date-header">
                 <div class="date-main">
@@ -2893,7 +2891,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2901,53 +2899,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">33</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">11</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">19MAY26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">18%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -2963,7 +2963,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -2981,13 +2981,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-05-26">
             <div class="date-header">
                 <div class="date-main">
@@ -2999,7 +2999,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3007,53 +3007,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">4</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">26MAY26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">4%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3069,7 +3071,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="medium" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -3087,13 +3089,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-05-30">
             <div class="date-header">
                 <div class="date-main">
@@ -3105,7 +3107,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3113,53 +3115,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">46</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-15 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">7</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S1</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">30MAY26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">26%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3175,7 +3179,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="medium" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -3193,13 +3197,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-02">
             <div class="date-header">
                 <div class="date-main">
@@ -3211,7 +3215,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3219,53 +3223,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">64</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">11</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S4</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">02JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">36%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3281,7 +3287,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -3299,13 +3305,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-06">
             <div class="date-header">
                 <div class="date-main">
@@ -3317,7 +3323,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3325,53 +3331,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">33</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-13 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">10</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">06JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">18%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3387,7 +3395,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -3405,13 +3413,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-09">
             <div class="date-header">
                 <div class="date-main">
@@ -3423,7 +3431,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3431,53 +3439,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">23</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">U4</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">09JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">13%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3493,7 +3503,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -3511,13 +3521,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-13">
             <div class="date-header">
                 <div class="date-main">
@@ -3529,7 +3539,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3537,53 +3547,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">6</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-03 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">13JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">3%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3599,7 +3611,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -3617,13 +3629,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-16">
             <div class="date-header">
                 <div class="date-main">
@@ -3635,7 +3647,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3643,53 +3655,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">18</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">U9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">16JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">10%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3705,7 +3719,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -3723,13 +3737,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-20">
             <div class="date-header">
                 <div class="date-main">
@@ -3741,7 +3755,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3749,53 +3763,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">10</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-07 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">20JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">6%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3811,7 +3827,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -3829,13 +3845,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-23">
             <div class="date-header">
                 <div class="date-main">
@@ -3847,7 +3863,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3855,53 +3871,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I1</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">23JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">4%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3917,7 +3935,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -3935,13 +3953,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-27">
             <div class="date-header">
                 <div class="date-main">
@@ -3953,7 +3971,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3961,53 +3979,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-12 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">27JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">4%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4023,7 +4043,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -4041,13 +4061,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-30">
             <div class="date-header">
                 <div class="date-main">
@@ -4059,7 +4079,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4067,53 +4087,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">22</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-15 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">U9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">30JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">12%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4129,7 +4151,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -4147,13 +4169,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-04">
             <div class="date-header">
                 <div class="date-main">
@@ -4165,7 +4187,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4173,53 +4195,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">14</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-12 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">O4</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">04JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">8%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4235,7 +4259,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -4253,13 +4277,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-07">
             <div class="date-header">
                 <div class="date-main">
@@ -4271,7 +4295,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4279,53 +4303,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-11 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I1</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">07JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">4%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4341,7 +4367,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -4359,13 +4385,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-11">
             <div class="date-header">
                 <div class="date-main">
@@ -4377,7 +4403,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4385,53 +4411,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-13 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I6</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">11JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">2%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4447,7 +4475,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -4465,13 +4493,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-14">
             <div class="date-header">
                 <div class="date-main">
@@ -4483,7 +4511,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4491,53 +4519,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-06 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I4</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">14JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">3%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4553,7 +4583,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -4571,13 +4601,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-18">
             <div class="date-header">
                 <div class="date-main">
@@ -4589,7 +4619,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4597,53 +4627,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-04 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I7</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">18JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">1%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4659,7 +4691,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -4677,13 +4709,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-21">
             <div class="date-header">
                 <div class="date-main">
@@ -4695,7 +4727,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4703,53 +4735,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-03-26 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I7</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">21JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">1%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4765,7 +4799,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -4783,13 +4817,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-25">
             <div class="date-header">
                 <div class="date-main">
@@ -4801,7 +4835,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4809,53 +4843,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">9</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-07 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">O9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">25JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">5%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4871,7 +4907,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -4889,13 +4925,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-28">
             <div class="date-header">
                 <div class="date-main">
@@ -4907,7 +4943,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4915,53 +4951,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">14</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-14 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">O4</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">28JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">8%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4977,7 +5015,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -4995,13 +5033,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-08-01">
             <div class="date-header">
                 <div class="date-main">
@@ -5013,7 +5051,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5021,53 +5059,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-04-24 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">01AUG26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">3%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5083,7 +5123,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -5101,13 +5141,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-08-04">
             <div class="date-header">
                 <div class="date-main">
@@ -5119,7 +5159,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5127,53 +5167,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">6</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-04-24 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">04AUG26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">3%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5189,7 +5231,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -5207,13 +5249,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-08-08">
             <div class="date-header">
                 <div class="date-main">
@@ -5225,7 +5267,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5233,53 +5275,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">08AUG26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">3%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5295,7 +5339,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -5313,13 +5357,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-08-15">
             <div class="date-header">
                 <div class="date-main">
@@ -5331,7 +5375,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5339,53 +5383,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">20</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">L9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">15AUG26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">11%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5401,7 +5447,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -5419,13 +5465,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-08-25">
             <div class="date-header">
                 <div class="date-main">
@@ -5437,7 +5483,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5445,53 +5491,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">25AUG26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5507,7 +5555,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -5525,13 +5573,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-01">
             <div class="date-header">
                 <div class="date-main">
@@ -5543,7 +5591,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5551,53 +5599,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">01SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5613,7 +5663,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -5631,13 +5681,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-05">
             <div class="date-header">
                 <div class="date-main">
@@ -5649,7 +5699,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5657,53 +5707,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">05SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5719,7 +5771,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -5737,13 +5789,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-08">
             <div class="date-header">
                 <div class="date-main">
@@ -5755,7 +5807,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5763,53 +5815,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">08SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5825,7 +5879,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -5843,13 +5897,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-12">
             <div class="date-header">
                 <div class="date-main">
@@ -5861,7 +5915,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5869,53 +5923,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">12SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5931,7 +5987,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -5949,13 +6005,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-15">
             <div class="date-header">
                 <div class="date-main">
@@ -5967,7 +6023,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5975,53 +6031,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-04-30 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I8</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">15SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">1%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6037,7 +6095,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -6055,13 +6113,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-19">
             <div class="date-header">
                 <div class="date-main">
@@ -6073,7 +6131,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -6081,53 +6139,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">19SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6143,7 +6203,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -6161,13 +6221,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-22">
             <div class="date-header">
                 <div class="date-main">
@@ -6179,7 +6239,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -6187,53 +6247,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">22SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6249,7 +6311,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -6267,13 +6329,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-26">
             <div class="date-header">
                 <div class="date-main">
@@ -6285,7 +6347,7 @@
                     <span class="en-text">Flights: SM-447</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-447">
             <div class="flight-header">
                 <div class="flight-info">
@@ -6293,53 +6355,55 @@
                         <span class="ar-text">الرحلة: SM-447</span>
                         <span class="en-text">Flight: SM-447</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">26SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-447">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6355,7 +6419,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:05</td>
@@ -6373,13 +6437,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-29">
             <div class="date-header">
                 <div class="date-main">
@@ -6391,7 +6455,7 @@
                     <span class="en-text">Flights: SM-441</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-441">
             <div class="flight-header">
                 <div class="flight-info">
@@ -6399,53 +6463,55 @@
                         <span class="ar-text">الرحلة: SM-441</span>
                         <span class="en-text">Flight: SM-441</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">CAI-YNB</span>
                 <span class="date-tag">29SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-441">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6461,7 +6527,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-103</span><span class="en-text">Air NP Air NP-103</span></td>
             <td class="dep-time-cell">05:10</td>
@@ -6479,15 +6545,15 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         </div>
-
+        
 
         </div>
 

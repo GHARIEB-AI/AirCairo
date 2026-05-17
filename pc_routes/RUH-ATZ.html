@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T11:33:00">
-    <meta name="report-version" content="20260517113300">
+    <meta name="report-generated" content="2026-05-17T13:11:00">
+    <meta name="report-version" content="20260517131100">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -1814,7 +1814,7 @@
                 display: none !important;
             }
         }
-
+    
         /* ===== Air Cairo brand overrides for per-route pages ===== */
         :root {
             --ac-orange: #F5A623;
@@ -2030,8 +2030,7 @@
            Hide hero controls that don't exist in the preview, and force the
            per-route Excel download button to always render in the branded
            orange (it was greying out via :disabled before any route was
-           loaded). Hide the LF details bar so the day card flows directly
-           from flight-header into the competitor table. */
+           loaded). LF details are rendered inline inside the flight header. */
         .onedrive-btn { display: none !important; }
         .download-btn,
         .download-btn:disabled,
@@ -2042,7 +2041,7 @@
             box-shadow: 0 4px 15px rgba(245, 166, 35, 0.35) !important;
             opacity: 1 !important;
         }
-        .lf-details-bar { display: none !important; }
+        .flight-block > .lf-details-bar { display: none !important; }
         /* Make the hero aircraft fill the right half like the preview */
         .header::after {
             background-size: auto 95% !important;
@@ -2227,24 +2226,6 @@
             transform: translateY(-1px);
             color: white;
         }
-        @media (max-width: 768px) {
-            .header::after {
-                opacity: 0.35;
-                background-size: 110% auto;
-            }
-            .header-content {
-                max-width: 100%;
-            }
-            .ac-top-bar {
-                padding: 10px 14px;
-            }
-            .ac-top-btn {
-                padding: 7px 16px;
-                font-size: 0.85em;
-            }
-        }
-
-
         /* Final pass: match the approved PREVIEW-JED-HBE metrics. */
         body {
             font-family: 'Segoe UI', 'Cairo', Arial, sans-serif !important;
@@ -2566,7 +2547,24 @@
         .footer {
             display: none !important;
         }
-</style>
+        @media (max-width: 768px) {
+            .header::after {
+                opacity: 0.35;
+                background-size: 110% auto;
+            }
+            .header-content {
+                max-width: 100%;
+            }
+            .ac-top-bar {
+                padding: 10px 14px;
+            }
+            .ac-top-btn {
+                padding: 7px 16px;
+                font-size: 0.85em;
+            }
+        }
+    
+    </style>
 </head>
 <body class="en">
     <!-- UNIFIED PAGE LOADER -->
@@ -2585,7 +2583,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 11:33 AM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:11 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: RUH-ATZ | الفترة: 19MAY26 - 29SEP26</span><span class="en-text">Route: RUH-ATZ | Range: 19MAY26 - 29SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2600,7 +2598,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 11:33 AM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 01:11 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: RUH-ATZ | الفترة: 19MAY26 - 29SEP26</span><span class="en-text">Route: RUH-ATZ | Range: 19MAY26 - 29SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2634,8 +2632,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 11:33 AM</span>
-                        <span class="en-text">Created: 17MAY26 11:33 AM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 01:11 PM</span>
+                        <span class="en-text">Created: 17MAY26 01:11 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -2659,7 +2657,7 @@
                         <span class="ar-text">📥 تحميل</span>
                         <span class="en-text">📥 Download</span>
                     </a>
-
+                    
                 </div>
             </div>
         </div>
@@ -2793,7 +2791,7 @@
                     </button>
                 </div>
                 <div class="download-modal-list" id="downloadFileList">
-
+                    
             <div class="download-file-group">
                 <div class="download-file-group-title">
                     <span class="ar-text">ملف خط السير</span>
@@ -2812,7 +2810,7 @@
                     </a>
                 </div>
             </div>
-
+        
                 </div>
             </div>
         </div>
@@ -2822,11 +2820,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 11:33</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 13:11</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 11:33</span>
+                    Last Updated: <span class="update-time">2026-05-17 13:11</span>
                 </span>
             </div>
 
@@ -2866,13 +2864,13 @@
                 </div>
             </div>
 
-
+            
         <div class="route-section" data-route="RUH-ATZ">
             <div class="route-header">
                 <span class="ar-text">خط السير: RUH-ATZ</span>
                 <span class="en-text">Route: RUH-ATZ</span>
             </div>
-
+            
         <div class="date-section" data-date="2026-05-19">
             <div class="date-header">
                 <div class="date-main">
@@ -2884,7 +2882,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2892,53 +2890,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">150</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-13 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">M9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">19MAY26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #462B73 0%, #462B73dd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">86%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -2954,9 +2954,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">10:50</td>
             <td class="fare-cell"><span class="ar-text">1175 ريال سعودي</span><span class="en-text">1175 SAR</span></td>
@@ -2972,10 +2972,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-352 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-352 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-352 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-352 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">01:45</td>
             <td class="fare-cell"><span class="ar-text">1333 ريال سعودي</span><span class="en-text">1333 SAR</span></td>
@@ -2991,10 +2991,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">08:50</td>
             <td class="fare-cell"><span class="ar-text">1333 ريال سعودي</span><span class="en-text">1333 SAR</span></td>
@@ -3010,10 +3010,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-163 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-163 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-163 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-163 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">03:05</td>
             <td class="fare-cell"><span class="ar-text">1335 ريال سعودي</span><span class="en-text">1335 SAR</span></td>
@@ -3029,10 +3029,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-113 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-113 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-113 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-113 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">10:30</td>
             <td class="fare-cell"><span class="ar-text">1398 ريال سعودي</span><span class="en-text">1398 SAR</span></td>
@@ -3048,10 +3048,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-119 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-119 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-119 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-119 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">11:25</td>
             <td class="fare-cell"><span class="ar-text">1448 ريال سعودي</span><span class="en-text">1448 SAR</span></td>
@@ -3067,10 +3067,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-105 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-105 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-105 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-105 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">12:30</td>
             <td class="fare-cell"><span class="ar-text">1448 ريال سعودي</span><span class="en-text">1448 SAR</span></td>
@@ -3086,10 +3086,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">08:30</td>
             <td class="fare-cell"><span class="ar-text">1449 ريال سعودي</span><span class="en-text">1449 SAR</span></td>
@@ -3105,10 +3105,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">1449 ريال سعودي</span><span class="en-text">1449 SAR</span></td>
@@ -3124,10 +3124,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">10:15</td>
             <td class="fare-cell"><span class="ar-text">1449 ريال سعودي</span><span class="en-text">1449 SAR</span></td>
@@ -3143,10 +3143,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">22:55</td>
             <td class="fare-cell"><span class="ar-text">1449 ريال سعودي</span><span class="en-text">1449 SAR</span></td>
@@ -3162,10 +3162,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-161 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-161 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-161 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-161 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">00:15</td>
             <td class="fare-cell"><span class="ar-text">1498 ريال سعودي</span><span class="en-text">1498 SAR</span></td>
@@ -3181,10 +3181,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-154 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-154 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-154 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-154 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">1529 ريال سعودي</span><span class="en-text">1529 SAR</span></td>
@@ -3200,10 +3200,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-452 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-452 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-452 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-452 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">14:00</td>
             <td class="fare-cell"><span class="ar-text">1529 ريال سعودي</span><span class="en-text">1529 SAR</span></td>
@@ -3219,10 +3219,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">12:55</td>
             <td class="fare-cell"><span class="ar-text">1529 ريال سعودي</span><span class="en-text">1529 SAR</span></td>
@@ -3238,10 +3238,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-117 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-117 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-117 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-117 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">1625 ريال سعودي</span><span class="en-text">1625 SAR</span></td>
@@ -3257,10 +3257,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-121 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-121 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-121 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-121 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">13:30</td>
             <td class="fare-cell"><span class="ar-text">1675 ريال سعودي</span><span class="en-text">1675 SAR</span></td>
@@ -3276,10 +3276,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-159 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-159 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-159 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-159 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">01:10</td>
             <td class="fare-cell"><span class="ar-text">1675 ريال سعودي</span><span class="en-text">1675 SAR</span></td>
@@ -3295,10 +3295,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-411 (بديل) RUH-ATZ</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-411 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-411 (بديل) RUH-CAI</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-411 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">15:10</td>
             <td class="fare-cell"><span class="ar-text">1779 ريال سعودي</span><span class="en-text">1779 SAR</span></td>
@@ -3314,10 +3314,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-265 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-265 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-265 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-265 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">19:40</td>
             <td class="fare-cell"><span class="ar-text">2008 ريال سعودي</span><span class="en-text">2008 SAR</span></td>
@@ -3333,10 +3333,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-267 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-267 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-267 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-267 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">2008 ريال سعودي</span><span class="en-text">2008 SAR</span></td>
@@ -3352,10 +3352,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-273 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-273 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-273 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-273 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">09:10</td>
             <td class="fare-cell"><span class="ar-text">2008 ريال سعودي</span><span class="en-text">2008 SAR</span></td>
@@ -3371,10 +3371,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-275 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-275 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-275 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-275 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">14:20</td>
             <td class="fare-cell"><span class="ar-text">2008 ريال سعودي</span><span class="en-text">2008 SAR</span></td>
@@ -3390,10 +3390,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-263 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-263 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-263 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-263 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">07:05</td>
             <td class="fare-cell"><span class="ar-text">2008 ريال سعودي</span><span class="en-text">2008 SAR</span></td>
@@ -3409,10 +3409,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-269 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-269 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-269 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-269 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">18:20</td>
             <td class="fare-cell"><span class="ar-text">2008 ريال سعودي</span><span class="en-text">2008 SAR</span></td>
@@ -3428,7 +3428,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -3447,13 +3447,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-05-26">
             <div class="date-header">
                 <div class="date-main">
@@ -3465,7 +3465,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3473,53 +3473,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">129</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">22</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">Q9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">26MAY26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">74%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3535,9 +3537,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-153 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-153 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-153 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-153 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">22:50</td>
             <td class="fare-cell"><span class="ar-text">1148 ريال سعودي</span><span class="en-text">1148 SAR</span></td>
@@ -3553,10 +3555,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-155 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-155 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-155 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-155 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">23:40</td>
             <td class="fare-cell"><span class="ar-text">1148 ريال سعودي</span><span class="en-text">1148 SAR</span></td>
@@ -3572,10 +3574,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-113 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-113 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-113 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-113 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">10:30</td>
             <td class="fare-cell"><span class="ar-text">1388 ريال سعودي</span><span class="en-text">1388 SAR</span></td>
@@ -3591,10 +3593,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-119 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-119 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-119 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-119 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">11:25</td>
             <td class="fare-cell"><span class="ar-text">1388 ريال سعودي</span><span class="en-text">1388 SAR</span></td>
@@ -3610,10 +3612,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-125 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-125 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-125 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-125 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">14:50</td>
             <td class="fare-cell"><span class="ar-text">1388 ريال سعودي</span><span class="en-text">1388 SAR</span></td>
@@ -3629,10 +3631,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-117 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-117 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-117 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-117 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">1388 ريال سعودي</span><span class="en-text">1388 SAR</span></td>
@@ -3648,10 +3650,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">1519 ريال سعودي</span><span class="en-text">1519 SAR</span></td>
@@ -3667,10 +3669,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">10:15</td>
             <td class="fare-cell"><span class="ar-text">1519 ريال سعودي</span><span class="en-text">1519 SAR</span></td>
@@ -3686,10 +3688,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">22:55</td>
             <td class="fare-cell"><span class="ar-text">1519 ريال سعودي</span><span class="en-text">1519 SAR</span></td>
@@ -3705,10 +3707,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-121 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-121 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-121 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-121 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">13:30</td>
             <td class="fare-cell"><span class="ar-text">1565 ريال سعودي</span><span class="en-text">1565 SAR</span></td>
@@ -3724,10 +3726,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-352 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-352 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-352 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-352 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">18:35</td>
             <td class="fare-cell"><span class="ar-text">1843 ريال سعودي</span><span class="en-text">1843 SAR</span></td>
@@ -3743,10 +3745,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-452 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-452 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-452 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-452 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">04:40</td>
             <td class="fare-cell"><span class="ar-text">1843 ريال سعودي</span><span class="en-text">1843 SAR</span></td>
@@ -3762,10 +3764,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">12:55</td>
             <td class="fare-cell"><span class="ar-text">1843 ريال سعودي</span><span class="en-text">1843 SAR</span></td>
@@ -3781,7 +3783,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -3800,10 +3802,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-690 (بديل) RUH-ATZ</span><span class="en-text">EgyptAir MS-690 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-690 (بديل) RUH-CAI</span><span class="en-text">EgyptAir MS-690 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">16:00</td>
             <td class="fare-cell"><span class="ar-text">1905 ريال سعودي</span><span class="en-text">1905 SAR</span></td>
@@ -3819,10 +3821,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-652 (بديل) RUH-ATZ</span><span class="en-text">EgyptAir MS-652 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-652 (بديل) RUH-CAI</span><span class="en-text">EgyptAir MS-652 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">13:00</td>
             <td class="fare-cell"><span class="ar-text">1920 ريال سعودي</span><span class="en-text">1920 SAR</span></td>
@@ -3838,10 +3840,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-648 (بديل) RUH-ATZ</span><span class="en-text">EgyptAir MS-648 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-648 (بديل) RUH-CAI</span><span class="en-text">EgyptAir MS-648 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">22:15</td>
             <td class="fare-cell"><span class="ar-text">1928 ريال سعودي</span><span class="en-text">1928 SAR</span></td>
@@ -3857,13 +3859,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-05-27">
             <div class="date-header">
                 <div class="date-main">
@@ -3875,7 +3877,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3883,53 +3885,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">105</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">22</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">6</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">V9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">27MAY26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">60%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3945,9 +3949,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-648 (بديل) RUH-ATZ</span><span class="en-text">EgyptAir MS-648 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-648 (بديل) RUH-CAI</span><span class="en-text">EgyptAir MS-648 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">22:15</td>
             <td class="fare-cell"><span class="ar-text">1328 ريال سعودي</span><span class="en-text">1328 SAR</span></td>
@@ -3963,7 +3967,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -3982,13 +3986,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-02">
             <div class="date-header">
                 <div class="date-main">
@@ -4000,7 +4004,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4008,53 +4012,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">34</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">23</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W2</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">02JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">19%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4070,7 +4076,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
             <td class="dep-time-cell">15:00</td>
@@ -4088,13 +4094,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-03">
             <div class="date-header">
                 <div class="date-main">
@@ -4106,7 +4112,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4114,53 +4120,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">30</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">03JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">17%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4176,7 +4184,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
             <td class="dep-time-cell">22:00</td>
@@ -4194,13 +4202,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-09">
             <div class="date-header">
                 <div class="date-main">
@@ -4212,7 +4220,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4220,53 +4228,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">21</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">09JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">12%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4282,9 +4292,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">20:30</td>
             <td class="fare-cell"><span class="ar-text">533 ريال سعودي</span><span class="en-text">533 SAR</span></td>
@@ -4300,10 +4310,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">16:50</td>
             <td class="fare-cell"><span class="ar-text">533 ريال سعودي</span><span class="en-text">533 SAR</span></td>
@@ -4319,10 +4329,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">11:50</td>
             <td class="fare-cell"><span class="ar-text">533 ريال سعودي</span><span class="en-text">533 SAR</span></td>
@@ -4338,7 +4348,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -4357,13 +4367,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-10">
             <div class="date-header">
                 <div class="date-main">
@@ -4375,7 +4385,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4383,53 +4393,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">35</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-13 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">4</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">10JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">20%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4445,9 +4457,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">11:50</td>
             <td class="fare-cell"><span class="ar-text">608 ريال سعودي</span><span class="en-text">608 SAR</span></td>
@@ -4463,10 +4475,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">20:30</td>
             <td class="fare-cell"><span class="ar-text">608 ريال سعودي</span><span class="en-text">608 SAR</span></td>
@@ -4482,10 +4494,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">16:50</td>
             <td class="fare-cell"><span class="ar-text">608 ريال سعودي</span><span class="en-text">608 SAR</span></td>
@@ -4501,10 +4513,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">06:45</td>
             <td class="fare-cell"><span class="ar-text">745 ريال سعودي</span><span class="en-text">745 SAR</span></td>
@@ -4520,10 +4532,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">08:50</td>
             <td class="fare-cell"><span class="ar-text">749 ريال سعودي</span><span class="en-text">749 SAR</span></td>
@@ -4539,10 +4551,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">13:35</td>
             <td class="fare-cell"><span class="ar-text">749 ريال سعودي</span><span class="en-text">749 SAR</span></td>
@@ -4558,10 +4570,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-165 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-165 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-165 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-165 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">23:15</td>
             <td class="fare-cell"><span class="ar-text">835 ريال سعودي</span><span class="en-text">835 SAR</span></td>
@@ -4577,7 +4589,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -4596,13 +4608,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-16">
             <div class="date-header">
                 <div class="date-main">
@@ -4614,7 +4626,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4622,53 +4634,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">22</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-15 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">7</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">16JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">13%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4684,9 +4698,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">10:40</td>
             <td class="fare-cell"><span class="ar-text">745 ريال سعودي</span><span class="en-text">745 SAR</span></td>
@@ -4702,10 +4716,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">08:50</td>
             <td class="fare-cell"><span class="ar-text">834 ريال سعودي</span><span class="en-text">834 SAR</span></td>
@@ -4721,10 +4735,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">12:55</td>
             <td class="fare-cell"><span class="ar-text">834 ريال سعودي</span><span class="en-text">834 SAR</span></td>
@@ -4740,10 +4754,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-163 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-163 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-163 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-163 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">03:05</td>
             <td class="fare-cell"><span class="ar-text">835 ريال سعودي</span><span class="en-text">835 SAR</span></td>
@@ -4759,7 +4773,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -4778,13 +4792,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-17">
             <div class="date-header">
                 <div class="date-main">
@@ -4796,7 +4810,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4804,53 +4818,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">28</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">17JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">16%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4866,9 +4882,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-165 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-165 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-165 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-165 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">23:15</td>
             <td class="fare-cell"><span class="ar-text">835 ريال سعودي</span><span class="en-text">835 SAR</span></td>
@@ -4884,7 +4900,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -4903,13 +4919,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-23">
             <div class="date-header">
                 <div class="date-main">
@@ -4921,7 +4937,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4929,53 +4945,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">10</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">4</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">23JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">6%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4991,7 +5009,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
             <td class="dep-time-cell">14:15</td>
@@ -5009,13 +5027,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-06-30">
             <div class="date-header">
                 <div class="date-main">
@@ -5027,7 +5045,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5035,53 +5053,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">44</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">24</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">9</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G8</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">30JUN26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">25%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5097,7 +5117,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
             <td class="dep-time-cell">14:15</td>
@@ -5115,13 +5135,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-07">
             <div class="date-header">
                 <div class="date-main">
@@ -5133,7 +5153,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5141,53 +5161,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-15 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">07JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">5%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5203,7 +5225,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
             <td class="dep-time-cell">14:15</td>
@@ -5221,13 +5243,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-08">
             <div class="date-header">
                 <div class="date-main">
@@ -5239,7 +5261,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5247,53 +5269,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">10</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-09 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">08JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">6%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5309,7 +5333,7 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
             <td class="dep-time-cell">22:00</td>
@@ -5327,13 +5351,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-14">
             <div class="date-header">
                 <div class="date-main">
@@ -5345,7 +5369,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5353,53 +5377,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">4</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-10 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">14JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">2%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5415,9 +5441,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-267 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-267 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-267 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-267 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">699 ريال سعودي</span><span class="en-text">699 SAR</span></td>
@@ -5433,10 +5459,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-163 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-163 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-163 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-163 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">03:05</td>
             <td class="fare-cell"><span class="ar-text">745 ريال سعودي</span><span class="en-text">745 SAR</span></td>
@@ -5452,10 +5478,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">08:50</td>
             <td class="fare-cell"><span class="ar-text">749 ريال سعودي</span><span class="en-text">749 SAR</span></td>
@@ -5471,10 +5497,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">12:55</td>
             <td class="fare-cell"><span class="ar-text">749 ريال سعودي</span><span class="en-text">749 SAR</span></td>
@@ -5490,10 +5516,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-273 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-273 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-273 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-273 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">09:10</td>
             <td class="fare-cell"><span class="ar-text">779 ريال سعودي</span><span class="en-text">779 SAR</span></td>
@@ -5509,10 +5535,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-263 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-263 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-263 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-263 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">07:05</td>
             <td class="fare-cell"><span class="ar-text">779 ريال سعودي</span><span class="en-text">779 SAR</span></td>
@@ -5528,10 +5554,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-271 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-271 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-271 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-271 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">16:25</td>
             <td class="fare-cell"><span class="ar-text">779 ريال سعودي</span><span class="en-text">779 SAR</span></td>
@@ -5547,10 +5573,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-269 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-269 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-269 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-269 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">18:20</td>
             <td class="fare-cell"><span class="ar-text">779 ريال سعودي</span><span class="en-text">779 SAR</span></td>
@@ -5566,10 +5592,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">10:50</td>
             <td class="fare-cell"><span class="ar-text">835 ريال سعودي</span><span class="en-text">835 SAR</span></td>
@@ -5585,10 +5611,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-690 (بديل) RUH-ATZ</span><span class="en-text">EgyptAir MS-690 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-690 (بديل) RUH-CAI</span><span class="en-text">EgyptAir MS-690 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">16:00</td>
             <td class="fare-cell"><span class="ar-text">863 ريال سعودي</span><span class="en-text">863 SAR</span></td>
@@ -5604,10 +5630,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-265 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-265 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-265 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-265 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">19:40</td>
             <td class="fare-cell"><span class="ar-text">898 ريال سعودي</span><span class="en-text">898 SAR</span></td>
@@ -5623,10 +5649,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">08:30</td>
             <td class="fare-cell"><span class="ar-text">899 ريال سعودي</span><span class="en-text">899 SAR</span></td>
@@ -5642,10 +5668,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">10:15</td>
             <td class="fare-cell"><span class="ar-text">899 ريال سعودي</span><span class="en-text">899 SAR</span></td>
@@ -5661,10 +5687,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">22:55</td>
             <td class="fare-cell"><span class="ar-text">899 ريال سعودي</span><span class="en-text">899 SAR</span></td>
@@ -5680,10 +5706,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">899 ريال سعودي</span><span class="en-text">899 SAR</span></td>
@@ -5699,10 +5725,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">20:30</td>
             <td class="fare-cell"><span class="ar-text">905 ريال سعودي</span><span class="en-text">905 SAR</span></td>
@@ -5718,10 +5744,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">00:40</td>
             <td class="fare-cell"><span class="ar-text">905 ريال سعودي</span><span class="en-text">905 SAR</span></td>
@@ -5737,10 +5763,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">16:50</td>
             <td class="fare-cell"><span class="ar-text">905 ريال سعودي</span><span class="en-text">905 SAR</span></td>
@@ -5756,10 +5782,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">07:25</td>
             <td class="fare-cell"><span class="ar-text">905 ريال سعودي</span><span class="en-text">905 SAR</span></td>
@@ -5775,7 +5801,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -5794,13 +5820,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-15">
             <div class="date-header">
                 <div class="date-main">
@@ -5812,7 +5838,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5820,53 +5846,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-14 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">15JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">1%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5882,9 +5910,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">08:30</td>
             <td class="fare-cell"><span class="ar-text">549 ريال سعودي</span><span class="en-text">549 SAR</span></td>
@@ -5900,10 +5928,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">549 ريال سعودي</span><span class="en-text">549 SAR</span></td>
@@ -5919,10 +5947,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">10:15</td>
             <td class="fare-cell"><span class="ar-text">549 ريال سعودي</span><span class="en-text">549 SAR</span></td>
@@ -5938,10 +5966,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">22:55</td>
             <td class="fare-cell"><span class="ar-text">599 ريال سعودي</span><span class="en-text">599 SAR</span></td>
@@ -5957,10 +5985,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">06:45</td>
             <td class="fare-cell"><span class="ar-text">745 ريال سعودي</span><span class="en-text">745 SAR</span></td>
@@ -5976,10 +6004,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-271 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-271 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-271 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-271 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">16:25</td>
             <td class="fare-cell"><span class="ar-text">779 ريال سعودي</span><span class="en-text">779 SAR</span></td>
@@ -5995,10 +6023,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-273 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-273 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-273 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-273 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">09:10</td>
             <td class="fare-cell"><span class="ar-text">818 ريال سعودي</span><span class="en-text">818 SAR</span></td>
@@ -6014,10 +6042,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-263 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-263 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-263 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-263 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">07:05</td>
             <td class="fare-cell"><span class="ar-text">818 ريال سعودي</span><span class="en-text">818 SAR</span></td>
@@ -6033,10 +6061,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-165 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-165 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-165 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-165 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">23:15</td>
             <td class="fare-cell"><span class="ar-text">835 ريال سعودي</span><span class="en-text">835 SAR</span></td>
@@ -6052,10 +6080,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-265 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-265 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-265 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-265 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">19:40</td>
             <td class="fare-cell"><span class="ar-text">898 ريال سعودي</span><span class="en-text">898 SAR</span></td>
@@ -6071,10 +6099,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-267 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-267 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-267 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-267 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">898 ريال سعودي</span><span class="en-text">898 SAR</span></td>
@@ -6090,10 +6118,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-269 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-269 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-269 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-269 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">18:20</td>
             <td class="fare-cell"><span class="ar-text">898 ريال سعودي</span><span class="en-text">898 SAR</span></td>
@@ -6109,7 +6137,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -6128,13 +6156,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-21">
             <div class="date-header">
                 <div class="date-main">
@@ -6146,7 +6174,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -6154,53 +6182,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-10 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">21JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">1%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6216,9 +6246,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">00:40</td>
             <td class="fare-cell"><span class="ar-text">457 ريال سعودي</span><span class="en-text">457 SAR</span></td>
@@ -6234,10 +6264,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">08:30</td>
             <td class="fare-cell"><span class="ar-text">469 ريال سعودي</span><span class="en-text">469 SAR</span></td>
@@ -6253,10 +6283,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">469 ريال سعودي</span><span class="en-text">469 SAR</span></td>
@@ -6272,10 +6302,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">10:15</td>
             <td class="fare-cell"><span class="ar-text">469 ريال سعودي</span><span class="en-text">469 SAR</span></td>
@@ -6291,10 +6321,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">22:55</td>
             <td class="fare-cell"><span class="ar-text">469 ريال سعودي</span><span class="en-text">469 SAR</span></td>
@@ -6310,10 +6340,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-411 (بديل) RUH-ATZ</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-411 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-411 (بديل) RUH-CAI</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-411 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">15:10</td>
             <td class="fare-cell"><span class="ar-text">478 ريال سعودي</span><span class="en-text">478 SAR</span></td>
@@ -6329,10 +6359,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">16:50</td>
             <td class="fare-cell"><span class="ar-text">533 ريال سعودي</span><span class="en-text">533 SAR</span></td>
@@ -6348,10 +6378,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">07:25</td>
             <td class="fare-cell"><span class="ar-text">533 ريال سعودي</span><span class="en-text">533 SAR</span></td>
@@ -6367,10 +6397,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">11:50</td>
             <td class="fare-cell"><span class="ar-text">533 ريال سعودي</span><span class="en-text">533 SAR</span></td>
@@ -6386,10 +6416,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-267 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-267 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-267 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-267 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">569 ريال سعودي</span><span class="en-text">569 SAR</span></td>
@@ -6405,10 +6435,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-273 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-273 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-273 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-273 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">09:10</td>
             <td class="fare-cell"><span class="ar-text">569 ريال سعودي</span><span class="en-text">569 SAR</span></td>
@@ -6424,10 +6454,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-271 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-271 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-271 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-271 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">16:25</td>
             <td class="fare-cell"><span class="ar-text">569 ريال سعودي</span><span class="en-text">569 SAR</span></td>
@@ -6443,10 +6473,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-269 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-269 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-269 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-269 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">18:20</td>
             <td class="fare-cell"><span class="ar-text">569 ريال سعودي</span><span class="en-text">569 SAR</span></td>
@@ -6462,10 +6492,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">20:30</td>
             <td class="fare-cell"><span class="ar-text">612 ريال سعودي</span><span class="en-text">612 SAR</span></td>
@@ -6481,10 +6511,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-265 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-265 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-265 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-265 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">19:40</td>
             <td class="fare-cell"><span class="ar-text">688 ريال سعودي</span><span class="en-text">688 SAR</span></td>
@@ -6500,10 +6530,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران ناس XY-263 (بديل) RUH-ATZ</span><span class="en-text">Flynas XY-263 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران ناس XY-263 (بديل) RUH-CAI</span><span class="en-text">Flynas XY-263 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">07:05</td>
             <td class="fare-cell"><span class="ar-text">688 ريال سعودي</span><span class="en-text">688 SAR</span></td>
@@ -6519,10 +6549,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">08:50</td>
             <td class="fare-cell"><span class="ar-text">691 ريال سعودي</span><span class="en-text">691 SAR</span></td>
@@ -6538,10 +6568,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">12:55</td>
             <td class="fare-cell"><span class="ar-text">691 ريال سعودي</span><span class="en-text">691 SAR</span></td>
@@ -6557,10 +6587,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">10:50</td>
             <td class="fare-cell"><span class="ar-text">695 ريال سعودي</span><span class="en-text">695 SAR</span></td>
@@ -6576,10 +6606,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-163 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-163 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-163 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-163 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">03:05</td>
             <td class="fare-cell"><span class="ar-text">745 ريال سعودي</span><span class="en-text">745 SAR</span></td>
@@ -6595,7 +6625,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-155</span><span class="en-text">Flyadeal F3-155</span></td>
@@ -6614,7 +6644,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-157</span><span class="en-text">Flyadeal F3-157</span></td>
@@ -6633,7 +6663,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-151</span><span class="en-text">Flyadeal F3-151</span></td>
@@ -6652,7 +6682,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-153</span><span class="en-text">Flyadeal F3-153</span></td>
@@ -6671,7 +6701,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -6690,13 +6720,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-22">
             <div class="date-header">
                 <div class="date-main">
@@ -6708,7 +6738,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -6716,53 +6746,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-07 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">G9</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">22JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">2%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6778,9 +6810,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-613 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-613 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">08:30</td>
             <td class="fare-cell"><span class="ar-text">469 ريال سعودي</span><span class="en-text">469 SAR</span></td>
@@ -6796,10 +6828,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-607 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-607 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">12:00</td>
             <td class="fare-cell"><span class="ar-text">469 ريال سعودي</span><span class="en-text">469 SAR</span></td>
@@ -6815,10 +6847,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-605 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-605 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">10:15</td>
             <td class="fare-cell"><span class="ar-text">469 ريال سعودي</span><span class="en-text">469 SAR</span></td>
@@ -6834,10 +6866,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-ATZ</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-615 (بديل) RUH-CAI</span><span class="en-text">Flyadeal F3-615 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">22:55</td>
             <td class="fare-cell"><span class="ar-text">469 ريال سعودي</span><span class="en-text">469 SAR</span></td>
@@ -6853,10 +6885,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-416 (بديل) RUH-ATZ</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-416 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-416 (بديل) RUH-CAI</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-416 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">04:45</td>
             <td class="fare-cell"><span class="ar-text">478 ريال سعودي</span><span class="en-text">478 SAR</span></td>
@@ -6872,10 +6904,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-411 (بديل) RUH-ATZ</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-411 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-411 (بديل) RUH-CAI</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-411 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">15:50</td>
             <td class="fare-cell"><span class="ar-text">478 ريال سعودي</span><span class="en-text">478 SAR</span></td>
@@ -6891,10 +6923,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">00:40</td>
             <td class="fare-cell"><span class="ar-text">533 ريال سعودي</span><span class="en-text">533 SAR</span></td>
@@ -6910,10 +6942,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">07:25</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -6929,10 +6961,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">20:30</td>
             <td class="fare-cell"><span class="ar-text">608 ريال سعودي</span><span class="en-text">608 SAR</span></td>
@@ -6948,10 +6980,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="high" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">11:50</td>
             <td class="fare-cell"><span class="ar-text">612 ريال سعودي</span><span class="en-text">612 SAR</span></td>
@@ -6967,10 +6999,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="medium" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">16:50</td>
             <td class="fare-cell"><span class="ar-text">687 ريال سعودي</span><span class="en-text">687 SAR</span></td>
@@ -6986,10 +7018,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-152 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-152 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">08:50</td>
             <td class="fare-cell"><span class="ar-text">691 ريال سعودي</span><span class="en-text">691 SAR</span></td>
@@ -7005,10 +7037,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-ATZ</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-252 (بديل) RUH-CAI</span><span class="en-text">Air NP Air NP-252 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">13:35</td>
             <td class="fare-cell"><span class="ar-text">691 ريال سعودي</span><span class="en-text">691 SAR</span></td>
@@ -7024,10 +7056,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-161 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-161 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">06:45</td>
             <td class="fare-cell"><span class="ar-text">695 ريال سعودي</span><span class="en-text">695 SAR</span></td>
@@ -7043,10 +7075,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-165 (بديل) RUH-ATZ</span><span class="en-text">Airlines NE Airlines NE-165 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-165 (بديل) RUH-CAI</span><span class="en-text">Airlines NE Airlines NE-165 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">23:15</td>
             <td class="fare-cell"><span class="ar-text">745 ريال سعودي</span><span class="en-text">745 SAR</span></td>
@@ -7062,7 +7094,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-159</span><span class="en-text">Flyadeal F3-159</span></td>
@@ -7081,7 +7113,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-161</span><span class="en-text">Flyadeal F3-161</span></td>
@@ -7100,7 +7132,7 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">مصر للطيران MS-8240</span><span class="en-text">EgyptAir MS-8240</span></td>
@@ -7119,13 +7151,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-07-28">
             <div class="date-header">
                 <div class="date-main">
@@ -7137,7 +7169,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -7145,53 +7177,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-04-21 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">U5</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">28JUL26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">3%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7207,9 +7241,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">07:25</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7225,10 +7259,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">11:50</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7244,13 +7278,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-08-04">
             <div class="date-header">
                 <div class="date-main">
@@ -7262,7 +7296,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -7270,53 +7304,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">10</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-09 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">U5</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">04AUG26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">6%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7332,9 +7368,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">20:30</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7350,10 +7386,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">00:40</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7369,10 +7405,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">16:50</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7388,10 +7424,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">07:25</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7407,10 +7443,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">11:50</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7426,13 +7462,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-08-05">
             <div class="date-header">
                 <div class="date-main">
@@ -7444,7 +7480,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -7452,53 +7488,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">15</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-12 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">U6</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">05AUG26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">9%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7514,9 +7552,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">20:30</td>
             <td class="fare-cell"><span class="ar-text">612 ريال سعودي</span><span class="en-text">612 SAR</span></td>
@@ -7532,10 +7570,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">16:50</td>
             <td class="fare-cell"><span class="ar-text">612 ريال سعودي</span><span class="en-text">612 SAR</span></td>
@@ -7551,13 +7589,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-08-18">
             <div class="date-header">
                 <div class="date-main">
@@ -7569,7 +7607,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -7577,53 +7615,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-04 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I2</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">18AUG26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">2%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7639,9 +7679,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-321 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-321 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">20:30</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7657,10 +7697,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">00:40</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7676,10 +7716,10 @@
                 </span>
             </td>
         </tr>
-
+        
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">16:50</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7695,13 +7735,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-08-26">
             <div class="date-header">
                 <div class="date-main">
@@ -7713,7 +7753,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -7721,53 +7761,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-13 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I5</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">26AUG26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">1%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7783,9 +7825,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-323 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-323 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">00:40</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7801,13 +7843,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-02">
             <div class="date-header">
                 <div class="date-main">
@@ -7819,7 +7861,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -7827,53 +7869,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-06 00:00:00</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I5</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">02SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">1%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7889,9 +7933,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-311 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-311 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">22:00</td>
             <td class="dep-time-cell">07:25</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -7907,13 +7951,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-15">
             <div class="date-header">
                 <div class="date-main">
@@ -7925,7 +7969,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -7933,53 +7977,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I5</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">15SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7995,9 +8041,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-313 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-313 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">14:15</td>
             <td class="dep-time-cell">16:50</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -8013,13 +8059,13 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         <div class="date-section" data-date="2026-09-29">
             <div class="date-header">
                 <div class="date-main">
@@ -8031,7 +8077,7 @@
                     <span class="en-text">Flights: SM-466</span>
                 </div>
             </div>
-
+            
         <div class="flight-block" data-flight="SM-466">
             <div class="flight-header">
                 <div class="flight-info">
@@ -8039,53 +8085,55 @@
                         <span class="ar-text">الرحلة: SM-466</span>
                         <span class="en-text">Flight: SM-466</span>
                     </span>
-                    <div class="lf-details-bar">
-
+                    
+        <div class="lf-details-bar">
+            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-
+            
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">I5</span>
                 </div>
-
+            
         </div>
-
-
+        
+                    
             <div class="flight-route-date">
                 <span class="route-tag">RUH-ATZ</span>
                 <span class="date-tag">29SEP26</span>
             </div>
-
+            
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
                     <span class="en-text">Load Factor:</span>
                     <span class="load-factor-value" data-flight-lf="SM-466">0%</span>
                 </span>
-            </div><table class="competitors-table">
+            </div>
+            <table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -8101,9 +8149,9 @@
     </tr>
 </thead>
                 <tbody>
-
+                    
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-ATZ</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-ATZ</span></td>
+            <td class="competitor-name"><span class="ar-text">الخطوط السعودية SV-417 (بديل) RUH-CAI</span><span class="en-text">Saudia SV-417 (ALTERNATIVE) RUH-CAI</span></td>
             <td class="dep-time-cell">15:00</td>
             <td class="dep-time-cell">11:50</td>
             <td class="fare-cell"><span class="ar-text">537 ريال سعودي</span><span class="en-text">537 SAR</span></td>
@@ -8119,15 +8167,15 @@
                 </span>
             </td>
         </tr>
-
+        
                 </tbody>
             </table>
         </div>
-
+        
         </div>
-
+        
         </div>
-
+        
 
         </div>
 
