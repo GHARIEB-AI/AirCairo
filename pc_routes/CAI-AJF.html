@@ -2403,11 +2403,76 @@
         }
         .flight-info {
             gap: 12px !important;
+            flex: 1 1 auto !important;
         }
         .flight-name {
             font-size: 1.2em !important;
             font-weight: 800 !important;
             letter-spacing: 0.5px !important;
+        }
+        .flight-header .lf-details-bar {
+            display: flex !important;
+            flex: 1 1 auto !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 6px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+        body.ar .flight-header .lf-details-bar {
+            justify-content: flex-end !important;
+        }
+        .flight-header .lf-detail-item {
+            min-width: 0 !important;
+            display: inline-flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 5px !important;
+            padding: 4px 8px !important;
+            border-radius: 12px !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        .flight-header .lf-detail-item:hover {
+            transform: none !important;
+            background: rgba(255, 255, 255, 0.18) !important;
+        }
+        .flight-header .lf-detail-label {
+            color: rgba(255, 255, 255, 0.68) !important;
+            font-size: 0.65em !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.4px !important;
+            margin: 0 !important;
+            white-space: nowrap !important;
+        }
+        .flight-header .lf-detail-value {
+            color: white !important;
+            font-size: 0.82em !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+        }
+        .flight-header .lf-detail-item.highlight {
+            background: rgba(92, 44, 126, 0.75) !important;
+        }
+        .flight-header .lf-detail-item.warning {
+            background: rgba(245, 166, 35, 0.9) !important;
+        }
+        .flight-header .lf-detail-item.danger {
+            background: rgba(231, 76, 60, 0.9) !important;
+        }
+        .flight-header .lf-detail-item.warning .lf-detail-label,
+        .flight-header .lf-detail-item.danger .lf-detail-label,
+        .flight-header .lf-detail-item.highlight .lf-detail-label {
+            color: rgba(255, 255, 255, 0.86) !important;
+        }
+        .flight-route-date {
+            flex-shrink: 0 !important;
         }
         .route-tag,
         .date-tag {
@@ -2501,8 +2566,7 @@
         .footer {
             display: none !important;
         }
-
-    </style>
+</style>
 </head>
 <body class="en">
     <!-- UNIFIED PAGE LOADER -->
@@ -2829,21 +2893,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">20MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">13%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -2875,24 +2925,21 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">I17 O5 X1 G1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">20MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">13%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -2952,21 +2999,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">21MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">11%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -2998,24 +3031,21 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">I14 S3 V2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">21MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">11%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3075,21 +3105,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">23MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">27%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3121,24 +3137,21 @@
                     <span class="lf-detail-value">I8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">I42 O1 X5 T1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">23MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">27%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3198,21 +3211,7 @@
                         <span class="ar-text">الرحلة: SM-973</span>
                         <span class="en-text">Flight: SM-973</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">25MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-973">11%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3244,24 +3243,21 @@
                     <span class="lf-detail-value">I4</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">06:50</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">I15 X3 T1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">25MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-973">11%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3321,21 +3317,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">30MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">46%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3367,24 +3349,21 @@
                     <span class="lf-detail-value">M3</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">K35 Q26 H18 M3</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">30MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">46%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3444,21 +3423,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">17JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">7%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3490,24 +3455,21 @@
                     <span class="lf-detail-value">O9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">W3 S1 G6 L2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">17JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">7%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3567,21 +3529,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">24JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">7%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3613,24 +3561,21 @@
                     <span class="lf-detail-value">O9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">X2 W1 S2 G1 L6</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">24JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">7%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3690,21 +3635,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">01JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">7%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3736,24 +3667,21 @@
                     <span class="lf-detail-value">U3</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">U2 W1 S6 G2 L2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">01JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">7%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3813,21 +3741,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">02JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">3%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3859,24 +3773,21 @@
                     <span class="lf-detail-value">U4</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">U1 W1 S2 G2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">02JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">3%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3936,21 +3847,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">15JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">4%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3982,24 +3879,21 @@
                     <span class="lf-detail-value">U4</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">U1 W1 S2 G1 L2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">15JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">4%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4059,21 +3953,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">16JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">1%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4105,24 +3985,21 @@
                     <span class="lf-detail-value">U5</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">W1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">16JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">1%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4182,21 +4059,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">05AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">1%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4228,24 +4091,21 @@
                     <span class="lf-detail-value">V4</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">05AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">1%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4305,21 +4165,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">06AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">2%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4351,24 +4197,21 @@
                     <span class="lf-detail-value">V1</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V4</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">06AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">2%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4428,21 +4271,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">12AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">16%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4474,24 +4303,21 @@
                     <span class="lf-detail-value">Q1</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V3 K11 Q10 H5</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">12AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">16%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4551,21 +4377,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">19AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">16%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4597,24 +4409,21 @@
                     <span class="lf-detail-value">H7</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V3 K11 Q11 H3</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">19AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">16%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4674,21 +4483,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">20AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">15%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4720,24 +4515,21 @@
                     <span class="lf-detail-value">H8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V3 K11 Q11 H2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">20AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">15%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4797,21 +4589,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">26AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">8%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4843,24 +4621,21 @@
                     <span class="lf-detail-value">Q9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V3 K11</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">26AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">8%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4920,21 +4695,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">27AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">7%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4966,24 +4727,21 @@
                     <span class="lf-detail-value">K1</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V3 K10</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">27AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">7%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5043,21 +4801,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">02SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5089,19 +4833,21 @@
                     <span class="lf-detail-value">H8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">02SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5161,21 +4907,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">09SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5207,19 +4939,21 @@
                     <span class="lf-detail-value">H8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">09SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5279,21 +5013,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">10SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5325,19 +5045,21 @@
                     <span class="lf-detail-value">H8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">10SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5397,21 +5119,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">16SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5443,19 +5151,21 @@
                     <span class="lf-detail-value">H8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">16SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5515,21 +5225,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">17SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5561,19 +5257,21 @@
                     <span class="lf-detail-value">H8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">17SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5633,21 +5331,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">23SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5679,19 +5363,21 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">23SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5751,21 +5437,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">24SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5797,19 +5469,21 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">24SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5869,21 +5543,7 @@
                         <span class="ar-text">الرحلة: SM-321</span>
                         <span class="en-text">Flight: SM-321</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AJF</span>
-                <span class="date-tag">30SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-321">1%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5915,24 +5575,21 @@
                     <span class="lf-detail-value">S2</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">17:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">W1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">CAI-AJF</span>
+                <span class="date-tag">30SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-321">1%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>

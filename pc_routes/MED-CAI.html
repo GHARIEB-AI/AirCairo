@@ -2403,11 +2403,76 @@
         }
         .flight-info {
             gap: 12px !important;
+            flex: 1 1 auto !important;
         }
         .flight-name {
             font-size: 1.2em !important;
             font-weight: 800 !important;
             letter-spacing: 0.5px !important;
+        }
+        .flight-header .lf-details-bar {
+            display: flex !important;
+            flex: 1 1 auto !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 6px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+        body.ar .flight-header .lf-details-bar {
+            justify-content: flex-end !important;
+        }
+        .flight-header .lf-detail-item {
+            min-width: 0 !important;
+            display: inline-flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 5px !important;
+            padding: 4px 8px !important;
+            border-radius: 12px !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        .flight-header .lf-detail-item:hover {
+            transform: none !important;
+            background: rgba(255, 255, 255, 0.18) !important;
+        }
+        .flight-header .lf-detail-label {
+            color: rgba(255, 255, 255, 0.68) !important;
+            font-size: 0.65em !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.4px !important;
+            margin: 0 !important;
+            white-space: nowrap !important;
+        }
+        .flight-header .lf-detail-value {
+            color: white !important;
+            font-size: 0.82em !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+        }
+        .flight-header .lf-detail-item.highlight {
+            background: rgba(92, 44, 126, 0.75) !important;
+        }
+        .flight-header .lf-detail-item.warning {
+            background: rgba(245, 166, 35, 0.9) !important;
+        }
+        .flight-header .lf-detail-item.danger {
+            background: rgba(231, 76, 60, 0.9) !important;
+        }
+        .flight-header .lf-detail-item.warning .lf-detail-label,
+        .flight-header .lf-detail-item.danger .lf-detail-label,
+        .flight-header .lf-detail-item.highlight .lf-detail-label {
+            color: rgba(255, 255, 255, 0.86) !important;
+        }
+        .flight-route-date {
+            flex-shrink: 0 !important;
         }
         .route-tag,
         .date-tag {
@@ -2501,8 +2566,7 @@
         .footer {
             display: none !important;
         }
-
-    </style>
+</style>
 </head>
 <body class="en">
     <!-- UNIFIED PAGE LOADER -->
@@ -2846,21 +2910,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">20MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">73%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -2892,24 +2942,21 @@
                     <span class="lf-detail-value">G3</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">I3 T24 W43 S30 G27 L1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">20MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">73%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3026,21 +3073,7 @@
                         <span class="ar-text">الرحلة: SM-486</span>
                         <span class="en-text">Flight: SM-486</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">21MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #462B73 0%, #462B73dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-486">85%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">SOLD</span>
@@ -3072,24 +3105,21 @@
                     <span class="lf-detail-value">L2</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">13:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">T10 W45 S55 G25 L13 H1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">21MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #462B73 0%, #462B73dd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-486">85%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3192,21 +3222,7 @@
                         <span class="ar-text">الرحلة: SM-490</span>
                         <span class="en-text">Flight: SM-490</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">21MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-490">55%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -3238,24 +3254,21 @@
                     <span class="lf-detail-value">G3</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">06:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">X10 T19 W31 S20 G17</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">21MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-490">55%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3353,21 +3366,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">25MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">54%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -3399,24 +3398,21 @@
                     <span class="lf-detail-value">L3</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">01:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">N1 S25 G25 L21 V20 K3</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">25MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">54%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3533,21 +3529,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">26MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">63%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -3579,24 +3561,21 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">W10 S30 G40 L20 V6</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">26MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">63%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3713,21 +3692,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">04JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #462B73 0%, #462B73dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">94%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">SOLD</span>
@@ -3759,24 +3724,21 @@
                     <span class="lf-detail-value">Y9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">P110 M34 B19 Y1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">04JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #462B73 0%, #462B73dd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">94%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3893,21 +3855,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">09JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">50%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3939,24 +3887,21 @@
                     <span class="lf-detail-value">S1</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">I15 O10 U10 X11 T10 W10 S9 G4 L1 V1 K4 Y2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">09JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">50%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4073,21 +4018,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">10JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">30%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4119,24 +4050,21 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">I4 U18 X11 T10 W9</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">10JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">30%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4215,21 +4143,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">16JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4261,19 +4175,21 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">16JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4428,21 +4344,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">17JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4474,19 +4376,21 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">17JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4603,21 +4507,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">18JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4649,19 +4539,21 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">18JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4797,21 +4689,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">22JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4843,19 +4721,21 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">01:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">22JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5086,21 +4966,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">23JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">2%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5132,24 +4998,21 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">G4</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">23JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">2%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5399,21 +5262,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">24JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5445,24 +5294,21 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">G2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">24JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5731,21 +5577,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">25JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">5%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5777,24 +5609,21 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">G8</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">25JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">5%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -5968,21 +5797,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">29JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">2%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -6014,24 +5829,21 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">01:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V4</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">29JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">2%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6262,21 +6074,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">30JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">4%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -6308,24 +6106,21 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V1 M6</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">30JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">4%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6518,21 +6313,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">02JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -6564,24 +6345,21 @@
                     <span class="lf-detail-value">V7</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">S1 V1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">02JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6679,21 +6457,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">06JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -6725,19 +6489,21 @@
                     <span class="lf-detail-value">V8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">01:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">06JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -6987,21 +6753,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">07JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -7033,24 +6785,21 @@
                     <span class="lf-detail-value">V7</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">S1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">07JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7224,21 +6973,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">08JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -7270,24 +7005,21 @@
                     <span class="lf-detail-value">V7</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">V1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">08JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7518,21 +7250,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">09JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -7564,19 +7282,21 @@
                     <span class="lf-detail-value">V8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">09JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -7807,21 +7527,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">13JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -7853,19 +7559,21 @@
                     <span class="lf-detail-value">V8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">01:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">13JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -8039,21 +7747,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">14JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -8085,19 +7779,21 @@
                     <span class="lf-detail-value">V8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">14JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -8271,21 +7967,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">15JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -8317,19 +7999,21 @@
                     <span class="lf-detail-value">V8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">15JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -8560,21 +8244,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">16JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -8606,19 +8276,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">16JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -8678,21 +8350,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">20JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -8724,19 +8382,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">01:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">20JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -8834,21 +8494,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">21JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -8880,19 +8526,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">21JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -9047,21 +8695,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">22JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9093,19 +8727,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">22JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -9241,21 +8877,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">23JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9287,19 +8909,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">23JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -9454,21 +9078,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">27JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9500,24 +9110,21 @@
                     <span class="lf-detail-value">T7</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">01:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">T2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">27JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">1%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -9596,21 +9203,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">28JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9642,19 +9235,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">28JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -9752,21 +9347,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">29JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9798,19 +9379,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">29JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -9870,21 +9453,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">30JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">3%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9916,24 +9485,21 @@
                     <span class="lf-detail-value">T8</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">T1 S4</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">30JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">3%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -10050,21 +9616,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">03AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10096,19 +9648,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">01:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">03AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -10206,21 +9760,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">04AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10252,19 +9792,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">04AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -10457,21 +9999,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">05AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10503,19 +10031,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">05AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -10613,21 +10143,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">06AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10659,19 +10175,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">06AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -10731,21 +10249,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">10AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10777,19 +10281,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">01:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">10AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -10887,21 +10393,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">11AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10933,19 +10425,21 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">11AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -11062,21 +10556,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">13AUG26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">2%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11108,24 +10588,21 @@
                     <span class="lf-detail-value">T6</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">T3</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">13AUG26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">2%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -11223,21 +10700,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">22SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11269,19 +10732,21 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">22SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -11531,21 +10996,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">23SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11577,19 +11028,21 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">23:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">23SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -11877,21 +11330,7 @@
                         <span class="ar-text">الرحلة: SM-494</span>
                         <span class="en-text">Flight: SM-494</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">MED-CAI</span>
-                <span class="date-tag">24SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11923,19 +11362,21 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">09:30</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">MED-CAI</span>
+                <span class="date-tag">24SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-494">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>

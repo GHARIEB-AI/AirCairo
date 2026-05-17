@@ -2403,11 +2403,76 @@
         }
         .flight-info {
             gap: 12px !important;
+            flex: 1 1 auto !important;
         }
         .flight-name {
             font-size: 1.2em !important;
             font-weight: 800 !important;
             letter-spacing: 0.5px !important;
+        }
+        .flight-header .lf-details-bar {
+            display: flex !important;
+            flex: 1 1 auto !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 6px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+        body.ar .flight-header .lf-details-bar {
+            justify-content: flex-end !important;
+        }
+        .flight-header .lf-detail-item {
+            min-width: 0 !important;
+            display: inline-flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 5px !important;
+            padding: 4px 8px !important;
+            border-radius: 12px !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        .flight-header .lf-detail-item:hover {
+            transform: none !important;
+            background: rgba(255, 255, 255, 0.18) !important;
+        }
+        .flight-header .lf-detail-label {
+            color: rgba(255, 255, 255, 0.68) !important;
+            font-size: 0.65em !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.4px !important;
+            margin: 0 !important;
+            white-space: nowrap !important;
+        }
+        .flight-header .lf-detail-value {
+            color: white !important;
+            font-size: 0.82em !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+        }
+        .flight-header .lf-detail-item.highlight {
+            background: rgba(92, 44, 126, 0.75) !important;
+        }
+        .flight-header .lf-detail-item.warning {
+            background: rgba(245, 166, 35, 0.9) !important;
+        }
+        .flight-header .lf-detail-item.danger {
+            background: rgba(231, 76, 60, 0.9) !important;
+        }
+        .flight-header .lf-detail-item.warning .lf-detail-label,
+        .flight-header .lf-detail-item.danger .lf-detail-label,
+        .flight-header .lf-detail-item.highlight .lf-detail-label {
+            color: rgba(255, 255, 255, 0.86) !important;
+        }
+        .flight-route-date {
+            flex-shrink: 0 !important;
         }
         .route-tag,
         .date-tag {
@@ -2501,8 +2566,7 @@
         .footer {
             display: none !important;
         }
-
-    </style>
+</style>
 </head>
 <body class="en">
     <!-- UNIFIED PAGE LOADER -->
@@ -2808,21 +2872,7 @@
                         <span class="ar-text">الرحلة: SM-451</span>
                         <span class="en-text">Flight: SM-451</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">HBE-JED</span>
-                <span class="date-tag">31MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-451">58%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -2854,24 +2904,21 @@
                     <span class="lf-detail-value">Q7</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">04:10</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">I18 O18 U12 X18 T3 W11 S5 G1 K14 Q3</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">HBE-JED</span>
+                <span class="date-tag">31MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-451">58%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3026,21 +3073,7 @@
                         <span class="ar-text">الرحلة: SM-451</span>
                         <span class="en-text">Flight: SM-451</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">HBE-JED</span>
-                <span class="date-tag">06JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-451">68%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -3072,24 +3105,21 @@
                     <span class="lf-detail-value">L5</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">08:25</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">I27 O26 U13 X20 T5 W8 S9 G9 L4 V1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">HBE-JED</span>
+                <span class="date-tag">06JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-451">68%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3168,21 +3198,7 @@
                         <span class="ar-text">الرحلة: SM-451</span>
                         <span class="en-text">Flight: SM-451</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">HBE-JED</span>
-                <span class="date-tag">04JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-451">6%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3214,24 +3230,21 @@
                     <span class="lf-detail-value">X3</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">04:15</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">X10</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">HBE-JED</span>
+                <span class="date-tag">04JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-451">6%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3291,21 +3304,7 @@
                         <span class="ar-text">الرحلة: SM-451</span>
                         <span class="en-text">Flight: SM-451</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">HBE-JED</span>
-                <span class="date-tag">08JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-451">2%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3337,24 +3336,21 @@
                     <span class="lf-detail-value">X9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">11:05</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">X4</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">HBE-JED</span>
+                <span class="date-tag">08JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-451">2%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3414,21 +3410,7 @@
                         <span class="ar-text">الرحلة: SM-451</span>
                         <span class="en-text">Flight: SM-451</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">HBE-JED</span>
-                <span class="date-tag">20JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-451">6%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3460,24 +3442,21 @@
                     <span class="lf-detail-value">X3</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">04:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">X10</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">HBE-JED</span>
+                <span class="date-tag">20JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-451">6%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3537,21 +3516,7 @@
                         <span class="ar-text">الرحلة: SM-451</span>
                         <span class="en-text">Flight: SM-451</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">HBE-JED</span>
-                <span class="date-tag">29JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-451">11%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3583,24 +3548,21 @@
                     <span class="lf-detail-value">T7</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">11:05</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">X13 T7</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">HBE-JED</span>
+                <span class="date-tag">29JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-451">11%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3660,21 +3622,7 @@
                         <span class="ar-text">الرحلة: SM-451</span>
                         <span class="en-text">Flight: SM-451</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">HBE-JED</span>
-                <span class="date-tag">09SEP26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-451">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3706,19 +3654,21 @@
                     <span class="lf-detail-value">G9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">11:05</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">179</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">HBE-JED</span>
+                <span class="date-tag">09SEP26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-451">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>

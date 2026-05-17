@@ -2403,11 +2403,76 @@
         }
         .flight-info {
             gap: 12px !important;
+            flex: 1 1 auto !important;
         }
         .flight-name {
             font-size: 1.2em !important;
             font-weight: 800 !important;
             letter-spacing: 0.5px !important;
+        }
+        .flight-header .lf-details-bar {
+            display: flex !important;
+            flex: 1 1 auto !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 6px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+        body.ar .flight-header .lf-details-bar {
+            justify-content: flex-end !important;
+        }
+        .flight-header .lf-detail-item {
+            min-width: 0 !important;
+            display: inline-flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 5px !important;
+            padding: 4px 8px !important;
+            border-radius: 12px !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        .flight-header .lf-detail-item:hover {
+            transform: none !important;
+            background: rgba(255, 255, 255, 0.18) !important;
+        }
+        .flight-header .lf-detail-label {
+            color: rgba(255, 255, 255, 0.68) !important;
+            font-size: 0.65em !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.4px !important;
+            margin: 0 !important;
+            white-space: nowrap !important;
+        }
+        .flight-header .lf-detail-value {
+            color: white !important;
+            font-size: 0.82em !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+        }
+        .flight-header .lf-detail-item.highlight {
+            background: rgba(92, 44, 126, 0.75) !important;
+        }
+        .flight-header .lf-detail-item.warning {
+            background: rgba(245, 166, 35, 0.9) !important;
+        }
+        .flight-header .lf-detail-item.danger {
+            background: rgba(231, 76, 60, 0.9) !important;
+        }
+        .flight-header .lf-detail-item.warning .lf-detail-label,
+        .flight-header .lf-detail-item.danger .lf-detail-label,
+        .flight-header .lf-detail-item.highlight .lf-detail-label {
+            color: rgba(255, 255, 255, 0.86) !important;
+        }
+        .flight-route-date {
+            flex-shrink: 0 !important;
         }
         .route-tag,
         .date-tag {
@@ -2501,8 +2566,7 @@
         .footer {
             display: none !important;
         }
-
-    </style>
+</style>
 </head>
 <body class="en">
     <!-- UNIFIED PAGE LOADER -->
@@ -2810,21 +2874,7 @@
                         <span class="ar-text">الرحلة: SM-984</span>
                         <span class="en-text">Flight: SM-984</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">26MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-984">27%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -2856,24 +2906,21 @@
                     <span class="lf-detail-value">V9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">19:50</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">W1 L27 V12 K7</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">26MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-984">27%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -2933,21 +2980,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">28MAY26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">69%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -2979,24 +3012,21 @@
                     <span class="lf-detail-value">W9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">00:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">174</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">O1 U1 X28 T37 W38 S8 G7</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">28MAY26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">69%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3056,21 +3086,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">04JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">13%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3102,24 +3118,21 @@
                     <span class="lf-detail-value">U5</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">00:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">O10 U5 X5 G2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">04JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">13%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3179,21 +3192,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">11JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">10%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3225,24 +3224,21 @@
                     <span class="lf-detail-value">X9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">00:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">O1 U2 X4 T7 W2 G2</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">11JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">10%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3302,21 +3298,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">18JUN26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">14%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3348,24 +3330,21 @@
                     <span class="lf-detail-value">W5</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">00:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">O1 U2 X2 T1 W9 S8 G1 L1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">18JUN26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">14%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3425,21 +3404,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">09JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3471,19 +3436,21 @@
                     <span class="lf-detail-value">K9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">00:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">09JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3543,21 +3510,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">16JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">1%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3589,24 +3542,21 @@
                     <span class="lf-detail-value">K9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">00:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
-                <div class="lf-detail-item" style="min-width: 150px;">
-                    <span class="lf-detail-label">CLASSES</span>
-                    <span class="lf-detail-value" style="font-size: 0.85em;">M1</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">16JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">1%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3704,21 +3654,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">17JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3750,19 +3686,21 @@
                     <span class="lf-detail-value">K9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">02:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">17JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3822,21 +3760,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">19JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3868,19 +3792,21 @@
                     <span class="lf-detail-value">K9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">00:40</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">167</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">19JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -3997,21 +3923,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">23JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4043,19 +3955,21 @@
                     <span class="lf-detail-value">K9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">00:35</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">23JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
@@ -4191,21 +4105,7 @@
                         <span class="ar-text">الرحلة: SM-330</span>
                         <span class="en-text">Flight: SM-330</span>
                     </span>
-
-            <div class="flight-route-date">
-                <span class="route-tag">GIZ-CAI</span>
-                <span class="date-tag">24JUL26</span>
-            </div>
-
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
-                </span>
-            </div>
-
-        <div class="lf-details-bar">
+                    <div class="lf-details-bar">
 
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4237,19 +4137,21 @@
                     <span class="lf-detail-value">K9</span>
                 </div>
 
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">DEP</span>
-                    <span class="lf-detail-value">02:45</span>
-                </div>
-
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">CAPACITY</span>
-                    <span class="lf-detail-value">175</span>
-                </div>
-
         </div>
 
-            <table class="competitors-table">
+
+            <div class="flight-route-date">
+                <span class="route-tag">GIZ-CAI</span>
+                <span class="date-tag">24JUL26</span>
+            </div>
+
+                </div>
+                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
+                    <span class="ar-text">نسبة الإشغال:</span>
+                    <span class="en-text">Load Factor:</span>
+                    <span class="load-factor-value" data-flight-lf="SM-330">0%</span>
+                </span>
+            </div><table class="competitors-table">
                 <thead>
     <tr>
         <th><span class="ar-text">شركة الطيران المنافسة</span><span class="en-text">Market Threat Airline</span></th>
