@@ -277,19 +277,19 @@
             <div class="stats">
                 <div class="stat">
                     <div class="stat-label"><span class="ar-text">الإجمالي</span><span class="en-text">Total</span></div>
-                    <div class="stat-value">30670</div>
+                    <div class="stat-value" id="pc-stat-total">30670</div>
                 </div>
                 <div class="stat high">
                     <div class="stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></div>
-                    <div class="stat-value">14343</div>
+                    <div class="stat-value" id="pc-stat-high">14343</div>
                 </div>
                 <div class="stat medium">
                     <div class="stat-label"><span class="ar-text">متوسط</span><span class="en-text">Medium</span></div>
-                    <div class="stat-value">8827</div>
+                    <div class="stat-value" id="pc-stat-medium">8827</div>
                 </div>
                 <div class="stat low">
                     <div class="stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></div>
-                    <div class="stat-value">7500</div>
+                    <div class="stat-value" id="pc-stat-low">7500</div>
                 </div>
             </div>
         </section>
@@ -1621,6 +1621,10 @@
             const search = document.getElementById('routeSearch').value.trim().toLowerCase();
             const cards = Array.from(document.querySelectorAll('.pc-route-card'));
             let visible = 0;
+            let high = 0;
+            let medium = 0;
+            let low = 0;
+            const countedMarkets = new Set();
             cards.forEach(card => {
                 const route = (card.dataset.route || '').toLowerCase();
                 const direction = card.dataset.direction || '';
@@ -1630,11 +1634,42 @@
                 const matchesThreat = pcThreatFilter === 'all' || threat === pcThreatFilter;
                 const show = matchesSearch && matchesDirection && matchesThreat;
                 card.hidden = !show;
-                if (show) visible += 1;
+                if (show) {
+                    visible += 1;
+                    const marketKey = getMarketKey(card.dataset.route || route);
+                    if (!countedMarkets.has(marketKey)) {
+                        countedMarkets.add(marketKey);
+                        high += Number.parseInt(card.dataset.high || '0', 10) || 0;
+                        medium += Number.parseInt(card.dataset.medium || '0', 10) || 0;
+                        low += Number.parseInt(card.dataset.low || '0', 10) || 0;
+                    }
+                }
             });
             const count = document.getElementById('routeCount');
             const isArabic = document.body.classList.contains('ar');
             count.textContent = isArabic ? `${visible} خط سير` : `${visible} routes`;
+            updatePcSummaryStats({ high, medium, low });
+        }
+
+        function getMarketKey(route) {
+            const parts = String(route || '').toUpperCase().split('-');
+            if (parts.length !== 2) return route || '';
+            const normalize = code => (code === 'CAI' || code === 'CCE') ? 'CAIRO' : code;
+            return `${normalize(parts[0])}-${normalize(parts[1])}`;
+        }
+
+        function updatePcSummaryStats(stats) {
+            const total = stats.high + stats.medium + stats.low;
+            const values = {
+                'pc-stat-total': total,
+                'pc-stat-high': stats.high,
+                'pc-stat-medium': stats.medium,
+                'pc-stat-low': stats.low
+            };
+            Object.entries(values).forEach(([id, value]) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = String(value);
+            });
         }
 
         function openDownloadModal() {
