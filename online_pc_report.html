@@ -38,12 +38,13 @@
             padding: 28px 34px;
             position: relative;     /* anchor the centred logo */
         }
-        /* Air Cairo logo, absolutely centred in the hero band */
+        /* Air Cairo logo: horizontally centred, nudged up ~1cm from the
+           geometric centre of the hero per design feedback. */
         .hero-logo {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, calc(-50% - 38px));
             height: 56px;
             width: auto;
             pointer-events: none;   /* don't block clicks on the controls behind it */
