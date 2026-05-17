@@ -762,13 +762,13 @@
             let medium = 0;
             let low = 0;
             const countedMarkets = new Set();
+            const getThreatCount = (card, level) => Number.parseInt(card.dataset[level] || '0', 10) || 0;
             cards.forEach(card => {
                 const route = (card.dataset.route || '').toLowerCase();
                 const direction = card.dataset.direction || '';
-                const threat = card.dataset.threat || '';
                 const matchesSearch = !search || route.includes(search);
                 const matchesDirection = pcDirectionFilter === 'all' || direction === pcDirectionFilter;
-                const matchesThreat = pcThreatFilter === 'all' || threat === pcThreatFilter;
+                const matchesThreat = pcThreatFilter === 'all' || getThreatCount(card, pcThreatFilter) > 0;
                 const show = matchesSearch && matchesDirection && matchesThreat;
                 card.hidden = !show;
                 if (show) {
@@ -776,9 +776,18 @@
                     const marketKey = card.dataset.market || card.dataset.route || route;
                     if (!countedMarkets.has(marketKey)) {
                         countedMarkets.add(marketKey);
-                        high += Number.parseInt(card.dataset.high || '0', 10) || 0;
-                        medium += Number.parseInt(card.dataset.medium || '0', 10) || 0;
-                        low += Number.parseInt(card.dataset.low || '0', 10) || 0;
+                        const cardHigh = getThreatCount(card, 'high');
+                        const cardMedium = getThreatCount(card, 'medium');
+                        const cardLow = getThreatCount(card, 'low');
+                        if (pcThreatFilter === 'all' || pcThreatFilter === 'high') {
+                            high += cardHigh;
+                        }
+                        if (pcThreatFilter === 'all' || pcThreatFilter === 'medium') {
+                            medium += cardMedium;
+                        }
+                        if (pcThreatFilter === 'all' || pcThreatFilter === 'low') {
+                            low += cardLow;
+                        }
                     }
                 }
             });
