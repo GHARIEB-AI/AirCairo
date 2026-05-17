@@ -1814,7 +1814,7 @@
                 display: none !important;
             }
         }
-    
+
         /* ===== Air Cairo brand overrides for per-route pages ===== */
         :root {
             --ac-orange: #F5A623;
@@ -2243,7 +2243,265 @@
                 font-size: 0.85em;
             }
         }
-    
+
+
+        /* Final pass: match the approved PREVIEW-JED-HBE metrics. */
+        body {
+            font-family: 'Segoe UI', 'Cairo', Arial, sans-serif !important;
+            background: linear-gradient(135deg, #fdf8f1 0%, #ede4f3 100%) !important;
+            color: #333 !important;
+            line-height: 1.5 !important;
+            padding: 22px !important;
+            min-height: 100vh !important;
+        }
+        .container {
+            max-width: 1400px !important;
+            border-radius: 18px !important;
+            box-shadow: 0 18px 50px rgba(92, 44, 126, 0.18) !important;
+            overflow: visible !important;
+        }
+        .ac-top-bar {
+            border-radius: 18px 18px 0 0 !important;
+        }
+        .header {
+            padding: 36px 36px 40px !important;
+            min-height: 0 !important;
+            overflow: hidden !important;
+        }
+        .header::after {
+            background-image: url('../assets/img/aircairo_aircraft.png') !important;
+            background-repeat: no-repeat !important;
+            background-position: right -20px bottom -10px !important;
+            background-size: auto 95% !important;
+            opacity: 0.95 !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.25)) !important;
+        }
+        .scroll-nav {
+            display: none !important;
+        }
+        .header h1 {
+            font-size: 2.6em !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            margin: 0 !important;
+            letter-spacing: 0.5px !important;
+        }
+        .header .header-info {
+            font-size: 1.05em !important;
+            line-height: 1.5 !important;
+            margin-top: 8px !important;
+            gap: 0 !important;
+        }
+        .header .controls {
+            gap: 10px !important;
+            margin-top: 18px !important;
+        }
+        .header .controls .lang-btn,
+        .header .controls .route-select,
+        .header .controls .download-btn {
+            padding: 9px 18px !important;
+            border-radius: 999px !important;
+            font-size: 0.95em !important;
+            font-weight: 700 !important;
+            line-height: 1.2 !important;
+        }
+        .header .controls .route-select {
+            min-width: 0 !important;
+            border-left: none !important;
+            border-right: none !important;
+        }
+        .last-updated-banner {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 14px !important;
+            padding: 16px 24px !important;
+            background: #14102C !important;
+            color: var(--ac-orange) !important;
+            font-size: 1em !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px !important;
+            border-top: 2px solid var(--ac-orange) !important;
+            border-bottom: 2px solid var(--ac-orange) !important;
+            box-shadow: none !important;
+        }
+        .last-updated-banner .update-icon {
+            font-size: 1em !important;
+            margin: 0 8px 0 0 !important;
+        }
+        body.ar .last-updated-banner .update-icon {
+            margin: 0 0 0 8px !important;
+        }
+        .last-updated-banner .update-time {
+            background: #2A1A50 !important;
+            color: white !important;
+            padding: 8px 16px !important;
+            border-radius: 8px !important;
+            font-family: Consolas, monospace !important;
+            font-size: 1em !important;
+            font-weight: 800 !important;
+            margin: 0 0 0 8px !important;
+        }
+        body.ar .last-updated-banner .update-time {
+            margin: 0 8px 0 0 !important;
+        }
+        .stat-card h3 {
+            font-size: 0.85em !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.5px !important;
+        }
+        .stat-card .number {
+            font-size: 3.1em !important;
+            font-weight: 800 !important;
+        }
+        .stat-card > div:not(.number) {
+            font-size: 0.78em !important;
+            opacity: 0.6 !important;
+            margin-top: 4px !important;
+        }
+        .route-section > .route-header {
+            padding: 16px 22px !important;
+            font-size: 1.2em !important;
+            letter-spacing: 0.6px !important;
+            border-radius: 0 0 18px 18px !important;
+        }
+        .date-section {
+            border-radius: 16px !important;
+            box-shadow: 0 10px 28px rgba(92, 44, 126, 0.14) !important;
+            margin: 22px 0 0 0 !important;
+        }
+        .date-section > .date-header {
+            padding: 18px 26px !important;
+            border-radius: 0 !important;
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 16px !important;
+            text-align: left !important;
+            margin: 0 !important;
+            box-shadow: none !important;
+        }
+        body.ar .date-section > .date-header {
+            text-align: right !important;
+        }
+        .date-header .date-main {
+            font-size: 1.45em !important;
+            letter-spacing: 0 !important;
+        }
+        .date-header .date-flights {
+            padding: 7px 14px !important;
+            font-size: 0.9em !important;
+        }
+        .date-section .flight-header {
+            padding: 14px 24px !important;
+            gap: 14px !important;
+            border-top: 1px solid rgba(0,0,0,0.06) !important;
+            border-bottom: 3px solid var(--ac-orange) !important;
+        }
+        .flight-info {
+            gap: 12px !important;
+        }
+        .flight-name {
+            font-size: 1.2em !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.5px !important;
+        }
+        .route-tag,
+        .date-tag {
+            padding: 5px 12px !important;
+            border-radius: 14px !important;
+            font-size: 0.8em !important;
+            font-weight: 700 !important;
+        }
+        .load-factor-badge {
+            padding: 8px 16px !important;
+            border-radius: 22px !important;
+            font-size: 0.9em !important;
+        }
+        .load-factor-badge .lf-value {
+            padding: 3px 10px !important;
+            border-radius: 12px !important;
+        }
+        .competitors-table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            background: white !important;
+            font-size: 0.9em !important;
+        }
+        .competitors-table thead {
+            background: #f1f4fa !important;
+            color: var(--ac-purple-deep) !important;
+            position: static !important;
+        }
+        .competitors-table th {
+            background: #f1f4fa !important;
+            color: var(--ac-purple-deep) !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.4px !important;
+            font-size: 0.78em !important;
+            padding: 11px 10px !important;
+            text-align: center !important;
+            text-transform: uppercase !important;
+            border: none !important;
+            border-bottom: 2px solid rgba(0,0,0,0.06) !important;
+        }
+        body.en .competitors-table th,
+        body.ar .competitors-table th {
+            text-align: center !important;
+        }
+        .competitors-table td {
+            padding: 11px 10px !important;
+            text-align: center !important;
+            border: none !important;
+            border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+        }
+        .competitors-table tbody tr:nth-child(odd) {
+            background: white !important;
+        }
+        .competitors-table tbody tr:hover {
+            background: white !important;
+        }
+        .competitor-name {
+            color: var(--ac-purple) !important;
+            font-weight: 700 !important;
+        }
+        body.en .competitor-name {
+            text-align: left !important;
+        }
+        body.ar .competitor-name {
+            text-align: right !important;
+        }
+        .threat-indicator {
+            display: inline-block !important;
+            padding: 5px 14px !important;
+            border-radius: 999px !important;
+            font-weight: 700 !important;
+            font-size: 0.8em !important;
+            min-width: 0 !important;
+            box-shadow: none !important;
+            border: none !important;
+            line-height: 1.2 !important;
+        }
+        .threat-indicator.threat-high {
+            background: #e74c3c !important;
+            color: white !important;
+        }
+        .threat-indicator.threat-medium {
+            background: #f39c12 !important;
+            color: white !important;
+        }
+        .threat-indicator.threat-low {
+            background: #e8e4f0 !important;
+            color: #6e4ba0 !important;
+        }
+        .summary-section,
+        .footer {
+            display: none !important;
+        }
+
     </style>
 </head>
 <body class="en">
@@ -2337,7 +2595,7 @@
                         <span class="ar-text">📥 تحميل</span>
                         <span class="en-text">📥 Download</span>
                     </a>
-                    
+
                 </div>
             </div>
         </div>
@@ -2470,7 +2728,7 @@
                     </button>
                 </div>
                 <div class="download-modal-list" id="downloadFileList">
-                    
+
             <div class="download-file-group">
                 <div class="download-file-group-title">
                     <span class="ar-text">ملف خط السير</span>
@@ -2489,7 +2747,7 @@
                     </a>
                 </div>
             </div>
-        
+
                 </div>
             </div>
         </div>
@@ -2511,7 +2769,7 @@
                 <div class="stat-card high" onclick="filterByThreatLevel('high')" title="Click to filter HIGH threats">
                     <h3>
                         <span class="ar-text">تهديد عالي - يحتاج إجراء</span>
-                        <span class="en-text">HIGH THREAT ALERT - NEED ACTION</span>
+                        <span class="en-text">HIGH THREAT ALERT</span>
                     </h3>
                     <div class="number" id="stat-high">1</div>
                     <div style="font-size: 0.7em; opacity: 0.8; margin-top: 5px;">
@@ -2522,7 +2780,7 @@
                 <div class="stat-card medium" onclick="filterByThreatLevel('medium')" title="Click to filter MEDIUM threats">
                     <h3>
                         <span class="ar-text">تهديد متوسط - راقب</span>
-                        <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                        <span class="en-text">MEDIUM THREAT</span>
                     </h3>
                     <div class="number" id="stat-medium">6</div>
                     <div style="font-size: 0.7em; opacity: 0.8; margin-top: 5px;">
@@ -2543,13 +2801,13 @@
                 </div>
             </div>
 
-            
+
         <div class="route-section" data-route="CAI-AHB">
             <div class="route-header">
                 <span class="ar-text">خط السير: CAI-AHB</span>
                 <span class="en-text">Route: CAI-AHB</span>
             </div>
-            
+
         <div class="date-section" data-date="2026-05-24">
             <div class="date-header">
                 <div class="date-main">
@@ -2561,7 +2819,7 @@
                     <span class="en-text">Flights: SM-967</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-967">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2569,12 +2827,12 @@
                         <span class="ar-text">الرحلة: SM-967</span>
                         <span class="en-text">Flight: SM-967</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">24MAY26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -2582,56 +2840,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-967">14%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">25</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">10</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">U5</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">I4 O5 U5 X8 S3</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -2648,7 +2906,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">20:00</td>
@@ -2661,18 +2919,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-05-25">
             <div class="date-header">
                 <div class="date-main">
@@ -2684,7 +2942,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2692,12 +2950,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">25MAY26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -2705,56 +2963,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">4%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-14 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">X9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">I1 X5 T1 W1</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -2771,7 +3029,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -2784,18 +3042,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-05-27">
             <div class="date-header">
                 <div class="date-main">
@@ -2807,7 +3065,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2815,12 +3073,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">27MAY26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -2828,56 +3086,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">3%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-11 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">U9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">I1 U1 L3</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -2894,7 +3152,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -2907,18 +3165,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-05-30">
             <div class="date-header">
                 <div class="date-main">
@@ -2930,7 +3188,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2938,12 +3196,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">30MAY26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -2951,56 +3209,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">69%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">124</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">20</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">M9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">19:10</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">X4 T6 W5 S5 G5 L5 V9 K22 Q49 H13 M1</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3017,7 +3275,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="medium" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">19:10</td>
@@ -3030,18 +3288,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-medium">
-                    <span class="ar-text">تهديد متوسط - راقب</span>
-                    <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                    <span class="ar-text">متوسط</span>
+                    <span class="en-text">MED</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-06-03">
             <div class="date-header">
                 <div class="date-main">
@@ -3053,7 +3311,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3061,12 +3319,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">03JUN26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3074,56 +3332,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">23%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">42</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">15</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">Q1</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">V10 K25 Q4 H3</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3140,7 +3398,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -3153,18 +3411,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-06-06">
             <div class="date-header">
                 <div class="date-main">
@@ -3176,7 +3434,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3184,12 +3442,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">06JUN26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3197,56 +3455,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">52%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">93</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-15 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">10</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">19:10</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">W5 S6 G17 L15 V17 K11 Q22</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3263,7 +3521,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-764</span><span class="en-text">Flyadeal F3-764</span></td>
             <td class="dep-time-cell">19:10</td>
@@ -3276,12 +3534,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-513</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-513</span></td>
@@ -3295,18 +3553,18 @@
             <td class="baggage-cell baggage-positive">+10 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-22">
             <div class="date-header">
                 <div class="date-main">
@@ -3318,7 +3576,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3326,12 +3584,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">22JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3339,56 +3597,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">1%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-03-18 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">H1</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3405,7 +3663,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="high" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -3418,18 +3676,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-high">
-                    <span class="ar-text">تهديد عالي - يحتاج إجراء</span>
-                    <span class="en-text">HIGH THREAT ALERT - NEED ACTION</span>
+                    <span class="ar-text">عالي</span>
+                    <span class="en-text">HIGH</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-23">
             <div class="date-header">
                 <div class="date-main">
@@ -3441,7 +3699,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3449,12 +3707,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">23JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3462,56 +3720,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">2%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">3</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-02-21 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">H3</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3528,7 +3786,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="medium" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-511</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-511</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -3541,12 +3799,12 @@
             <td class="baggage-cell baggage-positive">+10 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-medium">
-                    <span class="ar-text">تهديد متوسط - راقب</span>
-                    <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                    <span class="ar-text">متوسط</span>
+                    <span class="en-text">MED</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-754</span><span class="en-text">Flyadeal F3-754</span></td>
@@ -3560,12 +3818,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-756</span><span class="en-text">Flyadeal F3-756</span></td>
@@ -3579,18 +3837,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-25">
             <div class="date-header">
                 <div class="date-main">
@@ -3602,7 +3860,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3610,12 +3868,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">25JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3623,56 +3881,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">3%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-04-30 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">19:10</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">H5</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3689,7 +3947,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="medium" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-513</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-513</span></td>
             <td class="dep-time-cell">19:10</td>
@@ -3702,18 +3960,18 @@
             <td class="baggage-cell baggage-positive">+10 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-medium">
-                    <span class="ar-text">تهديد متوسط - راقب</span>
-                    <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                    <span class="ar-text">متوسط</span>
+                    <span class="en-text">MED</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-27">
             <div class="date-header">
                 <div class="date-main">
@@ -3725,7 +3983,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3733,12 +3991,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">27JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3746,51 +4004,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3807,7 +4065,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-754</span><span class="en-text">Flyadeal F3-754</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -3820,12 +4078,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-756</span><span class="en-text">Flyadeal F3-756</span></td>
@@ -3839,18 +4097,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-29">
             <div class="date-header">
                 <div class="date-main">
@@ -3862,7 +4120,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3870,12 +4128,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">29JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3883,51 +4141,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3944,7 +4202,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="medium" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -3957,12 +4215,12 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-medium">
-                    <span class="ar-text">تهديد متوسط - راقب</span>
-                    <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                    <span class="ar-text">متوسط</span>
+                    <span class="en-text">MED</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-754</span><span class="en-text">Flyadeal F3-754</span></td>
@@ -3976,12 +4234,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-756</span><span class="en-text">Flyadeal F3-756</span></td>
@@ -3995,18 +4253,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-30">
             <div class="date-header">
                 <div class="date-main">
@@ -4018,7 +4276,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4026,12 +4284,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">30JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4039,56 +4297,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">1%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-04-21 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">H1</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4105,7 +4363,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-511</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-511</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -4118,12 +4376,12 @@
             <td class="baggage-cell baggage-positive">+10 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-754</span><span class="en-text">Flyadeal F3-754</span></td>
@@ -4137,18 +4395,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-08-19">
             <div class="date-header">
                 <div class="date-main">
@@ -4160,7 +4418,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4168,12 +4426,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">19AUG26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4181,56 +4439,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">20%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">35</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-15 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H7</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">V4 K13 Q15 H3</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4247,7 +4505,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -4260,18 +4518,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-08-26">
             <div class="date-header">
                 <div class="date-main">
@@ -4283,7 +4541,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4291,12 +4549,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">26AUG26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4304,56 +4562,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">18%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">33</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-14 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">8</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H8</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">V9 K9 Q14 H1</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4370,7 +4628,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -4383,18 +4641,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-07">
             <div class="date-header">
                 <div class="date-main">
@@ -4406,7 +4664,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4414,12 +4672,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">07SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4427,51 +4685,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4488,7 +4746,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-762</span><span class="en-text">Flyadeal F3-762</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -4501,12 +4759,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-764</span><span class="en-text">Flyadeal F3-764</span></td>
@@ -4520,18 +4778,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-09">
             <div class="date-header">
                 <div class="date-main">
@@ -4543,7 +4801,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4551,12 +4809,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">09SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4564,51 +4822,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4625,7 +4883,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-764</span><span class="en-text">Flyadeal F3-764</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -4638,12 +4896,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-762</span><span class="en-text">Flyadeal F3-762</span></td>
@@ -4657,18 +4915,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-10">
             <div class="date-header">
                 <div class="date-main">
@@ -4680,7 +4938,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4688,12 +4946,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">10SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4701,51 +4959,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4762,7 +5020,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-762</span><span class="en-text">Flyadeal F3-762</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -4775,12 +5033,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-764</span><span class="en-text">Flyadeal F3-764</span></td>
@@ -4794,18 +5052,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-12">
             <div class="date-header">
                 <div class="date-main">
@@ -4817,7 +5075,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4825,12 +5083,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">12SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4838,51 +5096,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">19:10</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4899,7 +5157,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-762</span><span class="en-text">Flyadeal F3-762</span></td>
             <td class="dep-time-cell">19:10</td>
@@ -4912,12 +5170,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-764</span><span class="en-text">Flyadeal F3-764</span></td>
@@ -4931,18 +5189,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-14">
             <div class="date-header">
                 <div class="date-main">
@@ -4954,7 +5212,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4962,12 +5220,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">14SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4975,51 +5233,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5036,7 +5294,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-762</span><span class="en-text">Flyadeal F3-762</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -5049,12 +5307,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-764</span><span class="en-text">Flyadeal F3-764</span></td>
@@ -5068,18 +5326,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-16">
             <div class="date-header">
                 <div class="date-main">
@@ -5091,7 +5349,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5099,12 +5357,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">16SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -5112,51 +5370,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5173,7 +5431,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-764</span><span class="en-text">Flyadeal F3-764</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -5186,12 +5444,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-762</span><span class="en-text">Flyadeal F3-762</span></td>
@@ -5205,18 +5463,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-17">
             <div class="date-header">
                 <div class="date-main">
@@ -5228,7 +5486,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5236,12 +5494,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">17SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -5249,51 +5507,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5310,7 +5568,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="medium" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-511</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-511</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -5323,12 +5581,12 @@
             <td class="baggage-cell baggage-positive">+10 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-medium">
-                    <span class="ar-text">تهديد متوسط - راقب</span>
-                    <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                    <span class="ar-text">متوسط</span>
+                    <span class="en-text">MED</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-762</span><span class="en-text">Flyadeal F3-762</span></td>
@@ -5342,12 +5600,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-764</span><span class="en-text">Flyadeal F3-764</span></td>
@@ -5361,18 +5619,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-19">
             <div class="date-header">
                 <div class="date-main">
@@ -5384,7 +5642,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5392,12 +5650,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">19SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -5405,51 +5663,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">H9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">19:10</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5466,7 +5724,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="medium" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-513</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-513</span></td>
             <td class="dep-time-cell">19:10</td>
@@ -5479,12 +5737,12 @@
             <td class="baggage-cell baggage-positive">+10 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-medium">
-                    <span class="ar-text">تهديد متوسط - راقب</span>
-                    <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                    <span class="ar-text">متوسط</span>
+                    <span class="en-text">MED</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-762</span><span class="en-text">Flyadeal F3-762</span></td>
@@ -5498,12 +5756,12 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
 
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">طيران أديل F3-764</span><span class="en-text">Flyadeal F3-764</span></td>
@@ -5517,18 +5775,18 @@
             <td class="baggage-cell baggage-positive">+15 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-23">
             <div class="date-header">
                 <div class="date-main">
@@ -5540,7 +5798,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5548,12 +5806,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">23SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -5561,56 +5819,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">1%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-04-06 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S4</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">W1</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5627,7 +5885,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -5640,18 +5898,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-30">
             <div class="date-header">
                 <div class="date-main">
@@ -5663,7 +5921,7 @@
                     <span class="en-text">Flights: SM-443</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-443">
             <div class="flight-header">
                 <div class="flight-info">
@@ -5671,12 +5929,12 @@
                         <span class="ar-text">الرحلة: SM-443</span>
                         <span class="en-text">Flight: SM-443</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">CAI-AHB</span>
                 <span class="date-tag">30SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -5684,51 +5942,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">W1</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">03:01</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">179</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5745,7 +6003,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-143</span><span class="en-text">Air NP Air NP-143</span></td>
             <td class="dep-time-cell">03:01</td>
@@ -5758,20 +6016,20 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         </div>
-        
+
 
         </div>
 
@@ -5784,14 +6042,14 @@
                 <div class="summary-card high">
                     <div class="summary-label">
                         <span class="ar-text">تهديد عالي - يحتاج إجراء</span>
-                        <span class="en-text">HIGH THREAT ALERT - NEED ACTION</span>
+                        <span class="en-text">HIGH THREAT ALERT</span>
                     </div>
                     <div class="summary-value" id="summary-high">1</div>
                 </div>
                 <div class="summary-card medium">
                     <div class="summary-label">
                         <span class="ar-text">تهديد متوسط - راقب</span>
-                        <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                        <span class="en-text">MEDIUM THREAT</span>
                     </div>
                     <div class="summary-value" id="summary-medium">6</div>
                 </div>

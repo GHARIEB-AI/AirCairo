@@ -1814,7 +1814,7 @@
                 display: none !important;
             }
         }
-    
+
         /* ===== Air Cairo brand overrides for per-route pages ===== */
         :root {
             --ac-orange: #F5A623;
@@ -2243,7 +2243,265 @@
                 font-size: 0.85em;
             }
         }
-    
+
+
+        /* Final pass: match the approved PREVIEW-JED-HBE metrics. */
+        body {
+            font-family: 'Segoe UI', 'Cairo', Arial, sans-serif !important;
+            background: linear-gradient(135deg, #fdf8f1 0%, #ede4f3 100%) !important;
+            color: #333 !important;
+            line-height: 1.5 !important;
+            padding: 22px !important;
+            min-height: 100vh !important;
+        }
+        .container {
+            max-width: 1400px !important;
+            border-radius: 18px !important;
+            box-shadow: 0 18px 50px rgba(92, 44, 126, 0.18) !important;
+            overflow: visible !important;
+        }
+        .ac-top-bar {
+            border-radius: 18px 18px 0 0 !important;
+        }
+        .header {
+            padding: 36px 36px 40px !important;
+            min-height: 0 !important;
+            overflow: hidden !important;
+        }
+        .header::after {
+            background-image: url('../assets/img/aircairo_aircraft.png') !important;
+            background-repeat: no-repeat !important;
+            background-position: right -20px bottom -10px !important;
+            background-size: auto 95% !important;
+            opacity: 0.95 !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.25)) !important;
+        }
+        .scroll-nav {
+            display: none !important;
+        }
+        .header h1 {
+            font-size: 2.6em !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            margin: 0 !important;
+            letter-spacing: 0.5px !important;
+        }
+        .header .header-info {
+            font-size: 1.05em !important;
+            line-height: 1.5 !important;
+            margin-top: 8px !important;
+            gap: 0 !important;
+        }
+        .header .controls {
+            gap: 10px !important;
+            margin-top: 18px !important;
+        }
+        .header .controls .lang-btn,
+        .header .controls .route-select,
+        .header .controls .download-btn {
+            padding: 9px 18px !important;
+            border-radius: 999px !important;
+            font-size: 0.95em !important;
+            font-weight: 700 !important;
+            line-height: 1.2 !important;
+        }
+        .header .controls .route-select {
+            min-width: 0 !important;
+            border-left: none !important;
+            border-right: none !important;
+        }
+        .last-updated-banner {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 14px !important;
+            padding: 16px 24px !important;
+            background: #14102C !important;
+            color: var(--ac-orange) !important;
+            font-size: 1em !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px !important;
+            border-top: 2px solid var(--ac-orange) !important;
+            border-bottom: 2px solid var(--ac-orange) !important;
+            box-shadow: none !important;
+        }
+        .last-updated-banner .update-icon {
+            font-size: 1em !important;
+            margin: 0 8px 0 0 !important;
+        }
+        body.ar .last-updated-banner .update-icon {
+            margin: 0 0 0 8px !important;
+        }
+        .last-updated-banner .update-time {
+            background: #2A1A50 !important;
+            color: white !important;
+            padding: 8px 16px !important;
+            border-radius: 8px !important;
+            font-family: Consolas, monospace !important;
+            font-size: 1em !important;
+            font-weight: 800 !important;
+            margin: 0 0 0 8px !important;
+        }
+        body.ar .last-updated-banner .update-time {
+            margin: 0 8px 0 0 !important;
+        }
+        .stat-card h3 {
+            font-size: 0.85em !important;
+            font-weight: 700 !important;
+            letter-spacing: 1.5px !important;
+        }
+        .stat-card .number {
+            font-size: 3.1em !important;
+            font-weight: 800 !important;
+        }
+        .stat-card > div:not(.number) {
+            font-size: 0.78em !important;
+            opacity: 0.6 !important;
+            margin-top: 4px !important;
+        }
+        .route-section > .route-header {
+            padding: 16px 22px !important;
+            font-size: 1.2em !important;
+            letter-spacing: 0.6px !important;
+            border-radius: 0 0 18px 18px !important;
+        }
+        .date-section {
+            border-radius: 16px !important;
+            box-shadow: 0 10px 28px rgba(92, 44, 126, 0.14) !important;
+            margin: 22px 0 0 0 !important;
+        }
+        .date-section > .date-header {
+            padding: 18px 26px !important;
+            border-radius: 0 !important;
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 16px !important;
+            text-align: left !important;
+            margin: 0 !important;
+            box-shadow: none !important;
+        }
+        body.ar .date-section > .date-header {
+            text-align: right !important;
+        }
+        .date-header .date-main {
+            font-size: 1.45em !important;
+            letter-spacing: 0 !important;
+        }
+        .date-header .date-flights {
+            padding: 7px 14px !important;
+            font-size: 0.9em !important;
+        }
+        .date-section .flight-header {
+            padding: 14px 24px !important;
+            gap: 14px !important;
+            border-top: 1px solid rgba(0,0,0,0.06) !important;
+            border-bottom: 3px solid var(--ac-orange) !important;
+        }
+        .flight-info {
+            gap: 12px !important;
+        }
+        .flight-name {
+            font-size: 1.2em !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.5px !important;
+        }
+        .route-tag,
+        .date-tag {
+            padding: 5px 12px !important;
+            border-radius: 14px !important;
+            font-size: 0.8em !important;
+            font-weight: 700 !important;
+        }
+        .load-factor-badge {
+            padding: 8px 16px !important;
+            border-radius: 22px !important;
+            font-size: 0.9em !important;
+        }
+        .load-factor-badge .lf-value {
+            padding: 3px 10px !important;
+            border-radius: 12px !important;
+        }
+        .competitors-table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            background: white !important;
+            font-size: 0.9em !important;
+        }
+        .competitors-table thead {
+            background: #f1f4fa !important;
+            color: var(--ac-purple-deep) !important;
+            position: static !important;
+        }
+        .competitors-table th {
+            background: #f1f4fa !important;
+            color: var(--ac-purple-deep) !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.4px !important;
+            font-size: 0.78em !important;
+            padding: 11px 10px !important;
+            text-align: center !important;
+            text-transform: uppercase !important;
+            border: none !important;
+            border-bottom: 2px solid rgba(0,0,0,0.06) !important;
+        }
+        body.en .competitors-table th,
+        body.ar .competitors-table th {
+            text-align: center !important;
+        }
+        .competitors-table td {
+            padding: 11px 10px !important;
+            text-align: center !important;
+            border: none !important;
+            border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+        }
+        .competitors-table tbody tr:nth-child(odd) {
+            background: white !important;
+        }
+        .competitors-table tbody tr:hover {
+            background: white !important;
+        }
+        .competitor-name {
+            color: var(--ac-purple) !important;
+            font-weight: 700 !important;
+        }
+        body.en .competitor-name {
+            text-align: left !important;
+        }
+        body.ar .competitor-name {
+            text-align: right !important;
+        }
+        .threat-indicator {
+            display: inline-block !important;
+            padding: 5px 14px !important;
+            border-radius: 999px !important;
+            font-weight: 700 !important;
+            font-size: 0.8em !important;
+            min-width: 0 !important;
+            box-shadow: none !important;
+            border: none !important;
+            line-height: 1.2 !important;
+        }
+        .threat-indicator.threat-high {
+            background: #e74c3c !important;
+            color: white !important;
+        }
+        .threat-indicator.threat-medium {
+            background: #f39c12 !important;
+            color: white !important;
+        }
+        .threat-indicator.threat-low {
+            background: #e8e4f0 !important;
+            color: #6e4ba0 !important;
+        }
+        .summary-section,
+        .footer {
+            display: none !important;
+        }
+
     </style>
 </head>
 <body class="en">
@@ -2337,7 +2595,7 @@
                         <span class="ar-text">📥 تحميل</span>
                         <span class="en-text">📥 Download</span>
                     </a>
-                    
+
                 </div>
             </div>
         </div>
@@ -2460,7 +2718,7 @@
                     </button>
                 </div>
                 <div class="download-modal-list" id="downloadFileList">
-                    
+
             <div class="download-file-group">
                 <div class="download-file-group-title">
                     <span class="ar-text">ملف خط السير</span>
@@ -2479,7 +2737,7 @@
                     </a>
                 </div>
             </div>
-        
+
                 </div>
             </div>
         </div>
@@ -2501,7 +2759,7 @@
                 <div class="stat-card high" onclick="filterByThreatLevel('high')" title="Click to filter HIGH threats">
                     <h3>
                         <span class="ar-text">تهديد عالي - يحتاج إجراء</span>
-                        <span class="en-text">HIGH THREAT ALERT - NEED ACTION</span>
+                        <span class="en-text">HIGH THREAT ALERT</span>
                     </h3>
                     <div class="number" id="stat-high">0</div>
                     <div style="font-size: 0.7em; opacity: 0.8; margin-top: 5px;">
@@ -2512,7 +2770,7 @@
                 <div class="stat-card medium" onclick="filterByThreatLevel('medium')" title="Click to filter MEDIUM threats">
                     <h3>
                         <span class="ar-text">تهديد متوسط - راقب</span>
-                        <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                        <span class="en-text">MEDIUM THREAT</span>
                     </h3>
                     <div class="number" id="stat-medium">0</div>
                     <div style="font-size: 0.7em; opacity: 0.8; margin-top: 5px;">
@@ -2533,13 +2791,13 @@
                 </div>
             </div>
 
-            
+
         <div class="route-section" data-route="AJF-CAI">
             <div class="route-header">
                 <span class="ar-text">خط السير: AJF-CAI</span>
                 <span class="en-text">Route: AJF-CAI</span>
             </div>
-            
+
         <div class="date-section" data-date="2026-05-21">
             <div class="date-header">
                 <div class="date-main">
@@ -2551,7 +2809,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2559,12 +2817,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">21MAY26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -2572,56 +2830,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">78%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">136</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">14</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">4</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">K9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">O10 U10 X10 T10 W9 S8 G10 L10 V9 K15 Q10 H6 M6 B7 Y6</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -2638,7 +2896,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -2651,18 +2909,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-05-23">
             <div class="date-header">
                 <div class="date-main">
@@ -2674,7 +2932,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2682,12 +2940,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">23MAY26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -2695,56 +2953,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">61%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">107</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-16 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">31</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">12</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">L9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">O1 U2 X1 G14 L9 V7 K22 Q26 H12 M5 B8</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -2761,7 +3019,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -2774,18 +3032,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-06-24">
             <div class="date-header">
                 <div class="date-main">
@@ -2797,7 +3055,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2805,12 +3063,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">24JUN26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -2818,56 +3076,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">42%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">73</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-04-25 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">Q9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">O10 U8 X10 T10 W7 S10 G6 L7 V5</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -2884,7 +3142,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -2897,18 +3155,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-01">
             <div class="date-header">
                 <div class="date-main">
@@ -2920,7 +3178,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -2928,12 +3186,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">01JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -2941,56 +3199,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">38%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">66</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-14 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">4</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">V9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">O5 U5 X10 T10 W9 S11 G10 L2 V4</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3007,7 +3265,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -3020,18 +3278,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-02">
             <div class="date-header">
                 <div class="date-main">
@@ -3043,7 +3301,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3051,12 +3309,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">02JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3064,56 +3322,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">10%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">18</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-05-13 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item warning">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">5</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">K9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">Q8 H4 M3 B3</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3130,7 +3388,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -3143,18 +3401,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-08">
             <div class="date-header">
                 <div class="date-main">
@@ -3166,7 +3424,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3174,12 +3432,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">08JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3187,51 +3445,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3248,7 +3506,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -3261,18 +3519,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-09">
             <div class="date-header">
                 <div class="date-main">
@@ -3284,7 +3542,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3292,12 +3550,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">09JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3305,51 +3563,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3366,7 +3624,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -3379,18 +3637,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-15">
             <div class="date-header">
                 <div class="date-main">
@@ -3402,7 +3660,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3410,12 +3668,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">15JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3423,51 +3681,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3484,7 +3742,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -3497,18 +3755,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-16">
             <div class="date-header">
                 <div class="date-main">
@@ -3520,7 +3778,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3528,12 +3786,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">16JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3541,51 +3799,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3602,7 +3860,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -3615,18 +3873,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-22">
             <div class="date-header">
                 <div class="date-main">
@@ -3638,7 +3896,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3646,12 +3904,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">22JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3659,51 +3917,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3720,7 +3978,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -3733,18 +3991,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-23">
             <div class="date-header">
                 <div class="date-main">
@@ -3756,7 +4014,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3764,12 +4022,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">23JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3777,56 +4035,56 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">1%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">2026-04-20 00:00:00</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
                 <div class="lf-detail-item" style="min-width: 150px;">
                     <span class="lf-detail-label">CLASSES</span>
                     <span class="lf-detail-value" style="font-size: 0.85em;">G1</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3843,7 +4101,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -3856,18 +4114,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-29">
             <div class="date-header">
                 <div class="date-main">
@@ -3879,7 +4137,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -3887,12 +4145,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">29JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -3900,51 +4158,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3961,7 +4219,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -3974,18 +4232,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-07-30">
             <div class="date-header">
                 <div class="date-main">
@@ -3997,7 +4255,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4005,12 +4263,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">30JUL26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4018,51 +4276,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">S9</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4079,7 +4337,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -4092,18 +4350,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-23">
             <div class="date-header">
                 <div class="date-main">
@@ -4115,7 +4373,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4123,12 +4381,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">23SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4136,51 +4394,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">O5</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4197,7 +4455,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -4210,18 +4468,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-24">
             <div class="date-header">
                 <div class="date-main">
@@ -4233,7 +4491,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4241,12 +4499,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">24SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4254,51 +4512,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">O5</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4315,7 +4573,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -4328,18 +4586,18 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         <div class="date-section" data-date="2026-09-30">
             <div class="date-header">
                 <div class="date-main">
@@ -4351,7 +4609,7 @@
                     <span class="en-text">Flights: SM-322</span>
                 </div>
             </div>
-            
+
         <div class="flight-block" data-flight="SM-322">
             <div class="flight-header">
                 <div class="flight-info">
@@ -4359,12 +4617,12 @@
                         <span class="ar-text">الرحلة: SM-322</span>
                         <span class="en-text">Flight: SM-322</span>
                     </span>
-                    
+
             <div class="flight-route-date">
                 <span class="route-tag">AJF-CAI</span>
                 <span class="date-tag">30SEP26</span>
             </div>
-            
+
                 </div>
                 <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
                     <span class="ar-text">نسبة الإشغال:</span>
@@ -4372,51 +4630,51 @@
                     <span class="load-factor-value" data-flight-lf="SM-322">0%</span>
                 </span>
             </div>
-            
+
         <div class="lf-details-bar">
-            
+
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LST-SOLD</span>
                     <span class="lf-detail-value">NIL</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">Y-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
                     <span class="lf-detail-value">O5</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">DEP</span>
                     <span class="lf-detail-value">20:15</span>
                 </div>
-            
+
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">CAPACITY</span>
                     <span class="lf-detail-value">175</span>
                 </div>
-            
+
         </div>
-        
+
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4433,7 +4691,7 @@
     </tr>
 </thead>
                 <tbody>
-                    
+
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
             <td class="dep-time-cell">20:15</td>
@@ -4446,20 +4704,20 @@
             <td class="baggage-cell ">+0 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
-                    <span class="ar-text">تهديد منخفض</span>
-                    <span class="en-text">LOW THREAT</span>
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
                 </span>
             </td>
         </tr>
-        
+
                 </tbody>
             </table>
         </div>
-        
+
         </div>
-        
+
         </div>
-        
+
 
         </div>
 
@@ -4472,14 +4730,14 @@
                 <div class="summary-card high">
                     <div class="summary-label">
                         <span class="ar-text">تهديد عالي - يحتاج إجراء</span>
-                        <span class="en-text">HIGH THREAT ALERT - NEED ACTION</span>
+                        <span class="en-text">HIGH THREAT ALERT</span>
                     </div>
                     <div class="summary-value" id="summary-high">0</div>
                 </div>
                 <div class="summary-card medium">
                     <div class="summary-label">
                         <span class="ar-text">تهديد متوسط - راقب</span>
-                        <span class="en-text">MEDIUM THREAT - MONITOR</span>
+                        <span class="en-text">MEDIUM THREAT</span>
                     </div>
                     <div class="summary-value" id="summary-medium">0</div>
                 </div>
