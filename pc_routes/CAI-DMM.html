@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T14:47:00">
-    <meta name="report-version" content="20260517144700">
+    <meta name="report-generated" content="2026-05-17T14:51:00">
+    <meta name="report-version" content="20260517145100">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -2206,19 +2206,45 @@
         .lf-details-bar .lf-loadfactor-chip {
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.20) !important;
         }
-        /* Traffic-light tints for SOLD chip (only SOLD and Load Factor change
-           colour; every other chip stays neutral regardless of value). */
+        /* ===== Vivid traffic-light palette =====
+           SOLID, high-saturation backgrounds so green / yellow / red are
+           clearly distinct on the dark navy LF strip. The 30%-opacity
+           tints used earlier blended into the dark background and made
+           all three colours look similar. Same class drives both SOLD
+           and Load Factor so the same LF tier reads the same colour on
+           both chips. */
         .lf-details-bar .lf-detail-item.lf-good {
-            background: rgba(39, 174, 96, 0.30) !important;   /* green */
-            border: 1px solid rgba(39, 174, 96, 0.55) !important;
+            background: #00C853 !important;       /* vivid green */
+            color: #ffffff !important;
+            border: 1px solid #00B248 !important;
+            box-shadow: 0 2px 10px rgba(0, 200, 83, 0.45) !important;
+        }
+        .lf-details-bar .lf-detail-item.lf-good .lf-detail-label,
+        .lf-details-bar .lf-detail-item.lf-good .lf-detail-value {
+            color: #ffffff !important;
+            opacity: 1 !important;
         }
         .lf-details-bar .lf-detail-item.lf-mid {
-            background: rgba(241, 196, 15, 0.30) !important;  /* yellow */
-            border: 1px solid rgba(241, 196, 15, 0.55) !important;
+            background: #FFC107 !important;       /* vivid amber/yellow */
+            color: #1a1a2e !important;            /* dark text — yellow needs dark for contrast */
+            border: 1px solid #FFA000 !important;
+            box-shadow: 0 2px 10px rgba(255, 193, 7, 0.45) !important;
+        }
+        .lf-details-bar .lf-detail-item.lf-mid .lf-detail-label,
+        .lf-details-bar .lf-detail-item.lf-mid .lf-detail-value {
+            color: #1a1a2e !important;
+            opacity: 1 !important;
         }
         .lf-details-bar .lf-detail-item.lf-bad {
-            background: rgba(231, 76, 60, 0.30) !important;   /* red */
-            border: 1px solid rgba(231, 76, 60, 0.55) !important;
+            background: #E53935 !important;       /* vivid red */
+            color: #ffffff !important;
+            border: 1px solid #C62828 !important;
+            box-shadow: 0 2px 10px rgba(229, 57, 53, 0.45) !important;
+        }
+        .lf-details-bar .lf-detail-item.lf-bad .lf-detail-label,
+        .lf-details-bar .lf-detail-item.lf-bad .lf-detail-value {
+            color: #ffffff !important;
+            opacity: 1 !important;
         }
 
         /* Make the hero aircraft fill the right half like the preview */
@@ -2759,7 +2785,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 02:47 PM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 02:51 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: CAI-DMM | الفترة: 18MAY26 - 30SEP26</span><span class="en-text">Route: CAI-DMM | Range: 18MAY26 - 30SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2774,7 +2800,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 02:47 PM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 02:51 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: CAI-DMM | الفترة: 18MAY26 - 30SEP26</span><span class="en-text">Route: CAI-DMM | Range: 18MAY26 - 30SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2808,8 +2834,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 02:47 PM</span>
-                        <span class="en-text">Created: 17MAY26 02:47 PM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 02:51 PM</span>
+                        <span class="en-text">Created: 17MAY26 02:51 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -3087,11 +3113,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 14:47</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 14:51</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 14:47</span>
+                    Last Updated: <span class="update-time">2026-05-17 14:51</span>
                 </span>
             </div>
 
@@ -3185,9 +3211,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">27%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">27%</span>
                 </div>
             
         </div>
@@ -3337,9 +3363,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">6%</span>
                 </div>
             
         </div>
@@ -3489,9 +3515,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">6%</span>
                 </div>
             
         </div>
@@ -3641,9 +3667,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">4%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">4%</span>
                 </div>
             
         </div>
@@ -3812,9 +3838,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">9%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">9%</span>
                 </div>
             
         </div>
@@ -4021,9 +4047,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-965" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-965">3%</span>
                 </div>
             
         </div>
@@ -4211,9 +4237,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">12%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">12%</span>
                 </div>
             
         </div>
@@ -4401,9 +4427,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">14%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">14%</span>
                 </div>
             
         </div>
@@ -4591,9 +4617,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">6%</span>
                 </div>
             
         </div>
@@ -4743,9 +4769,9 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">6%</span>
                 </div>
             
         </div>
@@ -4876,9 +4902,9 @@
                     <span class="lf-detail-value">W9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">36%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">36%</span>
                 </div>
             
         </div>
@@ -5028,9 +5054,9 @@
                     <span class="lf-detail-value">G3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">18%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">18%</span>
                 </div>
             
         </div>
@@ -5123,9 +5149,9 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">46%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">46%</span>
                 </div>
             
         </div>
@@ -5412,9 +5438,9 @@
                     <span class="lf-detail-value">K5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-965" style="color:white;">19%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-965">19%</span>
                 </div>
             
         </div>
@@ -5621,9 +5647,9 @@
                     <span class="lf-detail-value">B9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f1c40f;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">54%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-mid">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">54%</span>
                 </div>
             
         </div>
@@ -5887,9 +5913,9 @@
                     <span class="lf-detail-value">H6</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">43%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">43%</span>
                 </div>
             
         </div>
@@ -6058,9 +6084,9 @@
                     <span class="lf-detail-value">K9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">19%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">19%</span>
                 </div>
             
         </div>
@@ -6153,9 +6179,9 @@
                     <span class="lf-detail-value">V9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">25%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">25%</span>
                 </div>
             
         </div>
@@ -6248,9 +6274,9 @@
                     <span class="lf-detail-value">K4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">11%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">11%</span>
                 </div>
             
         </div>
@@ -6419,9 +6445,9 @@
                     <span class="lf-detail-value">Q1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">49%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">49%</span>
                 </div>
             
         </div>
@@ -6628,9 +6654,9 @@
                     <span class="lf-detail-value">V3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">32%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">32%</span>
                 </div>
             
         </div>
@@ -6780,9 +6806,9 @@
                     <span class="lf-detail-value">L5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">22%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">22%</span>
                 </div>
             
         </div>
@@ -6932,9 +6958,9 @@
                     <span class="lf-detail-value">G5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">17%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">17%</span>
                 </div>
             
         </div>
@@ -7084,9 +7110,9 @@
                     <span class="lf-detail-value">G3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">15%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">15%</span>
                 </div>
             
         </div>
@@ -7236,9 +7262,9 @@
                     <span class="lf-detail-value">G4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">7%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">7%</span>
                 </div>
             
         </div>
@@ -7445,9 +7471,9 @@
                     <span class="lf-detail-value">G3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">19%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">19%</span>
                 </div>
             
         </div>
@@ -7616,9 +7642,9 @@
                     <span class="lf-detail-value">S1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">11%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">11%</span>
                 </div>
             
         </div>
@@ -7711,9 +7737,9 @@
                     <span class="lf-detail-value">G6</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">17%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">17%</span>
                 </div>
             
         </div>
@@ -7882,9 +7908,9 @@
                     <span class="lf-detail-value">G2</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">9%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">9%</span>
                 </div>
             
         </div>
@@ -8091,9 +8117,9 @@
                     <span class="lf-detail-value">G6</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">6%</span>
                 </div>
             
         </div>
@@ -8300,9 +8326,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -8509,9 +8535,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -8699,9 +8725,9 @@
                     <span class="lf-detail-value">W3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">16%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">16%</span>
                 </div>
             
         </div>
@@ -8832,9 +8858,9 @@
                     <span class="lf-detail-value">L6</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">11%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">11%</span>
                 </div>
             
         </div>
@@ -9098,9 +9124,9 @@
                     <span class="lf-detail-value">W8</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">14%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">14%</span>
                 </div>
             
         </div>
@@ -9212,9 +9238,9 @@
                     <span class="lf-detail-value">W3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">6%</span>
                 </div>
             
         </div>
@@ -9383,9 +9409,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">6%</span>
                 </div>
             
         </div>
@@ -9535,9 +9561,9 @@
                     <span class="lf-detail-value">W6</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -9687,9 +9713,9 @@
                     <span class="lf-detail-value">W7</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -9839,9 +9865,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">7%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">7%</span>
                 </div>
             
         </div>
@@ -9953,9 +9979,9 @@
                     <span class="lf-detail-value">W9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">8%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">8%</span>
                 </div>
             
         </div>
@@ -10105,9 +10131,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">8%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">8%</span>
                 </div>
             
         </div>
@@ -10257,9 +10283,9 @@
                     <span class="lf-detail-value">L5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">11%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">11%</span>
                 </div>
             
         </div>
@@ -10428,9 +10454,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">6%</span>
                 </div>
             
         </div>
@@ -10561,9 +10587,9 @@
                     <span class="lf-detail-value">S9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">7%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">7%</span>
                 </div>
             
         </div>
@@ -10732,9 +10758,9 @@
                     <span class="lf-detail-value">W5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">4%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">4%</span>
                 </div>
             
         </div>
@@ -10865,9 +10891,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">4%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">4%</span>
                 </div>
             
         </div>
@@ -11055,9 +11081,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">4%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">4%</span>
                 </div>
             
         </div>
@@ -11150,9 +11176,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">5%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">5%</span>
                 </div>
             
         </div>
@@ -11340,9 +11366,9 @@
                     <span class="lf-detail-value">W2</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -11492,9 +11518,9 @@
                     <span class="lf-detail-value">W4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">2%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">2%</span>
                 </div>
             
         </div>
@@ -11606,9 +11632,9 @@
                     <span class="lf-detail-value">W2</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -11720,9 +11746,9 @@
                     <span class="lf-detail-value">W2</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">3%</span>
                 </div>
             
         </div>
@@ -11872,9 +11898,9 @@
                     <span class="lf-detail-value">W3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -12005,9 +12031,9 @@
                     <span class="lf-detail-value">W3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -12138,9 +12164,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">4%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">4%</span>
                 </div>
             
         </div>
@@ -12252,9 +12278,9 @@
                     <span class="lf-detail-value">S5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">5%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">5%</span>
                 </div>
             
         </div>
@@ -12442,9 +12468,9 @@
                     <span class="lf-detail-value">W3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">1%</span>
                 </div>
             
         </div>
@@ -12556,9 +12582,9 @@
                     <span class="lf-detail-value">S9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -12727,9 +12753,9 @@
                     <span class="lf-detail-value">W3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">1%</span>
                 </div>
             
         </div>
@@ -12860,9 +12886,9 @@
                     <span class="lf-detail-value">W2</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">2%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">2%</span>
                 </div>
             
         </div>
@@ -12993,9 +13019,9 @@
                     <span class="lf-detail-value">W3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">1%</span>
                 </div>
             
         </div>
@@ -13126,9 +13152,9 @@
                     <span class="lf-detail-value">S7</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">4%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">4%</span>
                 </div>
             
         </div>
@@ -13316,9 +13342,9 @@
                     <span class="lf-detail-value">S7</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">4%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">4%</span>
                 </div>
             
         </div>
@@ -13506,9 +13532,9 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">0%</span>
                 </div>
             
         </div>
@@ -13677,9 +13703,9 @@
                     <span class="lf-detail-value">G5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">10%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">10%</span>
                 </div>
             
         </div>
@@ -13810,9 +13836,9 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">0%</span>
                 </div>
             
         </div>
@@ -14171,9 +14197,9 @@
                     <span class="lf-detail-value">G1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">9%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">9%</span>
                 </div>
             
         </div>
@@ -14342,9 +14368,9 @@
                     <span class="lf-detail-value">L2</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">15%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">15%</span>
                 </div>
             
         </div>
@@ -14513,9 +14539,9 @@
                     <span class="lf-detail-value">L4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">14%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">14%</span>
                 </div>
             
         </div>
@@ -14608,9 +14634,9 @@
                     <span class="lf-detail-value">V3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">20%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">20%</span>
                 </div>
             
         </div>
@@ -14722,9 +14748,9 @@
                     <span class="lf-detail-value">H6</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">6%</span>
                 </div>
             
         </div>
@@ -14893,9 +14919,9 @@
                     <span class="lf-detail-value">H5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">24%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">24%</span>
                 </div>
             
         </div>
@@ -14988,9 +15014,9 @@
                     <span class="lf-detail-value">H5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">23%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">23%</span>
                 </div>
             
         </div>
@@ -15083,9 +15109,9 @@
                     <span class="lf-detail-value">B9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">32%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">32%</span>
                 </div>
             
         </div>
@@ -15292,9 +15318,9 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">26%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">26%</span>
                 </div>
             
         </div>
@@ -15387,9 +15413,9 @@
                     <span class="lf-detail-value">H2</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">25%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">25%</span>
                 </div>
             
         </div>
@@ -15482,9 +15508,9 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">26%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">26%</span>
                 </div>
             
         </div>
@@ -15596,9 +15622,9 @@
                     <span class="lf-detail-value">B9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">33%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">33%</span>
                 </div>
             
         </div>
@@ -15710,9 +15736,9 @@
                     <span class="lf-detail-value">B9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">31%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">31%</span>
                 </div>
             
         </div>
@@ -15824,9 +15850,9 @@
                     <span class="lf-detail-value">B9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">31%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">31%</span>
                 </div>
             
         </div>
@@ -15957,9 +15983,9 @@
                     <span class="lf-detail-value">B9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">31%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">31%</span>
                 </div>
             
         </div>
@@ -16109,9 +16135,9 @@
                     <span class="lf-detail-value">B9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">31%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">31%</span>
                 </div>
             
         </div>
@@ -16261,9 +16287,9 @@
                     <span class="lf-detail-value">B9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">33%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">33%</span>
                 </div>
             
         </div>
@@ -16394,9 +16420,9 @@
                     <span class="lf-detail-value">B7</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">34%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">34%</span>
                 </div>
             
         </div>
@@ -16508,9 +16534,9 @@
                     <span class="lf-detail-value">B7</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">34%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">34%</span>
                 </div>
             
         </div>
@@ -16622,9 +16648,9 @@
                     <span class="lf-detail-value">M4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">28%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">28%</span>
                 </div>
             
         </div>
@@ -16717,9 +16743,9 @@
                     <span class="lf-detail-value">M2</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">30%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">30%</span>
                 </div>
             
         </div>
@@ -16812,9 +16838,9 @@
                     <span class="lf-detail-value">K4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">25%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">25%</span>
                 </div>
             
         </div>
@@ -16907,9 +16933,9 @@
                     <span class="lf-detail-value">N9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">25%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">25%</span>
                 </div>
             
         </div>
@@ -17021,9 +17047,9 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">1%</span>
                 </div>
             
         </div>
@@ -17173,9 +17199,9 @@
                     <span class="lf-detail-value">V3</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">16%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">16%</span>
                 </div>
             
         </div>
@@ -17287,9 +17313,9 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">0%</span>
                 </div>
             
         </div>
@@ -17496,9 +17522,9 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">6%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">6%</span>
                 </div>
             
         </div>
@@ -17629,9 +17655,9 @@
                     <span class="lf-detail-value">G4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -17743,9 +17769,9 @@
                     <span class="lf-detail-value">G9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">1%</span>
                 </div>
             
         </div>
@@ -17876,9 +17902,9 @@
                     <span class="lf-detail-value">G5</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">3%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">3%</span>
                 </div>
             
         </div>
@@ -17971,9 +17997,9 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">0%</span>
                 </div>
             
         </div>
@@ -18275,9 +18301,9 @@
                     <span class="lf-detail-value">G9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">1%</span>
                 </div>
             
         </div>
@@ -18408,9 +18434,9 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">0%</span>
                 </div>
             
         </div>
@@ -18731,9 +18757,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">1%</span>
                 </div>
             
         </div>
@@ -18864,9 +18890,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">0%</span>
                 </div>
             
         </div>
@@ -18997,9 +19023,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">1%</span>
                 </div>
             
         </div>
@@ -19168,9 +19194,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">1%</span>
                 </div>
             
         </div>
@@ -19377,9 +19403,9 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">0%</span>
                 </div>
             
         </div>
@@ -19548,9 +19574,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">0%</span>
                 </div>
             
         </div>
@@ -19662,9 +19688,9 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">0%</span>
                 </div>
             
         </div>
@@ -20023,9 +20049,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">0%</span>
                 </div>
             
         </div>
@@ -20118,9 +20144,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">1%</span>
                 </div>
             
         </div>
@@ -20308,9 +20334,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">0%</span>
                 </div>
             
         </div>
@@ -20422,9 +20448,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">0%</span>
                 </div>
             
         </div>
@@ -20555,9 +20581,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">0%</span>
                 </div>
             
         </div>
@@ -20669,9 +20695,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">1%</span>
                 </div>
             
         </div>
@@ -20783,9 +20809,9 @@
                     <span class="lf-detail-value">S2</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-439" style="color:white;">2%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-439">2%</span>
                 </div>
             
         </div>
@@ -20916,9 +20942,9 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">1%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">1%</span>
                 </div>
             
         </div>
@@ -21030,9 +21056,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">0%</span>
                 </div>
             
         </div>
@@ -21144,9 +21170,9 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
-                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-433" style="color:white;">0%</span>
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-433">0%</span>
                 </div>
             
         </div>
