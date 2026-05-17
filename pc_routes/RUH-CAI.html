@@ -2822,6 +2822,36 @@
         .competitors-table tbody tr:hover {
             background: white !important;
         }
+        .competitors-table tbody tr[data-threat-level] {
+            transition: transform 0.18s ease, filter 0.18s ease !important;
+        }
+        .competitors-table tbody tr[data-threat-level] td {
+            transition: background-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease !important;
+        }
+        .competitors-table tbody tr[data-threat-level]:hover {
+            transform: translateY(-1px) !important;
+            filter: saturate(1.04) !important;
+        }
+        .competitors-table tbody tr[data-threat-level]:hover td {
+            background: #fff8ec !important;
+            box-shadow: inset 0 1px 0 rgba(247, 148, 29, 0.22), inset 0 -1px 0 rgba(247, 148, 29, 0.22) !important;
+        }
+        .competitors-table tbody tr[data-threat-level="high"]:hover td {
+            background: #fff1f1 !important;
+            box-shadow: inset 0 1px 0 rgba(231, 76, 60, 0.25), inset 0 -1px 0 rgba(231, 76, 60, 0.25) !important;
+        }
+        .competitors-table tbody tr[data-threat-level="medium"]:hover td {
+            background: #fff6df !important;
+        }
+        .competitors-table tbody tr[data-threat-level="low"]:hover td {
+            background: #f6f1ff !important;
+        }
+        .competitors-table tbody tr[data-threat-level]:hover td:first-child {
+            box-shadow: inset 5px 0 0 var(--ac-orange), inset 0 1px 0 rgba(247, 148, 29, 0.22), inset 0 -1px 0 rgba(247, 148, 29, 0.22) !important;
+        }
+        body.ar .competitors-table tbody tr[data-threat-level]:hover td:first-child {
+            box-shadow: inset -5px 0 0 var(--ac-orange), inset 0 1px 0 rgba(247, 148, 29, 0.22), inset 0 -1px 0 rgba(247, 148, 29, 0.22) !important;
+        }
         .competitor-name {
             color: var(--ac-purple) !important;
             font-weight: 700 !important;
