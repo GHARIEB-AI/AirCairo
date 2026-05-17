@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T20:43:00">
-    <meta name="report-version" content="20260517204300">
+    <meta name="report-generated" content="2026-05-18T00:07:00">
+    <meta name="report-version" content="20260518000700">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -586,10 +586,67 @@
             transition: background 0.2s ease;
         }
 
+        .competitors-table tbody tr[data-threat-level] {
+            transition: transform 0.18s ease, filter 0.18s ease;
+        }
+        .competitors-table tbody tr[data-threat-level] td {
+            transition: background-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+        }
+        .competitors-table tbody tr[data-threat-level]:hover {
+            transform: translateY(-1px);
+            filter: saturate(1.04);
+        }
+        .competitors-table tbody tr[data-threat-level]:hover td {
+            background: #fff8ec;
+            box-shadow: inset 0 1px 0 rgba(247, 148, 29, 0.22), inset 0 -1px 0 rgba(247, 148, 29, 0.22);
+        }
+        .competitors-table tbody tr[data-threat-level="high"]:hover td {
+            background: #fff1f1;
+            box-shadow: inset 0 1px 0 rgba(231, 76, 60, 0.25), inset 0 -1px 0 rgba(231, 76, 60, 0.25);
+        }
+        .competitors-table tbody tr[data-threat-level="medium"]:hover td {
+            background: #fff6df;
+        }
+        .competitors-table tbody tr[data-threat-level="low"]:hover td {
+            background: #f6f1ff;
+        }
+
         .competitor-name {
             font-weight: 700;
             color: #2c3e50;
             min-width: 140px;
+        }
+
+        .airline-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            vertical-align: middle;
+        }
+
+        body.en .airline-display {
+            flex-direction: row-reverse;
+        }
+
+        body.ar .airline-display {
+            flex-direction: row;
+        }
+
+        .airline-logo {
+            width: 68px;
+            height: 44px;
+            object-fit: contain;
+            flex: 0 0 68px;
+            background: #ffffff;
+            border: 1px solid rgba(70, 43, 115, 0.10);
+            border-radius: 8px;
+            padding: 4px 7px;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12);
+        }
+
+        .airline-text {
+            display: inline-block;
+            min-width: 0;
         }
 
         .fare-cell {
@@ -1436,6 +1493,7 @@
         .scroll-btn svg {
             display: none !important;
         }
+
 
         /* Date Filter Button */
         .date-filter-btn {
@@ -2956,6 +3014,35 @@
             color: var(--ac-purple) !important;
             font-weight: 700 !important;
         }
+        .competitor-name .airline-display {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            vertical-align: middle !important;
+        }
+        body.en .competitor-name .airline-display {
+            direction: ltr !important;
+            flex-direction: row-reverse !important;
+        }
+        body.ar .competitor-name .airline-display {
+            direction: rtl !important;
+            flex-direction: row !important;
+        }
+        .competitor-name .airline-logo {
+            width: 68px !important;
+            height: 44px !important;
+            object-fit: contain !important;
+            flex: 0 0 68px !important;
+            background: #ffffff !important;
+            border: 1px solid rgba(70, 43, 115, 0.12) !important;
+            border-radius: 8px !important;
+            padding: 4px 7px !important;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12) !important;
+        }
+        .competitor-name .airline-text {
+            display: inline-block !important;
+            min-width: 0 !important;
+        }
         body.en .competitor-name {
             text-align: left !important;
         }
@@ -3006,37 +3093,6 @@
             }
         }
     
-    
-        .competitor-name .airline-display {
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 10px !important;
-            vertical-align: middle !important;
-        }
-        body.en .competitor-name .airline-display {
-            direction: ltr !important;
-            flex-direction: row-reverse !important;
-        }
-        body.ar .competitor-name .airline-display {
-            direction: rtl !important;
-            flex-direction: row !important;
-        }
-        .competitor-name .airline-logo {
-            width: 68px !important;
-            height: 44px !important;
-            object-fit: contain !important;
-            flex: 0 0 68px !important;
-            background: #ffffff !important;
-            border: 1px solid rgba(70, 43, 115, 0.12) !important;
-            border-radius: 8px !important;
-            padding: 4px 7px !important;
-            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12) !important;
-        }
-        .competitor-name .airline-text {
-            display: inline-block !important;
-            min-width: 0 !important;
-        }
-
     </style>
 </head>
 <body class="en">
@@ -3056,30 +3112,30 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 08:43 PM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 18MAY26 12:07 AM</span>
                 <span class="ticker-separator">|</span>
-                📅 الفترة: <span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 10JUN26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 10JUN26</span>
+                📅 الفترة: <span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 07AUG26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 07AUG26</span>
                 <span class="ticker-separator">|</span>
-                إجمالي التهديدات: <span class="ticker-total" id="ticker-total">7</span>
+                إجمالي التهديدات: <span class="ticker-total" id="ticker-total">8</span>
                 <span class="ticker-separator">|</span>
                 🔴 عالي: <span class="ticker-high" id="ticker-high">1</span>
                 <span class="ticker-separator">|</span>
-                🟠 متوسط: <span class="ticker-medium" id="ticker-medium">0</span>
+                🟠 متوسط: <span class="ticker-medium" id="ticker-medium">1</span>
                 <span class="ticker-separator">|</span>
                 🟡 منخفض: <span class="ticker-low" id="ticker-low">6</span>
             </span>
             <span class="en-text">
                 📊 Threat Alert Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 08:43 PM</span>
+                <span class="ticker-generated">🕐 Generated: 18MAY26 12:07 AM</span>
                 <span class="ticker-separator">|</span>
-                📅 <span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 10JUN26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 10JUN26</span>
+                📅 <span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 07AUG26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 07AUG26</span>
                 <span class="ticker-separator">|</span>
-                Total Threats: <span class="ticker-total" id="ticker-total-en">7</span>
+                Total Threats: <span class="ticker-total" id="ticker-total-en">8</span>
                 <span class="ticker-separator">|</span>
                 🔴 HIGH: <span class="ticker-high" id="ticker-high-en">1</span>
                 <span class="ticker-separator">|</span>
-                🟠 MEDIUM: <span class="ticker-medium" id="ticker-medium-en">0</span>
+                🟠 MEDIUM: <span class="ticker-medium" id="ticker-medium-en">1</span>
                 <span class="ticker-separator">|</span>
                 🟡 LOW: <span class="ticker-low" id="ticker-low-en">6</span>
             </span>
@@ -3101,15 +3157,40 @@
                     <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">العربية</button>
                     <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
                     <select class="route-select route-jumper" aria-label="Jump to another route" onchange="if(this.value && this.value !== 'JED-HMB'){window.location.href=this.value+'.html';}">
+<option value="AHB-CAI">AHB-CAI</option>
+<option value="AJF-CAI">AJF-CAI</option>
 <option value="ATZ-JED">ATZ-JED</option>
+<option value="ATZ-MED">ATZ-MED</option>
+<option value="ATZ-RUH">ATZ-RUH</option>
+<option value="CAI-AHB">CAI-AHB</option>
+<option value="CAI-AJF">CAI-AJF</option>
+<option value="CAI-DMM">CAI-DMM</option>
+<option value="CAI-ELQ">CAI-ELQ</option>
+<option value="CAI-GIZ">CAI-GIZ</option>
+<option value="CAI-JED">CAI-JED</option>
+<option value="CAI-MED">CAI-MED</option>
+<option value="CAI-RUH">CAI-RUH</option>
 <option value="CAI-TUU">CAI-TUU</option>
+<option value="CAI-YNB">CAI-YNB</option>
+<option value="DMM-CAI">DMM-CAI</option>
+<option value="ELQ-CAI">ELQ-CAI</option>
+<option value="GIZ-CAI">GIZ-CAI</option>
 <option value="HBE-JED">HBE-JED</option>
+<option value="HBE-MED">HBE-MED</option>
+<option value="HMB-JED">HMB-JED</option>
+<option value="HMB-RUH">HMB-RUH</option>
 <option value="JED-ATZ">JED-ATZ</option>
 <option value="JED-CAI">JED-CAI</option>
-<option value="JED-CCE">JED-CCE</option>
 <option value="JED-HBE">JED-HBE</option>
 <option value="JED-HMB" selected>JED-HMB</option>
+<option value="MED-ATZ">MED-ATZ</option>
+<option value="MED-CAI">MED-CAI</option>
+<option value="MED-HBE">MED-HBE</option>
+<option value="RUH-ATZ">RUH-ATZ</option>
 <option value="RUH-CAI">RUH-CAI</option>
+<option value="RUH-HMB">RUH-HMB</option>
+<option value="TUU-CAI">TUU-CAI</option>
+<option value="YNB-CAI">YNB-CAI</option>
 </select>
                     <button class="route-select date-filter-btn" id="date-filter-btn" onclick="openDateFilterModal()">
                         <span class="ar-text">جميع التواريخ</span>
@@ -3188,11 +3269,16 @@
 <div class="filter-item selected" data-value="2026-05-23" onclick="toggleDateItem(this)"><div class="filter-checkbox"></div><span>23 May</span></div>
 <div class="filter-item selected" data-value="2026-05-24" onclick="toggleDateItem(this)"><div class="filter-checkbox"></div><span>24 May</span></div>
 <div class="filter-item selected" data-value="2026-05-26" onclick="toggleDateItem(this)"><div class="filter-checkbox"></div><span>26 May</span></div>
-<div class="filter-item selected" data-value="2026-05-27" onclick="toggleDateItem(this)"><div class="filter-checkbox"></div><span>27 May</span></div>
 </div></div>
 <div class="filter-group filter-month-group expanded" data-month="2026-06"><div class="filter-group-header selected" onclick="toggleMonthGroup(this.parentElement, event)"><div class="filter-group-checkbox"></div><span class="filter-group-label">June 2026</span><span class="filter-group-arrow">▼</span></div><div class="filter-group-items">
 <div class="filter-item selected" data-value="2026-06-03" onclick="toggleDateItem(this)"><div class="filter-checkbox"></div><span>03 Jun</span></div>
 <div class="filter-item selected" data-value="2026-06-10" onclick="toggleDateItem(this)"><div class="filter-checkbox"></div><span>10 Jun</span></div>
+</div></div>
+<div class="filter-group filter-month-group expanded" data-month="2026-07"><div class="filter-group-header selected" onclick="toggleMonthGroup(this.parentElement, event)"><div class="filter-group-checkbox"></div><span class="filter-group-label">July 2026</span><span class="filter-group-arrow">▼</span></div><div class="filter-group-items">
+<div class="filter-item selected" data-value="2026-07-29" onclick="toggleDateItem(this)"><div class="filter-checkbox"></div><span>29 Jul</span></div>
+</div></div>
+<div class="filter-group filter-month-group expanded" data-month="2026-08"><div class="filter-group-header selected" onclick="toggleMonthGroup(this.parentElement, event)"><div class="filter-group-checkbox"></div><span class="filter-group-label">August 2026</span><span class="filter-group-arrow">▼</span></div><div class="filter-group-items">
+<div class="filter-item selected" data-value="2026-08-07" onclick="toggleDateItem(this)"><div class="filter-checkbox"></div><span>07 Aug</span></div>
 </div></div>
 </div></div>
                 </div>
@@ -3263,13 +3349,13 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 20:43</span>
-                    <span class="banner-route"><span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 10JUN26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 10JUN26</span></span>
+                    آخر تحديث: <span class="update-time">2026-05-18 00:07</span>
+                    <span class="banner-route"><span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 07AUG26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 07AUG26</span></span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 20:43</span>
-                    <span class="banner-route"><span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 10JUN26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 10JUN26</span></span>
+                    Last Updated: <span class="update-time">2026-05-18 00:07</span>
+                    <span class="banner-route"><span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 07AUG26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 07AUG26</span></span>
                 </span>
             </div>
 
@@ -3290,7 +3376,7 @@
                         <span class="ar-text">تهديد متوسط - راقب</span>
                         <span class="en-text">MEDIUM THREAT</span>
                     </h3>
-                    <div class="number" id="stat-medium">0</div>
+                    <div class="number" id="stat-medium">1</div>
                     <div style="font-size: 0.7em; opacity: 0.8; margin-top: 5px;">
                         <span class="ar-text">اضغط للفلتر</span>
                         <span class="en-text">Click to filter</span>
@@ -3333,13 +3419,14 @@
             
         <div class="lf-details-bar">
             
-            <div class="lf-detail-item lf-flight-chip">
-                <span class="lf-detail-label">
-                    <span class="ar-text">الرحلة</span>
-                    <span class="en-text">Flight</span>
-                </span>
-                <span class="lf-detail-value">SM-454</span>
-            </div>
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">
+                        <span class="ar-text">الرحلة</span>
+                        <span class="en-text">Flight</span>
+                    </span>
+                    <span class="lf-detail-value">SM-454</span>
+                </div>
+            
                 <div class="lf-detail-item lf-mid">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">136</span>
@@ -3394,20 +3481,20 @@
 </thead>
                 <tbody>
                     
-        <tr data-threat-level="low" data-is-alternative="false">
+        <tr data-threat-level="medium" data-is-alternative="false">
             <td class="competitor-name"><span class="airline-display"><img class="airline-logo" src="../assets/img/airline_flynas.svg" alt="Flynas logo" loading="lazy"><span class="airline-text"><span class="ar-text">طيران ناس XY-581 <span class="orig-marker">(أصلي)</span> <span class="orig-route">JED-HMB</span></span><span class="en-text">Flynas XY-581 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">JED-HMB</span></span></span></span></td>
             <td class="dep-time-cell">06:30</td>
             <td class="dep-time-cell">11:35</td>
-            <td class="fare-cell"><span class="ar-text">1748 ريال سعودي</span><span class="en-text">1748 SAR</span></td>
+            <td class="fare-cell"><span class="ar-text">1990 ريال سعودي</span><span class="en-text">1990 SAR</span></td>
             <td class="fare-cell"><span class="ar-text">1873 ريال سعودي</span><span class="en-text">1873 SAR</span></td>
-            <td class="fare-cell"><span class="fare-positive"><span class="ar-text">+125 ريال سعودي</span><span class="en-text">+125 SAR</span></span></td>
+            <td class="fare-cell"><span class="fare-negative"><span class="ar-text">-117 ريال سعودي</span><span class="en-text">-117 SAR</span></span></td>
             <td class="baggage-cell">30 kg</td>
             <td class="baggage-cell">40 kg</td>
             <td class="baggage-cell baggage-negative">-10 kg</td>
             <td style="text-align:center">
-                <span class="threat-indicator threat-low">
-                    <span class="ar-text">منخفض</span>
-                    <span class="en-text">LOW</span>
+                <span class="threat-indicator threat-medium">
+                    <span class="ar-text">متوسط</span>
+                    <span class="en-text">MED</span>
                 </span>
             </td>
         </tr>
@@ -3435,16 +3522,17 @@
             
         <div class="lf-details-bar">
             
-            <div class="lf-detail-item lf-flight-chip">
-                <span class="lf-detail-label">
-                    <span class="ar-text">الرحلة</span>
-                    <span class="en-text">Flight</span>
-                </span>
-                <span class="lf-detail-value">SM-454</span>
-            </div>
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">
+                        <span class="ar-text">الرحلة</span>
+                        <span class="en-text">Flight</span>
+                    </span>
+                    <span class="lf-detail-value">SM-454</span>
+                </div>
+            
                 <div class="lf-detail-item lf-mid">
                     <span class="lf-detail-label">SOLD</span>
-                    <span class="lf-detail-value">90</span>
+                    <span class="lf-detail-value">89</span>
                 </div>
             
                 <div class="lf-detail-item">
@@ -3537,13 +3625,14 @@
             
         <div class="lf-details-bar">
             
-            <div class="lf-detail-item lf-flight-chip">
-                <span class="lf-detail-label">
-                    <span class="ar-text">الرحلة</span>
-                    <span class="en-text">Flight</span>
-                </span>
-                <span class="lf-detail-value">SM-454</span>
-            </div>
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">
+                        <span class="ar-text">الرحلة</span>
+                        <span class="en-text">Flight</span>
+                    </span>
+                    <span class="lf-detail-value">SM-454</span>
+                </div>
+            
                 <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">41</span>
@@ -3639,16 +3728,17 @@
             
         <div class="lf-details-bar">
             
-            <div class="lf-detail-item lf-flight-chip">
-                <span class="lf-detail-label">
-                    <span class="ar-text">الرحلة</span>
-                    <span class="en-text">Flight</span>
-                </span>
-                <span class="lf-detail-value">SM-454</span>
-            </div>
-                <div class="lf-detail-item lf-mid">
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">
+                        <span class="ar-text">الرحلة</span>
+                        <span class="en-text">Flight</span>
+                    </span>
+                    <span class="lf-detail-value">SM-454</span>
+                </div>
+            
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
-                    <span class="lf-detail-value">89</span>
+                    <span class="lf-detail-value">87</span>
                 </div>
             
                 <div class="lf-detail-item">
@@ -3673,12 +3763,12 @@
             
                 <div class="lf-detail-item">
                     <span class="lf-detail-label">LOWEST AVAIL</span>
-                    <span class="lf-detail-value">Q6</span>
+                    <span class="lf-detail-value">K9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip lf-mid">
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
                     <span class="lf-detail-label">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-454">51%</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-454">50%</span>
                 </div>
             
         </div>
@@ -3702,116 +3792,14 @@
                     
         <tr data-threat-level="low" data-is-alternative="false">
             <td class="competitor-name"><span class="airline-display"><img class="airline-logo" src="../assets/img/airline_egyptair.svg" alt="EgyptAir logo" loading="lazy"><span class="airline-text"><span class="ar-text">مصر للطيران MS-8224 <span class="orig-marker">(أصلي)</span> <span class="orig-route">JED-HMB</span></span><span class="en-text">EgyptAir MS-8224 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">JED-HMB</span></span></span></span></td>
+            <td class="dep-time-cell">12:00</td>
             <td class="dep-time-cell">11:30</td>
-            <td class="dep-time-cell">11:30</td>
-            <td class="fare-cell"><span class="ar-text">1537 ريال سعودي</span><span class="en-text">1537 SAR</span></td>
-            <td class="fare-cell"><span class="ar-text">1662 ريال سعودي</span><span class="en-text">1662 SAR</span></td>
-            <td class="fare-cell"><span class="fare-positive"><span class="ar-text">+125 ريال سعودي</span><span class="en-text">+125 SAR</span></span></td>
+            <td class="fare-cell"><span class="ar-text">1358 ريال سعودي</span><span class="en-text">1358 SAR</span></td>
+            <td class="fare-cell"><span class="ar-text">1501 ريال سعودي</span><span class="en-text">1501 SAR</span></td>
+            <td class="fare-cell"><span class="fare-positive"><span class="ar-text">+143 ريال سعودي</span><span class="en-text">+143 SAR</span></span></td>
             <td class="baggage-cell">30 kg</td>
             <td class="baggage-cell">46 kg</td>
             <td class="baggage-cell baggage-negative">-16 kg</td>
-            <td style="text-align:center">
-                <span class="threat-indicator threat-low">
-                    <span class="ar-text">منخفض</span>
-                    <span class="en-text">LOW</span>
-                </span>
-            </td>
-        </tr>
-        
-                </tbody>
-            </table>
-        </div>
-        
-        </div>
-        
-        <div class="date-section" data-date="2026-05-27">
-            <div class="date-header">
-                <div class="date-route-chip">JED-HMB</div>
-                <div class="date-main">
-                    <span class="ar-text">27 مايو 2026 الأربعاء</span>
-                    <span class="en-text">27 MAY 2026 WEDNESDAY</span>
-                </div>
-                <div class="date-flights">
-                    <span class="ar-text">الرحلات: SM-454</span>
-                    <span class="en-text">Flights: SM-454</span>
-                </div>
-            </div>
-            
-        <div class="flight-block" data-flight="SM-454">
-            
-        <div class="lf-details-bar">
-            
-            <div class="lf-detail-item lf-flight-chip">
-                <span class="lf-detail-label">
-                    <span class="ar-text">الرحلة</span>
-                    <span class="en-text">Flight</span>
-                </span>
-                <span class="lf-detail-value">SM-454</span>
-            </div>
-                <div class="lf-detail-item lf-bad">
-                    <span class="lf-detail-label">SOLD</span>
-                    <span class="lf-detail-value">77</span>
-                </div>
-            
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">LST-SOLD</span>
-                    <span class="lf-detail-value">17May26</span>
-                </div>
-            
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">WEEKLY</span>
-                    <span class="lf-detail-value">25</span>
-                </div>
-            
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">TO-DAY</span>
-                    <span class="lf-detail-value">4</span>
-                </div>
-            
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">Y-DAY</span>
-                    <span class="lf-detail-value">3</span>
-                </div>
-            
-                <div class="lf-detail-item">
-                    <span class="lf-detail-label">LOWEST AVAIL</span>
-                    <span class="lf-detail-value">V4</span>
-                </div>
-            
-                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
-                    <span class="lf-detail-label">Load Factor</span>
-                    <span class="lf-detail-value" data-flight-lf="SM-454">44%</span>
-                </div>
-            
-        </div>
-        
-            <table class="competitors-table">
-                <thead>
-    <tr>
-        <th><span class="ar-text">شركات التهديد</span><span class="en-text">Threat Airlines</span></th>
-        <th><span class="ar-text">إقلاع AirCairo</span><span class="en-text">AirCairo DEP</span></th>
-        <th><span class="ar-text">إقلاع OAL</span><span class="en-text">OAL DEP</span></th>
-        <th><span class="ar-text">سعر AirCairo</span><span class="en-text">AirCairo Fare</span></th>
-        <th><span class="ar-text">سعر OAL</span><span class="en-text">OAL Fare</span></th>
-        <th><span class="ar-text">فرق السعر</span><span class="en-text">Fare Dif</span></th>
-        <th><span class="ar-text">حقائب AirCairo</span><span class="en-text">AirCairo Bag</span></th>
-        <th><span class="ar-text">حقائب OAL</span><span class="en-text">OAL Bag</span></th>
-        <th><span class="ar-text">فرق الوزن</span><span class="en-text">Bag Dif</span></th>
-        <th><span class="ar-text">التأثير</span><span class="en-text">IMPACT</span></th>
-    </tr>
-</thead>
-                <tbody>
-                    
-        <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="airline-display"><img class="airline-logo" src="../assets/img/airline_flynas.svg" alt="Flynas logo" loading="lazy"><span class="airline-text"><span class="ar-text">طيران ناس XY-581 <span class="orig-marker">(أصلي)</span> <span class="orig-route">JED-HMB</span></span><span class="en-text">Flynas XY-581 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">JED-HMB</span></span></span></span></td>
-            <td class="dep-time-cell">14:00</td>
-            <td class="dep-time-cell">11:35</td>
-            <td class="fare-cell"><span class="ar-text">1014 ريال سعودي</span><span class="en-text">1014 SAR</span></td>
-            <td class="fare-cell"><span class="ar-text">1153 ريال سعودي</span><span class="en-text">1153 SAR</span></td>
-            <td class="fare-cell"><span class="fare-positive"><span class="ar-text">+139 ريال سعودي</span><span class="en-text">+139 SAR</span></span></td>
-            <td class="baggage-cell">30 kg</td>
-            <td class="baggage-cell">40 kg</td>
-            <td class="baggage-cell baggage-negative">-10 kg</td>
             <td style="text-align:center">
                 <span class="threat-indicator threat-low">
                     <span class="ar-text">منخفض</span>
@@ -3843,13 +3831,14 @@
             
         <div class="lf-details-bar">
             
-            <div class="lf-detail-item lf-flight-chip">
-                <span class="lf-detail-label">
-                    <span class="ar-text">الرحلة</span>
-                    <span class="en-text">Flight</span>
-                </span>
-                <span class="lf-detail-value">SM-454</span>
-            </div>
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">
+                        <span class="ar-text">الرحلة</span>
+                        <span class="en-text">Flight</span>
+                    </span>
+                    <span class="lf-detail-value">SM-454</span>
+                </div>
+            
                 <div class="lf-detail-item lf-good">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">153</span>
@@ -3945,13 +3934,14 @@
             
         <div class="lf-details-bar">
             
-            <div class="lf-detail-item lf-flight-chip">
-                <span class="lf-detail-label">
-                    <span class="ar-text">الرحلة</span>
-                    <span class="en-text">Flight</span>
-                </span>
-                <span class="lf-detail-value">SM-454</span>
-            </div>
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">
+                        <span class="ar-text">الرحلة</span>
+                        <span class="en-text">Flight</span>
+                    </span>
+                    <span class="lf-detail-value">SM-454</span>
+                </div>
+            
                 <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">10</span>
@@ -4030,6 +4020,212 @@
         
         </div>
         
+        <div class="date-section" data-date="2026-07-29">
+            <div class="date-header">
+                <div class="date-route-chip">JED-HMB</div>
+                <div class="date-main">
+                    <span class="ar-text">29 يوليو 2026 الأربعاء</span>
+                    <span class="en-text">29 JULY 2026 WEDNESDAY</span>
+                </div>
+                <div class="date-flights">
+                    <span class="ar-text">الرحلات: SM-454</span>
+                    <span class="en-text">Flights: SM-454</span>
+                </div>
+            </div>
+            
+        <div class="flight-block" data-flight="SM-454">
+            
+        <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">
+                        <span class="ar-text">الرحلة</span>
+                        <span class="en-text">Flight</span>
+                    </span>
+                    <span class="lf-detail-value">SM-454</span>
+                </div>
+            
+                <div class="lf-detail-item lf-bad">
+                    <span class="lf-detail-label">SOLD</span>
+                    <span class="lf-detail-value">0</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">LST-SOLD</span>
+                    <span class="lf-detail-value">NIL</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">WEEKLY</span>
+                    <span class="lf-detail-value">0</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">TO-DAY</span>
+                    <span class="lf-detail-value">0</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">Y-DAY</span>
+                    <span class="lf-detail-value">0</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">LOWEST AVAIL</span>
+                    <span class="lf-detail-value">T9</span>
+                </div>
+            
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-454">0%</span>
+                </div>
+            
+        </div>
+        
+            <table class="competitors-table">
+                <thead>
+    <tr>
+        <th><span class="ar-text">شركات التهديد</span><span class="en-text">Threat Airlines</span></th>
+        <th><span class="ar-text">إقلاع AirCairo</span><span class="en-text">AirCairo DEP</span></th>
+        <th><span class="ar-text">إقلاع OAL</span><span class="en-text">OAL DEP</span></th>
+        <th><span class="ar-text">سعر AirCairo</span><span class="en-text">AirCairo Fare</span></th>
+        <th><span class="ar-text">سعر OAL</span><span class="en-text">OAL Fare</span></th>
+        <th><span class="ar-text">فرق السعر</span><span class="en-text">Fare Dif</span></th>
+        <th><span class="ar-text">حقائب AirCairo</span><span class="en-text">AirCairo Bag</span></th>
+        <th><span class="ar-text">حقائب OAL</span><span class="en-text">OAL Bag</span></th>
+        <th><span class="ar-text">فرق الوزن</span><span class="en-text">Bag Dif</span></th>
+        <th><span class="ar-text">التأثير</span><span class="en-text">IMPACT</span></th>
+    </tr>
+</thead>
+                <tbody>
+                    
+        <tr data-threat-level="low" data-is-alternative="false">
+            <td class="competitor-name"><span class="airline-display"><img class="airline-logo" src="../assets/img/airline_flynas.svg" alt="Flynas logo" loading="lazy"><span class="airline-text"><span class="ar-text">طيران ناس XY-581 <span class="orig-marker">(أصلي)</span> <span class="orig-route">JED-HMB</span></span><span class="en-text">Flynas XY-581 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">JED-HMB</span></span></span></span></td>
+            <td class="dep-time-cell">14:00</td>
+            <td class="dep-time-cell">11:35</td>
+            <td class="fare-cell"><span class="ar-text">648 ريال سعودي</span><span class="en-text">648 SAR</span></td>
+            <td class="fare-cell"><span class="ar-text">673 ريال سعودي</span><span class="en-text">673 SAR</span></td>
+            <td class="fare-cell"><span class="fare-positive"><span class="ar-text">+25 ريال سعودي</span><span class="en-text">+25 SAR</span></span></td>
+            <td class="baggage-cell">30 kg</td>
+            <td class="baggage-cell">40 kg</td>
+            <td class="baggage-cell baggage-negative">-10 kg</td>
+            <td style="text-align:center">
+                <span class="threat-indicator threat-low">
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
+                </span>
+            </td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+        
+        </div>
+        
+        <div class="date-section" data-date="2026-08-07">
+            <div class="date-header">
+                <div class="date-route-chip">JED-HMB</div>
+                <div class="date-main">
+                    <span class="ar-text">07 أغسطس 2026 الجمعة</span>
+                    <span class="en-text">07 AUGUST 2026 FRIDAY</span>
+                </div>
+                <div class="date-flights">
+                    <span class="ar-text">الرحلات: SM-454</span>
+                    <span class="en-text">Flights: SM-454</span>
+                </div>
+            </div>
+            
+        <div class="flight-block" data-flight="SM-454">
+            
+        <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">
+                        <span class="ar-text">الرحلة</span>
+                        <span class="en-text">Flight</span>
+                    </span>
+                    <span class="lf-detail-value">SM-454</span>
+                </div>
+            
+                <div class="lf-detail-item lf-bad">
+                    <span class="lf-detail-label">SOLD</span>
+                    <span class="lf-detail-value">0</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">LST-SOLD</span>
+                    <span class="lf-detail-value">NIL</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">WEEKLY</span>
+                    <span class="lf-detail-value">0</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">TO-DAY</span>
+                    <span class="lf-detail-value">0</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">Y-DAY</span>
+                    <span class="lf-detail-value">0</span>
+                </div>
+            
+                <div class="lf-detail-item">
+                    <span class="lf-detail-label">LOWEST AVAIL</span>
+                    <span class="lf-detail-value">T9</span>
+                </div>
+            
+                <div class="lf-detail-item lf-loadfactor-chip lf-bad">
+                    <span class="lf-detail-label">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-454">0%</span>
+                </div>
+            
+        </div>
+        
+            <table class="competitors-table">
+                <thead>
+    <tr>
+        <th><span class="ar-text">شركات التهديد</span><span class="en-text">Threat Airlines</span></th>
+        <th><span class="ar-text">إقلاع AirCairo</span><span class="en-text">AirCairo DEP</span></th>
+        <th><span class="ar-text">إقلاع OAL</span><span class="en-text">OAL DEP</span></th>
+        <th><span class="ar-text">سعر AirCairo</span><span class="en-text">AirCairo Fare</span></th>
+        <th><span class="ar-text">سعر OAL</span><span class="en-text">OAL Fare</span></th>
+        <th><span class="ar-text">فرق السعر</span><span class="en-text">Fare Dif</span></th>
+        <th><span class="ar-text">حقائب AirCairo</span><span class="en-text">AirCairo Bag</span></th>
+        <th><span class="ar-text">حقائب OAL</span><span class="en-text">OAL Bag</span></th>
+        <th><span class="ar-text">فرق الوزن</span><span class="en-text">Bag Dif</span></th>
+        <th><span class="ar-text">التأثير</span><span class="en-text">IMPACT</span></th>
+    </tr>
+</thead>
+                <tbody>
+                    
+        <tr data-threat-level="low" data-is-alternative="false">
+            <td class="competitor-name"><span class="airline-display"><img class="airline-logo" src="../assets/img/airline_flynas.svg" alt="Flynas logo" loading="lazy"><span class="airline-text"><span class="ar-text">طيران ناس XY-581 <span class="orig-marker">(أصلي)</span> <span class="orig-route">JED-HMB</span></span><span class="en-text">Flynas XY-581 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">JED-HMB</span></span></span></span></td>
+            <td class="dep-time-cell">06:30</td>
+            <td class="dep-time-cell">11:35</td>
+            <td class="fare-cell"><span class="ar-text">648 ريال سعودي</span><span class="en-text">648 SAR</span></td>
+            <td class="fare-cell"><span class="ar-text">673 ريال سعودي</span><span class="en-text">673 SAR</span></td>
+            <td class="fare-cell"><span class="fare-positive"><span class="ar-text">+25 ريال سعودي</span><span class="en-text">+25 SAR</span></span></td>
+            <td class="baggage-cell">30 kg</td>
+            <td class="baggage-cell">40 kg</td>
+            <td class="baggage-cell baggage-negative">-10 kg</td>
+            <td style="text-align:center">
+                <span class="threat-indicator threat-low">
+                    <span class="ar-text">منخفض</span>
+                    <span class="en-text">LOW</span>
+                </span>
+            </td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+        
+        </div>
+        
         </div>
         
 
@@ -4053,7 +4249,7 @@
                         <span class="ar-text">تهديد متوسط - راقب</span>
                         <span class="en-text">MEDIUM THREAT</span>
                     </div>
-                    <div class="summary-value" id="summary-medium">0</div>
+                    <div class="summary-value" id="summary-medium">1</div>
                 </div>
                 <div class="summary-card low">
                     <div class="summary-label">
@@ -4067,8 +4263,8 @@
 
         <div class="footer">
             <p>
-                <span class="ar-text">رصد حركة الاسعار | <span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 10JUN26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 10JUN26</span></span>
-                <span class="en-text">Threat Alert Report | <span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 10JUN26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 10JUN26</span></span>
+                <span class="ar-text">رصد حركة الاسعار | <span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 07AUG26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 07AUG26</span></span>
+                <span class="en-text">Threat Alert Report | <span class="ar-text">خط السير: JED-HMB | الفترة: 22MAY26 - 07AUG26</span><span class="en-text">Route: JED-HMB | Range: 22MAY26 - 07AUG26</span></span>
             </p>
             <p style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px;opacity:0.7"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAUbElEQVR42nWa2W9cV37nP+ecu9TK2riKVEkUSa0t2bIsW96UtmMHRtLpwQwGCBJg/q15yNMA89aZ9HSCLHA3Oumk3XbHlhxZ1kZJlEhxX4q1kFXFqnvPOfNwbhWpBkaAHnjrLr99+X6P6B9uWgsI3D9rLQiJFAohFRaBEAASLQQWEAKEEFgM1lgQIBDumnXvEWLwRtwzwy+I5PeT9wn3XUxyjzzxvE3eaRFCDt8GFgt4x8IPXuI+Za12DxknlJAWhEBYp6S1YK04Fk0cXxdCJh81ye8y+ZxIlD9WZCCc++ix4DaxhBDi/3u/ROAJnFU58YDTVmCMOSGgdL9LC4kSIjGlEDb52yCFwNPCPClcbpBm6XX5uxYk9HZlROs3/awkeNLwptGe99xeQDzbbLb0SkUeWBauEts8bDiYroMhDZD/m5Z6a0cdXM/Cc11My3zJkJZ7+lEbLnXofz0k1tJHpOOGaSoBaqPjKsWuIbc7WK4NroPp92MIH565QLWSxzQhEIwi/FHqrg9PIdTy/jmYzz9ba3pBtA6YzctUcEk4DA99dfI3W12NCIUo7W4w+99v2Fqbp1LMq7PxzhQnXj3H4OQFvECnhlhBLxERSrbj2C/ET+tyDIxKPqPQMVuWSRSEeG6kJWHWUK0//B93Ln9GIBykvTOJ3++jeJRjc32NXHaXqbMXOP/BbxGxflzPRYgwlcIO+8sP6R47hwgEm8H8/CUk7Ar+pn717WpURDgClRKV/DaZxccszt5ndPIUkWiEcvmQarVMvDtBsu8YuWyWO9euUK9X+fEvfofV1sfy3W9Y+WGGibM/xRcMYtsOptT3ogE0LZKGyEfXcTGFhSUM7nz1d7ZX5kgkwhzlCiS6UqwvP2FjdYlSqUQ4Gqd34BjRWJhgKMTps2e5cnmGnqFBhiam2V2YpTvVQyzVhec1XogMq5W7KKx1dnnqLZU7tTJXP/4rK4sLROKC7ZUDgpE4ayuL7KxncJwG3d0dhMwahf19EolOIqEQFRc6u3q4+tXXJFNDTF16ny/+8kdcy+L0+xPYjRKm4dNZJmPENRAqZVxPp6GMPQNuffE3wrE2EgND9KYi7PhWeHj3HpVCEdd2GDkxyNjUFLHuJMXsBjsbb2gWSiw+fErv8CDVhTnGzs4zcfEqWuuE4nLB4CJDOIx2wCN4WJAohzlK8RotZ611tI8QzhJCJUSFuyalh7UR0vPwTYAnFUpKpOcxYwy99gFbLx5x8Y23yVZGQXl4Xuh4NglCZhJ02qCEE95RVsLFvBGvc6NCuElhiLgLPCEBY5FegnYl0IVUCiHlcOEXYqDQgMRzb5FCJUi2xUiNUArl+Qgm2B8bIxtcY3r+KrHynXLJBqiUP1hEkDJ0lV3JY5JjoMhr5EEitzVDjs6N09KCASk9jDhBKdgEUk/YfmNSRojSko6cAAAAASUVORK5CYII=" style="width:20px;height:20px;border-radius:50%;object-fit:cover;" alt=""> Powered by GHARIEB-AI</p>
         </div>
@@ -4076,10 +4272,10 @@
 
     <script>
         // Route statistics data (precomputed for route-only filtering)
-        const routeStats = {"JED-HMB": {"high": 1, "medium": 0, "low": 6}, "_total": {"high": 1, "medium": 0, "low": 6}};
+        const routeStats = {"JED-HMB": {"high": 1, "medium": 1, "low": 6}, "_total": {"high": 1, "medium": 1, "low": 6}};
 
         // Detailed stats: route -> date -> {high, medium, low}
-        const detailedStats = {"JED-HMB": {"2026-05-22": {"high": 0, "medium": 0, "low": 1}, "2026-05-23": {"high": 0, "medium": 0, "low": 1}, "2026-05-24": {"high": 0, "medium": 0, "low": 1}, "2026-05-26": {"high": 0, "medium": 0, "low": 1}, "2026-05-27": {"high": 0, "medium": 0, "low": 1}, "2026-06-03": {"high": 1, "medium": 0, "low": 0}, "2026-06-10": {"high": 0, "medium": 0, "low": 1}}};
+        const detailedStats = {"JED-HMB": {"2026-05-22": {"high": 0, "medium": 1, "low": 0}, "2026-05-23": {"high": 0, "medium": 0, "low": 1}, "2026-05-24": {"high": 0, "medium": 0, "low": 1}, "2026-05-26": {"high": 0, "medium": 0, "low": 1}, "2026-06-03": {"high": 1, "medium": 0, "low": 0}, "2026-06-10": {"high": 0, "medium": 0, "low": 1}, "2026-07-29": {"high": 0, "medium": 0, "low": 1}, "2026-08-07": {"high": 0, "medium": 0, "low": 1}}};
 
         function setLanguage(lang) {
             document.body.className = lang;

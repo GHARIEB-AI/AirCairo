@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T20:43:00">
-    <meta name="report-version" content="20260517204300">
+    <meta name="report-generated" content="2026-05-18T00:07:00">
+    <meta name="report-version" content="20260518000700">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -586,10 +586,67 @@
             transition: background 0.2s ease;
         }
 
+        .competitors-table tbody tr[data-threat-level] {
+            transition: transform 0.18s ease, filter 0.18s ease;
+        }
+        .competitors-table tbody tr[data-threat-level] td {
+            transition: background-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+        }
+        .competitors-table tbody tr[data-threat-level]:hover {
+            transform: translateY(-1px);
+            filter: saturate(1.04);
+        }
+        .competitors-table tbody tr[data-threat-level]:hover td {
+            background: #fff8ec;
+            box-shadow: inset 0 1px 0 rgba(247, 148, 29, 0.22), inset 0 -1px 0 rgba(247, 148, 29, 0.22);
+        }
+        .competitors-table tbody tr[data-threat-level="high"]:hover td {
+            background: #fff1f1;
+            box-shadow: inset 0 1px 0 rgba(231, 76, 60, 0.25), inset 0 -1px 0 rgba(231, 76, 60, 0.25);
+        }
+        .competitors-table tbody tr[data-threat-level="medium"]:hover td {
+            background: #fff6df;
+        }
+        .competitors-table tbody tr[data-threat-level="low"]:hover td {
+            background: #f6f1ff;
+        }
+
         .competitor-name {
             font-weight: 700;
             color: #2c3e50;
             min-width: 140px;
+        }
+
+        .airline-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            vertical-align: middle;
+        }
+
+        body.en .airline-display {
+            flex-direction: row-reverse;
+        }
+
+        body.ar .airline-display {
+            flex-direction: row;
+        }
+
+        .airline-logo {
+            width: 68px;
+            height: 44px;
+            object-fit: contain;
+            flex: 0 0 68px;
+            background: #ffffff;
+            border: 1px solid rgba(70, 43, 115, 0.10);
+            border-radius: 8px;
+            padding: 4px 7px;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12);
+        }
+
+        .airline-text {
+            display: inline-block;
+            min-width: 0;
         }
 
         .fare-cell {
@@ -1436,6 +1493,7 @@
         .scroll-btn svg {
             display: none !important;
         }
+
 
         /* Date Filter Button */
         .date-filter-btn {
@@ -2956,6 +3014,35 @@
             color: var(--ac-purple) !important;
             font-weight: 700 !important;
         }
+        .competitor-name .airline-display {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            vertical-align: middle !important;
+        }
+        body.en .competitor-name .airline-display {
+            direction: ltr !important;
+            flex-direction: row-reverse !important;
+        }
+        body.ar .competitor-name .airline-display {
+            direction: rtl !important;
+            flex-direction: row !important;
+        }
+        .competitor-name .airline-logo {
+            width: 68px !important;
+            height: 44px !important;
+            object-fit: contain !important;
+            flex: 0 0 68px !important;
+            background: #ffffff !important;
+            border: 1px solid rgba(70, 43, 115, 0.12) !important;
+            border-radius: 8px !important;
+            padding: 4px 7px !important;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12) !important;
+        }
+        .competitor-name .airline-text {
+            display: inline-block !important;
+            min-width: 0 !important;
+        }
         body.en .competitor-name {
             text-align: left !important;
         }
@@ -3006,37 +3093,6 @@
             }
         }
     
-    
-        .competitor-name .airline-display {
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 10px !important;
-            vertical-align: middle !important;
-        }
-        body.en .competitor-name .airline-display {
-            direction: ltr !important;
-            flex-direction: row-reverse !important;
-        }
-        body.ar .competitor-name .airline-display {
-            direction: rtl !important;
-            flex-direction: row !important;
-        }
-        .competitor-name .airline-logo {
-            width: 68px !important;
-            height: 44px !important;
-            object-fit: contain !important;
-            flex: 0 0 68px !important;
-            background: #ffffff !important;
-            border: 1px solid rgba(70, 43, 115, 0.12) !important;
-            border-radius: 8px !important;
-            padding: 4px 7px !important;
-            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12) !important;
-        }
-        .competitor-name .airline-text {
-            display: inline-block !important;
-            min-width: 0 !important;
-        }
-
     </style>
 </head>
 <body class="en">
@@ -3056,7 +3112,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 08:43 PM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 18MAY26 12:07 AM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: ATZ-JED | الفترة: 21MAY26</span><span class="en-text">Route: ATZ-JED | Range: 21MAY26</span>
                 <span class="ticker-separator">|</span>
@@ -3071,7 +3127,7 @@
             <span class="en-text">
                 📊 Threat Alert Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 08:43 PM</span>
+                <span class="ticker-generated">🕐 Generated: 18MAY26 12:07 AM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: ATZ-JED | الفترة: 21MAY26</span><span class="en-text">Route: ATZ-JED | Range: 21MAY26</span>
                 <span class="ticker-separator">|</span>
@@ -3101,15 +3157,40 @@
                     <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">العربية</button>
                     <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
                     <select class="route-select route-jumper" aria-label="Jump to another route" onchange="if(this.value && this.value !== 'ATZ-JED'){window.location.href=this.value+'.html';}">
+<option value="AHB-CAI">AHB-CAI</option>
+<option value="AJF-CAI">AJF-CAI</option>
 <option value="ATZ-JED" selected>ATZ-JED</option>
+<option value="ATZ-MED">ATZ-MED</option>
+<option value="ATZ-RUH">ATZ-RUH</option>
+<option value="CAI-AHB">CAI-AHB</option>
+<option value="CAI-AJF">CAI-AJF</option>
+<option value="CAI-DMM">CAI-DMM</option>
+<option value="CAI-ELQ">CAI-ELQ</option>
+<option value="CAI-GIZ">CAI-GIZ</option>
+<option value="CAI-JED">CAI-JED</option>
+<option value="CAI-MED">CAI-MED</option>
+<option value="CAI-RUH">CAI-RUH</option>
 <option value="CAI-TUU">CAI-TUU</option>
+<option value="CAI-YNB">CAI-YNB</option>
+<option value="DMM-CAI">DMM-CAI</option>
+<option value="ELQ-CAI">ELQ-CAI</option>
+<option value="GIZ-CAI">GIZ-CAI</option>
 <option value="HBE-JED">HBE-JED</option>
+<option value="HBE-MED">HBE-MED</option>
+<option value="HMB-JED">HMB-JED</option>
+<option value="HMB-RUH">HMB-RUH</option>
 <option value="JED-ATZ">JED-ATZ</option>
 <option value="JED-CAI">JED-CAI</option>
-<option value="JED-CCE">JED-CCE</option>
 <option value="JED-HBE">JED-HBE</option>
 <option value="JED-HMB">JED-HMB</option>
+<option value="MED-ATZ">MED-ATZ</option>
+<option value="MED-CAI">MED-CAI</option>
+<option value="MED-HBE">MED-HBE</option>
+<option value="RUH-ATZ">RUH-ATZ</option>
 <option value="RUH-CAI">RUH-CAI</option>
+<option value="RUH-HMB">RUH-HMB</option>
+<option value="TUU-CAI">TUU-CAI</option>
+<option value="YNB-CAI">YNB-CAI</option>
 </select>
                     <button class="route-select date-filter-btn" id="date-filter-btn" onclick="openDateFilterModal()">
                         <span class="ar-text">جميع التواريخ</span>
@@ -3255,12 +3336,12 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 20:43</span>
+                    آخر تحديث: <span class="update-time">2026-05-18 00:07</span>
                     <span class="banner-route"><span class="ar-text">خط السير: ATZ-JED | الفترة: 21MAY26</span><span class="en-text">Route: ATZ-JED | Range: 21MAY26</span></span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 20:43</span>
+                    Last Updated: <span class="update-time">2026-05-18 00:07</span>
                     <span class="banner-route"><span class="ar-text">خط السير: ATZ-JED | الفترة: 21MAY26</span><span class="en-text">Route: ATZ-JED | Range: 21MAY26</span></span>
                 </span>
             </div>
@@ -3325,13 +3406,14 @@
             
         <div class="lf-details-bar">
             
-            <div class="lf-detail-item lf-flight-chip">
-                <span class="lf-detail-label">
-                    <span class="ar-text">الرحلة</span>
-                    <span class="en-text">Flight</span>
-                </span>
-                <span class="lf-detail-value">SM-455</span>
-            </div>
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">
+                        <span class="ar-text">الرحلة</span>
+                        <span class="en-text">Flight</span>
+                    </span>
+                    <span class="lf-detail-value">SM-455</span>
+                </div>
+            
                 <div class="lf-detail-item lf-mid">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">108</span>
