@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T13:11:00">
-    <meta name="report-version" content="20260517131100">
+    <meta name="report-generated" content="2026-05-17T13:14:00">
+    <meta name="report-version" content="20260517131400">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -2026,6 +2026,33 @@
             background: linear-gradient(135deg, var(--ac-orange) 0%, var(--ac-orange-dark) 100%) !important;
             box-shadow: 0 2px 8px rgba(245, 166, 35, 0.35);
         }
+        /* ===== Visually prominent (ALTERNATIVE) / (بديل) badge =====
+           Marks a competitor row as hidden-competition (price came from a
+           different route's leg via CAI). The marker is bold orange and
+           underlined so the user immediately distinguishes it from a
+           direct-route competitor; the alternative route name is rendered
+           as a soft purple chip beside it. */
+        .alt-marker {
+            color: var(--ac-orange-deep);
+            font-weight: 800;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+            letter-spacing: 0.6px;
+            margin-inline-start: 6px;
+            text-transform: uppercase;
+        }
+        .alt-route {
+            display: inline-block;
+            background: rgba(92, 44, 126, 0.10);
+            color: var(--ac-purple);
+            font-weight: 700;
+            padding: 1px 8px;
+            border-radius: 6px;
+            margin-inline-start: 6px;
+            font-size: 0.95em;
+        }
+
         /* ===== 1:1 alignment with the approved preview =====
            Hide hero controls that don't exist in the preview, and force the
            per-route Excel download button to always render in the branded
@@ -2583,7 +2610,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:11 PM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:14 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: HBE-JED | الفترة: 31MAY26 - 09SEP26</span><span class="en-text">Route: HBE-JED | Range: 31MAY26 - 09SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2598,7 +2625,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 01:11 PM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 01:14 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: HBE-JED | الفترة: 31MAY26 - 09SEP26</span><span class="en-text">Route: HBE-JED | Range: 31MAY26 - 09SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2632,8 +2659,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 01:11 PM</span>
-                        <span class="en-text">Created: 17MAY26 01:11 PM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 01:14 PM</span>
+                        <span class="en-text">Created: 17MAY26 01:14 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -2800,11 +2827,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 13:11</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 13:14</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 13:11</span>
+                    Last Updated: <span class="update-time">2026-05-17 13:14</span>
                 </span>
             </div>
 
@@ -2936,7 +2963,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-327 (بديل) CAI-JED</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-327 (ALTERNATIVE) CAI-JED</span></td>
+            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-327 <span class="alt-marker">(بديل)</span> <span class="alt-route">CAI-JED</span></span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-327 <span class="alt-marker">(ALTERNATIVE)</span> <span class="alt-route">CAI-JED</span></span></td>
             <td class="dep-time-cell">04:10</td>
             <td class="dep-time-cell">05:55</td>
             <td class="fare-cell"><span class="ar-text">10060 جنيه مصري</span><span class="en-text">10060 EGP</span></td>
@@ -2955,7 +2982,7 @@
         
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-127 (بديل) CAI-JED</span><span class="en-text">Air NP Air NP-127 (ALTERNATIVE) CAI-JED</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-127 <span class="alt-marker">(بديل)</span> <span class="alt-route">CAI-JED</span></span><span class="en-text">Air NP Air NP-127 <span class="alt-marker">(ALTERNATIVE)</span> <span class="alt-route">CAI-JED</span></span></td>
             <td class="dep-time-cell">04:10</td>
             <td class="dep-time-cell">12:45</td>
             <td class="fare-cell"><span class="ar-text">10624 جنيه مصري</span><span class="en-text">10624 EGP</span></td>
@@ -2974,7 +3001,7 @@
         
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-170 (بديل) CAI-JED</span><span class="en-text">Airlines NE Airlines NE-170 (ALTERNATIVE) CAI-JED</span></td>
+            <td class="competitor-name"><span class="ar-text">Airlines NE Airlines NE-170 <span class="alt-marker">(بديل)</span> <span class="alt-route">CAI-JED</span></span><span class="en-text">Airlines NE Airlines NE-170 <span class="alt-marker">(ALTERNATIVE)</span> <span class="alt-route">CAI-JED</span></span></td>
             <td class="dep-time-cell">04:10</td>
             <td class="dep-time-cell">05:30</td>
             <td class="fare-cell"><span class="ar-text">11004 جنيه مصري</span><span class="en-text">11004 EGP</span></td>
@@ -2993,7 +3020,7 @@
         
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">طيران أديل F3-754 (بديل) CAI-JED</span><span class="en-text">Flyadeal F3-754 (ALTERNATIVE) CAI-JED</span></td>
+            <td class="competitor-name"><span class="ar-text">طيران أديل F3-754 <span class="alt-marker">(بديل)</span> <span class="alt-route">CAI-JED</span></span><span class="en-text">Flyadeal F3-754 <span class="alt-marker">(ALTERNATIVE)</span> <span class="alt-route">CAI-JED</span></span></td>
             <td class="dep-time-cell">04:10</td>
             <td class="dep-time-cell">09:45</td>
             <td class="fare-cell"><span class="ar-text">12457 جنيه مصري</span><span class="en-text">12457 EGP</span></td>
@@ -3012,7 +3039,7 @@
         
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-645 (بديل) CAI-JED</span><span class="en-text">EgyptAir MS-645 (ALTERNATIVE) CAI-JED</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-645 <span class="alt-marker">(بديل)</span> <span class="alt-route">CAI-JED</span></span><span class="en-text">EgyptAir MS-645 <span class="alt-marker">(ALTERNATIVE)</span> <span class="alt-route">CAI-JED</span></span></td>
             <td class="dep-time-cell">04:10</td>
             <td class="dep-time-cell">05:20</td>
             <td class="fare-cell"><span class="ar-text">13315 جنيه مصري</span><span class="en-text">13315 EGP</span></td>
@@ -3031,7 +3058,7 @@
         
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-659 (بديل) CAI-JED</span><span class="en-text">EgyptAir MS-659 (ALTERNATIVE) CAI-JED</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-659 <span class="alt-marker">(بديل)</span> <span class="alt-route">CAI-JED</span></span><span class="en-text">EgyptAir MS-659 <span class="alt-marker">(ALTERNATIVE)</span> <span class="alt-route">CAI-JED</span></span></td>
             <td class="dep-time-cell">04:10</td>
             <td class="dep-time-cell">06:10</td>
             <td class="fare-cell"><span class="ar-text">13315 جنيه مصري</span><span class="en-text">13315 EGP</span></td>
@@ -3139,7 +3166,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-327 (بديل) CAI-JED</span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-327 (ALTERNATIVE) CAI-JED</span></td>
+            <td class="competitor-name"><span class="ar-text">Arabia Egypt E5 Arabia Egypt E5-327 <span class="alt-marker">(بديل)</span> <span class="alt-route">CAI-JED</span></span><span class="en-text">Arabia Egypt E5 Arabia Egypt E5-327 <span class="alt-marker">(ALTERNATIVE)</span> <span class="alt-route">CAI-JED</span></span></td>
             <td class="dep-time-cell">08:25</td>
             <td class="dep-time-cell">07:55</td>
             <td class="fare-cell"><span class="ar-text">7280 جنيه مصري</span><span class="en-text">7280 EGP</span></td>
@@ -3158,7 +3185,7 @@
         
 
         <tr data-threat-level="low" data-is-alternative="true">
-            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-655 (بديل) CAI-JED</span><span class="en-text">EgyptAir MS-655 (ALTERNATIVE) CAI-JED</span></td>
+            <td class="competitor-name"><span class="ar-text">مصر للطيران MS-655 <span class="alt-marker">(بديل)</span> <span class="alt-route">CAI-JED</span></span><span class="en-text">EgyptAir MS-655 <span class="alt-marker">(ALTERNATIVE)</span> <span class="alt-route">CAI-JED</span></span></td>
             <td class="dep-time-cell">08:25</td>
             <td class="dep-time-cell">12:10</td>
             <td class="fare-cell"><span class="ar-text">11314 جنيه مصري</span><span class="en-text">11314 EGP</span></td>
