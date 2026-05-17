@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T19:21:00">
-    <meta name="report-version" content="20260517192100">
+    <meta name="report-generated" content="2026-05-17T19:25:00">
+    <meta name="report-version" content="20260517192500">
     <title>رصد حركة الاسعار | Threat Routes</title>
     <link rel="preload" href="assets/img/aircairo-loader.gif" as="image">
     <style>
@@ -36,6 +36,26 @@
             background: linear-gradient(135deg, #263241 0%, #462B73 58%, #F7941D 100%);
             color: #fff;
             padding: 28px 34px;
+            position: relative;     /* anchor the centred logo */
+        }
+        /* Air Cairo logo, absolutely centred in the hero band */
+        .hero-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 56px;
+            width: auto;
+            pointer-events: none;   /* don't block clicks on the controls behind it */
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+            opacity: 0.97;
+            z-index: 1;
+        }
+        @media (max-width: 900px) {
+            .hero-logo { height: 38px; }
+        }
+        @media (max-width: 600px) {
+            .hero-logo { display: none; }  /* phones: hide so it doesn't crowd the small hero */
         }
         .hero-title {
             display: flex;
@@ -258,12 +278,13 @@
     <div class="shell">
         <section class="topbar">
             <header class="hero">
+                <img class="hero-logo" src="assets/img/aircairo_logo.png" alt="Air Cairo" />
                 <div class="hero-title">
                     <div>
                         <h1><span class="ar-text">رصد حركة الاسعار حسب خط السير</span><span class="en-text">Threat Alert Report</span></h1>
                         <div class="meta">
-                            <span class="ar-text"><span class="ar-text">الفترة: 17MAY26 - 30SEP26</span><span class="en-text">Range: 17MAY26 - 30SEP26</span> | آخر تحديث: 2026-05-17 19:21</span>
-                            <span class="en-text"><span class="ar-text">الفترة: 17MAY26 - 30SEP26</span><span class="en-text">Range: 17MAY26 - 30SEP26</span> | Last Updated: 2026-05-17 19:21</span>
+                            <span class="ar-text"><span class="ar-text">الفترة: 17MAY26 - 30SEP26</span><span class="en-text">Range: 17MAY26 - 30SEP26</span> | آخر تحديث: 2026-05-17 19:25</span>
+                            <span class="en-text"><span class="ar-text">الفترة: 17MAY26 - 30SEP26</span><span class="en-text">Range: 17MAY26 - 30SEP26</span> | Last Updated: 2026-05-17 19:25</span>
                         </div>
                     </div>
                     <div class="actions">
@@ -1583,7 +1604,7 @@
             </div>
         </div>
 
-        <footer class="footer">Threat Alert Report | 17MAY26 07:21 PM</footer>
+        <footer class="footer">Threat Alert Report | 17MAY26 07:25 PM</footer>
     </div>
     <script>
         let pcDirectionFilter = 'all';
