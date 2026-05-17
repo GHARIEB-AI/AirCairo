@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T13:14:00">
-    <meta name="report-version" content="20260517131400">
+    <meta name="report-generated" content="2026-05-17T13:23:00">
+    <meta name="report-version" content="20260517132300">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -2068,7 +2068,102 @@
             box-shadow: 0 4px 15px rgba(245, 166, 35, 0.35) !important;
             opacity: 1 !important;
         }
-        .flight-block > .lf-details-bar { display: none !important; }
+        /* ===== Day-card layout per user's edited mock =====
+           Date header is a 3-column strip (route chip | date centered | flights chip).
+           Each flight inside the day shows ONE horizontal LF strip with all metrics
+           ending in a coloured Load Factor chip — replaces the old flight-header
+           with its big standalone LF badge and the separate LF details row. */
+        .date-header {
+            display: grid !important;
+            grid-template-columns: auto 1fr auto !important;
+            align-items: center !important;
+            gap: 16px !important;
+        }
+        .date-route-chip {
+            background: rgba(255, 255, 255, 0.18);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1;
+        }
+        .date-header > .date-main {
+            justify-self: center !important;
+            text-align: center !important;
+        }
+        .date-header > .date-flights {
+            justify-self: end !important;
+        }
+        /* Hide the old flight-header chrome — info now lives in date-header + LF strip */
+        .flight-block .flight-header,
+        .flight-block .flight-name,
+        .flight-block .flight-route-date,
+        .flight-block > .load-factor-badge {
+            display: none !important;
+        }
+        /* LF details strip — single horizontal row of chips above the table */
+        .flight-block .lf-details-bar {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            gap: 10px !important;
+            padding: 14px 22px !important;
+            background: linear-gradient(135deg, #2c3e50 0%, #3d566e 100%) !important;
+            border-bottom: 3px solid var(--ac-orange) !important;
+            margin: 0 !important;
+        }
+        .lf-details-bar .lf-detail-item {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            padding: 7px 14px !important;
+            border-radius: 999px !important;
+            background: rgba(255, 255, 255, 0.10) !important;
+            color: white !important;
+            font-weight: 700 !important;
+            font-size: 0.85em !important;
+            white-space: nowrap !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .lf-details-bar .lf-detail-label {
+            font-size: 0.72em !important;
+            letter-spacing: 0.6px !important;
+            opacity: 0.85 !important;
+            text-transform: uppercase !important;
+        }
+        .lf-details-bar .lf-detail-value {
+            font-weight: 800 !important;
+            font-size: 1em !important;
+        }
+        .lf-details-bar .lf-flight-chip {
+            background: var(--ac-orange) !important;
+            color: var(--ac-purple-deep) !important;
+            box-shadow: 0 2px 8px rgba(245, 166, 35, 0.4) !important;
+        }
+        .lf-details-bar .lf-flight-chip .lf-detail-label,
+        .lf-details-bar .lf-flight-chip .lf-detail-value {
+            color: var(--ac-purple-deep) !important;
+            opacity: 1 !important;
+        }
+        .lf-details-bar .lf-loadfactor-chip {
+            margin-inline-start: auto !important;  /* push to the right edge */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25) !important;
+        }
+        .lf-details-bar .lf-detail-item.highlight {
+            background: rgba(245, 166, 35, 0.30) !important;
+            border: 1px solid rgba(245, 166, 35, 0.5) !important;
+        }
+        .lf-details-bar .lf-detail-item.danger {
+            background: rgba(231, 76, 60, 0.30) !important;
+            border: 1px solid rgba(231, 76, 60, 0.5) !important;
+        }
+
         /* Make the hero aircraft fill the right half like the preview */
         .header::after {
             background-size: auto 95% !important;
@@ -2610,7 +2705,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:14 PM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:23 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: JED-HBE | الفترة: 17MAY26 - 28SEP26</span><span class="en-text">Route: JED-HBE | Range: 17MAY26 - 28SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2625,7 +2720,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 01:14 PM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 01:23 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: JED-HBE | الفترة: 17MAY26 - 28SEP26</span><span class="en-text">Route: JED-HBE | Range: 17MAY26 - 28SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2659,8 +2754,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 01:14 PM</span>
-                        <span class="en-text">Created: 17MAY26 01:14 PM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 01:23 PM</span>
+                        <span class="en-text">Created: 17MAY26 01:23 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -2901,11 +2996,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 13:14</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 13:23</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 13:14</span>
+                    Last Updated: <span class="update-time">2026-05-17 13:23</span>
                 </span>
             </div>
 
@@ -2954,6 +3049,7 @@
             
         <div class="date-section" data-date="2026-05-17">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">17 مايو 2026 الأحد</span>
                     <span class="en-text">17 MAY 2026 SUNDAY</span>
@@ -2965,26 +3061,7 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">17MAY26</span>
-            </div>
             
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #95a5a6 0%, #95a5a6dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">--%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3104,6 +3181,7 @@
         
         <div class="date-section" data-date="2026-05-21">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">21 مايو 2026 الخميس</span>
                     <span class="en-text">21 MAY 2026 THURSDAY</span>
@@ -3115,14 +3193,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">SOLD</span>
@@ -3154,21 +3231,13 @@
                     <span class="lf-detail-value">H3</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#462B73;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">91%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">21MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #462B73 0%, #462B73dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">91%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3706,6 +3775,7 @@
         
         <div class="date-section" data-date="2026-05-23">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">23 مايو 2026 السبت</span>
                     <span class="en-text">23 MAY 2026 SATURDAY</span>
@@ -3717,14 +3787,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -3756,21 +3825,13 @@
                     <span class="lf-detail-value">H4</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f39c12;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">54%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">23MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">54%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4232,6 +4293,7 @@
         
         <div class="date-section" data-date="2026-05-24">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">24 مايو 2026 الأحد</span>
                     <span class="en-text">24 MAY 2026 SUNDAY</span>
@@ -4243,14 +4305,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4282,21 +4343,13 @@
                     <span class="lf-detail-value">Q5</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">40%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">24MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">40%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4758,6 +4811,7 @@
         
         <div class="date-section" data-date="2026-05-25">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">25 مايو 2026 الاثنين</span>
                     <span class="en-text">25 MAY 2026 MONDAY</span>
@@ -4769,14 +4823,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -4808,21 +4861,13 @@
                     <span class="lf-detail-value">K3</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f39c12;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">51%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">25MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">51%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5075,6 +5120,7 @@
         
         <div class="date-section" data-date="2026-05-27">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">27 مايو 2026 الأربعاء</span>
                     <span class="en-text">27 MAY 2026 WEDNESDAY</span>
@@ -5086,14 +5132,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -5125,21 +5170,13 @@
                     <span class="lf-detail-value">G6</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f39c12;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">53%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">27MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">53%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5278,6 +5315,7 @@
         
         <div class="date-section" data-date="2026-05-30">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">30 مايو 2026 السبت</span>
                     <span class="en-text">30 MAY 2026 SATURDAY</span>
@@ -5289,14 +5327,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5328,21 +5365,13 @@
                     <span class="lf-detail-value">B9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">30%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">30MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">30%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5804,6 +5833,7 @@
         
         <div class="date-section" data-date="2026-05-31">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">31 مايو 2026 الأحد</span>
                     <span class="en-text">31 MAY 2026 SUNDAY</span>
@@ -5815,14 +5845,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item highlight">
                     <span class="lf-detail-label">SOLD</span>
@@ -5854,21 +5883,13 @@
                     <span class="lf-detail-value">Y3</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#462B73;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">98%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">31MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #462B73 0%, #462B73dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">98%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -6197,6 +6218,7 @@
         
         <div class="date-section" data-date="2026-06-01">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">01 يونيو 2026 الاثنين</span>
                     <span class="en-text">01 JUNE 2026 MONDAY</span>
@@ -6208,14 +6230,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -6247,21 +6268,13 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">21%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">01JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">21%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -6609,6 +6622,7 @@
         
         <div class="date-section" data-date="2026-06-03">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">03 يونيو 2026 الأربعاء</span>
                     <span class="en-text">03 JUNE 2026 WEDNESDAY</span>
@@ -6620,14 +6634,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -6659,21 +6672,13 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">23%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">03JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">23%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -7249,6 +7254,7 @@
         
         <div class="date-section" data-date="2026-06-07">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">07 يونيو 2026 الأحد</span>
                     <span class="en-text">07 JUNE 2026 SUNDAY</span>
@@ -7260,14 +7266,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -7299,21 +7304,13 @@
                     <span class="lf-detail-value">K9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">8%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">07JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">8%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -7357,6 +7354,7 @@
         
         <div class="date-section" data-date="2026-06-10">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">10 يونيو 2026 الأربعاء</span>
                     <span class="en-text">10 JUNE 2026 WEDNESDAY</span>
@@ -7368,14 +7366,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -7407,21 +7404,13 @@
                     <span class="lf-detail-value">S9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">3%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">10JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">3%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -7484,6 +7473,7 @@
         
         <div class="date-section" data-date="2026-06-11">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">11 يونيو 2026 الخميس</span>
                     <span class="en-text">11 JUNE 2026 THURSDAY</span>
@@ -7495,14 +7485,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -7534,21 +7523,13 @@
                     <span class="lf-detail-value">S9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">11JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -7725,6 +7706,7 @@
         
         <div class="date-section" data-date="2026-06-15">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">15 يونيو 2026 الاثنين</span>
                     <span class="en-text">15 JUNE 2026 MONDAY</span>
@@ -7736,14 +7718,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -7775,21 +7756,13 @@
                     <span class="lf-detail-value">X2</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">27%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">15JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">27%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -7852,6 +7825,7 @@
         
         <div class="date-section" data-date="2026-06-20">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">20 يونيو 2026 السبت</span>
                     <span class="en-text">20 JUNE 2026 SATURDAY</span>
@@ -7863,14 +7837,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -7902,21 +7875,13 @@
                     <span class="lf-detail-value">X9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">15%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">20JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">15%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -8036,6 +8001,7 @@
         
         <div class="date-section" data-date="2026-06-21">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">21 يونيو 2026 الأحد</span>
                     <span class="en-text">21 JUNE 2026 SUNDAY</span>
@@ -8047,14 +8013,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -8086,21 +8051,13 @@
                     <span class="lf-detail-value">X9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">17%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">21JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">17%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -8220,6 +8177,7 @@
         
         <div class="date-section" data-date="2026-06-27">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">27 يونيو 2026 السبت</span>
                     <span class="en-text">27 JUNE 2026 SATURDAY</span>
@@ -8231,14 +8189,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -8270,21 +8227,13 @@
                     <span class="lf-detail-value">H6</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">13%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">27JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">13%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -8480,6 +8429,7 @@
         
         <div class="date-section" data-date="2026-06-28">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">28 يونيو 2026 الأحد</span>
                     <span class="en-text">28 JUNE 2026 SUNDAY</span>
@@ -8491,14 +8441,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -8530,21 +8479,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">28JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -8759,6 +8700,7 @@
         
         <div class="date-section" data-date="2026-06-29">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">29 يونيو 2026 الاثنين</span>
                     <span class="en-text">29 JUNE 2026 MONDAY</span>
@@ -8770,14 +8712,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -8809,21 +8750,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">29JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -9114,6 +9047,7 @@
         
         <div class="date-section" data-date="2026-07-01">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">01 يوليو 2026 الأربعاء</span>
                     <span class="en-text">01 JULY 2026 WEDNESDAY</span>
@@ -9125,14 +9059,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9164,21 +9097,13 @@
                     <span class="lf-detail-value">Q9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">23%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">01JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">23%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -9355,6 +9280,7 @@
         
         <div class="date-section" data-date="2026-07-02">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">02 يوليو 2026 الخميس</span>
                     <span class="en-text">02 JULY 2026 THURSDAY</span>
@@ -9366,14 +9292,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9405,21 +9330,13 @@
                     <span class="lf-detail-value">Q9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">15%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">02JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">15%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -9596,6 +9513,7 @@
         
         <div class="date-section" data-date="2026-07-04">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">04 يوليو 2026 السبت</span>
                     <span class="en-text">04 JULY 2026 SATURDAY</span>
@@ -9607,14 +9525,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9646,21 +9563,13 @@
                     <span class="lf-detail-value">Q9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">16%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">04JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">16%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -9742,6 +9651,7 @@
         
         <div class="date-section" data-date="2026-07-05">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">05 يوليو 2026 الأحد</span>
                     <span class="en-text">05 JULY 2026 SUNDAY</span>
@@ -9753,14 +9663,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9792,21 +9701,13 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">9%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">05JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">9%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -9869,6 +9770,7 @@
         
         <div class="date-section" data-date="2026-07-06">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">06 يوليو 2026 الاثنين</span>
                     <span class="en-text">06 JULY 2026 MONDAY</span>
@@ -9880,14 +9782,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -9919,21 +9820,13 @@
                     <span class="lf-detail-value">S9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">3%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">06JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">3%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -9977,6 +9870,7 @@
         
         <div class="date-section" data-date="2026-07-08">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">08 يوليو 2026 الأربعاء</span>
                     <span class="en-text">08 JULY 2026 WEDNESDAY</span>
@@ -9988,14 +9882,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10027,21 +9920,13 @@
                     <span class="lf-detail-value">S9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">08JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -10218,6 +10103,7 @@
         
         <div class="date-section" data-date="2026-07-09">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">09 يوليو 2026 الخميس</span>
                     <span class="en-text">09 JULY 2026 THURSDAY</span>
@@ -10229,14 +10115,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10268,21 +10153,13 @@
                     <span class="lf-detail-value">S9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">09JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -10345,6 +10222,7 @@
         
         <div class="date-section" data-date="2026-07-11">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">11 يوليو 2026 السبت</span>
                     <span class="en-text">11 JULY 2026 SATURDAY</span>
@@ -10356,14 +10234,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10395,21 +10272,13 @@
                     <span class="lf-detail-value">S9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">11JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -10548,6 +10417,7 @@
         
         <div class="date-section" data-date="2026-07-12">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">12 يوليو 2026 الأحد</span>
                     <span class="en-text">12 JULY 2026 SUNDAY</span>
@@ -10559,14 +10429,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10598,21 +10467,13 @@
                     <span class="lf-detail-value">S9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">12JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -10732,6 +10593,7 @@
         
         <div class="date-section" data-date="2026-07-18">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">18 يوليو 2026 السبت</span>
                     <span class="en-text">18 JULY 2026 SATURDAY</span>
@@ -10743,14 +10605,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10782,21 +10643,13 @@
                     <span class="lf-detail-value">W9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">5%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">18JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">5%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -10859,6 +10712,7 @@
         
         <div class="date-section" data-date="2026-07-19">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">19 يوليو 2026 الأحد</span>
                     <span class="en-text">19 JULY 2026 SUNDAY</span>
@@ -10870,14 +10724,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -10909,21 +10762,13 @@
                     <span class="lf-detail-value">W9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">19JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -10986,6 +10831,7 @@
         
         <div class="date-section" data-date="2026-07-20">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">20 يوليو 2026 الاثنين</span>
                     <span class="en-text">20 JULY 2026 MONDAY</span>
@@ -10997,14 +10843,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11036,21 +10881,13 @@
                     <span class="lf-detail-value">O9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">3%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">20JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">3%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -11094,6 +10931,7 @@
         
         <div class="date-section" data-date="2026-07-22">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">22 يوليو 2026 الأربعاء</span>
                     <span class="en-text">22 JULY 2026 WEDNESDAY</span>
@@ -11105,14 +10943,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11144,21 +10981,13 @@
                     <span class="lf-detail-value">O9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">22JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -11202,6 +11031,7 @@
         
         <div class="date-section" data-date="2026-07-25">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">25 يوليو 2026 السبت</span>
                     <span class="en-text">25 JULY 2026 SATURDAY</span>
@@ -11213,14 +11043,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11252,21 +11081,13 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">25JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -11424,6 +11245,7 @@
         
         <div class="date-section" data-date="2026-07-27">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">27 يوليو 2026 الاثنين</span>
                     <span class="en-text">27 JULY 2026 MONDAY</span>
@@ -11435,14 +11257,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11474,21 +11295,13 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">27JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -11532,6 +11345,7 @@
         
         <div class="date-section" data-date="2026-07-29">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">29 يوليو 2026 الأربعاء</span>
                     <span class="en-text">29 JULY 2026 WEDNESDAY</span>
@@ -11543,14 +11357,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11582,21 +11395,13 @@
                     <span class="lf-detail-value">T8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">29JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -11716,6 +11521,7 @@
         
         <div class="date-section" data-date="2026-07-30">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">30 يوليو 2026 الخميس</span>
                     <span class="en-text">30 JULY 2026 THURSDAY</span>
@@ -11727,14 +11533,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11766,21 +11571,13 @@
                     <span class="lf-detail-value">T3</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">3%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">30JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">3%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -11881,6 +11678,7 @@
         
         <div class="date-section" data-date="2026-08-01">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">01 أغسطس 2026 السبت</span>
                     <span class="en-text">01 AUGUST 2026 SATURDAY</span>
@@ -11892,14 +11690,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -11931,21 +11728,13 @@
                     <span class="lf-detail-value">T8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">01AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -12046,6 +11835,7 @@
         
         <div class="date-section" data-date="2026-08-02">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">02 أغسطس 2026 الأحد</span>
                     <span class="en-text">02 AUGUST 2026 SUNDAY</span>
@@ -12057,14 +11847,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -12096,21 +11885,13 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">02AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -12192,6 +11973,7 @@
         
         <div class="date-section" data-date="2026-08-03">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">03 أغسطس 2026 الاثنين</span>
                     <span class="en-text">03 AUGUST 2026 MONDAY</span>
@@ -12203,14 +11985,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -12242,21 +12023,13 @@
                     <span class="lf-detail-value">T8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">03AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -12395,6 +12168,7 @@
         
         <div class="date-section" data-date="2026-08-05">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">05 أغسطس 2026 الأربعاء</span>
                     <span class="en-text">05 AUGUST 2026 WEDNESDAY</span>
@@ -12406,14 +12180,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -12445,21 +12218,13 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">05AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -12541,6 +12306,7 @@
         
         <div class="date-section" data-date="2026-08-06">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">06 أغسطس 2026 الخميس</span>
                     <span class="en-text">06 AUGUST 2026 THURSDAY</span>
@@ -12552,14 +12318,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -12591,21 +12356,13 @@
                     <span class="lf-detail-value">T8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">06AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -12668,6 +12425,7 @@
         
         <div class="date-section" data-date="2026-08-07">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">07 أغسطس 2026 الجمعة</span>
                     <span class="en-text">07 AUGUST 2026 FRIDAY</span>
@@ -12679,14 +12437,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-458">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-458</span>
-                        <span class="en-text">Flight: SM-458</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-458</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -12718,21 +12475,13 @@
                     <span class="lf-detail-value">U8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-458" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">07AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-458">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -12776,6 +12525,7 @@
         
         <div class="date-section" data-date="2026-08-08">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">08 أغسطس 2026 السبت</span>
                     <span class="en-text">08 AUGUST 2026 SATURDAY</span>
@@ -12787,14 +12537,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -12826,21 +12575,13 @@
                     <span class="lf-detail-value">T6</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">08AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -12922,6 +12663,7 @@
         
         <div class="date-section" data-date="2026-08-09">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">09 أغسطس 2026 الأحد</span>
                     <span class="en-text">09 AUGUST 2026 SUNDAY</span>
@@ -12933,14 +12675,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -12972,21 +12713,13 @@
                     <span class="lf-detail-value">T8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">09AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -13049,6 +12782,7 @@
         
         <div class="date-section" data-date="2026-08-10">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">10 أغسطس 2026 الاثنين</span>
                     <span class="en-text">10 AUGUST 2026 MONDAY</span>
@@ -13060,14 +12794,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -13099,21 +12832,13 @@
                     <span class="lf-detail-value">T8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">10AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -13252,6 +12977,7 @@
         
         <div class="date-section" data-date="2026-08-12">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">12 أغسطس 2026 الأربعاء</span>
                     <span class="en-text">12 AUGUST 2026 WEDNESDAY</span>
@@ -13263,14 +12989,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -13302,21 +13027,13 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">12AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -13436,6 +13153,7 @@
         
         <div class="date-section" data-date="2026-08-13">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">13 أغسطس 2026 الخميس</span>
                     <span class="en-text">13 AUGUST 2026 THURSDAY</span>
@@ -13447,14 +13165,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -13486,21 +13203,13 @@
                     <span class="lf-detail-value">T9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">13AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -13582,6 +13291,7 @@
         
         <div class="date-section" data-date="2026-08-14">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">14 أغسطس 2026 الجمعة</span>
                     <span class="en-text">14 AUGUST 2026 FRIDAY</span>
@@ -13593,14 +13303,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-458">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-458</span>
-                        <span class="en-text">Flight: SM-458</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-458</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -13632,21 +13341,13 @@
                     <span class="lf-detail-value">U9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-458" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">14AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-458">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -13728,6 +13429,7 @@
         
         <div class="date-section" data-date="2026-08-15">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">15 أغسطس 2026 السبت</span>
                     <span class="en-text">15 AUGUST 2026 SATURDAY</span>
@@ -13739,14 +13441,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -13778,21 +13479,13 @@
                     <span class="lf-detail-value">T8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">15AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -13855,6 +13548,7 @@
         
         <div class="date-section" data-date="2026-08-17">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">17 أغسطس 2026 الاثنين</span>
                     <span class="en-text">17 AUGUST 2026 MONDAY</span>
@@ -13866,14 +13560,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -13905,21 +13598,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">17AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -14039,6 +13724,7 @@
         
         <div class="date-section" data-date="2026-08-19">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">19 أغسطس 2026 الأربعاء</span>
                     <span class="en-text">19 AUGUST 2026 WEDNESDAY</span>
@@ -14050,14 +13736,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -14089,21 +13774,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">19AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -14223,6 +13900,7 @@
         
         <div class="date-section" data-date="2026-08-21">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">21 أغسطس 2026 الجمعة</span>
                     <span class="en-text">21 AUGUST 2026 FRIDAY</span>
@@ -14234,14 +13912,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-458">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-458</span>
-                        <span class="en-text">Flight: SM-458</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-458</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -14273,21 +13950,13 @@
                     <span class="lf-detail-value">U6</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-458" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">21AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-458">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -14331,6 +14000,7 @@
         
         <div class="date-section" data-date="2026-08-23">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">23 أغسطس 2026 الأحد</span>
                     <span class="en-text">23 AUGUST 2026 SUNDAY</span>
@@ -14342,14 +14012,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -14381,21 +14050,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">23AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -14515,6 +14176,7 @@
         
         <div class="date-section" data-date="2026-08-24">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">24 أغسطس 2026 الاثنين</span>
                     <span class="en-text">24 AUGUST 2026 MONDAY</span>
@@ -14526,14 +14188,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -14565,21 +14226,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">24AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -14699,6 +14352,7 @@
         
         <div class="date-section" data-date="2026-08-26">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">26 أغسطس 2026 الأربعاء</span>
                     <span class="en-text">26 AUGUST 2026 WEDNESDAY</span>
@@ -14710,14 +14364,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -14749,21 +14402,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">26AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -14883,6 +14528,7 @@
         
         <div class="date-section" data-date="2026-08-27">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">27 أغسطس 2026 الخميس</span>
                     <span class="en-text">27 AUGUST 2026 THURSDAY</span>
@@ -14894,14 +14540,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -14933,21 +14578,13 @@
                     <span class="lf-detail-value">I8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">27AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -15029,6 +14666,7 @@
         
         <div class="date-section" data-date="2026-08-28">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">28 أغسطس 2026 الجمعة</span>
                     <span class="en-text">28 AUGUST 2026 FRIDAY</span>
@@ -15040,14 +14678,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-458">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-458</span>
-                        <span class="en-text">Flight: SM-458</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-458</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -15079,21 +14716,13 @@
                     <span class="lf-detail-value">U9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-458" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">28AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-458">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -15213,6 +14842,7 @@
         
         <div class="date-section" data-date="2026-08-29">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">29 أغسطس 2026 السبت</span>
                     <span class="en-text">29 AUGUST 2026 SATURDAY</span>
@@ -15224,14 +14854,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -15263,21 +14892,13 @@
                     <span class="lf-detail-value">I7</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">29AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -15359,6 +14980,7 @@
         
         <div class="date-section" data-date="2026-08-30">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">30 أغسطس 2026 الأحد</span>
                     <span class="en-text">30 AUGUST 2026 SUNDAY</span>
@@ -15370,14 +14992,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -15409,21 +15030,13 @@
                     <span class="lf-detail-value">I8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">30AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -15543,6 +15156,7 @@
         
         <div class="date-section" data-date="2026-08-31">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">31 أغسطس 2026 الاثنين</span>
                     <span class="en-text">31 AUGUST 2026 MONDAY</span>
@@ -15554,14 +15168,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -15593,21 +15206,13 @@
                     <span class="lf-detail-value">I4</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">3%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">31AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">3%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -15708,6 +15313,7 @@
         
         <div class="date-section" data-date="2026-09-02">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">02 سبتمبر 2026 الأربعاء</span>
                     <span class="en-text">02 SEPTEMBER 2026 WEDNESDAY</span>
@@ -15719,14 +15325,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -15758,21 +15363,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">02SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -15854,6 +15451,7 @@
         
         <div class="date-section" data-date="2026-09-03">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">03 سبتمبر 2026 الخميس</span>
                     <span class="en-text">03 SEPTEMBER 2026 THURSDAY</span>
@@ -15865,14 +15463,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -15904,21 +15501,13 @@
                     <span class="lf-detail-value">I5</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">03SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -16019,6 +15608,7 @@
         
         <div class="date-section" data-date="2026-09-04">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">04 سبتمبر 2026 الجمعة</span>
                     <span class="en-text">04 SEPTEMBER 2026 FRIDAY</span>
@@ -16030,14 +15620,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-458">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-458</span>
-                        <span class="en-text">Flight: SM-458</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-458</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -16069,21 +15658,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-458" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">04SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-458">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -16222,6 +15803,7 @@
         
         <div class="date-section" data-date="2026-09-05">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">05 سبتمبر 2026 السبت</span>
                     <span class="en-text">05 SEPTEMBER 2026 SATURDAY</span>
@@ -16233,14 +15815,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -16272,21 +15853,13 @@
                     <span class="lf-detail-value">I8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">05SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -16425,6 +15998,7 @@
         
         <div class="date-section" data-date="2026-09-06">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">06 سبتمبر 2026 الأحد</span>
                     <span class="en-text">06 SEPTEMBER 2026 SUNDAY</span>
@@ -16436,14 +16010,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -16475,21 +16048,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">06SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -16533,6 +16098,7 @@
         
         <div class="date-section" data-date="2026-09-07">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">07 سبتمبر 2026 الاثنين</span>
                     <span class="en-text">07 SEPTEMBER 2026 MONDAY</span>
@@ -16544,14 +16110,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -16583,21 +16148,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">07SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -16698,6 +16255,7 @@
         
         <div class="date-section" data-date="2026-09-09">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">09 سبتمبر 2026 الأربعاء</span>
                     <span class="en-text">09 SEPTEMBER 2026 WEDNESDAY</span>
@@ -16709,14 +16267,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -16748,21 +16305,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">09SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -16863,6 +16412,7 @@
         
         <div class="date-section" data-date="2026-09-10">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">10 سبتمبر 2026 الخميس</span>
                     <span class="en-text">10 SEPTEMBER 2026 THURSDAY</span>
@@ -16874,14 +16424,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -16913,21 +16462,13 @@
                     <span class="lf-detail-value">I5</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">10SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -17028,6 +16569,7 @@
         
         <div class="date-section" data-date="2026-09-11">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">11 سبتمبر 2026 الجمعة</span>
                     <span class="en-text">11 SEPTEMBER 2026 FRIDAY</span>
@@ -17039,14 +16581,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-458">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-458</span>
-                        <span class="en-text">Flight: SM-458</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-458</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -17078,21 +16619,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-458" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">11SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-458">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -17231,6 +16764,7 @@
         
         <div class="date-section" data-date="2026-09-12">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">12 سبتمبر 2026 السبت</span>
                     <span class="en-text">12 SEPTEMBER 2026 SATURDAY</span>
@@ -17242,14 +16776,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -17281,21 +16814,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">12SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -17339,6 +16864,7 @@
         
         <div class="date-section" data-date="2026-09-13">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">13 سبتمبر 2026 الأحد</span>
                     <span class="en-text">13 SEPTEMBER 2026 SUNDAY</span>
@@ -17350,14 +16876,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -17389,21 +16914,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">13SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -17523,6 +17040,7 @@
         
         <div class="date-section" data-date="2026-09-17">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">17 سبتمبر 2026 الخميس</span>
                     <span class="en-text">17 SEPTEMBER 2026 THURSDAY</span>
@@ -17534,14 +17052,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -17573,21 +17090,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">17SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -17707,6 +17216,7 @@
         
         <div class="date-section" data-date="2026-09-18">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">18 سبتمبر 2026 الجمعة</span>
                     <span class="en-text">18 SEPTEMBER 2026 FRIDAY</span>
@@ -17718,14 +17228,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-458">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-458</span>
-                        <span class="en-text">Flight: SM-458</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-458</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -17757,21 +17266,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-458" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">18SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-458">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -17872,6 +17373,7 @@
         
         <div class="date-section" data-date="2026-09-19">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">19 سبتمبر 2026 السبت</span>
                     <span class="en-text">19 SEPTEMBER 2026 SATURDAY</span>
@@ -17883,14 +17385,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -17922,21 +17423,13 @@
                     <span class="lf-detail-value">I5</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">19SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -18037,6 +17530,7 @@
         
         <div class="date-section" data-date="2026-09-23">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">23 سبتمبر 2026 الأربعاء</span>
                     <span class="en-text">23 SEPTEMBER 2026 WEDNESDAY</span>
@@ -18048,14 +17542,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -18087,21 +17580,13 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">23SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -18487,6 +17972,7 @@
         
         <div class="date-section" data-date="2026-09-24">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">24 سبتمبر 2026 الخميس</span>
                     <span class="en-text">24 SEPTEMBER 2026 THURSDAY</span>
@@ -18498,14 +17984,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -18537,21 +18022,13 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">24SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -18956,6 +18433,7 @@
         
         <div class="date-section" data-date="2026-09-26">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">26 سبتمبر 2026 السبت</span>
                     <span class="en-text">26 SEPTEMBER 2026 SATURDAY</span>
@@ -18967,14 +18445,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -19006,21 +18483,13 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">26SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -19254,6 +18723,7 @@
         
         <div class="date-section" data-date="2026-09-27">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">27 سبتمبر 2026 الأحد</span>
                     <span class="en-text">27 SEPTEMBER 2026 SUNDAY</span>
@@ -19265,14 +18735,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -19304,21 +18773,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">27SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -19419,6 +18880,7 @@
         
         <div class="date-section" data-date="2026-09-28">
             <div class="date-header">
+                <div class="date-route-chip">JED-HBE</div>
                 <div class="date-main">
                     <span class="ar-text">28 سبتمبر 2026 الاثنين</span>
                     <span class="en-text">28 SEPTEMBER 2026 MONDAY</span>
@@ -19430,14 +18892,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-452">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-452</span>
-                        <span class="en-text">Flight: SM-452</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-452</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -19469,21 +18930,13 @@
                     <span class="lf-detail-value">I9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-452" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">JED-HBE</span>
-                <span class="date-tag">28SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-452">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>

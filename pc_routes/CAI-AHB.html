@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T13:14:00">
-    <meta name="report-version" content="20260517131400">
+    <meta name="report-generated" content="2026-05-17T13:23:00">
+    <meta name="report-version" content="20260517132300">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -2068,7 +2068,102 @@
             box-shadow: 0 4px 15px rgba(245, 166, 35, 0.35) !important;
             opacity: 1 !important;
         }
-        .flight-block > .lf-details-bar { display: none !important; }
+        /* ===== Day-card layout per user's edited mock =====
+           Date header is a 3-column strip (route chip | date centered | flights chip).
+           Each flight inside the day shows ONE horizontal LF strip with all metrics
+           ending in a coloured Load Factor chip — replaces the old flight-header
+           with its big standalone LF badge and the separate LF details row. */
+        .date-header {
+            display: grid !important;
+            grid-template-columns: auto 1fr auto !important;
+            align-items: center !important;
+            gap: 16px !important;
+        }
+        .date-route-chip {
+            background: rgba(255, 255, 255, 0.18);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1;
+        }
+        .date-header > .date-main {
+            justify-self: center !important;
+            text-align: center !important;
+        }
+        .date-header > .date-flights {
+            justify-self: end !important;
+        }
+        /* Hide the old flight-header chrome — info now lives in date-header + LF strip */
+        .flight-block .flight-header,
+        .flight-block .flight-name,
+        .flight-block .flight-route-date,
+        .flight-block > .load-factor-badge {
+            display: none !important;
+        }
+        /* LF details strip — single horizontal row of chips above the table */
+        .flight-block .lf-details-bar {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            gap: 10px !important;
+            padding: 14px 22px !important;
+            background: linear-gradient(135deg, #2c3e50 0%, #3d566e 100%) !important;
+            border-bottom: 3px solid var(--ac-orange) !important;
+            margin: 0 !important;
+        }
+        .lf-details-bar .lf-detail-item {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            padding: 7px 14px !important;
+            border-radius: 999px !important;
+            background: rgba(255, 255, 255, 0.10) !important;
+            color: white !important;
+            font-weight: 700 !important;
+            font-size: 0.85em !important;
+            white-space: nowrap !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .lf-details-bar .lf-detail-label {
+            font-size: 0.72em !important;
+            letter-spacing: 0.6px !important;
+            opacity: 0.85 !important;
+            text-transform: uppercase !important;
+        }
+        .lf-details-bar .lf-detail-value {
+            font-weight: 800 !important;
+            font-size: 1em !important;
+        }
+        .lf-details-bar .lf-flight-chip {
+            background: var(--ac-orange) !important;
+            color: var(--ac-purple-deep) !important;
+            box-shadow: 0 2px 8px rgba(245, 166, 35, 0.4) !important;
+        }
+        .lf-details-bar .lf-flight-chip .lf-detail-label,
+        .lf-details-bar .lf-flight-chip .lf-detail-value {
+            color: var(--ac-purple-deep) !important;
+            opacity: 1 !important;
+        }
+        .lf-details-bar .lf-loadfactor-chip {
+            margin-inline-start: auto !important;  /* push to the right edge */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25) !important;
+        }
+        .lf-details-bar .lf-detail-item.highlight {
+            background: rgba(245, 166, 35, 0.30) !important;
+            border: 1px solid rgba(245, 166, 35, 0.5) !important;
+        }
+        .lf-details-bar .lf-detail-item.danger {
+            background: rgba(231, 76, 60, 0.30) !important;
+            border: 1px solid rgba(231, 76, 60, 0.5) !important;
+        }
+
         /* Make the hero aircraft fill the right half like the preview */
         .header::after {
             background-size: auto 95% !important;
@@ -2610,7 +2705,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:14 PM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:23 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: CAI-AHB | الفترة: 24MAY26 - 30SEP26</span><span class="en-text">Route: CAI-AHB | Range: 24MAY26 - 30SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2625,7 +2720,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 01:14 PM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 01:23 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: CAI-AHB | الفترة: 24MAY26 - 30SEP26</span><span class="en-text">Route: CAI-AHB | Range: 24MAY26 - 30SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2659,8 +2754,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 01:14 PM</span>
-                        <span class="en-text">Created: 17MAY26 01:14 PM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 01:23 PM</span>
+                        <span class="en-text">Created: 17MAY26 01:23 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -2846,11 +2941,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 13:14</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 13:23</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 13:14</span>
+                    Last Updated: <span class="update-time">2026-05-17 13:23</span>
                 </span>
             </div>
 
@@ -2899,6 +2994,7 @@
             
         <div class="date-section" data-date="2026-05-24">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">24 مايو 2026 الأحد</span>
                     <span class="en-text">24 MAY 2026 SUNDAY</span>
@@ -2910,14 +3006,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-967">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-967</span>
-                        <span class="en-text">Flight: SM-967</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-967</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -2949,21 +3044,13 @@
                     <span class="lf-detail-value">U5</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-967" style="color:white;">14%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">24MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-967">14%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3007,6 +3094,7 @@
         
         <div class="date-section" data-date="2026-05-25">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">25 مايو 2026 الاثنين</span>
                     <span class="en-text">25 MAY 2026 MONDAY</span>
@@ -3018,14 +3106,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3057,21 +3144,13 @@
                     <span class="lf-detail-value">X9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">4%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">25MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">4%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3115,6 +3194,7 @@
         
         <div class="date-section" data-date="2026-05-27">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">27 مايو 2026 الأربعاء</span>
                     <span class="en-text">27 MAY 2026 WEDNESDAY</span>
@@ -3126,14 +3206,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3165,21 +3244,13 @@
                     <span class="lf-detail-value">U9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">3%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">27MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">3%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3223,6 +3294,7 @@
         
         <div class="date-section" data-date="2026-05-30">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">30 مايو 2026 السبت</span>
                     <span class="en-text">30 MAY 2026 SATURDAY</span>
@@ -3234,14 +3306,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -3273,21 +3344,13 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f39c12;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">69%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">30MAY26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">69%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3331,6 +3394,7 @@
         
         <div class="date-section" data-date="2026-06-03">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">03 يونيو 2026 الأربعاء</span>
                     <span class="en-text">03 JUNE 2026 WEDNESDAY</span>
@@ -3342,14 +3406,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3381,21 +3444,13 @@
                     <span class="lf-detail-value">Q1</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">23%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">03JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">23%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3439,6 +3494,7 @@
         
         <div class="date-section" data-date="2026-06-06">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">06 يونيو 2026 السبت</span>
                     <span class="en-text">06 JUNE 2026 SATURDAY</span>
@@ -3450,14 +3506,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -3489,21 +3544,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f39c12;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">52%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">06JUN26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #f39c12 0%, #f39c12dd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">52%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3566,6 +3613,7 @@
         
         <div class="date-section" data-date="2026-07-22">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">22 يوليو 2026 الأربعاء</span>
                     <span class="en-text">22 JULY 2026 WEDNESDAY</span>
@@ -3577,14 +3625,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3616,21 +3663,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">22JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3674,6 +3713,7 @@
         
         <div class="date-section" data-date="2026-07-23">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">23 يوليو 2026 الخميس</span>
                     <span class="en-text">23 JULY 2026 THURSDAY</span>
@@ -3685,14 +3725,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3724,21 +3763,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">2%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">23JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">2%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3820,6 +3851,7 @@
         
         <div class="date-section" data-date="2026-07-25">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">25 يوليو 2026 السبت</span>
                     <span class="en-text">25 JULY 2026 SATURDAY</span>
@@ -3831,14 +3863,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3870,21 +3901,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">3%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">25JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">3%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -3928,6 +3951,7 @@
         
         <div class="date-section" data-date="2026-07-27">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">27 يوليو 2026 الاثنين</span>
                     <span class="en-text">27 JULY 2026 MONDAY</span>
@@ -3939,14 +3963,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3978,21 +4001,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">27JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4055,6 +4070,7 @@
         
         <div class="date-section" data-date="2026-07-29">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">29 يوليو 2026 الأربعاء</span>
                     <span class="en-text">29 JULY 2026 WEDNESDAY</span>
@@ -4066,14 +4082,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4105,21 +4120,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">29JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4201,6 +4208,7 @@
         
         <div class="date-section" data-date="2026-07-30">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">30 يوليو 2026 الخميس</span>
                     <span class="en-text">30 JULY 2026 THURSDAY</span>
@@ -4212,14 +4220,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4251,21 +4258,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">30JUL26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4328,6 +4327,7 @@
         
         <div class="date-section" data-date="2026-08-19">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">19 أغسطس 2026 الأربعاء</span>
                     <span class="en-text">19 AUGUST 2026 WEDNESDAY</span>
@@ -4339,14 +4339,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4378,21 +4377,13 @@
                     <span class="lf-detail-value">H7</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">20%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">19AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">20%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4436,6 +4427,7 @@
         
         <div class="date-section" data-date="2026-08-26">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">26 أغسطس 2026 الأربعاء</span>
                     <span class="en-text">26 AUGUST 2026 WEDNESDAY</span>
@@ -4447,14 +4439,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4486,21 +4477,13 @@
                     <span class="lf-detail-value">H8</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">18%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">26AUG26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">18%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4544,6 +4527,7 @@
         
         <div class="date-section" data-date="2026-09-07">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">07 سبتمبر 2026 الاثنين</span>
                     <span class="en-text">07 SEPTEMBER 2026 MONDAY</span>
@@ -4555,14 +4539,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4594,21 +4577,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">07SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4671,6 +4646,7 @@
         
         <div class="date-section" data-date="2026-09-09">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">09 سبتمبر 2026 الأربعاء</span>
                     <span class="en-text">09 SEPTEMBER 2026 WEDNESDAY</span>
@@ -4682,14 +4658,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4721,21 +4696,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">09SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4798,6 +4765,7 @@
         
         <div class="date-section" data-date="2026-09-10">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">10 سبتمبر 2026 الخميس</span>
                     <span class="en-text">10 SEPTEMBER 2026 THURSDAY</span>
@@ -4809,14 +4777,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4848,21 +4815,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">10SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -4925,6 +4884,7 @@
         
         <div class="date-section" data-date="2026-09-12">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">12 سبتمبر 2026 السبت</span>
                     <span class="en-text">12 SEPTEMBER 2026 SATURDAY</span>
@@ -4936,14 +4896,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4975,21 +4934,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">12SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5052,6 +5003,7 @@
         
         <div class="date-section" data-date="2026-09-14">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">14 سبتمبر 2026 الاثنين</span>
                     <span class="en-text">14 SEPTEMBER 2026 MONDAY</span>
@@ -5063,14 +5015,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5102,21 +5053,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">14SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5179,6 +5122,7 @@
         
         <div class="date-section" data-date="2026-09-16">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">16 سبتمبر 2026 الأربعاء</span>
                     <span class="en-text">16 SEPTEMBER 2026 WEDNESDAY</span>
@@ -5190,14 +5134,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5229,21 +5172,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">16SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5306,6 +5241,7 @@
         
         <div class="date-section" data-date="2026-09-17">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">17 سبتمبر 2026 الخميس</span>
                     <span class="en-text">17 SEPTEMBER 2026 THURSDAY</span>
@@ -5317,14 +5253,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5356,21 +5291,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">17SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5452,6 +5379,7 @@
         
         <div class="date-section" data-date="2026-09-19">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">19 سبتمبر 2026 السبت</span>
                     <span class="en-text">19 SEPTEMBER 2026 SATURDAY</span>
@@ -5463,14 +5391,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5502,21 +5429,13 @@
                     <span class="lf-detail-value">H9</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">19SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5598,6 +5517,7 @@
         
         <div class="date-section" data-date="2026-09-23">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">23 سبتمبر 2026 الأربعاء</span>
                     <span class="en-text">23 SEPTEMBER 2026 WEDNESDAY</span>
@@ -5609,14 +5529,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5648,21 +5567,13 @@
                     <span class="lf-detail-value">S4</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">1%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">23SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">1%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
@@ -5706,6 +5617,7 @@
         
         <div class="date-section" data-date="2026-09-30">
             <div class="date-header">
+                <div class="date-route-chip">CAI-AHB</div>
                 <div class="date-main">
                     <span class="ar-text">30 سبتمبر 2026 الأربعاء</span>
                     <span class="en-text">30 SEPTEMBER 2026 WEDNESDAY</span>
@@ -5717,14 +5629,13 @@
             </div>
             
         <div class="flight-block" data-flight="SM-443">
-            <div class="flight-header">
-                <div class="flight-info">
-                    <span class="flight-name">
-                        <span class="ar-text">الرحلة: SM-443</span>
-                        <span class="en-text">Flight: SM-443</span>
-                    </span>
-                    
+            
         <div class="lf-details-bar">
+            
+                <div class="lf-detail-item lf-flight-chip">
+                    <span class="lf-detail-label">FLT</span>
+                    <span class="lf-detail-value">SM-443</span>
+                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -5756,21 +5667,13 @@
                     <span class="lf-detail-value">W1</span>
                 </div>
             
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#e74c3c;color:white;">
+                    <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
+                    <span class="lf-detail-value" data-flight-lf="SM-443" style="color:white;">0%</span>
+                </div>
+            
         </div>
         
-                    
-            <div class="flight-route-date">
-                <span class="route-tag">CAI-AHB</span>
-                <span class="date-tag">30SEP26</span>
-            </div>
-            
-                </div>
-                <span class="load-factor-badge" style="background: linear-gradient(135deg, #e74c3c 0%, #e74c3cdd 100%);">
-                    <span class="ar-text">نسبة الإشغال:</span>
-                    <span class="en-text">Load Factor:</span>
-                    <span class="load-factor-value" data-flight-lf="SM-443">0%</span>
-                </span>
-            </div>
             <table class="competitors-table">
                 <thead>
     <tr>
