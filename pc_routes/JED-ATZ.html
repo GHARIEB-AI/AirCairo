@@ -1284,18 +1284,18 @@
         /* Scroll Navigation Buttons */
         .scroll-nav {
             position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+            inset: 0;
+            pointer-events: none;
             z-index: 90;
         }
 
         .scroll-btn {
-            width: 50px;
-            height: 50px;
+            --plane-rotate: 0deg;
+            --plane-scale: 1;
+            position: fixed;
+            top: 50%;
+            width: 62px;
+            height: 62px;
             border: none !important;
             outline: none !important;
             box-shadow: none !important;
@@ -1306,36 +1306,136 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            opacity: 0.6;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-            transition: opacity 0.2s ease, transform 0.2s ease;
+            opacity: 0.74;
+            filter: drop-shadow(0 4px 7px rgba(0,0,0,0.24));
+            pointer-events: auto;
+            transform: translateY(-50%) rotate(var(--plane-rotate)) scale(var(--plane-scale));
+            transform-origin: center center;
+            transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
         }
 
+        .scroll-btn::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 2px;
+            width: 12px;
+            height: 18px;
+            border-radius: 999px;
+            background:
+                radial-gradient(circle, rgba(255,255,255,0.96) 0%, rgba(255,213,106,0.86) 35%, rgba(247,148,29,0.48) 64%, rgba(247,148,29,0) 100%);
+            box-shadow: 0 0 8px rgba(247,148,29,0.55), 0 0 18px rgba(247,148,29,0.24);
+            filter: blur(3px);
+            opacity: 0.42;
+            transform: translateX(-50%) scale(0.86);
+            animation: scroll-tail-idle 1.9s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .scroll-btn::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -1px;
+            width: 4px;
+            height: 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 0 10px rgba(255,255,255,0.55), 0 0 16px rgba(247,148,29,0.42);
+            opacity: 0.35;
+            transform: translateX(-50%) scaleY(0.8);
+            animation: scroll-tail-core 1.9s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scroll-tail-idle {
+            0%, 100% {
+                opacity: 0.28;
+                transform: translateX(-50%) scale(0.76);
+            }
+            50% {
+                opacity: 0.64;
+                transform: translateX(-50%) scale(1.08);
+            }
+        }
+
+        @keyframes scroll-tail-core {
+            0%, 100% {
+                opacity: 0.22;
+                transform: translateX(-50%) scaleY(0.72);
+            }
+            50% {
+                opacity: 0.58;
+                transform: translateX(-50%) scaleY(1.1);
+            }
+        }
+
         #scrollTop {
-            transform: rotate(0deg);
+            right: 18px;
+            --plane-rotate: 0deg;
         }
 
         #scrollBottom {
-            transform: rotate(180deg);
+            left: 18px;
+            --plane-rotate: 180deg;
         }
 
         .scroll-btn:hover {
-            opacity: 0.8;
+            --plane-scale: 1.05;
+            opacity: 0.95;
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.28));
         }
 
         .scroll-btn:active,
         .scroll-btn.pressed {
+            --plane-scale: 0.94;
             opacity: 1;
-            transform: scale(0.9);
+            filter: drop-shadow(0 3px 7px rgba(0,0,0,0.34));
+        }
+
+        .scroll-btn.boost::before,
+        .scroll-btn:active::before,
+        .scroll-btn.pressed::before {
+            width: 18px;
+            height: 28px;
+            opacity: 1;
+            filter: blur(4px);
+            animation: scroll-tail-boost 0.42s ease-in-out infinite;
+            box-shadow: 0 0 12px rgba(255,255,255,0.7), 0 0 26px rgba(247,148,29,0.72), 0 0 40px rgba(255,193,7,0.35);
+        }
+
+        .scroll-btn.boost::after,
+        .scroll-btn:active::after,
+        .scroll-btn.pressed::after {
+            height: 20px;
+            opacity: 0.92;
+            animation: scroll-tail-core-boost 0.42s ease-in-out infinite;
+        }
+
+        @keyframes scroll-tail-boost {
+            0%, 100% {
+                transform: translateX(-50%) scale(0.94);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.28);
+            }
+        }
+
+        @keyframes scroll-tail-core-boost {
+            0%, 100% {
+                transform: translateX(-50%) scaleY(0.94);
+            }
+            50% {
+                transform: translateX(-50%) scaleY(1.35);
+            }
         }
 
         .scroll-btn svg {
             display: none !important;
         }
-
 
         /* Date Filter Button */
         .date-filter-btn {
@@ -11294,6 +11394,18 @@
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             }
 
+            function boostScrollButton(btn) {
+                if (!btn) return;
+                if (btn._boostTimer) {
+                    clearTimeout(btn._boostTimer);
+                }
+                btn.classList.add('boost');
+                btn._boostTimer = setTimeout(() => {
+                    btn.classList.remove('boost');
+                    btn._boostTimer = null;
+                }, 760);
+            }
+
             function scrollStepUp() {
                 window.scrollBy({ top: -SCROLL_STEP, behavior: 'smooth' });
             }
@@ -11324,10 +11436,11 @@
                 const btn = document.getElementById(btnId);
                 if (!btn) return;
 
-                btn.addEventListener('mousedown', (e) => {
+                btn.addEventListener('pointerdown', (e) => {
                     e.preventDefault();
                     isLongPress = false;
                     btn.classList.add('pressed');
+                    boostScrollButton(btn);
 
                     longPressTimer = setTimeout(() => {
                         isLongPress = true;
@@ -11335,9 +11448,10 @@
                     }, LONG_PRESS_DELAY);
                 });
 
-                btn.addEventListener('mouseup', () => {
+                btn.addEventListener('pointerup', () => {
                     btn.classList.remove('pressed');
                     stopContinuousScroll();
+                    boostScrollButton(btn);
 
                     if (!isLongPress) {
                         singleTapFn();
@@ -11345,23 +11459,32 @@
                     isLongPress = false;
                 });
 
-                btn.addEventListener('mouseleave', () => {
+                btn.addEventListener('pointercancel', () => {
                     btn.classList.remove('pressed');
                     stopContinuousScroll();
                     isLongPress = false;
                 });
+
+                btn.addEventListener('pointerleave', () => {
+                    if (btn.classList.contains('pressed')) {
+                        btn.classList.remove('pressed');
+                        stopContinuousScroll();
+                        isLongPress = false;
+                    }
+                });
+
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        boostScrollButton(btn);
+                        singleTapFn();
+                    }
+                });
             }
 
             document.addEventListener('DOMContentLoaded', () => {
-                const topBtn = document.getElementById('scrollTop');
-                if (topBtn) {
-                    topBtn.addEventListener('click', scrollToTop);
-                }
-
-                const bottomBtn = document.getElementById('scrollBottom');
-                if (bottomBtn) {
-                    bottomBtn.addEventListener('click', scrollToBottom);
-                }
+                setupScrollButton('scrollTop', scrollToTop, 'up');
+                setupScrollButton('scrollBottom', scrollToBottom, 'down');
             });
         })();
     </script>
