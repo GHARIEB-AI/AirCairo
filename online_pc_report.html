@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T20:18:00">
-    <meta name="report-version" content="20260517201800">
+    <meta name="report-generated" content="2026-05-17T20:43:00">
+    <meta name="report-version" content="20260517204300">
     <title>رصد حركة الاسعار | Threat Routes</title>
     <link rel="preload" href="assets/img/aircairo-loader.gif" as="image">
     <style>
@@ -38,13 +38,12 @@
             padding: 28px 34px;
             position: relative;     /* anchor the centred logo */
         }
-        /* Air Cairo logo: horizontally centred, nudged up ~0.5cm from the
-           geometric centre of the hero per design feedback. */
+        /* Air Cairo logo, absolutely centred in the hero band */
         .hero-logo {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, calc(-50% - 20px));
+            transform: translate(-50%, -50%);
             height: 56px;
             width: auto;
             pointer-events: none;   /* don't block clicks on the controls behind it */
@@ -284,8 +283,8 @@
                     <div>
                         <h1><span class="ar-text">رصد حركة الاسعار حسب خط السير</span><span class="en-text">Threat Alert Report</span></h1>
                         <div class="meta">
-                            <span class="ar-text"><span class="ar-text">الفترة: 17MAY26 - 30SEP26</span><span class="en-text">Range: 17MAY26 - 30SEP26</span> | آخر تحديث: 2026-05-17 20:18</span>
-                            <span class="en-text"><span class="ar-text">الفترة: 17MAY26 - 30SEP26</span><span class="en-text">Range: 17MAY26 - 30SEP26</span> | Last Updated: 2026-05-17 20:18</span>
+                            <span class="ar-text"><span class="ar-text">الفترة: 18MAY26 - 15JUN26</span><span class="en-text">Range: 18MAY26 - 15JUN26</span> | آخر تحديث: 2026-05-17 20:43</span>
+                            <span class="en-text"><span class="ar-text">الفترة: 18MAY26 - 15JUN26</span><span class="en-text">Range: 18MAY26 - 15JUN26</span> | Last Updated: 2026-05-17 20:43</span>
                         </div>
                     </div>
                     <div class="actions">
@@ -299,19 +298,19 @@
             <div class="stats">
                 <div class="stat">
                     <div class="stat-label"><span class="ar-text">الإجمالي</span><span class="en-text">Total</span></div>
-                    <div class="stat-value" id="pc-stat-total">11976</div>
+                    <div class="stat-value" id="pc-stat-total">1794</div>
                 </div>
                 <div class="stat high">
                     <div class="stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></div>
-                    <div class="stat-value" id="pc-stat-high">4758</div>
+                    <div class="stat-value" id="pc-stat-high">732</div>
                 </div>
                 <div class="stat medium">
                     <div class="stat-label"><span class="ar-text">متوسط</span><span class="en-text">Medium</span></div>
-                    <div class="stat-value" id="pc-stat-medium">2867</div>
+                    <div class="stat-value" id="pc-stat-medium">355</div>
                 </div>
                 <div class="stat low">
                     <div class="stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></div>
-                    <div class="stat-value" id="pc-stat-low">4351</div>
+                    <div class="stat-value" id="pc-stat-low">707</div>
                 </div>
             </div>
         </section>
@@ -330,58 +329,18 @@
         <div class="route-count" id="routeCount"></div>
         <main class="pc-routes-grid" id="routesGrid">
             
-        <article class="pc-route-card" data-route="AHB-CAI" data-market="AHB-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="4" data-medium="15" data-low="39">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/AHB-CAI.html">AHB-CAI</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>39</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>15</strong><span>MED</span></div>
-                <div class="mini high"><strong>4</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>58</strong> threats<br>
-                SM-444
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/AHB-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_AHB_CAI_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="AJF-CAI" data-market="AJF-CAIRO" data-threat="low" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="16">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/AJF-CAI.html">AJF-CAI</a>
-                <span class="route-badge low">LOW</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>16</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>0</strong><span>MED</span></div>
-                <div class="mini high"><strong>0</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>16</strong> threats<br>
-                SM-322
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/AJF-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_AJF_CAI_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="ATZ-JED" data-market="ATZ-JED" data-threat="low" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="2">
+        <article class="pc-route-card" data-route="ATZ-JED" data-market="ATZ-JED" data-threat="low" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="3">
             <div class="route-head">
                 <a class="route-name" href="pc_routes/ATZ-JED.html">ATZ-JED</a>
                 <span class="route-badge low">LOW</span>
             </div>
             <div class="mini-stats">
-                <div class="mini low"><strong>2</strong><span>LOW</span></div>
+                <div class="mini low"><strong>3</strong><span>LOW</span></div>
                 <div class="mini medium"><strong>0</strong><span>MED</span></div>
                 <div class="mini high"><strong>0</strong><span>HIGH</span></div>
             </div>
             <div class="flights">
-                <strong>2</strong> threats<br>
+                <strong>3</strong> threats<br>
                 SM-455
             </div>
             <div class="card-actions">
@@ -390,198 +349,18 @@
             </div>
         </article>
     
-        <article class="pc-route-card" data-route="ATZ-RUH" data-market="ATZ-RUH" data-threat="low" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="51">
+        <article class="pc-route-card" data-route="CAI-TUU" data-market="CAIRO-TUU" data-threat="low" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="21">
             <div class="route-head">
-                <a class="route-name" href="pc_routes/ATZ-RUH.html">ATZ-RUH</a>
+                <a class="route-name" href="pc_routes/CAI-TUU.html">CAI-TUU</a>
                 <span class="route-badge low">LOW</span>
             </div>
             <div class="mini-stats">
-                <div class="mini low"><strong>51</strong><span>LOW</span></div>
+                <div class="mini low"><strong>21</strong><span>LOW</span></div>
                 <div class="mini medium"><strong>0</strong><span>MED</span></div>
                 <div class="mini high"><strong>0</strong><span>HIGH</span></div>
             </div>
             <div class="flights">
-                <strong>51</strong> threats<br>
-                SM-465
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/ATZ-RUH.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_ATZ_RUH_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CAI-AHB" data-market="CAIRO-AHB" data-threat="high" data-direction="EGY_KSA" data-high="1" data-medium="6" data-low="34">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-AHB.html">CAI-AHB</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>34</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>6</strong><span>MED</span></div>
-                <div class="mini high"><strong>1</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>41</strong> threats<br>
-                SM-443 | SM-967
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CAI-AHB.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_AHB_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CAI-AJF" data-market="CAIRO-AJF" data-threat="high" data-direction="EGY_KSA" data-high="4" data-medium="2" data-low="20">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-AJF.html">CAI-AJF</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>20</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>2</strong><span>MED</span></div>
-                <div class="mini high"><strong>4</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>26</strong> threats<br>
-                SM-321 | SM-973
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CAI-AJF.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_AJF_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CAI-DMM" data-market="CAIRO-DMM" data-threat="high" data-direction="EGY_KSA" data-high="34" data-medium="34" data-low="416">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-DMM.html">CAI-DMM</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>416</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>34</strong><span>MED</span></div>
-                <div class="mini high"><strong>34</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>484</strong> threats<br>
-                SM-433 | SM-439 | SM-965
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CAI-DMM.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_DMM_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CAI-ELQ" data-market="CAIRO-ELQ" data-threat="high" data-direction="EGY_KSA" data-high="3" data-medium="29" data-low="60">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-ELQ.html">CAI-ELQ</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>60</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>29</strong><span>MED</span></div>
-                <div class="mini high"><strong>3</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>92</strong> threats<br>
-                SM-427 | SM-971
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CAI-ELQ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_ELQ_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CAI-GIZ" data-market="CAIRO-GIZ" data-threat="medium" data-direction="EGY_KSA" data-high="0" data-medium="10" data-low="44">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-GIZ.html">CAI-GIZ</a>
-                <span class="route-badge medium">MEDIUM</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>44</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>10</strong><span>MED</span></div>
-                <div class="mini high"><strong>0</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>54</strong> threats<br>
-                SM-329 | SM-983
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CAI-GIZ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_GIZ_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CAI-JED" data-market="CAIRO-JED" data-threat="high" data-direction="EGY_KSA" data-high="2881" data-medium="1695" data-low="89">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-JED.html">CAI-JED</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>89</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>1695</strong><span>MED</span></div>
-                <div class="mini high"><strong>2881</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>4665</strong> threats<br>
-                SM-451 | SM-453 | SM-455 | SM-459 | SM-471 | SM-475 | SM-477 | SM-479
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CAI-JED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_JED_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CAI-MED" data-market="CAIRO-MED" data-threat="high" data-direction="EGY_KSA" data-high="14" data-medium="17" data-low="30">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-MED.html">CAI-MED</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>30</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>17</strong><span>MED</span></div>
-                <div class="mini high"><strong>14</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>61</strong> threats<br>
-                SM-493 | SM-495
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CAI-MED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_MED_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CAI-RUH" data-market="CAIRO-RUH" data-threat="high" data-direction="EGY_KSA" data-high="23" data-medium="64" data-low="698">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-RUH.html">CAI-RUH</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>698</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>64</strong><span>MED</span></div>
-                <div class="mini high"><strong>23</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>785</strong> threats<br>
-                SM-461 | SM-467 | SM-469 | SM-961
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CAI-RUH.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_RUH_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CAI-TUU" data-market="CAIRO-TUU" data-threat="high" data-direction="EGY_KSA" data-high="48" data-medium="7" data-low="84">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-TUU.html">CAI-TUU</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>84</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>7</strong><span>MED</span></div>
-                <div class="mini high"><strong>48</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>139</strong> threats<br>
+                <strong>21</strong> threats<br>
                 SM-325 | SM-979
             </div>
             <div class="card-actions">
@@ -590,118 +369,18 @@
             </div>
         </article>
     
-        <article class="pc-route-card" data-route="CAI-YNB" data-market="CAIRO-YNB" data-threat="medium" data-direction="EGY_KSA" data-high="0" data-medium="2" data-low="32">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CAI-YNB.html">CAI-YNB</a>
-                <span class="route-badge medium">MEDIUM</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>32</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>2</strong><span>MED</span></div>
-                <div class="mini high"><strong>0</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>34</strong> threats<br>
-                SM-441 | SM-447
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CAI-YNB.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_YNB_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="CCE-JED" data-market="CAIRO-JED" data-threat="high" data-direction="EGY_KSA" data-high="2881" data-medium="1695" data-low="89">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/CCE-JED.html">CCE-JED</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>89</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>1695</strong><span>MED</span></div>
-                <div class="mini high"><strong>2881</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>4665</strong> threats<br>
-                SM-451 | SM-453 | SM-455 | SM-459 | SM-471 | SM-475 | SM-477 | SM-479
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/CCE-JED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CCE_JED_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="DMM-CAI" data-market="DMM-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="219" data-medium="78" data-low="189">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/DMM-CAI.html">DMM-CAI</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>189</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>78</strong><span>MED</span></div>
-                <div class="mini high"><strong>219</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>486</strong> threats<br>
-                SM-434 | SM-440 | SM-966
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/DMM-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_DMM_CAI_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="ELQ-CAI" data-market="ELQ-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="25" data-medium="23" data-low="41">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/ELQ-CAI.html">ELQ-CAI</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>41</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>23</strong><span>MED</span></div>
-                <div class="mini high"><strong>25</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>89</strong> threats<br>
-                SM-2428 | SM-428 | SM-972
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/ELQ-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_ELQ_CAI_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="GIZ-CAI" data-market="GIZ-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="4" data-medium="7" data-low="11">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/GIZ-CAI.html">GIZ-CAI</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>11</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>7</strong><span>MED</span></div>
-                <div class="mini high"><strong>4</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>22</strong> threats<br>
-                SM-330 | SM-984
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/GIZ-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_GIZ_CAI_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="HBE-JED" data-market="HBE-JED" data-threat="low" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="13">
+        <article class="pc-route-card" data-route="HBE-JED" data-market="HBE-JED" data-threat="low" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="9">
             <div class="route-head">
                 <a class="route-name" href="pc_routes/HBE-JED.html">HBE-JED</a>
                 <span class="route-badge low">LOW</span>
             </div>
             <div class="mini-stats">
-                <div class="mini low"><strong>13</strong><span>LOW</span></div>
+                <div class="mini low"><strong>9</strong><span>LOW</span></div>
                 <div class="mini medium"><strong>0</strong><span>MED</span></div>
                 <div class="mini high"><strong>0</strong><span>HIGH</span></div>
             </div>
             <div class="flights">
-                <strong>13</strong> threats<br>
+                <strong>9</strong> threats<br>
                 SM-451
             </div>
             <div class="card-actions">
@@ -710,78 +389,18 @@
             </div>
         </article>
     
-        <article class="pc-route-card" data-route="HBE-MED" data-market="HBE-MED" data-threat="high" data-direction="EGY_KSA" data-high="1" data-medium="3" data-low="9">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/HBE-MED.html">HBE-MED</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>9</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>3</strong><span>MED</span></div>
-                <div class="mini high"><strong>1</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>13</strong> threats<br>
-                SM-485
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/HBE-MED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HBE_MED_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="HMB-JED" data-market="HMB-JED" data-threat="low" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="1">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/HMB-JED.html">HMB-JED</a>
-                <span class="route-badge low">LOW</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>1</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>0</strong><span>MED</span></div>
-                <div class="mini high"><strong>0</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>1</strong> threats<br>
-                SM-453
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/HMB-JED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HMB_JED_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="HMB-RUH" data-market="HMB-RUH" data-threat="high" data-direction="EGY_KSA" data-high="1" data-medium="1" data-low="2">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/HMB-RUH.html">HMB-RUH</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>2</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>1</strong><span>MED</span></div>
-                <div class="mini high"><strong>1</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>4</strong> threats<br>
-                SM-463
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/HMB-RUH.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HMB_RUH_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="JED-ATZ" data-market="JED-ATZ" data-threat="high" data-direction="KSA_EGY" data-high="80" data-medium="163" data-low="337">
+        <article class="pc-route-card" data-route="JED-ATZ" data-market="JED-ATZ" data-threat="high" data-direction="KSA_EGY" data-high="129" data-medium="73" data-low="87">
             <div class="route-head">
                 <a class="route-name" href="pc_routes/JED-ATZ.html">JED-ATZ</a>
                 <span class="route-badge high">HIGH</span>
             </div>
             <div class="mini-stats">
-                <div class="mini low"><strong>337</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>163</strong><span>MED</span></div>
-                <div class="mini high"><strong>80</strong><span>HIGH</span></div>
+                <div class="mini low"><strong>87</strong><span>LOW</span></div>
+                <div class="mini medium"><strong>73</strong><span>MED</span></div>
+                <div class="mini high"><strong>129</strong><span>HIGH</span></div>
             </div>
             <div class="flights">
-                <strong>580</strong> threats<br>
+                <strong>289</strong> threats<br>
                 SM-456
             </div>
             <div class="card-actions">
@@ -790,19 +409,19 @@
             </div>
         </article>
     
-        <article class="pc-route-card" data-route="JED-CAI" data-market="JED-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="322" data-medium="301" data-low="964">
+        <article class="pc-route-card" data-route="JED-CAI" data-market="JED-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="373" data-medium="159" data-low="338">
             <div class="route-head">
                 <a class="route-name" href="pc_routes/JED-CAI.html">JED-CAI</a>
                 <span class="route-badge high">HIGH</span>
             </div>
             <div class="mini-stats">
-                <div class="mini low"><strong>964</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>301</strong><span>MED</span></div>
-                <div class="mini high"><strong>322</strong><span>HIGH</span></div>
+                <div class="mini low"><strong>338</strong><span>LOW</span></div>
+                <div class="mini medium"><strong>159</strong><span>MED</span></div>
+                <div class="mini high"><strong>373</strong><span>HIGH</span></div>
             </div>
             <div class="flights">
-                <strong>1587</strong> threats<br>
-                SM-452 | SM-454 | SM-456 | SM-460 | SM-472 | SM-476 | SM-478 | SM-480
+                <strong>870</strong> threats<br>
+                SM-452 | SM-454 | SM-456 | SM-460 | SM-476 | SM-478 | SM-480
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/JED-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
@@ -810,19 +429,19 @@
             </div>
         </article>
     
-        <article class="pc-route-card" data-route="JED-CCE" data-market="JED-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="322" data-medium="301" data-low="964">
+        <article class="pc-route-card" data-route="JED-CCE" data-market="JED-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="373" data-medium="159" data-low="338">
             <div class="route-head">
                 <a class="route-name" href="pc_routes/JED-CCE.html">JED-CCE</a>
                 <span class="route-badge high">HIGH</span>
             </div>
             <div class="mini-stats">
-                <div class="mini low"><strong>964</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>301</strong><span>MED</span></div>
-                <div class="mini high"><strong>322</strong><span>HIGH</span></div>
+                <div class="mini low"><strong>338</strong><span>LOW</span></div>
+                <div class="mini medium"><strong>159</strong><span>MED</span></div>
+                <div class="mini high"><strong>373</strong><span>HIGH</span></div>
             </div>
             <div class="flights">
-                <strong>1587</strong> threats<br>
-                SM-452 | SM-454 | SM-456 | SM-460 | SM-472 | SM-476 | SM-478 | SM-480
+                <strong>870</strong> threats<br>
+                SM-452 | SM-454 | SM-456 | SM-460 | SM-476 | SM-478 | SM-480
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/JED-CCE.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
@@ -830,19 +449,19 @@
             </div>
         </article>
     
-        <article class="pc-route-card" data-route="JED-HBE" data-market="JED-HBE" data-threat="high" data-direction="KSA_EGY" data-high="74" data-medium="90" data-low="343">
+        <article class="pc-route-card" data-route="JED-HBE" data-market="JED-HBE" data-threat="high" data-direction="KSA_EGY" data-high="129" data-medium="44" data-low="59">
             <div class="route-head">
                 <a class="route-name" href="pc_routes/JED-HBE.html">JED-HBE</a>
                 <span class="route-badge high">HIGH</span>
             </div>
             <div class="mini-stats">
-                <div class="mini low"><strong>343</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>90</strong><span>MED</span></div>
-                <div class="mini high"><strong>74</strong><span>HIGH</span></div>
+                <div class="mini low"><strong>59</strong><span>LOW</span></div>
+                <div class="mini medium"><strong>44</strong><span>MED</span></div>
+                <div class="mini high"><strong>129</strong><span>HIGH</span></div>
             </div>
             <div class="flights">
-                <strong>507</strong> threats<br>
-                SM-452 | SM-458
+                <strong>232</strong> threats<br>
+                SM-452
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/JED-HBE.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
@@ -850,18 +469,18 @@
             </div>
         </article>
     
-        <article class="pc-route-card" data-route="JED-HMB" data-market="JED-HMB" data-threat="medium" data-direction="KSA_EGY" data-high="0" data-medium="4" data-low="9">
+        <article class="pc-route-card" data-route="JED-HMB" data-market="JED-HMB" data-threat="high" data-direction="KSA_EGY" data-high="1" data-medium="0" data-low="6">
             <div class="route-head">
                 <a class="route-name" href="pc_routes/JED-HMB.html">JED-HMB</a>
-                <span class="route-badge medium">MEDIUM</span>
+                <span class="route-badge high">HIGH</span>
             </div>
             <div class="mini-stats">
-                <div class="mini low"><strong>9</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>4</strong><span>MED</span></div>
-                <div class="mini high"><strong>0</strong><span>HIGH</span></div>
+                <div class="mini low"><strong>6</strong><span>LOW</span></div>
+                <div class="mini medium"><strong>0</strong><span>MED</span></div>
+                <div class="mini high"><strong>1</strong><span>HIGH</span></div>
             </div>
             <div class="flights">
-                <strong>13</strong> threats<br>
+                <strong>7</strong> threats<br>
                 SM-454
             </div>
             <div class="card-actions">
@@ -870,163 +489,23 @@
             </div>
         </article>
     
-        <article class="pc-route-card" data-route="MED-ATZ" data-market="MED-ATZ" data-threat="high" data-direction="KSA_EGY" data-high="3" data-medium="0" data-low="13">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/MED-ATZ.html">MED-ATZ</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>13</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>0</strong><span>MED</span></div>
-                <div class="mini high"><strong>3</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>16</strong> threats<br>
-                SM-488
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/MED-ATZ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_MED_ATZ_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="MED-CAI" data-market="MED-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="49" data-medium="54" data-low="157">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/MED-CAI.html">MED-CAI</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>157</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>54</strong><span>MED</span></div>
-                <div class="mini high"><strong>49</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>260</strong> threats<br>
-                SM-486 | SM-490 | SM-494
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/MED-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_MED_CAI_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="MED-HBE" data-market="MED-HBE" data-threat="high" data-direction="KSA_EGY" data-high="1" data-medium="9" data-low="21">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/MED-HBE.html">MED-HBE</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>21</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>9</strong><span>MED</span></div>
-                <div class="mini high"><strong>1</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>31</strong> threats<br>
-                SM-486
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/MED-HBE.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_MED_HBE_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="RUH-ATZ" data-market="RUH-ATZ" data-threat="high" data-direction="KSA_EGY" data-high="13" data-medium="32" data-low="117">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/RUH-ATZ.html">RUH-ATZ</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>117</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>32</strong><span>MED</span></div>
-                <div class="mini high"><strong>13</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>162</strong> threats<br>
-                SM-466
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/RUH-ATZ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_RUH_ATZ_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="RUH-CAI" data-market="RUH-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="910" data-medium="218" data-low="431">
+        <article class="pc-route-card" data-route="RUH-CAI" data-market="RUH-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="100" data-medium="79" data-low="184">
             <div class="route-head">
                 <a class="route-name" href="pc_routes/RUH-CAI.html">RUH-CAI</a>
                 <span class="route-badge high">HIGH</span>
             </div>
             <div class="mini-stats">
-                <div class="mini low"><strong>431</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>218</strong><span>MED</span></div>
-                <div class="mini high"><strong>910</strong><span>HIGH</span></div>
+                <div class="mini low"><strong>184</strong><span>LOW</span></div>
+                <div class="mini medium"><strong>79</strong><span>MED</span></div>
+                <div class="mini high"><strong>100</strong><span>HIGH</span></div>
             </div>
             <div class="flights">
-                <strong>1559</strong> threats<br>
+                <strong>363</strong> threats<br>
                 SM-462 | SM-468 | SM-470 | SM-962
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/RUH-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
                 <a class="excel-link" href="excel_routes/route_RUH_CAI_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="RUH-HMB" data-market="RUH-HMB" data-threat="high" data-direction="KSA_EGY" data-high="3" data-medium="0" data-low="22">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/RUH-HMB.html">RUH-HMB</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>22</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>0</strong><span>MED</span></div>
-                <div class="mini high"><strong>3</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>25</strong> threats<br>
-                SM-464
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/RUH-HMB.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_RUH_HMB_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="TUU-CAI" data-market="TUU-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="38" data-medium="2" data-low="40">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/TUU-CAI.html">TUU-CAI</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>40</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>2</strong><span>MED</span></div>
-                <div class="mini high"><strong>38</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>80</strong> threats<br>
-                SM-326 | SM-980
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/TUU-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_TUU_CAI_threats.xlsx">Excel</a>
-            </div>
-        </article>
-    
-        <article class="pc-route-card" data-route="YNB-CAI" data-market="YNB-CAIRO" data-threat="high" data-direction="KSA_EGY" data-high="3" data-medium="1" data-low="16">
-            <div class="route-head">
-                <a class="route-name" href="pc_routes/YNB-CAI.html">YNB-CAI</a>
-                <span class="route-badge high">HIGH</span>
-            </div>
-            <div class="mini-stats">
-                <div class="mini low"><strong>16</strong><span>LOW</span></div>
-                <div class="mini medium"><strong>1</strong><span>MED</span></div>
-                <div class="mini high"><strong>3</strong><span>HIGH</span></div>
-            </div>
-            <div class="flights">
-                <strong>20</strong> threats<br>
-                SM-442 | SM-448
-            </div>
-            <div class="card-actions">
-                <a class="open-link" href="pc_routes/YNB-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_YNB_CAI_threats.xlsx">Excel</a>
             </div>
         </article>
     
@@ -1111,34 +590,6 @@
                 </div>
         
 
-                <div class="download-file-item" data-href="excel_routes/route_AHB_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">AHB-CAI</div>
-                        <div class="download-file-desc">route_AHB_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_AHB_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_AHB_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_AJF_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">AJF-CAI</div>
-                        <div class="download-file-desc">route_AJF_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_AJF_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_AJF_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
                 <div class="download-file-item" data-href="excel_routes/route_ATZ_JED_threats.xlsx" onclick="toggleDownloadItem(this)">
                     <div class="download-file-checkbox"></div>
                     <span class="download-file-icon">📈</span>
@@ -1147,132 +598,6 @@
                         <div class="download-file-desc">route_ATZ_JED_threats.xlsx</div>
                     </div>
                     <a class="download-file-link" href="excel_routes/route_ATZ_JED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_ATZ_JED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_ATZ_RUH_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">ATZ-RUH</div>
-                        <div class="download-file-desc">route_ATZ_RUH_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_ATZ_RUH_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_ATZ_RUH_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_AHB_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-AHB</div>
-                        <div class="download-file-desc">route_CAI_AHB_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_AHB_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_AHB_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_AJF_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-AJF</div>
-                        <div class="download-file-desc">route_CAI_AJF_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_AJF_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_AJF_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_DMM_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-DMM</div>
-                        <div class="download-file-desc">route_CAI_DMM_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_DMM_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_DMM_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_ELQ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-ELQ</div>
-                        <div class="download-file-desc">route_CAI_ELQ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_ELQ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_ELQ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_GIZ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-GIZ</div>
-                        <div class="download-file-desc">route_CAI_GIZ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_GIZ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_GIZ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_JED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-JED</div>
-                        <div class="download-file-desc">route_CAI_JED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_JED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_JED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_MED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-MED</div>
-                        <div class="download-file-desc">route_CAI_MED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_MED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_MED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_RUH_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-RUH</div>
-                        <div class="download-file-desc">route_CAI_RUH_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_RUH_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_RUH_threats.xlsx', event)">
                         <span class="ar-text">تنزيل</span>
                         <span class="en-text">Download</span>
                     </a>
@@ -1293,76 +618,6 @@
                 </div>
             
 
-                <div class="download-file-item" data-href="excel_routes/route_CAI_YNB_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-YNB</div>
-                        <div class="download-file-desc">route_CAI_YNB_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_YNB_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_YNB_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CCE_JED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CCE-JED</div>
-                        <div class="download-file-desc">route_CCE_JED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CCE_JED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CCE_JED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_DMM_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">DMM-CAI</div>
-                        <div class="download-file-desc">route_DMM_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_DMM_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_DMM_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_ELQ_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">ELQ-CAI</div>
-                        <div class="download-file-desc">route_ELQ_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_ELQ_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_ELQ_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_GIZ_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">GIZ-CAI</div>
-                        <div class="download-file-desc">route_GIZ_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_GIZ_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_GIZ_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
                 <div class="download-file-item" data-href="excel_routes/route_HBE_JED_threats.xlsx" onclick="toggleDownloadItem(this)">
                     <div class="download-file-checkbox"></div>
                     <span class="download-file-icon">📈</span>
@@ -1371,48 +626,6 @@
                         <div class="download-file-desc">route_HBE_JED_threats.xlsx</div>
                     </div>
                     <a class="download-file-link" href="excel_routes/route_HBE_JED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HBE_JED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HBE_MED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HBE-MED</div>
-                        <div class="download-file-desc">route_HBE_MED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HBE_MED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HBE_MED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HMB_JED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HMB-JED</div>
-                        <div class="download-file-desc">route_HMB_JED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HMB_JED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HMB_JED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HMB_RUH_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HMB-RUH</div>
-                        <div class="download-file-desc">route_HMB_RUH_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HMB_RUH_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HMB_RUH_threats.xlsx', event)">
                         <span class="ar-text">تنزيل</span>
                         <span class="en-text">Download</span>
                     </a>
@@ -1489,62 +702,6 @@
                 </div>
             
 
-                <div class="download-file-item" data-href="excel_routes/route_MED_ATZ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">MED-ATZ</div>
-                        <div class="download-file-desc">route_MED_ATZ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_MED_ATZ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_MED_ATZ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_MED_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">MED-CAI</div>
-                        <div class="download-file-desc">route_MED_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_MED_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_MED_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_MED_HBE_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">MED-HBE</div>
-                        <div class="download-file-desc">route_MED_HBE_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_MED_HBE_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_MED_HBE_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_RUH_ATZ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">RUH-ATZ</div>
-                        <div class="download-file-desc">route_RUH_ATZ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_RUH_ATZ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_RUH_ATZ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
                 <div class="download-file-item" data-href="excel_routes/route_RUH_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
                     <div class="download-file-checkbox"></div>
                     <span class="download-file-icon">📈</span>
@@ -1558,54 +715,12 @@
                     </a>
                 </div>
             
-
-                <div class="download-file-item" data-href="excel_routes/route_RUH_HMB_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">RUH-HMB</div>
-                        <div class="download-file-desc">route_RUH_HMB_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_RUH_HMB_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_RUH_HMB_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_TUU_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">TUU-CAI</div>
-                        <div class="download-file-desc">route_TUU_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_TUU_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_TUU_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_YNB_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">YNB-CAI</div>
-                        <div class="download-file-desc">route_YNB_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_YNB_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_YNB_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
 </div>
                 </div>
             </div>
         </div>
 
-        <footer class="footer">Threat Alert Report | 17MAY26 08:18 PM</footer>
+        <footer class="footer">Threat Alert Report | 17MAY26 08:43 PM</footer>
     </div>
     <script>
         let pcDirectionFilter = 'all';
