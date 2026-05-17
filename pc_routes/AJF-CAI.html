@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T13:54:00">
-    <meta name="report-version" content="20260517135400">
+    <meta name="report-generated" content="2026-05-17T14:05:00">
+    <meta name="report-version" content="20260517140500">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -2026,6 +2026,31 @@
             background: linear-gradient(135deg, var(--ac-orange) 0%, var(--ac-orange-dark) 100%) !important;
             box-shadow: 0 2px 8px rgba(245, 166, 35, 0.35);
         }
+        /* ===== (ORIGINAL) / (أصلي) badge for direct competitors =====
+           Pairs with the (ALTERNATIVE) badge below. Different colour so the
+           user can distinguish at a glance between a same-route threat and
+           a CAI-hub borrowed threat. ORIGINAL uses Air Cairo purple. */
+        .orig-marker {
+            color: var(--ac-purple);
+            font-weight: 800;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+            letter-spacing: 0.6px;
+            margin-inline-start: 6px;
+            text-transform: uppercase;
+        }
+        .orig-route {
+            display: inline-block;
+            background: rgba(245, 166, 35, 0.18);
+            color: var(--ac-orange-deep);
+            font-weight: 700;
+            padding: 1px 8px;
+            border-radius: 6px;
+            margin-inline-start: 6px;
+            font-size: 0.95em;
+        }
+
         /* ===== Visually prominent (ALTERNATIVE) / (بديل) badge =====
            Marks a competitor row as hidden-competition (price came from a
            different route's leg via CAI). The marker is bold orange and
@@ -2115,6 +2140,7 @@
             display: flex !important;
             flex-wrap: wrap !important;
             align-items: center !important;
+            justify-content: center !important;  /* center the LF chips horizontally */
             gap: 10px !important;
             padding: 14px 22px !important;
             background: linear-gradient(135deg, #2c3e50 0%, #3d566e 100%) !important;
@@ -2726,7 +2752,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 01:54 PM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 02:05 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: AJF-CAI | الفترة: 21MAY26 - 30SEP26</span><span class="en-text">Route: AJF-CAI | Range: 21MAY26 - 30SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2741,7 +2767,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 01:54 PM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 02:05 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: AJF-CAI | الفترة: 21MAY26 - 30SEP26</span><span class="en-text">Route: AJF-CAI | Range: 21MAY26 - 30SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2775,8 +2801,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 01:54 PM</span>
-                        <span class="en-text">Created: 17MAY26 01:54 PM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 02:05 PM</span>
+                        <span class="en-text">Created: 17MAY26 02:05 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -2952,11 +2978,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 13:54</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 14:05</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 13:54</span>
+                    Last Updated: <span class="update-time">2026-05-17 14:05</span>
                 </span>
             </div>
 
@@ -3020,11 +3046,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">136</span>
@@ -3080,7 +3101,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-110 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">1293 ريال سعودي</span><span class="en-text">1293 SAR</span></td>
@@ -3119,11 +3140,6 @@
         <div class="flight-block" data-flight="SM-322">
             
         <div class="lf-details-bar">
-            
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
             
                 <div class="lf-detail-item ">
                     <span class="lf-detail-label">SOLD</span>
@@ -3180,7 +3196,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-110 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">08:50</td>
             <td class="fare-cell"><span class="ar-text">1098 ريال سعودي</span><span class="en-text">1098 SAR</span></td>
@@ -3219,11 +3235,6 @@
         <div class="flight-block" data-flight="SM-322">
             
         <div class="lf-details-bar">
-            
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3280,7 +3291,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-120 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">1150 ريال سعودي</span><span class="en-text">1150 SAR</span></td>
@@ -3319,11 +3330,6 @@
         <div class="flight-block" data-flight="SM-322">
             
         <div class="lf-details-bar">
-            
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3380,7 +3386,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-120 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">980 ريال سعودي</span><span class="en-text">980 SAR</span></td>
@@ -3419,11 +3425,6 @@
         <div class="flight-block" data-flight="SM-322">
             
         <div class="lf-details-bar">
-            
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -3480,7 +3481,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-110 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">1060 ريال سعودي</span><span class="en-text">1060 SAR</span></td>
@@ -3520,11 +3521,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -3580,7 +3576,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-120 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">790 ريال سعودي</span><span class="en-text">790 SAR</span></td>
@@ -3620,11 +3616,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -3680,7 +3671,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-110 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">790 ريال سعودي</span><span class="en-text">790 SAR</span></td>
@@ -3720,11 +3711,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -3780,7 +3766,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-120 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">790 ريال سعودي</span><span class="en-text">790 SAR</span></td>
@@ -3820,11 +3806,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -3880,7 +3861,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-110 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">790 ريال سعودي</span><span class="en-text">790 SAR</span></td>
@@ -3920,11 +3901,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -3980,7 +3956,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-120 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">790 ريال سعودي</span><span class="en-text">790 SAR</span></td>
@@ -4019,11 +3995,6 @@
         <div class="flight-block" data-flight="SM-322">
             
         <div class="lf-details-bar">
-            
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
             
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
@@ -4080,7 +4051,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-110 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">790 ريال سعودي</span><span class="en-text">790 SAR</span></td>
@@ -4120,11 +4091,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -4180,7 +4146,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-120 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">790 ريال سعودي</span><span class="en-text">790 SAR</span></td>
@@ -4220,11 +4186,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -4280,7 +4241,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-110 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">790 ريال سعودي</span><span class="en-text">790 SAR</span></td>
@@ -4320,11 +4281,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -4380,7 +4336,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-120 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">482 ريال سعودي</span><span class="en-text">482 SAR</span></td>
@@ -4420,11 +4376,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -4480,7 +4431,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110</span><span class="en-text">Air NP Air NP-110</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-110 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-110 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">482 ريال سعودي</span><span class="en-text">482 SAR</span></td>
@@ -4520,11 +4471,6 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item lf-flight-chip">
-                    <span class="lf-detail-label">FLT</span>
-                    <span class="lf-detail-value">SM-322</span>
-                </div>
-            
                 <div class="lf-detail-item danger">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
@@ -4580,7 +4526,7 @@
                 <tbody>
                     
         <tr data-threat-level="low" data-is-alternative="false">
-            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120</span><span class="en-text">Air NP Air NP-120</span></td>
+            <td class="competitor-name"><span class="ar-text">العربية للطيران Air NP-120 <span class="orig-marker">(أصلي)</span> <span class="orig-route">AJF-CAI</span></span><span class="en-text">Air NP Air NP-120 <span class="orig-marker">(ORIGINAL)</span> <span class="orig-route">AJF-CAI</span></span></td>
             <td class="dep-time-cell">20:15</td>
             <td class="dep-time-cell">22:00</td>
             <td class="fare-cell"><span class="ar-text">482 ريال سعودي</span><span class="en-text">482 SAR</span></td>
