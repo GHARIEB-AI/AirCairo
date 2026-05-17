@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T14:26:00">
-    <meta name="report-version" content="20260517142600">
+    <meta name="report-generated" content="2026-05-17T14:32:00">
+    <meta name="report-version" content="20260517143200">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -2206,13 +2206,19 @@
         .lf-details-bar .lf-loadfactor-chip {
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.20) !important;
         }
-        .lf-details-bar .lf-detail-item.highlight {
-            background: rgba(245, 166, 35, 0.30) !important;
-            border: 1px solid rgba(245, 166, 35, 0.5) !important;
+        /* Traffic-light tints for SOLD chip (only SOLD and Load Factor change
+           colour; every other chip stays neutral regardless of value). */
+        .lf-details-bar .lf-detail-item.lf-good {
+            background: rgba(39, 174, 96, 0.30) !important;   /* green */
+            border: 1px solid rgba(39, 174, 96, 0.55) !important;
         }
-        .lf-details-bar .lf-detail-item.danger {
-            background: rgba(231, 76, 60, 0.30) !important;
-            border: 1px solid rgba(231, 76, 60, 0.5) !important;
+        .lf-details-bar .lf-detail-item.lf-mid {
+            background: rgba(241, 196, 15, 0.30) !important;  /* yellow */
+            border: 1px solid rgba(241, 196, 15, 0.55) !important;
+        }
+        .lf-details-bar .lf-detail-item.lf-bad {
+            background: rgba(231, 76, 60, 0.30) !important;   /* red */
+            border: 1px solid rgba(231, 76, 60, 0.55) !important;
         }
 
         /* Make the hero aircraft fill the right half like the preview */
@@ -2756,7 +2762,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 02:26 PM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 02:32 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: RUH-HMB | الفترة: 18MAY26 - 24SEP26</span><span class="en-text">Route: RUH-HMB | Range: 18MAY26 - 24SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2771,7 +2777,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 02:26 PM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 02:32 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: RUH-HMB | الفترة: 18MAY26 - 24SEP26</span><span class="en-text">Route: RUH-HMB | Range: 18MAY26 - 24SEP26</span>
                 <span class="ticker-separator">|</span>
@@ -2805,8 +2811,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 02:26 PM</span>
-                        <span class="en-text">Created: 17MAY26 02:26 PM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 02:32 PM</span>
+                        <span class="en-text">Created: 17MAY26 02:32 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -2988,11 +2994,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 14:26</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 14:32</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 14:26</span>
+                    Last Updated: <span class="update-time">2026-05-17 14:32</span>
                 </span>
             </div>
 
@@ -3056,7 +3062,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item highlight">
+                <div class="lf-detail-item lf-good">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">162</span>
                 </div>
@@ -3066,12 +3072,12 @@
                     <span class="lf-detail-value">16May26</span>
                 </div>
             
-                <div class="lf-detail-item highlight">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">70</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -3086,7 +3092,7 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#462B73;color:white;">
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#27ae60;color:white;">
                     <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
                     <span class="lf-detail-value" data-flight-lf="SM-464" style="color:white;">93%</span>
                 </div>
@@ -3151,7 +3157,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item lf-mid">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">133</span>
                 </div>
@@ -3161,12 +3167,12 @@
                     <span class="lf-detail-value">16May26</span>
                 </div>
             
-                <div class="lf-detail-item warning">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">8</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -3181,7 +3187,7 @@
                     <span class="lf-detail-value">M9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f39c12;color:white;">
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f1c40f;color:white;">
                     <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
                     <span class="lf-detail-value" data-flight-lf="SM-464" style="color:white;">76%</span>
                 </div>
@@ -3265,7 +3271,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item lf-mid">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">133</span>
                 </div>
@@ -3275,12 +3281,12 @@
                     <span class="lf-detail-value">16May26</span>
                 </div>
             
-                <div class="lf-detail-item highlight">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">30</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -3295,7 +3301,7 @@
                     <span class="lf-detail-value">Q9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f39c12;color:white;">
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f1c40f;color:white;">
                     <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
                     <span class="lf-detail-value" data-flight-lf="SM-464" style="color:white;">76%</span>
                 </div>
@@ -3360,7 +3366,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item lf-mid">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">112</span>
                 </div>
@@ -3370,12 +3376,12 @@
                     <span class="lf-detail-value">16May26</span>
                 </div>
             
-                <div class="lf-detail-item highlight">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">16</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -3390,7 +3396,7 @@
                     <span class="lf-detail-value">L9</span>
                 </div>
             
-                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f39c12;color:white;">
+                <div class="lf-detail-item lf-loadfactor-chip" style="background:#f1c40f;color:white;">
                     <span class="lf-detail-label" style="color:rgba(255,255,255,0.85);">Load Factor</span>
                     <span class="lf-detail-value" data-flight-lf="SM-464" style="color:white;">67%</span>
                 </div>
@@ -3455,7 +3461,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">47</span>
                 </div>
@@ -3465,12 +3471,12 @@
                     <span class="lf-detail-value">16May26</span>
                 </div>
             
-                <div class="lf-detail-item highlight">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">16</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -3550,7 +3556,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">83</span>
                 </div>
@@ -3560,12 +3566,12 @@
                     <span class="lf-detail-value">14May26</span>
                 </div>
             
-                <div class="lf-detail-item highlight">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">46</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -3664,7 +3670,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">44</span>
                 </div>
@@ -3674,12 +3680,12 @@
                     <span class="lf-detail-value">11May26</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">3</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -3778,7 +3784,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">39</span>
                 </div>
@@ -3788,12 +3794,12 @@
                     <span class="lf-detail-value">16May26</span>
                 </div>
             
-                <div class="lf-detail-item warning">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">5</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -3873,7 +3879,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">40</span>
                 </div>
@@ -3883,12 +3889,12 @@
                     <span class="lf-detail-value">14May26</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -3968,7 +3974,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">52</span>
                 </div>
@@ -3978,12 +3984,12 @@
                     <span class="lf-detail-value">11May26</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4063,7 +4069,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">16</span>
                 </div>
@@ -4073,12 +4079,12 @@
                     <span class="lf-detail-value">16May26</span>
                 </div>
             
-                <div class="lf-detail-item highlight">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">14</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4158,7 +4164,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">6</span>
                 </div>
@@ -4168,12 +4174,12 @@
                     <span class="lf-detail-value">16May26</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">2</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4253,7 +4259,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">3</span>
                 </div>
@@ -4263,12 +4269,12 @@
                     <span class="lf-detail-value">12May26</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">1</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4348,7 +4354,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
@@ -4358,12 +4364,12 @@
                     <span class="lf-detail-value">07May26</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4443,7 +4449,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">5</span>
                 </div>
@@ -4453,12 +4459,12 @@
                     <span class="lf-detail-value">03May26</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4538,7 +4544,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4548,12 +4554,12 @@
                     <span class="lf-detail-value">NIL</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4633,7 +4639,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4643,12 +4649,12 @@
                     <span class="lf-detail-value">NIL</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4728,7 +4734,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4738,12 +4744,12 @@
                     <span class="lf-detail-value">NIL</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4823,7 +4829,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4833,12 +4839,12 @@
                     <span class="lf-detail-value">NIL</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -4918,7 +4924,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">1</span>
                 </div>
@@ -4928,12 +4934,12 @@
                     <span class="lf-detail-value">15Apr26</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -5013,7 +5019,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -5023,12 +5029,12 @@
                     <span class="lf-detail-value">NIL</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -5108,7 +5114,7 @@
             
         <div class="lf-details-bar">
             
-                <div class="lf-detail-item danger">
+                <div class="lf-detail-item lf-bad">
                     <span class="lf-detail-label">SOLD</span>
                     <span class="lf-detail-value">0</span>
                 </div>
@@ -5118,12 +5124,12 @@
                     <span class="lf-detail-value">NIL</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">WEEKLY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
             
-                <div class="lf-detail-item ">
+                <div class="lf-detail-item">
                     <span class="lf-detail-label">TO-DAY</span>
                     <span class="lf-detail-value">0</span>
                 </div>
