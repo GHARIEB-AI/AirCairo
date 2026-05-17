@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="report-generated" content="2026-05-17T14:51:00">
-    <meta name="report-version" content="20260517145100">
+    <meta name="report-generated" content="2026-05-17T14:57:00">
+    <meta name="report-version" content="20260517145700">
     <title>Air Cairo | Threat Alert Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -2026,6 +2026,69 @@
             background: linear-gradient(135deg, var(--ac-orange) 0%, var(--ac-orange-dark) 100%) !important;
             box-shadow: 0 2px 8px rgba(245, 166, 35, 0.35);
         }
+        /* ===== Competitors table typography pass =====
+           Old defaults had small uppercase headers, bigger body text and
+           no nowrap, so "1128 SAR" and "AIRCAIRO DEP" both line-broke
+           awkwardly. Tighten everything to one consistent scale, center
+           data cells, keep number+currency on a single line, and stop
+           header wrapping. */
+        .competitors-table {
+            font-size: 0.92em !important;
+            table-layout: auto !important;
+        }
+        .competitors-table thead {
+            background: linear-gradient(135deg, #2c3e50 0%, #3d566e 100%) !important;
+        }
+        .competitors-table th {
+            font-size: 0.78em !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.55px !important;
+            padding: 12px 10px !important;
+            line-height: 1.25 !important;
+            text-align: center !important;
+            vertical-align: middle !important;
+            white-space: nowrap !important;        /* labels don't wrap mid-word */
+            color: white !important;
+            border-color: #1f2c38 !important;
+        }
+        body.ar .competitors-table th,
+        body.en .competitors-table th {
+            text-align: center !important;
+        }
+        .competitors-table td {
+            font-size: 0.92em !important;
+            font-weight: 600 !important;
+            padding: 11px 12px !important;
+            text-align: center !important;
+            vertical-align: middle !important;
+            white-space: nowrap !important;        /* "1128 SAR" stays on one line */
+            line-height: 1.35 !important;
+        }
+        .competitors-table td.competitor-name {
+            text-align: start !important;
+            white-space: normal !important;        /* airline name + ALT/ORIG badges may wrap */
+            font-size: 0.95em !important;
+            line-height: 1.5 !important;
+            min-width: 220px !important;
+        }
+        .competitors-table td .ar-text,
+        .competitors-table td .en-text {
+            white-space: nowrap !important;        /* the inner currency span stays inline */
+        }
+        .competitors-table td.fare-cell .fare-negative,
+        .competitors-table td.fare-cell .fare-positive {
+            display: inline-block !important;
+            padding: 3px 9px !important;
+        }
+        /* IMPACT pill — slightly tighter so the column doesn't look like a button bay */
+        .competitors-table td .threat-indicator {
+            display: inline-block !important;
+            padding: 5px 14px !important;
+            font-size: 0.85em !important;
+            border-radius: 999px !important;
+            white-space: nowrap !important;
+        }
+
         /* ===== (ORIGINAL) / (أصلي) badge for direct competitors =====
            Pairs with the (ALTERNATIVE) badge below. Different colour so the
            user can distinguish at a glance between a same-route threat and
@@ -2785,7 +2848,7 @@
             <span class="ar-text">
                 📊 رصد حركة الاسعار
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 02:51 PM</span>
+                <span class="ticker-generated">🕐 تم الإنشاء: 17MAY26 02:57 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 الفترة: <span class="ar-text">خط السير: AHB-CAI | الفترة: 20MAY26 - 23JUL26</span><span class="en-text">Route: AHB-CAI | Range: 20MAY26 - 23JUL26</span>
                 <span class="ticker-separator">|</span>
@@ -2800,7 +2863,7 @@
             <span class="en-text">
                 📊 Price Monitoring Report
                 <span class="ticker-separator">|</span>
-                <span class="ticker-generated">🕐 Generated: 17MAY26 02:51 PM</span>
+                <span class="ticker-generated">🕐 Generated: 17MAY26 02:57 PM</span>
                 <span class="ticker-separator">|</span>
                 📅 <span class="ar-text">خط السير: AHB-CAI | الفترة: 20MAY26 - 23JUL26</span><span class="en-text">Route: AHB-CAI | Range: 20MAY26 - 23JUL26</span>
                 <span class="ticker-separator">|</span>
@@ -2834,8 +2897,8 @@
                 </div>
                 <div class="header-info" style="margin-top: 5px; opacity: 0.85; font-size: 0.95em;">
                     <span>
-                        <span class="ar-text">تم الإنشاء: 17MAY26 02:51 PM</span>
-                        <span class="en-text">Created: 17MAY26 02:51 PM</span>
+                        <span class="ar-text">تم الإنشاء: 17MAY26 02:57 PM</span>
+                        <span class="en-text">Created: 17MAY26 02:57 PM</span>
                     </span>
                 </div>
                 <div class="controls">
@@ -3010,11 +3073,11 @@
             <div class="last-updated-banner">
                 <span class="ar-text">
                     <span class="update-icon">🕐</span>
-                    آخر تحديث: <span class="update-time">2026-05-17 14:51</span>
+                    آخر تحديث: <span class="update-time">2026-05-17 14:57</span>
                 </span>
                 <span class="en-text">
                     <span class="update-icon">🕐</span>
-                    Last Updated: <span class="update-time">2026-05-17 14:51</span>
+                    Last Updated: <span class="update-time">2026-05-17 14:57</span>
                 </span>
             </div>
 
