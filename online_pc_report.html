@@ -67,7 +67,55 @@
             flex-wrap: wrap;
         }
         h1 { font-size: 2rem; font-weight: 800; letter-spacing: 0; }
-        .meta { margin-top: 8px; opacity: 0.88; font-size: 0.95rem; }
+        .meta {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.96rem;
+            font-weight: 800;
+        }
+        .meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 36px;
+            padding: 8px 13px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.13);
+            color: #fff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+            backdrop-filter: blur(4px);
+        }
+        .updated-pill {
+            background: linear-gradient(135deg, #fff4df 0%, #ffffff 100%);
+            color: #263241;
+            border-color: rgba(247, 148, 29, 0.72);
+            box-shadow: 0 8px 24px rgba(247, 148, 29, 0.32);
+        }
+        .updated-pill strong {
+            color: #462B73;
+            font-size: 1.08em;
+        }
+        .fresh-dot {
+            width: 10px;
+            height: 10px;
+            flex: 0 0 10px;
+            border-radius: 50%;
+            background: #F7941D;
+            box-shadow: 0 0 0 0 rgba(247, 148, 29, 0.70);
+            animation: freshPulse 1.8s ease-out infinite;
+        }
+        @keyframes freshPulse {
+            0% { box-shadow: 0 0 0 0 rgba(247, 148, 29, 0.70); }
+            70% { box-shadow: 0 0 0 9px rgba(247, 148, 29, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(247, 148, 29, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .fresh-dot { animation: none; }
+        }
         .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; margin-top: 44px; }
         .btn {
             border: 0;
@@ -284,9 +332,13 @@
                 <div class="hero-title">
                     <div>
                         <h1><span class="ar-text">رصد حركة الاسعار حسب خط السير</span><span class="en-text">Threat Alert Report</span></h1>
-                        <div class="meta">
-                            <span class="ar-text"><span class="ar-text">الفترة: 18MAY26 - 30SEP26</span><span class="en-text">Range: 18MAY26 - 30SEP26</span> | آخر تحديث: 2026-05-18 13:46</span>
-                            <span class="en-text"><span class="ar-text">الفترة: 18MAY26 - 30SEP26</span><span class="en-text">Range: 18MAY26 - 30SEP26</span> | Last Updated: 2026-05-18 13:46</span>
+                        <div class="meta" aria-label="Report range and last update">
+                            <span class="meta-pill range-pill"><span class="ar-text">الفترة: 18MAY26 - 30SEP26</span><span class="en-text">Range: 18MAY26 - 30SEP26</span></span>
+                            <span class="meta-pill updated-pill">
+                                <span class="fresh-dot" aria-hidden="true"></span>
+                                <span class="ar-text">آخر تحديث: <strong>2026-05-18 13:46</strong></span>
+                                <span class="en-text">Last Updated: <strong>2026-05-18 13:46</strong></span>
+                            </span>
                         </div>
                     </div>
                     <div class="actions">
