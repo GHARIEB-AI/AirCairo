@@ -617,44 +617,52 @@
             transition: top 0.1s;
         }
 
-        /* The scroll-position % badge sits BEHIND whichever airplane the
-           user is pressing. z-index 95 keeps it under the buttons (99) so
-           the airplane silhouette is in front; the badge is sized to
-           extend well beyond the 50px button on the visible side so the
-           percent number is clearly readable peeking out from behind.
-           The .on-right / .on-left modifiers mirror the right and left
-           button positions. */
+        /* Scroll-position % badge — appears in the tail direction of the
+           airplane the user is pressing, ~5mm clear of the silhouette:
+              #scrollTop  (right, rotate 0)   → nose up,   tail down → badge BELOW
+              #scrollBottom (left, rotate 180) → nose down, tail up   → badge ABOVE
+           Same horizontal anchor as the button so badge is centred over
+           the card's blue border. z-index 95 still keeps it under the
+           airplane (99) per the user's "behind" intent. */
         .position-percent {
             position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
             background: linear-gradient(135deg, #462B73 0%, #5a3d8a 60%, #F7941D 140%);
             color: white;
-            padding: 12px 22px;
-            min-width: 90px;
+            padding: 6px 4px;
+            width: 50px;
             text-align: center;
-            border-radius: 18px;
-            font-size: 1.05em;
+            border-radius: 12px;
+            font-size: 0.85em;
             font-weight: 800;
-            letter-spacing: 0.6px;
-            box-shadow: 0 6px 18px rgba(70, 43, 115, 0.55);
+            letter-spacing: 0.4px;
+            box-shadow: 0 4px 12px rgba(70, 43, 115, 0.55);
             opacity: 0;
             transition: opacity 0.28s ease;
             z-index: 95;
             pointer-events: none;
             white-space: nowrap;
-            /* Park off-screen until a side is chosen so there's no flash. */
-            right: 100vw;
+            box-sizing: border-box;
+            /* Park off-screen until a side is chosen — avoids any flash. */
+            top: -200px;
+            left: -200px;
         }
 
         .position-percent.on-right {
+            /* Anchored at right:0 like #scrollTop, so the badge sits
+               directly below the airplane (button-bottom + 5mm). */
             right: 0;
             left: auto;
+            top: calc(50% + 25px + 5mm);
+            bottom: auto;
         }
 
         .position-percent.on-left {
+            /* Anchored at left:0 like #scrollBottom, sitting directly
+               above the airplane (button-top - 5mm). */
             left: 0;
             right: auto;
+            bottom: calc(50% + 25px + 5mm);
+            top: auto;
         }
 
         .position-percent.visible {
