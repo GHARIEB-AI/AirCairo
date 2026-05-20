@@ -522,18 +522,21 @@
             color: white;
         }
 
-        /* ===== SCROLL NAVIGATION ===== */
+        /* ===== SCROLL NAVIGATION =====
+           Layout mirrors the PC route page: scroll-top pinned to the
+           right edge at mid-height, scroll-bottom pinned to the left
+           edge at mid-height. Sizes / opacity / tap behaviour are
+           unchanged. */
         .scroll-nav {
             position: fixed;
-            right: 15px;
-            bottom: 90px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+            inset: 0;
+            pointer-events: none;
             z-index: 99;
         }
 
         .scroll-btn {
+            position: fixed;
+            top: 50%;
             width: 50px;
             height: 50px;
             border: none !important;
@@ -548,6 +551,7 @@
             cursor: pointer;
             opacity: 0.6;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            pointer-events: auto;
             transition: opacity 0.2s ease, transform 0.2s ease;
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -555,20 +559,29 @@
         }
 
         #scrollTop {
-            transform: rotate(0deg);
+            right: 15px;
+            transform: translateY(-50%) rotate(0deg);
         }
 
         #scrollBottom {
-            transform: rotate(180deg);
+            left: 15px;
+            transform: translateY(-50%) rotate(180deg);
         }
 
         .scroll-btn:hover {
             opacity: 0.8;
         }
 
-        .scroll-btn:active, .scroll-btn.pressed {
+        /* Press-feedback transforms must keep the translateY(-50%) +
+           rotate so the button stays centred during the scale tick. */
+        #scrollTop:active, #scrollTop.pressed {
             opacity: 1;
-            transform: scale(0.9);
+            transform: translateY(-50%) rotate(0deg) scale(0.9);
+        }
+
+        #scrollBottom:active, #scrollBottom.pressed {
+            opacity: 1;
+            transform: translateY(-50%) rotate(180deg) scale(0.9);
         }
 
         .scroll-btn svg {
