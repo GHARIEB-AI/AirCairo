@@ -1402,6 +1402,7 @@
         }
         /* ===== END PAGE LOADER ===== */
     </style>
+    <script src="assets/js/global-loader.js" data-loader-img="assets/img/aircairo-loader.gif"></script>
 </head>
 <body>
     <!-- UNIFIED PAGE LOADER -->
@@ -1767,7 +1768,7 @@
                 },
 
                 // Format 15: Route arrow format
-                () => (flight.route ? `<img src="aircairo_aircraft.png" class="aircraft-icon" alt=""> ${flight.route.replace('-', '→')} ${flight.lowest_avail || ''}` : null),
+                () => (flight.route ? `<img src="assets/img/aircairo_aircraft.png" class="aircraft-icon" alt=""> ${flight.route.replace('-', '→')} ${flight.lowest_avail || ''}` : null),
             ];
 
             return formats[Math.floor(Math.random() * formats.length)]();
@@ -1813,7 +1814,7 @@
                 () => tasks.failed > 0 ? `❌ FAILED: ${tasks.failed}` : null,
                 () => config.mode ? `🔧 MODE: ${config.mode}` : null,
                 // Route-specific metrics from config
-                () => config.routes && config.routes.length > 0 ? `<img src="aircairo_aircraft.png" class="aircraft-icon" alt=""> ${config.routes[Math.floor(Math.random() * config.routes.length)]}` : null,
+                () => config.routes && config.routes.length > 0 ? `<img src="assets/img/aircairo_aircraft.png" class="aircraft-icon" alt=""> ${config.routes[Math.floor(Math.random() * config.routes.length)]}` : null,
             ];
 
             const validMetrics = metrics.map(m => m()).filter(m => m);
