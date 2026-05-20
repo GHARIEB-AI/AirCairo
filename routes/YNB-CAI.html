@@ -187,7 +187,10 @@
         }
 
         .content {
-            padding: 10px;
+            /* Horizontal padding is the gutter the scroll-button airplanes
+               fly in: 25px each side leaves room for the 50px-wide button
+               to sit with its fuselage exactly on the card's blue border. */
+            padding: 10px 25px;
         }
 
         /* ===== THREAT CARDS - Air Cairo Brand Design ===== */
@@ -558,13 +561,18 @@
             appearance: none;
         }
 
+        /* Button width is 50px and .content padding is 25px, so right:0 +
+           left:0 places the button's horizontal center exactly on the
+           card's vertical blue border line. The airplane's fuselage sits
+           on the border; its wings extend half into the gutter and half
+           over the card edge — matching the requested look. */
         #scrollTop {
-            right: 15px;
+            right: 0;
             transform: translateY(-50%) rotate(0deg);
         }
 
         #scrollBottom {
-            left: 15px;
+            left: 0;
             transform: translateY(-50%) rotate(180deg);
         }
 
