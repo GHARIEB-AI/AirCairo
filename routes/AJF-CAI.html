@@ -617,25 +617,44 @@
             transition: top 0.1s;
         }
 
+        /* The scroll-position % badge sits BEHIND whichever airplane the
+           user is pressing. z-index 95 keeps it under the buttons (99) so
+           the airplane silhouette is in front; the badge peeks out around
+           the silhouette's edges. The .on-right / .on-left modifiers
+           mirror the right and left button positions. */
         .position-percent {
             position: fixed;
-            right: 15px;
             top: 50%;
-            transform: translateY(-50%) translateX(30px);
-            background: rgba(70, 43, 115, 0.9);
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #462B73, #5a3d8a);
             color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.7em;
-            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 14px;
+            font-size: 0.85em;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(70, 43, 115, 0.45);
             opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            z-index: 98;
+            transition: opacity 0.28s ease;
+            z-index: 95;
+            pointer-events: none;
+            white-space: nowrap;
+            /* Park off-screen until a side is chosen so there's no flash. */
+            right: 100vw;
+        }
+
+        .position-percent.on-right {
+            right: 0;
+            left: auto;
+        }
+
+        .position-percent.on-left {
+            left: 0;
+            right: auto;
         }
 
         .position-percent.visible {
             opacity: 1;
-            transform: translateY(-50%) translateX(0);
         }
 
         /* Bottom Navigation */
@@ -4557,13 +4576,66 @@
                 }
             }
 
-            function setupButton(btn, direction, jumpFn) {
+            // ── Scroll-position % badge ──
+            // Shows ONLY while a button is held; hides 500ms after release.
+            // Positioned behind whichever airplane the user pressed.
+            var percentEl = document.getElementById('positionPercent');
+            var markerEl = document.getElementById('positionMarker');
+            var percentHideTimer = null;
+            var percentRaf = null;
+            var PERCENT_HIDE_DELAY = 500;
+
+            function refreshScrollReadout() {
+                if (percentRaf) return;
+                percentRaf = requestAnimationFrame(function() {
+                    var scrollTop = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    var percent = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+                    if (markerEl) {
+                        markerEl.style.top = ((percent / 100) * 80) + 'px';
+                    }
+                    if (percentEl) {
+                        percentEl.textContent = percent + '%';
+                    }
+                    percentRaf = null;
+                });
+            }
+
+            function showPercentOnSide(side) {
+                if (!percentEl) return;
+                percentEl.classList.remove('on-right', 'on-left');
+                percentEl.classList.add(side === 'right' ? 'on-right' : 'on-left');
+                percentEl.classList.add('visible');
+                if (percentHideTimer) {
+                    clearTimeout(percentHideTimer);
+                    percentHideTimer = null;
+                }
+                refreshScrollReadout();
+            }
+
+            function hidePercentDelayed() {
+                if (!percentEl) return;
+                if (percentHideTimer) clearTimeout(percentHideTimer);
+                percentHideTimer = setTimeout(function() {
+                    percentEl.classList.remove('visible');
+                    percentHideTimer = null;
+                }, PERCENT_HIDE_DELAY);
+            }
+
+            // Marker keeps tracking the page silently even when the badge
+            // is hidden, so when the user presses a button the badge can
+            // show the right number immediately.
+            window.addEventListener('scroll', refreshScrollReadout, { passive: true });
+            refreshScrollReadout();
+
+            function setupButton(btn, direction, jumpFn, side) {
                 if (!btn) return;
 
                 btn.addEventListener('touchstart', function(e) {
                     e.preventDefault();
                     isLongPress = false;
                     btn.classList.add('pressed');
+                    showPercentOnSide(side);
                     longPressTimer = setTimeout(function() {
                         startFastScroll(direction);
                     }, LONG_PRESS_DELAY);
@@ -4577,17 +4649,20 @@
                         jumpFn();
                     }
                     isLongPress = false;
+                    hidePercentDelayed();
                 });
 
                 btn.addEventListener('touchcancel', function() {
                     btn.classList.remove('pressed');
                     stopFastScroll();
                     isLongPress = false;
+                    hidePercentDelayed();
                 });
 
                 btn.addEventListener('mousedown', function(e) {
                     isLongPress = false;
                     btn.classList.add('pressed');
+                    showPercentOnSide(side);
                     longPressTimer = setTimeout(function() {
                         startFastScroll(direction);
                     }, LONG_PRESS_DELAY);
@@ -4600,53 +4675,23 @@
                         jumpFn();
                     }
                     isLongPress = false;
+                    hidePercentDelayed();
                 });
 
                 btn.addEventListener('mouseleave', function() {
                     btn.classList.remove('pressed');
                     stopFastScroll();
                     isLongPress = false;
+                    hidePercentDelayed();
                 });
             }
 
             var scrollTopBtn = document.getElementById('scrollTop');
             var scrollBottomBtn = document.getElementById('scrollBottom');
-            setupButton(scrollTopBtn, -1, jumpToTop);
-            setupButton(scrollBottomBtn, 1, jumpToBottom);
-        })();
-
-        // Position indicator with requestAnimationFrame
-        (function() {
-            var hidePercentTimeout = null;
-            var rafId = null;
-
-            function updatePositionIndicator() {
-                if (rafId) return; // Already scheduled
-
-                rafId = requestAnimationFrame(function() {
-                    var scrollTop = window.scrollY;
-                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                    var percent = Math.round((scrollTop / docHeight) * 100) || 0;
-
-                    var marker = document.getElementById('positionMarker');
-                    var markerTop = (percent / 100) * 80;
-                    marker.style.top = markerTop + 'px';
-
-                    var percentEl = document.getElementById('positionPercent');
-                    percentEl.textContent = percent + '%';
-                    percentEl.classList.add('visible');
-
-                    clearTimeout(hidePercentTimeout);
-                    hidePercentTimeout = setTimeout(function() {
-                        percentEl.classList.remove('visible');
-                    }, 1500);
-
-                    rafId = null;
-                });
-            }
-
-            window.addEventListener('scroll', updatePositionIndicator, { passive: true });
-            updatePositionIndicator();
+            // #scrollTop sits at the right edge → badge appears on the right.
+            // #scrollBottom sits at the left edge → badge appears on the left.
+            setupButton(scrollTopBtn, -1, jumpToTop, 'right');
+            setupButton(scrollBottomBtn, 1, jumpToBottom, 'left');
         })();
 
         // Freshness check
