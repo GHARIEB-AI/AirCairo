@@ -619,21 +619,25 @@
 
         /* The scroll-position % badge sits BEHIND whichever airplane the
            user is pressing. z-index 95 keeps it under the buttons (99) so
-           the airplane silhouette is in front; the badge peeks out around
-           the silhouette's edges. The .on-right / .on-left modifiers
-           mirror the right and left button positions. */
+           the airplane silhouette is in front; the badge is sized to
+           extend well beyond the 50px button on the visible side so the
+           percent number is clearly readable peeking out from behind.
+           The .on-right / .on-left modifiers mirror the right and left
+           button positions. */
         .position-percent {
             position: fixed;
             top: 50%;
             transform: translateY(-50%);
-            background: linear-gradient(135deg, #462B73, #5a3d8a);
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 60%, #F7941D 140%);
             color: white;
-            padding: 8px 14px;
-            border-radius: 14px;
-            font-size: 0.85em;
+            padding: 12px 22px;
+            min-width: 90px;
+            text-align: center;
+            border-radius: 18px;
+            font-size: 1.05em;
             font-weight: 800;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(70, 43, 115, 0.45);
+            letter-spacing: 0.6px;
+            box-shadow: 0 6px 18px rgba(70, 43, 115, 0.55);
             opacity: 0;
             transition: opacity 0.28s ease;
             z-index: 95;
