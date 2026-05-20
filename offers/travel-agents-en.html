@@ -1734,9 +1734,14 @@
         window.addEventListener('pagehide', showLoader);
         document.addEventListener('click', function(e) {
             var link = e.target.closest('a');
-            if (link && link.href && !link.href.startsWith('javascript:') && !link.href.startsWith('#') && link.target !== '_blank') {
-                showLoader();
-            }
+            if (!link) return;
+            var rawHref = (link.getAttribute('href') || '').trim();
+            if (!rawHref || rawHref.charAt(0) === '#') return;
+            if (rawHref.indexOf('javascript:') === 0 || rawHref.indexOf('mailto:') === 0 || rawHref.indexOf('tel:') === 0) return;
+            if (link.hasAttribute('download')) return;
+            if (link.target && link.target !== '_self') return;
+            if (/\.(csv|tsv|pdf|xlsx|xls|zip|docx|doc|json|png|jpg|jpeg|gif|svg|webp|mp3|mp4|webm|txt|xml)(\?|#|$)/i.test(rawHref)) return;
+            showLoader();
         });
     })();
     </script>
