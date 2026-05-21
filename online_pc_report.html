@@ -1105,11 +1105,16 @@
                 const direction = card.dataset.direction || '';
                 const matchesSearch = !search || route.includes(search);
                 const matchesDirection = pcDirectionFilter === 'all' || direction === pcDirectionFilter;
-                const matchesThreat = pcThreatFilter === 'all' || getThreatCount(card, pcThreatFilter) > 0;
-                const show = matchesSearch && matchesDirection && matchesThreat;
+                const cardThreat = card.dataset.threat || '';
+                const matchesVisibleThreat = pcThreatFilter === 'all' || cardThreat === pcThreatFilter;
+                const matchesCountThreat = pcThreatFilter === 'all' || getThreatCount(card, pcThreatFilter) > 0;
+                const show = matchesSearch && matchesDirection && matchesVisibleThreat;
+                const includeInStats = matchesSearch && matchesDirection && matchesCountThreat;
                 card.hidden = !show;
                 if (show) {
                     visible += 1;
+                }
+                if (includeInStats) {
                     const marketKey = card.dataset.market || card.dataset.route || route;
                     if (!countedMarkets.has(marketKey)) {
                         countedMarkets.add(marketKey);
