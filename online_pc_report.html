@@ -237,81 +237,6 @@
         .open-link { background: #462B73; color: #fff; }
         .excel-link { background: #eef3f8; color: #263241; border: 1px solid #dce3ec; }
         .empty { padding: 28px; text-align: center; color: #697586; background: #fff; border-radius: 8px; }
-        .download-modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 1000;
-            background: rgba(21, 30, 43, 0.58);
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .download-modal-overlay.active { display: flex; }
-        .download-modal {
-            width: min(760px, 94vw);
-            max-height: 84vh;
-            overflow: hidden;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
-            display: flex;
-            flex-direction: column;
-        }
-        .download-modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 18px;
-            background: #263241;
-            color: #fff;
-        }
-        .download-modal-close {
-            border: 0;
-            background: rgba(255, 255, 255, 0.16);
-            color: #fff;
-            border-radius: 8px;
-            width: 36px;
-            height: 36px;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-        .download-modal-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 18px; border-bottom: 1px solid #e5e9ef; }
-        .download-action-btn {
-            border: 1px solid #cfd8e3;
-            background: #fff;
-            color: #263241;
-            border-radius: 8px;
-            padding: 9px 12px;
-            font-weight: 800;
-            cursor: pointer;
-        }
-        .download-action-btn.primary { background: #F7941D; border-color: #F7941D; }
-        .download-modal-list { overflow: auto; padding: 12px 18px 18px; }
-        .download-file-group-title { color: #462B73; font-weight: 900; margin: 12px 0 8px; }
-        .download-file-item {
-            display: grid;
-            grid-template-columns: 28px 28px 1fr auto;
-            gap: 10px;
-            align-items: center;
-            padding: 10px;
-            border: 1px solid #e1e7ef;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            cursor: pointer;
-        }
-        .download-file-item.selected { background: #fff7ec; border-color: #F7941D; }
-        .download-file-checkbox {
-            width: 22px;
-            height: 22px;
-            border: 2px solid #b7c2d0;
-            border-radius: 6px;
-        }
-        .download-file-item.selected .download-file-checkbox { background: #F7941D; border-color: #F7941D; }
-        .download-file-item.selected .download-file-checkbox::after { content: '✓'; color: #1f2933; display: block; text-align: center; font-weight: 900; }
-        .download-file-name { font-weight: 900; color: #263241; overflow-wrap: anywhere; }
-        .download-file-desc { color: #697586; font-size: 0.86rem; overflow-wrap: anywhere; }
-        .download-file-link { color: #462B73; font-weight: 900; text-decoration: none; }
         .footer { text-align: center; color: #697586; padding: 18px 0 6px; font-size: 0.9rem; }
         @media (max-width: 760px) {
             .shell { padding: 12px; }
@@ -345,7 +270,7 @@
                     <div class="actions">
                         <button class="btn" id="btn-ar" onclick="setLanguage('ar')">العربية</button>
                         <button class="btn active" id="btn-en" onclick="setLanguage('en')">English</button>
-                        <button class="btn primary" onclick="openDownloadModal()"><span class="ar-text">تحميل التقارير</span><span class="en-text">Download Reports</span></button>
+                        <a class="btn primary" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener"><span class="ar-text">تحميل التقارير</span><span class="en-text">Download Reports</span></a>
                         <a class="btn" href="index.html">GATE</a>
                     </div>
                 </div>
@@ -400,7 +325,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/AHB-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_AHB_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -420,7 +345,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/AJF-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_AJF_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -440,7 +365,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/ATZ-JED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_ATZ_JED_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -460,7 +385,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/ATZ-RUH.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_ATZ_RUH_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -480,7 +405,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/CAI-AHB.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_AHB_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -500,7 +425,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/CAI-AJF.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_AJF_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -520,7 +445,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/CAI-DMM.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_DMM_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -540,7 +465,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/CAI-ELQ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_ELQ_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -560,7 +485,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/CAI-GIZ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_GIZ_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -580,7 +505,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/CAI-JED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_JED_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -600,7 +525,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/CAI-RUH.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_RUH_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -620,7 +545,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/CAI-TUU.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_TUU_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -640,7 +565,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/CAI-YNB.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_CAI_YNB_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -660,7 +585,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/DMM-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_DMM_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -680,7 +605,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/DMM-HMB.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_DMM_HMB_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -700,7 +625,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/ELQ-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_ELQ_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -720,7 +645,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/ELQ-HMB.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_ELQ_HMB_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -740,7 +665,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/GIZ-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_GIZ_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -760,7 +685,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/HBE-JED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HBE_JED_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -780,7 +705,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/HBE-MED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HBE_MED_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -800,7 +725,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/HMB-DMM.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HMB_DMM_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -820,7 +745,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/HMB-ELQ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HMB_ELQ_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -840,7 +765,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/HMB-JED.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HMB_JED_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -860,7 +785,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/HMB-RUH.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HMB_RUH_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -880,7 +805,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/HMB-TUU.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_HMB_TUU_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -900,7 +825,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/JED-ATZ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_JED_ATZ_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -920,7 +845,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/JED-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_JED_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -940,7 +865,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/JED-HBE.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_JED_HBE_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -960,7 +885,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/JED-HMB.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_JED_HMB_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -980,7 +905,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/MED-ATZ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_MED_ATZ_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -1000,7 +925,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/MED-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_MED_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -1020,7 +945,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/RUH-ATZ.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_RUH_ATZ_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -1040,7 +965,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/RUH-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_RUH_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -1060,7 +985,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/RUH-HMB.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_RUH_HMB_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -1080,7 +1005,7 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/TUU-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_TUU_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
@@ -1100,598 +1025,11 @@
             </div>
             <div class="card-actions">
                 <a class="open-link" href="pc_routes/YNB-CAI.html"><span class="ar-text">فتح خط السير</span><span class="en-text">Open Route</span></a>
-                <a class="excel-link" href="excel_routes/route_YNB_CAI_threats.xlsx">Excel</a>
+                <a class="excel-link" href="https://flyaircairo-my.sharepoint.com/personal/dammam_to_aircairo_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fdammam%5Fto%5Faircairo%5Fcom%2FDocuments%2Fmarket%20insights&ga=1" target="_blank" rel="noopener">Excel</a>
             </div>
         </article>
     
         </main>
-
-        <div class="download-modal-overlay" id="downloadModalOverlay" onclick="closeDownloadModal()">
-            <div class="download-modal" onclick="event.stopPropagation()">
-                <div class="download-modal-header">
-                    <h2><span class="ar-text">تنزيل التقارير</span><span class="en-text">Download Reports</span></h2>
-                    <button class="download-modal-close" onclick="closeDownloadModal()">×</button>
-                </div>
-                <div class="download-modal-actions">
-                    <button class="download-action-btn" onclick="selectAllDownloads()"><span class="ar-text">اختر الكل</span><span class="en-text">Select All</span></button>
-                    <button class="download-action-btn" onclick="clearAllDownloads()"><span class="ar-text">إلغاء الكل</span><span class="en-text">Clear All</span></button>
-                    <button class="download-action-btn primary" onclick="downloadSelectedFiles()"><span class="ar-text">تنزيل المحدد</span><span class="en-text">Download Selected</span></button>
-                </div>
-                <div class="download-modal-list" id="downloadFileList">
-                    
-            <div class="download-file-group">
-                <div class="download-file-group-title">
-                    <span class="ar-text">الملفات المجمعة</span>
-                    <span class="en-text">Summary Files</span>
-                </div>
-        
-
-                <div class="download-file-item" data-href="excel_routes/ALL_EGY_TO_KSA.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📊</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">ALL_EGY_TO_KSA.xlsx</div>
-                        <div class="download-file-desc">
-                            <span class="ar-text">جميع خطوط مصر للسعودية</span>
-                            <span class="en-text">All Egypt to KSA Routes</span>
-                        </div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/ALL_EGY_TO_KSA.xlsx" onclick="downloadSingleFile('excel_routes/ALL_EGY_TO_KSA.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/ALL_KSA_TO_EGY.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📊</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">ALL_KSA_TO_EGY.xlsx</div>
-                        <div class="download-file-desc">
-                            <span class="ar-text">جميع خطوط السعودية لمصر</span>
-                            <span class="en-text">All KSA to Egypt Routes</span>
-                        </div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/ALL_KSA_TO_EGY.xlsx" onclick="downloadSingleFile('excel_routes/ALL_KSA_TO_EGY.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/LOAD_FACTOR_SUMMARY.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📊</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">LOAD_FACTOR_SUMMARY.xlsx</div>
-                        <div class="download-file-desc">
-                            <span class="ar-text">ملخص معامل الحمولة</span>
-                            <span class="en-text">Load Factor Summary</span>
-                        </div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/LOAD_FACTOR_SUMMARY.xlsx" onclick="downloadSingleFile('excel_routes/LOAD_FACTOR_SUMMARY.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-</div>
-
-            <div class="download-file-group">
-                <div class="download-file-group-title">
-                    <span class="ar-text">ملفات خطوط السير</span>
-                    <span class="en-text">Route Files</span>
-                </div>
-        
-
-                <div class="download-file-item" data-href="excel_routes/route_AHB_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">AHB-CAI</div>
-                        <div class="download-file-desc">route_AHB_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_AHB_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_AHB_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_AJF_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">AJF-CAI</div>
-                        <div class="download-file-desc">route_AJF_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_AJF_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_AJF_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_ATZ_JED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">ATZ-JED</div>
-                        <div class="download-file-desc">route_ATZ_JED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_ATZ_JED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_ATZ_JED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_ATZ_RUH_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">ATZ-RUH</div>
-                        <div class="download-file-desc">route_ATZ_RUH_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_ATZ_RUH_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_ATZ_RUH_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_AHB_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-AHB</div>
-                        <div class="download-file-desc">route_CAI_AHB_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_AHB_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_AHB_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_AJF_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-AJF</div>
-                        <div class="download-file-desc">route_CAI_AJF_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_AJF_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_AJF_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_DMM_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-DMM</div>
-                        <div class="download-file-desc">route_CAI_DMM_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_DMM_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_DMM_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_ELQ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-ELQ</div>
-                        <div class="download-file-desc">route_CAI_ELQ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_ELQ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_ELQ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_GIZ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-GIZ</div>
-                        <div class="download-file-desc">route_CAI_GIZ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_GIZ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_GIZ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_JED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-JED</div>
-                        <div class="download-file-desc">route_CAI_JED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_JED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_JED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_RUH_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-RUH</div>
-                        <div class="download-file-desc">route_CAI_RUH_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_RUH_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_RUH_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_TUU_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-TUU</div>
-                        <div class="download-file-desc">route_CAI_TUU_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_TUU_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_TUU_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_CAI_YNB_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">CAI-YNB</div>
-                        <div class="download-file-desc">route_CAI_YNB_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_CAI_YNB_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_CAI_YNB_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_DMM_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">DMM-CAI</div>
-                        <div class="download-file-desc">route_DMM_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_DMM_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_DMM_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_DMM_HMB_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">DMM-HMB</div>
-                        <div class="download-file-desc">route_DMM_HMB_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_DMM_HMB_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_DMM_HMB_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_ELQ_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">ELQ-CAI</div>
-                        <div class="download-file-desc">route_ELQ_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_ELQ_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_ELQ_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_ELQ_HMB_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">ELQ-HMB</div>
-                        <div class="download-file-desc">route_ELQ_HMB_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_ELQ_HMB_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_ELQ_HMB_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_GIZ_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">GIZ-CAI</div>
-                        <div class="download-file-desc">route_GIZ_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_GIZ_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_GIZ_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HBE_JED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HBE-JED</div>
-                        <div class="download-file-desc">route_HBE_JED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HBE_JED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HBE_JED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HBE_MED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HBE-MED</div>
-                        <div class="download-file-desc">route_HBE_MED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HBE_MED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HBE_MED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HMB_DMM_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HMB-DMM</div>
-                        <div class="download-file-desc">route_HMB_DMM_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HMB_DMM_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HMB_DMM_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HMB_ELQ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HMB-ELQ</div>
-                        <div class="download-file-desc">route_HMB_ELQ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HMB_ELQ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HMB_ELQ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HMB_JED_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HMB-JED</div>
-                        <div class="download-file-desc">route_HMB_JED_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HMB_JED_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HMB_JED_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HMB_RUH_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HMB-RUH</div>
-                        <div class="download-file-desc">route_HMB_RUH_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HMB_RUH_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HMB_RUH_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_HMB_TUU_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">HMB-TUU</div>
-                        <div class="download-file-desc">route_HMB_TUU_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_HMB_TUU_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_HMB_TUU_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_JED_ATZ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">JED-ATZ</div>
-                        <div class="download-file-desc">route_JED_ATZ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_JED_ATZ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_JED_ATZ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_JED_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">JED-CAI</div>
-                        <div class="download-file-desc">route_JED_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_JED_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_JED_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_JED_HBE_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">JED-HBE</div>
-                        <div class="download-file-desc">route_JED_HBE_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_JED_HBE_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_JED_HBE_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_JED_HMB_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">JED-HMB</div>
-                        <div class="download-file-desc">route_JED_HMB_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_JED_HMB_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_JED_HMB_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_MED_ATZ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">MED-ATZ</div>
-                        <div class="download-file-desc">route_MED_ATZ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_MED_ATZ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_MED_ATZ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_MED_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">MED-CAI</div>
-                        <div class="download-file-desc">route_MED_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_MED_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_MED_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_RUH_ATZ_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">RUH-ATZ</div>
-                        <div class="download-file-desc">route_RUH_ATZ_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_RUH_ATZ_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_RUH_ATZ_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_RUH_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">RUH-CAI</div>
-                        <div class="download-file-desc">route_RUH_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_RUH_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_RUH_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_RUH_HMB_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">RUH-HMB</div>
-                        <div class="download-file-desc">route_RUH_HMB_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_RUH_HMB_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_RUH_HMB_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_TUU_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">TUU-CAI</div>
-                        <div class="download-file-desc">route_TUU_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_TUU_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_TUU_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-
-                <div class="download-file-item" data-href="excel_routes/route_YNB_CAI_threats.xlsx" onclick="toggleDownloadItem(this)">
-                    <div class="download-file-checkbox"></div>
-                    <span class="download-file-icon">📈</span>
-                    <div class="download-file-info">
-                        <div class="download-file-name">YNB-CAI</div>
-                        <div class="download-file-desc">route_YNB_CAI_threats.xlsx</div>
-                    </div>
-                    <a class="download-file-link" href="excel_routes/route_YNB_CAI_threats.xlsx" onclick="downloadSingleFile('excel_routes/route_YNB_CAI_threats.xlsx', event)">
-                        <span class="ar-text">تنزيل</span>
-                        <span class="en-text">Download</span>
-                    </a>
-                </div>
-            
-</div>
-                </div>
-            </div>
-        </div>
 
         <footer class="footer">Threat Alert Report | 21MAY26 08:48 PM</footer>
     </div>
@@ -1783,62 +1121,6 @@
                 if (el) el.textContent = String(value);
             });
         }
-
-        function openDownloadModal() {
-            document.getElementById('downloadModalOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDownloadModal() {
-            document.getElementById('downloadModalOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function toggleDownloadItem(element) {
-            element.classList.toggle('selected');
-        }
-
-        function selectAllDownloads() {
-            document.querySelectorAll('#downloadFileList .download-file-item').forEach(item => item.classList.add('selected'));
-        }
-
-        function clearAllDownloads() {
-            document.querySelectorAll('#downloadFileList .download-file-item').forEach(item => item.classList.remove('selected'));
-        }
-
-        function downloadSelectedFiles() {
-            const selectedItems = document.querySelectorAll('#downloadFileList .download-file-item.selected');
-            if (selectedItems.length === 0) {
-                alert(document.body.classList.contains('ar') ? 'يرجى اختيار ملف واحد على الأقل' : 'Please select at least one file');
-                return;
-            }
-            selectedItems.forEach((item, index) => {
-                const href = item.dataset.href;
-                if (!href) return;
-                setTimeout(() => {
-                    const a = document.createElement('a');
-                    a.href = href;
-                    a.download = '';
-                    a.target = '_blank';
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                }, index * 250);
-            });
-            closeDownloadModal();
-        }
-
-        function downloadSingleFile(href, event) {
-            event.stopPropagation();
-            const a = document.createElement('a');
-            a.href = href;
-            a.download = '';
-            a.target = '_blank';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             setLanguage('en');
             applyPcIndexFilters();
