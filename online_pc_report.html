@@ -1036,6 +1036,7 @@
     <script>
         let pcDirectionFilter = 'all';
         let pcThreatFilter = 'all';
+        let originalPcCardOrder = [];
 
         function setLanguage(lang) {
             document.body.className = lang;
@@ -1057,12 +1058,38 @@
             if (pcThreatFilter === level) {
                 pcThreatFilter = 'all';
                 button.classList.remove('active');
+                sortPcCardsByThreat(null);
             } else {
                 pcThreatFilter = level;
                 document.querySelectorAll('[data-threat].chip').forEach(el => el.classList.remove('active'));
                 button.classList.add('active');
+                sortPcCardsByThreat(level);
             }
             applyPcIndexFilters();
+        }
+
+        function getThreatCount(card, level) {
+            return Number.parseInt(card.dataset[level] || '0', 10) || 0;
+        }
+
+        function sortPcCardsByThreat(level) {
+            const container = document.getElementById('routesGrid');
+            if (!container) return;
+            if (!originalPcCardOrder.length) {
+                originalPcCardOrder = Array.from(container.querySelectorAll('.pc-route-card'));
+            }
+            if (!level) {
+                originalPcCardOrder.forEach(card => container.appendChild(card));
+                return;
+            }
+            const originalIndex = new Map(originalPcCardOrder.map((card, index) => [card, index]));
+            const cards = Array.from(container.querySelectorAll('.pc-route-card'));
+            cards.sort((a, b) => {
+                const countDiff = getThreatCount(b, level) - getThreatCount(a, level);
+                if (countDiff !== 0) return countDiff;
+                return (originalIndex.get(a) || 0) - (originalIndex.get(b) || 0);
+            });
+            cards.forEach(card => container.appendChild(card));
         }
 
         function applyPcIndexFilters() {
@@ -1073,7 +1100,6 @@
             let medium = 0;
             let low = 0;
             const countedMarkets = new Set();
-            const getThreatCount = (card, level) => Number.parseInt(card.dataset[level] || '0', 10) || 0;
             cards.forEach(card => {
                 const route = (card.dataset.route || '').toLowerCase();
                 const direction = card.dataset.direction || '';
@@ -1122,6 +1148,10 @@
             });
         }
         document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('routesGrid');
+            if (container) {
+                originalPcCardOrder = Array.from(container.querySelectorAll('.pc-route-card'));
+            }
             setLanguage('en');
             applyPcIndexFilters();
         });
