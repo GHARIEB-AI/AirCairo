@@ -543,37 +543,6 @@
             50% { opacity: 1; text-shadow: 0 0 30px rgba(100, 220, 255, 0.9); }
         }
 
-        /* ===== SIDE AIRPLANE ===== */
-        .side-airplane {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-            width: 200px;
-            height: 220px;
-            cursor: pointer;
-            transition: left 1.2s ease;
-            overflow: visible;
-            left: -100px;
-        }
-        .side-airplane:hover {
-            left: -30px;
-        }
-        .side-airplane img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .side-airplane.takeoff {
-            animation: sideplaneTakeoff 1.5s ease-in-out forwards;
-        }
-        @keyframes sideplaneTakeoff {
-            0% { left: -100px; opacity: 1; }
-            30% { left: 50px; opacity: 1; }
-            100% { left: 120%; top: -50%; opacity: 0; }
-        }
-        /* ===== END SIDE AIRPLANE ===== */
-
         /* ===== UNIFIED PAGE LOADER ===== */
         #page-loader {
             position: fixed;
