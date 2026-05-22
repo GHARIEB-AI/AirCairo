@@ -5110,6 +5110,34 @@
         // Current threat level filter (null = show all)
         let currentThreatFilter = null;
 
+        function removeDynamicTableHeaders() {
+            document.querySelectorAll('thead[data-dynamic-filter-header="true"]').forEach(header => header.remove());
+        }
+
+        function syncVisibleTableHeaders() {
+            removeDynamicTableHeaders();
+            if (!currentThreatFilter) return;
+
+            document.querySelectorAll('.date-section').forEach(section => {
+                if (section.style.display === 'none') return;
+
+                const visibleBlock = Array.from(section.querySelectorAll('.flight-block'))
+                    .find(block => block.style.display !== 'none');
+                if (!visibleBlock) return;
+
+                const visibleTable = visibleBlock.querySelector('.competitors-table');
+                if (!visibleTable || visibleTable.querySelector('thead')) return;
+
+                const sourceHeader = section.querySelector('.competitors-table thead')
+                    || document.querySelector('.competitors-table thead');
+                if (!sourceHeader) return;
+
+                const clonedHeader = sourceHeader.cloneNode(true);
+                clonedHeader.dataset.dynamicFilterHeader = 'true';
+                visibleTable.insertBefore(clonedHeader, visibleTable.querySelector('tbody') || visibleTable.firstChild);
+            });
+        }
+
         // Filter by threat level (clicking on stat cards)
         function filterByThreatLevel(level) {
             // Update visual overlay
@@ -5132,6 +5160,7 @@
                 allRows.forEach(row => row.style.display = '');
                 allFlightBlocks.forEach(block => block.style.display = '');
                 allDateSections.forEach(section => section.style.display = '');
+                removeDynamicTableHeaders();
                 return;
             }
 
@@ -5168,6 +5197,8 @@
                 const hasVisibleBlocks = Array.from(section.querySelectorAll('.flight-block')).some(block => block.style.display !== 'none');
                 section.style.display = hasVisibleBlocks ? '' : 'none';
             });
+
+            syncVisibleTableHeaders();
         }
 
         // Clear threat filter when route/date changes
@@ -5182,6 +5213,7 @@
             allFlightBlocks.forEach(block => block.style.display = '');
             const allDateSections = document.querySelectorAll('.date-section');
             allDateSections.forEach(section => section.style.display = '');
+            removeDynamicTableHeaders();
         }
 
         // Set threat overlay visual effect
