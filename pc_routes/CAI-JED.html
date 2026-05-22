@@ -913,6 +913,38 @@
             font-size: 1.1em;
         }
 
+
+        .ticker-high-alerts {
+            display: inline-flex !important;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px !important;
+        }
+
+        .ticker-check {
+            color: #ff6b6b !important;
+            background: rgba(255, 71, 87, 0.12);
+            border: 1px solid rgba(255, 71, 87, 0.35);
+            border-radius: 999px;
+            padding: 3px 10px !important;
+            font-weight: 900;
+            letter-spacing: 0.03em;
+            animation: ticker-red-soft-blink 1.8s ease-in-out infinite;
+        }
+
+        @keyframes ticker-red-soft-blink {
+            0%, 100% {
+                color: #ffb3b3;
+                box-shadow: 0 0 4px rgba(255, 71, 87, 0.2);
+                text-shadow: 0 0 4px rgba(255, 71, 87, 0.25);
+            }
+            50% {
+                color: #ff3030;
+                box-shadow: 0 0 13px rgba(255, 71, 87, 0.55);
+                text-shadow: 0 0 10px rgba(255, 71, 87, 0.65);
+            }
+        }
+
         .ticker-medium {
             color: #ffa502 !important;
             font-weight: 700;
@@ -3144,6 +3176,7 @@
                 إجمالي التهديدات: <span class="ticker-total" id="ticker-total">385</span>
                 <span class="ticker-separator">|</span>
                 🔴 عالي: <span class="ticker-high" id="ticker-high">114</span>
+                <span class="ticker-separator">|</span><span class="ticker-high-alerts"><span class="ticker-check">CHECK SM475/31MAY</span><span class="ticker-check">CHECK SM477/31MAY</span><span class="ticker-check">CHECK SM477/01JUN</span><span class="ticker-check">CHECK SM479/05JUN</span></span>
                 <span class="ticker-separator">|</span>
                 🟠 متوسط: <span class="ticker-medium" id="ticker-medium">67</span>
                 <span class="ticker-separator">|</span>
@@ -3159,6 +3192,7 @@
                 Total Threats: <span class="ticker-total" id="ticker-total-en">385</span>
                 <span class="ticker-separator">|</span>
                 🔴 HIGH: <span class="ticker-high" id="ticker-high-en">114</span>
+                <span class="ticker-separator">|</span><span class="ticker-high-alerts"><span class="ticker-check">CHECK SM475/31MAY</span><span class="ticker-check">CHECK SM477/31MAY</span><span class="ticker-check">CHECK SM477/01JUN</span><span class="ticker-check">CHECK SM479/05JUN</span></span>
                 <span class="ticker-separator">|</span>
                 🟠 MEDIUM: <span class="ticker-medium" id="ticker-medium-en">67</span>
                 <span class="ticker-separator">|</span>
