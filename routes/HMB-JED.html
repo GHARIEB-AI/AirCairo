@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="report-generated" content="2026-05-23T06:22:00">
-    <meta name="report-version" content="20260523062200">
+    <meta name="report-generated" content="2026-05-23T11:00:00">
+    <meta name="report-version" content="20260523110000">
     <title>HMB-JED - Threat Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
@@ -1139,7 +1139,15 @@
         <div class="filter-section">
             <div class="filter-row">
                 <select class="route-selector" id="routeSelector" onchange="navigateToRoute(this.value)">
-                    <option value="CAI-JED">CAI-JED</option>
+                    <option value="TUU-CAI">TUU-CAI</option>
+<option value="TUU-HMB">TUU-HMB</option>
+<option value="ELQ-CAI">ELQ-CAI</option>
+<option value="ELQ-HMB">ELQ-HMB</option>
+<option value="JED-CAI">JED-CAI</option>
+<option value="JED-HBE">JED-HBE</option>
+<option value="JED-HMB">JED-HMB</option>
+<option value="JED-ATZ">JED-ATZ</option>
+<option value="CAI-JED">CAI-JED</option>
 <option value="CAI-MED">CAI-MED</option>
 <option value="CAI-RUH">CAI-RUH</option>
 <option value="CAI-DMM">CAI-DMM</option>
@@ -1149,21 +1157,15 @@
 <option value="CAI-AHB">CAI-AHB</option>
 <option value="CAI-ELQ">CAI-ELQ</option>
 <option value="CAI-GIZ">CAI-GIZ</option>
-<option value="YNB-CAI">YNB-CAI</option>
-<option value="GIZ-CAI">GIZ-CAI</option>
-<option value="ATZ-JED">ATZ-JED</option>
-<option value="ATZ-MED">ATZ-MED</option>
-<option value="ATZ-RUH">ATZ-RUH</option>
-<option value="HBE-JED">HBE-JED</option>
-<option value="HBE-MED">HBE-MED</option>
-<option value="AJF-CAI">AJF-CAI</option>
 <option value="RUH-CAI">RUH-CAI</option>
 <option value="RUH-ATZ">RUH-ATZ</option>
 <option value="RUH-HMB">RUH-HMB</option>
-<option value="AHB-CAI">AHB-CAI</option>
-<option value="AHB-HMB">AHB-HMB</option>
-<option value="TUU-CAI">TUU-CAI</option>
-<option value="TUU-HMB">TUU-HMB</option>
+<option value="MED-CAI">MED-CAI</option>
+<option value="MED-HBE">MED-HBE</option>
+<option value="MED-ATZ">MED-ATZ</option>
+<option value="MED-HMB">MED-HMB</option>
+<option value="HBE-JED">HBE-JED</option>
+<option value="HBE-MED">HBE-MED</option>
 <option value="HMB-JED" selected>HMB-JED</option>
 <option value="HMB-MED">HMB-MED</option>
 <option value="HMB-RUH">HMB-RUH</option>
@@ -1171,18 +1173,16 @@
 <option value="HMB-TUU">HMB-TUU</option>
 <option value="HMB-AHB">HMB-AHB</option>
 <option value="HMB-ELQ">HMB-ELQ</option>
-<option value="ELQ-CAI">ELQ-CAI</option>
-<option value="ELQ-HMB">ELQ-HMB</option>
+<option value="GIZ-CAI">GIZ-CAI</option>
+<option value="AJF-CAI">AJF-CAI</option>
+<option value="AHB-CAI">AHB-CAI</option>
+<option value="AHB-HMB">AHB-HMB</option>
 <option value="DMM-CAI">DMM-CAI</option>
 <option value="DMM-HMB">DMM-HMB</option>
-<option value="JED-CAI">JED-CAI</option>
-<option value="JED-HBE">JED-HBE</option>
-<option value="JED-HMB">JED-HMB</option>
-<option value="JED-ATZ">JED-ATZ</option>
-<option value="MED-CAI">MED-CAI</option>
-<option value="MED-HBE">MED-HBE</option>
-<option value="MED-ATZ">MED-ATZ</option>
-<option value="MED-HMB">MED-HMB</option>
+<option value="ATZ-JED">ATZ-JED</option>
+<option value="ATZ-MED">ATZ-MED</option>
+<option value="ATZ-RUH">ATZ-RUH</option>
+<option value="YNB-CAI">YNB-CAI</option>
                 </select>
                 <button class="filter-btn" id="dateFilterBtn" onclick="openFilterModal('date')">
                     <span class="ar-text">📅 التواريخ</span>
@@ -1204,7 +1204,7 @@
         </div>
         <div class="stat-item medium" data-level="medium" onclick="filterByLevel('medium')">
             <div class="stat-sphere"><img src="../web_yello.png" alt="Medium"></div>
-            <div class="stat-count">10</div>
+            <div class="stat-count">12</div>
             <div class="stat-label">
                 <span class="ar-text">تهديد متوسط</span>
                 <span class="en-text">MEDIUM THREAT</span>
@@ -1228,106 +1228,6 @@
 
     <div class="content">
         
-    <div class="threat-card medium" data-level="medium" data-date="2026-05-29">
-        <div class="card-date-header">
-            <span class="date-route">29MAY26 &nbsp;-&nbsp; HMB-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block our-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">SM-453</span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 03:40</span>
-                </div>
-
-                <div class="lf-unified-section">
-                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">165</span></div>
-                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">30Dec</span></div>
-                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">92%</span></div>
-                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">Q9</span></div>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">13416 جنيه مصري</span>
-                            <span class="en-text">13416 EGP</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="recommendation-section">
-                <div class="recommendation-title">
-                    <span class="ar-text">سعر طيران ناس أقل بـ 1649 جنيه مصري | طيران ناس يقدم 10 كجم إضافية</span>
-                    <span class="en-text">flynas price lower by 1649 EGP | flynas offers 10K more baggage</span>
-                </div>
-                <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
-                    <span class="en-text">Market Leader: flynas 💡</span>
-                </div>
-            </div>
-
-            <div class="flight-block comp-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">
-                        <span class="ar-text">flynas-XY-582</span>
-                        <span class="en-text">flynas-XY-582</span>
-                    </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 14:10</span>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">11767 جنيه مصري</span>
-                            <span class="en-text">11767 EGP</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">40 كجم</span>
-                            <span class="en-text">40K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="alert-banner medium">
-            <div class="alert-text">
-                <span class="ar-text">تهديد متوسط</span>
-                <span class="en-text">MEDIUM THREAT</span>
-            </div>
-        </div>
-    </div>
-    
     <div class="threat-card medium alternative" data-level="medium" data-date="2026-05-29">
         <div class="card-date-header">
             <span class="date-route">29MAY26 &nbsp;-&nbsp; HMB-JED</span>
@@ -1477,8 +1377,8 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر العربية للطيران أقل بـ 6783 جنيه مصري | إير كايرو تقدم 10 كجم إضافية</span>
-                    <span class="en-text">Air Arabia Egypt price lower by 6783 EGP | SM offers 10K more baggage</span>
+                    <span class="ar-text">سعر العربية للطيران أقل بـ 6786 جنيه مصري | إير كايرو تقدم 10 كجم إضافية</span>
+                    <span class="en-text">Air Arabia Egypt price lower by 6786 EGP | SM offers 10K more baggage</span>
                 </div>
                 <div class="recommendation-details">
                     <span class="ar-text">الأفضل تنافسياً: العربية للطيران 💡</span>
@@ -1501,8 +1401,8 @@
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">6633 جنيه مصري</span>
-                            <span class="en-text">6633 EGP</span>
+                            <span class="ar-text">6630 جنيه مصري</span>
+                            <span class="en-text">6630 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
@@ -1577,22 +1477,22 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر طيران ناس أقل بـ 3650 جنيه مصري | طيران ناس يقدم 10 كجم إضافية</span>
-                    <span class="en-text">flynas price lower by 3650 EGP | flynas offers 10K more baggage</span>
+                    <span class="ar-text">سعر طيران النيل أقل بـ 4890 جنيه مصري</span>
+                    <span class="en-text">Nile Air price lower by 4890 EGP</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
-                    <span class="en-text">Market Leader: flynas 💡</span>
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">flynas-XY-574</span>
-                        <span class="en-text">flynas-XY-574</span>
+                        <span class="ar-text">Nile Air-NP-127</span>
+                        <span class="en-text">Nile Air-NP-127</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 02:15</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 12:45</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1601,8 +1501,8 @@
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">9766 جنيه مصري</span>
-                            <span class="en-text">9766 EGP</span>
+                            <span class="ar-text">8526 جنيه مصري</span>
+                            <span class="en-text">8526 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
@@ -1612,8 +1512,8 @@
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">40 كجم</span>
-                            <span class="en-text">40K</span>
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
                         </div>
                     </div>
                 </div>
@@ -1641,13 +1541,13 @@
                 </div>
 
                 <div class="lf-unified-section">
-                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">130</span></div>
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">138</span></div>
                     <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21May</span></div>
                     <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">46</span></div>
                     <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
                     <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">73%</span></div>
-                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V9</span></div>
+                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">77%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V2</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1741,13 +1641,13 @@
                 </div>
 
                 <div class="lf-unified-section">
-                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">130</span></div>
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">138</span></div>
                     <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21May</span></div>
                     <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">46</span></div>
                     <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
                     <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">73%</span></div>
-                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V9</span></div>
+                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">77%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V2</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1841,13 +1741,13 @@
                 </div>
 
                 <div class="lf-unified-section">
-                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">130</span></div>
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">138</span></div>
                     <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21May</span></div>
                     <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">46</span></div>
                     <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
                     <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">73%</span></div>
-                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V9</span></div>
+                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">77%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V2</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1924,6 +1824,306 @@
             <div class="alert-text">
                 <span class="ar-text">تهديد منخفض</span>
                 <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card medium alternative" data-level="medium" data-date="2026-06-10">
+        <div class="card-date-header">
+            <span class="date-route">10JUN26 &nbsp;-&nbsp; HMB-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-453</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:10</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">138</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21May</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">46</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">77%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V2</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12147 جنيه مصري</span>
+                            <span class="en-text">12147 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 3889 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 3889 EGP | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-643</span>
+                        <span class="en-text">EgyptAir-MS-643</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 21:20</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8258 جنيه مصري</span>
+                            <span class="en-text">8258 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner medium">
+            <div class="alert-text">
+                <span class="ar-text">تهديد متوسط</span>
+                <span class="en-text">MEDIUM THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card medium alternative" data-level="medium" data-date="2026-06-10">
+        <div class="card-date-header">
+            <span class="date-route">10JUN26 &nbsp;-&nbsp; HMB-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-453</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:10</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">138</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21May</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">46</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">77%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V2</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12147 جنيه مصري</span>
+                            <span class="en-text">12147 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 3889 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 3889 EGP | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-641</span>
+                        <span class="en-text">EgyptAir-MS-641</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 17:50</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8258 جنيه مصري</span>
+                            <span class="en-text">8258 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner medium">
+            <div class="alert-text">
+                <span class="ar-text">تهديد متوسط</span>
+                <span class="en-text">MEDIUM THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card medium alternative" data-level="medium" data-date="2026-06-10">
+        <div class="card-date-header">
+            <span class="date-route">10JUN26 &nbsp;-&nbsp; HMB-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-453</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:10</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">138</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21May</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">46</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">77%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V2</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12147 جنيه مصري</span>
+                            <span class="en-text">12147 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 3889 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 3889 EGP | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-655</span>
+                        <span class="en-text">EgyptAir-MS-655</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 12:10</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8258 جنيه مصري</span>
+                            <span class="en-text">8258 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner medium">
+            <div class="alert-text">
+                <span class="ar-text">تهديد متوسط</span>
+                <span class="en-text">MEDIUM THREAT</span>
             </div>
         </div>
     </div>
@@ -2889,6 +3089,106 @@
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-643</span>
+                        <span class="en-text">EgyptAir-MS-643</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 21:20</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8258 جنيه مصري</span>
+                            <span class="en-text">8258 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high alternative" data-level="high" data-date="2026-07-14">
+        <div class="card-date-header">
+            <span class="date-route">14JUL26 &nbsp;-&nbsp; HMB-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-453</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 08:40</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">NIL</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">0%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">Y9</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">21632 جنيه مصري</span>
+                            <span class="en-text">21632 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 13374 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 13374 EGP | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
                         <span class="ar-text">EgyptAir-MS-669</span>
                         <span class="en-text">EgyptAir-MS-669</span>
                     </span>
@@ -3014,106 +3314,6 @@
                         <div class="flight-detail-value">
                             <span class="ar-text">46 كجم</span>
                             <span class="en-text">46K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="alert-banner high">
-            <div class="alert-text">
-                <span class="ar-text">تهديد عالي</span>
-                <span class="en-text">HIGH THREAT</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card high alternative" data-level="high" data-date="2026-07-14">
-        <div class="card-date-header">
-            <span class="date-route">14JUL26 &nbsp;-&nbsp; HMB-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block our-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">SM-453</span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 08:40</span>
-                </div>
-
-                <div class="lf-unified-section">
-                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">NIL</span></div>
-                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">0%</span></div>
-                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">Y9</span></div>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">21632 جنيه مصري</span>
-                            <span class="en-text">21632 EGP</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="recommendation-section">
-                <div class="recommendation-title">
-                    <span class="ar-text">سعر مصر للطيران أقل بـ 15840 جنيه مصري | إير كايرو تقدم 7 كجم إضافية</span>
-                    <span class="en-text">EgyptAir price lower by 15840 EGP | SM offers 7K more baggage</span>
-                </div>
-                <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
-                    <span class="en-text">Market Leader: EgyptAir 💡</span>
-                </div>
-            </div>
-
-            <div class="flight-block comp-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">
-                        <span class="ar-text">EgyptAir-MS-673</span>
-                        <span class="en-text">EgyptAir-MS-673</span>
-                    </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 01:55</span>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">5792 جنيه مصري</span>
-                            <span class="en-text">5792 EGP</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">23 كجم</span>
-                            <span class="en-text">23K</span>
                         </div>
                     </div>
                 </div>
@@ -3777,106 +3977,6 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر طيران أديل أقل بـ 9386 جنيه مصري | طيران أديل يقدم 10 كجم إضافية</span>
-                    <span class="en-text">flyadeal price lower by 9386 EGP | flyadeal offers 10K more baggage</span>
-                </div>
-                <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: طيران أديل 💡</span>
-                    <span class="en-text">Market Leader: flyadeal 💡</span>
-                </div>
-            </div>
-
-            <div class="flight-block comp-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">
-                        <span class="ar-text">flyadeal-F3-762</span>
-                        <span class="en-text">flyadeal-F3-762</span>
-                    </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 21:45</span>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">12246 جنيه مصري</span>
-                            <span class="en-text">12246 EGP</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">40 كجم</span>
-                            <span class="en-text">40K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="alert-banner high">
-            <div class="alert-text">
-                <span class="ar-text">تهديد عالي</span>
-                <span class="en-text">HIGH THREAT</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card high alternative" data-level="high" data-date="2026-08-11">
-        <div class="card-date-header">
-            <span class="date-route">11AUG26 &nbsp;-&nbsp; HMB-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block our-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">SM-453</span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 08:40</span>
-                </div>
-
-                <div class="lf-unified-section">
-                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">NIL</span></div>
-                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">0%</span></div>
-                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">Y9</span></div>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">21632 جنيه مصري</span>
-                            <span class="en-text">21632 EGP</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="recommendation-section">
-                <div class="recommendation-title">
                     <span class="ar-text">سعر مصر للطيران أقل بـ 8216 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
                     <span class="en-text">EgyptAir price lower by 8216 EGP | EgyptAir offers 16K more baggage</span>
                 </div>
@@ -3993,6 +4093,106 @@
                         <span class="en-text">EgyptAir-MS-665</span>
                     </span>
                     <span class="flight-time"><span class="time-label">DEP</span> 03:05</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">13416 جنيه مصري</span>
+                            <span class="en-text">13416 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high alternative" data-level="high" data-date="2026-08-11">
+        <div class="card-date-header">
+            <span class="date-route">11AUG26 &nbsp;-&nbsp; HMB-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-453</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 08:40</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">NIL</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">0%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">Y9</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">21632 جنيه مصري</span>
+                            <span class="en-text">21632 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 8216 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 8216 EGP | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-663</span>
+                        <span class="en-text">EgyptAir-MS-663</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:30</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -4977,8 +5177,8 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر طيران ناس أقل بـ 11866 جنيه مصري | طيران ناس يقدم 10 كجم إضافية</span>
-                    <span class="en-text">flynas price lower by 11866 EGP | flynas offers 10K more baggage</span>
+                    <span class="ar-text">سعر طيران ناس أقل بـ 14600 جنيه مصري | إير كايرو تقدم 15 كجم إضافية</span>
+                    <span class="en-text">flynas price lower by 14600 EGP | SM offers 15K more baggage</span>
                 </div>
                 <div class="recommendation-details">
                     <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
@@ -4989,10 +5189,10 @@
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">flynas-XY-568</span>
-                        <span class="en-text">flynas-XY-568</span>
+                        <span class="ar-text">flynas-XY-572</span>
+                        <span class="en-text">flynas-XY-572</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 01:15</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 22:00</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -5001,8 +5201,8 @@
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">9766 جنيه مصري</span>
-                            <span class="en-text">9766 EGP</span>
+                            <span class="ar-text">7032 جنيه مصري</span>
+                            <span class="en-text">7032 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
@@ -5012,8 +5212,8 @@
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">40 كجم</span>
-                            <span class="en-text">40K</span>
+                            <span class="ar-text">15 كجم</span>
+                            <span class="en-text">15K</span>
                         </div>
                     </div>
                 </div>
@@ -5077,22 +5277,22 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر طيران أديل أقل بـ 14600 جنيه مصري | إير كايرو تقدم 15 كجم إضافية</span>
-                    <span class="en-text">flyadeal price lower by 14600 EGP | SM offers 15K more baggage</span>
+                    <span class="ar-text">سعر طيران ناس أقل بـ 14600 جنيه مصري | إير كايرو تقدم 15 كجم إضافية</span>
+                    <span class="en-text">flynas price lower by 14600 EGP | SM offers 15K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: طيران أديل 💡</span>
-                    <span class="en-text">Market Leader: flyadeal 💡</span>
+                    <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
+                    <span class="en-text">Market Leader: flynas 💡</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">flyadeal-F3-756</span>
-                        <span class="en-text">flyadeal-F3-756</span>
+                        <span class="ar-text">flynas-XY-568</span>
+                        <span class="en-text">flynas-XY-568</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 11:45</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 01:15</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -5189,10 +5389,10 @@
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">flyadeal-F3-754</span>
-                        <span class="en-text">flyadeal-F3-754</span>
+                        <span class="ar-text">flyadeal-F3-756</span>
+                        <span class="en-text">flyadeal-F3-756</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 09:45</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:45</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -5389,6 +5589,106 @@
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
+                        <span class="ar-text">flynas-XY-572</span>
+                        <span class="en-text">flynas-XY-572</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 22:00</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9766 جنيه مصري</span>
+                            <span class="en-text">9766 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">40 كجم</span>
+                            <span class="en-text">40K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner high">
+            <div class="alert-text">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card high alternative" data-level="high" data-date="2026-09-15">
+        <div class="card-date-header">
+            <span class="date-route">15SEP26 &nbsp;-&nbsp; HMB-JED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-453</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 08:40</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">NIL</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">0%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">Y9</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">21632 جنيه مصري</span>
+                            <span class="en-text">21632 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران ناس أقل بـ 11866 جنيه مصري | طيران ناس يقدم 10 كجم إضافية</span>
+                    <span class="en-text">flynas price lower by 11866 EGP | flynas offers 10K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
+                    <span class="en-text">Market Leader: flynas 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
                         <span class="ar-text">flynas-XY-590</span>
                         <span class="en-text">flynas-XY-590</span>
                     </span>
@@ -5477,22 +5777,22 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر الخطوط السعودية أقل بـ 14234 جنيه مصري | إير كايرو تقدم 7 كجم إضافية</span>
-                    <span class="en-text">Saudia price lower by 14234 EGP | SM offers 7K more baggage</span>
+                    <span class="ar-text">سعر طيران ناس أقل بـ 11866 جنيه مصري | طيران ناس يقدم 10 كجم إضافية</span>
+                    <span class="en-text">flynas price lower by 11866 EGP | flynas offers 10K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: الخطوط السعودية 💡</span>
-                    <span class="en-text">Market Leader: Saudia 💡</span>
+                    <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
+                    <span class="en-text">Market Leader: flynas 💡</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">Saudia-SV-308</span>
-                        <span class="en-text">Saudia-SV-308</span>
+                        <span class="ar-text">flynas-XY-578</span>
+                        <span class="en-text">flynas-XY-578</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 04:25</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 18:10</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -5501,8 +5801,8 @@
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">7398 جنيه مصري</span>
-                            <span class="en-text">7398 EGP</span>
+                            <span class="ar-text">9766 جنيه مصري</span>
+                            <span class="en-text">9766 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
@@ -5512,108 +5812,8 @@
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">23 كجم</span>
-                            <span class="en-text">23K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="alert-banner high">
-            <div class="alert-text">
-                <span class="ar-text">تهديد عالي</span>
-                <span class="en-text">HIGH THREAT</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="threat-card high alternative" data-level="high" data-date="2026-09-15">
-        <div class="card-date-header">
-            <span class="date-route">15SEP26 &nbsp;-&nbsp; HMB-JED</span>
-        </div>
-
-        <div class="blocks-wrapper">
-            <div class="flight-block our-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">SM-453</span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 08:40</span>
-                </div>
-
-                <div class="lf-unified-section">
-                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">NIL</span></div>
-                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">0%</span></div>
-                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">Y9</span></div>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">21632 جنيه مصري</span>
-                            <span class="en-text">21632 EGP</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">30 كجم</span>
-                            <span class="en-text">30K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="recommendation-section">
-                <div class="recommendation-title">
-                    <span class="ar-text">سعر الخطوط السعودية أقل بـ 14234 جنيه مصري | إير كايرو تقدم 7 كجم إضافية</span>
-                    <span class="en-text">Saudia price lower by 14234 EGP | SM offers 7K more baggage</span>
-                </div>
-                <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: الخطوط السعودية 💡</span>
-                    <span class="en-text">Market Leader: Saudia 💡</span>
-                </div>
-            </div>
-
-            <div class="flight-block comp-flight">
-                <div class="flight-block-header">
-                    <span class="flight-number">
-                        <span class="ar-text">Saudia-SV-382</span>
-                        <span class="en-text">Saudia-SV-382</span>
-                    </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 06:55</span>
-                </div>
-                <div class="flight-block-details">
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">السعر</span>
-                            <span class="en-text">FARE</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">7398 جنيه مصري</span>
-                            <span class="en-text">7398 EGP</span>
-                        </div>
-                    </div>
-                    <div class="flight-detail-separator"></div>
-                    <div class="flight-detail-col">
-                        <div class="flight-detail-label">
-                            <span class="ar-text">الوزن</span>
-                            <span class="en-text">BAG</span>
-                        </div>
-                        <div class="flight-detail-value">
-                            <span class="ar-text">23 كجم</span>
-                            <span class="en-text">23K</span>
+                            <span class="ar-text">40 كجم</span>
+                            <span class="en-text">40K</span>
                         </div>
                     </div>
                 </div>
