@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="report-generated" content="2026-05-22T15:49:00">
-    <meta name="report-version" content="20260522154900">
-    <title>ATZ-MED - Threat Report</title>
+    <meta name="report-generated" content="2026-05-23T04:13:00">
+    <meta name="report-version" content="20260523041300">
+    <title>HBE-MED - Threat Report</title>
     <!-- Preload loader GIF for instant display -->
     <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
     <style>
@@ -1127,7 +1127,7 @@
     <div class="freeze-panes">
         <div class="header">
             <div class="header-content">
-                <h1>ATZ-MED</h1>
+                <h1>HBE-MED</h1>
             </div>
             <button class="lang-toggle" onclick="toggleLang()">
                 <span class="ar-text">EN</span>
@@ -1139,29 +1139,37 @@
         <div class="filter-section">
             <div class="filter-row">
                 <select class="route-selector" id="routeSelector" onchange="navigateToRoute(this.value)">
-                    <option value="YNB-CAI">YNB-CAI</option>
-<option value="ATZ-JED">ATZ-JED</option>
-<option value="ATZ-MED" selected>ATZ-MED</option>
-<option value="ATZ-RUH">ATZ-RUH</option>
-<option value="DMM-CAI">DMM-CAI</option>
-<option value="DMM-HMB">DMM-HMB</option>
+                    <option value="TUU-CAI">TUU-CAI</option>
+<option value="TUU-HMB">TUU-HMB</option>
+<option value="HBE-JED">HBE-JED</option>
+<option value="HBE-MED" selected>HBE-MED</option>
+<option value="HMB-JED">HMB-JED</option>
+<option value="HMB-MED">HMB-MED</option>
+<option value="HMB-RUH">HMB-RUH</option>
+<option value="HMB-DMM">HMB-DMM</option>
+<option value="HMB-TUU">HMB-TUU</option>
+<option value="HMB-AHB">HMB-AHB</option>
+<option value="HMB-ELQ">HMB-ELQ</option>
+<option value="YNB-CAI">YNB-CAI</option>
 <option value="JED-CAI">JED-CAI</option>
 <option value="JED-HBE">JED-HBE</option>
 <option value="JED-HMB">JED-HMB</option>
 <option value="JED-ATZ">JED-ATZ</option>
+<option value="ATZ-JED">ATZ-JED</option>
+<option value="ATZ-RUH">ATZ-RUH</option>
 <option value="MED-CAI">MED-CAI</option>
 <option value="MED-HBE">MED-HBE</option>
 <option value="MED-ATZ">MED-ATZ</option>
 <option value="MED-HMB">MED-HMB</option>
-<option value="GIZ-CAI">GIZ-CAI</option>
-<option value="AJF-CAI">AJF-CAI</option>
 <option value="RUH-CAI">RUH-CAI</option>
 <option value="RUH-ATZ">RUH-ATZ</option>
 <option value="RUH-HMB">RUH-HMB</option>
+<option value="AHB-CAI">AHB-CAI</option>
+<option value="AHB-HMB">AHB-HMB</option>
 <option value="ELQ-CAI">ELQ-CAI</option>
 <option value="ELQ-HMB">ELQ-HMB</option>
-<option value="TUU-CAI">TUU-CAI</option>
-<option value="TUU-HMB">TUU-HMB</option>
+<option value="DMM-CAI">DMM-CAI</option>
+<option value="DMM-HMB">DMM-HMB</option>
 <option value="CAI-JED">CAI-JED</option>
 <option value="CAI-MED">CAI-MED</option>
 <option value="CAI-RUH">CAI-RUH</option>
@@ -1172,15 +1180,8 @@
 <option value="CAI-AHB">CAI-AHB</option>
 <option value="CAI-ELQ">CAI-ELQ</option>
 <option value="CAI-GIZ">CAI-GIZ</option>
-<option value="AHB-CAI">AHB-CAI</option>
-<option value="AHB-HMB">AHB-HMB</option>
-<option value="HMB-JED">HMB-JED</option>
-<option value="HMB-MED">HMB-MED</option>
-<option value="HMB-RUH">HMB-RUH</option>
-<option value="HMB-DMM">HMB-DMM</option>
-<option value="HMB-TUU">HMB-TUU</option>
-<option value="HMB-ELQ">HMB-ELQ</option>
-<option value="HBE-JED">HBE-JED</option>
+<option value="AJF-CAI">AJF-CAI</option>
+<option value="GIZ-CAI">GIZ-CAI</option>
                 </select>
                 <button class="filter-btn" id="dateFilterBtn" onclick="openFilterModal('date')">
                     <span class="ar-text">📅 التواريخ</span>
@@ -1210,7 +1211,7 @@
         </div>
         <div class="stat-item low" data-level="low" onclick="filterByLevel('low')">
             <div class="stat-sphere"><img src="../web_blue.png" alt="Low"></div>
-            <div class="stat-count">1</div>
+            <div class="stat-count">2</div>
             <div class="stat-label">
                 <span class="ar-text">تهديد منخفض</span>
                 <span class="en-text">LOW THREAT</span>
@@ -1226,26 +1227,26 @@
 
     <div class="content">
         
-    <div class="threat-card low alternative" data-level="low" data-date="2026-09-06">
+    <div class="threat-card low" data-level="low" data-date="2026-05-31">
         <div class="card-date-header">
-            <span class="date-route">06SEP26 &nbsp;-&nbsp; ATZ-MED</span>
+            <span class="date-route">31MAY26 &nbsp;-&nbsp; HBE-MED</span>
         </div>
 
         <div class="blocks-wrapper">
             <div class="flight-block our-flight">
                 <div class="flight-block-header">
-                    <span class="flight-number">SM-487</span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 13:15</span>
+                    <span class="flight-number">SM-485</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 12:10</span>
                 </div>
 
                 <div class="lf-unified-section">
-                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">NIL</span></div>
-                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">115</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">22May</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">1</span></div>
                     <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
-                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">0%</span></div>
-                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">G9</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator lf-percent lf-medium"><span class="lf-label">LF</span><span class="lf-value">64%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">W9</span></div>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1254,8 +1255,8 @@
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">11578 جنيه مصري</span>
-                            <span class="en-text">11578 EGP</span>
+                            <span class="ar-text">10281 جنيه مصري</span>
+                            <span class="en-text">10281 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
@@ -1275,22 +1276,22 @@
 
             <div class="recommendation-section">
                 <div class="recommendation-title">
-                    <span class="ar-text">سعر طيران أديل أقل بـ 5251 جنيه مصري | إير كايرو تقدم 15 كجم إضافية</span>
-                    <span class="en-text">flyadeal price lower by 5251 EGP | SM offers 15K more baggage</span>
+                    <span class="ar-text">سعر إير كايرو أقل بـ 1762 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">SM price lower by 1762 EGP | EgyptAir offers 16K more baggage</span>
                 </div>
                 <div class="recommendation-details">
-                    <span class="ar-text">الأفضل تنافسياً: طيران أديل 💡</span>
-                    <span class="en-text">Market Leader: flyadeal 💡</span>
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
                 </div>
             </div>
 
             <div class="flight-block comp-flight">
                 <div class="flight-block-header">
                     <span class="flight-number">
-                        <span class="ar-text">flyadeal-F3-776</span>
-                        <span class="en-text">flyadeal-F3-776</span>
+                        <span class="ar-text">EgyptAir-MS-679</span>
+                        <span class="en-text">EgyptAir-MS-679</span>
                     </span>
-                    <span class="flight-time"><span class="time-label">DEP</span> 22:45</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 09:35</span>
                 </div>
                 <div class="flight-block-details">
                     <div class="flight-detail-col">
@@ -1299,8 +1300,8 @@
                             <span class="en-text">FARE</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">6327 جنيه مصري</span>
-                            <span class="en-text">6327 EGP</span>
+                            <span class="ar-text">12043 جنيه مصري</span>
+                            <span class="en-text">12043 EGP</span>
                         </div>
                     </div>
                     <div class="flight-detail-separator"></div>
@@ -1310,8 +1311,108 @@
                             <span class="en-text">BAG</span>
                         </div>
                         <div class="flight-detail-value">
-                            <span class="ar-text">15 كجم</span>
-                            <span class="en-text">15K</span>
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-06-18">
+        <div class="card-date-header">
+            <span class="date-route">18JUN26 &nbsp;-&nbsp; HBE-MED</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-485</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 10:30</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">26</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">14May</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">0</span></div>
+                    <div class="lf-indicator lf-percent lf-low"><span class="lf-label">LF</span><span class="lf-value">15%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">S9</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">10929 جنيه مصري</span>
+                            <span class="en-text">10929 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران ناس أقل بـ 1361 جنيه مصري | طيران ناس يقدم 10 كجم إضافية</span>
+                    <span class="en-text">flynas price lower by 1361 EGP | flynas offers 10K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
+                    <span class="en-text">Market Leader: flynas 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">flynas-XY-575</span>
+                        <span class="en-text">flynas-XY-575</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 16:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9568 جنيه مصري</span>
+                            <span class="en-text">9568 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">40 كجم</span>
+                            <span class="en-text">40K</span>
                         </div>
                     </div>
                 </div>
@@ -1360,9 +1461,13 @@
             </div>
             <div class="filter-modal-body" id="dateFilterBody">
                 <div class="filter-year-header">2026</div>
-<label class="filter-month-header"><input type="checkbox" data-month="2026-09" checked><span>September</span></label>
+<label class="filter-month-header"><input type="checkbox" data-month="2026-05" checked><span>May</span></label>
 <div class="filter-dates-grid">
-<label class="filter-date-item"><input type="checkbox" data-date="2026-09-06" checked><span>06 Sep</span></label>
+<label class="filter-date-item"><input type="checkbox" data-date="2026-05-31" checked><span>31 May</span></label>
+</div>
+<label class="filter-month-header"><input type="checkbox" data-month="2026-06" checked><span>June</span></label>
+<div class="filter-dates-grid">
+<label class="filter-date-item"><input type="checkbox" data-date="2026-06-18" checked><span>18 Jun</span></label>
 </div>
             </div>
         </div>
