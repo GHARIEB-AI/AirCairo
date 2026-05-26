@@ -1293,9 +1293,9 @@ function drawCard(name, frame=0){
 
     // Auto-fit font size so capsule never gets wider than MAX_CAP_W
     const txt = safeName;
-    const MAX_CAP_W = 720;          // hard cap — leaves clearance for sheep/camel/palms
-    const padX = 56;
-    let fontPx = 56;
+    const MAX_CAP_W = 580;          // tighter cap — guarantees clearance from sheep (left) and camel (right)
+    const padX = 48;
+    let fontPx = 52;
     ctx.font = `800 ${fontPx}px "Cairo", sans-serif`;
     let tw = ctx.measureText(txt).width;
     while (tw + padX*2 > MAX_CAP_W && fontPx > 26){
