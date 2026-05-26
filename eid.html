@@ -172,6 +172,28 @@
     display:inline-block;
     text-shadow:0 6px 25px rgba(245,130,32,0.55);
   }
+  .hero-tagline{
+    font-family:'Amiri','Cairo',serif;
+    font-weight:700;
+    font-size:28px;
+    margin:14px 0 6px;
+    background:linear-gradient(90deg, #FFD58A 0%, #FFE8B8 50%, #FFB066 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:#FFD58A; /* fallback */
+    letter-spacing:0.5px;
+    position:relative;
+    display:inline-block;
+    padding-bottom:8px;
+  }
+  .hero-tagline::after{
+    content:"";
+    position:absolute;
+    bottom:0; left:15%; right:15%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(255,213,138,0.6), transparent);
+  }
   .hero-text p.lead{
     margin:18px 0 0;
     font-size:17px;
@@ -529,6 +551,7 @@
       position:relative;
       z-index:7;
     }
+    .hero-tagline{ font-size:22px; margin:10px 0 4px }
     .hero-text p.lead{ font-size:14px; line-height:1.7; margin:14px auto 0; max-width:none }
     .hero-art{ height:240px; margin-top:10px; position:relative; z-index:4 }
     .balloon{ display:none }
@@ -584,6 +607,7 @@
   @media (max-width:420px){
     .hero{ padding:24px 14px 16px }
     .hero-text h1{ font-size:36px }
+    .hero-tagline{ font-size:20px }
     .hero-text p.lead{ font-size:13px }
     .hero-art{ height:220px }
     .moon-wrap{ width:90px; height:90px }
@@ -713,7 +737,8 @@
       <div class="hero-text">
         <span class="kicker">AIR&nbsp;CAIRO&nbsp;&middot;&nbsp;EID&nbsp;GREETING</span>
         <h1>عيد <span class="accent">أضحى</span><br>مبارك</h1>
-        <p class="lead">من قلوبنا في عائلة اير كايرو إلى السماء التي تجمعنا — كل عام وأنتم بألف خير، وأعاده الله علينا وعليكم باليُمن والبركات.</p>
+        <div class="hero-tagline">كل عام وأنتم بخير</div>
+        <p class="lead">من قلوبنا في عائلة اير كايرو إلى السماء التي تجمعنا — أعاده الله علينا وعليكم باليُمن والبركات.</p>
       </div>
       <div class="hero-art">
         <div class="scene">
