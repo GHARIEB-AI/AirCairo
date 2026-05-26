@@ -1368,6 +1368,11 @@ function flashInput(){
 function doGenerate(){
   const name = nameInput.value.trim();
   if (!name){ flashInput(); return; }
+  // Reset any previous GIF state so a new card always regenerates fresh
+  cachedGifBlob = null;
+  cachedGifName = '';
+  if (typeof hideAnimatedGif === 'function') hideAnimatedGif();
+  if (gifBtnLabel) gifBtnLabel.textContent = 'تحميل GIF متحرك';
   whenReady([logoImg, scriptImg], () => {
     drawCard(name, 0);
     finalize();
@@ -1409,9 +1414,67 @@ async function ensureGifWorker(){
   return GIF_WORKER_URL;
 }
 
-downloadGifBtn.addEventListener('click', async () => {
-  const name = nameInput.value.trim();
-  if (!name){ flashInput(); return; }
+/* Cache the generated GIF to avoid re-generating on repeat clicks */
+let cachedGifBlob = null;
+let cachedGifName = '';
+let gifImage = null;
+let gifHint = null;
+
+function triggerGifDownload(blob, name){
+  const url = URL.createObjectURL(blob);
+  const safe = name.replace(/\s+/g, '_');
+  const link = document.createElement('a');
+  link.download = `AirCairo_Eid_${safe}.gif`;
+  link.href = url;
+  link.rel = 'noopener';
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  setTimeout(() => {
+    try { document.body.removeChild(link); } catch(_){}
+    URL.revokeObjectURL(url);
+  }, 8000);
+}
+
+function showAnimatedGifInline(blob){
+  const url = URL.createObjectURL(blob);
+  if (!gifImage){
+    gifImage = document.createElement('img');
+    gifImage.style.cssText = 'width:min(100%,760px); height:auto; border-radius:20px; box-shadow:0 20px 50px -15px rgba(75,16,128,0.4); display:block; margin:14px auto 0;';
+    gifImage.alt = 'بطاقة عيد متحركة';
+    canvas.parentNode.insertBefore(gifImage, canvas.nextSibling);
+  }
+  // Revoke previous src to avoid memory leak
+  if (gifImage.src && gifImage.src.startsWith('blob:')) URL.revokeObjectURL(gifImage.src);
+  gifImage.src = url;
+  gifImage.style.display = 'block';
+  canvas.style.display = 'none';
+
+  if (!gifHint){
+    gifHint = document.createElement('div');
+    gifHint.style.cssText = 'text-align:center; margin-top:10px; font-size:13px; color:#6b5a8a; padding:8px 14px; background:#FFF8EE; border-radius:10px; display:inline-block;';
+    gifHint.innerHTML = '💡 اضغط مطولاً على الصورة المتحركة لحفظها على جوالك';
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'text-align:center';
+    wrap.appendChild(gifHint);
+    gifImage.parentNode.insertBefore(wrap, gifImage.nextSibling);
+  }
+  gifHint.parentNode.style.display = 'block';
+}
+
+function hideAnimatedGif(){
+  if (gifImage){
+    gifImage.style.display = 'none';
+    if (gifImage.src && gifImage.src.startsWith('blob:')){
+      URL.revokeObjectURL(gifImage.src);
+    }
+    gifImage.src = '';
+  }
+  if (gifHint && gifHint.parentNode) gifHint.parentNode.style.display = 'none';
+  canvas.style.display = 'block';
+}
+
+async function startGifGeneration(name){
   if (typeof GIF === 'undefined'){
     gifBtnLabel.textContent = 'مكتبة GIF غير محمّلة';
     return;
@@ -1444,7 +1507,7 @@ downloadGifBtn.addEventListener('click', async () => {
   });
 
   const frames = 20;
-  const frameDelay = 100; // ms
+  const frameDelay = 100;
 
   whenReady([logoImg, scriptImg], () => {
     for (let f = 0; f < frames; f++){
@@ -1459,21 +1522,45 @@ downloadGifBtn.addEventListener('click', async () => {
     });
 
     gif.on('finished', blob => {
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      const safe = (name).replace(/\s+/g, '_');
-      link.download = `AirCairo_Eid_${safe}.gif`;
-      link.href = url;
-      link.click();
-      setTimeout(() => URL.revokeObjectURL(url), 1500);
-      downloadGifBtn.removeAttribute('disabled');
-      gifBtnLabel.textContent = 'تحميل GIF متحرك';
-      // redraw final still frame
+      cachedGifBlob = blob;
+      cachedGifName = name;
+      showAnimatedGifInline(blob);
+      triggerGifDownload(blob, name);
+      // Redraw still card so canvas is preserved if user shows it again
       drawCard(name, 0);
+      downloadGifBtn.removeAttribute('disabled');
+      gifBtnLabel.textContent = 'حفظ GIF مرة أخرى';
     });
 
     gif.render();
   });
+}
+
+downloadGifBtn.addEventListener('click', () => {
+  const name = nameInput.value.trim();
+  if (!name){ flashInput(); return; }
+
+  // If we already have a cached GIF for this exact name, just re-trigger download
+  if (cachedGifBlob && cachedGifName === name){
+    triggerGifDownload(cachedGifBlob, name);
+    showAnimatedGifInline(cachedGifBlob);
+    gifBtnLabel.textContent = '✅ تم — افحص مجلد التنزيلات';
+    setTimeout(() => { gifBtnLabel.textContent = 'حفظ GIF مرة أخرى'; }, 2200);
+    return;
+  }
+
+  // Otherwise generate new (different name or first time)
+  cachedGifBlob = null;
+  cachedGifName = '';
+  startGifGeneration(name);
+});
+
+// Reset cache when starting a new card
+newOneBtn.addEventListener('click', () => {
+  cachedGifBlob = null;
+  cachedGifName = '';
+  hideAnimatedGif();
+  gifBtnLabel.textContent = 'تحميل GIF متحرك';
 });
 </script>
 </body></html>
