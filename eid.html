@@ -1341,9 +1341,56 @@ function drawCard(name, frame=0){
   // Bottom tagline
   ctx.save();
   ctx.textAlign = 'center';
-  ctx.fillStyle = 'rgba(255,213,138,0.85)';
-  ctx.font = '700 22px "Cairo", sans-serif';
-  ctx.fillText('AIR CAIRO FAMILY · 1447 H', W/2, H - 55);
+
+  // Website URL — elegant gold capsule above the family line
+  const urlText = 'www.aircairo.com';
+  ctx.font = '700 24px "Poppins", sans-serif';
+  const utw = ctx.measureText(urlText).width;
+  const upadX = 22, upadY = 9;
+  const uw = utw + upadX*2 + 24; // extra room for glyph
+  const uh = 38;
+  const ux = W/2 - uw/2;
+  const uy = H - 110;
+
+  // soft glow behind URL
+  ctx.shadowColor = 'rgba(245,130,32,0.55)';
+  ctx.shadowBlur = 24;
+  // subtle pill background
+  ctx.fillStyle = 'rgba(255,255,255,0.06)';
+  ctx.strokeStyle = 'rgba(255,213,138,0.55)';
+  ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  const ur = uh/2;
+  ctx.moveTo(ux+ur, uy);
+  ctx.lineTo(ux+uw-ur, uy);
+  ctx.arc(ux+uw-ur, uy+ur, ur, -Math.PI/2, Math.PI/2);
+  ctx.lineTo(ux+ur, uy+uh);
+  ctx.arc(ux+ur, uy+ur, ur, Math.PI/2, -Math.PI/2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.stroke();
+
+  // small globe glyph (drawn shape — no emoji)
+  const gcx = ux + 22, gcy = uy + uh/2;
+  ctx.strokeStyle = '#FFD58A';
+  ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.arc(gcx, gcy, 9, 0, Math.PI*2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(gcx-9, gcy); ctx.lineTo(gcx+9, gcy); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(gcx, gcy, 4.5, 9, 0, 0, Math.PI*2); ctx.stroke();
+
+  // URL text in gold gradient
+  const urlGrad = ctx.createLinearGradient(ux, uy, ux+uw, uy+uh);
+  urlGrad.addColorStop(0, '#FFE8B8');
+  urlGrad.addColorStop(0.5, '#FFD58A');
+  urlGrad.addColorStop(1, '#F58220');
+  ctx.fillStyle = urlGrad;
+  ctx.fillText(urlText, W/2 + 10, uy + 26);
+
+  // AIR CAIRO FAMILY line below
+  ctx.fillStyle = 'rgba(255,213,138,0.75)';
+  ctx.font = '700 19px "Cairo", sans-serif';
+  ctx.fillText('AIR CAIRO FAMILY · 1447 H', W/2, H - 50);
   ctx.restore();
 
   // Decorative frame
