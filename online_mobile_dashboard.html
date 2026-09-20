@@ -855,6 +855,9 @@
             } else if (status === 'completed') {
                 runStatus.textContent = 'Run Completed';
                 runStatus.className = 'run-status inactive';
+            } else if (status === 'blocked') {
+                runStatus.textContent = 'Run Blocked - ' + (data.blocked_stage || 'unknown');
+                runStatus.className = 'run-status inactive';
             } else if (status === 'failed') {
                 runStatus.textContent = 'Run Failed';
                 runStatus.className = 'run-status inactive';
@@ -871,8 +874,9 @@
 
             // Progress bars
             const progress = data.progress || {};
-            document.getElementById('lf-pct').textContent = (progress.lf || 0).toFixed(0) + '%';
-            document.getElementById('lf-bar').style.width = (progress.lf || 0) + '%';
+            const lfSkippedByMode = progress.lf_status === 'SKIPPED BY MODE';
+            document.getElementById('lf-pct').textContent = lfSkippedByMode ? 'SKIPPED BY MODE' : (progress.lf || 0).toFixed(0) + '%';
+            document.getElementById('lf-bar').style.width = lfSkippedByMode ? '0%' : (progress.lf || 0) + '%';
 
             document.getElementById('oal-pct').textContent = (progress.oal || 0).toFixed(0) + '%';
             document.getElementById('oal-bar').style.width = (progress.oal || 0) + '%';
