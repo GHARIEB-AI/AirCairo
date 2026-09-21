@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-09-21T10:47:15.195900",
-  "status": "FAILED",
-  "phase": "FAILED",
+  "timestamp": "2026-09-21T10:47:49.804578",
+  "status": "COMPLETED",
+  "phase": "COMPLETED",
   "blocked_stage": null,
   "running": false,
   "active_workers": 0,
@@ -104,15 +104,15 @@
     "oal_total_passes": 2,
     "oal_routes_completed": 56,
     "oal_routes_total": 56,
-    "excel": 100,
-    "overall": 86.6,
-    "run_completed": false,
+    "excel": 100.0,
+    "overall": 100.0,
+    "run_completed": true,
     "finalizing": false,
-    "phase": "FAILED",
+    "phase": "COMPLETED",
     "local_build_state": "LOCAL_BUILD_SUCCEEDED",
     "docx_state": "DOCX_SUCCEEDED",
-    "archive_state": "ARCHIVE_PENDING",
-    "main_publish_state": "MAIN_PUBLISH_PENDING"
+    "archive_state": "ARCHIVE_SUCCEEDED",
+    "main_publish_state": "MAIN_PUBLISH_SUCCEEDED"
   },
   "tasks": {
     "total": 336,
@@ -534,7 +534,7 @@
     "speed_per_hour": 0.0,
     "recent_errors": 0,
     "error_rate": 0,
-    "data_points": 12
+    "data_points": 1
   },
   "eta": {
     "lf_eta": null,
@@ -554,25 +554,26 @@
   },
   "live_logs": {
     "lines": [
-      "[VBA] [18/18] [VBA] Processing: YANBU_21SEP26_TO_31OCT26_generated_at_21sep_09.58.xlsx",
-      "[VBA] ✓ YANBU_21SEP26_TO_31OCT26_generated_at_21sep_09.58.xlsx completed in 6.7s",
-      "[VBA] Complete: 18 success, 0 failed",
-      "[VBA] Summary: 18 success, 0 failed",
-      "10:46:42 | INFO     | managers.checkpoint_manager | Run marked READY_TO_PUBLISH",
+      "10:47:46 | INFO     | web.publishing.github_publisher | Wrote publish_status.json (ok=True): D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_210926_at_09.57\\reports\\publish_status.json",
+      "[OK] GitHub Pages publish verified",
+      "10:47:46 | INFO     | web.publishing.github_publisher | [OK] GitHub Pages publish verified",
+      "[LEGACY] publish succeeded",
+      "10:47:47 | INFO     | managers.checkpoint_manager | Run marked as COMPLETED",
       "============================================================",
-      "SHAREPOINT ARCHIVE PUBLISH",
+      "✓ SAFE STOP - ALL WORK COMPLETED",
       "============================================================",
-      "State       : SHAREPOINT_COPIED_TO_SYNC_ROOT",
-      "Copied      : 124",
-      "Already there: 0",
-      "Destination : C:\\Users\\MANDO\\OneDrive - Air Cairo\\market insights\\2026\\21-sep-2026\\3rd_run_generated_at_9.57_am_range_21sep_to_31oct",
+      "Tasks Completed: 336/336",
+      "Status: Run finished successfully",
+      "Resume: Not needed",
       "============================================================",
-      "10:46:54 | INFO     | web.publishing.github_publisher | Wrote publish_status.json (ok=False): D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_210926_at_09.57\\reports\\publish_status.json",
-      "10:46:55 | INFO     | web.publishing.github_publisher | PC validation passed: 46 links, 46 files, 0 broken",
-      "10:46:55 | INFO     | web.publishing.github_publisher | Mobile validation passed: 34 links, 34 files, 0 broken"
+      "======================================================================",
+      "FINAL RUN STATE: SUCCESS",
+      "Success: True",
+      "Tasks Completed: 336/336",
+      "======================================================================"
     ],
     "file": "FULL_RUN_LOG.log",
-    "total_lines": 61147
+    "total_lines": 61191
   },
   "flight_booking_data": {
     "flights": [
