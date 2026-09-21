@@ -1,42 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-    <link rel="shortcut icon" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+    <link rel="shortcut icon" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="report-generated" content="2026-09-21T10:42:00">
     <meta name="report-version" content="20260921104200">
-    <title>Threat Alert Report - Routes</title>
+    <title>ATZ-RUH - Threat Report</title>
     <!-- Preload loader GIF for instant display -->
-    <link rel="preload" href="assets/img/aircairo-loader.gif" as="image">
+    <link rel="preload" href="../assets/img/aircairo-loader.gif" as="image">
     <style>
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            overflow-x: hidden;
-            width: 100%;
-            max-width: 100vw;
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(180deg, #462B73 0%, #462B73 180px, #f0f0f5 180px, #f0f0f5 100%);
+            background: linear-gradient(135deg, #f5f3f9 0%, #ebe7f3 100%);
             color: #462B73;
             min-height: 100vh;
             padding-bottom: 80px;
-            overflow-x: hidden;
-            width: 100%;
-            max-width: 100vw;
         }
 
         body.en { direction: ltr; }
@@ -44,475 +35,641 @@
         .en-text { display: none; }
         body.en .ar-text { display: none; }
         body.en .en-text { display: inline; }
+        .hidden { display: none !important; }
 
-        /* Header - centered title */
-        .header {
-            background: transparent;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
+        .freeze-panes {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
         }
 
-        .header-text {
-            width: 100%;
+        .freeze-panes:hover,
+        .freeze-panes:focus-within,
+        .freeze-panes:active {
+            opacity: 1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            padding: 10px 15px 10px 55px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .home-btn-fixed {
+            position: fixed;
+            top: 12px;
+            left: 15px;
+            z-index: 200;
+            background: rgba(255,255,255,0.95);
+            border: 2px solid rgba(70,43,115,0.3);
+            color: #462B73;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            opacity: 0.65;
+        }
+
+        .header-content {
+            flex: 1;
+            text-align: center;
         }
 
         .header h1 {
             font-size: 1.4em;
+            font-weight: 700;
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .header-meta {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            margin-top: 5px;
-        }
-
-        .header .subtitle {
-            color: white;
-            font-size: 0.9em;
-            font-weight: 600;
-            background: rgba(255,255,255,0.15);
-            padding: 6px 16px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .header .generated {
-            color: #F7941D;
-            font-size: 0.85em;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .lang-toggle {
             background: rgba(255,255,255,0.2);
             border: none;
             color: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        body.en .lang-toggle {
-            margin-right: 0;
-            margin-left: 10px;
-        }
-
-        /* GATE Button - Inside Header (No Floating) */
-        .gate-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: #462B73;
-            background-image: url('assets/img/web_purple.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border: none;
-            padding: 0;
-            margin: 0;
-            display: block;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            outline: none;
-            text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
             cursor: pointer;
         }
 
-        body.en .gate-btn {
-            right: auto;
-            left: 10px;
-        }
-
-        /* Stats Title */
-        .stats-title {
-            text-align: center;
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #462B73;
-            margin: 15px 20px 0 20px;
-            padding: 10px;
-            background: white;
-            border-radius: 12px 12px 0 0;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
-        }
-
-        /* 3D Sphere Stats - Medium Size */
-        .stats-section {
+        .stats-bar {
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 20px 15px;
-            background: white;
-            margin: 0 20px 15px 20px;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            position: relative;
-            z-index: 10;
+            justify-content: space-around;
+            padding: 15px 10px;
+            background: rgba(70, 43, 115, 0.1);
         }
 
-        .stat-sphere {
+        .stat-item {
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 8px;
+            min-width: 56px;
             cursor: pointer;
-            min-width: 85px;
+            transition: transform 0.2s;
         }
 
-        .sphere {
-            width: 90px;
-            height: 90px;
-            margin-bottom: 8px;
-            position: relative;
+        .stat-item:active { transform: scale(0.95); }
+
+        /* Active filter state - dramatic glow effect */
+        .stat-item.active {
+            transform: scale(1.15);
+        }
+        .stat-item.active .stat-sphere {
+            animation: filter-glow 0.8s ease-in-out infinite;
+        }
+        .stat-item.high.active .stat-sphere {
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.8), 0 0 40px rgba(231, 76, 60, 0.5), 0 0 60px rgba(231, 76, 60, 0.3);
+        }
+        .stat-item.medium.active .stat-sphere {
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.8), 0 0 40px rgba(241, 196, 15, 0.5), 0 0 60px rgba(241, 196, 15, 0.3);
+        }
+        .stat-item.low.active .stat-sphere {
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.8), 0 0 40px rgba(65, 105, 225, 0.5), 0 0 60px rgba(65, 105, 225, 0.3);
+        }
+        @keyframes filter-glow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Bottom nav active state */
+        .bottom-nav .nav-item.active {
+            background: rgba(70, 43, 115, 0.2);
+            border-radius: 10px;
+        }
+
+        .stat-sphere {
+            width: 54px;
+            height: 54px;
+            margin-bottom: 6px;
             border-radius: 50%;
             overflow: hidden;
         }
 
-        .sphere img {
+        .stat-sphere img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .stat-sphere.low .sphere img {
+        .stat-item.low .stat-sphere img {
             transform: scale(1.4);
         }
 
-        .stat-sphere .count {
-            font-size: 1.2em;
+        .stat-count {
+            font-size: 1.1em;
             font-weight: 800;
-            margin-bottom: 2px;
         }
 
-        .stat-sphere.low .count { color: #2563eb; }
-        .stat-sphere.medium .count { color: #d4ac0d; }
-        .stat-sphere.high .count { color: #e74c3c; }
+        .stat-item.high .stat-count { color: #e74c3c; }
+        .stat-item.medium .stat-count { color: #d4ac0d; }
+        .stat-item.low .stat-count { color: #4169E1; }
 
-        .stat-sphere .label {
-            font-size: 0.7em;
+        .stat-label {
+            font-size: 0.6em;
             font-weight: 600;
             text-transform: uppercase;
+            margin-top: 2px;
             color: #666;
         }
 
-        .stat-sphere.active-filter {
-            transform: scale(1.1);
+        .content {
+            /* Horizontal padding is the gutter the scroll-button airplanes
+               fly in: 25px each side leaves room for the 50px-wide button
+               to sit with its fuselage exactly on the card's blue border. */
+            padding: 10px 25px;
         }
 
-        .stat-sphere.active-filter .sphere {
-            box-shadow: 0 0 0 2px rgba(70, 43, 115, 0.3), 0 3px 8px rgba(0,0,0,0.25);
-        }
-
-        /* Dramatic fire/lamp glowing animation for index page spheres */
-        @keyframes index-fire-high {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 20px rgba(231, 76, 60, 0.8), 0 0 40px rgba(231, 76, 60, 0.6), 0 0 60px rgba(231, 76, 60, 0.4), inset 0 0 15px rgba(255, 200, 100, 0.5);
-            }
-            50% {
-                transform: scale(1.15);
-                box-shadow: 0 0 35px rgba(231, 76, 60, 1), 0 0 70px rgba(231, 76, 60, 0.8), 0 0 100px rgba(231, 76, 60, 0.5), inset 0 0 25px rgba(255, 255, 150, 0.8);
-            }
-        }
-        @keyframes index-fire-medium {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 20px rgba(241, 196, 15, 0.8), 0 0 40px rgba(241, 196, 15, 0.6), 0 0 60px rgba(241, 196, 15, 0.4), inset 0 0 15px rgba(255, 255, 200, 0.5);
-            }
-            50% {
-                transform: scale(1.15);
-                box-shadow: 0 0 35px rgba(241, 196, 15, 1), 0 0 70px rgba(241, 196, 15, 0.8), 0 0 100px rgba(241, 196, 15, 0.5), inset 0 0 25px rgba(255, 255, 255, 0.8);
-            }
-        }
-        @keyframes index-fire-low {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 20px rgba(37, 99, 235, 0.8), 0 0 40px rgba(37, 99, 235, 0.6), 0 0 60px rgba(37, 99, 235, 0.4), inset 0 0 15px rgba(150, 200, 255, 0.5);
-            }
-            50% {
-                transform: scale(1.15);
-                box-shadow: 0 0 35px rgba(37, 99, 235, 1), 0 0 70px rgba(37, 99, 235, 0.8), 0 0 100px rgba(37, 99, 235, 0.5), inset 0 0 25px rgba(200, 230, 255, 0.8);
-            }
-        }
-        .stat-sphere.high.active-filter .sphere {
-            animation: index-fire-high 0.8s ease-in-out infinite;
-        }
-        .stat-sphere.medium.active-filter .sphere {
-            animation: index-fire-medium 0.8s ease-in-out infinite;
-        }
-        .stat-sphere.low.active-filter .sphere {
-            animation: index-fire-low 0.8s ease-in-out infinite;
-        }
-
-        /* Mini-sphere animations (softer glow) */
-        @keyframes mini-fire-high {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 8px rgba(231, 76, 60, 0.4);
-            }
-            50% {
-                transform: scale(1.08);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 15px rgba(231, 76, 60, 0.6), 0 0 25px rgba(231, 76, 60, 0.3);
-            }
-        }
-        @keyframes mini-fire-medium {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 8px rgba(241, 196, 15, 0.4);
-            }
-            50% {
-                transform: scale(1.08);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 15px rgba(241, 196, 15, 0.6), 0 0 25px rgba(241, 196, 15, 0.3);
-            }
-        }
-        @keyframes mini-fire-low {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 8px rgba(37, 99, 235, 0.4);
-            }
-            50% {
-                transform: scale(1.08);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 15px rgba(37, 99, 235, 0.6), 0 0 25px rgba(37, 99, 235, 0.3);
-            }
-        }
-        body.filter-high .mini-sphere.high {
-            animation: mini-fire-high 1.2s ease-in-out infinite;
-        }
-        body.filter-medium .mini-sphere.medium {
-            animation: mini-fire-medium 1.2s ease-in-out infinite;
-        }
-        body.filter-low .mini-sphere.low {
-            animation: mini-fire-low 1.2s ease-in-out infinite;
-        }
-
-        /* Search Bar */
-        .search-section {
-            padding: 15px;
-        }
-
-        .search-box {
-            background: white;
-            border-radius: 15px;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border: 1px solid rgba(70, 43, 115, 0.1);
-        }
-
-        .search-box input {
-            flex: 1;
-            border: none;
-            outline: none;
-            font-size: 0.95em;
-            color: #462B73;
-            text-align: right;
-            background: transparent;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-
-        body.en .search-box input {
-            text-align: left;
-        }
-
-        .search-box input::placeholder {
-            color: #999;
-        }
-
-        .search-icon {
-            color: #999;
-            font-size: 1.2em;
-        }
-
-        /* Filter Buttons - Connected Style */
-        .filter-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 15px;
-        }
-
-        .filter-group {
-            display: flex;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .filter-btn {
-            padding: 10px 18px;
-            border: none;
-            background: white;
-            color: #462B73;
-            font-size: 0.85em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            border-right: 1px solid rgba(70, 43, 115, 0.1);
-        }
-
-        .filter-btn:last-child {
-            border-right: none;
-        }
-
-        .filter-btn.active {
-            background: #462B73;
-            color: white;
-        }
-
-        /* Routes Grid */
-        .routes-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding: 0 15px 15px;
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
-        /* Route Card - New Design */
-        .route-card {
-            background: white;
+        /* ===== THREAT CARDS - Air Cairo Brand Design ===== */
+        .threat-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f6fc 100%);
+            border: 3px solid #462B73;
             border-radius: 16px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 6px 16px rgba(70, 43, 115, 0.2);
+        }
+
+        .threat-card.high {
+            border-color: #e74c3c;
+            border-width: 3px;
+            box-shadow: 0 6px 16px rgba(231, 76, 60, 0.25);
+            background: linear-gradient(135deg, #fff5f5 0%, #ffebeb 100%);
+        }
+        .threat-card.medium {
+            border-color: #F7941D;
+            border-width: 3px;
+            box-shadow: 0 6px 16px rgba(247, 148, 29, 0.25);
+            background: linear-gradient(135deg, #fffbf5 0%, #fff5e6 100%);
+        }
+        .threat-card.low {
+            border-color: #0000E6;
+            border-width: 3px;
+            box-shadow: 0 6px 16px rgba(0, 0, 230, 0.2);
+            background: linear-gradient(135deg, #f0f0ff 0%, #e6e6ff 100%);
+        }
+        .threat-card.alternative { opacity: 0.85; }
+
+        .card-date-header {
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #462B73;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        .date-route {
+            letter-spacing: 1px;
+        }
+
+        .blocks-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-        }
-
-        .route-card:active {
-            transform: scale(0.98);
-        }
-
-        .route-card-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             gap: 8px;
         }
 
-        .route-card-name {
+        .flight-block {
+            background: white;
+            border-radius: 10px;
+            padding: 10px 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .flight-block.our-flight {
+            border-left: 4px solid #462B73;
+        }
+        .flight-block.comp-flight {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .flight-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 10px;
+        }
+
+        .flight-number {
+            font-weight: 800;
             font-size: 1.1em;
+            color: #462B73;
+        }
+
+        .flight-time {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #888;
+            background: #f5f5f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .time-label {
+            font-size: 0.7em;
+            font-weight: 700;
+            color: #462B73;
+            margin-right: 3px;
+        }
+
+        .lf-badges-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .lf-badge {
+            background: #f0eef5;
+            color: #462B73;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .lf-badge.lf-main {
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 100%);
+            color: white;
+        }
+
+        .lf-badge-label {
+            font-size: 0.75em;
+            opacity: 0.8;
+        }
+
+        /* ===== UNIFIED LF SECTION (6 indicators) ===== */
+        .lf-unified-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 10px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #f8f6fc 0%, #f0eef5 100%);
+            border-radius: 10px;
+            justify-content: center;
+        }
+
+        .lf-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            background: linear-gradient(145deg, #ffffff, #f0eef5);
+            border-radius: 10px;
+            min-width: 58px;
+            box-shadow:
+                0 2px 4px rgba(70,43,115,0.15),
+                0 4px 8px rgba(70,43,115,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            border: 1px solid rgba(70,43,115,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .lf-indicator:active {
+            transform: scale(0.97);
+            box-shadow: 0 1px 2px rgba(70,43,115,0.2);
+        }
+
+        .lf-indicator.lf-wide {
+            flex: 1 1 100%;
+            flex-direction: row;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: linear-gradient(145deg, #f8f6fc, #ebe7f3);
+            border: 1px solid rgba(70,43,115,0.12);
+        }
+
+        .lf-label {
+            font-size: 0.55em;
+            font-weight: 800;
+            color: #7c6b9e;
+            text-transform: uppercase;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .lf-value {
+            font-size: 1em;
+            font-weight: 900;
+            color: #462B73;
+            margin-top: 3px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+        }
+
+        .lf-indicator.lf-wide .lf-value {
+            margin-top: 0;
+            font-size: 0.95em;
+        }
+
+        /* LF% colored badge - 3D effect */
+        .lf-indicator.lf-percent {
+            color: white;
+            box-shadow:
+                0 3px 6px rgba(0,0,0,0.2),
+                0 6px 12px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            border: none;
+        }
+        .lf-indicator.lf-percent .lf-label {
+            color: rgba(255,255,255,0.95);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+        }
+        .lf-indicator.lf-percent .lf-value {
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            font-size: 1.1em;
+        }
+        .lf-indicator.lf-percent.lf-high {
+            background: linear-gradient(145deg, #2ecc71, #27ae60);
+        }
+        .lf-indicator.lf-percent.lf-medium {
+            background: linear-gradient(145deg, #f39c12, #d68910);
+        }
+        .lf-indicator.lf-percent.lf-low {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+        }
+
+        /* Responsive - Small screens 360px */
+        @media (max-width: 360px) {
+            .lf-unified-section {
+                gap: 4px;
+                padding: 8px;
+            }
+            .lf-indicator {
+                padding: 4px 6px;
+                min-width: 48px;
+            }
+            .lf-label {
+                font-size: 0.55em;
+            }
+            .lf-value {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Responsive - Very small screens 320px */
+        @media (max-width: 320px) {
+            .lf-unified-section {
+                gap: 3px;
+                padding: 6px;
+            }
+            .lf-indicator {
+                padding: 3px 5px;
+                min-width: 42px;
+            }
+            .lf-label {
+                font-size: 0.5em;
+            }
+            .lf-value {
+                font-size: 0.75em;
+            }
+        }
+
+        .flight-block-details {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            padding: 8px 0;
+        }
+
+        .flight-detail-col {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .flight-detail-label {
+            font-size: 0.7em;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .flight-detail-value {
+            font-size: 1.4em;
             font-weight: 800;
             color: #462B73;
         }
 
-        .plane-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        .flight-detail-separator {
+            display: none;
         }
 
-        .plane-icon img,
-        .aircraft-icon {
-            width: 1.2em;
-            height: 1.2em;
-            object-fit: contain;
-            vertical-align: middle;
-        }
-
-        .header-aircraft {
-            width: 1em;
-            height: 1em;
-            object-fit: contain;
-            vertical-align: middle;
-            margin-right: 4px;
-        }
-
-        /* Mini Spheres for route stats - matching top sphere design */
-        .route-stats-row {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 10px 8px;
-            gap: 6px;
-        }
-
-        .mini-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3px;
-            flex: 1;
-        }
-
-        .mini-sphere {
-            width: 43px;
-            height: 43px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            font-weight: 800;
-            color: white;
+        .recommendation-section {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border-radius: 12px;
+            padding: 12px 15px;
+            text-align: center;
+            border: 2px solid #F7941D;
+            box-shadow: 0 3px 10px rgba(247, 148, 29, 0.2);
             position: relative;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
 
-        .mini-sphere.low {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-        }
-
-        .mini-sphere.medium {
-            background: linear-gradient(135deg, #f1c40f 0%, #d4ac0d 100%);
-        }
-
-        .mini-sphere.high {
-            background: linear-gradient(135deg, #e74c3c 0%, #922b21 100%);
-        }
-
-        .mini-stat-label {
-            font-size: 0.6em;
-            font-weight: 600;
+        .recommendation-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            color: #E65100;
+            margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .mini-stat.low .mini-stat-label { color: #2563eb; }
-        .mini-stat.medium .mini-stat-label { color: #d4ac0d; }
-        .mini-stat.high .mini-stat-label { color: #e74c3c; }
+        .recommendation-details {
+            font-size: 0.8em;
+            color: #5D4037;
+            line-height: 1.5;
+            font-weight: 500;
+        }
 
-        .route-total {
+        .alert-banner {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
             text-align: center;
-            font-size: 0.75em;
-            color: #666;
-            padding-top: 8px;
-            border-top: 1px dashed rgba(0,0,0,0.1);
+            font-weight: 700;
+            font-size: 0.85em;
         }
 
-        .route-total strong {
-            color: #462B73;
+        .alert-banner.high {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
         }
 
-        /* Bottom Navigation - Modern Floating Style */
-        .pages-nav {
+        .alert-banner.medium {
+            background: linear-gradient(135deg, #F7941D 0%, #e8850a 100%);
+            color: white;
+        }
+
+        .alert-banner.low {
+            background: linear-gradient(135deg, #0000E6 0%, #3333FF 100%);
+            color: white;
+        }
+
+        /* ===== SCROLL NAVIGATION =====
+           Layout mirrors the PC route page: scroll-top pinned to the
+           right edge at mid-height, scroll-bottom pinned to the left
+           edge at mid-height. Sizes / opacity / tap behaviour are
+           unchanged. */
+        .scroll-nav {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        .scroll-btn {
+            position: fixed;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background: url('../assets/img/scroll_button.png') center/contain no-repeat !important;
+            background-color: transparent !important;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0.6;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            pointer-events: auto;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        /* Button width is 50px and .content padding is 25px, so right:0 +
+           left:0 places the button's horizontal center exactly on the
+           card's vertical blue border line. The airplane's fuselage sits
+           on the border; its wings extend half into the gutter and half
+           over the card edge — matching the requested look. */
+        #scrollTop {
+            right: 0;
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        #scrollBottom {
+            left: 0;
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .scroll-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Press-feedback transforms must keep the translateY(-50%) +
+           rotate so the button stays centred during the scale tick. */
+        #scrollTop:active, #scrollTop.pressed {
+            opacity: 1;
+            transform: translateY(-50%) rotate(0deg) scale(0.9);
+        }
+
+        #scrollBottom:active, #scrollBottom.pressed {
+            opacity: 1;
+            transform: translateY(-50%) rotate(180deg) scale(0.9);
+        }
+
+        .scroll-btn svg {
+            display: none !important;
+        }
+
+        .position-indicator {
+            position: fixed;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100px;
+            background: rgba(70, 43, 115, 0.1);
+            border-radius: 2px;
+            z-index: 98;
+        }
+
+        .position-marker {
+            position: absolute;
+            width: 4px;
+            height: 20px;
+            background: #F7941D;
+            border-radius: 2px;
+            transition: top 0.1s;
+        }
+
+        /* Scroll-position % badge — appears in the tail direction of the
+           airplane the user is pressing, ~5mm clear of the silhouette:
+              #scrollTop  (right, rotate 0)   → nose up,   tail down → badge BELOW
+              #scrollBottom (left, rotate 180) → nose down, tail up   → badge ABOVE
+           Same horizontal anchor as the button so badge is centred over
+           the card's blue border. z-index 95 still keeps it under the
+           airplane (99) per the user's "behind" intent. */
+        .position-percent {
+            position: fixed;
+            background: linear-gradient(135deg, #462B73 0%, #5a3d8a 60%, #F7941D 140%);
+            color: white;
+            padding: 6px 4px;
+            width: 50px;
+            text-align: center;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            box-shadow: 0 4px 12px rgba(70, 43, 115, 0.55);
+            opacity: 0;
+            transition: opacity 0.28s ease;
+            z-index: 95;
+            pointer-events: none;
+            white-space: nowrap;
+            box-sizing: border-box;
+            /* Park off-screen until a side is chosen — avoids any flash. */
+            top: -200px;
+            left: -200px;
+        }
+
+        .position-percent.on-right {
+            /* Anchored at right:0 like #scrollTop, so the badge sits
+               directly below the airplane (button-bottom + 5mm). */
+            right: 0;
+            left: auto;
+            top: calc(50% + 25px + 5mm);
+            bottom: auto;
+        }
+
+        .position-percent.on-left {
+            /* Anchored at left:0 like #scrollBottom, sitting directly
+               above the airplane (button-top - 5mm). */
+            left: 0;
+            right: auto;
+            bottom: calc(50% + 25px + 5mm);
+            top: auto;
+        }
+
+        .position-percent.visible {
+            opacity: 1;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
             position: fixed;
             bottom: 16px;
             left: 50%;
@@ -521,58 +678,129 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            z-index: 100;
+            justify-content: space-around;
+            padding: 4px 12px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.15);
             border-radius: 50px;
             border: 1px solid rgba(255,255,255,0.8);
+            z-index: 100;
         }
 
-        .pages-nav a {
+        .nav-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            color: #555;
-            font-size: 12px;
-            font-weight: 500;
-            padding: 10px 16px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            background: transparent;
+            padding: 5px 15px;
+            color: #888;
+            font-size: 10px;
+            cursor: pointer;
         }
 
-        .pages-nav a:hover {
-            background: rgba(70, 43, 115, 0.1);
+        .nav-item.active {
             color: #462B73;
         }
 
-        .pages-nav a.nav-download {
-            background: linear-gradient(135deg, #462B73 0%, #6B4A9E 100%);
+        .nav-icon {
+            font-size: 20px;
+            transition: transform 0.2s;
+        }
+
+        /* Soft glow animation for bottom nav */
+        @keyframes nav-glow-red {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 8px rgba(231, 76, 60, 0.6), 0 0 15px rgba(231, 76, 60, 0.4);
+            }
+            50% {
+                transform: scale(1.2);
+                text-shadow: 0 0 12px rgba(231, 76, 60, 0.8), 0 0 25px rgba(231, 76, 60, 0.6), 0 0 35px rgba(231, 76, 60, 0.3);
+            }
+        }
+        @keyframes nav-glow-yellow {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 8px rgba(241, 196, 15, 0.6), 0 0 15px rgba(241, 196, 15, 0.4);
+            }
+            50% {
+                transform: scale(1.2);
+                text-shadow: 0 0 12px rgba(241, 196, 15, 0.8), 0 0 25px rgba(241, 196, 15, 0.6), 0 0 35px rgba(241, 196, 15, 0.3);
+            }
+        }
+        @keyframes nav-glow-blue {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 8px rgba(65, 105, 225, 0.6), 0 0 15px rgba(65, 105, 225, 0.4);
+            }
+            50% {
+                transform: scale(1.2);
+                text-shadow: 0 0 12px rgba(65, 105, 225, 0.8), 0 0 25px rgba(65, 105, 225, 0.6), 0 0 35px rgba(65, 105, 225, 0.3);
+            }
+        }
+        .nav-item:nth-child(1).filtering .nav-icon {
+            animation: nav-glow-red 1.5s ease-in-out infinite;
+        }
+        .nav-item:nth-child(2).filtering .nav-icon {
+            animation: nav-glow-yellow 1.5s ease-in-out infinite;
+        }
+        .nav-item:nth-child(3).filtering .nav-icon {
+            animation: nav-glow-blue 1.5s ease-in-out infinite;
+        }
+
+        /* Stats bar filtering animation */
+        @keyframes fire-pulse-high {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(231, 76, 60, 0.8), 0 0 40px rgba(231, 76, 60, 0.6);
+            }
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 35px rgba(231, 76, 60, 1), 0 0 70px rgba(231, 76, 60, 0.8);
+            }
+        }
+        @keyframes fire-pulse-medium {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(241, 196, 15, 0.8), 0 0 40px rgba(241, 196, 15, 0.6);
+            }
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 35px rgba(241, 196, 15, 1), 0 0 70px rgba(241, 196, 15, 0.8);
+            }
+        }
+        @keyframes fire-pulse-low {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(65, 105, 225, 0.8), 0 0 40px rgba(65, 105, 225, 0.6);
+            }
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 35px rgba(65, 105, 225, 1), 0 0 70px rgba(65, 105, 225, 0.8);
+            }
+        }
+        .stat-item.high.filtering .stat-sphere {
+            animation: fire-pulse-high 0.8s ease-in-out infinite;
+        }
+        .stat-item.medium.filtering .stat-sphere {
+            animation: fire-pulse-medium 0.8s ease-in-out infinite;
+        }
+        .stat-item.low.filtering .stat-sphere {
+            animation: fire-pulse-low 0.8s ease-in-out infinite;
+        }
+
+        #freshnessWarning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
             color: white;
-            padding: 12px 20px;
-            box-shadow: 0 4px 15px rgba(70, 43, 115, 0.4);
-        }
-
-        .pages-nav a.nav-download:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(70, 43, 115, 0.5);
-        }
-
-        .pages-nav .nav-icon {
-            font-size: 18px;
-            line-height: 1;
-        }
-
-        .pages-nav .nav-text {
-            white-space: nowrap;
-        }
-
-        /* Hidden class */
-        .hidden {
-            display: none !important;
+            padding: 10px 15px;
+            text-align: center;
+            z-index: 9999;
+            font-weight: 600;
+            font-size: 0.85em;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         /* ===== UNIFIED PAGE LOADER ===== */
@@ -628,1160 +856,1871 @@
             40% { transform: scale(1.2); opacity: 1; }
         }
         /* ===== END PAGE LOADER ===== */
+
+        /* ===== FILTER SECTION ===== */
+        .filter-section {
+            padding: 12px 15px;
+            background: linear-gradient(135deg, rgba(70, 43, 115, 0.95) 0%, rgba(90, 61, 138, 0.95) 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 0.85em;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .filter-btn.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: white;
+        }
+
+        .filter-btn .count {
+            background: #F7941D;
+            color: white;
+            font-size: 0.7em;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        .route-selector {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 30px;
+            text-align: center;
+        }
+
+        .route-selector option {
+            background: #462B73;
+            color: white;
+        }
+
+        body.ar .route-selector {
+            background-position: left 12px center;
+            padding-right: 12px;
+            padding-left: 30px;
+        }
+
+        .route-selector:focus {
+            outline: none;
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ===== FILTER MODAL ===== */
+        .filter-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 200;
+        }
+
+        .filter-modal.show {
+            display: flex;
+        }
+
+        .filter-modal-content {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            width: 100%;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-modal-title {
+            font-weight: 700;
+            color: #462B73;
+            font-size: 1.1em;
+        }
+
+        .filter-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .filter-modal-actions {
+            display: flex;
+            gap: 10px;
+            padding: 10px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .filter-action-btn {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #462B73;
+            border-radius: 20px;
+            background: white;
+            color: #462B73;
+            font-size: 0.85em;
+            cursor: pointer;
+        }
+
+        .filter-modal-body {
+            overflow-y: auto;
+            padding: 10px 20px 20px;
+            max-height: 60vh;
+        }
+
+        /* Route page date filter styles */
+        .filter-year-header {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #462B73;
+            padding: 10px 0 5px;
+            border-bottom: 2px solid #462B73;
+            margin-top: 10px;
+        }
+
+        .filter-month-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #666;
+            padding: 8px 0 5px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        .filter-month-header input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #462B73;
+        }
+
+        .filter-dates-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            padding: 5px 0;
+        }
+
+        .filter-date-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 8px;
+            background: #f8f8f8;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85em;
+        }
+
+        .filter-date-item:hover {
+            background: #e8e8e8;
+        }
+
+        .filter-date-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #462B73;
+        }
+
+        .filter-date-item span {
+            color: #333;
+        }
+
+        .date-group {
+            margin-bottom: 15px;
+        }
+
+        .date-group-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #462B73;
+        }
+
+        .date-group-header input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .date-group-items {
+            padding-left: 28px;
+        }
+
+        .date-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .date-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .date-item label {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        /* ===== END FILTER SECTION ===== */
     </style>
-    <script src="assets/js/global-loader.js" data-loader-img="assets/img/aircairo-loader.gif"></script>
+    <script src="../assets/js/global-loader.js" data-loader-img="../assets/img/aircairo-loader.gif"></script>
 </head>
 <body class="en">
     <!-- PAGE LOADER -->
     <div id="page-loader">
-        <img class="loader-gif" src="assets/img/aircairo-loader.gif" alt="Loading...">
+        <img class="loader-gif" src="../assets/img/aircairo-loader.gif" alt="Loading...">
         <div class="loader-text">LOADING</div>
         <div class="loader-dots"><span></span><span></span><span></span></div>
     </div>
 
-    <header class="header">
-        <!-- GATE Button - Inside Header -->
-        <a href="index.html" class="gate-btn" title="GATE" aria-label="GATE"></a>
-        <div class="header-text">
-            <h1><span class="ar-text">رصد حركة الاسعار <img src="assets/img/aircairo_aircraft.png" class="header-aircraft" alt=""></span><span class="en-text">Threat Alert Report <img src="assets/img/aircairo_aircraft.png" class="header-aircraft" alt=""></span></h1>
-            <div class="header-meta">
-                <div class="subtitle"><span class="ar-text">الفترة: 22SEP26 - 31OCT26</span><span class="en-text">Range: 22SEP26 - 31OCT26</span></div>
-                <div class="generated">
-                    <button class="lang-toggle" onclick="toggleLanguage()">عربي</button>
-                    <span class="ar-text">تم الإنشاء:</span><span class="en-text">Generated:</span> 2026-09-21 10:42
+    <a href="../online_mob_report.html" class="home-btn-fixed">🏠</a>
+
+    <div class="freeze-panes">
+        <div class="header">
+            <div class="header-content">
+                <h1>ATZ-RUH</h1>
+            </div>
+            <button class="lang-toggle" onclick="toggleLang()">
+                <span class="ar-text">EN</span>
+                <span class="en-text">AR</span>
+            </button>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-row">
+                <select class="route-selector" id="routeSelector" onchange="navigateToRoute(this.value)">
+                    <option value="LXR-JED">LXR-JED</option>
+<option value="JED-CAI">JED-CAI</option>
+<option value="JED-ALY">JED-ALY</option>
+<option value="JED-HMB">JED-HMB</option>
+<option value="JED-LXR">JED-LXR</option>
+<option value="RUH-CAI">RUH-CAI</option>
+<option value="RUH-ATZ">RUH-ATZ</option>
+<option value="RUH-HMB">RUH-HMB</option>
+<option value="TUU-HMB">TUU-HMB</option>
+<option value="ELQ-CAI">ELQ-CAI</option>
+<option value="ALY-JED">ALY-JED</option>
+<option value="ALY-MED">ALY-MED</option>
+<option value="MED-CAI">MED-CAI</option>
+<option value="MED-ALY">MED-ALY</option>
+<option value="ATZ-JED">ATZ-JED</option>
+<option value="ATZ-MED">ATZ-MED</option>
+<option value="ATZ-RUH" selected>ATZ-RUH</option>
+<option value="AHB-CAI">AHB-CAI</option>
+<option value="AHB-HMB">AHB-HMB</option>
+<option value="HMB-JED">HMB-JED</option>
+<option value="HMB-MED">HMB-MED</option>
+<option value="HMB-DMM">HMB-DMM</option>
+<option value="YNB-CAI">YNB-CAI</option>
+<option value="DMM-CAI">DMM-CAI</option>
+<option value="DMM-HMB">DMM-HMB</option>
+<option value="CAI-JED">CAI-JED</option>
+<option value="CAI-MED">CAI-MED</option>
+<option value="CAI-RUH">CAI-RUH</option>
+<option value="CAI-DMM">CAI-DMM</option>
+<option value="CAI-TUU">CAI-TUU</option>
+<option value="CAI-AJF">CAI-AJF</option>
+<option value="CAI-YNB">CAI-YNB</option>
+<option value="CAI-AHB">CAI-AHB</option>
+<option value="CAI-ELQ">CAI-ELQ</option>
+                </select>
+                <button class="filter-btn" id="dateFilterBtn" onclick="openFilterModal('date')">
+                    <span class="ar-text">📅 التواريخ</span>
+                    <span class="en-text">📅 Dates</span>
+                    <span class="count" id="dateFilterCount">All</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-item high" data-level="high" onclick="filterByLevel('high')">
+            <div class="stat-sphere"><img src="../web_red.png" alt="High"></div>
+            <div class="stat-count">0</div>
+            <div class="stat-label">
+                <span class="ar-text">تهديد عالي</span>
+                <span class="en-text">HIGH THREAT</span>
+            </div>
+        </div>
+        <div class="stat-item medium" data-level="medium" onclick="filterByLevel('medium')">
+            <div class="stat-sphere"><img src="../web_yello.png" alt="Medium"></div>
+            <div class="stat-count">0</div>
+            <div class="stat-label">
+                <span class="ar-text">تهديد متوسط</span>
+                <span class="en-text">MEDIUM THREAT</span>
+            </div>
+        </div>
+        <div class="stat-item low" data-level="low" onclick="filterByLevel('low')">
+            <div class="stat-sphere"><img src="../web_blue.png" alt="Low"></div>
+            <div class="stat-count">11</div>
+            <div class="stat-label">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="freshnessWarning">
+        <span class="ar-text">تقرير قديم (اكثر من 24 ساعة) - <a href="javascript:location.reload(true)" style="color:#fff;text-decoration:underline;">تحديث</a></span>
+        <span class="en-text">Stale report (older than 24h) - <a href="javascript:location.reload(true)" style="color:#fff;text-decoration:underline;">Refresh</a></span>
+        <button onclick="this.parentElement.style.display='none'" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:white;font-size:1.2em;cursor:pointer;">x</button>
+    </div>
+
+    <div class="content">
+        
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-29">
+        <div class="card-date-header">
+            <span class="date-route">29SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">168</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">74</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">93%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">H4</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12212 جنيه مصري</span>
+                            <span class="en-text">12212 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران ناس أقل بـ 2611 جنيه مصري | طيران ناس يقدم 10 كجم إضافية</span>
+                    <span class="en-text">flynas price lower by 2611 EGP | flynas offers 10K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
+                    <span class="en-text">Market Leader: flynas 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">flynas-XY-268</span>
+                        <span class="en-text">flynas-XY-268</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 15:45</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9601 جنيه مصري</span>
+                            <span class="en-text">9601 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">40 كجم</span>
+                            <span class="en-text">40K</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
 
-    <div class="stats-title">
-        <span class="ar-text">الأسعار التنافسية</span>
-        <span class="en-text">THREAT ALERT</span>
-    </div>
-    <div class="stats-section" id="statsSection"
-         data-all-low="1542" data-all-medium="41" data-all-high="66"
-         data-egy-low="1204" data-egy-medium="11" data-egy-high="50"
-         data-ksa-low="338" data-ksa-medium="30" data-ksa-high="16">
-        <div class="stat-sphere low" onclick="filterByThreat('LOW')">
-            <div class="sphere"><img src="web_blue.png" alt="Low"></div>
-            <div class="count" id="lowCount">1542</div>
-            <div class="label"><span class="ar-text">تهديد منخفض</span><span class="en-text">LOW THREAT</span></div>
-        </div>
-        <div class="stat-sphere medium" onclick="filterByThreat('MEDIUM')">
-            <div class="sphere"><img src="web_yello.png" alt="Medium"></div>
-            <div class="count" id="mediumCount">41</div>
-            <div class="label"><span class="ar-text">تهديد متوسط</span><span class="en-text">MEDIUM THREAT</span></div>
-        </div>
-        <div class="stat-sphere high" onclick="filterByThreat('HIGH')">
-            <div class="sphere"><img src="web_red.png" alt="High"></div>
-            <div class="count" id="highCount">66</div>
-            <div class="label"><span class="ar-text">تهديد عالي</span><span class="en-text">HIGH THREAT</span></div>
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
         </div>
     </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-29">
+        <div class="card-date-header">
+            <span class="date-route">29SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
 
-    <div class="filter-section">
-        <div class="filter-group">
-            <button class="filter-btn active" id="filterAll" onclick="setFilter('all')"><span class="ar-text">الكل</span><span class="en-text">All</span></button>
-            <button class="filter-btn" id="filterEgy" onclick="setFilter('egy')"><span class="ar-text">مصر←السعودية</span><span class="en-text">EGY→KSA</span></button>
-            <button class="filter-btn" id="filterKsa" onclick="setFilter('ksa')"><span class="ar-text">السعودية←مصر</span><span class="en-text">KSA→EGY</span></button>
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">168</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">74</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">93%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">H4</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12212 جنيه مصري</span>
+                            <span class="en-text">12212 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران ناس أقل بـ 3902 جنيه مصري</span>
+                    <span class="en-text">flynas price lower by 3902 EGP</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
+                    <span class="en-text">Market Leader: flynas 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">flynas-XY-268</span>
+                        <span class="en-text">flynas-XY-268</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 15:45</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8310 جنيه مصري</span>
+                            <span class="en-text">8310 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-29">
+        <div class="card-date-header">
+            <span class="date-route">29SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">168</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">74</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">93%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">H4</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12212 جنيه مصري</span>
+                            <span class="en-text">12212 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران ناس أقل بـ 5910 جنيه مصري | إير كايرو تقدم 15 كجم إضافية</span>
+                    <span class="en-text">flynas price lower by 5910 EGP | SM offers 15K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران ناس 💡</span>
+                    <span class="en-text">Market Leader: flynas 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">flynas-XY-270</span>
+                        <span class="en-text">flynas-XY-270</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 22:05</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6302 جنيه مصري</span>
+                            <span class="en-text">6302 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">15 كجم</span>
+                            <span class="en-text">15K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-29">
+        <div class="card-date-header">
+            <span class="date-route">29SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">168</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">74</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">93%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">H4</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12212 جنيه مصري</span>
+                            <span class="en-text">12212 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران أديل أقل بـ 5489 جنيه مصري | إير كايرو تقدم 15 كجم إضافية</span>
+                    <span class="en-text">flyadeal price lower by 5489 EGP | SM offers 15K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران أديل 💡</span>
+                    <span class="en-text">Market Leader: flyadeal 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">flyadeal-F3-606</span>
+                        <span class="en-text">flyadeal-F3-606</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 13:55</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">6723 جنيه مصري</span>
+                            <span class="en-text">6723 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">15 كجم</span>
+                            <span class="en-text">15K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-29">
+        <div class="card-date-header">
+            <span class="date-route">29SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">168</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">74</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">93%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">H4</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12212 جنيه مصري</span>
+                            <span class="en-text">12212 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر نسما للطيران أقل بـ 4913 جنيه مصري</span>
+                    <span class="en-text">Nesma Airlines price lower by 4913 EGP</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: نسما للطيران 💡</span>
+                    <span class="en-text">Market Leader: Nesma Airlines 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nesma Airlines-NE-160</span>
+                        <span class="en-text">Nesma Airlines-NE-160</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 07:00</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7299 جنيه مصري</span>
+                            <span class="en-text">7299 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-29">
+        <div class="card-date-header">
+            <span class="date-route">29SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">168</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">74</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">93%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">H4</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12212 جنيه مصري</span>
+                            <span class="en-text">12212 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر طيران النيل أقل بـ 4380 جنيه مصري</span>
+                    <span class="en-text">Nile Air price lower by 4380 EGP</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: طيران النيل 💡</span>
+                    <span class="en-text">Market Leader: Nile Air 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">Nile Air-NP-251</span>
+                        <span class="en-text">Nile Air-NP-251</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 09:10</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">7832 جنيه مصري</span>
+                            <span class="en-text">7832 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-29">
+        <div class="card-date-header">
+            <span class="date-route">29SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">168</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">74</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">93%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">H4</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12212 جنيه مصري</span>
+                            <span class="en-text">12212 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر RX أقل بـ 3687 جنيه مصري | إير كايرو تقدم 5 كجم إضافية</span>
+                    <span class="en-text">RX price lower by 3687 EGP | SM offers 5K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: RX 💡</span>
+                    <span class="en-text">Market Leader: RX 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">RX-RX-320</span>
+                        <span class="en-text">RX-RX-320</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 09:30</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8525 جنيه مصري</span>
+                            <span class="en-text">8525 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">25 كجم</span>
+                            <span class="en-text">25K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-29">
+        <div class="card-date-header">
+            <span class="date-route">29SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">168</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">74</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">93%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">H4</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12212 جنيه مصري</span>
+                            <span class="en-text">12212 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 3159 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 3159 EGP | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-651</span>
+                        <span class="en-text">EgyptAir-MS-651</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 09:10</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9053 جنيه مصري</span>
+                            <span class="en-text">9053 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-29">
+        <div class="card-date-header">
+            <span class="date-route">29SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 11:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">168</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">74</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">1</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">3</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">93%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">H4</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">12212 جنيه مصري</span>
+                            <span class="en-text">12212 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 3116 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 3116 EGP | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-649</span>
+                        <span class="en-text">EgyptAir-MS-649</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:25</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9096 جنيه مصري</span>
+                            <span class="en-text">9096 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-30">
+        <div class="card-date-header">
+            <span class="date-route">30SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 18:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">158</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">60</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">7</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">13</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">88%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V3</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9320 جنيه مصري</span>
+                            <span class="en-text">9320 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 814 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 814 EGP | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-651</span>
+                        <span class="en-text">EgyptAir-MS-651</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 09:10</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8506 جنيه مصري</span>
+                            <span class="en-text">8506 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="threat-card low alternative" data-level="low" data-date="2026-09-30">
+        <div class="card-date-header">
+            <span class="date-route">30SEP26 &nbsp;-&nbsp; ATZ-RUH</span>
+        </div>
+
+        <div class="blocks-wrapper">
+            <div class="flight-block our-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">SM-465</span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 18:35</span>
+                </div>
+
+                <div class="lf-unified-section">
+                    <div class="lf-indicator"><span class="lf-label">SOLD</span><span class="lf-value">158</span></div>
+                    <div class="lf-indicator"><span class="lf-label">LST-SOLD</span><span class="lf-value">21Sep</span></div>
+                    <div class="lf-indicator"><span class="lf-label">WEEKLY</span><span class="lf-value">60</span></div>
+                    <div class="lf-indicator"><span class="lf-label">TO-DAY</span><span class="lf-value">7</span></div>
+                    <div class="lf-indicator"><span class="lf-label">Y-DAY</span><span class="lf-value">13</span></div>
+                    <div class="lf-indicator lf-percent lf-high"><span class="lf-label">LF</span><span class="lf-value">88%</span></div>
+                    <div class="lf-indicator lf-wide"><span class="lf-label">LOWEST AVAIL</span><span class="lf-value">V3</span></div>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">9320 جنيه مصري</span>
+                            <span class="en-text">9320 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">30 كجم</span>
+                            <span class="en-text">30K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="recommendation-section">
+                <div class="recommendation-title">
+                    <span class="ar-text">سعر مصر للطيران أقل بـ 758 جنيه مصري | مصر للطيران يقدم 16 كجم إضافية</span>
+                    <span class="en-text">EgyptAir price lower by 758 EGP | EgyptAir offers 16K more baggage</span>
+                </div>
+                <div class="recommendation-details">
+                    <span class="ar-text">الأفضل تنافسياً: مصر للطيران 💡</span>
+                    <span class="en-text">Market Leader: EgyptAir 💡</span>
+                </div>
+            </div>
+
+            <div class="flight-block comp-flight">
+                <div class="flight-block-header">
+                    <span class="flight-number">
+                        <span class="ar-text">EgyptAir-MS-649</span>
+                        <span class="en-text">EgyptAir-MS-649</span>
+                    </span>
+                    <span class="flight-time"><span class="time-label">DEP</span> 00:25</span>
+                </div>
+                <div class="flight-block-details">
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">السعر</span>
+                            <span class="en-text">FARE</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">8562 جنيه مصري</span>
+                            <span class="en-text">8562 EGP</span>
+                        </div>
+                    </div>
+                    <div class="flight-detail-separator"></div>
+                    <div class="flight-detail-col">
+                        <div class="flight-detail-label">
+                            <span class="ar-text">الوزن</span>
+                            <span class="en-text">BAG</span>
+                        </div>
+                        <div class="flight-detail-value">
+                            <span class="ar-text">46 كجم</span>
+                            <span class="en-text">46K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert-banner low">
+            <div class="alert-text">
+                <span class="ar-text">تهديد منخفض</span>
+                <span class="en-text">LOW THREAT</span>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+
+    <div class="scroll-nav">
+        <button class="scroll-btn" id="scrollTop"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(0 12 12)"/></svg></button>
+        <button class="scroll-btn" id="scrollBottom"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="rotate(180 12 12)"/></svg></button>
+    </div>
+
+    <div class="position-indicator">
+        <div class="position-marker" id="positionMarker"></div>
+    </div>
+    <div class="position-percent" id="positionPercent">0%</div>
+
+    <!-- Date Filter Modal -->
+    <div class="filter-modal" id="dateFilterModal" onclick="closeFilterModal('date')">
+        <div class="filter-modal-content" onclick="event.stopPropagation()">
+            <div class="filter-modal-header">
+                <span class="filter-modal-title">
+                    <span class="ar-text">اختر التواريخ</span>
+                    <span class="en-text">Select Dates</span>
+                </span>
+                <button class="filter-modal-close" onclick="closeFilterModal('date')">×</button>
+            </div>
+            <div class="filter-modal-actions">
+                <button class="filter-action-btn" onclick="selectAllDates()">
+                    <span class="ar-text">تحديد الكل</span>
+                    <span class="en-text">Select All</span>
+                </button>
+                <button class="filter-action-btn" onclick="clearAllDates()">
+                    <span class="ar-text">إلغاء الكل</span>
+                    <span class="en-text">Clear All</span>
+                </button>
+            </div>
+            <div class="filter-modal-body" id="dateFilterBody">
+                <div class="filter-year-header">2026</div>
+<label class="filter-month-header"><input type="checkbox" data-month="2026-09" checked><span>September</span></label>
+<div class="filter-dates-grid">
+<label class="filter-date-item"><input type="checkbox" data-date="2026-09-29" checked><span>29 Sep</span></label>
+<label class="filter-date-item"><input type="checkbox" data-date="2026-09-30" checked><span>30 Sep</span></label>
+</div>
+            </div>
         </div>
     </div>
 
-    <div class="search-section">
-        <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" placeholder="Search routes..." data-ar-placeholder="بحث عن الخطوط..." oninput="filterRoutes()">
+    <nav class="bottom-nav">
+        <div class="nav-item" onclick="filterByLevel('high')">
+            <span class="nav-icon">🔴</span>
+            <span>
+                <span class="ar-text">عالي</span>
+                <span class="en-text">High</span>
+            </span>
+        </div>
+        <div class="nav-item" onclick="filterByLevel('medium')">
+            <span class="nav-icon">🟡</span>
+            <span>
+                <span class="ar-text">متوسط</span>
+                <span class="en-text">Medium</span>
+            </span>
+        </div>
+        <div class="nav-item" onclick="filterByLevel('low')">
+            <span class="nav-icon">🔵</span>
+            <span>
+                <span class="ar-text">منخفض</span>
+                <span class="en-text">Low</span>
+            </span>
         </div>
-    </div>
-
-    <div class="routes-grid" id="routesGrid">
-        
-    <a href="routes/AHB-CAI.html" class="route-card" data-route="AHB-CAI" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="10">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">AHB-CAI</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">10</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>10</strong>
-        </div>
-    </a>
-    
-    <a href="routes/AHB-HMB.html" class="route-card" data-route="AHB-HMB" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="1">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">AHB-HMB</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">1</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>1</strong>
-        </div>
-    </a>
-    
-    <a href="routes/ALY-JED.html" class="route-card" data-route="ALY-JED" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="13">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">ALY-JED</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">13</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>13</strong>
-        </div>
-    </a>
-    
-    <a href="routes/ALY-MED.html" class="route-card" data-route="ALY-MED" data-threat="HIGH" data-direction="EGY_KSA" data-high="1" data-medium="2" data-low="10">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">ALY-MED</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">10</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">2</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">1</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>13</strong>
-        </div>
-    </a>
-    
-    <a href="routes/ATZ-JED.html" class="route-card" data-route="ATZ-JED" data-threat="HIGH" data-direction="EGY_KSA" data-high="11" data-medium="0" data-low="0">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">ATZ-JED</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">0</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">11</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>11</strong>
-        </div>
-    </a>
-    
-    <a href="routes/ATZ-MED.html" class="route-card" data-route="ATZ-MED" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="5">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">ATZ-MED</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">5</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>5</strong>
-        </div>
-    </a>
-    
-    <a href="routes/ATZ-RUH.html" class="route-card" data-route="ATZ-RUH" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="11">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">ATZ-RUH</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">11</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>11</strong>
-        </div>
-    </a>
-    
-    <a href="routes/CAI-AHB.html" class="route-card" data-route="CAI-AHB" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="3">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">CAI-AHB</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">3</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>3</strong>
-        </div>
-    </a>
-    
-    <a href="routes/CAI-AJF.html" class="route-card" data-route="CAI-AJF" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="10">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">CAI-AJF</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">10</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>10</strong>
-        </div>
-    </a>
-    
-    <a href="routes/CAI-DMM.html" class="route-card" data-route="CAI-DMM" data-threat="MEDIUM" data-direction="EGY_KSA" data-high="0" data-medium="5" data-low="27">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">CAI-DMM</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">27</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">5</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>32</strong>
-        </div>
-    </a>
-    
-    <a href="routes/CAI-ELQ.html" class="route-card" data-route="CAI-ELQ" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="11">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">CAI-ELQ</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">11</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>11</strong>
-        </div>
-    </a>
-    
-    <a href="routes/CAI-JED.html" class="route-card" data-route="CAI-JED" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="873">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">CAI-JED</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">873</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>873</strong>
-        </div>
-    </a>
-    
-    <a href="routes/CAI-MED.html" class="route-card" data-route="CAI-MED" data-threat="HIGH" data-direction="EGY_KSA" data-high="36" data-medium="0" data-low="87">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">CAI-MED</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">87</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">36</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>123</strong>
-        </div>
-    </a>
-    
-    <a href="routes/CAI-RUH.html" class="route-card" data-route="CAI-RUH" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="92">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">CAI-RUH</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">92</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>92</strong>
-        </div>
-    </a>
-    
-    <a href="routes/CAI-TUU.html" class="route-card" data-route="CAI-TUU" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="24">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">CAI-TUU</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">24</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>24</strong>
-        </div>
-    </a>
-    
-    <a href="routes/CAI-YNB.html" class="route-card" data-route="CAI-YNB" data-threat="MEDIUM" data-direction="EGY_KSA" data-high="0" data-medium="1" data-low="7">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">CAI-YNB</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">7</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">1</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>8</strong>
-        </div>
-    </a>
-    
-    <a href="routes/DMM-CAI.html" class="route-card" data-route="DMM-CAI" data-threat="HIGH" data-direction="KSA_EGY" data-high="1" data-medium="0" data-low="23">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">DMM-CAI</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">23</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">1</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>24</strong>
-        </div>
-    </a>
-    
-    <a href="routes/DMM-HMB.html" class="route-card" data-route="DMM-HMB" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="8">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">DMM-HMB</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">8</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>8</strong>
-        </div>
-    </a>
-    
-    <a href="routes/ELQ-CAI.html" class="route-card" data-route="ELQ-CAI" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="3">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">ELQ-CAI</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">3</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>3</strong>
-        </div>
-    </a>
-    
-    <a href="routes/HMB-DMM.html" class="route-card" data-route="HMB-DMM" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="7">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">HMB-DMM</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">7</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>7</strong>
-        </div>
-    </a>
-    
-    <a href="routes/HMB-JED.html" class="route-card" data-route="HMB-JED" data-threat="LOW" data-direction="EGY_KSA" data-high="0" data-medium="0" data-low="7">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">HMB-JED</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">7</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>7</strong>
-        </div>
-    </a>
-    
-    <a href="routes/HMB-MED.html" class="route-card" data-route="HMB-MED" data-threat="MEDIUM" data-direction="EGY_KSA" data-high="0" data-medium="2" data-low="14">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">HMB-MED</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">14</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">2</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>16</strong>
-        </div>
-    </a>
-    
-    <a href="routes/JED-ALY.html" class="route-card" data-route="JED-ALY" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="18">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">JED-ALY</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">18</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>18</strong>
-        </div>
-    </a>
-    
-    <a href="routes/JED-CAI.html" class="route-card" data-route="JED-CAI" data-threat="MEDIUM" data-direction="KSA_EGY" data-high="0" data-medium="20" data-low="136">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">JED-CAI</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">136</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">20</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>156</strong>
-        </div>
-    </a>
-    
-    <a href="routes/JED-HMB.html" class="route-card" data-route="JED-HMB" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="14">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">JED-HMB</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">14</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>14</strong>
-        </div>
-    </a>
-    
-    <a href="routes/JED-LXR.html" class="route-card" data-route="JED-LXR" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="2">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">JED-LXR</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">2</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>2</strong>
-        </div>
-    </a>
-    
-    <a href="routes/LXR-JED.html" class="route-card" data-route="LXR-JED" data-threat="HIGH" data-direction="EGY_KSA" data-high="2" data-medium="1" data-low="3">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">LXR-JED</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">3</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">1</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">2</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>6</strong>
-        </div>
-    </a>
-    
-    <a href="routes/MED-ALY.html" class="route-card" data-route="MED-ALY" data-threat="MEDIUM" data-direction="KSA_EGY" data-high="0" data-medium="4" data-low="3">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">MED-ALY</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">3</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">4</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>7</strong>
-        </div>
-    </a>
-    
-    <a href="routes/MED-CAI.html" class="route-card" data-route="MED-CAI" data-threat="HIGH" data-direction="KSA_EGY" data-high="15" data-medium="6" data-low="40">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">MED-CAI</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">40</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">6</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">15</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>61</strong>
-        </div>
-    </a>
-    
-    <a href="routes/RUH-ATZ.html" class="route-card" data-route="RUH-ATZ" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="16">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">RUH-ATZ</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">16</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>16</strong>
-        </div>
-    </a>
-    
-    <a href="routes/RUH-CAI.html" class="route-card" data-route="RUH-CAI" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="44">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">RUH-CAI</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">44</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>44</strong>
-        </div>
-    </a>
-    
-    <a href="routes/RUH-HMB.html" class="route-card" data-route="RUH-HMB" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="14">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">RUH-HMB</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">14</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>14</strong>
-        </div>
-    </a>
-    
-    <a href="routes/TUU-HMB.html" class="route-card" data-route="TUU-HMB" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="5">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">TUU-HMB</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">5</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>5</strong>
-        </div>
-    </a>
-    
-    <a href="routes/YNB-CAI.html" class="route-card" data-route="YNB-CAI" data-threat="LOW" data-direction="KSA_EGY" data-high="0" data-medium="0" data-low="1">
-        <div class="route-card-header">
-            <span class="plane-icon"><img src="assets/img/aircairo_aircraft.png" alt=""></span>
-            <span class="route-card-name">YNB-CAI</span>
-        </div>
-        <div class="route-stats-row">
-            <div class="mini-stat low">
-                <div class="mini-sphere low">1</div>
-                <span class="mini-stat-label"><span class="ar-text">منخفض</span><span class="en-text">Low</span></span>
-            </div>
-            <div class="mini-stat medium">
-                <div class="mini-sphere medium">0</div>
-                <span class="mini-stat-label"><span class="ar-text">متوسط</span><span class="en-text">Med</span></span>
-            </div>
-            <div class="mini-stat high">
-                <div class="mini-sphere high">0</div>
-                <span class="mini-stat-label"><span class="ar-text">عالي</span><span class="en-text">High</span></span>
-            </div>
-        </div>
-        <div class="route-total">
-            <span class="ar-text">اجمالي التهديدات: </span>
-            <span class="en-text">threats </span>
-            <strong>1</strong>
-        </div>
-    </a>
-    
-    </div>
-
-    <nav class="pages-nav">
-        <a href="index.html">
-            <span class="nav-icon">📊</span>
-            <span class="nav-text"><span class="ar-text">لوحة التحكم</span><span class="en-text">Dashboard</span></span>
-        </a>
-        <a href="https://flyaircairo-my.sharepoint.com/:f:/g/personal/dammam_to_aircairo_com/IgDvjscVb3zPQ63E6oVxGyViAencC8ryBmR137Me_icPPRs?e=oNiSIH" target="_blank" class="nav-download">
-            <span class="nav-icon">⬇️</span>
-            <span class="nav-text"><span class="ar-text">تحميل</span><span class="en-text">Download</span></span>
-        </a>
-        <a href="index.html">
-            <span class="nav-icon">📂</span>
-            <span class="nav-text"><span class="ar-text">الأرشيف</span><span class="en-text">Archive</span></span>
-        </a>
     </nav>
 
     <script>
-        let currentThreatFilter = null;
-        let currentDirectionFilter = 'all';
-        let originalCardOrder = [];
-
-        // Store original card order on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.querySelector('.routes-grid');
-            if (container) {
-                originalCardOrder = Array.from(container.querySelectorAll('.route-card'));
-            }
-        });
-
-        function sortCardsByThreat(level) {
-            const container = document.querySelector('.routes-grid');
-            if (!container) return;
-
-            const cards = Array.from(container.querySelectorAll('.route-card'));
-
-            if (!level) {
-                // Restore original order
-                originalCardOrder.forEach(card => container.appendChild(card));
-                return;
-            }
-
-            // Sort by the selected threat level count (descending)
-            cards.sort((a, b) => {
-                const aCount = parseInt(a.querySelector(`.mini-sphere.${level.toLowerCase()}`).textContent) || 0;
-                const bCount = parseInt(b.querySelector(`.mini-sphere.${level.toLowerCase()}`).textContent) || 0;
-                return bCount - aCount;
-            });
-
-            // Reorder cards in DOM
-            cards.forEach(card => container.appendChild(card));
+        function toggleLang() {
+            document.body.classList.toggle('en');
         }
 
-        function toggleLanguage() {
-            const body = document.body;
-            const btn = document.querySelector('.lang-toggle');
-            if (body.classList.contains('en')) {
-                body.classList.remove('en');
-                body.classList.add('ar');
-                body.dir = 'rtl';
-                btn.textContent = 'EN';
-                localStorage.setItem('aircairo_lang', 'ar');
+        var currentFilter = null;
+        function filterByLevel(level) {
+            var items = document.querySelectorAll('.stat-item');
+            var navItems = document.querySelectorAll('.bottom-nav .nav-item');
+            var cards = document.querySelectorAll('.threat-card');
+
+            if (currentFilter === level) {
+                // Toggle off - show all
+                currentFilter = null;
+                items.forEach(i => i.classList.remove('active'));
+                navItems.forEach(n => n.classList.remove('active'));
+                cards.forEach(c => c.style.display = 'block');
             } else {
-                body.classList.remove('ar');
-                body.classList.add('en');
-                body.dir = 'ltr';
-                btn.textContent = 'عربي';
-                localStorage.setItem('aircairo_lang', 'en');
+                // Apply filter
+                currentFilter = level;
+
+                // Update stat items (top spheres)
+                items.forEach(i => i.classList.remove('active'));
+                var targetStat = document.querySelector('.stat-item.' + level);
+                if (targetStat) targetStat.classList.add('active');
+
+                // Update bottom nav items
+                navItems.forEach(n => n.classList.remove('active'));
+                navItems.forEach(n => {
+                    if (n.textContent.toLowerCase().includes(level) ||
+                        (level === 'high' && n.querySelector('.nav-icon').textContent.includes('🔴')) ||
+                        (level === 'medium' && n.querySelector('.nav-icon').textContent.includes('🟡')) ||
+                        (level === 'low' && n.querySelector('.nav-icon').textContent.includes('🔵'))) {
+                        n.classList.add('active');
+                    }
+                });
+
+                // Filter cards
+                cards.forEach(c => {
+                    c.style.display = c.classList.contains(level) ? 'block' : 'none';
+                });
             }
         }
 
-        // Load saved language on page load
+        // Scroll Navigation with dual functionality
+        // One click = jump to top/bottom
+        // Long press = fast scroll
         (function() {
-            const savedLang = localStorage.getItem('aircairo_lang');
-            if (savedLang === 'ar') {
-                const body = document.body;
-                const btn = document.querySelector('.lang-toggle');
-                body.classList.remove('en');
-                body.classList.add('ar');
-                body.dir = 'rtl';
-                if (btn) btn.textContent = 'EN';
+            var LONG_PRESS_DELAY = 300;
+            var SCROLL_SPEED = 80;
+            var SCROLL_INTERVAL = 16;
+
+            var scrollInterval = null;
+            var longPressTimer = null;
+            var isLongPress = false;
+
+            function jumpToTop() {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+
+            function jumpToBottom() {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' });
+            }
+
+            function startFastScroll(direction) {
+                stopFastScroll();
+                isLongPress = true;
+                scrollInterval = setInterval(function() {
+                    window.scrollBy({ top: direction * SCROLL_SPEED, behavior: 'instant' });
+                }, SCROLL_INTERVAL);
+            }
+
+            function stopFastScroll() {
+                if (scrollInterval) {
+                    clearInterval(scrollInterval);
+                    scrollInterval = null;
+                }
+                if (longPressTimer) {
+                    clearTimeout(longPressTimer);
+                    longPressTimer = null;
+                }
+            }
+
+            // ── Scroll-position % badge ──
+            // Shows ONLY while a button is held; hides 500ms after release.
+            // Positioned behind whichever airplane the user pressed.
+            var percentEl = document.getElementById('positionPercent');
+            var markerEl = document.getElementById('positionMarker');
+            var percentHideTimer = null;
+            var percentRaf = null;
+            var PERCENT_HIDE_DELAY = 500;
+
+            function refreshScrollReadout() {
+                if (percentRaf) return;
+                percentRaf = requestAnimationFrame(function() {
+                    var scrollTop = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    var percent = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+                    if (markerEl) {
+                        markerEl.style.top = ((percent / 100) * 80) + 'px';
+                    }
+                    if (percentEl) {
+                        percentEl.textContent = percent + '%';
+                    }
+                    percentRaf = null;
+                });
+            }
+
+            function showPercentOnSide(side) {
+                if (!percentEl) return;
+                percentEl.classList.remove('on-right', 'on-left');
+                percentEl.classList.add(side === 'right' ? 'on-right' : 'on-left');
+                percentEl.classList.add('visible');
+                if (percentHideTimer) {
+                    clearTimeout(percentHideTimer);
+                    percentHideTimer = null;
+                }
+                refreshScrollReadout();
+            }
+
+            function hidePercentDelayed() {
+                if (!percentEl) return;
+                if (percentHideTimer) clearTimeout(percentHideTimer);
+                percentHideTimer = setTimeout(function() {
+                    percentEl.classList.remove('visible');
+                    percentHideTimer = null;
+                }, PERCENT_HIDE_DELAY);
+            }
+
+            // Marker keeps tracking the page silently even when the badge
+            // is hidden, so when the user presses a button the badge can
+            // show the right number immediately.
+            window.addEventListener('scroll', refreshScrollReadout, { passive: true });
+            refreshScrollReadout();
+
+            function setupButton(btn, direction, jumpFn, side) {
+                if (!btn) return;
+
+                btn.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    isLongPress = false;
+                    btn.classList.add('pressed');
+                    showPercentOnSide(side);
+                    longPressTimer = setTimeout(function() {
+                        startFastScroll(direction);
+                    }, LONG_PRESS_DELAY);
+                }, { passive: false });
+
+                btn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    if (!isLongPress) {
+                        jumpFn();
+                    }
+                    isLongPress = false;
+                    hidePercentDelayed();
+                });
+
+                btn.addEventListener('touchcancel', function() {
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    isLongPress = false;
+                    hidePercentDelayed();
+                });
+
+                btn.addEventListener('mousedown', function(e) {
+                    isLongPress = false;
+                    btn.classList.add('pressed');
+                    showPercentOnSide(side);
+                    longPressTimer = setTimeout(function() {
+                        startFastScroll(direction);
+                    }, LONG_PRESS_DELAY);
+                });
+
+                btn.addEventListener('mouseup', function() {
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    if (!isLongPress) {
+                        jumpFn();
+                    }
+                    isLongPress = false;
+                    hidePercentDelayed();
+                });
+
+                btn.addEventListener('mouseleave', function() {
+                    btn.classList.remove('pressed');
+                    stopFastScroll();
+                    isLongPress = false;
+                    hidePercentDelayed();
+                });
+            }
+
+            var scrollTopBtn = document.getElementById('scrollTop');
+            var scrollBottomBtn = document.getElementById('scrollBottom');
+            // #scrollTop sits at the right edge → badge appears on the right.
+            // #scrollBottom sits at the left edge → badge appears on the left.
+            setupButton(scrollTopBtn, -1, jumpToTop, 'right');
+            setupButton(scrollBottomBtn, 1, jumpToBottom, 'left');
+        })();
+
+        // Freshness check
+        (function() {
+            var meta = document.querySelector('meta[name="report-generated"]');
+            if (meta) {
+                var generated = new Date(meta.content);
+                var now = new Date();
+                var hoursDiff = (now - generated) / (1000 * 60 * 60);
+                if (hoursDiff > 24) {
+                    document.getElementById('freshnessWarning').style.display = 'block';
+                }
             }
         })();
 
-        function filterByThreat(level) {
-            const spheres = document.querySelectorAll('.stat-sphere');
-            spheres.forEach(s => s.classList.remove('active-filter'));
-            // Remove all filter classes from body
-            document.body.classList.remove('filter-high', 'filter-medium', 'filter-low');
-
-            if (currentThreatFilter === level) {
-                currentThreatFilter = null;
-                // Restore original order when filter is removed
-                sortCardsByThreat(null);
-            } else {
-                currentThreatFilter = level;
-                const sphere = document.querySelector(`.stat-sphere.${level.toLowerCase()}`);
-                if (sphere) sphere.classList.add('active-filter');
-                // Add filter class to body for mini-sphere animation
-                document.body.classList.add(`filter-${level.toLowerCase()}`);
-                // Sort cards by selected threat level
-                sortCardsByThreat(level);
+        // Route navigation
+        function navigateToRoute(route) {
+            if (route) {
+                window.location.href = route + '.html';
             }
-            applyFilters();
         }
 
-        function setFilter(dir) {
-            currentDirectionFilter = dir;
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-
-            if (dir === 'all') {
-                document.getElementById('filterAll').classList.add('active');
-            } else if (dir === 'egy') {
-                document.getElementById('filterEgy').classList.add('active');
-            } else {
-                document.getElementById('filterKsa').classList.add('active');
+        // Filter Modal Functions
+        function openFilterModal(type) {
+            var modal = document.getElementById(type + 'FilterModal');
+            if (modal) {
+                modal.classList.add('show');
             }
-
-            updateSphereCounts(dir);
-            applyFilters();
         }
 
-        function updateSphereCounts(dir) {
-            const stats = document.getElementById('statsSection');
-            let low, medium, high;
-
-            if (dir === 'egy') {
-                low = stats.dataset.egyLow;
-                medium = stats.dataset.egyMedium;
-                high = stats.dataset.egyHigh;
-            } else if (dir === 'ksa') {
-                low = stats.dataset.ksaLow;
-                medium = stats.dataset.ksaMedium;
-                high = stats.dataset.ksaHigh;
-            } else {
-                low = stats.dataset.allLow;
-                medium = stats.dataset.allMedium;
-                high = stats.dataset.allHigh;
+        function closeFilterModal(type) {
+            var modal = document.getElementById(type + 'FilterModal');
+            if (modal) {
+                modal.classList.remove('show');
             }
-
-            document.getElementById('lowCount').textContent = low;
-            document.getElementById('mediumCount').textContent = medium;
-            document.getElementById('highCount').textContent = high;
         }
 
-        function filterRoutes() {
-            applyFilters();
-        }
+        // Date filter state
+        var selectedDates = new Set();
+        var allDates = [];
 
-        function applyFilters() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.route-card');
-
-            cards.forEach(card => {
-                const route = card.dataset.route || card.querySelector('.route-card-name').textContent;
-                const direction = card.dataset.direction || '';
-
-                let show = true;
-
-                // Search filter
-                if (searchTerm && !route.toLowerCase().includes(searchTerm)) {
-                    show = false;
-                }
-
-                // Threat filter - show cards that have ANY threats of selected level
-                if (currentThreatFilter) {
-                    const countAttr = 'data-' + currentThreatFilter.toLowerCase();
-                    const count = parseInt(card.getAttribute(countAttr)) || 0;
-                    if (count === 0) {
-                        show = false;
+        // Initialize date checkboxes
+        (function initDateFilter() {
+            var checkboxes = document.querySelectorAll('#dateFilterBody input[type="checkbox"][data-date]');
+            checkboxes.forEach(function(cb) {
+                allDates.push(cb.dataset.date);
+                selectedDates.add(cb.dataset.date);
+                cb.checked = true;
+                cb.addEventListener('change', function() {
+                    if (this.checked) {
+                        selectedDates.add(this.dataset.date);
+                    } else {
+                        selectedDates.delete(this.dataset.date);
                     }
-                }
-
-                // Direction filter
-                if (currentDirectionFilter !== 'all') {
-                    if (currentDirectionFilter === 'egy' && direction !== 'EGY_KSA') show = false;
-                    if (currentDirectionFilter === 'ksa' && direction !== 'KSA_EGY') show = false;
-                }
-
-                card.style.display = show ? '' : 'none';
+                    updateMonthCheckboxState(this.dataset.date.substring(0, 7));
+                    applyDateFilter();
+                });
             });
-        }
-    </script>
+        })();
 
-    <!-- Freshness Check - Warns if report is older than 24 hours -->
-    <div id="freshnessWarning" style="display:none; position:fixed; top:0; left:0; right:0; background:linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color:white; padding:10px 15px; text-align:center; z-index:9999; font-weight:600; font-size:0.85em; box-shadow:0 2px 10px rgba(0,0,0,0.3);">
-        <span class="ar-text">⚠️ تقرير قديم (أكثر من 24 ساعة) - <a href="javascript:location.reload(true)" style="color:#fff;text-decoration:underline;">تحديث</a></span>
-        <span class="en-text">⚠️ Stale report (older than 24h) - <a href="javascript:location.reload(true)" style="color:#fff;text-decoration:underline;">Refresh</a></span>
-        <button onclick="this.parentElement.style.display='none'" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:white;font-size:1.2em;cursor:pointer;">×</button>
-    </div>
-    <script>
-    (function() {
-        var meta = document.querySelector('meta[name="report-generated"]');
-        if (meta) {
-            var generated = new Date(meta.content);
-            var now = new Date();
-            var hoursDiff = (now - generated) / (1000 * 60 * 60);
-            if (hoursDiff > 24) {
-                document.getElementById('freshnessWarning').style.display = 'block';
+        // Initialize month checkboxes
+        (function initMonthFilter() {
+            var monthCheckboxes = document.querySelectorAll('#dateFilterBody input[type="checkbox"][data-month]');
+            monthCheckboxes.forEach(function(mcb) {
+                mcb.addEventListener('change', function() {
+                    var monthKey = this.dataset.month;
+                    var dateCheckboxes = document.querySelectorAll('#dateFilterBody input[type="checkbox"][data-date^="' + monthKey + '"]');
+                    dateCheckboxes.forEach(function(dcb) {
+                        dcb.checked = mcb.checked;
+                        if (mcb.checked) {
+                            selectedDates.add(dcb.dataset.date);
+                        } else {
+                            selectedDates.delete(dcb.dataset.date);
+                        }
+                    });
+                    applyDateFilter();
+                });
+            });
+        })();
+
+        function updateMonthCheckboxState(monthKey) {
+            var monthCb = document.querySelector('#dateFilterBody input[type="checkbox"][data-month="' + monthKey + '"]');
+            if (!monthCb) return;
+            var dateCheckboxes = document.querySelectorAll('#dateFilterBody input[type="checkbox"][data-date^="' + monthKey + '"]');
+            var allChecked = true;
+            dateCheckboxes.forEach(function(dcb) {
+                if (!dcb.checked) allChecked = false;
+            });
+            monthCb.checked = allChecked;
+        }
+
+        function selectAllDates() {
+            var checkboxes = document.querySelectorAll('#dateFilterBody input[type="checkbox"][data-date]');
+            checkboxes.forEach(function(cb) {
+                cb.checked = true;
+                selectedDates.add(cb.dataset.date);
+            });
+            var monthCheckboxes = document.querySelectorAll('#dateFilterBody input[type="checkbox"][data-month]');
+            monthCheckboxes.forEach(function(mcb) {
+                mcb.checked = true;
+            });
+            applyDateFilter();
+        }
+
+        function clearAllDates() {
+            var checkboxes = document.querySelectorAll('#dateFilterBody input[type="checkbox"][data-date]');
+            checkboxes.forEach(function(cb) {
+                cb.checked = false;
+                selectedDates.delete(cb.dataset.date);
+            });
+            var monthCheckboxes = document.querySelectorAll('#dateFilterBody input[type="checkbox"][data-month]');
+            monthCheckboxes.forEach(function(mcb) {
+                mcb.checked = false;
+            });
+            applyDateFilter();
+        }
+
+        function applyDateFilter() {
+            var cards = document.querySelectorAll('.threat-card');
+            var visibleCount = 0;
+            cards.forEach(function(card) {
+                var cardDate = card.dataset.date;
+                var shouldShow = selectedDates.has(cardDate) || selectedDates.size === 0;
+                card.style.display = shouldShow ? 'block' : 'none';
+                if (shouldShow) visibleCount++;
+            });
+
+            // Update count badge
+            var countBadge = document.getElementById('dateFilterCount');
+            if (countBadge) {
+                if (selectedDates.size === allDates.length || selectedDates.size === 0) {
+                    countBadge.textContent = 'All';
+                } else {
+                    countBadge.textContent = selectedDates.size;
+                }
             }
         }
-    })();
     </script>
 
     <!-- UNIFIED PAGE LOADER SCRIPT -->
@@ -1816,6 +2755,15 @@
             if (link.target && link.target !== '_self') return;
             if (/\.(csv|tsv|pdf|xlsx|xls|zip|docx|doc|json|png|jpg|jpeg|gif|svg|webp|mp3|mp4|webm|txt|xml)(\?|#|$)/i.test(rawHref)) return;
             showLoader();
+        });
+
+        var routeSelector = document.getElementById('routeSelector');
+        if (routeSelector) {
+            routeSelector.addEventListener('change', showLoader);
+        }
+
+        document.querySelectorAll('.filter-item a, .route-link, .home-btn-fixed').forEach(function(el) {
+            el.addEventListener('click', showLoader);
         });
     })();
     </script>
