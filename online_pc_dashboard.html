@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-    <link rel="shortcut icon" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
@@ -1453,6 +1453,115 @@
             40% { transform: scale(1.2); opacity: 1; }
         }
         /* ===== END PAGE LOADER ===== */
+
+        /* ===== RUNTIME COMMAND CENTER (shared runtime_adapter.js view, layout "pc") ===== */
+        #mi-command-center { margin-bottom: 20px; }
+        #mi-command-center:empty { display: none; }
+        .mi-cc [hidden] { display: none !important; }
+        .mi-cc {
+            display: grid;
+            gap: 12px;
+            background: rgba(70, 43, 115, 0.55);
+            border: 1px solid rgba(247, 148, 29, 0.3);
+            border-radius: 12px;
+            color: #fff;
+        }
+        .mi-cc--pc { padding: 16px 20px; font-size: 13px; }
+        .mi-cc__head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+        .mi-cc__sync, .mi-cc__state {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid currentColor;
+        }
+        .mi-cc__sync--connecting { color: #60a5fa; }
+        .mi-cc__sync--live { color: #4ade80; }
+        .mi-cc__sync--stale { color: #fbbf24; }
+        .mi-cc__sync--cached { color: #f59e0b; }
+        .mi-cc__sync--offline { color: #f87171; }
+        .mi-cc__state--ok { color: #4ade80; }
+        .mi-cc__state--info { color: #60a5fa; }
+        .mi-cc__state--warn { color: #fbbf24; }
+        .mi-cc__state--bad { color: #f87171; }
+        .mi-cc__state--neutral { color: #9ca3af; }
+        .mi-cc__banner { color: #fbbf24; font-size: 12px; }
+        .mi-cc__run-id { margin-left: auto; color: #ccc; font-family: 'Consolas', 'Courier New', monospace; }
+        .mi-cc__stage, .mi-cc__overall { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+        .mi-cc__stage-index, .mi-cc__overall-label, .mi-cc__concurrency-label {
+            color: #aaa;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .mi-cc__stage-label { color: #F7941D; font-weight: 700; }
+        .mi-cc__stage-progress, .mi-cc__overall-value { font-weight: 700; }
+        .mi-cc__bar { flex: 1 1 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+        .mi-cc__bar-fill { height: 100%; background: linear-gradient(90deg, #d97706, #F7941D); transition: width 0.5s ease; }
+        .mi-cc__bar--overall .mi-cc__bar-fill { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+        .mi-cc__clocks { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .mi-cc__tile { display: flex; flex-direction: column; gap: 2px; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 8px 12px; }
+        .mi-cc__tile-label { color: #888; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .mi-cc__tile-value { color: #60a5fa; font-size: 20px; font-weight: 700; font-family: 'Consolas', 'Courier New', monospace; }
+        .mi-cc__tile-note { color: #888; font-size: 10px; }
+        .mi-cc--sync-connecting .mi-cc__clocks,
+        .mi-cc--sync-cached .mi-cc__clocks,
+        .mi-cc--sync-offline .mi-cc__clocks { opacity: 0.55; }
+        .mi-cc__concurrency { color: #ccc; font-size: 12px; }
+        .mi-cc__counters, .mi-cc__chips, .mi-cc__pipeline, .mi-cc__alerts {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .mi-cc__counters:empty, .mi-cc__chips:empty, .mi-cc__pipeline:empty, .mi-cc__alerts:empty { display: none; }
+        .mi-cc__counter { background: rgba(0,0,0,0.25); border-radius: 6px; padding: 4px 10px; font-size: 12px; }
+        .mi-cc__counter-label { color: #aaa; }
+        .mi-cc__counter-value { font-weight: 700; }
+        .mi-cc__chip { border: 1px solid rgba(247, 148, 29, 0.35); border-radius: 10px; padding: 2px 10px; color: #ddd; font-size: 11px; }
+        .mi-cc__step { border: 1px solid transparent; border-radius: 6px; padding: 4px 10px; background: rgba(255,255,255,0.06); color: #aaa; font-size: 11px; }
+        .mi-cc__step-label { font-weight: 600; }
+        .mi-cc__step--done { color: #4ade80; }
+        .mi-cc__step--active { color: #fff; background: rgba(247, 148, 29, 0.25); border-color: #F7941D; }
+        .mi-cc__step--skipped { opacity: 0.6; }
+        .mi-cc__step--failed { color: #f87171; border-color: rgba(248, 113, 113, 0.5); }
+        .mi-cc__alert { border-radius: 6px; padding: 4px 10px; font-size: 12px; }
+        .mi-cc__alert--info { background: rgba(96, 165, 250, 0.15); color: #93c5fd; }
+        .mi-cc__alert--warn { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+        .mi-cc__alert--error { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+        .mi-cc__outputs { color: #ccc; font-size: 12px; }
+        .mi-cc__summary { border-radius: 8px; padding: 8px 12px; background: rgba(0,0,0,0.25); font-weight: 600; }
+        .mi-cc__summary--ok { color: #4ade80; }
+        .mi-cc__summary--info { color: #60a5fa; }
+        .mi-cc__summary--warn { color: #fbbf24; }
+        .mi-cc__summary--bad { color: #f87171; }
+        .run-status.cached {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+        }
+        /* The header LIVE badge shows only while the sync state (body[data-mi-sync]) is LIVE. */
+        body[data-mi-sync]:not([data-mi-sync="LIVE"]) .live-indicator { visibility: hidden; }
+        @media (max-width: 992px) {
+            .mi-cc__clocks { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .mi-cc--pc { padding: 12px; }
+            .mi-cc__clocks { grid-template-columns: repeat(2, 1fr); }
+            .mi-cc__tile-value { font-size: 16px; }
+        }
+
+        /* OAL_ONLY (view.hide_lf): no LF tile, LF log stream or worker-port grid. */
+        body.mi-oal-only .mi-lf-tile,
+        body.mi-oal-only .mi-lf-log,
+        body.mi-oal-only .mi-worker-ports,
+        body.mi-oal-only #lf-eta { display: none !important; }
+        @media (min-width: 993px) {
+            body.mi-oal-only .progress-section { grid-template-columns: repeat(3, 1fr); }
+        }
+        /* ===== END RUNTIME COMMAND CENTER ===== */
     </style>
     <script src="assets/js/global-loader.js" data-loader-img="assets/img/aircairo-loader.gif"></script>
 </head>
@@ -1497,6 +1606,9 @@
         </div>
     </div>
 
+    <!-- Runtime command center: rendered by the shared runtime adapter (script#mi-runtime-bootstrap) -->
+    <section id="mi-command-center" aria-label="Run status"></section>
+
     <!-- Validation Warnings Section (hidden by default) -->
     <div class="warnings-section" id="warnings-section">
         <div class="warnings-card">
@@ -1519,7 +1631,7 @@
 
     <!-- Progress Bars -->
     <div class="progress-section">
-        <div class="progress-card">
+        <div class="progress-card mi-lf-tile">
             <h3>Load Factor</h3>
             <div class="progress-value lf" id="lf-pct">0%</div>
             <div class="progress-bar"><div class="progress-fill lf" id="lf-bar" style="width: 0%"></div></div>
@@ -1568,7 +1680,7 @@
     <!-- Main Grid -->
     <div class="main-grid">
         <!-- Workers Status -->
-        <div class="card">
+        <div class="card mi-worker-ports">
             <h2>Worker Ports - Live Status</h2>
             <div class="workers-grid" id="workers-grid">
                 <!-- Filled by JS -->
@@ -1576,7 +1688,7 @@
         </div>
 
         <!-- Live Log Stream (Terminal) for Load Factor -->
-        <div class="card">
+        <div class="card mi-lf-log">
             <h2>Live Log Stream - Load Factor</h2>
             <div class="log-header">
                 <span>Real-time extraction logs</span>
@@ -1721,9 +1833,8 @@
     </div>
 
     <script>
-        let lastData = null;
-        let lastRunData = null;  // Cached data from last run (for offline mode)
-        let isOnline = false;    // Track if API is available
+        let lastData = null;     // Last payload accepted by the runtime sync controller
+        let isOnline = false;    // True while the accepted payload is live (sync LIVE)
 
         // Base URL for API calls:
         // - Local server: falls back to window.location.origin
@@ -1735,11 +1846,9 @@
         // the tunnel URL AND ensure MARKET_INSIGHTS_ENABLE_TUNNEL=1 on the server.
         const NAMED_TUNNEL_URL = '';
         let _apiFallbackActive = false;
-        let _apiFailCount = 0;
-        // Consecutive failed polls tolerated before showing the cached banner.
-        // At a 3s poll interval this is ~9s of continuous failure, so a lone
-        // slow/dropped poll under extraction load never flips the UI.
-        const FAILS_BEFORE_OFFLINE = 3;
+        // Polling, live/static fallback, flicker tolerance (LIVE -> STALE keeps the
+        // last live payload) and the named-tunnel switch live in the shared runtime
+        // bootstrap (script#mi-runtime-bootstrap) built on runtime_adapter.js.
 
         const API_BASE = (() => {
             try {
@@ -1769,6 +1878,12 @@
 
         let realFlights = [];  // Will be populated from API
         let recentShown = [];
+        // Set from the adapter view by applyRuntimeView():
+        // - flight booking data is shown only when it belongs to the rendered run
+        //   (runtime.provenance.flight_booking_run_id === run.run_id);
+        // - OAL_ONLY hides every LF figure, including the ticker's.
+        let flightBookingVisible = false;
+        let runtimeHideLf = false;
 
         // Format LST-SOLD from "2025-12-18 00:00:00" to "18DEC25"
         function formatLstSold(lstSold) {
@@ -1861,12 +1976,12 @@
             const speedMetrics = lastData.speed_metrics || {};
 
             const metrics = [
-                () => `📊 LF: ${(progress.lf || 0).toFixed(0)}%`,
+                () => runtimeHideLf ? null : `📊 LF: ${(progress.lf || 0).toFixed(0)}%`,
                 () => `📊 OAL: ${(progress.oal || 0).toFixed(0)}%`,
                 () => `📋 TASKS: ${tasks.done || 0}/${tasks.total || 0}`,
                 () => `🔄 RUNNING: ${tasks.running || 0}`,
                 () => `📑 EXCEL: ${(progress.excel || 0).toFixed(0)}%`,
-                () => progress.lf >= 100 ? '✅ LF COMPLETE' : `⏳ LF PROGRESS ${(progress.lf || 0).toFixed(0)}%`,
+                () => runtimeHideLf ? null : (progress.lf >= 100 ? '✅ LF COMPLETE' : `⏳ LF PROGRESS ${(progress.lf || 0).toFixed(0)}%`),
                 () => `👥 WORKERS: ${lastData.active_workers || 0}`,
                 () => `📡 STATUS: ${status.toUpperCase()}`,
                 () => `🎯 OVERALL: ${(progress.overall || 0).toFixed(0)}%`,
@@ -1927,7 +2042,7 @@
                         `🛫 ROUTES: ${config.routes_count || 0}`,
                         `📅 DATES: ${config.dates_count || 0}`,
                         `📋 TASKS: ${tasks.done || 0}/${tasks.total || 0}`,
-                        `🎯 LF: ${(progress.lf || 0).toFixed(0)}%`,
+                        runtimeHideLf ? '📊 MARKET INSIGHTS' : `🎯 LF: ${(progress.lf || 0).toFixed(0)}%`,
                         `📊 OAL: ${(progress.oal || 0).toFixed(0)}%`,
                         config.date_range ? `📅 ${config.date_range}` : '📊 MARKET INSIGHTS',
                         `⚡ AIR CAIRO MONITORING`,
@@ -1971,30 +2086,16 @@
             setTimeout(() => el.remove(), duration * 1000 + 500);
         }
 
-        // Update real flights from dashboard data
+        // Real flights for the ticker: only the accepted payload's flight_booking_data,
+        // and only while it belongs to the rendered run. Called by applyRuntimeView().
         function updateRealFlights() {
-            if (lastData && lastData.flight_booking_data && lastData.flight_booking_data.flights) {
-                realFlights = lastData.flight_booking_data.flights;
-            }
+            const booking = flightBookingVisible && lastData ? (lastData.flight_booking_data || {}) : {};
+            realFlights = Array.isArray(booking.flights) ? booking.flights : [];
         }
 
-        // Start live stream
-        async function startLiveStream() {
-            // First try to load cached data so we have something to show immediately
-            try {
-                const response = await fetch('dashboard_status.json?t=' + Date.now(), {
-                    cache: 'no-store'
-                });
-                if (response.ok) {
-                    const cachedData = await response.json();
-                    lastRunData = cachedData;
-                    lastData = cachedData;
-                    updateRealFlights();
-                    console.log('[DataStream] Loaded cached data for streaming');
-                }
-            } catch (e) {
-                console.log('[DataStream] No cached data for initial stream');
-            }
+        // Start the ticker. It reads only data the sync controller has accepted.
+        function startLiveStream() {
+            updateRealFlights();
 
             // Initial burst - more items
             for (let i = 0; i < 12; i++) {
@@ -2002,8 +2103,6 @@
             }
             // Continuous - faster (every 400ms for more data flow)
             setInterval(createRealDataItem, 400);
-            // Update real flights periodically
-            setInterval(updateRealFlights, 2000);
         }
 
         document.addEventListener('DOMContentLoaded', startLiveStream);
@@ -2318,11 +2417,12 @@
             const ctx = document.getElementById('bookingChart');
             if (!ctx) return;
 
-            // Start empty; real data arrives via /status during the run.
-            chartDataPoints = [];
+            // Start from the accepted payload's flight points (empty until one arrives,
+            // and always empty when the flight data belongs to another run).
+            if (!flightBookingVisible) chartDataPoints = [];
 
             const labels = chartDataPoints.map(d => `${d.flight}`);
-            const salesData = chartDataPoints.map(d => d.lstSold);
+            const salesData = chartDataPoints.map(d => d.booked || d.weekly || 0);
 
             bookingChart = new Chart(ctx, {
                 type: 'line',
@@ -2503,8 +2603,23 @@
 
         // Update chart with REAL flight booking data from dashboard
         function updateChartWithRealData(data) {
+            // Flight booking data from another run (stale provenance) is never charted.
+            if (!flightBookingVisible) {
+                if (chartDataPoints.length > 0) {
+                    chartDataPoints = [];
+                    if (bookingChart) {
+                        bookingChart.data.labels = [];
+                        bookingChart.data.datasets[0].data = [];
+                        bookingChart.update('none');
+                    }
+                    const boxesLayer = document.getElementById('data-boxes-layer');
+                    if (boxesLayer) boxesLayer.innerHTML = '';
+                }
+                return;
+            }
+
             // Get real flight booking data from checkpoint
-            const flightBookingData = data.flight_booking_data || {};
+            const flightBookingData = (data || {}).flight_booking_data || {};
             const flights = flightBookingData.flights || [];
 
             // If we have real extracted flight data, use it
@@ -2640,102 +2755,1200 @@
             setInterval(restartChartAnimation, 30000);
         });
 
-        // Load cached data from last run (dashboard_status.json)
-        async function loadCachedData() {
-            try {
-                // Try to load from dashboard_status.json (same directory)
-                const response = await fetch('dashboard_status.json?t=' + Date.now(), {
-                    cache: 'no-store'
-                });
-                if (response.ok) {
-                    lastRunData = await response.json();
-                    console.log('[Dashboard] Loaded cached data from last run');
+        // ===== RUNTIME V2 PAGE HOOKS =====
+        // The shared bootstrap (script#mi-runtime-bootstrap) owns polling: live /status
+        // first, the static snapshot only after live failures, STALE retention and
+        // capped backoff that never stops. After every sync state change it renders
+        // the command center and calls applyRuntimeView(view, payload); between polls
+        // it re-renders once a second and calls applyRuntimeTick(view).
+        function applyRuntimeView(view, payload) {
+            const sync = view && view.sync ? view.sync.state : 'CONNECTING';
+            runtimeHideLf = !!(view && view.hide_lf);
+            flightBookingVisible = !!(view && view.flight_booking_visible);
+            isOnline = sync === 'LIVE';
+            document.body.classList.toggle('mi-oal-only', runtimeHideLf);
 
-                    // If we're offline and have cached data, use it
-                    if (!isOnline && lastRunData) {
-                        lastData = lastRunData;
-                        updateDashboard(lastRunData);
-                        updateRealFlights();
-
-                        // Status already updated by updateDashboard
-                    }
-                }
-            } catch (e) {
-                console.log('[Dashboard] No cached data available');
+            // Legacy sections below the command center: re-render only for a newly
+            // accepted payload (STALE keeps the retained live payload as it is).
+            if (payload && payload !== lastData) {
+                updateDashboard(payload);
             }
-        }
+            syncLegacyTiles(view);
+            updateRealFlights();
 
-        async function fetchStatus() {
+            // The cached-data banner belongs to CACHED only; STALE is announced by
+            // the command center and keeps the last live view without a banner.
             const banner = document.getElementById('offline-banner');
-            try {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 5000);
-
-                const response = await fetch(getActiveApiBase() + '/status?t=' + Date.now(), {
-                    cache: 'no-store',
-                    signal: controller.signal
-                });
-                clearTimeout(timeoutId);
-
-                // FLICKER FIX 1: a transient 5xx (e.g. Cloudflare 502/504 while
-                // the origin is momentarily blocked under extraction load) must
-                // be treated as a failure, not parsed as JSON. Without this the
-                // HTML error body makes response.json() throw and looks like a
-                // full outage.
-                if (!response.ok) {
-                    throw new Error('HTTP ' + response.status);
-                }
-
-                const data = await response.json();
-                isOnline = true;
-                _apiFailCount = 0;
-                lastData = data;
-                updateDashboard(data);
-                updateRealFlights();
-                if (banner) banner.classList.remove('show');
-            } catch (e) {
-                console.error('Fetch error:', e);
-                _apiFailCount++;
-
-                // After 2 failures on primary API, try named tunnel as fallback.
-                // SECURITY: Only active if NAMED_TUNNEL_URL is explicitly set (default: disabled).
-                if (NAMED_TUNNEL_URL && !_apiFallbackActive && _apiFailCount >= 2 && API_BASE !== NAMED_TUNNEL_URL) {
-                    _apiFallbackActive = true;
-                    _apiFailCount = 0;
-                    console.log('[Dashboard] Switching to named tunnel fallback: ' + NAMED_TUNNEL_URL);
-                    return fetchStatus();
-                }
-
-                // FLICKER FIX 2: tolerate transient hiccups. A single slow or
-                // dropped poll (common while the extraction pegs the CPU) must
-                // NOT flip the UI to the "cached data" banner. Keep showing the
-                // last live data and only fall back after several consecutive
-                // failures (~FAILS_BEFORE_OFFLINE * 3s).
-                if (_apiFailCount < FAILS_BEFORE_OFFLINE) {
-                    return;  // keep last live view; do not show the banner
-                }
-
-                isOnline = false;
-
-                // If we have cached data from last run, use it
-                if (lastRunData) {
-                    lastData = lastRunData;
-                    updateDashboard(lastRunData);
-                    updateRealFlights();
-                    if (banner) banner.classList.add('show');
-                } else {
-                    document.getElementById('run-status').textContent = 'Offline';
-                    document.getElementById('run-status').className = 'run-status inactive';
-                    if (banner) banner.classList.add('show');
-                }
+            if (banner) banner.classList.toggle('show', sync === 'CACHED');
+            const runStatus = document.getElementById('run-status');
+            if (sync === 'OFFLINE' && !payload) {
+                runStatus.textContent = 'Offline';
+                runStatus.className = 'run-status inactive';
             }
+            runStatus.classList.toggle('cached', sync === 'CACHED');
         }
 
-        // Initial load: First load cached data, then try live API
-        loadCachedData().then(() => {
-            fetchStatus();
+        // Legacy overall and ETA tiles must not contradict the command center: with a
+        // runtime block they show the runtime truth ("Stage n of N" when no overall %).
+        function syncLegacyTiles(view) {
+            if (!view || !view.runtime_available) return;
+            document.getElementById('overall-pct').textContent = view.overall.text;
+            document.getElementById('overall-bar').style.width =
+                (view.overall.percent === null ? 0 : view.overall.percent) + '%';
+            document.getElementById('total-eta').textContent = view.clocks.eta;
+            document.getElementById('oal-eta').textContent = view.clocks.eta;
+        }
+
+        function applyRuntimeTick(view) {
+            isOnline = !!(view && view.sync && view.sync.state === 'LIVE');
+            syncLegacyTiles(view);
+        }
+    </script>
+
+    <!-- Shared runtime adapter: generated from assets/js/runtime_adapter.js by
+         tools/build_dashboard_adapter_embed.py; do not edit between the markers. -->
+    <script id="mi-runtime-adapter">
+// MI_RUNTIME_ADAPTER_EMBED_BEGIN
+/*
+ * runtime_adapter.js - shared PC/Mobile dashboard runtime adapter (/status.runtime schema_version 2).
+ *
+ * Single source of truth. The copies embedded in live_dashboard.html and
+ * dashboard_mobile.html are generated by tools/build_dashboard_adapter_embed.py
+ * and must stay byte-identical to this file.
+ *
+ * UMD: module.exports in Node, window.MIRuntime in the browser. ES2017, no
+ * dependencies. Pure functions never touch the network or the clock; only
+ * createSyncController calls the injected fetchLive / fetchStatic / timer hooks.
+ */
+(function (root, factory) {
+  'use strict';
+  var api = factory();
+  if (typeof module === 'object' && module && module.exports) {
+    module.exports = api;
+  } else if (root) {
+    root.MIRuntime = api;
+  }
+}(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this), function () {
+  'use strict';
+
+  const VERSION = '2.0.0';
+
+  const BACKOFF_MS = [5000, 10000, 20000, 30000];
+  const LIVE_INTERVAL_MS = { pc: 3000, mobile: 5000 };
+  const CONNECT_FAILURES_FOR_STATIC = 3;
+  const STALE_LOW_CONFIDENCE_MS = 30000;
+
+  const STATE_STYLE = {
+    COMPLETED: 'ok',
+    SUCCESS: 'ok',
+    RUNNING: 'info',
+    FINALIZING: 'info',
+    BLOCKED: 'warn',
+    STALLED: 'warn',
+    NO_DATA: 'warn',
+    STOPPED: 'warn',
+    FAILED: 'bad',
+  };
+
+  const SYNC_LABELS = {
+    CONNECTING: 'Connecting',
+    LIVE: 'Live',
+    STALE: 'Stale',
+    CACHED: 'Cached',
+    OFFLINE: 'Offline',
+  };
+
+  /* Counter keys shown per stage, in display order: [family, key]. */
+  const STAGE_COUNTERS = {
+    SEARCH_AND_EXTRACT: [
+      ['presence', 'scanned'], ['presence', 'ac_present'], ['presence', 'no_ac'], ['presence', 'unknown'],
+      ['extraction', 'enrichment_active'], ['extraction', 'enrichment_queued'],
+      ['extraction', 'extracted_complete'], ['extraction', 'extraction_failed'],
+    ],
+    RECOVERY_PASS: [['recovery', 'planned'], ['recovery', 'eligible'], ['recovery', 'skipped_complete']],
+    MULTICITY_PERSIST: [
+      ['persist', 'routes_done'], ['persist', 'routes_total'], ['persist', 'tasks_done'],
+      ['persist', 'tasks_total'], ['persist', 'unresolved'],
+    ],
+  };
+  const MULTICITY_PASS_COUNTERS = [
+    ['multicity', 'with_data'], ['multicity', 'no_data'], ['multicity', 'partial'], ['multicity', 'failed'],
+  ];
+
+  const COUNTER_LABELS = {
+    scanned: 'Scanned',
+    ac_present: 'Air Cairo present',
+    no_ac: 'No Air Cairo',
+    unknown: 'Unknown',
+    enrichment_active: 'Enrichment active',
+    enrichment_queued: 'Enrichment queued',
+    extracted_complete: 'Extracted',
+    extraction_failed: 'Failed',
+    resumed_durable: 'Resumed (durable)',
+    planned: 'Planned',
+    eligible: 'Eligible',
+    skipped_complete: 'Already complete',
+    with_data: 'With data',
+    no_data: 'No data',
+    partial: 'Partial',
+    failed: 'Failed',
+    routes_done: 'Routes saved',
+    routes_total: 'Routes total',
+    tasks_done: 'Tasks saved',
+    tasks_total: 'Tasks total',
+    unresolved: 'Unresolved',
+  };
+
+  // ------------------------------------------------------------------------
+  // Small pure helpers
+  // ------------------------------------------------------------------------
+
+  function isObject(value) {
+    return value !== null && typeof value === 'object' && !Array.isArray(value);
+  }
+
+  function obj(value) {
+    return isObject(value) ? value : {};
+  }
+
+  function isNum(value) {
+    return typeof value === 'number' && isFinite(value);
+  }
+
+  function numOrNull(value) {
+    return isNum(value) ? value : null;
+  }
+
+  function strOrNull(value) {
+    return value === null || value === undefined ? null : String(value);
+  }
+
+  function clone(value) {
+    return value === undefined ? null : JSON.parse(JSON.stringify(value));
+  }
+
+  /* Epoch milliseconds from a number (already ms) or a date string; NaN otherwise. */
+  function toMs(value) {
+    if (isNum(value)) return value;
+    if (typeof value === 'string' && value) return Date.parse(value);
+    return NaN;
+  }
+
+  /* A string timestamp without a zone (Z or +hh:mm) parses in the viewer's zone. */
+  function isZoneless(value) {
+    return typeof value === 'string' && !/(?:Z|[+-]\d\d:?\d\d)$/.test(value.trim());
+  }
+
+  /* True only when both timestamps parse, carry a zone, and a is strictly later than b. */
+  function isNewer(a, b) {
+    if (isZoneless(a) || isZoneless(b)) return false;
+    const ma = toMs(a);
+    const mb = toMs(b);
+    return isFinite(ma) && isFinite(mb) && ma > mb;
+  }
+
+  function pad2(n) {
+    return n < 10 ? '0' + n : String(n);
+  }
+
+  function plural(n, word) {
+    return n === 1 ? word : word + 's';
+  }
+
+  /* Progress percent for display: floored to one decimal so 99.96 never reads 100. */
+  function fmtPct(p) {
+    return String(Math.floor(p * 10 + 1e-9) / 10);
+  }
+
+  /* "HH:MM:SS" part of an ISO timestamp (server local time, no timezone conversion). */
+  function clockTime(iso) {
+    if (typeof iso !== 'string' || !iso) return null;
+    const m = /T(\d{2}:\d{2}:\d{2})/.exec(iso);
+    return m ? m[1] : iso;
+  }
+
+  function formatAge(seconds) {
+    if (!isNum(seconds)) return null;
+    const s = Math.max(0, Math.floor(seconds));
+    if (s < 60) return s + 's';
+    if (s < 3600) return Math.floor(s / 60) + 'm ' + (s % 60) + 's';
+    return Math.floor(s / 3600) + 'h ' + Math.floor((s % 3600) / 60) + 'm';
+  }
+
+  function humanize(key) {
+    const text = String(key).replace(/_/g, ' ');
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  function esc(value) {
+    return String(value === null || value === undefined ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function cls(value) {
+    return String(value === null || value === undefined ? 'none' : value).toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+  }
+
+  function formatClock(seconds) {
+    if (!isNum(seconds) || seconds < 0) return '--:--';
+    const total = Math.floor(seconds);
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    if (total < 3600) return pad2(m) + ':' + pad2(s);
+    return h + ':' + pad2(m) + ':' + pad2(s);
+  }
+
+  // ------------------------------------------------------------------------
+  // normalizeRuntime
+  // ------------------------------------------------------------------------
+
+  function normalizeRuntime(payload, source) {
+    if (!isObject(payload)) return null;
+    // /status can answer 200 {"error": ...} when no status file exists yet: not a status.
+    if (payload.error !== undefined && !isObject(payload.runtime) && !isObject(payload.config)
+      && payload.status === undefined) {
+      return null;
+    }
+    const runtime = isObject(payload.runtime) ? payload.runtime : null;
+    const run = runtime ? obj(runtime.run) : {};
+    const sync = runtime ? obj(runtime.sync) : {};
+    const config = obj(payload.config);
+    let runId = null;
+    if (run.run_id !== undefined && run.run_id !== null) runId = run.run_id;
+    else if (config.run_id !== undefined && config.run_id !== null) runId = config.run_id;
+    let serverTs = null;
+    if (sync.server_timestamp !== undefined && sync.server_timestamp !== null) serverTs = sync.server_timestamp;
+    else if (payload.timestamp !== undefined && payload.timestamp !== null) serverTs = payload.timestamp;
+    return { source: source, run_id: runId, server_timestamp: serverTs, runtime: runtime, payload: payload };
+  }
+
+  // ------------------------------------------------------------------------
+  // Sync state machine (pure)
+  // ------------------------------------------------------------------------
+
+  function syncInit() {
+    return {
+      sync: 'CONNECTING',
+      liveFailures: 0,
+      everLive: false,
+      retained: null,
+      rendered: null,
+      backoffIndex: 0,
+      wantStatic: false,
+    };
+  }
+
+  function nextBackoff(index) {
+    return Math.min((index | 0) + 1, BACKOFF_MS.length - 1);
+  }
+
+  function reduceLiveFail(state) {
+    const failures = (state.liveFailures | 0) + 1;
+    if (state.sync === 'CONNECTING') {
+      return Object.assign({}, state, {
+        liveFailures: failures,
+        wantStatic: state.wantStatic || failures >= CONNECT_FAILURES_FOR_STATIC,
+      });
+    }
+    if (state.sync === 'LIVE') {
+      return Object.assign({}, state, {
+        sync: 'STALE',
+        liveFailures: failures,
+        rendered: state.retained,
+      });
+    }
+    if (state.sync === 'STALE' || state.sync === 'CACHED' || state.sync === 'OFFLINE') {
+      return Object.assign({}, state, { liveFailures: failures, backoffIndex: nextBackoff(state.backoffIndex) });
+    }
+    return state;
+  }
+
+  function syncReduce(state, event) {
+    const st = state || syncInit();
+    const ev = event || {};
+    switch (ev.type) {
+      case 'LIVE_OK': {
+        const model = ev.model;
+        if (!isObject(model)) return reduceLiveFail(st);
+        const cur = st.rendered;
+        if (cur && cur.run_id === model.run_id && isNewer(cur.server_timestamp, model.server_timestamp)) {
+          // Monotonic guard: never step back in time within one run.
+          return Object.assign({}, st, { liveFailures: 0, backoffIndex: 0 });
+        }
+        return Object.assign({}, st, {
+          sync: 'LIVE',
+          liveFailures: 0,
+          backoffIndex: 0,
+          everLive: true,
+          wantStatic: false,
+          rendered: model,
+          retained: model,
         });
-        setInterval(fetchStatus, 3000);  // Update every 3 seconds
+      }
+      case 'LIVE_FAIL':
+        return reduceLiveFail(st);
+      case 'STATIC_OK': {
+        const model = ev.model;
+        if (!isObject(model)) return syncReduce(st, { type: 'STATIC_FAIL' });
+        if (st.sync === 'CONNECTING' && st.wantStatic) {
+          return Object.assign({}, st, { sync: 'CACHED', rendered: model, wantStatic: false });
+        }
+        if (st.sync === 'STALE') {
+          const retained = st.retained;
+          const rendered = st.rendered;
+          if (retained && model.run_id !== null && model.run_id !== undefined && model.run_id === retained.run_id
+            && rendered && isNewer(model.server_timestamp, rendered.server_timestamp)) {
+            return Object.assign({}, st, { rendered: model });
+          }
+          return st;
+        }
+        return st;
+      }
+      case 'STATIC_FAIL':
+        if (st.sync === 'CONNECTING' && st.wantStatic) {
+          return Object.assign({}, st, { sync: 'OFFLINE', wantStatic: false });
+        }
+        return st;
+      default:
+        return st;
+    }
+  }
+
+  function nextDelayMs(state, layout) {
+    const st = state || syncInit();
+    const fast = layout === 'mobile' ? LIVE_INTERVAL_MS.mobile : LIVE_INTERVAL_MS.pc;
+    if (st.sync === 'LIVE' || (st.sync === 'CONNECTING' && !st.wantStatic)) return fast;
+    const idx = Math.max(0, Math.min(st.backoffIndex | 0, BACKOFF_MS.length - 1));
+    return BACKOFF_MS[idx];
+  }
+
+  // ------------------------------------------------------------------------
+  // createSyncController (impure driver)
+  // ------------------------------------------------------------------------
+
+  function createSyncController(options) {
+    const opts = options || {};
+    const layout = opts.layout === 'mobile' ? 'mobile' : 'pc';
+    const fetchLive = opts.fetchLive;
+    const fetchStatic = opts.fetchStatic;
+    const onRender = typeof opts.onRender === 'function' ? opts.onRender : function () {};
+    const setTimer = typeof opts.setTimer === 'function' ? opts.setTimer
+      : function (fn, ms) { return setTimeout(fn, ms); };
+    const clearTimer = typeof opts.clearTimer === 'function' ? opts.clearTimer
+      : function (handle) { clearTimeout(handle); };
+    const now = typeof opts.now === 'function' ? opts.now : function () { return Date.now(); };
+
+    let state = syncInit();
+    let staleSince = null;
+    let timer = null;
+    let running = false;
+    let generation = 0;
+
+    function context() {
+      return {
+        state: state,
+        model: state.rendered,
+        sync: state.sync,
+        staleSince: staleSince,
+        liveServerTimestamp: state.retained ? state.retained.server_timestamp : null,
+        layout: layout,
+        now: now(),
+      };
+    }
+
+    function dispatch(event) {
+      const prev = state;
+      state = syncReduce(state, event);
+      if (state.sync === 'STALE') {
+        if (prev.sync !== 'STALE' || staleSince === null) staleSince = now();
+      } else {
+        staleSince = null;
+      }
+      if (state !== prev) {
+        try {
+          onRender(context());
+        } catch (err) {
+          // A render failure must never stop polling.
+        }
+      }
+    }
+
+    function callFetch(fn) {
+      try {
+        return Promise.resolve(typeof fn === 'function' ? fn() : Promise.reject(new Error('fetch not provided')));
+      } catch (err) {
+        return Promise.reject(err);
+      }
+    }
+
+    function schedule(gen) {
+      if (!running || gen !== generation) return;
+      const ms = nextDelayMs(state, layout);
+      timer = setTimer(function () {
+        timer = null;
+        return tick(gen);
+      }, ms);
+    }
+
+    async function tick(gen) {
+      if (!running || gen !== generation) return;
+      let event;
+      try {
+        const payload = await callFetch(fetchLive);
+        const model = normalizeRuntime(payload, 'live');
+        event = model ? { type: 'LIVE_OK', model: model } : { type: 'LIVE_FAIL' };
+      } catch (err) {
+        event = { type: 'LIVE_FAIL' };
+      }
+      if (!running || gen !== generation) return;
+      dispatch(event);
+      if (state.wantStatic || state.sync === 'STALE') {
+        let staticEvent;
+        try {
+          const payload = await callFetch(fetchStatic);
+          const model = normalizeRuntime(payload, 'static');
+          staticEvent = model ? { type: 'STATIC_OK', model: model } : { type: 'STATIC_FAIL' };
+        } catch (err) {
+          staticEvent = { type: 'STATIC_FAIL' };
+        }
+        if (!running || gen !== generation) return;
+        dispatch(staticEvent);
+      }
+      schedule(gen);
+    }
+
+    return {
+      start: function () {
+        if (running) return Promise.resolve();
+        running = true;
+        generation += 1;
+        try {
+          onRender(context());
+        } catch (err) {
+          // ignore render failures
+        }
+        return tick(generation);
+      },
+      stop: function () {
+        running = false;
+        generation += 1;
+        if (timer !== null) {
+          clearTimer(timer);
+          timer = null;
+        }
+      },
+      getState: function () {
+        return state;
+      },
+      getContext: context,
+    };
+  }
+
+  // ------------------------------------------------------------------------
+  // buildViewModel (pure)
+  // ------------------------------------------------------------------------
+
+  function syncBlock(sync, model, nowMs, liveServerTimestamp) {
+    // STALE is announced from the last live update, even if a newer same-run static
+    // snapshot replaced the render meanwhile.
+    const basis = sync === 'STALE' && isFinite(toMs(liveServerTimestamp)) ? liveServerTimestamp
+      : (model ? model.server_timestamp : null);
+    const age = isFinite(toMs(basis)) && isFinite(nowMs) ? (nowMs - toMs(basis)) / 1000 : null;
+    let banner = null;
+    if (sync === 'CONNECTING') {
+      banner = 'Connecting to live status';
+    } else if (sync === 'STALE') {
+      banner = age === null ? 'Live connection lost' : 'Last live update ' + formatAge(age) + ' ago';
+    } else if (sync === 'CACHED') {
+      banner = 'Cached snapshot';
+      if (model && model.server_timestamp) banner += ' - captured ' + model.server_timestamp;
+      if (age !== null) banner += ' - ' + formatAge(age) + ' old';
+    } else if (sync === 'OFFLINE') {
+      banner = model ? 'Offline - showing the last payload received'
+        : 'Offline - live status unreachable, no cached snapshot';
+    }
+    return { state: sync, label: SYNC_LABELS[sync] || String(sync), banner: banner };
+  }
+
+  function stageText(cur, fam) {
+    const id = cur.stage_id;
+    const status = cur.status;
+    const done = numOrNull(cur.done_units);
+    const total = numOrNull(cur.total_units);
+    if (status === 'skipped') {
+      if (id === 'RECOVERY_PASS') {
+        const eligible = isNum(obj(fam.recovery).eligible) ? fam.recovery.eligible : 0;
+        return 'Skipped (' + eligible + ' eligible)';
+      }
+      return 'Skipped';
+    }
+    if (id === 'SEARCH_AND_EXTRACT') {
+      return (done === null ? '--' : done) + '/' + (total === null ? '--' : total) + ' keys terminal';
+    }
+    if (done !== null && total !== null) {
+      return done + '/' + total + ' ' + (cur.unit_label ? cur.unit_label : 'units');
+    }
+    if (status === 'done') return 'Done';
+    if (status === 'failed') return 'Failed';
+    if (status === 'active') return 'In progress';
+    return status ? humanize(status) : '--';
+  }
+
+  function counterList(cur, fam) {
+    const id = cur.stage_id;
+    let spec = STAGE_COUNTERS[id] || [];
+    if (typeof id === 'string' && /^MULTICITY_PASS_\d+$/.test(id)) spec = MULTICITY_PASS_COUNTERS;
+    const stageCounters = obj(cur.counters);
+    const out = [];
+    const seen = {};
+    function push(key, value) {
+      if (seen[key]) return;
+      seen[key] = true;
+      out.push({ key: key, label: COUNTER_LABELS[key] || humanize(key), value: numOrNull(value) });
+    }
+    spec.forEach(function (pair) {
+      const family = obj(fam[pair[0]]);
+      const key = pair[1];
+      let value = null;
+      if (Object.prototype.hasOwnProperty.call(family, key)) value = family[key];
+      else if (Object.prototype.hasOwnProperty.call(stageCounters, key)) value = stageCounters[key];
+      push(key, value);
+    });
+    if (cur.resumed_durable !== null && cur.resumed_durable !== undefined) push('resumed_durable', cur.resumed_durable);
+    Object.keys(stageCounters).forEach(function (key) {
+      push(key, stageCounters[key]);
+    });
+    return out;
+  }
+
+  function scopeChips(scope) {
+    const chips = [];
+    const origins = Array.isArray(scope.origins) ? scope.origins : [];
+    if (origins.length) chips.push('Origins: ' + origins.join(', '));
+    if (isNum(scope.destinations_count)) {
+      chips.push(scope.destinations_count + ' ' + plural(scope.destinations_count, 'destination'));
+    }
+    if (isNum(scope.routes_count)) chips.push(scope.routes_count + ' ' + plural(scope.routes_count, 'route'));
+    if (isNum(scope.dates_count)) {
+      let text = scope.dates_count + ' ' + plural(scope.dates_count, 'date');
+      const dr = scope.date_range;
+      if (isObject(dr) && dr.first && dr.last) text += ' (' + dr.first + ' to ' + dr.last + ')';
+      chips.push(text);
+    }
+    if (scope.coverage) chips.push('Coverage: ' + String(scope.coverage).replace(/_/g, ' '));
+    if (scope.composite_requested === true || scope.composite_requested === false) {
+      chips.push('Composite: ' + (scope.composite_requested ? 'YES' : 'NO'));
+    }
+    if (isNum(scope.multicity_jobs_planned)) chips.push('Multi-city jobs planned: ' + scope.multicity_jobs_planned);
+    const via = Array.isArray(scope.multicity_transit_points) ? scope.multicity_transit_points : [];
+    if (via.length) chips.push('Multi-city via: ' + via.join(', '));
+    if (isObject(scope.transit_policy)) {
+      const parts = [];
+      if (scope.transit_policy.include_all_almosafer_transits === true) parts.push('all Almosafer');
+      const explicit = Array.isArray(scope.transit_policy.explicit_transits)
+        ? scope.transit_policy.explicit_transits : [];
+      if (explicit.length) parts.push(explicit.join(', '));
+      chips.push('Transits: ' + (parts.length ? parts.join(' + ') : 'none'));
+    }
+    if (scope.excel_mode) chips.push('Excel: ' + scope.excel_mode);
+    if (isNum(scope.active_searches)) chips.push('Active searches: ' + scope.active_searches);
+    return chips;
+  }
+
+  // D9 (closure plan 2026-09-26): Air Cairo presence and transit-policy facts, one chip.
+  function airCairoPolicyChip(families) {
+    const facts = isObject(families) && isObject(families.air_cairo_policy) ? families.air_cairo_policy : null;
+    if (!facts || !isNum(facts.present_pairs)) return null;
+    const present = facts.present_pairs;
+    if (!isNum(facts.in_evidence)) {
+      return 'Air Cairo: ' + present + ' PRESENT ' + plural(present, 'key') + ' (evidence facts unavailable)';
+    }
+    let text = 'Air Cairo: ' + facts.in_evidence + '/' + present + ' PRESENT ' + plural(present, 'key') + ' in evidence';
+    if (isNum(facts.removed_by_policy)) {
+      text += '; ' + facts.removed_by_policy + ' removed by policy';
+      if (isNum(facts.rows_before) && isNum(facts.rows_after)) {
+        text += ' (rows ' + facts.rows_before + ' -> ' + facts.rows_after + ')';
+      }
+    }
+    return text;
+  }
+
+  // Many workbooks (BY_ROUTE) stay one short phrase; a few are listed by name.
+  function workbooksText(list) {
+    if (!Array.isArray(list) || !list.length) return null;
+    return list.length > 3 ? 'Workbooks: ' + list.length + ' files' : 'Workbooks: ' + list.join(', ');
+  }
+
+  function pipelineText(item) {
+    const status = item.status;
+    if (status === 'done') return isNum(item.elapsed_seconds) ? 'done ' + formatClock(item.elapsed_seconds) : 'done';
+    if (status === 'active') {
+      const counts = isNum(item.done) && isNum(item.total) ? item.done + '/' + item.total : null;
+      const pct = isNum(item.percent) ? fmtPct(item.percent) + '%' : null;
+      if (counts && pct) return counts + ' (' + pct + ')';
+      return counts || pct || 'active';
+    }
+    if (status === 'pending' || status === 'skipped' || status === 'failed') return status;
+    return strOrNull(status) || '';
+  }
+
+  function alertList(alerts, activity) {
+    const out = [];
+    const stalled = alerts.stalled === true || activity.stalled === true;
+    if (stalled) {
+      out.push({ level: 'error', text: activity.stall_reason ? 'STALLED: ' + activity.stall_reason : 'STALLED' });
+    }
+    if (alerts.blocked_stage) out.push({ level: 'error', text: 'Blocked at stage ' + alerts.blocked_stage });
+    if (isNum(alerts.failures) && alerts.failures > 0) {
+      out.push({ level: 'error', text: alerts.failures + ' ' + plural(alerts.failures, 'failure') });
+    }
+    if (isNum(alerts.partials) && alerts.partials > 0) {
+      out.push({ level: 'warn', text: alerts.partials + ' ' + plural(alerts.partials, 'partial') });
+    }
+    if (isNum(alerts.technical_shortfalls) && alerts.technical_shortfalls > 0) {
+      out.push({ level: 'warn', text: alerts.technical_shortfalls + ' technical '
+        + plural(alerts.technical_shortfalls, 'shortfall') });
+    }
+    if (activity.quiet_warning === true && !stalled) {
+      out.push({ level: 'warn', text: 'No activity for ' + formatClock(activity.activity_age_seconds) });
+    }
+    (Array.isArray(alerts.messages) ? alerts.messages : []).forEach(function (msg) {
+      if (!isObject(msg)) return;
+      const level = msg.level === 'warn' || msg.level === 'error' ? msg.level : 'info';
+      out.push({ level: level, text: strOrNull(msg.text) || '' });
+    });
+    return out;
+  }
+
+  function outputsBlock(outputs) {
+    return {
+      workbooks: Array.isArray(outputs.workbooks) ? outputs.workbooks.map(String) : [],
+      validation: strOrNull(outputs.validation),
+      semantic_certification: isObject(outputs.semantic_certification) ? clone(outputs.semantic_certification) : null,
+      uncertified: outputs.uncertified === true,
+      snapshot_sync: isObject(outputs.snapshot_sync) ? clone(outputs.snapshot_sync) : null,
+      data_completeness: isObject(outputs.data_completeness) ? clone(outputs.data_completeness) : null,
+    };
+  }
+
+  function summaryBlock(run, runState, style, scope, alerts, outputs) {
+    const failures = isNum(alerts.failures) ? alerts.failures : 0;
+    const partials = isNum(alerts.partials) ? alerts.partials : 0;
+    const shortfalls = isNum(alerts.technical_shortfalls) ? alerts.technical_shortfalls : 0;
+    const routes = numOrNull(scope.routes_count);
+    const dates = numOrNull(scope.dates_count);
+    const certification = outputs.semantic_certification ? strOrNull(outputs.semantic_certification.verdict) : null;
+    const duration = formatClock(run.duration_seconds);
+    const parts = [(runState === null ? '--' : runState) + ' in ' + duration];
+    if (routes !== null && dates !== null) {
+      parts.push(routes + ' ' + plural(routes, 'route') + ' x ' + dates + ' ' + plural(dates, 'date'));
+    }
+    parts.push(failures + ' ' + plural(failures, 'failure') + ', ' + partials + ' ' + plural(partials, 'partial')
+      + ', ' + shortfalls + ' technical ' + plural(shortfalls, 'shortfall'));
+    if (outputs.validation) parts.push('Validation ' + outputs.validation);
+    if (certification) parts.push('Certification ' + certification);
+    if (outputs.uncertified) parts.push('UNCERTIFIED');
+    if (outputs.workbooks.length) parts.push(workbooksText(outputs.workbooks));
+    return {
+      state: runState,
+      state_style: style,
+      duration: duration,
+      routes: routes,
+      dates: dates,
+      failures: failures,
+      partials: partials,
+      technical_shortfalls: shortfalls,
+      workbooks: outputs.workbooks.slice(),
+      validation: outputs.validation,
+      certification: certification,
+      uncertified: outputs.uncertified,
+      text: parts.join(' - '),
+    };
+  }
+
+  function emptyStage(text) {
+    return {
+      id: null, label: null, index: null, count: null, status: null, percent: null, done: null, total: null,
+      unit_label: null, text: text,
+    };
+  }
+
+  function emptyClocks() {
+    return {
+      elapsed: '--:--', stage_elapsed: '--:--', eta: '--:--', finish: null, confidence: null, eta_state: null,
+      estimate_age: null,
+    };
+  }
+
+  function buildViewModel(model, options) {
+    const opts = options || {};
+    const layout = opts.layout === undefined || opts.layout === null ? 'pc' : String(opts.layout);
+    const nowMs = toMs(opts.now);
+    const staleSinceMs = toMs(opts.staleSince);
+    const hasModel = isObject(model);
+    const sync = opts.sync ? String(opts.sync)
+      : (hasModel ? (model.source === 'static' ? 'CACHED' : 'LIVE') : 'CONNECTING');
+    const rt = hasModel && isObject(model.runtime) ? model.runtime : null;
+    const payload = hasModel ? obj(model.payload) : {};
+
+    const view = {
+      layout: layout,
+      runtime_available: rt !== null,
+      sync: syncBlock(sync, hasModel ? model : null, nowMs, opts.liveServerTimestamp),
+      run: {
+        run_id: hasModel && model.run_id !== undefined ? model.run_id : null,
+        state: null,
+        state_style: 'neutral',
+        state_source: null,
+        terminal: false,
+      },
+      stage: emptyStage(hasModel ? 'Runtime unavailable' : 'No status received'),
+      overall: { percent: null, state: null, text: '--' },
+      clocks: emptyClocks(),
+      counters: [],
+      scope_chips: [],
+      pipeline: [],
+      alerts: [],
+      outputs: null,
+      summary: null,
+      hide_lf: obj(payload.config).mode === 'OAL_ONLY',
+      concurrency_text: null,
+      flight_booking_visible: false,
+    };
+    if (!rt) return view;
+
+    const run = obj(rt.run);
+    const scope = obj(rt.scope);
+    const cur = obj(rt.current);
+    const overall = obj(rt.overall);
+    const timing = obj(rt.timing);
+    const activity = obj(rt.activity);
+    const fam = obj(rt.families);
+    const alerts = obj(rt.alerts);
+    const provenance = obj(rt.provenance);
+    const terminal = run.terminal === true;
+    const runState = strOrNull(run.state);
+    const style = runState !== null && Object.prototype.hasOwnProperty.call(STATE_STYLE, runState)
+      ? STATE_STYLE[runState] : 'neutral';
+
+    view.run = {
+      run_id: run.run_id !== undefined && run.run_id !== null ? run.run_id : view.run.run_id,
+      state: runState,
+      state_style: style,
+      state_source: strOrNull(run.state_source),
+      terminal: terminal,
+    };
+
+    view.stage = {
+      id: strOrNull(cur.stage_id),
+      label: strOrNull(cur.stage_label),
+      index: numOrNull(cur.stage_index),
+      count: numOrNull(cur.stage_count),
+      status: strOrNull(cur.status),
+      percent: numOrNull(cur.percent),
+      done: numOrNull(cur.done_units),
+      total: numOrNull(cur.total_units),
+      unit_label: strOrNull(cur.unit_label),
+      text: stageText(cur, fam),
+    };
+
+    const oIndex = isNum(overall.stage_index) ? overall.stage_index : view.stage.index;
+    const oCount = isNum(overall.stage_count) ? overall.stage_count : view.stage.count;
+    const oPercent = numOrNull(overall.percent);
+    view.overall = {
+      percent: oPercent,
+      state: strOrNull(overall.state),
+      text: oPercent === null
+        ? 'Stage ' + (oIndex === null ? '--' : oIndex) + ' of ' + (oCount === null ? '--' : oCount)
+        : fmtPct(oPercent) + '%',
+    };
+
+    // Clocks tick locally from the server timestamp while LIVE or STALE and not terminal.
+    const serverMs = toMs(model.server_timestamp);
+    const ticking = !terminal && (sync === 'LIVE' || sync === 'STALE') && isFinite(serverMs) && isFinite(nowMs);
+    const delta = ticking ? Math.max(0, (nowMs - serverMs) / 1000) : 0;
+    // The ETA is a countdown to a fixed finish, so it runs down in every sync state.
+    const etaDelta = !terminal && isFinite(serverMs) && isFinite(nowMs) ? Math.max(0, (nowMs - serverMs) / 1000) : 0;
+    const etaState = strOrNull(timing.eta_state);
+    let eta;
+    let finish = null;
+    if (terminal) {
+      eta = 'done';
+      finish = clockTime(run.finished_at);
+    } else if (etaState === 'STALLED') {
+      eta = 'stalled';
+    } else if (etaState === 'CALCULATING') {
+      eta = 'calculating';
+    } else if (etaState === 'OVERDUE') {
+      eta = 'overdue, recalculating';
+      finish = clockTime(timing.estimated_finish_at);
+    } else if (etaState === 'DONE') {
+      eta = 'done';
+    } else if (etaState === 'ACTIVE') {
+      eta = isNum(timing.eta_seconds) ? formatClock(Math.max(0, timing.eta_seconds - etaDelta)) : 'calculating';
+      finish = clockTime(timing.estimated_finish_at);
+    } else {
+      eta = '--:--';
+    }
+    let confidence = strOrNull(timing.eta_confidence);
+    if (!terminal && sync === 'STALE' && isFinite(staleSinceMs) && isFinite(nowMs)
+      && nowMs - staleSinceMs > STALE_LOW_CONFIDENCE_MS) {
+      confidence = 'LOW';
+    }
+    view.clocks = {
+      elapsed: terminal ? formatClock(run.duration_seconds)
+        : (isNum(timing.run_elapsed_seconds) ? formatClock(timing.run_elapsed_seconds + delta) : '--:--'),
+      stage_elapsed: isNum(timing.stage_elapsed_seconds) ? formatClock(timing.stage_elapsed_seconds + delta) : '--:--',
+      eta: eta,
+      finish: finish,
+      confidence: confidence,
+      eta_state: etaState,
+      estimate_age: isNum(timing.estimate_age_seconds) ? formatClock(timing.estimate_age_seconds + delta) : null,
+    };
+
+    view.counters = counterList(cur, fam);
+    view.scope_chips = scopeChips(scope);
+    const policyChip = airCairoPolicyChip(fam);
+    if (policyChip) view.scope_chips.push(policyChip);
+    view.pipeline = (Array.isArray(rt.pipeline) ? rt.pipeline : []).filter(isObject).map(function (item) {
+      return {
+        id: strOrNull(item.id),
+        label: strOrNull(item.label),
+        status: strOrNull(item.status),
+        text: pipelineText(item),
+      };
+    });
+    view.alerts = alertList(alerts, activity);
+    view.outputs = outputsBlock(obj(rt.outputs));
+    view.summary = terminal ? summaryBlock(run, runState, style, scope, alerts, view.outputs) : null;
+    view.hide_lf = run.mode === 'OAL_ONLY';
+    view.concurrency_text = isNum(scope.configured_concurrency) ? scope.configured_concurrency + ' configured' : null;
+    view.flight_booking_visible = provenance.flight_booking_run_id !== null
+      && provenance.flight_booking_run_id !== undefined && view.run.run_id !== null
+      && provenance.flight_booking_run_id === view.run.run_id;
+    return view;
+  }
+
+  // ------------------------------------------------------------------------
+  // renderCommandCenter / textOf / publishView
+  // ------------------------------------------------------------------------
+
+  function span(mi, className, text, hidden) {
+    return '<span class="' + className + '" data-mi="' + mi + '"' + (hidden ? ' hidden' : '') + '>'
+      + esc(text) + '</span>';
+  }
+
+  function bar(kind, percent) {
+    if (!isNum(percent)) return '';
+    const width = Math.max(0, Math.min(100, percent));
+    return '<div class="mi-cc__bar mi-cc__bar--' + kind + '"><div class="mi-cc__bar-fill" style="width:'
+      + width + '%"></div></div>';
+  }
+
+  function tile(mi, label, value, extra) {
+    return '<div class="mi-cc__tile mi-cc__tile--' + mi + '"><span class="mi-cc__tile-label">' + esc(label)
+      + '</span> ' + span(mi, 'mi-cc__tile-value', value === null || value === undefined ? '--' : value)
+      + (extra || '') + '</div>';
+  }
+
+  function renderCommandCenter(container, view) {
+    const v = isObject(view) ? view : buildViewModel(null, {});
+    const layout = cls(v.layout || 'pc');
+    const sync = obj(v.sync);
+    const run = obj(v.run);
+    const stage = obj(v.stage);
+    const overall = obj(v.overall);
+    const clocks = obj(v.clocks);
+    const outputs = v.outputs;
+    const parts = [];
+
+    parts.push('<div class="mi-cc mi-cc--' + layout + ' mi-cc--sync-' + cls(sync.state) + ' mi-cc--state-'
+      + cls(run.state_style) + '">');
+
+    parts.push('<div class="mi-cc__head">');
+    parts.push(span('sync-state', 'mi-cc__sync mi-cc__sync--' + cls(sync.state), sync.state || '--'));
+    parts.push(' ' + span('sync-banner', 'mi-cc__banner', sync.banner || '', !sync.banner));
+    parts.push(' ' + span('run-id', 'mi-cc__run-id', run.run_id === null || run.run_id === undefined ? '--' : run.run_id));
+    parts.push(' ' + span('run-state', 'mi-cc__state mi-cc__state--' + cls(run.state_style), run.state || '--'));
+    parts.push('</div>');
+
+    const stageIndex = isNum(stage.index) && isNum(stage.count) ? 'Stage ' + stage.index + ' of ' + stage.count : '--';
+    parts.push('<div class="mi-cc__stage mi-cc__stage--' + cls(stage.status) + '">');
+    parts.push(span('stage-index', 'mi-cc__stage-index', stageIndex));
+    parts.push(' ' + span('stage-label', 'mi-cc__stage-label', stage.label || '--'));
+    parts.push(' ' + span('stage-progress', 'mi-cc__stage-progress',
+      (stage.text || '--') + (isNum(stage.percent) ? ' (' + fmtPct(stage.percent) + '%)' : '')));
+    parts.push(bar('stage', stage.percent));
+    parts.push('</div>');
+
+    parts.push('<div class="mi-cc__overall"><span class="mi-cc__overall-label">Overall</span> '
+      + span('overall', 'mi-cc__overall-value', overall.text || '--') + bar('overall', overall.percent) + '</div>');
+
+    parts.push('<div class="mi-cc__clocks">');
+    parts.push(tile('elapsed', 'Elapsed', clocks.elapsed));
+    parts.push(tile('stage-elapsed', 'Stage elapsed', clocks.stage_elapsed));
+    parts.push(tile('eta', 'ETA', clocks.eta, clocks.estimate_age
+      ? ' <span class="mi-cc__tile-note">estimate age ' + span('estimate-age', 'mi-cc__estimate-age', clocks.estimate_age)
+        + '</span>' : ''));
+    parts.push(tile('finish', 'Est. finish', clocks.finish));
+    parts.push(tile('confidence', 'Confidence', clocks.confidence));
+    parts.push('</div>');
+
+    parts.push('<div class="mi-cc__concurrency"><span class="mi-cc__concurrency-label">Concurrency</span> '
+      + span('concurrency', 'mi-cc__concurrency-value', v.concurrency_text || '--') + '</div>');
+
+    const counters = Array.isArray(v.counters) ? v.counters : [];
+    parts.push('<ul class="mi-cc__counters" data-mi="counters">');
+    counters.forEach(function (c) {
+      parts.push('<li class="mi-cc__counter" data-mi-key="' + esc(c.key) + '"><span class="mi-cc__counter-label">'
+        + esc(c.label) + '</span> <span class="mi-cc__counter-value">' + esc(c.value === null ? '--' : c.value)
+        + '</span></li>');
+    });
+    parts.push('</ul>');
+
+    const chips = Array.isArray(v.scope_chips) ? v.scope_chips : [];
+    parts.push('<ul class="mi-cc__chips" data-mi="scope">');
+    chips.forEach(function (chip) {
+      parts.push('<li class="mi-cc__chip">' + esc(chip) + '</li>');
+    });
+    parts.push('</ul>');
+
+    const pipeline = Array.isArray(v.pipeline) ? v.pipeline : [];
+    parts.push('<ol class="mi-cc__pipeline" data-mi="pipeline">');
+    pipeline.forEach(function (p) {
+      parts.push('<li class="mi-cc__step mi-cc__step--' + cls(p.status) + '" data-mi-stage="' + esc(p.id)
+        + '"><span class="mi-cc__step-label">' + esc(p.label || p.id || '--') + '</span> '
+        + '<span class="mi-cc__step-text">' + esc(p.text) + '</span></li>');
+    });
+    parts.push('</ol>');
+
+    const alertItems = Array.isArray(v.alerts) ? v.alerts : [];
+    parts.push('<ul class="mi-cc__alerts" data-mi="alerts">');
+    alertItems.forEach(function (a) {
+      parts.push('<li class="mi-cc__alert mi-cc__alert--' + cls(a.level) + '">' + esc(a.text) + '</li>');
+    });
+    parts.push('</ul>');
+
+    if (isObject(outputs)) {
+      const bits = [];
+      if (outputs.workbooks && outputs.workbooks.length) bits.push(workbooksText(outputs.workbooks));
+      if (outputs.validation) bits.push('Validation ' + outputs.validation);
+      if (outputs.semantic_certification && outputs.semantic_certification.verdict) {
+        bits.push('Certification ' + outputs.semantic_certification.verdict);
+      }
+      parts.push('<div class="mi-cc__outputs" data-mi="outputs"' + (bits.length ? '' : ' hidden') + '>'
+        + esc(bits.join(' - ')) + '</div>');
+    } else {
+      parts.push('<div class="mi-cc__outputs" data-mi="outputs" hidden></div>');
+    }
+
+    const summary = isObject(v.summary) ? v.summary : null;
+    parts.push('<div class="mi-cc__summary mi-cc__summary--' + cls(summary ? summary.state_style : 'none')
+      + '" data-mi="summary"' + (summary ? '' : ' hidden') + '>' + esc(summary ? summary.text : '') + '</div>');
+
+    parts.push('</div>');
+    const html = parts.join('');
+    if (container && typeof container === 'object') container.innerHTML = html;
+    return html;
+  }
+
+  function textOf(html) {
+    return String(html === null || html === undefined ? '' : html)
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&amp;/g, '&')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function deepFreeze(value) {
+    if (value !== null && typeof value === 'object' && !Object.isFrozen(value)) {
+      Object.keys(value).forEach(function (key) {
+        deepFreeze(value[key]);
+      });
+      Object.freeze(value);
+    }
+    return value;
+  }
+
+  function globalRoot() {
+    if (typeof window !== 'undefined') return window;
+    if (typeof globalThis !== 'undefined') return globalThis;
+    return null;
+  }
+
+  function publishView(view) {
+    const frozen = deepFreeze(clone(view));
+    const root = globalRoot();
+    if (root) {
+      Object.defineProperty(root, 'MI_RUNTIME_VIEW', {
+        value: frozen,
+        writable: false,
+        enumerable: true,
+        configurable: true,
+      });
+    }
+    return frozen;
+  }
+
+  return Object.freeze({
+    VERSION: VERSION,
+    normalizeRuntime: normalizeRuntime,
+    syncInit: syncInit,
+    syncReduce: syncReduce,
+    nextDelayMs: nextDelayMs,
+    createSyncController: createSyncController,
+    formatClock: formatClock,
+    buildViewModel: buildViewModel,
+    renderCommandCenter: renderCommandCenter,
+    textOf: textOf,
+    publishView: publishView,
+  });
+}));
+// MI_RUNTIME_ADAPTER_EMBED_END
+    </script>
+
+    <!-- Runtime bootstrap: identical in the PC and Mobile templates except MI_LAYOUT. -->
+    <script id="mi-runtime-bootstrap">
+    (function () {
+        'use strict';
+        var MI_LAYOUT = 'pc';
+        var MI_FETCH_TIMEOUT_MS = 5000;
+        var MI_TICK_MS = 1000;
+        var api = window.MIRuntime;
+        var container = document.getElementById('mi-command-center');
+        if (!api || typeof api.createSyncController !== 'function') {
+            if (container) container.textContent = 'Runtime adapter unavailable';
+            return;
+        }
+
+        // One GET with a timeout; a non-2xx status or a non-JSON body is a failure.
+        function requestJson(send) {
+            var abort = typeof AbortController === 'function' ? new AbortController() : null;
+            var timer = abort ? setTimeout(function () { abort.abort(); }, MI_FETCH_TIMEOUT_MS) : null;
+            function settle() {
+                if (timer !== null) clearTimeout(timer);
+                timer = null;
+            }
+            var request;
+            try {
+                request = Promise.resolve(send(abort ? abort.signal : undefined));
+            } catch (err) {
+                settle();
+                return Promise.reject(err);
+            }
+            return request.then(function (response) {
+                if (!response || !response.ok) {
+                    throw new Error('HTTP ' + (response ? response.status : 'no response'));
+                }
+                return response.json();
+            }).then(function (body) {
+                settle();
+                return body;
+            }, function (err) {
+                settle();
+                throw err;
+            });
+        }
+
+        // A render that points the live fetch at the static snapshot (Power Pages) must
+        // never present that snapshot as LIVE: it is a live failure, so the page reaches CACHED.
+        function liveOnly(response) {
+            if (response && /dashboard_status\.json/i.test(String(response.url || ''))) {
+                throw new Error('static snapshot is not live status');
+            }
+            return response;
+        }
+
+        var primaryFailures = 0;
+        function fetchLive() {
+            return requestJson(function (signal) {
+                return fetch(getActiveApiBase() + '/status?t=' + Date.now(), {
+                    cache: 'no-store',
+                    signal: signal
+                }).then(liveOnly);
+            }).then(function (body) {
+                primaryFailures = 0;
+                return body;
+            }, function (err) {
+                primaryFailures += 1;
+                // After 2 failures on the primary API, switch to the named tunnel once.
+                // SECURITY: only active if NAMED_TUNNEL_URL is explicitly set (default: disabled).
+                if (NAMED_TUNNEL_URL && !_apiFallbackActive && primaryFailures >= 2 && API_BASE !== NAMED_TUNNEL_URL) {
+                    _apiFallbackActive = true;
+                    primaryFailures = 0;
+                    console.log('[Dashboard] Switching to named tunnel fallback: ' + NAMED_TUNNEL_URL);
+                    return fetchLive();
+                }
+                throw err;
+            });
+        }
+
+        function fetchStatic() {
+            return requestJson(function (signal) {
+                return fetch('dashboard_status.json?t=' + Date.now(), {
+                    cache: 'no-store',
+                    signal: signal
+                });
+            });
+        }
+
+        // Adapter view -> window.MI_RUNTIME_VIEW (read-only) -> command center.
+        function present(ctx) {
+            var view = api.buildViewModel(ctx.model, {
+                now: ctx.now,
+                sync: ctx.sync,
+                layout: ctx.layout,
+                staleSince: ctx.staleSince,
+                liveServerTimestamp: ctx.liveServerTimestamp
+            });
+            api.publishView(view);
+            api.renderCommandCenter(container, view);
+            document.body.setAttribute('data-mi-sync', view.sync.state);
+            return view;
+        }
+
+        var controller = api.createSyncController({
+            layout: MI_LAYOUT,
+            fetchLive: fetchLive,
+            fetchStatic: fetchStatic,
+            onRender: function (ctx) {
+                try {
+                    var view = present(ctx);
+                    applyRuntimeView(view, ctx.model ? ctx.model.payload : null);
+                } catch (err) {
+                    console.error('[Dashboard] runtime render failed', err);
+                }
+            },
+            setTimer: function (fn, ms) { return window.setTimeout(fn, ms); },
+            clearTimer: function (handle) { window.clearTimeout(handle); }
+        });
+
+        // Local ticking between polls: elapsed, stage elapsed, ETA and stale age.
+        window.setInterval(function () {
+            try {
+                applyRuntimeTick(present(controller.getContext()));
+            } catch (err) {
+                console.error('[Dashboard] runtime tick failed', err);
+            }
+        }, MI_TICK_MS);
+
+        // Poll /status now (Mobile header tap); the sync state is kept.
+        window.miPollNow = function () {
+            controller.stop();
+            return controller.start();
+        };
+
+        controller.start();
+    })();
     </script>
 
     <!-- UNIFIED PAGE LOADER SCRIPT -->
