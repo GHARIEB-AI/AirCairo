@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-24T11:11:03.152543",
+  "timestamp": "2026-09-26T06:46:39.573978",
   "status": "FAILED",
   "phase": "FAILED",
   "blocked_stage": null,
@@ -14,10 +14,10 @@
   "stall_threshold_seconds": null,
   "last_activity_at": null,
   "config": {
-    "run_id": "20260924_100639",
+    "run_id": "20260926_050057",
     "mode": "LF_OAL",
     "oal_coverage_mode": null,
-    "started_at": "2026-09-24T10:06:39.394471",
+    "started_at": "2026-09-26T05:00:57.417787",
     "routes": [
       "JED-CAI",
       "JED-ALY",
@@ -77,7 +77,7 @@
       "CAI-GIZ"
     ],
     "routes_count": 56,
-    "dates_count": 99,
+    "dates_count": 97,
     "chunks_count": 8,
     "ports": [
       9222,
@@ -92,20 +92,20 @@
     ],
     "ports_count": 9,
     "oal_workers": 10,
-    "date_range": "2026-09-24 to 2026-12-31"
+    "date_range": "2026-09-26 to 2026-12-31"
   },
   "progress": {
     "lf": 100.0,
     "lf_status": null,
-    "oal": 86.1,
+    "oal": 91.3,
     "oal_is_estimated": false,
     "oal_status": "running",
     "oal_current_pass": 2,
     "oal_total_passes": 2,
     "oal_routes_completed": 56,
     "oal_routes_total": 56,
-    "excel": 75.0,
-    "overall": 82.6,
+    "excel": 50.0,
+    "overall": 82.0,
     "run_completed": false,
     "finalizing": false,
     "phase": "FAILED",
@@ -508,11 +508,10 @@
   },
   "running_tasks": [],
   "excel_files": [
-    "EGY_TO_KSA_24SEP26_TO_31DEC26_generated_at_24sep_10.06.xlsx",
-    "KSA_TO_EGY_24SEP26_TO_31DEC26_generated_at_24sep_10.06.xlsx",
-    "LOAD_FACTOR_SUMMARY_24-09-26_TO_31-DEC-26_generated_at_24sep_11.06.xlsx"
+    "ALL_26SEP26_TO_31DEC26_generated_at_26sep_05.00.xlsx",
+    "LOAD_FACTOR_SUMMARY_26-09-26_TO_31-DEC-26_generated_at_26sep_06.39.xlsx"
   ],
-  "excel_count": 3,
+  "excel_count": 2,
   "speed_metrics": {
     "speed_per_minute": 0.0,
     "speed_per_hour": 0.0,
@@ -539,12 +538,12 @@
   "live_logs": {
     "lines": [
       "[INFO] Recording whole-run finalization failure...",
-      "11:11:02 | ERROR    | managers.checkpoint_manager | Run marked as FAILED: whole-run finalization failed at stage data_validation (state=OUTPUT_VALIDATION_FAILED)",
+      "06:46:39 | ERROR    | managers.checkpoint_manager | Run marked as FAILED: whole-run finalization failed at stage data_validation (state=OUTPUT_VALIDATION_FAILED)",
       "======================================================================",
       "FINAL RUN STATE: OUTPUT_VALIDATION_FAILED",
       "Success: False",
       "Failed Stage: data_validation",
-      "Error: Required data gaps remain; see D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_240926_at_10.06\\checkpoints\\missing_data_summary.json",
+      "Error: Required data gaps remain; see D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_260926_at_04.58\\checkpoints\\missing_data_summary.json",
       "Tasks Completed: 448/448",
       "======================================================================",
       "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
@@ -557,424 +556,380 @@
       "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     ],
     "file": "FULL_RUN_LOG.log",
-    "total_lines": 133851
+    "total_lines": 169280
   },
   "flight_booking_data": {
     "flights": [
       {
-        "flight": "SM479",
-        "route": "CAI-JED",
-        "date": "Friday, September 25, 2026",
-        "lst_sold": "2026-09-22 00:00:00",
+        "flight": "SM476",
+        "route": "JED-CAI",
+        "date": "Sunday, September 27, 2026",
+        "lst_sold": "2026-09-17 00:00:00",
         "to_day": 0,
         "y_day": 0,
-        "weekly": 105,
+        "weekly": 0,
         "lpl_status": "complete",
         "lpl_reason": "complete",
         "lowest_avail": "CLOSED",
         "lf_percent": 100.0,
         "capacity": 180,
         "booked": 180,
-        "extracted_at": "2026-09-24T10:55:59.122547"
+        "extracted_at": "2026-09-26T06:20:40.946738"
       },
       {
-        "flight": "SM475",
-        "route": "CAI-JED",
-        "date": "Friday, September 25, 2026",
-        "lst_sold": "2026-09-24 00:00:00",
-        "to_day": 9,
-        "y_day": 13,
-        "weekly": 46,
+        "flight": "SM478",
+        "route": "JED-CAI",
+        "date": "Sunday, September 27, 2026",
+        "lst_sold": "2026-09-21 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 6,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "G6",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.6,
+        "capacity": 180,
+        "booked": 181,
+        "extracted_at": "2026-09-26T06:20:35.231401"
+      },
+      {
+        "flight": "SM972",
+        "route": "JED-CAI",
+        "date": "Sunday, September 27, 2026",
+        "lst_sold": "2026-09-24 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 32,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X9",
+        "lf_percent": 72.2,
+        "capacity": 180,
+        "booked": 130,
+        "extracted_at": "2026-09-26T06:20:29.428489"
+      },
+      {
+        "flight": "SM964",
+        "route": "JED-CAI",
+        "date": "Monday, September 28, 2026",
+        "lst_sold": "2026-09-25 00:00:00",
+        "to_day": 0,
+        "y_day": 4,
+        "weekly": 25,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "U4",
+        "lf_percent": 95.0,
+        "capacity": 180,
+        "booked": 171,
+        "extracted_at": "2026-09-26T06:20:04.635250"
+      },
+      {
+        "flight": "SM480",
+        "route": "JED-CAI",
+        "date": "Monday, September 28, 2026",
+        "lst_sold": "2026-09-25 00:00:00",
+        "to_day": 0,
+        "y_day": 5,
+        "weekly": 30,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X9",
         "lf_percent": 92.2,
         "capacity": 180,
         "booked": 166,
-        "extracted_at": "2026-09-24T10:55:30.543082"
+        "extracted_at": "2026-09-26T06:19:59.014448"
       },
       {
-        "flight": "SM477",
-        "route": "CAI-JED",
-        "date": "Friday, September 25, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
+        "flight": "SM958",
+        "route": "JED-CAI",
+        "date": "Monday, September 28, 2026",
+        "lst_sold": "2026-09-25 00:00:00",
         "to_day": 0,
-        "y_day": 1,
+        "y_day": 5,
+        "weekly": 41,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X2",
+        "lf_percent": 98.9,
+        "capacity": 180,
+        "booked": 178,
+        "extracted_at": "2026-09-26T06:19:53.076166"
+      },
+      {
+        "flight": "SM476",
+        "route": "JED-CAI",
+        "date": "Monday, September 28, 2026",
+        "lst_sold": "2026-09-24 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 22,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 180,
+        "booked": 180,
+        "extracted_at": "2026-09-26T06:19:46.892334"
+      },
+      {
+        "flight": "SM478",
+        "route": "JED-CAI",
+        "date": "Monday, September 28, 2026",
+        "lst_sold": "2026-09-21 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 4,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 180,
+        "booked": 180,
+        "extracted_at": "2026-09-26T06:19:40.862507"
+      },
+      {
+        "flight": "SM480",
+        "route": "JED-CAI",
+        "date": "Tuesday, September 29, 2026",
+        "lst_sold": "2026-09-22 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 10,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 180,
+        "booked": 180,
+        "extracted_at": "2026-09-26T06:19:14.198955"
+      },
+      {
+        "flight": "SM958",
+        "route": "JED-CAI",
+        "date": "Tuesday, September 29, 2026",
+        "lst_sold": "2026-09-25 00:00:00",
+        "to_day": 0,
+        "y_day": 9,
+        "weekly": 32,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "U2",
+        "lf_percent": 83.3,
+        "capacity": 180,
+        "booked": 150,
+        "extracted_at": "2026-09-26T06:19:08.200103"
+      },
+      {
+        "flight": "SM960",
+        "route": "JED-CAI",
+        "date": "Tuesday, September 29, 2026",
+        "lst_sold": "2026-09-25 00:00:00",
+        "to_day": 0,
+        "y_day": 3,
+        "weekly": 63,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X9",
+        "lf_percent": 77.8,
+        "capacity": 180,
+        "booked": 140,
+        "extracted_at": "2026-09-26T06:19:02.618197"
+      },
+      {
+        "flight": "SM476",
+        "route": "JED-CAI",
+        "date": "Tuesday, September 29, 2026",
+        "lst_sold": "2026-09-17 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 0,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 180,
+        "booked": 180,
+        "extracted_at": "2026-09-26T06:18:56.064207"
+      },
+      {
+        "flight": "SM478",
+        "route": "JED-CAI",
+        "date": "Tuesday, September 29, 2026",
+        "lst_sold": "2026-09-24 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 10,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 97.8,
+        "capacity": 180,
+        "booked": 176,
+        "extracted_at": "2026-09-26T06:18:50.033249"
+      },
+      {
+        "flight": "SM952",
+        "route": "JED-CAI",
+        "date": "Tuesday, September 29, 2026",
+        "lst_sold": "2026-09-26 00:00:00",
+        "to_day": 1,
+        "y_day": 2,
         "weekly": 35,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
+        "lowest_avail": "U9",
+        "lf_percent": 77.2,
         "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:55:25.281025"
+        "booked": 139,
+        "extracted_at": "2026-09-26T06:18:43.612369"
       },
       {
-        "flight": "SM969",
-        "route": "CAI-JED",
-        "date": "Friday, September 25, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
+        "flight": "SM964",
+        "route": "JED-CAI",
+        "date": "Wednesday, September 30, 2026",
+        "lst_sold": "2026-09-19 00:00:00",
         "to_day": 0,
-        "y_day": 8,
-        "weekly": 23,
+        "y_day": 0,
+        "weekly": 2,
         "lpl_status": "complete",
         "lpl_reason": "complete",
         "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
+        "lf_percent": 97.8,
         "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:55:19.923615"
+        "booked": 176,
+        "extracted_at": "2026-09-26T06:18:05.358793"
       },
       {
-        "flight": "SM971",
-        "route": "CAI-JED",
-        "date": "Saturday, September 26, 2026",
-        "lst_sold": "2026-09-22 00:00:00",
+        "flight": "SM966",
+        "route": "JED-CAI",
+        "date": "Wednesday, September 30, 2026",
+        "lst_sold": "2026-09-15 00:00:00",
         "to_day": 0,
         "y_day": 0,
-        "weekly": 3,
+        "weekly": 0,
         "lpl_status": "complete",
         "lpl_reason": "complete",
         "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:54:59.022707"
+        "lf_percent": 102.8,
+        "capacity": 176,
+        "booked": 181,
+        "extracted_at": "2026-09-26T06:17:59.524890"
       },
       {
-        "flight": "SM475",
-        "route": "CAI-JED",
-        "date": "Saturday, September 26, 2026",
-        "lst_sold": "2026-09-22 00:00:00",
+        "flight": "SM476",
+        "route": "JED-CAI",
+        "date": "Wednesday, September 30, 2026",
+        "lst_sold": "2026-09-25 00:00:00",
         "to_day": 0,
-        "y_day": 0,
+        "y_day": 1,
         "weekly": 12,
         "lpl_status": "complete",
         "lpl_reason": "complete",
         "lowest_avail": "CLOSED",
-        "lf_percent": 101.1,
-        "capacity": 180,
-        "booked": 182,
-        "extracted_at": "2026-09-24T10:54:53.455298"
+        "lf_percent": 100.0,
+        "capacity": 176,
+        "booked": 176,
+        "extracted_at": "2026-09-26T06:17:53.828973"
       },
       {
-        "flight": "SM477",
-        "route": "CAI-JED",
-        "date": "Saturday, September 26, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
+        "flight": "SM954",
+        "route": "JED-CAI",
+        "date": "Wednesday, September 30, 2026",
+        "lst_sold": "2026-09-25 00:00:00",
         "to_day": 0,
         "y_day": 3,
-        "weekly": 25,
+        "weekly": 33,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
+        "lowest_avail": "U9",
+        "lf_percent": 86.7,
         "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:54:48.178201"
+        "booked": 156,
+        "extracted_at": "2026-09-26T06:17:47.904125"
       },
       {
-        "flight": "SM459",
-        "route": "CAI-JED",
-        "date": "Sunday, September 27, 2026",
-        "lst_sold": "2026-09-24 00:00:00",
-        "to_day": 1,
-        "y_day": 5,
-        "weekly": 45,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:54:31.036120"
-      },
-      {
-        "flight": "SM475",
-        "route": "CAI-JED",
-        "date": "Sunday, September 27, 2026",
-        "lst_sold": "2026-09-24 00:00:00",
-        "to_day": 3,
-        "y_day": 11,
-        "weekly": 20,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:54:25.619875"
-      },
-      {
-        "flight": "SM477",
-        "route": "CAI-JED",
-        "date": "Sunday, September 27, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
+        "flight": "SM972",
+        "route": "JED-CAI",
+        "date": "Wednesday, September 30, 2026",
+        "lst_sold": "2026-09-25 00:00:00",
         "to_day": 0,
         "y_day": 2,
-        "weekly": 14,
+        "weekly": 21,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 101.1,
-        "capacity": 180,
-        "booked": 182,
-        "extracted_at": "2026-09-24T10:54:20.555085"
+        "lowest_avail": "U6",
+        "lf_percent": 91.5,
+        "capacity": 176,
+        "booked": 161,
+        "extracted_at": "2026-09-26T06:17:42.263670"
       },
       {
-        "flight": "SM479",
-        "route": "CAI-JED",
-        "date": "Monday, September 28, 2026",
+        "flight": "SM476",
+        "route": "JED-CAI",
+        "date": "Thursday, October 01, 2026",
         "lst_sold": "2026-09-24 00:00:00",
-        "to_day": 1,
-        "y_day": 3,
-        "weekly": 20,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:54:03.491379"
-      },
-      {
-        "flight": "SM475",
-        "route": "CAI-JED",
-        "date": "Monday, September 28, 2026",
-        "lst_sold": "2026-09-24 00:00:00",
-        "to_day": 2,
-        "y_day": 18,
-        "weekly": 57,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "S9",
-        "lf_percent": 90.6,
-        "capacity": 180,
-        "booked": 163,
-        "extracted_at": "2026-09-24T10:53:58.370274"
-      },
-      {
-        "flight": "SM955",
-        "route": "CAI-JED",
-        "date": "Monday, September 28, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
-        "to_day": 0,
-        "y_day": 5,
-        "weekly": 5,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:53:53.153424"
-      },
-      {
-        "flight": "SM959",
-        "route": "CAI-JED",
-        "date": "Monday, September 28, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
-        "to_day": 0,
-        "y_day": 8,
-        "weekly": 8,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:53:49.990886"
-      },
-      {
-        "flight": "SM427",
-        "route": "CAI-ELQ",
-        "date": "Friday, September 25, 2026",
-        "lst_sold": "2026-09-21 00:00:00",
         "to_day": 0,
         "y_day": 0,
-        "weekly": 47,
+        "weekly": 20,
         "lpl_status": "complete",
         "lpl_reason": "complete",
         "lowest_avail": "CLOSED",
         "lf_percent": 100.0,
         "capacity": 180,
         "booked": 180,
-        "extracted_at": "2026-09-24T10:53:46.067500"
-      },
-      {
-        "flight": "SM443",
-        "route": "CAI-AHB",
-        "date": "Sunday, September 27, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
-        "to_day": 0,
-        "y_day": 7,
-        "weekly": 52,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "Y6",
-        "lf_percent": 96.7,
-        "capacity": 180,
-        "booked": 174,
-        "extracted_at": "2026-09-24T10:53:45.293959"
-      },
-      {
-        "flight": "SM477",
-        "route": "CAI-JED",
-        "date": "Monday, September 28, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
-        "to_day": 0,
-        "y_day": 4,
-        "weekly": 24,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:53:45.196991"
-      },
-      {
-        "flight": "SM469",
-        "route": "CAI-RUH",
-        "date": "Friday, September 25, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
-        "to_day": 0,
-        "y_day": 2,
-        "weekly": 89,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "H9",
-        "lf_percent": 93.9,
-        "capacity": 180,
-        "booked": 169,
-        "extracted_at": "2026-09-24T10:53:44.663871"
-      },
-      {
-        "flight": "SM435",
-        "route": "HMB-ELQ",
-        "date": "Sunday, September 27, 2026",
-        "lst_sold": "2026-09-24 00:00:00",
-        "to_day": 8,
-        "y_day": 2,
-        "weekly": 51,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-09-24T10:53:34.760776"
-      },
-      {
-        "flight": "SM443",
-        "route": "CAI-AHB",
-        "date": "Monday, September 28, 2026",
-        "lst_sold": "2026-09-23 00:00:00",
-        "to_day": 0,
-        "y_day": 3,
-        "weekly": 50,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "Y7",
-        "lf_percent": 96.1,
-        "capacity": 180,
-        "booked": 173,
-        "extracted_at": "2026-09-24T10:53:34.023620"
+        "extracted_at": "2026-09-26T06:17:14.273046"
       }
     ],
-    "updated_at": "2026-09-24T10:55:59.122552",
-    "total_extracted": 1317
+    "updated_at": "2026-09-26T06:20:40.946745",
+    "total_extracted": 2786
   },
   "validation": {
-    "timestamp": "2026-09-24T11:06:40.506884",
+    "timestamp": "2026-09-26T06:40:02.696246",
     "passed": false,
     "routes_checked": 56,
-    "dates_expected": 99,
+    "dates_expected": 97,
     "required_missing_count": 2,
     "required_route_date_count": 2,
-    "intentional_exclusion_count": 27,
+    "intentional_exclusion_count": 30,
     "lf": {
       "status": "incomplete",
       "required_missing_count": 2,
       "required_missing": [
         {
-          "route": "AHB-HMB",
-          "date": "2026-12-18",
+          "route": "JED-ALY",
+          "date": "2026-10-11",
           "reason": "no_lf_result_record"
         },
         {
-          "route": "HMB-ELQ",
-          "date": "2026-12-26",
-          "reason": "no_lf_result_record"
+          "route": "JED-CAI",
+          "date": "2026-09-26",
+          "reason": "lpl_incomplete",
+          "row_index": 0,
+          "flight": "SM476",
+          "lpl_status": "incomplete",
+          "lpl_reason": "TIMEOUT: No response after 1 attempts"
         }
       ],
-      "valid_empty_no_service_count": 2961,
-      "rbd_candidate_rows": 3842,
+      "valid_empty_no_service_count": 2902,
+      "rbd_candidate_rows": 3752,
       "rbd_mismatch_count": 0,
-      "rbd_not_acquired_count": 0,
+      "rbd_not_acquired_count": 4,
       "rbd_unevaluable_payload_count": 0,
-      "intentional_exclusion_count": 27,
+      "intentional_exclusion_count": 30,
       "intentional_exclusions": [
         {
-          "route": "AHB-HMB",
-          "date": "2026-09-24",
-          "reason": "confirmed_no_schedule",
-          "evidence": {
-            "source": "known_flights_supplement_ll_i",
-            "requested_route": "AHB-HMB",
-            "date": "2026-09-24",
-            "matched_flights": [],
-            "cancelled_flights": [],
-            "existing_storage_flights": [],
-            "flight_universe_exhaustive": false,
-            "sn_route_probe": {
-              "commands": [
-                "SN24SEPAHBHMB/ASM"
-              ],
-              "scheduled_flights": [],
-              "cancelled_flights": [],
-              "healthy": true,
-              "unhealthy_reason": "",
-              "reused_cached_sn": false
-            }
-          }
-        },
-        {
-          "route": "AJF-HMB",
-          "date": "2026-09-24",
-          "reason": "confirmed_no_schedule",
-          "evidence": {
-            "source": "known_flights_supplement_ll_i",
-            "requested_route": "AJF-HMB",
-            "date": "2026-09-24",
-            "matched_flights": [],
-            "cancelled_flights": [],
-            "existing_storage_flights": [],
-            "flight_universe_exhaustive": false,
-            "sn_route_probe": {
-              "commands": [
-                "SN24SEPAJFHMB/ASM"
-              ],
-              "scheduled_flights": [],
-              "cancelled_flights": [],
-              "healthy": true,
-              "unhealthy_reason": "",
-              "reused_cached_sn": false
-            }
-          }
-        },
-        {
-          "route": "ALY-RUH",
-          "date": "2026-09-24",
+          "route": "AHB-CAI",
+          "date": "2026-09-26",
           "reason": "confirmed_cancelled_only",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
-            "requested_route": "ALY-RUH",
-            "date": "2026-09-24",
+            "requested_route": "AHB-CAI",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [
               {
-                "flight": "SM473",
+                "flight": "SM444",
                 "raw_response_route": ""
               }
             ],
@@ -983,20 +938,44 @@
           }
         },
         {
-          "route": "ASW-JED",
-          "date": "2026-09-24",
+          "route": "AHB-HMB",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
-            "requested_route": "ASW-JED",
-            "date": "2026-09-24",
+            "requested_route": "AHB-HMB",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPASWJED/ASM"
+                "SN26SEPAHBHMB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "ASW-JED",
+          "date": "2026-09-26",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "ASW-JED",
+            "date": "2026-09-26",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN26SEPASWJED/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1008,19 +987,19 @@
         },
         {
           "route": "ATZ-MED",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "ATZ-MED",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPATZMED/ASM"
+                "SN26SEPATZMED/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1032,19 +1011,19 @@
         },
         {
           "route": "ATZ-RUH",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "ATZ-RUH",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPATZRUH/ASM"
+                "SN26SEPATZRUH/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1055,20 +1034,39 @@
           }
         },
         {
+          "route": "CAI-AHB",
+          "date": "2026-09-26",
+          "reason": "confirmed_cancelled_only",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "CAI-AHB",
+            "date": "2026-09-26",
+            "matched_flights": [],
+            "cancelled_flights": [
+              {
+                "flight": "SM443",
+                "raw_response_route": ""
+              }
+            ],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false
+          }
+        },
+        {
           "route": "CAI-ELQ",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "CAI-ELQ",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPCAIELQ/ASM"
+                "SN26SEPCAIELQ/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1080,19 +1078,19 @@
         },
         {
           "route": "CAI-GIZ",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "CAI-GIZ",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPCAIGIZ/ASM"
+                "SN26SEPCAIGIZ/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1104,16 +1102,16 @@
         },
         {
           "route": "CAI-YNB",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_cancelled_only",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "CAI-YNB",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [
               {
-                "flight": "SM441",
+                "flight": "SM447",
                 "raw_response_route": ""
               }
             ],
@@ -1123,19 +1121,19 @@
         },
         {
           "route": "DMM-CAI",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "DMM-CAI",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPDMMCAI/ASM"
+                "SN26SEPDMMCAI/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1147,19 +1145,19 @@
         },
         {
           "route": "DMM-HMB",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "DMM-HMB",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPDMMHMB/ASM"
+                "SN26SEPDMMHMB/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1171,19 +1169,19 @@
         },
         {
           "route": "ELQ-CAI",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "ELQ-CAI",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPELQCAI/ASM"
+                "SN26SEPELQCAI/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1195,19 +1193,19 @@
         },
         {
           "route": "ELQ-HMB",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "ELQ-HMB",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPELQHMB/ASM"
+                "SN26SEPELQHMB/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1219,19 +1217,19 @@
         },
         {
           "route": "GIZ-CAI",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "GIZ-CAI",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPGIZCAI/ASM"
+                "SN26SEPGIZCAI/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1243,19 +1241,19 @@
         },
         {
           "route": "HMB-AHB",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "HMB-AHB",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPHMBAHB/ASM"
+                "SN26SEPHMBAHB/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1267,19 +1265,19 @@
         },
         {
           "route": "HMB-AJF",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "HMB-AJF",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPHMBAJF/ASM"
+                "SN26SEPHMBAJF/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1291,19 +1289,19 @@
         },
         {
           "route": "HMB-DMM",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "HMB-DMM",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPHMBDMM/ASM"
+                "SN26SEPHMBDMM/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1315,19 +1313,67 @@
         },
         {
           "route": "HMB-ELQ",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "HMB-ELQ",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPHMBELQ/ASM"
+                "SN26SEPHMBELQ/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "HMB-MED",
+          "date": "2026-09-26",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HMB-MED",
+            "date": "2026-09-26",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN26SEPHMBMED/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "HMB-RUH",
+          "date": "2026-09-26",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HMB-RUH",
+            "date": "2026-09-26",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN26SEPHMBRUH/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1339,19 +1385,19 @@
         },
         {
           "route": "HMB-TUU",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "HMB-TUU",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPHMBTUU/ASM"
+                "SN26SEPHMBTUU/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1363,19 +1409,19 @@
         },
         {
           "route": "JED-ASW",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "JED-ASW",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPJEDASW/ASM"
+                "SN26SEPJEDASW/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1387,19 +1433,19 @@
         },
         {
           "route": "JED-SSH",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "JED-SSH",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPJEDSSH/ASM"
+                "SN26SEPJEDSSH/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1411,22 +1457,24 @@
         },
         {
           "route": "MED-ATZ",
-          "date": "2026-09-24",
-          "reason": "confirmed_no_schedule",
+          "date": "2026-09-26",
+          "reason": "confirmed_cancelled_only",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "MED-ATZ",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPMEDATZ/ASM"
+                "SN26SEPMEDATZ/ASM"
               ],
               "scheduled_flights": [],
-              "cancelled_flights": [],
+              "cancelled_flights": [
+                "SM498"
+              ],
               "healthy": true,
               "unhealthy_reason": "",
               "reused_cached_sn": false
@@ -1434,20 +1482,20 @@
           }
         },
         {
-          "route": "RUH-ALY",
-          "date": "2026-09-24",
+          "route": "MED-HMB",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
-            "requested_route": "RUH-ALY",
-            "date": "2026-09-24",
+            "requested_route": "MED-HMB",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPRUHALY/ASM"
+                "SN26SEPMEDHMB/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1459,19 +1507,43 @@
         },
         {
           "route": "RUH-ATZ",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "RUH-ATZ",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPRUHATZ/ASM"
+                "SN26SEPRUHATZ/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "RUH-HMB",
+          "date": "2026-09-26",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "RUH-HMB",
+            "date": "2026-09-26",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN26SEPRUHHMB/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1483,22 +1555,24 @@
         },
         {
           "route": "SSH-JED",
-          "date": "2026-09-24",
-          "reason": "confirmed_no_schedule",
+          "date": "2026-09-26",
+          "reason": "confirmed_cancelled_only",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "SSH-JED",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPSSHJED/ASM"
+                "SN26SEPSSHJED/ASM"
               ],
               "scheduled_flights": [],
-              "cancelled_flights": [],
+              "cancelled_flights": [
+                "SM1717"
+              ],
               "healthy": true,
               "unhealthy_reason": "",
               "reused_cached_sn": false
@@ -1507,19 +1581,19 @@
         },
         {
           "route": "TUU-HMB",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_no_schedule",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "TUU-HMB",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [],
             "existing_storage_flights": [],
             "flight_universe_exhaustive": false,
             "sn_route_probe": {
               "commands": [
-                "SN24SEPTUUHMB/ASM"
+                "SN26SEPTUUHMB/ASM"
               ],
               "scheduled_flights": [],
               "cancelled_flights": [],
@@ -1531,16 +1605,20 @@
         },
         {
           "route": "YNB-CAI",
-          "date": "2026-09-24",
+          "date": "2026-09-26",
           "reason": "confirmed_cancelled_only",
           "evidence": {
             "source": "known_flights_supplement_ll_i",
             "requested_route": "YNB-CAI",
-            "date": "2026-09-24",
+            "date": "2026-09-26",
             "matched_flights": [],
             "cancelled_flights": [
               {
                 "flight": "SM442",
+                "raw_response_route": ""
+              },
+              {
+                "flight": "SM448",
                 "raw_response_route": ""
               }
             ],
@@ -1559,12 +1637,12 @@
       "required_missing": []
     },
     "supplement": {
-      "cancelled_route_unresolved_count": 7,
+      "cancelled_route_unresolved_count": 5,
       "cancelled_route_unresolved": [
         {
           "flight": "SM329",
-          "date": "2026-09-24",
-          "date_token": "24SEP",
+          "date": "2026-09-26",
+          "date_token": "26SEP",
           "source": "LL",
           "answer_type": "FLIGHT_CANCELLED",
           "cancel_token": "FLIGHT CANCELLED",
@@ -1572,9 +1650,9 @@
           "candidate_routes": []
         },
         {
-          "flight": "SM330",
-          "date": "2026-09-24",
-          "date_token": "24SEP",
+          "flight": "SM949",
+          "date": "2026-09-26",
+          "date_token": "26SEP",
           "source": "LL",
           "answer_type": "FLIGHT_CANCELLED",
           "cancel_token": "FLIGHT CANCELLED",
@@ -1582,9 +1660,9 @@
           "candidate_routes": []
         },
         {
-          "flight": "SM971",
-          "date": "2026-09-24",
-          "date_token": "24SEP",
+          "flight": "SM953",
+          "date": "2026-09-26",
+          "date_token": "26SEP",
           "source": "LL",
           "answer_type": "FLIGHT_CANCELLED",
           "cancel_token": "FLIGHT CANCELLED",
@@ -1592,8 +1670,7 @@
           "candidate_routes": [],
           "cross_date_candidate_routes": [
             "ALY-JED",
-            "CAI-JED",
-            "LXR-JED"
+            "CAI-JED"
           ],
           "sn_disambiguation": {
             "attempted": true,
@@ -1603,8 +1680,8 @@
         },
         {
           "flight": "SM972",
-          "date": "2026-09-24",
-          "date_token": "24SEP",
+          "date": "2026-09-26",
+          "date_token": "26SEP",
           "source": "LL",
           "answer_type": "FLIGHT_CANCELLED",
           "cancel_token": "FLIGHT CANCELLED",
@@ -1623,8 +1700,8 @@
         },
         {
           "flight": "SM979",
-          "date": "2026-09-24",
-          "date_token": "24SEP",
+          "date": "2026-09-26",
+          "date_token": "26SEP",
           "source": "LL",
           "answer_type": "FLIGHT_CANCELLED",
           "cancel_token": "FLIGHT CANCELLED",
@@ -1639,44 +1716,6 @@
             "all_healthy": true,
             "cancelled_on": []
           }
-        },
-        {
-          "flight": "SM982",
-          "date": "2026-09-24",
-          "date_token": "24SEP",
-          "source": "LL",
-          "answer_type": "FLIGHT_CANCELLED",
-          "cancel_token": "FLIGHT CANCELLED",
-          "route_resolution": "no_current_run_route_evidence",
-          "candidate_routes": [],
-          "cross_date_candidate_routes": [
-            "JED-ATZ",
-            "JED-CAI"
-          ],
-          "sn_disambiguation": {
-            "attempted": true,
-            "all_healthy": true,
-            "cancelled_on": []
-          }
-        },
-        {
-          "flight": "SM985",
-          "date": "2026-09-24",
-          "date_token": "24SEP",
-          "source": "LL",
-          "answer_type": "FLIGHT_CANCELLED",
-          "cancel_token": "FLIGHT CANCELLED",
-          "route_resolution": "no_current_run_route_evidence",
-          "candidate_routes": [],
-          "cross_date_candidate_routes": [
-            "ALY-JED",
-            "LXR-JED"
-          ],
-          "sn_disambiguation": {
-            "attempted": true,
-            "all_healthy": true,
-            "cancelled_on": []
-          }
         }
       ],
       "fatal_unresolved_count": 0,
@@ -1684,16 +1723,16 @@
     },
     "unresolved_required_items": [
       {
-        "route": "AHB-HMB",
-        "date": "2026-12-18",
+        "route": "JED-ALY",
+        "date": "2026-10-11",
         "sources": [
           "LF"
         ],
         "oal_passes": []
       },
       {
-        "route": "HMB-ELQ",
-        "date": "2026-12-26",
+        "route": "JED-CAI",
+        "date": "2026-09-26",
         "sources": [
           "LF"
         ],
@@ -1704,8 +1743,8 @@
       {
         "type": "REQUIRED_DATA_MISSING",
         "severity": "CRITICAL",
-        "route": "AHB-HMB",
-        "date": "2026-12-18",
+        "route": "JED-ALY",
+        "date": "2026-10-11",
         "sources": [
           "LF"
         ],
@@ -1714,8 +1753,8 @@
       {
         "type": "REQUIRED_DATA_MISSING",
         "severity": "CRITICAL",
-        "route": "HMB-ELQ",
-        "date": "2026-12-26",
+        "route": "JED-CAI",
+        "date": "2026-09-26",
         "sources": [
           "LF"
         ],
