@@ -1460,12 +1460,14 @@
         .mi-cc [hidden] { display: none !important; }
         .mi-cc {
             display: grid;
+            grid-template-columns: minmax(0, 1fr);
             gap: 12px;
             background: rgba(70, 43, 115, 0.55);
             border: 1px solid rgba(247, 148, 29, 0.3);
             border-radius: 12px;
             color: #fff;
         }
+        .mi-cc * { overflow-wrap: anywhere; }
         .mi-cc--pc { padding: 16px 20px; font-size: 13px; }
         .mi-cc__head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
         .mi-cc__sync, .mi-cc__state {
