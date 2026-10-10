@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-10-10T10:37:30.654354",
-  "status": "FAILED",
-  "phase": "FAILED",
+  "timestamp": "2026-10-10T10:38:06.535274",
+  "status": "COMPLETED",
+  "phase": "COMPLETED",
   "blocked_stage": null,
   "running": false,
   "active_workers": 0,
@@ -104,15 +104,15 @@
     "oal_total_passes": 2,
     "oal_routes_completed": 56,
     "oal_routes_total": 56,
-    "excel": 75.0,
-    "overall": 87.5,
-    "run_completed": false,
+    "excel": 100.0,
+    "overall": 100.0,
+    "run_completed": true,
     "finalizing": false,
-    "phase": "FAILED",
+    "phase": "COMPLETED",
     "local_build_state": "LOCAL_BUILD_SUCCEEDED",
     "docx_state": "DOCX_SUCCEEDED",
-    "archive_state": "ARCHIVE_PENDING",
-    "main_publish_state": "MAIN_PUBLISH_PENDING"
+    "archive_state": "ARCHIVE_SUCCEEDED",
+    "main_publish_state": "MAIN_PUBLISH_SUCCEEDED"
   },
   "tasks": {
     "total": 224,
@@ -518,7 +518,7 @@
     "speed_per_hour": 0.0,
     "recent_errors": 0,
     "error_rate": 0,
-    "data_points": 12
+    "data_points": 1
   },
   "eta": {
     "lf_eta": null,
@@ -538,24 +538,26 @@
   },
   "live_logs": {
     "lines": [
-      "[VBA] Summary: 2 success, 0 failed",
-      "[TIMER][STAGE] Semantic certification",
-      "10:36:56 | INFO     | managers.checkpoint_manager | Run marked READY_TO_PUBLISH",
-      "[TIMER][STAGE] Publication",
+      "10:38:03 | INFO     | web.publishing.github_publisher | Wrote publish_status.json (ok=True): D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_101026_at_10.02\\reports\\publish_status.json",
+      "[OK] GitHub Pages publish verified",
+      "10:38:03 | INFO     | web.publishing.github_publisher | [OK] GitHub Pages publish verified",
+      "[LEGACY] publish succeeded",
+      "10:38:04 | INFO     | managers.checkpoint_manager | Run marked as COMPLETED",
       "============================================================",
-      "SHAREPOINT ARCHIVE PUBLISH",
+      "✓ SAFE STOP - ALL WORK COMPLETED",
       "============================================================",
-      "State       : SHAREPOINT_COPIED_TO_SYNC_ROOT",
-      "Copied      : 107",
-      "Already there: 0",
-      "Destination : C:\\Users\\MANDO\\OneDrive - Air Cairo\\market insights\\2026\\10-oct-2026\\1st_run_generated_at_10.02_am_range_10oct_to_11nov",
+      "Tasks Completed: 224/224",
+      "Status: Run finished successfully",
+      "Resume: Not needed",
       "============================================================",
-      "10:37:09 | INFO     | web.publishing.github_publisher | Wrote publish_status.json (ok=False): D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_101026_at_10.02\\reports\\publish_status.json",
-      "10:37:09 | INFO     | web.publishing.github_publisher | PC validation passed: 44 links, 44 files, 0 broken",
-      "10:37:09 | INFO     | web.publishing.github_publisher | Mobile validation passed: 35 links, 35 files, 0 broken"
+      "======================================================================",
+      "FINAL RUN STATE: SUCCESS",
+      "Success: True",
+      "Tasks Completed: 224/224",
+      "======================================================================"
     ],
     "file": "FULL_RUN_LOG.log",
-    "total_lines": 27391
+    "total_lines": 27435
   },
   "flight_booking_data": {
     "flights": [
@@ -1831,7 +1833,7 @@
     "schema_version": 2,
     "sync": {
       "source": "live_api",
-      "server_timestamp": "2026-10-10T10:37:30.656583+03:00",
+      "server_timestamp": "2026-10-10T10:38:06.536473+03:00",
       "age_seconds": 0,
       "stale": false
     },
@@ -1840,13 +1842,13 @@
       "tool": "MARKET_INSIGHTS",
       "mode": "LF_OAL",
       "pipeline": "LEGACY",
-      "state": "FAILED",
+      "state": "COMPLETED",
       "state_source": "final_results",
       "terminal": true,
       "execution_started_at": "2026-10-10T10:02:55.256752+03:00",
       "start_basis": "execution_started_at",
-      "finished_at": "2026-10-10T10:36:55.618643+03:00",
-      "duration_seconds": 2040.4
+      "finished_at": "2026-10-10T10:38:03.949556+03:00",
+      "duration_seconds": 2108.7
     },
     "scope": {
       "origins": [
@@ -1891,7 +1893,7 @@
       "stage_label": "Publication",
       "stage_index": 18,
       "stage_count": 18,
-      "status": "failed",
+      "status": "done",
       "done_units": null,
       "total_units": null,
       "percent": null,
@@ -1902,15 +1904,15 @@
     "overall": {
       "stage_index": 18,
       "stage_count": 18,
-      "percent": null,
+      "percent": 100.0,
       "state": "DONE",
       "basis": "none"
     },
     "timing": {
-      "run_elapsed_seconds": 2040.4,
-      "stage_elapsed_seconds": 34.1,
+      "run_elapsed_seconds": 2108.7,
+      "stage_elapsed_seconds": 69.9,
       "eta_seconds": 0.0,
-      "estimated_finish_at": "2026-10-10T10:36:55.618643+03:00",
+      "estimated_finish_at": "2026-10-10T10:38:03.949556+03:00",
       "eta_state": "DONE",
       "eta_confidence": null,
       "estimate_at": null,
@@ -1919,7 +1921,7 @@
     },
     "activity": {
       "last_activity_at": "2026-10-10T10:36:56.586874+03:00",
-      "activity_age_seconds": 34.1,
+      "activity_age_seconds": 69.9,
       "quiet_warning": false,
       "stalled": false,
       "stall_reason": null
@@ -2081,11 +2083,11 @@
       {
         "id": "LEGACY_PUBLICATION",
         "label": "Publication",
-        "status": "failed",
+        "status": "done",
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 34.1
+        "elapsed_seconds": 69.9
       }
     ],
     "families": {
