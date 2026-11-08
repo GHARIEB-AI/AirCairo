@@ -901,21 +901,26 @@
         // runtime bootstrap (script#mi-runtime-bootstrap) built on runtime_adapter.js.
         let lastData = null;
 
+        // Date and time digits of the run's own timestamp, as written by the server (server
+        // local time, no timezone conversion), so every viewer sees the same run time.
+        function lastRunParts(data) {
+            const run = (data && data.runtime && data.runtime.run) || {};
+            const iso = run.terminal === true ? run.finished_at : run.execution_started_at;
+            const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/.exec(typeof iso === 'string' ? iso : '');
+            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const month = m ? months[Number(m[2]) - 1] : undefined;
+            if (!month) return null;
+            return { date: m[3] + month + m[1].slice(-2), time: m[4] + ':' + m[5] + ':' + m[6] };
+        }
+
         function updateDashboard(data) {
             lastData = data;
 
-            // Last Run Date & Time
-            const timestamp = data.timestamp ? new Date(data.timestamp) : new Date();
-            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-            const day = String(timestamp.getDate()).padStart(2, '0');
-            const month = months[timestamp.getMonth()];
-            const year = String(timestamp.getFullYear()).slice(-2);
-            const hours = String(timestamp.getHours()).padStart(2, '0');
-            const mins = String(timestamp.getMinutes()).padStart(2, '0');
-            const secs = String(timestamp.getSeconds()).padStart(2, '0');
-
-            document.getElementById('last-run-date').textContent = day + month + year;
-            document.getElementById('last-run-time').textContent = hours + ':' + mins + ':' + secs;
+            // Last Run Date & Time: the run's own time (its finish once it has ended, its start
+            // while it runs), never the time this status was generated.
+            const lastRun = lastRunParts(data);
+            document.getElementById('last-run-date').textContent = lastRun ? lastRun.date : '--';
+            document.getElementById('last-run-time').textContent = lastRun ? lastRun.time : '--:--:--';
 
             // Run Status
             const runStatus = document.getElementById('run-status');
@@ -1008,10 +1013,23 @@
 
             // Running Tasks
             const runningTasks = data.running_tasks || [];
+            // Tasks the checkpoint still held as RUNNING when the run ended: not running, not done.
+            const interruptedTasks = data.interrupted_tasks || [];
             let runningHtml = '';
-            if (runningTasks.length === 0) {
+            if (runningTasks.length === 0 && interruptedTasks.length === 0) {
                 runningHtml = '<div class="no-data">No active tasks</div>';
             } else {
+                interruptedTasks.slice(0, 5).forEach(task => {
+                    runningHtml += `
+                        <div class="running-task interrupted">
+                            <div class="running-task-header">
+                                <span class="running-task-route">${task.route} (C${task.chunk})</span>
+                                <span class="running-task-worker">${task.worker}</span>
+                            </div>
+                            <div class="running-task-info">Interrupted when the run stopped | ${task.dates_count} dates</div>
+                        </div>
+                    `;
+                });
                 runningTasks.slice(0, 5).forEach(task => {  // Show max 5 on mobile
                     runningHtml += `
                         <div class="running-task">
@@ -1750,7 +1768,7 @@
     };
   }
 
-  function summaryBlock(run, runState, style, scope, alerts, outputs) {
+  function summaryBlock(run, runState, style, scope, alerts, outputs, failedStage) {
     const failures = isNum(alerts.failures) ? alerts.failures : 0;
     const partials = isNum(alerts.partials) ? alerts.partials : 0;
     const shortfalls = isNum(alerts.technical_shortfalls) ? alerts.technical_shortfalls : 0;
@@ -1758,12 +1776,24 @@
     const dates = numOrNull(scope.dates_count);
     const certification = outputs.semantic_certification ? strOrNull(outputs.semantic_certification.verdict) : null;
     const duration = formatClock(run.duration_seconds);
-    const parts = [(runState === null ? '--' : runState) + ' in ' + duration];
+    const failed = runState === 'FAILED';
+    const where = failed && failedStage ? ' at ' + failedStage : '';
+    const parts = [(runState === null ? '--' : runState) + where + ' in ' + duration];
     if (routes !== null && dates !== null) {
       parts.push(routes + ' ' + plural(routes, 'route') + ' x ' + dates + ' ' + plural(dates, 'date'));
     }
-    parts.push(failures + ' ' + plural(failures, 'failure') + ', ' + partials + ' ' + plural(partials, 'partial')
-      + ', ' + shortfalls + ' technical ' + plural(shortfalls, 'shortfall'));
+    if (failed) {
+      // A failed run never reads as error-free: its zero counts are not shown, and the count
+      // that remains says what it counts (tasks), not the run.
+      const counts = [];
+      if (failures > 0) counts.push(failures + ' task ' + plural(failures, 'failure'));
+      if (partials > 0) counts.push(partials + ' ' + plural(partials, 'partial'));
+      if (shortfalls > 0) counts.push(shortfalls + ' technical ' + plural(shortfalls, 'shortfall'));
+      if (counts.length) parts.push(counts.join(', '));
+    } else {
+      parts.push(failures + ' ' + plural(failures, 'failure') + ', ' + partials + ' ' + plural(partials, 'partial')
+        + ', ' + shortfalls + ' technical ' + plural(shortfalls, 'shortfall'));
+    }
     if (outputs.validation) parts.push('Validation ' + outputs.validation);
     if (certification) parts.push('Certification ' + certification);
     if (outputs.uncertified) parts.push('UNCERTIFIED');
@@ -1771,6 +1801,7 @@
     return {
       state: runState,
       state_style: style,
+      failed_stage: failed && failedStage ? failedStage : null,
       duration: duration,
       routes: routes,
       dates: dates,
@@ -1939,7 +1970,8 @@
     });
     view.alerts = alertList(alerts, activity);
     view.outputs = outputsBlock(obj(rt.outputs));
-    view.summary = terminal ? summaryBlock(run, runState, style, scope, alerts, view.outputs) : null;
+    view.summary = terminal ? summaryBlock(run, runState, style, scope, alerts, view.outputs,
+      strOrNull(cur.status) === 'failed' ? strOrNull(cur.stage_label) : null) : null;
     view.hide_lf = run.mode === 'OAL_ONLY';
     view.concurrency_text = isNum(scope.configured_concurrency) ? scope.configured_concurrency + ' configured' : null;
     view.flight_booking_visible = provenance.flight_booking_run_id !== null
