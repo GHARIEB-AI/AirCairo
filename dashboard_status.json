@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-11-08T08:53:39.347977",
+  "timestamp": "2026-11-09T17:39:29.756204",
   "status": "FAILED",
   "phase": "FAILED",
   "blocked_stage": null,
   "running": false,
-  "active_workers": 1,
+  "active_workers": 0,
   "active_workers_known": true,
-  "active_lf_workers": 1,
+  "active_lf_workers": 0,
   "active_oal_workers": 0,
   "configured_oal_workers": 10,
   "stalled": false,
@@ -14,10 +14,10 @@
   "stall_threshold_seconds": null,
   "last_activity_at": null,
   "config": {
-    "run_id": "20261108_084527",
+    "run_id": "20261109_172527",
     "mode": "LF_OAL",
     "oal_coverage_mode": null,
-    "started_at": "2026-11-08T08:45:27.913628",
+    "started_at": "2026-11-09T17:25:27.439326",
     "routes": [
       "JED-CAI",
       "JED-ALY",
@@ -39,6 +39,8 @@
       "DMM-HMB",
       "TUU-CAI",
       "TUU-HMB",
+      "TIF-CAI",
+      "TIF-HMB",
       "AJF-CAI",
       "AJF-HMB",
       "YNB-CAI",
@@ -67,6 +69,8 @@
       "HMB-DMM",
       "CAI-TUU",
       "HMB-TUU",
+      "CAI-TIF",
+      "HMB-TIF",
       "CAI-AJF",
       "HMB-AJF",
       "CAI-YNB",
@@ -76,8 +80,8 @@
       "HMB-ELQ",
       "CAI-GIZ"
     ],
-    "routes_count": 56,
-    "dates_count": 33,
+    "routes_count": 60,
+    "dates_count": 31,
     "chunks_count": 6,
     "ports": [
       9223,
@@ -88,58 +92,59 @@
     ],
     "ports_count": 5,
     "oal_workers": 10,
-    "date_range": "2026-11-08 to 2026-12-10"
+    "date_range": "2026-11-10 to 2026-12-10"
   },
   "progress": {
-    "lf": 99.7,
+    "lf": 100.0,
     "lf_status": null,
-    "oal": 100.0,
+    "oal": 100,
     "oal_is_estimated": false,
-    "oal_status": "stopped",
+    "oal_status": "completed",
     "oal_current_pass": 2,
     "oal_total_passes": 2,
-    "oal_routes_completed": 29,
-    "oal_routes_total": 56,
-    "excel": 0.0,
-    "overall": 69.9,
+    "oal_routes_completed": 60,
+    "oal_routes_total": 60,
+    "excel": 75.0,
+    "overall": 87.5,
     "run_completed": false,
     "finalizing": false,
     "phase": "FAILED",
-    "local_build_state": "LOCAL_BUILD_FAILED",
-    "docx_state": "DOCX_PENDING",
+    "local_build_state": "LOCAL_BUILD_SUCCEEDED",
+    "docx_state": "DOCX_SUCCEEDED",
     "archive_state": "ARCHIVE_PENDING",
     "main_publish_state": "MAIN_PUBLISH_PENDING"
   },
   "tasks": {
-    "total": 336,
-    "done": 335,
-    "running": 1,
+    "total": 360,
+    "done": 360,
+    "running": 0,
     "pending": 0,
-    "failed": 0
+    "failed": 0,
+    "interrupted": 0
   },
   "workers": {
     "9223": {
-      "status": "idle",
+      "status": "stopped",
       "active_route": null,
       "active_task": null
     },
     "9224": {
-      "status": "working",
-      "active_route": "CAI-JED",
-      "active_task": "CAI-JED_r0_chunk1"
+      "status": "stopped",
+      "active_route": null,
+      "active_task": null
     },
     "9225": {
-      "status": "idle",
+      "status": "stopped",
       "active_route": null,
       "active_task": null
     },
     "9226": {
-      "status": "idle",
+      "status": "stopped",
       "active_route": null,
       "active_task": null
     },
     "9227": {
-      "status": "idle",
+      "status": "stopped",
       "active_route": null,
       "active_task": null
     }
@@ -265,6 +270,18 @@
       "pending_dates": [],
       "done_dates": []
     },
+    "TIF-CAI": {
+      "total_tasks": 6,
+      "done_tasks": 6,
+      "pending_dates": [],
+      "done_dates": []
+    },
+    "TIF-HMB": {
+      "total_tasks": 6,
+      "done_tasks": 6,
+      "pending_dates": [],
+      "done_dates": []
+    },
     "AJF-CAI": {
       "total_tasks": 6,
       "done_tasks": 6,
@@ -315,14 +332,8 @@
     },
     "CAI-JED": {
       "total_tasks": 6,
-      "done_tasks": 5,
-      "pending_dates": [
-        "2026-11-12",
-        "2026-11-11",
-        "2026-11-10",
-        "2026-11-09",
-        "2026-11-08"
-      ],
+      "done_tasks": 6,
+      "pending_dates": [],
       "done_dates": []
     },
     "ALY-JED": {
@@ -439,6 +450,18 @@
       "pending_dates": [],
       "done_dates": []
     },
+    "CAI-TIF": {
+      "total_tasks": 6,
+      "done_tasks": 6,
+      "pending_dates": [],
+      "done_dates": []
+    },
+    "HMB-TIF": {
+      "total_tasks": 6,
+      "done_tasks": 6,
+      "pending_dates": [],
+      "done_dates": []
+    },
     "CAI-AJF": {
       "total_tasks": 6,
       "done_tasks": 6,
@@ -488,20 +511,13 @@
       "done_dates": []
     }
   },
-  "running_tasks": [
-    {
-      "id": "CAI-JED_r0_chunk1",
-      "route": "CAI-JED",
-      "chunk": 1,
-      "status": "RUNNING",
-      "worker": "Worker_9224-S4",
-      "dates_count": 5,
-      "started_at": "2026-11-08T08:52:13.865618",
-      "completed_at": null
-    }
+  "running_tasks": [],
+  "excel_files": [
+    "EGY_TO_KSA_10NOV26_TO_10DEC26_generated_at_09nov_17.25.xlsx",
+    "KSA_TO_EGY_10NOV26_TO_10DEC26_generated_at_09nov_17.25.xlsx",
+    "LOAD_FACTOR_SUMMARY_10-11-26_TO_10-DEC-26_generated_at_09nov_17.37.xlsx"
   ],
-  "excel_files": [],
-  "excel_count": 0,
+  "excel_count": 3,
   "speed_metrics": {
     "speed_per_minute": 0.0,
     "speed_per_hour": 0.0,
@@ -520,385 +536,444 @@
   "oal_details": {
     "current_pass": 2,
     "total_passes": 2,
-    "routes_completed_in_pass": 29,
-    "routes_total_per_pass": 56,
+    "routes_completed_in_pass": 60,
+    "routes_total_per_pass": 60,
     "is_estimated": false,
-    "status": "stopped"
+    "status": "completed"
   },
   "live_logs": {
     "lines": [
-      "FINAL RUN STATE: EXTRACTION_FAILED_CHECKPOINT",
+      "[INFO] Recording whole-run finalization failure...",
+      "17:39:29 | ERROR    | managers.checkpoint_manager | Run marked as FAILED: whole-run finalization failed at stage data_validation (state=OUTPUT_VALIDATION_FAILED)",
+      "======================================================================",
+      "FINAL RUN STATE: OUTPUT_VALIDATION_FAILED",
       "Success: False",
-      "Failed Stage: extraction",
-      "Error: Known-flight supplement LF retries exhausted for SM321 on 2026-11-08: RESYNC failed after 6 attempts for SM321-LLI 08NOV",
-      "Tasks Completed: 331/336",
+      "Failed Stage: data_validation",
+      "Error: Required data gaps remain; see D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_091126_at_17.23\\checkpoints\\missing_data_summary.json",
+      "Tasks Completed: 360/360",
       "======================================================================",
       "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
       "!!! RUN MARKED AS FAILURE - one or more invariants violated !!!",
       "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
-      "tasks_completed:        False",
+      "tasks_completed:        True",
       "lf_validation_passed:   False",
       "writer_thread_finished: True",
-      "artifacts_present:      False",
-      "Missing artifacts:",
-      "- D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_081126_at_08.44\\reports\\THREAT_ALERT_REPORT.html",
-      "- D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_081126_at_08.44\\reports\\THREAT_ALERT_DATA.json",
-      "- D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_081126_at_08.44\\reports\\<expected DOCX (never produced)>",
+      "artifacts_present:      True",
       "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     ],
     "file": "FULL_RUN_LOG.log",
-    "total_lines": 12698
+    "total_lines": 21738
   },
   "flight_booking_data": {
     "flights": [
       {
-        "flight": "SM477",
-        "route": "CAI-JED",
-        "date": "Monday, November 09, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 40,
-        "weekly": 82,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "G2",
-        "lf_percent": 98.9,
-        "capacity": 180,
-        "booked": 178,
-        "extracted_at": "2026-11-08T08:52:26.137903"
-      },
-      {
-        "flight": "SM475",
-        "route": "CAI-JED",
-        "date": "Monday, November 09, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 27,
-        "weekly": 52,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "G7",
-        "lf_percent": 90.0,
-        "capacity": 180,
-        "booked": 162,
-        "extracted_at": "2026-11-08T08:52:23.365020"
-      },
-      {
-        "flight": "SM478",
-        "route": "JED-CAI",
-        "date": "Friday, November 13, 2026",
-        "lst_sold": "2026-11-03 00:00:00",
-        "to_day": 0,
-        "y_day": 0,
-        "weekly": 28,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "T9",
-        "lf_percent": 66.7,
-        "capacity": 180,
-        "booked": 120,
-        "extracted_at": "2026-11-08T08:52:18.909688"
-      },
-      {
-        "flight": "SM476",
-        "route": "JED-CAI",
-        "date": "Friday, November 13, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 2,
-        "weekly": 47,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "X9",
-        "lf_percent": 46.6,
-        "capacity": 176,
-        "booked": 82,
-        "extracted_at": "2026-11-08T08:52:16.264155"
-      },
-      {
-        "flight": "SM480",
-        "route": "JED-CAI",
-        "date": "Friday, November 13, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 1,
-        "weekly": 25,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "X7",
-        "lf_percent": 61.9,
-        "capacity": 176,
-        "booked": 109,
-        "extracted_at": "2026-11-08T08:52:13.969359"
-      },
-      {
         "flight": "SM479",
         "route": "CAI-JED",
         "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-06 00:00:00",
-        "to_day": 0,
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 1,
         "y_day": 0,
-        "weekly": 34,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-11-08T08:52:13.709352"
-      },
-      {
-        "flight": "SM451",
-        "route": "ALY-JED",
-        "date": "Monday, November 09, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 1,
-        "weekly": 56,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-11-08T08:52:13.049769"
-      },
-      {
-        "flight": "SM477",
-        "route": "CAI-JED",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 7,
-        "weekly": 42,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "G3",
-        "lf_percent": 90.6,
-        "capacity": 180,
-        "booked": 163,
-        "extracted_at": "2026-11-08T08:52:09.932653"
-      },
-      {
-        "flight": "SM479",
-        "route": "CAI-JED",
-        "date": "Friday, November 13, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 12,
-        "weekly": 73,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "W9",
-        "lf_percent": 63.3,
-        "capacity": 180,
-        "booked": 114,
-        "extracted_at": "2026-11-08T08:52:09.801439"
-      },
-      {
-        "flight": "SM953",
-        "route": "ALY-JED",
-        "date": "Monday, November 09, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 1,
         "weekly": 26,
         "lpl_status": "complete",
         "lpl_reason": "complete",
         "lowest_avail": "CLOSED",
+        "lf_percent": 101.7,
+        "capacity": 180,
+        "booked": 183,
+        "extracted_at": "2026-11-09T17:33:26.707966"
+      },
+      {
+        "flight": "SM477",
+        "route": "CAI-JED",
+        "date": "Tuesday, November 10, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 2,
+        "y_day": 9,
+        "weekly": 50,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "G6",
+        "lf_percent": 96.7,
+        "capacity": 180,
+        "booked": 174,
+        "extracted_at": "2026-11-09T17:33:16.415691"
+      },
+      {
+        "flight": "SM475",
+        "route": "CAI-JED",
+        "date": "Tuesday, November 10, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 8,
+        "y_day": 0,
+        "weekly": 49,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X2",
+        "lf_percent": 100.6,
+        "capacity": 180,
+        "booked": 181,
+        "extracted_at": "2026-11-09T17:33:13.235219"
+      },
+      {
+        "flight": "SM471",
+        "route": "CAI-JED",
+        "date": "Tuesday, November 10, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 3,
+        "y_day": 0,
+        "weekly": 82,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "G1",
+        "lf_percent": 101.1,
+        "capacity": 180,
+        "booked": 182,
+        "extracted_at": "2026-11-09T17:33:10.170325"
+      },
+      {
+        "flight": "SM479",
+        "route": "CAI-JED",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-05 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 39,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
         "lf_percent": 100.0,
         "capacity": 180,
         "booked": 180,
-        "extracted_at": "2026-11-08T08:52:09.452925"
+        "extracted_at": "2026-11-09T17:32:57.943789"
+      },
+      {
+        "flight": "SM478",
+        "route": "JED-CAI",
+        "date": "Sunday, November 15, 2026",
+        "lst_sold": "2026-11-08 00:00:00",
+        "to_day": 0,
+        "y_day": 6,
+        "weekly": 25,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X7",
+        "lf_percent": 50.0,
+        "capacity": 180,
+        "booked": 90,
+        "extracted_at": "2026-11-09T17:32:57.469462"
+      },
+      {
+        "flight": "SM478",
+        "route": "JED-CAI",
+        "date": "Tuesday, November 10, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 1,
+        "y_day": 0,
+        "weekly": 4,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 168,
+        "booked": 168,
+        "extracted_at": "2026-11-09T17:32:55.626498"
+      },
+      {
+        "flight": "SM477",
+        "route": "CAI-JED",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-08 00:00:00",
+        "to_day": 0,
+        "y_day": 5,
+        "weekly": 5,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 180,
+        "booked": 180,
+        "extracted_at": "2026-11-09T17:32:54.951406"
+      },
+      {
+        "flight": "SM476",
+        "route": "JED-CAI",
+        "date": "Sunday, November 15, 2026",
+        "lst_sold": "2026-11-07 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 1,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "W9",
+        "lf_percent": 86.1,
+        "capacity": 180,
+        "booked": 155,
+        "extracted_at": "2026-11-09T17:32:54.171141"
       },
       {
         "flight": "SM443",
         "route": "CAI-AHB",
         "date": "Wednesday, November 11, 2026",
-        "lst_sold": "2026-11-06 00:00:00",
-        "to_day": 0,
-        "y_day": 0,
-        "weekly": 114,
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 2,
+        "y_day": 4,
+        "weekly": 92,
         "lpl_status": "complete",
         "lpl_reason": "complete",
         "lowest_avail": "CLOSED",
         "lf_percent": 100.0,
         "capacity": 180,
         "booked": 180,
-        "extracted_at": "2026-11-08T08:52:09.352238"
+        "extracted_at": "2026-11-09T17:32:52.849654"
       },
       {
-        "flight": "SM477",
-        "route": "CAI-JED",
-        "date": "Friday, November 13, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 6,
-        "weekly": 74,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "S9",
-        "lf_percent": 92.2,
-        "capacity": 180,
-        "booked": 166,
-        "extracted_at": "2026-11-08T08:52:06.349552"
-      },
-      {
-        "flight": "SM475",
-        "route": "CAI-JED",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 1,
-        "weekly": 43,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-11-08T08:52:06.189859"
-      },
-      {
-        "flight": "SM959",
-        "route": "ALY-JED",
-        "date": "Monday, November 09, 2026",
-        "lst_sold": "2026-11-04 00:00:00",
-        "to_day": 0,
-        "y_day": 0,
-        "weekly": 10,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-11-08T08:52:05.765630"
-      },
-      {
-        "flight": "SM478",
+        "flight": "SM476",
         "route": "JED-CAI",
-        "date": "Saturday, November 14, 2026",
-        "lst_sold": "2026-10-29 00:00:00",
+        "date": "Tuesday, November 10, 2026",
+        "lst_sold": "2026-10-27 00:00:00",
         "to_day": 0,
         "y_day": 0,
         "weekly": 0,
         "lpl_status": "complete",
         "lpl_reason": "complete",
         "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-11-08T08:52:04.883534"
+        "lf_percent": 106.2,
+        "capacity": 176,
+        "booked": 187,
+        "extracted_at": "2026-11-09T17:32:52.726860"
       },
       {
         "flight": "SM475",
         "route": "CAI-JED",
-        "date": "Friday, November 13, 2026",
-        "lst_sold": "2026-11-08 00:00:00",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
         "to_day": 1,
-        "y_day": 7,
-        "weekly": 91,
+        "y_day": 2,
+        "weekly": 14,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "S9",
-        "lf_percent": 77.8,
+        "lowest_avail": "K2",
+        "lf_percent": 98.9,
         "capacity": 180,
-        "booked": 140,
-        "extracted_at": "2026-11-08T08:52:02.879709"
+        "booked": 178,
+        "extracted_at": "2026-11-09T17:32:52.002993"
+      },
+      {
+        "flight": "SM472",
+        "route": "JED-CAI",
+        "date": "Sunday, November 15, 2026",
+        "lst_sold": "2026-11-07 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 11,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X7",
+        "lf_percent": 58.3,
+        "capacity": 180,
+        "booked": 105,
+        "extracted_at": "2026-11-09T17:32:50.858884"
+      },
+      {
+        "flight": "SM472",
+        "route": "JED-CAI",
+        "date": "Tuesday, November 10, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 9,
+        "y_day": 6,
+        "weekly": 18,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X1",
+        "lf_percent": 99.4,
+        "capacity": 180,
+        "booked": 179,
+        "extracted_at": "2026-11-09T17:32:49.933713"
       },
       {
         "flight": "SM471",
         "route": "CAI-JED",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 41,
-        "weekly": 85,
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 3,
+        "y_day": 1,
+        "weekly": 11,
         "lpl_status": "complete",
         "lpl_reason": "complete",
         "lowest_avail": "CLOSED",
-        "lf_percent": 100.6,
+        "lf_percent": 101.7,
         "capacity": 180,
-        "booked": 181,
-        "extracted_at": "2026-11-08T08:52:02.708962"
+        "booked": 183,
+        "extracted_at": "2026-11-09T17:32:49.204816"
       },
       {
-        "flight": "SM476",
+        "flight": "SM480",
         "route": "JED-CAI",
-        "date": "Saturday, November 14, 2026",
-        "lst_sold": "2026-11-04 00:00:00",
+        "date": "Sunday, November 15, 2026",
+        "lst_sold": "2026-11-05 00:00:00",
         "to_day": 0,
         "y_day": 0,
-        "weekly": 4,
+        "weekly": 1,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 102.3,
-        "capacity": 176,
-        "booked": 180,
-        "extracted_at": "2026-11-08T08:52:02.328999"
+        "lowest_avail": "W6",
+        "lf_percent": 91.7,
+        "capacity": 180,
+        "booked": 165,
+        "extracted_at": "2026-11-09T17:32:47.653055"
       },
       {
-        "flight": "SM457",
-        "route": "ALY-JED",
-        "date": "Monday, November 09, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
-        "to_day": 0,
-        "y_day": 4,
-        "weekly": 31,
+        "flight": "SM480",
+        "route": "JED-CAI",
+        "date": "Tuesday, November 10, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 6,
+        "y_day": 25,
+        "weekly": 57,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 177,
-        "booked": 177,
-        "extracted_at": "2026-11-08T08:52:02.236244"
+        "lowest_avail": "X5",
+        "lf_percent": 87.5,
+        "capacity": 176,
+        "booked": 154,
+        "extracted_at": "2026-11-09T17:32:46.951041"
       },
       {
         "flight": "SM421",
         "route": "ATZ-JED",
-        "date": "Monday, November 09, 2026",
-        "lst_sold": "2026-11-07 00:00:00",
+        "date": "Tuesday, November 10, 2026",
+        "lst_sold": "2026-11-03 00:00:00",
         "to_day": 0,
-        "y_day": 5,
-        "weekly": 60,
+        "y_day": 0,
+        "weekly": 49,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "T5",
-        "lf_percent": 76.1,
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
         "capacity": 180,
-        "booked": 137,
-        "extracted_at": "2026-11-08T08:51:59.762980"
+        "booked": 180,
+        "extracted_at": "2026-11-09T17:32:46.404362"
+      },
+      {
+        "flight": "SM443",
+        "route": "CAI-AHB",
+        "date": "Thursday, November 12, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 2,
+        "y_day": 5,
+        "weekly": 102,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 180,
+        "booked": 180,
+        "extracted_at": "2026-11-09T17:32:43.892234"
+      },
+      {
+        "flight": "SM975",
+        "route": "ATZ-JED",
+        "date": "Tuesday, November 10, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 1,
+        "y_day": 4,
+        "weekly": 58,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "W9",
+        "lf_percent": 87.8,
+        "capacity": 180,
+        "booked": 158,
+        "extracted_at": "2026-11-09T17:32:41.825890"
       }
     ],
-    "updated_at": "2026-11-08T08:52:26.137925",
-    "total_extracted": 6844
+    "updated_at": "2026-11-09T17:33:26.707974",
+    "total_extracted": 439
   },
   "validation": {
-    "passed": true,
-    "warnings": []
+    "timestamp": "2026-11-09T17:37:29.023803",
+    "passed": false,
+    "routes_checked": 60,
+    "dates_expected": 31,
+    "required_missing_count": 1,
+    "required_route_date_count": 1,
+    "intentional_exclusion_count": 0,
+    "lf": {
+      "status": "incomplete",
+      "required_missing_count": 1,
+      "required_missing": [
+        {
+          "route": "JED-HRG",
+          "date": "2026-11-10",
+          "reason": "no_lf_result_record"
+        }
+      ],
+      "valid_empty_no_service_count": 1057,
+      "rbd_candidate_rows": 1164,
+      "rbd_mismatch_count": 0,
+      "rbd_not_acquired_count": 7,
+      "rbd_unevaluable_payload_count": 0,
+      "provider_route_conflict_count": 0,
+      "intentional_exclusion_count": 0,
+      "intentional_exclusions": []
+    },
+    "oal": {
+      "status": "success",
+      "stage_failed": false,
+      "unresolved_operation_count": 0,
+      "affected_route_date_count": 0,
+      "affected_routes": [],
+      "required_missing": []
+    },
+    "supplement": {
+      "cancelled_route_unresolved_count": 0,
+      "cancelled_route_unresolved": [],
+      "fatal_unresolved_count": 0,
+      "fatal_unresolved": []
+    },
+    "unresolved_required_items": [
+      {
+        "route": "JED-HRG",
+        "date": "2026-11-10",
+        "sources": [
+          "LF"
+        ],
+        "oal_passes": []
+      }
+    ],
+    "warnings": [
+      {
+        "type": "REQUIRED_DATA_MISSING",
+        "severity": "CRITICAL",
+        "route": "JED-HRG",
+        "date": "2026-11-10",
+        "sources": [
+          "LF"
+        ],
+        "oal_passes": []
+      }
+    ]
   },
   "runtime": {
     "schema_version": 2,
     "sync": {
       "source": "live_api",
-      "server_timestamp": "2026-11-08T08:53:39.349097+03:00",
+      "server_timestamp": "2026-11-09T17:39:29.759790+03:00",
       "age_seconds": 0,
       "stale": false
     },
     "run": {
-      "run_id": "20261108_084527",
+      "run_id": "20261109_172527",
       "tool": "MARKET_INSIGHTS",
       "mode": "LF_OAL",
       "pipeline": "LEGACY",
       "state": "FAILED",
       "state_source": "final_results",
       "terminal": true,
-      "execution_started_at": "2026-11-08T08:44:46.737962+03:00",
+      "execution_started_at": "2026-11-09T17:24:31.470256+03:00",
       "start_basis": "execution_started_at",
-      "finished_at": "2026-11-08T08:53:38.947508+03:00",
-      "duration_seconds": 532.2
+      "finished_at": "2026-11-09T17:39:28.866033+03:00",
+      "duration_seconds": 897.4
     },
     "scope": {
       "origins": [
@@ -918,14 +993,15 @@
         "MED",
         "RUH",
         "SSH",
+        "TIF",
         "TUU",
         "YNB"
       ],
-      "destinations_count": 18,
-      "routes_count": 56,
-      "dates_count": 33,
+      "destinations_count": 19,
+      "routes_count": 60,
+      "dates_count": 31,
       "date_range": {
-        "first": "2026-11-08",
+        "first": "2026-11-10",
         "last": "2026-12-10"
       },
       "coverage": null,
@@ -939,10 +1015,10 @@
       "active_searches_basis": null
     },
     "current": {
-      "stage_id": "LEGACY_STEP_8_5_KNOWN_FLIGHT_SUPPLEMENT",
-      "stage_label": "STEP 8.5 Known-flight supplement",
-      "stage_index": 10,
-      "stage_count": 10,
+      "stage_id": "LEGACY_VBA_FORMATTING",
+      "stage_label": "VBA formatting",
+      "stage_index": 16,
+      "stage_count": 16,
       "status": "failed",
       "done_units": null,
       "total_units": null,
@@ -952,17 +1028,17 @@
       "resumed_durable": null
     },
     "overall": {
-      "stage_index": 10,
-      "stage_count": 10,
+      "stage_index": 16,
+      "stage_count": 16,
       "percent": null,
       "state": "DONE",
       "basis": "none"
     },
     "timing": {
-      "run_elapsed_seconds": 532.2,
-      "stage_elapsed_seconds": 109.7,
+      "run_elapsed_seconds": 897.4,
+      "stage_elapsed_seconds": 83.4,
       "eta_seconds": 0.0,
-      "estimated_finish_at": "2026-11-08T08:53:38.947508+03:00",
+      "estimated_finish_at": "2026-11-09T17:39:28.866033+03:00",
       "eta_state": "DONE",
       "eta_confidence": null,
       "estimate_at": null,
@@ -970,8 +1046,8 @@
       "total_eta_state": "DONE"
     },
     "activity": {
-      "last_activity_at": "2026-11-08T08:53:36.553663+03:00",
-      "activity_age_seconds": 2.8,
+      "last_activity_at": "2026-11-09T17:38:06.325017+03:00",
+      "activity_age_seconds": 83.4,
       "quiet_warning": false,
       "stalled": false,
       "stall_reason": null
@@ -993,7 +1069,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 0.4
+        "elapsed_seconds": 0.5
       },
       {
         "id": "LEGACY_STEP_3_TIER_QUEUE_MANAGER",
@@ -1002,7 +1078,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 0.6
+        "elapsed_seconds": 1.1
       },
       {
         "id": "LEGACY_STEP_4_PROCESS_SAFE_STORAGE",
@@ -1047,7 +1123,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 2.2
+        "elapsed_seconds": 2.3
       },
       {
         "id": "LEGACY_STEP_8_PARALLEL_EXECUTION",
@@ -1056,16 +1132,70 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 379.3
+        "elapsed_seconds": 427.9
       },
       {
         "id": "LEGACY_STEP_8_5_KNOWN_FLIGHT_SUPPLEMENT",
         "label": "STEP 8.5 Known-flight supplement",
+        "status": "done",
+        "done": null,
+        "total": null,
+        "percent": null,
+        "elapsed_seconds": 159.7
+      },
+      {
+        "id": "LEGACY_STEP_9_EXCEL_WRITE",
+        "label": "STEP 9 Excel write",
+        "status": "done",
+        "done": null,
+        "total": null,
+        "percent": null,
+        "elapsed_seconds": 96.4
+      },
+      {
+        "id": "LEGACY_STEP_10_CONSOLIDATED_LOAD_FACTOR_SUMMARY",
+        "label": "STEP 10 Consolidated LOAD_FACTOR_SUMMARY",
+        "status": "done",
+        "done": null,
+        "total": null,
+        "percent": null,
+        "elapsed_seconds": 30.2
+      },
+      {
+        "id": "LEGACY_STEP_10_5_DATA_VALIDATION",
+        "label": "STEP 10.5 Data validation",
+        "status": "done",
+        "done": null,
+        "total": null,
+        "percent": null,
+        "elapsed_seconds": 4.8
+      },
+      {
+        "id": "LEGACY_STEP_11_SMART_CLEANUP",
+        "label": "STEP 11 Smart cleanup",
+        "status": "done",
+        "done": null,
+        "total": null,
+        "percent": null,
+        "elapsed_seconds": 35.7
+      },
+      {
+        "id": "LEGACY_WHOLE_RUN_FINALIZATION",
+        "label": "Whole-run finalization",
+        "status": "done",
+        "done": null,
+        "total": null,
+        "percent": null,
+        "elapsed_seconds": 1.6
+      },
+      {
+        "id": "LEGACY_VBA_FORMATTING",
+        "label": "VBA formatting",
         "status": "failed",
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 109.7
+        "elapsed_seconds": 83.4
       }
     ],
     "families": {
@@ -1082,10 +1212,19 @@
       "technical_shortfalls": 0,
       "stalled": false,
       "blocked_stage": null,
-      "messages": []
+      "messages": [
+        {
+          "level": "error",
+          "text": "Run failed at VBA formatting: an output failed its final validation."
+        }
+      ]
     },
     "outputs": {
-      "workbooks": [],
+      "workbooks": [
+        "EGY_TO_KSA_10NOV26_TO_10DEC26_generated_at_09nov_17.25.xlsx",
+        "KSA_TO_EGY_10NOV26_TO_10DEC26_generated_at_09nov_17.25.xlsx",
+        "LOAD_FACTOR_SUMMARY_10-11-26_TO_10-DEC-26_generated_at_09nov_17.37.xlsx"
+      ],
       "validation": null,
       "semantic_certification": null,
       "uncertified": false,
@@ -1098,11 +1237,12 @@
     "source": {
       "materialized_view": "run_progress",
       "run_progress_rejected_reason": null,
-      "durable_watermark": "2026-11-08T08:53:36.553663+03:00",
+      "durable_watermark": "2026-11-09T17:38:06.325017+03:00",
       "history": {
         "samples_used": 0,
         "provenance": []
       }
     }
-  }
+  },
+  "interrupted_tasks": []
 }
