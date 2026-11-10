@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-11-09T19:40:48.905218",
-  "status": "COMPLETED",
-  "phase": "COMPLETED",
+  "timestamp": "2026-11-10T18:25:32.387584",
+  "status": "FAILED",
+  "phase": "FAILED",
   "blocked_stage": null,
   "running": false,
   "active_workers": 0,
@@ -14,10 +14,10 @@
   "stall_threshold_seconds": null,
   "last_activity_at": null,
   "config": {
-    "run_id": "20261109_192527",
+    "run_id": "20261110_180906",
     "mode": "LF_OAL",
     "oal_coverage_mode": null,
-    "started_at": "2026-11-09T19:25:27.721134",
+    "started_at": "2026-11-10T18:09:06.082252",
     "routes": [
       "JED-CAI",
       "JED-ALY",
@@ -81,18 +81,22 @@
       "CAI-GIZ"
     ],
     "routes_count": 60,
-    "dates_count": 31,
+    "dates_count": 33,
     "chunks_count": 6,
     "ports": [
+      9222,
       9223,
       9224,
       9225,
       9226,
-      9227
+      9227,
+      9232,
+      9233,
+      9234
     ],
-    "ports_count": 5,
+    "ports_count": 9,
     "oal_workers": 10,
-    "date_range": "2026-11-10 to 2026-12-10"
+    "date_range": "2026-11-10 to 2026-12-12"
   },
   "progress": {
     "lf": 100.0,
@@ -104,15 +108,15 @@
     "oal_total_passes": 2,
     "oal_routes_completed": 60,
     "oal_routes_total": 60,
-    "excel": 100.0,
-    "overall": 100.0,
-    "run_completed": true,
+    "excel": 75.0,
+    "overall": 87.5,
+    "run_completed": false,
     "finalizing": false,
-    "phase": "COMPLETED",
+    "phase": "FAILED",
     "local_build_state": "LOCAL_BUILD_SUCCEEDED",
     "docx_state": "DOCX_SUCCEEDED",
-    "archive_state": "ARCHIVE_SUCCEEDED",
-    "main_publish_state": "MAIN_PUBLISH_SUCCEEDED"
+    "archive_state": "ARCHIVE_PENDING",
+    "main_publish_state": "MAIN_PUBLISH_PENDING"
   },
   "tasks": {
     "total": 360,
@@ -123,6 +127,11 @@
     "interrupted": 0
   },
   "workers": {
+    "9222": {
+      "status": "stopped",
+      "active_route": null,
+      "active_task": null
+    },
     "9223": {
       "status": "stopped",
       "active_route": null,
@@ -144,6 +153,21 @@
       "active_task": null
     },
     "9227": {
+      "status": "stopped",
+      "active_route": null,
+      "active_task": null
+    },
+    "9232": {
+      "status": "stopped",
+      "active_route": null,
+      "active_task": null
+    },
+    "9233": {
+      "status": "stopped",
+      "active_route": null,
+      "active_task": null
+    },
+    "9234": {
       "status": "stopped",
       "active_route": null,
       "active_task": null
@@ -513,9 +537,9 @@
   },
   "running_tasks": [],
   "excel_files": [
-    "EGY_TO_KSA_10NOV26_TO_10DEC26_generated_at_09nov_19.25.xlsx",
-    "KSA_TO_EGY_10NOV26_TO_10DEC26_generated_at_09nov_19.25.xlsx",
-    "LOAD_FACTOR_SUMMARY_10-11-26_TO_10-DEC-26_generated_at_09nov_19.37.xlsx"
+    "EGY_TO_KSA_10NOV26_TO_12DEC26_generated_at_10nov_18.09.xlsx",
+    "KSA_TO_EGY_10NOV26_TO_12DEC26_generated_at_10nov_18.09.xlsx",
+    "LOAD_FACTOR_SUMMARY_10-11-26_TO_12-DEC-26_generated_at_10nov_18.22.xlsx"
   ],
   "excel_count": 3,
   "speed_metrics": {
@@ -543,268 +567,42 @@
   },
   "live_logs": {
     "lines": [
-      "19:40:40 | INFO     | web.publishing.github_publisher | Wrote publish_status.json (ok=True): D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_091126_at_19.24\\reports\\publish_status.json",
-      "[OK] GitHub Pages publish verified",
-      "19:40:40 | INFO     | web.publishing.github_publisher | [OK] GitHub Pages publish verified",
-      "[LEGACY] publish succeeded",
-      "19:40:42 | INFO     | managers.checkpoint_manager | Run marked as COMPLETED",
+      "[VBA] Summary: 2 success, 0 failed",
+      "[TIMER][STAGE] Semantic certification",
+      "18:25:06 | INFO     | managers.checkpoint_manager | Run marked READY_TO_PUBLISH",
+      "[TIMER][STAGE] Publication",
       "============================================================",
-      "✓ SAFE STOP - ALL WORK COMPLETED",
+      "SHAREPOINT ARCHIVE PUBLISH",
       "============================================================",
-      "Tasks Completed: 360/360",
-      "Status: Run finished successfully",
-      "Resume: Not needed",
+      "State       : SHAREPOINT_COPIED_TO_SYNC_ROOT",
+      "Copied      : 94",
+      "Already there: 0",
+      "Destination : C:\\Users\\MANDO\\OneDrive - Air Cairo\\market insights\\2026\\10-nov-2026\\1st_run_generated_at_6.07_pm_range_10nov_to_12dec",
       "============================================================",
-      "======================================================================",
-      "FINAL RUN STATE: SUCCESS",
-      "Success: True",
-      "Tasks Completed: 360/360",
-      "======================================================================"
+      "18:25:15 | INFO     | web.publishing.github_publisher | Wrote publish_status.json (ok=False): D:\\CODERED\\LAB\\Artifacts\\outputs\\run_generated_101126_at_18.07\\reports\\publish_status.json",
+      "18:25:15 | INFO     | web.publishing.github_publisher | PC validation passed: 33 links, 33 files, 0 broken",
+      "18:25:15 | INFO     | web.publishing.github_publisher | Mobile validation passed: 33 links, 33 files, 0 broken"
     ],
     "file": "FULL_RUN_LOG.log",
-    "total_lines": 21617
+    "total_lines": 27710
   },
   "flight_booking_data": {
     "flights": [
       {
-        "flight": "SM479",
-        "route": "CAI-JED",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 1,
-        "y_day": 0,
-        "weekly": 26,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 101.7,
-        "capacity": 180,
-        "booked": 183,
-        "extracted_at": "2026-11-09T19:33:21.000876"
-      },
-      {
-        "flight": "SM477",
-        "route": "CAI-JED",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 6,
-        "y_day": 9,
-        "weekly": 53,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-11-09T19:33:10.311339"
-      },
-      {
-        "flight": "SM478",
-        "route": "JED-CAI",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 1,
-        "y_day": 0,
-        "weekly": 4,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 168,
-        "booked": 168,
-        "extracted_at": "2026-11-09T19:33:08.226862"
-      },
-      {
-        "flight": "SM475",
-        "route": "CAI-JED",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 10,
-        "y_day": 0,
-        "weekly": 51,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 101.7,
-        "capacity": 180,
-        "booked": 183,
-        "extracted_at": "2026-11-09T19:33:07.145369"
-      },
-      {
-        "flight": "SM476",
-        "route": "JED-CAI",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-10-27 00:00:00",
-        "to_day": 0,
-        "y_day": 0,
-        "weekly": 0,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 106.2,
-        "capacity": 176,
-        "booked": 187,
-        "extracted_at": "2026-11-09T19:33:05.011654"
-      },
-      {
-        "flight": "SM471",
-        "route": "CAI-JED",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 3,
-        "y_day": 0,
-        "weekly": 82,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 101.7,
-        "capacity": 180,
-        "booked": 183,
-        "extracted_at": "2026-11-09T19:33:04.236178"
-      },
-      {
-        "flight": "SM472",
-        "route": "JED-CAI",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 9,
-        "y_day": 6,
-        "weekly": 18,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "X2",
-        "lf_percent": 98.9,
-        "capacity": 180,
-        "booked": 178,
-        "extracted_at": "2026-11-09T19:33:02.278360"
-      },
-      {
-        "flight": "SM480",
-        "route": "JED-CAI",
-        "date": "Tuesday, November 10, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 12,
-        "y_day": 25,
-        "weekly": 63,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "T9",
-        "lf_percent": 90.9,
-        "capacity": 176,
-        "booked": 160,
-        "extracted_at": "2026-11-09T19:32:59.409788"
-      },
-      {
-        "flight": "SM479",
-        "route": "CAI-JED",
-        "date": "Wednesday, November 11, 2026",
-        "lst_sold": "2026-11-05 00:00:00",
-        "to_day": 0,
-        "y_day": 0,
-        "weekly": 39,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-11-09T19:32:51.584277"
-      },
-      {
-        "flight": "SM477",
-        "route": "CAI-JED",
-        "date": "Wednesday, November 11, 2026",
-        "lst_sold": "2026-11-08 00:00:00",
-        "to_day": 0,
-        "y_day": 5,
-        "weekly": 5,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 100.0,
-        "capacity": 180,
-        "booked": 180,
-        "extracted_at": "2026-11-09T19:32:48.637311"
-      },
-      {
-        "flight": "SM478",
-        "route": "JED-CAI",
-        "date": "Wednesday, November 11, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 1,
-        "y_day": 5,
-        "weekly": 17,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "X7",
-        "lf_percent": 93.5,
-        "capacity": 168,
-        "booked": 157,
-        "extracted_at": "2026-11-09T19:32:46.216340"
-      },
-      {
-        "flight": "SM475",
-        "route": "CAI-JED",
-        "date": "Wednesday, November 11, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 1,
-        "y_day": 2,
-        "weekly": 14,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "K1",
-        "lf_percent": 99.4,
-        "capacity": 180,
-        "booked": 179,
-        "extracted_at": "2026-11-09T19:32:45.648968"
-      },
-      {
         "flight": "SM478",
         "route": "JED-CAI",
         "date": "Sunday, November 15, 2026",
-        "lst_sold": "2026-11-08 00:00:00",
-        "to_day": 0,
-        "y_day": 6,
-        "weekly": 25,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "X7",
-        "lf_percent": 50.0,
-        "capacity": 180,
-        "booked": 90,
-        "extracted_at": "2026-11-09T19:32:44.962177"
-      },
-      {
-        "flight": "SM476",
-        "route": "JED-CAI",
-        "date": "Wednesday, November 11, 2026",
-        "lst_sold": "2026-11-08 00:00:00",
-        "to_day": 0,
-        "y_day": 1,
-        "weekly": 1,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "L1",
-        "lf_percent": 97.2,
-        "capacity": 180,
-        "booked": 175,
-        "extracted_at": "2026-11-09T19:32:43.098459"
-      },
-      {
-        "flight": "SM471",
-        "route": "CAI-JED",
-        "date": "Wednesday, November 11, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
+        "lst_sold": "2026-11-10 00:00:00",
         "to_day": 3,
         "y_day": 1,
-        "weekly": 11,
+        "weekly": 14,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "CLOSED",
-        "lf_percent": 101.7,
+        "lowest_avail": "X3",
+        "lf_percent": 52.2,
         "capacity": 180,
-        "booked": 183,
-        "extracted_at": "2026-11-09T19:32:42.778954"
+        "booked": 94,
+        "extracted_at": "2026-11-10T18:14:02.239825"
       },
       {
         "flight": "SM476",
@@ -820,23 +618,7 @@
         "lf_percent": 86.1,
         "capacity": 180,
         "booked": 155,
-        "extracted_at": "2026-11-09T19:32:41.350343"
-      },
-      {
-        "flight": "SM472",
-        "route": "JED-CAI",
-        "date": "Wednesday, November 11, 2026",
-        "lst_sold": "2026-11-08 00:00:00",
-        "to_day": 0,
-        "y_day": 1,
-        "weekly": 4,
-        "lpl_status": "complete",
-        "lpl_reason": "complete",
-        "lowest_avail": "X2",
-        "lf_percent": 98.3,
-        "capacity": 176,
-        "booked": 173,
-        "extracted_at": "2026-11-09T19:32:38.988360"
+        "extracted_at": "2026-11-10T18:13:59.470853"
       },
       {
         "flight": "SM472",
@@ -852,23 +634,39 @@
         "lf_percent": 58.3,
         "capacity": 180,
         "booked": 105,
-        "extracted_at": "2026-11-09T19:32:37.494952"
+        "extracted_at": "2026-11-10T18:13:56.810574"
       },
       {
-        "flight": "SM480",
+        "flight": "SM478",
         "route": "JED-CAI",
-        "date": "Wednesday, November 11, 2026",
-        "lst_sold": "2026-11-09 00:00:00",
-        "to_day": 2,
-        "y_day": 1,
-        "weekly": 7,
+        "date": "Saturday, November 21, 2026",
+        "lst_sold": "2026-11-08 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 16,
         "lpl_status": "complete",
         "lpl_reason": "complete",
-        "lowest_avail": "T8",
-        "lf_percent": 95.5,
+        "lowest_avail": "T9",
+        "lf_percent": 59.7,
         "capacity": 176,
-        "booked": 168,
-        "extracted_at": "2026-11-09T19:32:35.291424"
+        "booked": 105,
+        "extracted_at": "2026-11-10T18:13:56.050811"
+      },
+      {
+        "flight": "SM478",
+        "route": "JED-CAI",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-10 00:00:00",
+        "to_day": 3,
+        "y_day": 1,
+        "weekly": 15,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X4",
+        "lf_percent": 94.6,
+        "capacity": 168,
+        "booked": 159,
+        "extracted_at": "2026-11-10T18:13:54.934870"
       },
       {
         "flight": "SM480",
@@ -884,51 +682,1056 @@
         "lf_percent": 91.7,
         "capacity": 180,
         "booked": 165,
-        "extracted_at": "2026-11-09T19:32:34.229490"
+        "extracted_at": "2026-11-10T18:13:53.945422"
+      },
+      {
+        "flight": "SM476",
+        "route": "JED-CAI",
+        "date": "Saturday, November 21, 2026",
+        "lst_sold": "2026-11-10 00:00:00",
+        "to_day": 4,
+        "y_day": 18,
+        "weekly": 42,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X3",
+        "lf_percent": 43.2,
+        "capacity": 176,
+        "booked": 76,
+        "extracted_at": "2026-11-10T18:13:53.342571"
+      },
+      {
+        "flight": "SM476",
+        "route": "JED-CAI",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-09 00:00:00",
+        "to_day": 0,
+        "y_day": 1,
+        "weekly": 2,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 97.8,
+        "capacity": 180,
+        "booked": 176,
+        "extracted_at": "2026-11-10T18:13:51.639236"
+      },
+      {
+        "flight": "SM472",
+        "route": "JED-CAI",
+        "date": "Saturday, November 21, 2026",
+        "lst_sold": "2026-11-10 00:00:00",
+        "to_day": 3,
+        "y_day": 17,
+        "weekly": 39,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X9",
+        "lf_percent": 34.4,
+        "capacity": 180,
+        "booked": 62,
+        "extracted_at": "2026-11-10T18:13:50.570311"
+      },
+      {
+        "flight": "SM479",
+        "route": "CAI-JED",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-05 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 37,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 180,
+        "booked": 180,
+        "extracted_at": "2026-11-10T18:13:49.147535"
+      },
+      {
+        "flight": "SM472",
+        "route": "JED-CAI",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-08 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 4,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X2",
+        "lf_percent": 98.3,
+        "capacity": 176,
+        "booked": 173,
+        "extracted_at": "2026-11-10T18:13:48.430924"
+      },
+      {
+        "flight": "SM480",
+        "route": "JED-CAI",
+        "date": "Saturday, November 21, 2026",
+        "lst_sold": "2026-11-10 00:00:00",
+        "to_day": 3,
+        "y_day": 17,
+        "weekly": 34,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "X9",
+        "lf_percent": 46.0,
+        "capacity": 176,
+        "booked": 81,
+        "extracted_at": "2026-11-10T18:13:48.373897"
+      },
+      {
+        "flight": "SM477",
+        "route": "CAI-JED",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-08 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 5,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 180,
+        "booked": 180,
+        "extracted_at": "2026-11-10T18:13:45.928247"
+      },
+      {
+        "flight": "SM480",
+        "route": "JED-CAI",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-10 00:00:00",
+        "to_day": 3,
+        "y_day": 2,
+        "weekly": 6,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "T9",
+        "lf_percent": 94.4,
+        "capacity": 180,
+        "booked": 170,
+        "extracted_at": "2026-11-10T18:13:45.211622"
+      },
+      {
+        "flight": "SM475",
+        "route": "CAI-JED",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-10 00:00:00",
+        "to_day": 1,
+        "y_day": 1,
+        "weekly": 11,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "K1",
+        "lf_percent": 99.4,
+        "capacity": 180,
+        "booked": 179,
+        "extracted_at": "2026-11-10T18:13:42.705623"
+      },
+      {
+        "flight": "SM471",
+        "route": "CAI-JED",
+        "date": "Wednesday, November 11, 2026",
+        "lst_sold": "2026-11-10 00:00:00",
+        "to_day": 1,
+        "y_day": 2,
+        "weekly": 10,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 101.7,
+        "capacity": 180,
+        "booked": 183,
+        "extracted_at": "2026-11-10T18:13:39.630169"
+      },
+      {
+        "flight": "SM479",
+        "route": "CAI-JED",
+        "date": "Sunday, November 15, 2026",
+        "lst_sold": "2026-11-03 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 32,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 100.0,
+        "capacity": 180,
+        "booked": 180,
+        "extracted_at": "2026-11-10T18:13:37.080101"
+      },
+      {
+        "flight": "SM478",
+        "route": "JED-CAI",
+        "date": "Monday, November 16, 2026",
+        "lst_sold": "2026-11-10 00:00:00",
+        "to_day": 4,
+        "y_day": 6,
+        "weekly": 26,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "T9",
+        "lf_percent": 57.1,
+        "capacity": 168,
+        "booked": 96,
+        "extracted_at": "2026-11-10T18:13:37.008568"
+      },
+      {
+        "flight": "SM477",
+        "route": "CAI-JED",
+        "date": "Sunday, November 15, 2026",
+        "lst_sold": "2026-11-10 00:00:00",
+        "to_day": 2,
+        "y_day": 1,
+        "weekly": 15,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "CLOSED",
+        "lf_percent": 101.7,
+        "capacity": 180,
+        "booked": 183,
+        "extracted_at": "2026-11-10T18:13:34.249494"
+      },
+      {
+        "flight": "SM476",
+        "route": "JED-CAI",
+        "date": "Monday, November 16, 2026",
+        "lst_sold": "2026-11-05 00:00:00",
+        "to_day": 0,
+        "y_day": 0,
+        "weekly": 9,
+        "lpl_status": "complete",
+        "lpl_reason": "complete",
+        "lowest_avail": "W9",
+        "lf_percent": 57.2,
+        "capacity": 180,
+        "booked": 103,
+        "extracted_at": "2026-11-10T18:13:34.025295"
       }
     ],
-    "updated_at": "2026-11-09T19:33:21.000887",
-    "total_extracted": 1092
+    "updated_at": "2026-11-10T18:14:02.239829",
+    "total_extracted": 1106
   },
   "validation": {
-    "timestamp": "2026-11-09T19:37:42.939577",
+    "timestamp": "2026-11-10T18:22:43.934969",
     "passed": false,
     "routes_checked": 60,
-    "dates_expected": 31,
-    "required_missing_count": 2,
-    "required_route_date_count": 2,
-    "intentional_exclusion_count": 0,
+    "dates_expected": 33,
+    "required_missing_count": 1,
+    "required_route_date_count": 1,
+    "intentional_exclusion_count": 34,
     "lf": {
       "status": "incomplete",
-      "required_missing_count": 2,
+      "required_missing_count": 1,
       "required_missing": [
         {
-          "route": "JED-ASW",
+          "route": "RUH-HMB",
+          "date": "2026-11-15",
+          "reason": "outbound_station_mismatch",
+          "row_index": 0,
+          "flight": "SM462",
+          "withheld": 1
+        }
+      ],
+      "valid_empty_no_service_count": 1085,
+      "rbd_candidate_rows": 1242,
+      "rbd_mismatch_count": 0,
+      "rbd_not_acquired_count": 1,
+      "rbd_unevaluable_payload_count": 0,
+      "provider_route_conflict_count": 0,
+      "intentional_exclusion_count": 34,
+      "intentional_exclusions": [
+        {
+          "route": "AHB-CAI",
           "date": "2026-11-10",
-          "reason": "lpl_incomplete",
-          "row_index": 1,
-          "flight": "SM426",
-          "lpl_status": "incomplete",
-          "lpl_reason": "through flight: LP/L shows no board/off per passenger"
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "AHB-CAI",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVAHBCAI/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "AHB-HMB",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "AHB-HMB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVAHBHMB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "AJF-HMB",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "AJF-HMB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVAJFHMB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "ALY-RUH",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "ALY-RUH",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVALYRUH/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "ATZ-MED",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "ATZ-MED",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVATZMED/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "ATZ-RUH",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "ATZ-RUH",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVATZRUH/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "CAI-AHB",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "CAI-AHB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVCAIAHB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "CAI-ELQ",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "CAI-ELQ",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVCAIELQ/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "CAI-GIZ",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "CAI-GIZ",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVCAIGIZ/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "CAI-RUH",
+          "date": "2026-11-10",
+          "reason": "confirmed_cancelled_only",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "CAI-RUH",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [
+              {
+                "flight": "SM469",
+                "raw_response_route": ""
+              }
+            ],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false
+          }
+        },
+        {
+          "route": "CAI-TIF",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "CAI-TIF",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVCAITIF/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "DMM-HMB",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "DMM-HMB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVDMMHMB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "ELQ-CAI",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "ELQ-CAI",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVELQCAI/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "ELQ-HMB",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "ELQ-HMB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVELQHMB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "GIZ-CAI",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "GIZ-CAI",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVGIZCAI/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "HMB-AHB",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HMB-AHB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVHMBAHB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "HMB-AJF",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HMB-AJF",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVHMBAJF/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "HMB-DMM",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HMB-DMM",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVHMBDMM/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "HMB-MED",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HMB-MED",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVHMBMED/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "HMB-RUH",
+          "date": "2026-11-10",
+          "reason": "confirmed_cancelled_only",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HMB-RUH",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [
+              {
+                "flight": "SM463",
+                "raw_response_route": ""
+              }
+            ],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false
+          }
+        },
+        {
+          "route": "HMB-TIF",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HMB-TIF",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVHMBTIF/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "HMB-TUU",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HMB-TUU",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVHMBTUU/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "HRG-JED",
+          "date": "2026-11-10",
+          "reason": "confirmed_cancelled_only",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "HRG-JED",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [
+              {
+                "flight": "SM425",
+                "raw_response_route": ""
+              },
+              {
+                "flight": "SM473",
+                "raw_response_route": ""
+              }
+            ],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false
+          }
         },
         {
           "route": "JED-HRG",
           "date": "2026-11-10",
-          "reason": "lpl_incomplete",
-          "row_index": 0,
-          "flight": "SM426",
-          "lpl_status": "incomplete",
-          "lpl_reason": "through flight: LP/L shows no board/off per passenger"
+          "reason": "confirmed_cancelled_only",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "JED-HRG",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [
+              {
+                "flight": "SM474",
+                "raw_response_route": ""
+              }
+            ],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false
+          }
+        },
+        {
+          "route": "JED-SSH",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "JED-SSH",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVJEDSSH/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "MED-HMB",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "MED-HMB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVMEDHMB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "RUH-ALY",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "RUH-ALY",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVRUHALY/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "RUH-ATZ",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "RUH-ATZ",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVRUHATZ/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "RUH-CAI",
+          "date": "2026-11-10",
+          "reason": "confirmed_cancelled_only",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "RUH-CAI",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [
+              {
+                "flight": "SM470",
+                "raw_response_route": ""
+              }
+            ],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false
+          }
+        },
+        {
+          "route": "RUH-HMB",
+          "date": "2026-11-10",
+          "reason": "confirmed_cancelled_only",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "RUH-HMB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [
+              {
+                "flight": "SM464",
+                "raw_response_route": ""
+              }
+            ],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false
+          }
+        },
+        {
+          "route": "SSH-JED",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "SSH-JED",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVSSHJED/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "TIF-CAI",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "TIF-CAI",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVTIFCAI/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "TIF-HMB",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "TIF-HMB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVTIFHMB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
+        },
+        {
+          "route": "TUU-HMB",
+          "date": "2026-11-10",
+          "reason": "confirmed_no_schedule",
+          "evidence": {
+            "source": "known_flights_supplement_ll_i",
+            "requested_route": "TUU-HMB",
+            "date": "2026-11-10",
+            "matched_flights": [],
+            "cancelled_flights": [],
+            "existing_storage_flights": [],
+            "flight_universe_exhaustive": false,
+            "sn_route_probe": {
+              "commands": [
+                "SN10NOVTUUHMB/ASM"
+              ],
+              "scheduled_flights": [],
+              "cancelled_flights": [],
+              "healthy": true,
+              "unhealthy_reason": "",
+              "reused_cached_sn": false
+            }
+          }
         }
-      ],
-      "valid_empty_no_service_count": 1059,
-      "rbd_candidate_rows": 1163,
-      "rbd_mismatch_count": 0,
-      "rbd_not_acquired_count": 4,
-      "rbd_unevaluable_payload_count": 0,
-      "provider_route_conflict_count": 0,
-      "intentional_exclusion_count": 0,
-      "intentional_exclusions": []
+      ]
     },
     "oal": {
       "status": "success",
@@ -939,23 +1742,154 @@
       "required_missing": []
     },
     "supplement": {
-      "cancelled_route_unresolved_count": 0,
-      "cancelled_route_unresolved": [],
+      "cancelled_route_unresolved_count": 12,
+      "cancelled_route_unresolved": [
+        {
+          "flight": "SM423",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        },
+        {
+          "flight": "SM424",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        },
+        {
+          "flight": "SM429",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        },
+        {
+          "flight": "SM431",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": [],
+          "cross_date_candidate_routes": [
+            "CAI-RUH",
+            "HMB-RUH"
+          ],
+          "sn_disambiguation": {
+            "attempted": true,
+            "all_healthy": true,
+            "cancelled_on": []
+          }
+        },
+        {
+          "flight": "SM432",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": [],
+          "cross_date_candidate_routes": [
+            "RUH-CAI",
+            "RUH-HMB"
+          ],
+          "sn_disambiguation": {
+            "attempted": true,
+            "all_healthy": true,
+            "cancelled_on": []
+          }
+        },
+        {
+          "flight": "SM459",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        },
+        {
+          "flight": "SM460",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        },
+        {
+          "flight": "SM467",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        },
+        {
+          "flight": "SM468",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        },
+        {
+          "flight": "SM482",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        },
+        {
+          "flight": "SM483",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        },
+        {
+          "flight": "SM484",
+          "date": "2026-11-10",
+          "date_token": "10NOV",
+          "source": "LL",
+          "answer_type": "FLIGHT_CANCELLED",
+          "cancel_token": "FLIGHT CANCELLED",
+          "route_resolution": "no_current_run_route_evidence",
+          "candidate_routes": []
+        }
+      ],
       "fatal_unresolved_count": 0,
       "fatal_unresolved": []
     },
     "unresolved_required_items": [
       {
-        "route": "JED-ASW",
-        "date": "2026-11-10",
-        "sources": [
-          "LF"
-        ],
-        "oal_passes": []
-      },
-      {
-        "route": "JED-HRG",
-        "date": "2026-11-10",
+        "route": "RUH-HMB",
+        "date": "2026-11-15",
         "sources": [
           "LF"
         ],
@@ -966,18 +1900,8 @@
       {
         "type": "REQUIRED_DATA_MISSING",
         "severity": "CRITICAL",
-        "route": "JED-ASW",
-        "date": "2026-11-10",
-        "sources": [
-          "LF"
-        ],
-        "oal_passes": []
-      },
-      {
-        "type": "REQUIRED_DATA_MISSING",
-        "severity": "CRITICAL",
-        "route": "JED-HRG",
-        "date": "2026-11-10",
+        "route": "RUH-HMB",
+        "date": "2026-11-15",
         "sources": [
           "LF"
         ],
@@ -989,22 +1913,22 @@
     "schema_version": 2,
     "sync": {
       "source": "live_api",
-      "server_timestamp": "2026-11-09T19:40:48.906988+03:00",
+      "server_timestamp": "2026-11-10T18:25:32.389325+03:00",
       "age_seconds": 0,
       "stale": false
     },
     "run": {
-      "run_id": "20261109_192527",
+      "run_id": "20261110_180906",
       "tool": "MARKET_INSIGHTS",
       "mode": "LF_OAL",
       "pipeline": "LEGACY",
-      "state": "COMPLETED",
+      "state": "FAILED",
       "state_source": "final_results",
       "terminal": true,
-      "execution_started_at": "2026-11-09T19:24:40.506618+03:00",
+      "execution_started_at": "2026-11-10T18:08:03.506116+03:00",
       "start_basis": "execution_started_at",
-      "finished_at": "2026-11-09T19:40:40.521113+03:00",
-      "duration_seconds": 960.0
+      "finished_at": "2026-11-10T18:25:05.892762+03:00",
+      "duration_seconds": 1022.4
     },
     "scope": {
       "origins": [
@@ -1030,10 +1954,10 @@
       ],
       "destinations_count": 19,
       "routes_count": 60,
-      "dates_count": 31,
+      "dates_count": 33,
       "date_range": {
         "first": "2026-11-10",
-        "last": "2026-12-10"
+        "last": "2026-12-12"
       },
       "coverage": null,
       "composite_requested": null,
@@ -1050,7 +1974,7 @@
       "stage_label": "Publication",
       "stage_index": 18,
       "stage_count": 18,
-      "status": "done",
+      "status": "failed",
       "done_units": null,
       "total_units": null,
       "percent": null,
@@ -1061,15 +1985,15 @@
     "overall": {
       "stage_index": 18,
       "stage_count": 18,
-      "percent": 100.0,
+      "percent": null,
       "state": "DONE",
       "basis": "none"
     },
     "timing": {
-      "run_elapsed_seconds": 960.0,
-      "stage_elapsed_seconds": 70.1,
+      "run_elapsed_seconds": 1022.4,
+      "stage_elapsed_seconds": 25.4,
       "eta_seconds": 0.0,
-      "estimated_finish_at": "2026-11-09T19:40:40.521113+03:00",
+      "estimated_finish_at": "2026-11-10T18:25:05.892762+03:00",
       "eta_state": "DONE",
       "eta_confidence": null,
       "estimate_at": null,
@@ -1077,8 +2001,8 @@
       "total_eta_state": "DONE"
     },
     "activity": {
-      "last_activity_at": "2026-11-09T19:39:38.794691+03:00",
-      "activity_age_seconds": 70.1,
+      "last_activity_at": "2026-11-10T18:25:06.992362+03:00",
+      "activity_age_seconds": 25.4,
       "quiet_warning": false,
       "stalled": false,
       "stall_reason": null
@@ -1154,7 +2078,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 2.2
+        "elapsed_seconds": 2.4
       },
       {
         "id": "LEGACY_STEP_8_PARALLEL_EXECUTION",
@@ -1163,7 +2087,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 402.6
+        "elapsed_seconds": 225.7
       },
       {
         "id": "LEGACY_STEP_8_5_KNOWN_FLIGHT_SUPPLEMENT",
@@ -1172,7 +2096,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 211.6
+        "elapsed_seconds": 398.5
       },
       {
         "id": "LEGACY_STEP_9_EXCEL_WRITE",
@@ -1181,7 +2105,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 88.9
+        "elapsed_seconds": 155.5
       },
       {
         "id": "LEGACY_STEP_10_CONSOLIDATED_LOAD_FACTOR_SUMMARY",
@@ -1190,7 +2114,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 26.3
+        "elapsed_seconds": 32.3
       },
       {
         "id": "LEGACY_STEP_10_5_DATA_VALIDATION",
@@ -1199,7 +2123,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 3.4
+        "elapsed_seconds": 3.3
       },
       {
         "id": "LEGACY_STEP_11_SMART_CLEANUP",
@@ -1208,7 +2132,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 29.3
+        "elapsed_seconds": 30.4
       },
       {
         "id": "LEGACY_WHOLE_RUN_FINALIZATION",
@@ -1217,7 +2141,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 1.4
+        "elapsed_seconds": 1.7
       },
       {
         "id": "LEGACY_VBA_FORMATTING",
@@ -1226,7 +2150,7 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 80.1
+        "elapsed_seconds": 106.7
       },
       {
         "id": "SEMANTIC_CERTIFICATION",
@@ -1235,16 +2159,16 @@
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 5.0
+        "elapsed_seconds": 4.2
       },
       {
         "id": "LEGACY_PUBLICATION",
         "label": "Publication",
-        "status": "done",
+        "status": "failed",
         "done": null,
         "total": null,
         "percent": null,
-        "elapsed_seconds": 70.1
+        "elapsed_seconds": 25.4
       }
     ],
     "families": {
@@ -1261,28 +2185,33 @@
       "technical_shortfalls": 0,
       "stalled": false,
       "blocked_stage": null,
-      "messages": []
+      "messages": [
+        {
+          "level": "error",
+          "text": "Run failed at Publication: the run did not complete."
+        }
+      ]
     },
     "outputs": {
       "workbooks": [
-        "EGY_TO_KSA_10NOV26_TO_10DEC26_generated_at_09nov_19.25.xlsx",
-        "KSA_TO_EGY_10NOV26_TO_10DEC26_generated_at_09nov_19.25.xlsx",
-        "LOAD_FACTOR_SUMMARY_10-11-26_TO_10-DEC-26_generated_at_09nov_19.37.xlsx"
+        "EGY_TO_KSA_10NOV26_TO_12DEC26_generated_at_10nov_18.09.xlsx",
+        "KSA_TO_EGY_10NOV26_TO_12DEC26_generated_at_10nov_18.09.xlsx",
+        "LOAD_FACTOR_SUMMARY_10-11-26_TO_12-DEC-26_generated_at_10nov_18.22.xlsx"
       ],
       "validation": null,
       "semantic_certification": {
         "verdict": "PASS",
         "metrics": {
-          "alternative_rows": 501,
+          "alternative_rows": 197,
           "alternative_violations": 0,
-          "both": 1021,
-          "direct_rows": 2412,
+          "both": 1080,
+          "direct_rows": 883,
           "direct_violations": 0,
           "hbe_cells": 0,
-          "oal_eligible": 2913,
-          "oal_only": 1892,
-          "oal_rows": 2913,
-          "threat_eligible": 1021,
+          "oal_eligible": 1080,
+          "oal_only": 0,
+          "oal_rows": 1080,
+          "threat_eligible": 1080,
           "threat_only": 0,
           "total_oal_violations": 0,
           "unmeasurable_rows": 0
@@ -1298,7 +2227,7 @@
     "source": {
       "materialized_view": "run_progress",
       "run_progress_rejected_reason": null,
-      "durable_watermark": "2026-11-09T19:39:38.794691+03:00",
+      "durable_watermark": "2026-11-10T18:25:06.992362+03:00",
       "history": {
         "samples_used": 0,
         "provenance": []
