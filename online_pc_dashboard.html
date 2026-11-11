@@ -2857,6 +2857,10 @@
   const LIVE_INTERVAL_MS = { pc: 3000, mobile: 5000 };
   const CONNECT_FAILURES_FOR_STATIC = 3;
   const STALE_LOW_CONFIDENCE_MS = 30000;
+  // A cached (static) snapshot of a run that was still in progress is only a
+  // provisional view. Past this age the header carries an explicit
+  // STATUS UNKNOWN marker; run.state itself stays verbatim (runtime contract).
+  const CACHED_STATE_TTL_MS = 15 * 60 * 1000;
 
   const STATE_STYLE = {
     COMPLETED: 'ok',
@@ -3453,6 +3457,7 @@
       uncertified: outputs.uncertified === true,
       snapshot_sync: isObject(outputs.snapshot_sync) ? clone(outputs.snapshot_sync) : null,
       data_completeness: isObject(outputs.data_completeness) ? clone(outputs.data_completeness) : null,
+      public_site: isObject(outputs.public_site) ? clone(outputs.public_site) : null,
     };
   }
 
@@ -3576,6 +3581,24 @@
       state_source: strOrNull(run.state_source),
       terminal: terminal,
     };
+    // Without the live API, an old snapshot of an unfinished run must not pass
+    // for the current state (e.g. a provisional PUBLISHING). run.state stays
+    // verbatim; freshness says how far it can be trusted.
+    view.run.freshness = 'CURRENT';
+    view.run.freshness_text = null;
+    const snapshotMs = toMs(model.server_timestamp);
+    const fromSnapshot = sync === 'CACHED' || sync === 'OFFLINE';
+    if (fromSnapshot && !terminal) {
+      const snapshotAge = isFinite(snapshotMs) && isFinite(nowMs) ? nowMs - snapshotMs : null;
+      if (snapshotAge === null || snapshotAge > CACHED_STATE_TTL_MS) {
+        view.run.freshness = 'UNKNOWN';
+        view.run.freshness_text = 'STATUS UNKNOWN - live status unavailable; cached snapshot'
+          + (model.server_timestamp ? ' from ' + model.server_timestamp : ' of unknown age');
+      } else {
+        view.run.freshness = 'PROVISIONAL';
+        view.run.freshness_text = 'Provisional - cached snapshot, live status unavailable';
+      }
+    }
 
     view.stage = {
       id: strOrNull(cur.stage_id),
@@ -3709,6 +3732,8 @@
     parts.push(' ' + span('sync-banner', 'mi-cc__banner', sync.banner || '', !sync.banner));
     parts.push(' ' + span('run-id', 'mi-cc__run-id', run.run_id === null || run.run_id === undefined ? '--' : run.run_id));
     parts.push(' ' + span('run-state', 'mi-cc__state mi-cc__state--' + cls(run.state_style), run.state || '--'));
+    parts.push(' ' + span('run-freshness', 'mi-cc__freshness mi-cc__freshness--' + cls(run.freshness),
+      run.freshness_text || '', !run.freshness_text));
     parts.push('</div>');
 
     const stageIndex = isNum(stage.index) && isNum(stage.count) ? 'Stage ' + stage.index + ' of ' + stage.count : '--';
